@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Node.js REST API for FYP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "fyp",
+    "node",
+    "rest",
+    "api"
+  ],
+  "author": "Min",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "mysql": "^2.17.1",
+    "sha1": "^1.1.1"
+  }
+}
