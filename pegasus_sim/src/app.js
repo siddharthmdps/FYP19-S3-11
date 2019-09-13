@@ -11,15 +11,19 @@ const partialsPath = path.join(__dirname, '../templates/partials') // handlebars
 const loginPath = path.join(__dirname, '../api/routes/login')
 
 
-
 // Setting up handlebars engine and views location
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
 
+// Setting up static directory to serve
+app.use(express.static(publicDirectoryPath))
+
 // Route handlers
 app.get('', (req, res) => {
-    res.send('Hello')
+    res.render('index', {
+        title: 'Pegasus@SIM'
+    })
 })
 
 
