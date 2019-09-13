@@ -1,4 +1,10 @@
-# FYP19-S3-11
+# Setup
+1. Install NodeJS
+2. From the terminal, go to directory 'pegasus_sim/' (cd pegasus_sim)
+3. Install all npm dependencies by typing command (npm install) in the terminal
+4. Run the program by typing (npm run start)
+
+# Project Description (FYP19-S3-11)
 SIM Online Recruitment using Cloud Computing
 
 Project Description

@@ -1,7 +1,8 @@
 body{
     color: #333333;
     font-family: arial;
-    max-width: 650px;
+    /* max-width: 650px; */
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 16px;
 
@@ -26,9 +27,22 @@ header a {
     text-decoration: none;
 }
 
+
 footer{
     color: #333333;
     border-top: 1px solid #eeeeee;
     margin-top: 16px;
     padding: 16px 0;
+}
+
+input {
+    border: 1px solid #cccccc;
+    padding: 8px;
+}
+button {
+    cursor: pointer;
+    border: 1px solid #888888;
+    background: #888888;
+    color: white;
+    padding: 8px;
 }

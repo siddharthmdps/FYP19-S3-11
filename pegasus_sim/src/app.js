@@ -26,6 +26,29 @@ app.get('', (req, res) => {
     })
 })
 
+app.get('/student', (req, res) => {
+    res.render('student', {
+        title: 'Pegasus@SIM : Student Portal'
+    })
+})
+
+app.get('/employer', (req, res) => {
+    res.render('employer', {
+        title: 'Pegasus@SIM : Look for candidates'
+    })
+})
+
+app.get('/admin', (req, res) => {
+    res.render('employer', {
+        title: 'Pegasus@SIM : Admin Page'
+    })
+})
+
+app.get('/about', (req, res) => {
+    res.render('about', {
+        title: 'Pegasus@SIM : About'
+    })
+})
 
 const loginRoutes = require(loginPath);
 app.use('/login', loginRoutes)
