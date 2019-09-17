@@ -39,7 +39,7 @@ app.get('/employer', (req, res) => {
 })
 
 app.get('/admin', (req, res) => {
-    res.render('employer', {
+    res.render('admin', {
         title: 'Pegasus@SIM : Admin Page'
     })
 })

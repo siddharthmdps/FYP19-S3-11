@@ -1,8 +1,6 @@
 body{
     color: #333333;
     font-family: arial;
-    /* max-width: 650px; */
-    max-width: 1000px;
     margin: 0 auto;
     padding: 0 16px;
 
@@ -16,18 +14,6 @@ body{
 }
 
 
-header{
-    margin-top: 16px;
-    margin-bottom: 48px;
-}
-
-header a {
-    color: #333333;
-    margin-right: 16px;
-    text-decoration: none;
-}
-
-
 footer{
     color: #333333;
     border-top: 1px solid #eeeeee;
@@ -35,14 +21,3 @@ footer{
     padding: 16px 0;
 }
 
-input {
-    border: 1px solid #cccccc;
-    padding: 8px;
-}
-button {
-    cursor: pointer;
-    border: 1px solid #888888;
-    background: #888888;
-    color: white;
-    padding: 8px;
-}

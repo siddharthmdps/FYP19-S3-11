@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>{{title}}</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
+    {{>head}}
 <body>
-    <div class="main-content">
-        {{>header}}
-        
-    </div>
+    {{>header}}
+    <nav class="nav">
+    <a class="nav-link active" href="#">Active</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </nav>
+
+    
+    {{>feed}}
     {{>footer}}
 </body>
 </html>
