@@ -26,6 +26,11 @@ app.get('', (req, res) => {
     })
 })
 
+app.get('/signup', (req, res) => {
+    res.render('signup', {
+    })
+})
+
 app.get('/student', (req, res) => {
     res.render('student', {
         title: 'Pegasus@SIM : Student Portal'
