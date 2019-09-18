@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     {{>head}}
+    <link rel="stylesheet" href="/css/singup.css">
 <body>
 <div class="container create-account main">
   <div class="py-5 text-center">
@@ -58,23 +59,23 @@
         </div>
 
         <div class="dropdown job-category">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Job Industry
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Engineering</a>
-            <a class="dropdown-item" href="#">Information Technology</a>
-            <a class="dropdown-item" href="#">Accounting</a>
-            <a class="dropdown-item" href="#">Marketing</a>
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Job Industry
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Engineering</a>
+                <a class="dropdown-item" href="#">Information Technology</a>
+                <a class="dropdown-item" href="#">Accounting</a>
+                <a class="dropdown-item" href="#">Marketing</a>
+            </div>
         </div>
-        </div>
-
+        <br>
         <div class="mb-3 job-experience">
           <label for="job-experience">Job Experience <span class="text-muted">(Optional)</span></label>
           <input type="text" class="form-control" id="job-experience" placeholder="Describe your past experience">
         </div>
 
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Create Account</button>
+        <button class="btn btn-dark btn-lg btn-block create-account" type="submit">Create Account</button>
       </form>
   </div>
 

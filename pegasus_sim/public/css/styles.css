@@ -1,23 +1,29 @@
-body{
+/* body{
     color: #333333;
     font-family: arial;
     margin: 0 auto;
     padding: 0 16px;
-
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
+} */
 
-.main-content{
+main{
     flex-grow: 1;
 }
 
+#feed-container {
+    margin-top: 5%;
+}
 
-footer{
+#admin-main{
+    margin-top: 4%;
+}
+/* footer{
     color: #333333;
     border-top: 1px solid #eeeeee;
     margin-top: 16px;
+    margin: auto;
     padding: 16px 0;
-}
+} */
 

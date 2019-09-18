@@ -4,3 +4,7 @@ div.main{
 div.job-experience input{
     height: 200px;
 }
+button.create-account{
+    max-width: 250px;
+    margin: auto;
+}

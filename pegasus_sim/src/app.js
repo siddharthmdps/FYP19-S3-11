@@ -39,7 +39,9 @@ app.get('/student', (req, res) => {
 
 app.get('/employer', (req, res) => {
     res.render('employer', {
-        title: 'Pegasus@SIM : Look for candidates'
+        title: 'Pegasus@SIM : Look for candidates',
+        employer_postjob: 'Post Job Opening',
+        employer_postjob_link: '/post-job'
     })
 })
 
