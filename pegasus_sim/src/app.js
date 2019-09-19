@@ -44,6 +44,9 @@ app.get('/employer', (req, res) => {
         employer_postjob_link: '/post-job'
     })
 })
+app.get('/post-job', (req, res) => {
+    res.render('post-job')
+})
 
 app.get('/admin', (req, res) => {
     res.render('admin', {

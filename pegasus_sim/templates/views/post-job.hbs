@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    {{>head}}
+    <link rel="stylesheet" href="/css/post-job.css">
+<body>
+    {{>navbar}}
+    <div class="container post-job main">
+        <div class="py-5 text-center">
+            <h2>Post A Job Opening</h2>
+        </div>
+
+        <div class="container post-job form-container">
+            <form class="needs-validation" novalidate="">
+                <div>
+                    <label for="job-industry">Job Industry</label>
+                    <input type="text" class="form-control" id="job-industry" placeholder="" value="" required="">
+                </div>
+
+                <div>
+                    <label for="job-title">Job Title</label>
+                    <input type="text" class="form-control" id="job-title" placeholder="" value="" required="">
+                </div>
+
+                <div>
+                    <label for="job-description">Job Description</label>
+                    <input type="text" class="form-control" id="job-description" placeholder="" value="" required="">
+                </div>
+
+                <div>
+                    <label for="seniority-level">Seniority Level</label>
+                    <input type="text" class="form-control" id="seniority-level" placeholder="" value="" required="">
+                </div>
+
+
+                <div>
+                    <label for="required-skills">Required Skills</label>
+                    <input type="text" class="form-control" id="required-skills" placeholder="" value="" required="">
+                </div>
+
+
+                <button class="btn btn-dark btn-lg btn-block post-job-btn" type="submit">Post Job Opening</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
