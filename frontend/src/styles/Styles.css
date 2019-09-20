@@ -1,0 +1,16 @@
+main{
+    flex-grow: 1;
+}
+
+#feed-container {
+    margin-top: 5%;
+}
+
+#admin-main{
+    margin-top: 4%;
+}
+
+#btn-logout{
+    margin-left: 5px;
+}
+
