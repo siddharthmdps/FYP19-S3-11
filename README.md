@@ -1,7 +1,5 @@
-# FYP19-S3-11
+# Pegasus
 SIM Online Recruitment using Cloud Computing
-
-Project Description
 
 This project aims to develop an online automation system that is beneficial for SIM students and companies recruiting SIM graduates. This software has two login portals, one for students and the other for recruiting companies.
 
@@ -9,3 +7,16 @@ Students will enter all their personal as well as professional while registering
 
 The admin of the system, has the access to all the portal. He handles all the logins credentials. The admin can add, delete or edit information when need be. The admin can also generate various reports (personal identity needs to be removed) for SIM management to understand the employability of SIM graduates.
 All the details are stored in the cloud which is very easy to access for the user any time. As, the project files and a database file will be stored into the Azure cloud (or Amazon AWS), the project will be accessed in the web browser through Azure link.
+
+## Installation
+
+1. Install [NodeJS](https://nodejs.org/en/download/).
+2. Clone the repository (It is recommended to test in a separate branch before committing to master)
+3. Below, you will find two separate sections for setting up the frontend and backend.
+
+## Front End
+1. From the root directory, go to 'frontend' and type the command ```npm install```.
+   This will install all dependencies required for the project.
+2. 
+
+## Back End
