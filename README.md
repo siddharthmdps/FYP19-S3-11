@@ -17,6 +17,6 @@ All the details are stored in the cloud which is very easy to access for the use
 ## Front End
 1. From the root directory, go to 'frontend' and type the command ```npm install```.
    This will install all dependencies required for the project.
-2. 
+2. Once the installation is done, type in ```npm start``` to launch the react server
 
 ## Back End
