@@ -1,0 +1,14 @@
+.statBoard{
+    display:inline-block;
+    width:66%;
+    text-align:center;
+    margin-top:100px;
+    padding: 30px;
+
+
+}
+
+.statBoxWrapper{
+    display:inline-block;
+    text-align:center;
+}
