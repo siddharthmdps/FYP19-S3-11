@@ -1,9 +1,17 @@
 import React from 'react'
+import auth from '../utils/auth'
 
-const LandingPage = () => (
+const LandingPage = (props) => (
     <div className="container">
         Landing Page
 
+        <button onClick={
+            () => {
+                auth.login(() => {
+                    props.history.push("/home")
+                })
+            }
+        }>Login</button>
         {/* <h1 className="h3 mb-3 font-weight-normal">PEGASUS</h1>
 
         <p className="font-weight-light">Don't miss your next opportunity. Sign in to stay updated on your professional world.</p>
