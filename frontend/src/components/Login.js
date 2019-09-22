@@ -12,7 +12,6 @@ const Login = (props) => (
             <input type="text" id="input-username" className="form-control" placeholder="Username"/>
             <input type="password" id="input-password" className="form-control" placeholder="Password"/>
 
-
             <button className="btn btn-lg btn-primary btn-block" onClick={
                 () => {
                     const username = document.getElementById("input-username").value
