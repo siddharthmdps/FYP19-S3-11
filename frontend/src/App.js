@@ -6,24 +6,35 @@ import Navbar from './components/Navbar'
 import Home from './components/Home'
 import About from './components/About'
 import NoMatch from './components/NoMatch'
-import FetchRandomUser from './components/FetchRandomUser';
 
+// testing
+import FetchRandomUser from './components/FetchRandomUser'
+import LandingPage from './components/LandingPage'
+import AppLayout from './components/AppLayout'
+
+// importing CSS
 import './App.css';
 
 
-function App() {
+const App = () => {
   return (
-    <React.Fragment>
-      <Navbar/>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={FetchRandomUser} />
-          {/* <Route exact path="/" component={Home} /> */}
-          <Route exact path="/about" component={About} />
-          <Route component={NoMatch} />
-        </Switch>
-      </Router>
-    </React.Fragment>
+    <Router>
+      
+      <Route exact path="/" component={LandingPage}></Route>
+      <Route exact path="/home" component={Home}></Route>
+    </Router>
+    
+    // <React.Fragment>
+    //   <Navbar/>
+    //   <Router>
+    //     <Switch>
+    //       <Route exact path="/fetch" component={FetchRandomUser} />
+    //       <Route exact path="/" component={Home} />
+    //       <Route exact path="/about" component={About} />
+    //       <Route component={NoMatch} />
+    //     </Switch>
+    //   </Router>
+    // </React.Fragment>
   )
 }
 
