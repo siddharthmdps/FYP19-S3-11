@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const env = require('dotenv').config({
-    path: './Config.env'
+    path: './src/Config.env'
 });
 const sha1 = require('sha1');
 const mysql = require('mysql');
