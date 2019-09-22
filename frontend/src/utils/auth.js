@@ -3,6 +3,13 @@ class Auth {
         this.authenticated = false
     }
 
+    isValid(username, password) {
+        if (username === "username" && password === "password") {
+            return true
+        }
+        else return false
+    }
+
     login(cb) {
         this.authenticated = true
         cb()

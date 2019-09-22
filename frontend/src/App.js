@@ -8,7 +8,6 @@ import About from './components/About'
 import NoMatch from './components/NoMatch'
 
 // testing
-import FetchRandomUser from './components/FetchRandomUser'
 import Login from './components/Login'
 
 // importing CSS
@@ -27,7 +26,6 @@ const App = () => {
     //   <Navbar/>
     //   <Router>
     //     <Switch>
-    //       <Route exact path="/fetch" component={FetchRandomUser} />
     //       <Route exact path="/" component={Home} />
     //       <Route exact path="/about" component={About} />
     //       <Route component={NoMatch} />
