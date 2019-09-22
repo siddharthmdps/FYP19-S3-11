@@ -12,7 +12,7 @@ function StatBox(props) {
     return (
     <div className= "statBox">
        <div className= "statCircle">
-       <CountUp end={props.number} duration={0.5}/>
+       <CountUp end={parseInt(props.number,10)} duration={0.5}/>
        </div>
        <div className="statText">{props.desc}</div>
     </div>
