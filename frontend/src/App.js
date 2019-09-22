@@ -9,8 +9,7 @@ import NoMatch from './components/NoMatch'
 
 // testing
 import FetchRandomUser from './components/FetchRandomUser'
-import LandingPage from './components/LandingPage'
-import AppLayout from './components/AppLayout'
+import Login from './components/Login'
 
 // importing CSS
 import './App.css';
@@ -20,7 +19,7 @@ const App = () => {
   return (
     <Router>
       
-      <Route exact path="/" component={LandingPage}></Route>
+      <Route exact path="/" component={Login}></Route>
       <Route exact path="/home" component={Home}></Route>
     </Router>
     
