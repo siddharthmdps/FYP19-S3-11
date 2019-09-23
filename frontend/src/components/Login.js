@@ -1,6 +1,7 @@
 import React from 'react'
 import auth from '../utils/auth'
 import './styles/Login.css'
+import config from '../config'
 
 
 const Login = (props) => (
@@ -11,20 +12,40 @@ const Login = (props) => (
         <form action="">
             <input type="text" id="input-username" className="form-control" placeholder="Username"/>
             <input type="password" id="input-password" className="form-control" placeholder="Password"/>
+            <select id="input-usertype" className="form-control">
+                <option name="Student">Student</option>
+                <option name="Company">Company</option>
+                <option name="Admin">Admin</option>
+            </select>
 
-            <button className="btn btn-lg btn-primary btn-block" onClick={
+            <button type="button" className="btn btn-lg btn-primary btn-block" onClick={
                 () => {
                     const username = document.getElementById("input-username").value
                     const password = document.getElementById("input-password").value
+                    const usertype = document.getElementById("input-usertype").value
 
-                    console.log(username, password)
+                    var apiurl = config.getAPIURL()
+                    console.log(username, password, usertype)
                     
-                    if (auth.isValid(username, password)) {
-                        auth.login(() => {
-                            props.history.push("/home")
-                        })
+                    if(username && password && usertype) {
+                        var url = apiurl + username + "/" + password + "/" + usertype
+                        fetch(url, {
+                            method: 'post',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            }
+                        }).then(res=>res.json())
+                        .then(res => {
+                            console.log(res)
+                            if (res.message && res.message.indexOf("Success") !== -1) {
+                                auth.login(() => {
+                                    props.history.push("/home")
+                                })
+                            }
+                            else alert('Invalid username or password')
+                        });
                     }
-                    else alert('Invalid username or password')
                 }
             }>Log in</button> 
             <p>New to Pegasus? <a href="/signup">Join Now</a></p>

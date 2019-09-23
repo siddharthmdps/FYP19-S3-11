@@ -3,7 +3,7 @@ class Auth {
         this.authenticated = false
     }
 
-    isValid(username, password) {
+    isValid(username, password) { //unused due to async required for fetch post
         if (username === "username" && password === "password") {
             return true
         }
