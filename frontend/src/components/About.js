@@ -1,10 +1,11 @@
 import React from 'react';
+import Navbar from './Navbar';
 
 
 function About() {
   return (
     <div className="container main-content" id="about">
-        
+        <Navbar/>
         <h2>SIM Online Recruitment using Cloud Computing</h2><br/>
         <h3>Project Description</h3>
         <p>
