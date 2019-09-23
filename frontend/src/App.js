@@ -1,3 +1,4 @@
+// essential
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -6,9 +7,11 @@ import Navbar from './components/Navbar'
 import Home from './components/Home'
 import About from './components/About'
 import NoMatch from './components/NoMatch'
+import Login from './components/Login'
+import PostJob from './components/employer/PostJob'
 
 // testing
-import Login from './components/Login'
+import ProtectedRoute from './components/ProtectedRoute'
 
 // importing CSS
 import './App.css';
@@ -17,23 +20,15 @@ import './App.css';
 const App = () => {
   return (
     <Router>
-      
-      <Route exact path="/" component={Login}></Route>
-      <Route exact path="/home" component={Home}></Route>
-      <Route exact path="/about" component={About}></Route>
-      <Route component={NoMatch} />
+      <Switch>
+        <Route exact path="/" component={Login}></Route>
+
+        <ProtectedRoute exact path="/home" component={Home}></ProtectedRoute>
+        <Route exact path="/about" component={About}></Route>
+        <Route exact path="/postjob" component={PostJob}></Route>
+      </Switch>
     </Router>
     
-    // <React.Fragment>
-    //   <Navbar/>
-    //   <Router>
-    //     <Switch>
-    //       <Route exact path="/" component={Home} />
-    //       <Route exact path="/about" component={About} />
-    //       <Route component={NoMatch} />
-    //     </Switch>
-    //   </Router>
-    // </React.Fragment>
   )
 }
 
