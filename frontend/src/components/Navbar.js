@@ -38,6 +38,7 @@ const Navbar = (props) => {
             <button type="button" className="btn btn-dark" id="btn-logout" 
               onClick={ () => {
                 auth.logout(()=>{
+                  console.log('Logging out')
                   // props.history.push("/")
                 })
               }
