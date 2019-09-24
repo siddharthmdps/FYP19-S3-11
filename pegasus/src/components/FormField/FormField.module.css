@@ -1,0 +1,20 @@
+.FormField{
+    display: flex;
+    flex-flow: row;
+    padding: 20px;
+    box-sizing: border-box;
+    justify-content: center;
+    width: 100%;
+}
+.FormField p{
+    width: 10%;
+    font-size: 1rem;
+    padding: 0px;
+    margin: 0px;
+}
+.FormField input{
+    margin: 0 5px;
+    width: 80%;
+    height: auto;
+    padding: 0;
+}

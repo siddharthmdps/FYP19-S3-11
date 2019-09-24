@@ -1,0 +1,18 @@
+.Profile{
+    padding: 50px;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+}
+.LeftBox{
+    border: 1px solid #CCD1D1  ;
+    border-radius: 5px;
+    margin: 0px 20px;
+    width: 20%;
+
+}
+.RightBox{
+    border: 1px solid #CCD1D1 ;
+    border-radius: 5px;
+    width: 80%;
+}

@@ -1,0 +1,57 @@
+.Sidedrawer{
+    position: fixed;
+    width: 70%;
+    max-width: 70%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    z-index: 200;
+    background-color: #566573;
+    padding: 32px 0px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-out;
+    transform: translateX(200%); 
+}
+
+@media(min-width: 500px){
+    .Sidedrawer{
+        width: 30%;
+    }
+}
+
+.show{
+    display: block;
+}
+
+.Open{
+    display: block;
+    transform: translateX(0);
+}
+
+.Sidedrawer ul{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    margin: 0%;
+    padding: 0%;
+}
+
+.Sidedrawer ul li{
+    /* font-size: 2rem;
+    color: white; */
+    list-style: none;
+    margin: 5px 0%;
+    padding: 10px 50px;
+}
+
+.Sidedrawer ul li a{
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+}
+
+.Sidedrawer ul li:hover{
+    background-color: #34495E;
+    font-weight: bold;
+    
+}

@@ -1,0 +1,25 @@
+.LeftBox{
+}
+.LeftBox ul{
+    list-style: none;
+    padding: 0px 5px;
+}
+.LeftBox ul li{
+    background-color: #566573 ;
+    left: 0;
+    margin: 10px 0px;
+    padding: 10px;
+    text-align: center;
+}
+.LeftBox ul li a{ 
+    text-decoration: none;
+    color: white;
+    font-weight: 80;
+}
+.LeftBox ul li:hover{ 
+    text-decoration: none;
+    background-color: #34495E;
+    font-weight: bold;
+    cursor: pointer;
+}
+

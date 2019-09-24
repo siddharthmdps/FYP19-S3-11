@@ -1,0 +1,4 @@
+.RightBox .WorkDate {
+    display: flex;
+    flex-flow: row;
+}
