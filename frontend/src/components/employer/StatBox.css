@@ -1,0 +1,20 @@
+.statBox{
+    display: inline-block;
+    float:left;
+    font-family: Averia Libre;
+    font-style: normal;
+    font-weight: normal;
+    padding:35px;
+}
+.statCircle{
+    font-size: 64px;
+    border-radius:100%;
+    background-color:#F0F0F0;;
+    width: 150px;
+    height:150px;
+    padding:30px;
+}
+
+.statText{
+    font-size: 36px;
+}
