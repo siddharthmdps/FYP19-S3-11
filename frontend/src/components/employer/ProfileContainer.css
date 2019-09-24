@@ -1,0 +1,29 @@
+.profileContainer{
+    float:left;
+    width:33%;
+    margin-top:53px;
+    text-align:center;
+}
+
+.profilePic{
+    height: 333px;
+    width: 333px;
+    border-radius:50%;
+    background-color: rgba(223, 223, 224, 0.986);
+    display: inline-block;
+    margin-top: 33px;
+    margin-bottom: 0;
+    
+}
+
+.username{
+    display: inline-block;
+    width:100%;
+    font-family: Averia Libre;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px; 
+    margin-top: 15px;
+}
+
+
