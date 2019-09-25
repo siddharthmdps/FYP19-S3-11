@@ -1,0 +1,26 @@
+.RightBox{
+    display: flex;
+    flex-flow: column;
+    padding: 10px;
+}
+.RightBox .SameLine{
+    display: flex;
+    flex-flow: row;
+    box-sizing: border-box;
+    justify-content: center;
+    align-self: left;
+    width: 94%;
+}
+
+.RightBox .SameLine .LeftSide{
+    width: 50%;
+    margin: 0;
+    padding: 0;
+}
+
+.RightBox .SameLine .RightSide{
+    width: 50%;
+    margin: 0;
+    padding: 0;
+}
+

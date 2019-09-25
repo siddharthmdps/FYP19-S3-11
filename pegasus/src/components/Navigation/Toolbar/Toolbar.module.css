@@ -1,0 +1,38 @@
+.Toolbar{
+    height: 70px;
+    width: 100%;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    background-color: #1C2833;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 90;
+}
+
+.Toolbar nav{
+    height: 100%;
+}
+.LogoBox a{
+    height: 100%;
+    font-size: 1.4rem;
+    font-weight: 100;
+    text-decoration: none;
+    color: white;
+    font-family: cursive;
+}
+.LogoBox .Logo{
+    height: 100%;
+    display: flex;
+}
+.LogoBox .LogoInfo{
+    height: 100%;
+    display: inline;
+    padding: 0 20px;
+    color: white;
+    justify-content: flex-start;
+}
+

@@ -1,0 +1,22 @@
+.Profile{
+    padding: 50px;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+}
+.Heading{
+    /* margin: 0 5%; */
+    text-align: center;
+}
+.LeftBox{
+    border: 1px solid #CCD1D1  ;
+    border-radius: 5px;
+    margin: 0px 20px;
+    width: 20%;
+
+}
+.RightBox{
+    border: 1px solid #CCD1D1 ;
+    border-radius: 5px;
+    width: 80%;
+}
