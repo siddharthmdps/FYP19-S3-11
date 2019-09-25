@@ -9,7 +9,17 @@ const leftBox = (props) => {
                 <li>
                     <Logo />
                 </li>
-                <li key='1' onClick={props.activeHandler.bind(this, '1')}>
+                {
+                    props.list.map((value, index) => {
+                        return (
+                            <li key='index' onClick={props.activeHandler.bind(this, index)} className={index===props.active?classes.active: null}>
+                                {value}
+                                
+                            </li>
+                        )
+                    })
+                }
+                {/* <li key='1' onClick={props.activeHandler.bind(this, '1')}>
                     View Profile
                 </li>
                 <li key='2' onClick={props.activeHandler.bind(this, '2')}>
@@ -38,7 +48,7 @@ const leftBox = (props) => {
                 </li>
                 <li key='10'>
                     Resume
-                </li>
+                </li> */}
             </ul>
         </div>
     );

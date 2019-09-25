@@ -1,11 +1,13 @@
 import React from 'react';
 import classes from './RightBox.module.css';
 import FormField from '../FormField/FormField';
+import Button from '../UI/Button/Button';
 
 
 const rightBox = (props) => {
     let personalParticulars = (
         <div>
+            <h1>Personal Particulars</h1>
             <FormField placeholder='Neil Armstrong' attribute='Name' />
             <FormField placeholder='somebody@mailProvider.com' attribute='E-mail' />
             <FormField placeholder='+65 1234 1234' attribute='Phone No.' />
@@ -18,6 +20,7 @@ const rightBox = (props) => {
 
     let education = (
         <div>
+            <h1>Education</h1>
             <FormField placeholder='University of Wollongong' attribute='University' />
             <FormField placeholder='MM/YY' attribute='Graduation Date' />
             <FormField placeholder='Diploma of example' attribute='Highest Qualifition' />
@@ -27,36 +30,33 @@ const rightBox = (props) => {
         </div>
     );
 
-    let workStyle = {
-        FormField:  {
-            flexFlow:'column'
-        },
-        input: {
-            height: '30%'
-        }
-    };
-
     let workExp = (
         <React.Fragment>
+            <h1>Work Experience</h1>
             <FormField placeholder='Senior Developer' attribute='Position Title' />
             <FormField placeholder='Something Ptd Lte' attribute='Company Name' />
-            <div className={classes.WorkDate}>
-                <FormField placeholder='MM/YY' attribute='Worked from' />
-                <FormField placeholder='MM/YY' attribute='Worked Till' />
+            <div className={classes.SameLine}>
+                <div className={classes.LeftSide}>
+                    
+                    <FormField placeholder='MM/YY' attribute='From' />
+                </div>
+                <div className={classes.RightSide}>
+                    <FormField placeholder='MM/YY' attribute='Till' />
+                </div>
             </div>
             <FormField placeholder='Full-time' attribute='Position level' />
             <FormField placeholder='IT' attribute='Industry' />
             <FormField placeholder='80,000' attribute='Salary'/>
             <FormField 
-            formStyle={{flexFlow:'column'}}
-            inStyle={{height:'85px'}}
             placeholder='Type here' 
-            attribute='Describe Job Responsibility'/>
+            attribute='Describe Job Responsibility'
+            type='textarea'/>
         </React.Fragment>
     )
 
     let jobPreference = (
         <React.Fragment>
+            <h1>Job Preference</h1>
             <FormField placeholder='Accounting' attribute='Industry' />
             <FormField placeholder='Senior-level' attribute='Position' />
             <FormField placeholder='PT/FT/Contract' attribute='Job Type' />
@@ -68,21 +68,22 @@ const rightBox = (props) => {
 
     let awards = (
         <React.Fragment>
+            <h1>Awards</h1>
             <FormField placeholder='Golden Reel Award' attribute='Award Name' />
             <div className={classes.WorkDate}>
                 <FormField placeholder='YYYY' attribute='Date awarded (Year)' />
                 <FormField placeholder='MMMM' attribute='Date awarded (Month)' />
             </div>
             <FormField 
-            formStyle={{flexFlow:'column'}}
-            inStyle={{height:'85px'}}
             placeholder='Type here' 
-            attribute='Description' />
+            attribute='Description'
+            type='textarea' />
         </React.Fragment>
     )
 
     let certifications = (
         <React.Fragment>
+            <h1>Certifications</h1>
             <FormField placeholder='Certified ScrumMaster' attribute='Name of Cert' />
             <FormField placeholder='Scrum Alliance' attribute='Issued by' />
             <div className={classes.WorkDate}>
@@ -95,13 +96,13 @@ const rightBox = (props) => {
 
     let projects = (
         <React.Fragment>
+            <h1>Projects</h1>
             <FormField placeholder='Calculator app' attribute='Title' />
             <FormField placeholder='Completed' attribute='Status' />
             <FormField 
-            formStyle={{flexFlow:'column'}}
-            inStyle={{height:'85px'}}
             placeholder='Type here' 
-            attribute='Description' />
+            attribute='Description'
+            type='textarea' />
             <FormField placeholder='Link to project' attribute='Link' />
         </React.Fragment>
     )
@@ -110,35 +111,38 @@ const rightBox = (props) => {
 
     }
 
-    let display = null;
-
     return (
         <div className={classes.RightBox}>
             {(() =>{switch (props.show) {
-                case '2':
+                case 1:
                     return [personalParticulars];
-                    break;
-                case '3':
+                    
+                case 2:
                     return [education];
-                    break;
-                case '4':
+                    
+                case 3:
                     return [workExp];
-                    break;    
-                case '6':
+                case 4:    
+                case 5:
                     return [jobPreference];
-                    break;
-                case '7':
+                    
+                case 6:
                     return [awards];
-                    break;
-                case '8':
+                    
+                case 7:
                     return [certifications];
-                    break;
-                case '9':
+                    
+                case 8:
                     return [projects];
-                    break;
+                    
                 default:
                     break;
             }})()}
+            <div className={classes.SameLine}>
+                <Button btnType='Danger'>Cancel</Button>
+                <Button btnType='Success'>Save</Button>
+            </div>
+
             
             {/* {education} */}
             {/* {workExp} */}

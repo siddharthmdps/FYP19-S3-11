@@ -4,6 +4,10 @@
     flex-flow: row;
     justify-content: flex-start;
 }
+.Heading{
+    /* margin: 0 5%; */
+    text-align: center;
+}
 .LeftBox{
     border: 1px solid #CCD1D1  ;
     border-radius: 5px;
