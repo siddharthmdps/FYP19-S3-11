@@ -24,3 +24,7 @@ All the details are stored in the cloud which is very easy to access for the use
    This will install all the dependencies required for the project
 2. type 'node server.js' to start.
    Make sure mysql database is running before you start server.js
+   
+## User Manual
+Google definition:
+The User Manual contains all essential information for the user to make full use of the information system. This manual includes a description of the system functions and capabilities, contingencies and alternate modes of operation, and step-by-step procedures for system access and use.
