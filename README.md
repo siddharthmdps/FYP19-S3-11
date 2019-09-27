@@ -22,7 +22,7 @@ All the details are stored in the cloud which is very easy to access for the use
 ## Back End
 1. From root directory, go to 'backend' and type the commmand ```npm install```,
    This will install all the dependencies required for the project
-2. type 'node server.js' to start.
+2. type ```node server.js``` to start.
    Make sure mysql database is running before you start server.js
    
 ## User Manual
