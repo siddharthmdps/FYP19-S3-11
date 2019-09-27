@@ -1,1 +1,42 @@
-Edit here
+FYP - Personal Diary
+Min San 6213558
+
+Week 1
+Project Phase: Research
+Started research on market (linkedin, etc.), database and system design and software development methodologies. 
+
+Week 2
+Project Phase: Research
+Continued research on week 1 and started to document the results of my research to be used in the project proposal. Started discussing ideas and what language and tools we would use in preparation for next phase. Setup scrum board on Trello. Product discussion 
+
+Week 3
+Project Phase: Analysis
+Define and gather project technical scope and requirements with the group, Design and requirements review with the group. Some of technical scopes include what software we would use for frontend, backend, database and cloud. Continue to work on scrum board.
+
+Week 4
+Project Phase: Analysis
+Continue to learn and explore AWS. Started learning node.js to be used in backend. I did some research on the components required to integrate frontend and backend together. 
+
+Week 5
+Project Phase: Analysis
+Learning and exploring node.js and how to use it as a backend. Discuss and review on use-case scenarios and diagrams of the project. Preparations for the submission of project proposal.
+
+Week 6
+Project Phase: Analysis
+Started coding the basics building blocks for backend using node.js, such as setting up the ports and configurations, etc. Started research on how to connect node.js to MySQL database.
+
+Week 7 
+Project Phase: Analysis
+Research on how we can integrate our project onto AWS. Started setting up AWS (EC2) to be used by the project. Discuss what we have learned, node.js, react, etc.
+
+Week 8
+Project Phase: Design
+Continue work on configuration management for the backend and cloud portion of the project that I started in week 6. I worked on connecting login page to backend and database so that the members can use it for their pages.
+
+Week 9
+Project Phase: Development of prototype
+I continued coding on node.js for our project’s backend piece and shared the group on how they can run it on their computers. For now, our project’s home page on cloud will be showing a countdown timer, counting down to the submission date. 
+
+Week 10
+Project Phase: Development of prototype
+Discussion on requirements and work to be done in preparation for submission and presentation. Created database and tables just for login page on our AWS. Get the login page running on AWS.
