@@ -19,3 +19,10 @@ div.login-container button {
     margin-bottom: 15px;
     font-size: 15px;
 }
+
+div.login-container select {
+    max-width: 150px;
+    margin: auto;
+    background: #e8e2e1;
+    cursor: pointer;
+}
