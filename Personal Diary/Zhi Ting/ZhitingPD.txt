@@ -1,0 +1,37 @@
+FYP Personal Diary
+Zhiting Chia (5655602)
+
+Week 1
+Exchanged contact and joined a common communication channel
+Wrote the meeting minutes
+Did a general project research to understand and familarise with features of existing products.
+
+Week 2
+Agreed on the tools suggested to be used for the project.
+Did research on design methodologies, namely Extreme Programming (XP), Scrum and Scrumban (Scrum + Kanban).
+Did Comparison for the similar products available in the market.
+Examined the user experience for the current Online Recruitment website for SIM Graduates.
+
+Week 3
+Set up the FYP proposal google docs to allow concurrent editing and input by team members.
+Added Introduction to the FYP Proposal.
+Added Introduction to AWS and services offered.
+Added Analysis of Cloud Computing.
+
+Week 4
+Added Use case specifications for student, company and admin.
+
+Week 5
+Helped with refining proposal
+Confirmed agreement with project direction on items such as the react framework
+
+Week 6-8
+Familiarised self with the react framework.
+
+Week 9
+Come up with a rough design for employer’s dashboard.
+
+Week 10
+Made a prototype for Employer Dashboard.
+Added stakeholders information into technical manual.
+Added guide for using employer dashboard.
