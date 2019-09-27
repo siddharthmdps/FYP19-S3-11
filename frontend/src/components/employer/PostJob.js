@@ -1,12 +1,12 @@
 import React from 'react'
 import Navbar from '../Navbar'
-import './PostJob.css'
+import '../styles/PostJob.css'
 
 const PostJob = () => (
     <div>
         <Navbar/>
-        <div className="container post-job main">
-            <div className="py-5 text-center">
+        <div className="container post-job main" id="postjob-container">
+            <div className="py-3 text-center">
                 <h2>Post A Job Opening</h2>
             </div>
 
