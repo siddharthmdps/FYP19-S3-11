@@ -40,3 +40,7 @@ I continued coding on node.js for our project’s backend piece and shared the g
 Week 10
 Project Phase: Development of prototype
 Discussion on requirements and work to be done in preparation for submission and presentation. Created database and tables just for login page on our AWS. Get the login page running on AWS.
+
+Week 11
+Project Phase: Development of prototype
+Continue work on coding node.js end point for creating new users. Preparing slides for presentation. 
