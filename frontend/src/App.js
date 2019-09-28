@@ -8,6 +8,7 @@ import About from './components/About'
 import NoMatch from './components/NoMatch'
 import Login from './components/Login'
 import PostJob from './components/employer/PostJob'
+import Signup from './components/Signup'
 
 // testing
 import ProtectedRoute from './components/ProtectedRoute'
@@ -21,6 +22,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path="/" component={Login}></Route>
+        <Route exact path="/signup" component={Signup}></Route>
 
         <ProtectedRoute exact path="/home" component={Home}></ProtectedRoute>
         <Route exact path="/about" component={About}></Route>
