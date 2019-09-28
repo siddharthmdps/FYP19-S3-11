@@ -7,11 +7,18 @@ const cors = require('cors')
 const loginPath = path.join(__dirname, '../api/routes/login')
 const loginRoutes = require(loginPath); // const loginRoutes = require('../api/routes/login');
 
+const createUserPath = path.join(__dirname, '../api/routes/createUser')
+const createUserRoutes = require(createUserPath);
+
 
 // Route handlers
 app.get('', (req, res) => {
     res.send('Hello')
 })
+
+app.use(express.urlencoded())
+
+app.use(express.json())
 
 app.use(cors({
     'allowedHeaders': ['Content-Type'], // headers that React is sending to the API
@@ -28,6 +35,14 @@ app.use('/login', cors({
     'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
     'preflightContinue': false
 }), loginRoutes)
+
+app.use('/createUser', cors({
+    'allowedHeaders': ['Content-Type'], // headers that React is sending to the API
+    'exposedHeaders': ['Content-Type'], // headers that you are sending back to React
+    'origin': '*',
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'preflightContinue': false
+}), createUserRoutes)
 
 
 module.exports = app
