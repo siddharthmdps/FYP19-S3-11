@@ -5,7 +5,6 @@ const Navbar = (props) => {
   return (
     <div className="container navbar-container">
       <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="navbar-main">
-        <a className="navbar-brand" href="/home">Pegasus@SIM</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -18,13 +17,13 @@ const Navbar = (props) => {
               <a className="nav-link" href="#">Favorites</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Messages</a>
+              <a className="nav-link" href="#" onClick={props.messageHandler}>Messages</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/about">About</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/postjob">Post A New Job</a>
+              <a className="nav-link" href="/postjob" onClick= {props.pjHandler}>Post A New Job</a>
             </li>
           </ul>
 
@@ -52,5 +51,6 @@ const Navbar = (props) => {
     
   );
 }
+
 
 export default Navbar;
