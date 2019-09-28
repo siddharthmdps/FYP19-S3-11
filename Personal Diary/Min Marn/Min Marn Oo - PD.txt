@@ -1,0 +1,44 @@
+FYP - Personal Diary
+Min Marn Oo (5841021)
+
+Week 1
+- Research on similar products in the market (JobStreet, JobCentral, LinkedIn, etc.)
+- Requirement analysis of the project, gathering knowledge about technical challenges. 
+
+Week 2
+- Worked on sequence diagrams and use case diagrams to help the team visualize how the      product should behave.
+- Meeting with team members to discuss about technical requirements and challenges.
+
+Week 3
+- Further research on technical requirements.
+- Analysis on the pros and cons of each languages and frameworks.
+- Decided on which development methodologies to adopt (AGILE, Waterfall)
+- Decided roles and responsibilities for team members
+
+Week 4
+- Having decided which languages and technologies to use, started learning about front      end web development
+  
+Week 5
+- Continued to learn about JavaScript ES6 features and React JS.
+- Learned about cloud computing, AWS and its various services.
+- Discussed and prepared for Project Proposal with team mebers.
+
+Week 6
+- Worked on ERD diagram to get everyone on the same page about database design.
+- Continued learning about ReactJS and front end development.
+- Designed the user interface of the website using Figma and shared with team members.
+
+Week 7
+- Fine tuning of the user interface design based on feedbacks and discussion with the       team members.
+- Continued learning about ReactJS.
+- Started learning about Node.js to understand better how client-side and backend is        integrated.
+
+Week 8
+- Started contributing to our Github project, setting up the react app and building the     user interface using basic HTML, CSS and Bootstrap framework.
+- Continued learning about Node.js and Express.
+
+Week 9
+- 
+
+Week 10
+Week 11
