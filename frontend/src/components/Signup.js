@@ -72,7 +72,6 @@ const Signup = () => {
                         <label for="job-experience">Job Experience <span className="text-muted">(Optional)</span></label>
                         <input type="text" className="form-control" id="job-experience" placeholder="Describe your past experience"/>
                     </div>
-
                     <button className="btn btn-dark btn-lg btn-block create-account" type="submit">Create Account</button>
                 </form>
             </div>
