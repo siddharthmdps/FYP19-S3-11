@@ -12,11 +12,11 @@ Week 2
 Week 3
 - Further research on technical requirements.
 - Analysis on the pros and cons of each languages and frameworks.
-- Decided on which development methodologies to adopt (AGILE, Waterfall)
-- Decided roles and responsibilities for team members
+- Decided on which development methodologies to adopt (AGILE, Waterfall).
+- Decided roles and responsibilities for team members.
 
 Week 4
-- Having decided which languages and technologies to use, started learning about front      end web development
+- Having decided which languages and technologies to use, started learning about front      end web development.
   
 Week 5
 - Continued to learn about JavaScript ES6 features and React JS.
@@ -35,10 +35,17 @@ Week 7
 
 Week 8
 - Started contributing to our Github project, setting up the react app and building the     user interface using basic HTML, CSS and Bootstrap framework.
+  Also shared the group mates how to setup the localhost on their PCs.
 - Continued learning about Node.js and Express.
 
 Week 9
-- 
+- Transferred the static HTML code to React framework to make reusable components.
+- Tweaking the CSS to further improve the visibility and to give the website a more         uniformed look across all pages.
 
 Week 10
+- Began preparing for the second project submission and presentation slides.
+- Implemeted Login page to protect the main pages of the site unless the user is signed     in.
+
 Week 11
+- Setting up React Router to make all the pages connected to one another.
+- Continued to work on project submission and presentation slides.
