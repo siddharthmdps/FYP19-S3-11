@@ -30,7 +30,6 @@ const App = () => {
         <Route path="*" component={NoMatch}/>
       </Switch>
     </Router>
-    
   )
 }
 
