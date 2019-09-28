@@ -4,9 +4,35 @@
     text-align:center;
     margin-top:100px;
     padding: 30px;
+    
 }
 
 .statBoxWrapper{
     display:inline-block;
     text-align:center;
+    border-bottom:3px solid #F0F0F0;
+}
+
+.listAction{
+    list-style: none;
+    text-align:center;
+    display:inline-block;
+}
+
+.listActionItem{
+    float:left;
+    padding:30px;
+    margin-right: 45px;
+    height: 150px;
+    width: 200px;
+      
+}
+
+.btn-no-outline{
+    border:none;
+    font-family: Averia Libre;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 36px; 
 }

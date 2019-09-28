@@ -6,13 +6,14 @@ import './ProfileContainer.css';
 
 //This component is a profile container.
 //It contains a Profile picture, a username and a edit profile button.
-
+let buttonText ="";
 const  ProfileContainer=(props)=> {
     return (
     <div className= "profileContainer">
-    <div className = "profilePic" onClick={switchProfilePicHandler}/>
+    <img className = "profilePic" onClick={switchProfilePicHandler}/>
     <p className= "username" onClick = {switchUsernameHandler}>@{props.username}</p>
-    <button className="btn btn-outline-secondary" onClick = {editProfileHandler}>Edit Profile</button>
+    <button className="btn btn-outline-secondary" onClick = {editProfileHandler}>{props.buttonText}</button>
+
     </div>
     )
 };
