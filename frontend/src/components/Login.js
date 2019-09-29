@@ -31,6 +31,7 @@ const Login = (props) => (
                         var url = apiurl + username + "/" + password + "/" + usertype
                         fetch(url, {
                             method: 'post',
+                            data: "{'username':'" + username + "',{'password':'" + password + "', 'usertype':'" + usertype + "'}",
                             headers: {
                                 'Accept': 'application/json',
                                 'Content-Type': 'application/json'
@@ -43,7 +44,9 @@ const Login = (props) => (
                                     props.history.push("/home")
                                 })
                             }
-                            else alert('Invalid username or password')
+                            else {
+                                alert('Invalid username or password')
+                            }
                         });
                     }
                 }

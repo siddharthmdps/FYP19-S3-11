@@ -16,8 +16,42 @@ const mypool = mysql.createPool({
 });
 
 router.post('/', (req, res, next) => {
-    res.status(200).json({
-        message: "Handling POST requests to /login"
+    const username = req.body.username;
+    const password = sha1(req.body.password);
+    const usertype = req.body.usertype;
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    mypool.getConnection(function(err,connection) {
+        if (err) {
+			connection.release();
+	  		console.log(' Error getting mysql_pool connection: ' + err);
+	  		throw err;
+	  	}
+        if (username && password) {
+            connection.query('SELECT FirstName, LastName, Email FROM users WHERE username = ? AND password = ? AND usertype = ?', [username, password, usertype], function(error, results, fields) {
+                if (error) {
+                    res.status(500).json({
+                        message: error,
+                        results: results
+                    });
+                }
+                if (results && results.length > 0) {
+                    res.status(200).json({
+                    message: "Success! Hi, " + results[0].FirstName + "! Your Email Address is " + results[0].Email
+                    });    
+                }
+                else if (!results || results.length == 0) {
+                    res.status(200).json({
+                        message: "Failed!"
+                    });
+                }
+            });
+        } else {
+            res.status(400).json({
+                message: "Bad Request! Enter username and password!"
+            });
+        }
+
+        connection.release();     
     });
 });
 
