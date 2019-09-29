@@ -14,7 +14,7 @@ import Signup from './components/Signup'
 import ProtectedRoute from './components/ProtectedRoute'
 
 // importing CSS
-import './App.css';
+import './App.css'
 
 
 const App = () => {
