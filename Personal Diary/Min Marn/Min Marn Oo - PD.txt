@@ -49,3 +49,6 @@ Week 10
 Week 11
 - Setting up React Router to make all the pages connected to one another.
 - Continued to work on project submission and presentation slides.
+
+Week 12
+- Learning about AJAX calls and how to integrate the response from server to the frontend
