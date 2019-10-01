@@ -23,6 +23,11 @@ const jobList = [
         title: 'System Analyst',
         desc: 'Analyze systems using algorithms',
         employerID: '@Facebook'
+    },
+    {
+        title: 'Interior Designer',
+        desc: 'Make sure everything looks nice indoors',
+        employerID: '@FancyDesignCompany'
     }
 ]
 

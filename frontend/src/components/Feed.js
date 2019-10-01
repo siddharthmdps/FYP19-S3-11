@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+import './styles/Feed.css'
+
 class Feed extends Component {
     constructor(props){
         super()
@@ -33,14 +35,15 @@ class Feed extends Component {
     render(){
         return(
             <main role="main" className="container" id="feed-container">
-                <div className="my-3 p-3 bg-white rounded shadow-sm">
+                <div className="my-3 p-3 bg-white rounded shadow-sm" id="feed-container">
                     <h6 className="border-bottom border-gray pb-2 mb-0">Recent Updates</h6>
                     {/* Loading */}
                     { this.state.jobList.length === 0 && !this.state.error &&
                         <div>
-                            Loading
+                            Loading...
                         </div>
                     }
+
                     {/* Render */}
                     { this.state.jobList.length > 0 && !this.state.error && 
                             this.state.jobList.map( (job) => (
@@ -48,9 +51,9 @@ class Feed extends Component {
                                     <svg className="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
                                     <div className="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                                     <div className="d-flex justify-content-between align-items-center w-100">
-                                        <strong className="text-gray-dark">{job.title}</strong>
+                                        <strong className="text-gray-dark" id="job-title-tag"><a href="#" >{job.title}</a></strong>
                                         
-                                        <a href="#">Follow</a>
+                                        {/* <a href="#">Follow</a> */}
                                     </div>
                                     <p>{job.desc}</p>
                                     <span className="d-block">{job.employerID}</span>
