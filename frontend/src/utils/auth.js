@@ -4,10 +4,7 @@ class Auth {
     }
 
     isValid(username, password) { //unused due to async required for fetch post
-        if (username === "username" && password === "password") {
-            return true
-        }
-        else return false
+
     }
 
     login(cb) {
