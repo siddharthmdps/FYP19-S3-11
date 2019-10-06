@@ -3,7 +3,7 @@ class Auth {
         this.authenticated = false
     }
 
-    isValid(username, password) { //unused due to async required for fetch post
+    isValid(username, password) {
         if (username === "username" && password === "password") {
             return true
         }
@@ -12,11 +12,13 @@ class Auth {
 
     login(cb) {
         this.authenticated = true
+        localStorage.setItem('authenticated', true)
         cb()
     }
 
     logout(cb){
         this.authenticated = false
+        localStorage.setItem('authenticated', false)
         cb()
     }
 

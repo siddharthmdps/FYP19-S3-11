@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import auth from '../utils/auth';
 
-import logo from '../assets/logo.PNG'
-
 class Navbar extends Component {
   constructor(props) {
     super()
@@ -30,10 +28,10 @@ class Navbar extends Component {
                 <a className="nav-link" href="#">Favorites</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#" onClick={this.props.messageHandler}>Messages</a>
+                <a className="nav-link" href="/about">About</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/about">About</a>
+                <a className="nav-link" href="/about">Blog</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/postjob" onClick= {this.props.pjHandler}>Post A New Job</a>

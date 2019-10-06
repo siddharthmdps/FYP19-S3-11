@@ -20,35 +20,38 @@ const Login = (props) => (
 
             <button type="button" className="btn btn-lg btn-primary btn-block" onClick={
                 () => {
+
                     const username = document.getElementById("input-username").value
                     const password = document.getElementById("input-password").value
                     const usertype = document.getElementById("input-usertype").value
 
-                    var apiurl = config.getAPIURL()
+                    
                     console.log(username, password, usertype)
                     
-                    if(username && password && usertype) {
-                        var url = apiurl + username + "/" + password + "/" + usertype
-                        fetch(url, {
-                            method: 'post',
-                            data: "{'username':'" + username + "',{'password':'" + password + "', 'usertype':'" + usertype + "'}",
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'
-                            }
-                        }).then(res=>res.json())
-                        .then(res => {
-                            console.log(res)
-                            if (res.message && res.message.indexOf("Success") !== -1) {
-                                auth.login(() => {
-                                    props.history.push("/home")
-                                })
-                            }
-                            else {
-                                alert('Invalid username or password')
-                            }
-                        });
-                    }
+                    // THIS CODE COMMUNICATES WITH BACKEND
+                    // var apiurl = config.getAPIURL()
+                    // if(username && password && usertype) {
+                    //     var url = apiurl + username + "/" + password + "/" + usertype
+                    //     fetch(url, {
+                    //         method: 'post',
+                    //         data: "{'username':'" + username + "',{'password':'" + password + "', 'usertype':'" + usertype + "'}",
+                    //         headers: {
+                    //             'Accept': 'application/json',
+                    //             'Content-Type': 'application/json'
+                    //         }
+                    //     }).then(res=>res.json())
+                    //     .then(res => {
+                    //         console.log(res)
+                    //         if (res.message && res.message.indexOf("Success") !== -1) {
+                    //             auth.login(() => {
+                    //                 props.history.push("/home")
+                    //             })
+                    //         }
+                    //         else {
+                    //             alert('Invalid username or password')
+                    //         }
+                    //     })
+                    // }
                 }
             }>Log in</button> 
             <p>New to Pegasus? <a href="/signup">Join Now</a></p>
