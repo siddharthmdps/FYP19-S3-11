@@ -1,12 +1,10 @@
 import React from 'react'
-import Navbar from './Navbar'
 
-import './styles/About.css'
+import '../styles/About.css'
 
 function About() {
   return (
     <div className="container">
-        <Navbar/>
         <div className="container" id="about-inner">
           <h2>SIM Online Recruitment using Cloud Computing</h2><br/>
           <h3>Project Description</h3>
