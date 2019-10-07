@@ -15,10 +15,44 @@ const mypool = mysql.createPool({
     port: process.env.Db_Port
 });
 
+router.get('/:employerid',(req, res, next) => {
+    const employerid = req.params.employerid;
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    mypool.getConnection(function(err,connection) {
+        if (err) {
+			connection.release();
+	  		console.log(' Error getting mysql_pool connection: ' + err);
+	  		throw err;
+	  	}
+        if (employerid) {
+            connection.query('SELECT * FROM employerinformation WHERE employerid = ?', [employerid], function(error, results, fields) {
+                if (error) {
+                    res.status(500).json({
+                        message: error
+                    });
+                }
+                if (results && results.length > 0) {
+                    res.status(200).json({
+                    message: results
+                    });    
+                }
+                else if (!results || results.length == 0) {
+                    res.status(200).json({
+                        message: "Failed!"
+                    });
+                }
+            });
+        }
+    });
+});
+
 router.post('/', (req, res, next) => {
-    const username = req.body.username;
-    const password = sha1(req.body.password);
-    const usertype = req.body.usertype;
+    const companyname = req.body.companyname;
+    const companyemail = req.body.companyemail;
+    const address = req.body.address;
+    const phone = req.body.phone;
+    const contactperson = req.body.contactperson;
+    const contactpersonphone = req.body.contactpersonphone;
     res.setHeader('Access-Control-Allow-Origin', '*');
     mypool.getConnection(function(err,connection) {
         if (err) {
@@ -26,8 +60,8 @@ router.post('/', (req, res, next) => {
 	  		console.log(' Error getting mysql_pool connection: ' + err);
 	  		throw err;
 	  	}
-        if (username && password) {
-            connection.query('SELECT FirstName, LastName, Email FROM users WHERE username = ? AND password = ? AND usertype = ?', [username, password, usertype], function(error, results, fields) {
+        if (username && fullname && email && password && usertype) {
+            connection.query('INSERT INTO employerinformation (companyname, companyemail, address, phone, contactperson, contactpersonphone) VALUES(?, ?, ?, ?, ?, ?)', [companyname, companyemail, address, phone, contactperson, contactpersonphone], function(error, results, fields) {
                 if (error) {
                     res.status(500).json({
                         message: error
@@ -35,7 +69,7 @@ router.post('/', (req, res, next) => {
                 }
                 if (results && results.length > 0) {
                     res.status(200).json({
-                    message: "Success! Hi, " + results[0].FirstName + "! Your Email Address is " + results[0].Email
+                    message: "Success! User created for " + fullname + "!"
                     });    
                 }
                 else if (!results || results.length == 0) {
@@ -46,7 +80,7 @@ router.post('/', (req, res, next) => {
             });
         } else {
             res.status(400).json({
-                message: "Bad Request! Enter username and password!"
+                message: "Bad Request! Invalid POST request!"
             });
         }
 
@@ -54,43 +88,5 @@ router.post('/', (req, res, next) => {
     });
 });
 
-router.post('/:username/:password/:usertype', (req, res, next) => {
-    const username = req.params.username;
-    const password = sha1(req.params.password);
-    const usertype = req.params.usertype;
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    mypool.getConnection(function(err,connection) {
-        if (err) {
-			connection.release();
-	  		console.log(' Error getting mysql_pool connection: ' + err);
-	  		throw err;
-	  	}
-        if (username && password) {
-            connection.query('SELECT FullName, Email FROM users WHERE username = ? AND password = ? AND usertype = ?', [username, password, usertype], function(error, results, fields) {
-                if (error) {
-                    res.status(500).json({
-                        message: error
-                    });
-                }
-                if (results && results.length > 0) {
-                    res.status(200).json({
-                    message: "Success! Hi, " + results[0].FullName + "! Your Email Address is " + results[0].Email
-                    });    
-                }
-                else if (!results || results.length == 0) {
-                    res.status(200).json({
-                        message: "Failed!"
-                    });
-                }
-            });
-        } else {
-            res.status(400).json({
-                message: "Bad Request! Enter username and password!"
-            });
-        }
-
-        connection.release();     
-    });
-});
 
 module.exports = router;

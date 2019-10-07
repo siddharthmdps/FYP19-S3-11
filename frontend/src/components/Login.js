@@ -21,7 +21,7 @@ class Login extends Component {
                     <input type="password" id="input-password" className="form-control" placeholder="Password"/>
                     <select id="input-usertype" className="form-control">
                         <option name="Student">Student</option>
-                        <option name="Company">Company</option>
+                        <option name="Employer">Employer</option>
                         <option name="Admin">Admin</option>
                     </select>
         

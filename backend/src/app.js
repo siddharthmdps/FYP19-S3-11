@@ -10,6 +10,8 @@ const loginRoutes = require(loginPath); // const loginRoutes = require('../api/r
 const createUserPath = path.join(__dirname, '../api/routes/createUser')
 const createUserRoutes = require(createUserPath);
 
+const employerPath = path.join(__dirname, '../api/routes/employer')
+const employerRoutes = require(employerPath);
 
 // Route handlers
 app.get('', (req, res) => {
@@ -43,6 +45,14 @@ app.use('/createUser', cors({
     'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
     'preflightContinue': false
 }), createUserRoutes)
+
+app.use('/employer', cors({
+    'allowedHeaders': ['Content-Type'], // headers that React is sending to the API
+    'exposedHeaders': ['Content-Type'], // headers that you are sending back to React
+    'origin': '*',
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'preflightContinue': false
+}), employerRoutes)
 
 
 module.exports = app

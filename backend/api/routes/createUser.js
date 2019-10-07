@@ -17,8 +17,7 @@ const mypool = mysql.createPool({
 
 router.post('/', (req, res, next) => {
     const username = req.body.username;
-    const firstname = req.body.firstname;
-    const lastname = req.body.lastname;
+    const fullname = req.body.fullname;
     const email = req.body.email;
     const password = sha1(req.body.password);
     const usertype = req.body.usertype;
@@ -29,17 +28,16 @@ router.post('/', (req, res, next) => {
 	  		console.log(' Error getting mysql_pool connection: ' + err);
 	  		throw err;
 	  	}
-        if (username && firstname && lastname && email && password && usertype) {
-            connection.query('INSERT INTO users (username, firstname, lastname, email, password, usertype) VALUES(?, ?, ?, ?, ?, ?)', [username, firstname, lastname, email, password, usertype], function(error, results, fields) {
+        if (username && fullname && email && password && usertype) {
+            connection.query('INSERT INTO users (username, fullname, email, password, usertype) VALUES(?, ?, ?, ?, ?, ?)', [username, fullname, email, password, usertype], function(error, results, fields) {
                 if (error) {
                     res.status(500).json({
-                        message: error,
-                        results: results
+                        message: error
                     });
                 }
                 if (results && results.length > 0) {
                     res.status(200).json({
-                    message: "Success! User created for " + results[0].FirstName + "! Your Email Address is " + results[0].Email
+                    message: "Success! User created for " + fullname + "!"
                     });    
                 }
                 else if (!results || results.length == 0) {
