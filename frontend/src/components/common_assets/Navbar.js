@@ -24,9 +24,6 @@ class Navbar extends Component {
                 <a className="nav-link" href="#">{this.props.username}</a> 
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Favorites</a>
-              </li>
-              <li className="nav-item">
                 <a className="nav-link" href="#" id="About" onClick={
                   this.props.setRenderedContent
                   //() => console.log('clicked')
