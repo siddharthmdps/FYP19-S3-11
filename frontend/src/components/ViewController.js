@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Navbar from './common_assets/Navbar'
 import About from './common_assets/About'
-import Feed from './jobseeker/Feed'
+import Feed from './common_assets/Feed'
 
 class ViewController extends Component {
     constructor(props) {

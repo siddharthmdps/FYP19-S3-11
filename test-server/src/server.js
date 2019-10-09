@@ -33,7 +33,7 @@ const jobList = [
 
 
 // Route handlers
-app.get('/', (req, res) => {
+app.get('/joblist', (req, res) => {
 
     res.send(jobList)
 })

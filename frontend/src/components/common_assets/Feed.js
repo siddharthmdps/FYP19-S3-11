@@ -14,7 +14,7 @@ class Feed extends Component {
 
     // to fetch the job list from the given url
     updateJobList = (data) => {
-        const url = 'http://localhost:3030' // change the url here
+        const url = 'http://localhost:3030/joblist' // change the url here
         fetch(url)
         .then(response => response.json())
         .then(data => {
