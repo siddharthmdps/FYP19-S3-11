@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Navbar from '../Navbar'
 import '../styles/PostJob.css'
 
 class PostJob extends Component {
@@ -11,7 +10,6 @@ class PostJob extends Component {
     render() {
         return(
             <div>
-                <Navbar/>
                 <div className="container rounded shadow-sm" id="postjob">
                         <div className="row">
                             <div className="col-sm-3">

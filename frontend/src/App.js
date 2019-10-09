@@ -2,12 +2,19 @@
 import React, {Component} from 'react';
 
 // importing Components
-import ViewController from './components/ViewController'
 import LoginForm from './components/common_assets/LoginForm'
+import Employer from './components/employer/Employer';
+import Student from './components/student/Student';
 
 // importing CSS
 import './App.css'
 
+
+
+/* 
+App will first look at the 'localStorage' to check whether the user already logged in or not.
+If the user is already logged in, the app will redirect to corresponding app (student.js, employer.js or admin.js)
+*/
 class App extends Component {
   constructor(){
     super()
@@ -31,7 +38,12 @@ class App extends Component {
     }
     // if the user is logged in, render corresponding component for user (depending on the usertype)
     else {
-      return <ViewController updateLoginState={this.updateLoginState}/>
+      // PLACE YOUR APP HERE
+      switch (this.state.userType) {
+        case 'Student' : return <Student/>;
+        case 'Employer' : return <Employer/>;
+        case 'Admin' : return (<div>Hello Admin</div>);
+      }
     }
   }
 
