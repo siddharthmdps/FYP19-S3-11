@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import auth from '../utils/auth';
-
-import logo from '../assets/logo.PNG'
 
 class Navbar extends Component {
   constructor(props) {
@@ -13,7 +10,7 @@ class Navbar extends Component {
     return (
       <div className="container " id="navbar-container">
         <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark " id="navbar-main">
-          <a class="navbar-brand" href="/home">
+          <a className="navbar-brand" href="/">
             {/* <img src={logo} alt="" width="30" height="30"/> */}
             Pegasus
           </a>
@@ -24,20 +21,28 @@ class Navbar extends Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
               {/* link this to profile management */}
-                <a className="nav-link" href="#">@Username</a> 
+                <a className="nav-link" href="#">{this.props.username}</a> 
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Favorites</a>
+                <a className="nav-link" href="#" id="About" onClick={
+                  this.props.setRenderedContent
+                  //() => console.log('clicked')
+                }>About</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#" onClick={this.props.messageHandler}>Messages</a>
+                <a className="nav-link" href="/#">Blog</a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/about">About</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/postjob" onClick= {this.props.pjHandler}>Post A New Job</a>
-              </li>
+              {/* only render this for employers */}
+              {
+                this.props.usertype === 'Employer'
+                ? (
+                  <li className="nav-item">
+                    <a className="nav-link" href="/postjob" onClick= {this.props.pjHandler}>Post A New Job</a>
+                  </li>
+                )
+                : null
+              }
+              
             </ul>
     
             <div className="row search-box-container">
@@ -49,10 +54,7 @@ class Navbar extends Component {
     
               <button type="button" className="btn btn-dark" id="btn-logout" 
                 onClick={ () => {
-                  auth.logout(()=>{
-                    console.log('Logging out')
-                    // props.history.push("/")
-                  })
+                    localStorage.clear()
                 }
               }>Log Out</button>
     
@@ -64,8 +66,5 @@ class Navbar extends Component {
     )
   }
 }
-
-
-
 
 export default Navbar;

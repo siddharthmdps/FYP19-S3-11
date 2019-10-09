@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-
-import './styles/Feed.css'
+import '../styles/Feed.css'
 
 class Feed extends Component {
     constructor(props){
@@ -13,18 +12,14 @@ class Feed extends Component {
         }
     }
 
+    // to fetch the job list from the given url
     updateJobList = (data) => {
-        const list = data
-        this.setState({ jobList : list })
-        console.log(this.state.jobList)
-    }
-
-    componentDidMount() {
-        const url = 'http://localhost:3030' // change the url here
+        const url = 'http://localhost:3030/joblist' // change the url here
         fetch(url)
         .then(response => response.json())
         .then(data => {
-            this.updateJobList(data)
+            this.setState({ jobList : data })
+            console.log(this.state.jobList)
         })
         .catch(error => {
             console.log(`Error: ${error}`)
@@ -32,6 +27,12 @@ class Feed extends Component {
         })
     }
 
+    // once the component is rendered, fetch the job list from given url
+    componentDidMount() {
+        this.updateJobList()
+    }
+
+    
     render(){
         return(
             <main role="main" className="container" id="feed-container">
@@ -71,12 +72,6 @@ class Feed extends Component {
                         <a href="#">All suggestions</a>
                     </small>
                 </div>
-                
-
- 
-
-
-
             </main>
         )
     }

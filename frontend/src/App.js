@@ -1,36 +1,47 @@
 // essential
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import React, {Component} from 'react';
 
 // importing Components
-import Home from './components/Home'
-import About from './components/About'
-import NoMatch from './components/NoMatch'
-import Login from './components/Login'
-import PostJob from './components/employer/PostJob'
-import Signup from './components/Signup'
-
-// testing
-import ProtectedRoute from './components/ProtectedRoute'
+import ViewController from './components/ViewController'
+import LoginForm from './components/common_assets/LoginForm'
 
 // importing CSS
 import './App.css'
 
+class App extends Component {
+  constructor(){
+    super()
+    this.state = {
+      isAuthenticated : localStorage.getItem('isAuthenticated'), // to check whether user is already logged in
+      userType : localStorage.getItem('userType') // to check the user type (student, employer, admin)
+    }
+  }
 
-const App = () => {
-  return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Login}></Route>
-        <Route exact path="/signup" component={Signup}></Route>
+  updateLoginState = () => {
+    this.setState ({
+      isAuthenticated : localStorage.getItem('isAuthenticated'),
+      userType : localStorage.getItem('userType')
+    })
+  }
 
-        <ProtectedRoute exact path="/home" component={Home}></ProtectedRoute>
-        <Route exact path="/about" component={About}></Route>
-        <Route exact path="/postjob" component={PostJob}></Route>
-        <Route path="*" component={NoMatch}/>
-      </Switch>
-    </Router>
-  )
+  getContentToRender = () => {
+    // user is not logged in
+    if (!this.state.isAuthenticated) {
+      return <LoginForm updateLoginState={this.updateLoginState}/>
+    }
+    // if the user is logged in, render corresponding component for user (depending on the usertype)
+    else {
+      return <ViewController updateLoginState={this.updateLoginState}/>
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <this.getContentToRender/>
+      </div>
+    )
+  }
 }
 
 export default App
