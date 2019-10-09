@@ -3,16 +3,16 @@ import React, {Component} from 'react';
 
 // importing Components
 import LoginForm from './components/common_assets/LoginForm'
-import Employer from './components/employer/Employer';
-import Student from './components/student/Student';
+import Employer from './components/employer/Employer'
+import Student from './components/student/Student'
+import Admin from './components/admin/Admin'
 
 // importing CSS
 import './App.css'
 
 
-
 /* 
-App will first look at the 'localStorage' to check whether the user already logged in or not.
+App will first check the 'localStorage' to check whether the user already logged in or not.
 If the user is already logged in, the app will redirect to corresponding app (student.js, employer.js or admin.js)
 */
 class App extends Component {
@@ -42,18 +42,14 @@ class App extends Component {
       switch (this.state.userType) {
         case 'Student' : return <Student/>;
         case 'Employer' : return <Employer/>;
-        case 'Admin' : return (<div>Hello Admin</div>);
+        case 'Admin' : return <Admin/>;
+
+        default : return <h3>usertype not known</h3>
       }
     }
   }
 
-  render() {
-    return (
-      <div>
-        <this.getContentToRender/>
-      </div>
-    )
-  }
+  render() { return <this.getContentToRender/> }
 }
 
 export default App
