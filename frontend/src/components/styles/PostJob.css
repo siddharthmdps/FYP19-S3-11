@@ -1,11 +1,12 @@
 
-#postjob{
+div#postjob-container{
+    margin-top: 8%;
     max-width: 700px;
     padding: 35px;
 }
 
-#postjob div {
-    margin-bottom: 5px;
+div#postjob-container div {
+    margin-bottom: 7px;
 }
 
 #job-desc{

@@ -20,7 +20,7 @@ class LoginForm extends Component {
         
         localStorage.setItem('isAuthenticated', true)
         localStorage.setItem('username', username)
-        localStorage.setItem('usertype', usertype)
+        localStorage.setItem('userType', usertype)
 
         this.props.updateLoginState()
         // THIS CODE COMMUNICATES WITH BACKEND

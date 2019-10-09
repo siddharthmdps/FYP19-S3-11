@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Navbar from '../Navbar'
 import '../styles/PostJob.css'
 
 class PostJob extends Component {
@@ -10,9 +9,7 @@ class PostJob extends Component {
 
     render() {
         return(
-            <div>
-                <Navbar/>
-                <div className="container rounded shadow-sm" id="postjob">
+                <div className="container rounded shadow-sm" id="postjob-container">
                         <div className="row">
                             <div className="col-sm-3">
                                 <label htmlFor="">Job Title</label>
@@ -57,7 +54,6 @@ class PostJob extends Component {
                             <button className="btn btn-dark btn-lg btn-block post-job-btn">Submit</button>
                         </div>
                 </div>
-            </div>
         )
     }
 }
