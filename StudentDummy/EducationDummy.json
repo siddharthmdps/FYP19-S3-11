@@ -1,0 +1,701 @@
+[{
+  "StudentID": 101,
+  "University": "Faulkner University",
+  "HighestQ": "Diploma",
+  "Specialization": "Systems Administrator I",
+  "Type": "Part-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 102,
+  "University": "Bethel College Newton",
+  "HighestQ": "Bachelor",
+  "Specialization": "Structural Analysis Engineer",
+  "Type": "Full-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 103,
+  "University": "Universidad Santa María Campus Guayaquil",
+  "HighestQ": "Diploma",
+  "Specialization": "Media Manager III",
+  "Type": "Full-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 104,
+  "University": "International Academy of  Merchandising and Design Tampa",
+  "HighestQ": "Diploma",
+  "Specialization": "Cost Accountant",
+  "Type": "Full-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 105,
+  "University": "Dalian University of Technology",
+  "HighestQ": "Bachelor",
+  "Specialization": "Geologist I",
+  "Type": "Part-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 106,
+  "University": "Koya University (Kurdistan Region)",
+  "HighestQ": "Bachelor",
+  "Specialization": "Librarian",
+  "Type": "Part-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 107,
+  "University": "Jones International University",
+  "HighestQ": "A-levels",
+  "Specialization": "Account Representative II",
+  "Type": "Full-Time",
+  "Grade": "Pass"
+}, {
+  "StudentID": 108,
+  "University": "College for Creative Studies",
+  "HighestQ": "A-levels",
+  "Specialization": "Graphic Designer",
+  "Type": "Full-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 109,
+  "University": "Atyrau State University",
+  "HighestQ": "Bachelor",
+  "Specialization": "Dental Hygienist",
+  "Type": "Part-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 110,
+  "University": "Fukuoka Dental College",
+  "HighestQ": "A-levels",
+  "Specialization": "Cost Accountant",
+  "Type": "Full-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 111,
+  "University": "Ibra College of Technology",
+  "HighestQ": "A-levels",
+  "Specialization": "Occupational Therapist",
+  "Type": "Full-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 112,
+  "University": "Roanoke College",
+  "HighestQ": "Diploma",
+  "Specialization": "Food Chemist",
+  "Type": "Full-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 113,
+  "University": "Ecole Nationale Supérieure d'Ingénieurs de Génie Chimique",
+  "HighestQ": "Bachelor",
+  "Specialization": "Community Outreach Specialist",
+  "Type": "Full-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 114,
+  "University": "Chiba University of Commerce",
+  "HighestQ": "Bachelor",
+  "Specialization": "Chief Design Engineer",
+  "Type": "Part-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 115,
+  "University": "Lebanese International University",
+  "HighestQ": "Diploma",
+  "Specialization": "Accountant III",
+  "Type": "Part-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 116,
+  "University": "University of New Hampshire",
+  "HighestQ": "A-levels",
+  "Specialization": "Systems Administrator IV",
+  "Type": "Part-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 117,
+  "University": "Institut des Sciences de l'Ingénieur de Montpellier",
+  "HighestQ": "Bachelor",
+  "Specialization": "Legal Assistant",
+  "Type": "Full-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 118,
+  "University": "Université de Ngaoundéré",
+  "HighestQ": "A-levels",
+  "Specialization": "Editor",
+  "Type": "Full-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 119,
+  "University": "Takachiho University",
+  "HighestQ": "A-levels",
+  "Specialization": "Project Manager",
+  "Type": "Part-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 120,
+  "University": "Norfolk State University",
+  "HighestQ": "A-levels",
+  "Specialization": "Computer Systems Analyst I",
+  "Type": "Full-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 121,
+  "University": "Sierra Nevada College",
+  "HighestQ": "Bachelor",
+  "Specialization": "Assistant Manager",
+  "Type": "Full-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 122,
+  "University": "New England School of Art and Design",
+  "HighestQ": "A-levels",
+  "Specialization": "Internal Auditor",
+  "Type": "Full-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 123,
+  "University": "University of Limerick",
+  "HighestQ": "A-levels",
+  "Specialization": "Account Representative I",
+  "Type": "Part-Time",
+  "Grade": "Pass"
+}, {
+  "StudentID": 124,
+  "University": "Rajitlal Institute of Technology & Health Sciences (RITHS)",
+  "HighestQ": "Bachelor",
+  "Specialization": "Marketing Assistant",
+  "Type": "Full-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 125,
+  "University": "Beijing Petroleum University",
+  "HighestQ": "A-levels",
+  "Specialization": "Programmer I",
+  "Type": "Full-Time",
+  "Grade": "Pass"
+}, {
+  "StudentID": 126,
+  "University": "Arhangelsk State Technical University",
+  "HighestQ": "A-levels",
+  "Specialization": "Mechanical Systems Engineer",
+  "Type": "Full-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 127,
+  "University": "Wesleyan University Philippines",
+  "HighestQ": "Diploma",
+  "Specialization": "Help Desk Operator",
+  "Type": "Part-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 128,
+  "University": "Universidad de Piura",
+  "HighestQ": "Diploma",
+  "Specialization": "Quality Control Specialist",
+  "Type": "Part-Time",
+  "Grade": "Pass"
+}, {
+  "StudentID": 129,
+  "University": "Grand View College",
+  "HighestQ": "Bachelor",
+  "Specialization": "Programmer I",
+  "Type": "Full-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 130,
+  "University": "University of Bedfordshire",
+  "HighestQ": "Diploma",
+  "Specialization": "VP Marketing",
+  "Type": "Part-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 131,
+  "University": "Université d'Abomey-Calavi (UAC)",
+  "HighestQ": "Bachelor",
+  "Specialization": "Human Resources Assistant II",
+  "Type": "Part-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 132,
+  "University": "St. Petersburg State Institute of Technology (Technological University)",
+  "HighestQ": "Diploma",
+  "Specialization": "Senior Financial Analyst",
+  "Type": "Full-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 133,
+  "University": "Institut National des Sciences Appliquées de Rouen",
+  "HighestQ": "Diploma",
+  "Specialization": "Civil Engineer",
+  "Type": "Part-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 134,
+  "University": "University of Brescia",
+  "HighestQ": "Diploma",
+  "Specialization": "Legal Assistant",
+  "Type": "Full-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 135,
+  "University": "Renaissance University",
+  "HighestQ": "A-levels",
+  "Specialization": "Data Coordiator",
+  "Type": "Part-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 136,
+  "University": "University of Social Welfare and Rehabilitation Scinences",
+  "HighestQ": "Diploma",
+  "Specialization": "Speech Pathologist",
+  "Type": "Full-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 137,
+  "University": "Tama Institute of Management and Information Sciences",
+  "HighestQ": "A-levels",
+  "Specialization": "Chemical Engineer",
+  "Type": "Part-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 138,
+  "University": "Kyoto University of Foreign Studies",
+  "HighestQ": "Diploma",
+  "Specialization": "Legal Assistant",
+  "Type": "Full-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 139,
+  "University": "Fachhochschule JOANNEUM",
+  "HighestQ": "A-levels",
+  "Specialization": "Data Coordiator",
+  "Type": "Full-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 140,
+  "University": "Omar Al-Mukhtar University",
+  "HighestQ": "Bachelor",
+  "Specialization": "Research Nurse",
+  "Type": "Full-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 141,
+  "University": "Northern Jiaotong University",
+  "HighestQ": "Bachelor",
+  "Specialization": "Paralegal",
+  "Type": "Full-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 142,
+  "University": "University of Veterinary & Animal Science",
+  "HighestQ": "A-levels",
+  "Specialization": "Recruiting Manager",
+  "Type": "Full-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 143,
+  "University": "New England School of Art and Design",
+  "HighestQ": "Diploma",
+  "Specialization": "Chemical Engineer",
+  "Type": "Full-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 144,
+  "University": "Universitas Swadaya Gunung Djati",
+  "HighestQ": "Diploma",
+  "Specialization": "General Manager",
+  "Type": "Full-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 145,
+  "University": "Joetsu University of Education",
+  "HighestQ": "Bachelor",
+  "Specialization": "Cost Accountant",
+  "Type": "Full-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 146,
+  "University": "University Marien Ngouabi Brazzaville",
+  "HighestQ": "Bachelor",
+  "Specialization": "VP Quality Control",
+  "Type": "Part-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 147,
+  "University": "Universidad José Cecilio del Valle",
+  "HighestQ": "Bachelor",
+  "Specialization": "Occupational Therapist",
+  "Type": "Part-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 148,
+  "University": "Universidad Franco-Mexicana",
+  "HighestQ": "Diploma",
+  "Specialization": "Cost Accountant",
+  "Type": "Part-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 149,
+  "University": "Kogakuin University",
+  "HighestQ": "A-levels",
+  "Specialization": "Analyst Programmer",
+  "Type": "Full-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 150,
+  "University": "Barcelona Graduate School of Economics",
+  "HighestQ": "Diploma",
+  "Specialization": "Accounting Assistant IV",
+  "Type": "Part-Time",
+  "Grade": "Pass"
+}, {
+  "StudentID": 151,
+  "University": "Universität Graz",
+  "HighestQ": "Diploma",
+  "Specialization": "Financial Analyst",
+  "Type": "Full-Time",
+  "Grade": "Pass"
+}, {
+  "StudentID": 152,
+  "University": "Osaka University of Health and Sport Sciences",
+  "HighestQ": "Bachelor",
+  "Specialization": "Teacher",
+  "Type": "Full-Time",
+  "Grade": "Pass"
+}, {
+  "StudentID": 153,
+  "University": "Hokkaido Institute of Pharmaceutical Sciences",
+  "HighestQ": "Diploma",
+  "Specialization": "Engineer IV",
+  "Type": "Full-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 154,
+  "University": "Ecole Centrale d'Electronique - ECE",
+  "HighestQ": "Bachelor",
+  "Specialization": "Financial Advisor",
+  "Type": "Full-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 155,
+  "University": "Nilai University College",
+  "HighestQ": "Diploma",
+  "Specialization": "Analyst Programmer",
+  "Type": "Full-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 156,
+  "University": "Gangdara Institute Of Science & Technology",
+  "HighestQ": "Diploma",
+  "Specialization": "Geologist III",
+  "Type": "Full-Time",
+  "Grade": "Pass"
+}, {
+  "StudentID": 157,
+  "University": "Institute for the Economy in Transition",
+  "HighestQ": "Bachelor",
+  "Specialization": "Project Manager",
+  "Type": "Full-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 158,
+  "University": "Valley Forge Christian College",
+  "HighestQ": "A-levels",
+  "Specialization": "Product Engineer",
+  "Type": "Part-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 159,
+  "University": "Furman University",
+  "HighestQ": "A-levels",
+  "Specialization": "VP Sales",
+  "Type": "Part-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 160,
+  "University": "Azerbaijan State Economic University",
+  "HighestQ": "Diploma",
+  "Specialization": "Clinical Specialist",
+  "Type": "Part-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 161,
+  "University": "Universitas 17 Agustus 1945 Cirebon",
+  "HighestQ": "Bachelor",
+  "Specialization": "Staff Accountant II",
+  "Type": "Part-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 162,
+  "University": "Jain University, Centre for Management Studies",
+  "HighestQ": "A-levels",
+  "Specialization": "Software Test Engineer II",
+  "Type": "Full-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 163,
+  "University": "Texas Chiropractic College",
+  "HighestQ": "A-levels",
+  "Specialization": "Staff Scientist",
+  "Type": "Part-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 164,
+  "University": "Madenat Alelem University College",
+  "HighestQ": "A-levels",
+  "Specialization": "Automation Specialist III",
+  "Type": "Part-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 165,
+  "University": "Future University",
+  "HighestQ": "A-levels",
+  "Specialization": "Research Nurse",
+  "Type": "Full-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 166,
+  "University": "Berklee College of Music",
+  "HighestQ": "Diploma",
+  "Specialization": "Occupational Therapist",
+  "Type": "Part-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 167,
+  "University": "Soutsaka Institute of management and Technology",
+  "HighestQ": "Diploma",
+  "Specialization": "Product Engineer",
+  "Type": "Part-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 168,
+  "University": "Instituto Politécnico de Lisboa",
+  "HighestQ": "Diploma",
+  "Specialization": "VP Quality Control",
+  "Type": "Part-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 169,
+  "University": "The Interdisciplinary Center Herzliya",
+  "HighestQ": "Bachelor",
+  "Specialization": "Mechanical Systems Engineer",
+  "Type": "Full-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 170,
+  "University": "Pohang University of Science and Technology",
+  "HighestQ": "Diploma",
+  "Specialization": "Office Assistant III",
+  "Type": "Part-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 171,
+  "University": "Academy of Fine Arts",
+  "HighestQ": "A-levels",
+  "Specialization": "Software Engineer I",
+  "Type": "Part-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 172,
+  "University": "Nankai University",
+  "HighestQ": "Diploma",
+  "Specialization": "Nuclear Power Engineer",
+  "Type": "Full-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 173,
+  "University": "Ecole Nationale Supérieure de Chimie de Rennes",
+  "HighestQ": "A-levels",
+  "Specialization": "Biostatistician IV",
+  "Type": "Full-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 174,
+  "University": "Academy of Art College",
+  "HighestQ": "Diploma",
+  "Specialization": "Technical Writer",
+  "Type": "Part-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 175,
+  "University": "University of Southern Mindanao",
+  "HighestQ": "Diploma",
+  "Specialization": "Marketing Manager",
+  "Type": "Part-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 176,
+  "University": "Université de la Manouba",
+  "HighestQ": "A-levels",
+  "Specialization": "Director of Sales",
+  "Type": "Part-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 177,
+  "University": "Universidad de La Serena",
+  "HighestQ": "A-levels",
+  "Specialization": "Chief Design Engineer",
+  "Type": "Part-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 178,
+  "University": "Air University",
+  "HighestQ": "Diploma",
+  "Specialization": "Nurse Practicioner",
+  "Type": "Full-Time",
+  "Grade": "Pass"
+}, {
+  "StudentID": 179,
+  "University": "University of Greenwich",
+  "HighestQ": "Diploma",
+  "Specialization": "Senior Sales Associate",
+  "Type": "Full-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 180,
+  "University": "North Kazakhstan State University",
+  "HighestQ": "Diploma",
+  "Specialization": "Systems Administrator III",
+  "Type": "Part-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 181,
+  "University": "University of Health Sciences",
+  "HighestQ": "A-levels",
+  "Specialization": "Staff Scientist",
+  "Type": "Full-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 182,
+  "University": "Comenius University in Bratislava",
+  "HighestQ": "Diploma",
+  "Specialization": "VP Sales",
+  "Type": "Full-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 183,
+  "University": "Ganja State University ",
+  "HighestQ": "A-levels",
+  "Specialization": "Senior Editor",
+  "Type": "Full-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 184,
+  "University": "Davis and Elkins College",
+  "HighestQ": "A-levels",
+  "Specialization": "Clinical Specialist",
+  "Type": "Full-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 185,
+  "University": "Universitas 17 Agustus 1945 Jakarta",
+  "HighestQ": "A-levels",
+  "Specialization": "Automation Specialist I",
+  "Type": "Part-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 186,
+  "University": "Universidad Central",
+  "HighestQ": "A-levels",
+  "Specialization": "Statistician II",
+  "Type": "Full-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 187,
+  "University": "Staatliche Hochschule für Musik",
+  "HighestQ": "Diploma",
+  "Specialization": "Nurse Practicioner",
+  "Type": "Full-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 188,
+  "University": "Universiteit Doesburg (UNDO)",
+  "HighestQ": "Bachelor",
+  "Specialization": "Product Engineer",
+  "Type": "Part-Time",
+  "Grade": "Pass"
+}, {
+  "StudentID": 189,
+  "University": "Shaanxi Normal University",
+  "HighestQ": "A-levels",
+  "Specialization": "Associate Professor",
+  "Type": "Part-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 190,
+  "University": "Karaganda State Buketov University",
+  "HighestQ": "A-levels",
+  "Specialization": "Database Administrator II",
+  "Type": "Part-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 191,
+  "University": "Shaikh Zayed University",
+  "HighestQ": "Bachelor",
+  "Specialization": "Nuclear Power Engineer",
+  "Type": "Part-Time",
+  "Grade": "Second-class"
+}, {
+  "StudentID": 192,
+  "University": "National Pirogov Memorial Medical University",
+  "HighestQ": "Diploma",
+  "Specialization": "Programmer Analyst IV",
+  "Type": "Part-Time",
+  "Grade": "Distinction"
+}, {
+  "StudentID": 193,
+  "University": "Cambridge College",
+  "HighestQ": "Diploma",
+  "Specialization": "Compensation Analyst",
+  "Type": "Full-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 194,
+  "University": "Selcuk University",
+  "HighestQ": "A-levels",
+  "Specialization": "Media Manager IV",
+  "Type": "Part-Time",
+  "Grade": "Pass"
+}, {
+  "StudentID": 195,
+  "University": "Islamic Azad University, Yazd",
+  "HighestQ": "A-levels",
+  "Specialization": "Help Desk Operator",
+  "Type": "Part-Time",
+  "Grade": "Pass"
+}, {
+  "StudentID": 196,
+  "University": "HWP - Hamburger Universität für Wirtschaft und Politik",
+  "HighestQ": "Diploma",
+  "Specialization": "Administrative Officer",
+  "Type": "Part-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 197,
+  "University": "International Institute for Higher Education",
+  "HighestQ": "Diploma",
+  "Specialization": "Software Engineer III",
+  "Type": "Part-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 198,
+  "University": "Caldwell College",
+  "HighestQ": "A-levels",
+  "Specialization": "Payment Adjustment Coordinator",
+  "Type": "Full-Time",
+  "Grade": "First-class"
+}, {
+  "StudentID": 199,
+  "University": "Universiti Kuala Lumpur",
+  "HighestQ": "A-levels",
+  "Specialization": "Food Chemist",
+  "Type": "Full-Time",
+  "Grade": "High Distinction"
+}, {
+  "StudentID": 200,
+  "University": "University of Calicut",
+  "HighestQ": "A-levels",
+  "Specialization": "Speech Pathologist",
+  "Type": "Part-Time",
+  "Grade": "High Distinction"
+}]
