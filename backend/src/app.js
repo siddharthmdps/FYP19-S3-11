@@ -13,6 +13,9 @@ const createUserRoutes = require(createUserPath);
 const employerPath = path.join(__dirname, '../api/routes/employer')
 const employerRoutes = require(employerPath);
 
+const studentPath = path.join(__dirname, '../api/routes/students')
+const studentRoutes = require(studentPath);
+
 // Route handlers
 app.get('', (req, res) => {
     res.send('Hello')
@@ -53,6 +56,14 @@ app.use('/employer', cors({
     'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
     'preflightContinue': false
 }), employerRoutes)
+
+app.use('/students', cors({
+    'allowedHeaders': ['Content-Type'], // headers that React is sending to the API
+    'exposedHeaders': ['Content-Type'], // headers that you are sending back to React
+    'origin': '*',
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'preflightContinue': false
+}), studentRoutes)
 
 
 module.exports = app

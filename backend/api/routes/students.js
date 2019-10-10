@@ -23,7 +23,7 @@ router.get('/',(req, res, next) => {
 	  		console.log(' Error getting mysql_pool connection: ' + err);
 	  		throw err;
 	  	}
-        connection.query('SELECT * FROM employerinformation', function(error, rows, fields) {
+        connection.query('SELECT * FROM students', function(error, rows, fields) {
             if (error) {
                 res.status(500).json({
                     message: error
@@ -41,8 +41,8 @@ router.get('/',(req, res, next) => {
     });
 });
 
-router.get('/:employerid',(req, res, next) => {
-    const employerid = req.params.employerid;
+router.get('/:studentid',(req, res, next) => {
+    const studentid = req.params.studentid;
     res.setHeader('Access-Control-Allow-Origin', '*');
     mypool.getConnection(function(err,connection) {
         if (err) {
@@ -50,8 +50,8 @@ router.get('/:employerid',(req, res, next) => {
 	  		console.log(' Error getting mysql_pool connection: ' + err);
 	  		throw err;
 	  	}
-        if (employerid) {
-            connection.query('SELECT * FROM employerinformation WHERE employerid = ?', [employerid], function(error, results, fields) {
+        if (studentid) {
+            connection.query('SELECT * FROM students WHERE studentid = ?', [studentid], function(error, results, fields) {
                 if (error) {
                     res.status(500).json({
                         message: error
@@ -71,12 +71,12 @@ router.get('/:employerid',(req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    const companyname = req.body.companyname;
-    const companyemail = req.body.companyemail;
-    const address = req.body.address;
+    const name = req.body.name;
+    const email = req.body.email;
     const phone = req.body.phone;
-    const contactperson = req.body.contactperson;
-    const contactpersonphone = req.body.contactpersonphone;
+    const country = req.body.country;
+    const city = req.body.city;
+    const address = req.body.address;
     res.setHeader('Access-Control-Allow-Origin', '*');
     mypool.getConnection(function(err,connection) {
         if (err) {
@@ -85,7 +85,7 @@ router.post('/', (req, res, next) => {
 	  		throw err;
 	  	}
         if (username && fullname && email && password && usertype) {
-            connection.query('INSERT INTO employerinformation (companyname, companyemail, address, phone, contactperson, contactpersonphone) VALUES(?, ?, ?, ?, ?, ?)', [companyname, companyemail, address, phone, contactperson, contactpersonphone], function(error, results, fields) {
+            connection.query('INSERT INTO students (name, email, phone, country, city, address) VALUES(?, ?, ?, ?, ?, ?)', [name, email, phone, country, city, address], function(error, results, fields) {
                 if (error) {
                     res.status(500).json({
                         message: error
