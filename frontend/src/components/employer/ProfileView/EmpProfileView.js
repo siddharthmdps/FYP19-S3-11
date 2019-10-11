@@ -1,8 +1,9 @@
 import React from 'react';
-import Navbar from '../../Navbar';
+import Navbar from '../EmpNavbar';
 import ProfileContainer from '../ProfileContainer';
 import SmallCard from './SmallCard';
 import LargeCard from './LargeCard';
+import './Card.css';
 
 
 //This is the profile of the company the students will view when they click to find out more
@@ -14,11 +15,11 @@ const EmpProfileView =(props)=> {
         <Navbar/>
         <div className= "wrapper">
             <ProfileContainer username="PegasusSim" buttonText="Find out more"/>
-            <div className="card">
+            <div className="card mar50 pad100">
                 <div className="card-body">
                     <div className = "row">
                         <SmallCard title="Company Size" text="500-1000 employees"/>
-                        <SmallCard title="Founded" text ="1972"/>
+                        
                         <SmallCard title= "Industry" text = "Software Engineering"/>
                     </div>
                     <br/>
@@ -40,7 +41,7 @@ const EmpProfileView =(props)=> {
                             Sed quis dolor nec mauris pellentesque vestibulum. Ut elit orci, tempor ac odio sit amet, malesuada pretium urna. Mauris vel felis lacinia, suscipit diam quis, cursus urna. Proin a porta orci.
                         </LargeCard>
                     </div>
-
+                    <br/>
                     <div className = "row">
                         <LargeCard title="Jobs Available">
                            
