@@ -18,13 +18,13 @@ const StatBoard = (props) =>{
         <br/>
         <ul className="listAction">
             <li className="listActionItem">
-                <button type="button" class="btn btn-outline-secondary btn-no-outline">Preview Company Profile</button>
+                <button type="button" className="btn btn-outline-secondary btn-no-outline">Preview Company Profile</button>
             </li>
             <li className="listActionItem">
-                <button onClick = {props.pjHandler} type="button" class="btn btn-outline-secondary btn-no-outline">Post Jobs</button>
+                <button onClick = {props.pjHandler} type="button" className="btn btn-outline-secondary btn-no-outline">Post Jobs</button>
             </li>
             <li className="listActionItem">
-                <button type="button" class="btn btn-outline-secondary btn-no-outline">Browse Candidates</button>
+                <button type="button" className="btn btn-outline-secondary btn-no-outline">Browse Candidates</button>
             </li>
         </ul>
         

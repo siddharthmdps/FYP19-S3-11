@@ -36,7 +36,7 @@ class App extends Component {
     if (!this.state.isAuthenticated) {
       return <LoginForm updateLoginState={this.updateLoginState}/>
     }
-    // if the user is logged in, render corresponding component for user (depending on the usertype)
+    // if the user is logged in, render the corresponding component (based on the usertype)
     else {
       // PLACE YOUR APP HERE
       switch (this.state.userType) {

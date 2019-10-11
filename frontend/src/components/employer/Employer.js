@@ -4,6 +4,7 @@ import EmpNavbar from './EmpNavbar'
 import PostJob from './PostJob'
 import ProfileContainer from './ProfileContainer'
 import StatBoard from './StatBoard'
+import EmpFeed from './EmpFeed'
 
 // Common assets
 import About from '../common_assets/About'
@@ -26,7 +27,7 @@ class Employer extends Component {
     set the state of the Employer.js and trigger it to render a different component
     */
     setMainContent = (event) => {
-        console.log(`Triggered by : ${event.target.id}`)
+        //console.log(`Triggered by : ${event.target.id}`)
 
         this.setState( {
             mainContent: event.target.id
@@ -45,6 +46,7 @@ class Employer extends Component {
             <div>
                 <ProfileContainer/>
                 <StatBoard/>
+                <EmpFeed/>
             </div>
             )   
             case '*' : return <h3>{contentID} not found</h3>

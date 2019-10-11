@@ -7,6 +7,27 @@ class PostJob extends Component {
         this.props = props
     }
 
+    postJob = () => {
+        
+        const job = {
+            title: document.getElementById('job-title').value,
+            desc: document.getElementById('job-desc').value,
+            industry: document.getElementById('job-industry').value,
+            skills: document.getElementById('job-skills').value
+        }
+        
+        if( job.title === "" || job.desc === "" || job.industry === "" || job.skills === "" ) alert('Please fill in all the required fields')
+        else {
+            const url = "http://localhost:3030/postjob" // REPLACE URL HERE
+            fetch (url , {
+               method: 'POST',
+               body: JSON.stringify(job)
+            })
+            
+        }
+
+    }
+
     render() {
         return(
                 <div className="container rounded shadow-sm" id="postjob-container">
@@ -32,11 +53,11 @@ class PostJob extends Component {
                                 <label htmlFor="">Industry</label>
                             </div>
                             <div className="col-sm-9">
-                                <select className="custom-select" id="inputGroupSelect01">
+                                <select className="custom-select" id="job-industry">
                                     <option selected>Choose...</option>
-                                    <option value="1">Engineering</option>
-                                    <option value="2">Business</option>
-                                    <option value="3">Account</option>
+                                    <option value="Engineering">Engineering</option>
+                                    <option value="Business">Business</option>
+                                    <option value="Account">Account</option>
                                 </select>
                             </div>
 
@@ -47,11 +68,13 @@ class PostJob extends Component {
                                 <label htmlFor="">Required Skills</label>
                             </div>
                             <div className="col-sm-9">
-                                <input type="text" className="form-control" id="required-skills"/>
+                                <input type="text" className="form-control" id="job-skills"/>
                             </div>
 
                             <div className="w-100"></div>
-                            <button className="btn btn-dark btn-lg btn-block post-job-btn">Submit</button>
+                            <button className="btn btn-dark btn-lg btn-block post-job-btn" onClick={this.postJob}>
+                                Submit
+                            </button>
                         </div>
                 </div>
         )
