@@ -1,11 +1,13 @@
 // essential
-import React, {Component} from 'react';
+import React, {Component} from 'react'
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // importing Components
 import LoginForm from './components/common_assets/LoginForm'
 import Employer from './components/employer/Employer'
 import Student from './components/student/Student'
 import Admin from './components/admin/Admin'
+import SignUp from './components/common_assets/Signup'
 
 // importing CSS
 import './App.css'
@@ -49,7 +51,16 @@ class App extends Component {
     }
   }
 
-  render() { return <this.getContentToRender/> }
+  render() { 
+    return (
+      <Router>
+        <Switch>
+          <Route exact path="/" component={this.getContentToRender}></Route>
+          <Route exact path="/signup" component={SignUp}></Route>
+        </Switch>
+      </Router>
+    )
+  }
 }
 
 export default App

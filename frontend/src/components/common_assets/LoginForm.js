@@ -10,7 +10,6 @@ class LoginForm extends Component {
     }
 
     validateUser = () => {
-        console.log('clicked')
         const username = document.getElementById("input-username").value
         const password = document.getElementById("input-password").value
         const usertype = document.getElementById("input-usertype").value
@@ -48,7 +47,6 @@ class LoginForm extends Component {
         //     })
         // }
     }
-
 
     render () {
         return (
