@@ -2,6 +2,7 @@ import React from 'react';
 import ProfileContainer from '../ProfileContainer';
 import SmallCard from './SmallCard';
 import LargeCard from './LargeCard';
+import EmpFeed from '../EmpFeed'
 import './Card.css';
 
 
@@ -41,9 +42,7 @@ const EmpProfileView =(props)=> {
                     </div>
                     <br/>
                     <div className = "row">
-                        <LargeCard title="Jobs Available">
-                           
-                        </LargeCard>
+                        <EmpFeed/>
                     </div>
                 </div>
             </div>

@@ -25,45 +25,23 @@ app.use(express.urlencoded())
 
 app.use(express.json())
 
-app.use(cors({
+const options = {
     'allowedHeaders': ['Content-Type'], // headers that React is sending to the API
     'exposedHeaders': ['Content-Type'], // headers that you are sending back to React
     'origin': '*',
     'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
     'preflightContinue': false
-}));
+}
 
-app.use('/login', cors({
-    'allowedHeaders': ['Content-Type'], // headers that React is sending to the API
-    'exposedHeaders': ['Content-Type'], // headers that you are sending back to React
-    'origin': '*',
-    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    'preflightContinue': false
-}), loginRoutes)
+app.use(cors(options));
 
-app.use('/createUser', cors({
-    'allowedHeaders': ['Content-Type'], // headers that React is sending to the API
-    'exposedHeaders': ['Content-Type'], // headers that you are sending back to React
-    'origin': '*',
-    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    'preflightContinue': false
-}), createUserRoutes)
+app.use('/login', cors(options), loginRoutes)
 
-app.use('/employer', cors({
-    'allowedHeaders': ['Content-Type'], // headers that React is sending to the API
-    'exposedHeaders': ['Content-Type'], // headers that you are sending back to React
-    'origin': '*',
-    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    'preflightContinue': false
-}), employerRoutes)
+app.use('/createUser', options), createUserRoutes)
 
-app.use('/students', cors({
-    'allowedHeaders': ['Content-Type'], // headers that React is sending to the API
-    'exposedHeaders': ['Content-Type'], // headers that you are sending back to React
-    'origin': '*',
-    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    'preflightContinue': false
-}), studentRoutes)
+app.use('/employer', cors(options), employerRoutes)
+
+app.use('/students', cors(options), studentRoutes)
 
 
 module.exports = app

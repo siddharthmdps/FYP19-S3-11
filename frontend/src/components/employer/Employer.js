@@ -6,6 +6,7 @@ import ProfileContainer from './ProfileContainer'
 import StatBoard from './StatBoard'
 import EmpProfileView from './ProfileView/EmpProfileView'
 import EmpFeed from './EmpFeed'
+import EmpProfileEdit from './ProfileEditor/EmpProfileEdit'
 
 // Common assets
 import About from '../common_assets/About'
@@ -38,7 +39,8 @@ class Employer extends Component {
     mainContent = () => {
         const contentID = this.state.mainContent
         switch (contentID) {
-            case 'editprofile' : return <EmpProfileView/>
+            case 'viewprofile' : return <EmpProfileView/>
+            case 'editprofile' : return <EmpProfileEdit/>
             case 'about' : return <About/>
             case 'blog' : return <h3>blog</h3>
             case 'postjob' : return <PostJob/>
