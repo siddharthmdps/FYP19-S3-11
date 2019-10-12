@@ -22,6 +22,8 @@ function About() {
               All the details are stored in the cloud which is very easy to access for the user any time. 
               As, the project files and a database file will be stored into the Azure cloud (or Amazon AWS), the project will be accessed in the web browser through Azure link.
           </p>
+
+          <p>Visit our <a href="https://github.com/siddharthmdps/FYP19-S3-11">Github repository</a></p>
         </div>
     </div>
   )
