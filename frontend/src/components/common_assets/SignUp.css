@@ -1,9 +1,17 @@
 div.main{
     max-width: 700px;
 }
+
 div.job-experience input{
-    height: 200px;
+    height: 150px;
 }
+
+select#usertype {
+    margin-bottom: 15px;
+    border: solid 1px grey;
+    max-width: 200px;
+}
+
 button.create-account{
     max-width: 250px;
     margin: auto;

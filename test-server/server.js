@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 
+app.use(express.json())
 app.use(cors({
     origin: '*'
 }))
@@ -32,10 +33,23 @@ const jobList = [
 ]
 
 
-// Route handlers
-app.get('/joblist', (req, res) => {
+// GET handlers
+app.get('', (req, res) => {
+    res.send('Backend server')
+})
 
+app.get('/joblist', (req, res) => {
     res.send(jobList)
+})
+
+// POST handlers
+app.post('/createaccount', (req, res) => {
+    console.log(`account details received`, req.body)
+
+    res.json({
+        status: 'received',
+        received: req.body
+    })
 })
 
 

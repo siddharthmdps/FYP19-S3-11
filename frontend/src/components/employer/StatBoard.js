@@ -1,7 +1,6 @@
 import React from 'react';
 import './StatBoard.css';
 import StatBox from './StatBox';
-import PostJob from './PostJob';
 
 //This is the StatBoard where it displays the jobs posted, number of applicants
 // and number of applications.
