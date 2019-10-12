@@ -4,6 +4,7 @@ import EmpNavbar from './EmpNavbar'
 import PostJob from './PostJob'
 import ProfileContainer from './ProfileContainer'
 import StatBoard from './StatBoard'
+import EmpProfileView from './ProfileView/EmpProfileView'
 import EmpFeed from './EmpFeed'
 
 // Common assets
@@ -37,7 +38,7 @@ class Employer extends Component {
     mainContent = () => {
         const contentID = this.state.mainContent
         switch (contentID) {
-            case 'editprofile' : return <h3>edit profile</h3>
+            case 'editprofile' : return <EmpProfileView/>
             case 'about' : return <About/>
             case 'blog' : return <h3>blog</h3>
             case 'postjob' : return <PostJob/>

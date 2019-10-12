@@ -43,6 +43,13 @@ app.get('/joblist', (req, res) => {
 })
 
 // POST handlers
+app.post('/postjob', (req, res) => {
+    console.log(req.body)
+    res.json({
+        status: 'success'
+    })
+})
+
 app.post('/createaccount', (req, res) => {
     console.log(`account details received`, req.body)
 

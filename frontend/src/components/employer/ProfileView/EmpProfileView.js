@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../EmpNavbar';
 import ProfileContainer from '../ProfileContainer';
 import SmallCard from './SmallCard';
 import LargeCard from './LargeCard';
@@ -12,7 +11,6 @@ import './Card.css';
 const EmpProfileView =(props)=> {
     return (
     <div>
-        <Navbar/>
         <div className= "wrapper">
             <ProfileContainer username="PegasusSim" buttonText="Find out more"/>
             <div className="card mar50 pad100">
