@@ -4,7 +4,8 @@
   "description": "SIM Online Recruitment using Cloud Computing",
   "main": "index.js",
   "dependencies": {
-    "concurrently": "^5.0.0"
+    "concurrently": "^5.0.0",
+    "react-bootstrap": "^1.0.0-beta.14"
   },
   "devDependencies": {},
   "scripts": {
