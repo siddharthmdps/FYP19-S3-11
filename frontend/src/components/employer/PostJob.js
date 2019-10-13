@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import '../styles/PostJob.css'
+import config from '../../config'
 
 class PostJob extends Component {
     constructor (props) {
@@ -18,7 +19,8 @@ class PostJob extends Component {
         
         if( job.title === "" || job.desc === "" || job.industry === "" || job.skills === "" ) alert('Please fill in all the required fields')
         else {
-            const url = "http://localhost:3030/postjob" // REPLACE URL HERE
+            var apiurl = config.getAPIURL()
+            const url = apiurl + "postjob" // REPLACE URL HERE
             fetch (url , {
                method: 'POST',
                body: JSON.stringify(job)
