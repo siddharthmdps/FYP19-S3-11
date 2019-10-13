@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import '../styles/Login.css'
-// import config from '../../config'
+import config from '../../config'
 
 
 class LoginForm extends Component {

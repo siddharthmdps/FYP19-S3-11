@@ -19,7 +19,7 @@ class PostJob extends Component {
         if( job.title === "" || job.desc === "" || job.industry === "" || job.skills === "" ) alert('Please fill in all the required fields')
         else {
             var apiurl = config.getAPIURL()
-            const url = apiurl + "postjob" // REPLACE URL HERE
+            const url = apiurl + "employer/postjob" // REPLACE URL HERE
             fetch (url , {
                method: 'POST',
                headers: {

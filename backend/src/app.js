@@ -7,15 +7,28 @@ const cors = require('cors')
 const loginPath = path.join(__dirname, '../api/routes/login')
 const loginRoutes = require(loginPath); // const loginRoutes = require('../api/routes/login');
 
+// General path
 const createUserPath = path.join(__dirname, '../api/routes/createUser')
 const createUserRoutes = require(createUserPath);
 
-const employerPath = path.join(__dirname, '../api/routes/employer')
+
+// Path for Employer
+const employerPath = path.join(__dirname, '../api/routes/employer/employer')
 const employerRoutes = require(employerPath);
 
+const postJobPath = path.join(__dirname, '../api/routes/employer/postjob')
+const postJobRoutes = require(postJobPath);
+
+// Path for Student
 const studentPath = path.join(__dirname, '../api/routes/students')
 const studentRoutes = require(studentPath);
 
+<<<<<<< HEAD
+=======
+// Path for Admin
+
+
+>>>>>>> master
 
 // Route handlers
 app.get('', (req, res) => {
@@ -41,9 +54,16 @@ app.use(cors(settings));
 // Route handlers
 app.use('/login', cors(settings), loginRoutes)
 
+<<<<<<< HEAD
 app.use('/createUser', settings), createUserRoutes)
 
 app.use('/employer', cors(settings), employerRoutes)
+=======
+app.use('/createUser', cors(options), createUserRoutes)
+
+app.use('/employer', cors(options), employerRoutes)
+app.use('/employer/postjob', cors(options), postJobRoutes)
+>>>>>>> master
 
 app.use('/students', cors(settings), studentRoutes)
 
