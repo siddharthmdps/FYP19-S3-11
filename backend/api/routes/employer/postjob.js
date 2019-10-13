@@ -19,6 +19,9 @@ const mypool = mysql.createPool({
 router.post('/', (req, res, next ) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     console.log(req.body)
+    res.send({
+        received: req.body
+    })
 })
 
 module.exports = router;
