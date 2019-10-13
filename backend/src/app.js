@@ -21,11 +21,12 @@ app.get('', (req, res) => {
     res.send('Hello')
 })
 
+// Settings
 app.use(express.urlencoded())
 
 app.use(express.json())
 
-const options = {
+const settings = {
     'allowedHeaders': ['Content-Type'], // headers that React is sending to the API
     'exposedHeaders': ['Content-Type'], // headers that you are sending back to React
     'origin': '*',
@@ -33,15 +34,17 @@ const options = {
     'preflightContinue': false
 }
 
-app.use(cors(options));
+app.use(cors(settings));
 
-app.use('/login', cors(options), loginRoutes)
 
-app.use('/createUser', options), createUserRoutes)
+// Route handlers
+app.use('/login', cors(settings), loginRoutes)
 
-app.use('/employer', cors(options), employerRoutes)
+app.use('/createUser', settings), createUserRoutes)
 
-app.use('/students', cors(options), studentRoutes)
+app.use('/employer', cors(settings), employerRoutes)
+
+app.use('/students', cors(settings), studentRoutes)
 
 
 module.exports = app
