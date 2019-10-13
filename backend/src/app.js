@@ -18,7 +18,7 @@ const studentRoutes = require(studentPath);
 
 // Route handlers
 app.get('', (req, res) => {
-    res.send('Hello')
+    res.send('Hello from Express Server')
 })
 
 // Settings
