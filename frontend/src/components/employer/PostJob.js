@@ -21,9 +21,14 @@ class PostJob extends Component {
             const url = "http://localhost:3030/postjob" // REPLACE URL HERE
             fetch (url , {
                method: 'POST',
+               headers: {
+                    'Content-Type': 'application/json'
+               },
                body: JSON.stringify(job)
             })
-            
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(error => console.log(error)) 
         }
 
     }
