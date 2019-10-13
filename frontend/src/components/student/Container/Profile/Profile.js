@@ -22,7 +22,7 @@ class Profile extends Component {
             Phone: "(65) 9577-7329",
             Country: "Korea, North",
             City: "Holman",
-            Address: "895-7107 Aliquam, St.",
+            CurrentAddress: "895-7107 Aliquam, St.",
             PostalCode: "159543",
             Nationality: "Singapore"
         },
@@ -70,6 +70,14 @@ class Profile extends Component {
             ProjectLink: "https://www.google.com"
         }]
     }
+
+    changePersonalParticulars = event => {
+        console.log(event.target.value, event.target.id, this.state);
+        let tempState = this.state.PersonalParticulars;
+        tempState[event.target.id] = event.target.value;
+        this.setState(tempState);
+    }
+
     render(){
         return(
             <Container fluid>
@@ -86,7 +94,7 @@ class Profile extends Component {
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="0">
                         <Card.Body>
-                            <PersonalParticulars />
+                            <PersonalParticulars details={this.state.PersonalParticulars} changeFn={event => this.changePersonalParticulars(event)}/>
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>
