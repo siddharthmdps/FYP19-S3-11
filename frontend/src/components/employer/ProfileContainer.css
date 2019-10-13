@@ -1,13 +1,13 @@
 .profileContainer{
-    float:left;
-    width:33%;
     margin-top:53px;
     text-align:center;
+    padding-bottom:20px;
+    /*border-bottom:3px solid #F0F0F0;*/
 }
 
 .profilePic{
-    height: 333px;
-    width: 333px;
+    height: 150px;
+    width: 150px;
     border-radius:50%;
     display: inline-block;
     margin-top: 33px;

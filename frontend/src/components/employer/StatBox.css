@@ -1,20 +1,24 @@
 .statBox{
     display: inline-block;
-    float:left;
+    /*float:left;*/
     font-family: Averia Libre;
     font-style: normal;
     font-weight: normal;
-    padding: 35px 35px 10px 35px;;
+    padding: 35px 35px 10px 35px;
 }
 .statCircle{
-    font-size: 64px;
+    font-size: 33px;
     border-radius:100%;
-    background-color:#F0F0F0;;
-    width: 150px;
-    height:150px;
-    padding:30px;
+    background-color:#F0F0F0;
+    width: 75px;
+    height:75px;
+    padding:15px;
 }
 
 .statText{
-    font-size: 36px;
+    font-size: 22px;
+}
+
+.buttonText{
+    font-size: 22px;
 }

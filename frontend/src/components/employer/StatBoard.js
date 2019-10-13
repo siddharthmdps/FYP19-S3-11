@@ -10,20 +10,23 @@ const StatBoard = (props) =>{
     return (
     <div className= "statBoard">
         <div className="statBoxWrapper">
-            <StatBox number="39" desc="Jobs"/>
-            <StatBox number="62" desc="Applicants"/>
-            <StatBox number="333" desc="Applications"/>
+            <div className = "row">
+            <StatBox number="39" desc="Jobs" className= "col-xs-4"/>
+            <StatBox number="62" desc="Applicants" className= "col-xs-4"/>
+            <StatBox number="333" desc="Applications" className= "col-xs-4"/>
+            </div>
+           
         </div>
         <br/>
         <ul className="listAction">
             <li className="listActionItem">
-                <button type="button" className="btn btn-outline-secondary btn-no-outline">Preview Company Profile</button>
+                <button type="button" className="btn btn-outline-secondary btn-no-outline buttonText">Preview Company Profile</button>
             </li>
             <li className="listActionItem">
-                <button onClick = {props.pjHandler} type="button" className="btn btn-outline-secondary btn-no-outline">Post Jobs</button>
+                <button onClick = {props.pjHandler} type="button" className="btn btn-outline-secondary btn-no-outline buttonText">Post Jobs</button>
             </li>
             <li className="listActionItem">
-                <button type="button" className="btn btn-outline-secondary btn-no-outline">Browse Candidates</button>
+                <button type="button" className="btn btn-outline-secondary btn-no-outline buttonText">Browse Candidates</button>
             </li>
         </ul>
         
