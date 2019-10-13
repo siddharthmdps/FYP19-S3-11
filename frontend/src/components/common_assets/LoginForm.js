@@ -25,7 +25,7 @@ class LoginForm extends Component {
         // THIS CODE COMMUNICATES WITH BACKEND
         // var apiurl = config.getAPIURL()
         // if(username && password && usertype) {
-        //     var url = apiurl + username + "/" + password + "/" + usertype
+        //     var url = apiurl + "login/" + username + "/" + password + "/" + usertype
         //     fetch(url, {
         //         method: 'post',
         //         data: "{'username':'" + username + "',{'password':'" + password + "', 'usertype':'" + usertype + "'}",
