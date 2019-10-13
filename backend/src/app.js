@@ -11,7 +11,6 @@ const loginRoutes = require(loginPath); // const loginRoutes = require('../api/r
 const createUserPath = path.join(__dirname, '../api/routes/createUser')
 const createUserRoutes = require(createUserPath);
 
-
 // Path for Employer
 const employerPath = path.join(__dirname, '../api/routes/employer/employer')
 const employerRoutes = require(employerPath);
@@ -22,7 +21,7 @@ const postJobRoutes = require(postJobPath);
 // Path for Student
 const studentPath = path.join(__dirname, '../api/routes/students')
 const studentRoutes = require(studentPath);
-
+//////////////////////////////////////////////////////////////////////////
 
 // Route handlers
 app.get('', (req, res) => {
