@@ -12,6 +12,64 @@ import Resume from '../../Components/Resume/Resume';
 import {Accordion, Card, Container, Col, Row} from 'react-bootstrap';
 
 class Profile extends Component {
+    state={
+        PersonalParticulars: {
+            StudentID: 100,
+            FirstName: "Gill",
+            MiddleName: "Mac",
+            LastName: "Oliver",
+            Email: "nisi@auctorvelit.ca",
+            Phone: "(65) 9577-7329",
+            Country: "Korea, North",
+            City: "Holman",
+            Address: "895-7107 Aliquam, St.",
+            PostalCode: "159543",
+            Nationality: "Singapore"
+        },
+        Education: [{
+            University: "Faulkner University",
+            Degree: "Diploma",
+            FieldOfStudy: "Systems Administrator I",
+            Major: "DSS",
+            Mode: "Part-Time",
+            GPA: "Second-class"
+        }],
+        WorkExp: [{
+            Position: "Junior",
+            Company: "Vimbo",
+            StartDate: "29/06/2018",
+            EndDate: "08/04/2019",
+            Mode: "Part Time",
+            Industry: "Training",
+            AnnualSalary: 33000,
+            Description: "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est."
+        }],
+        JobPreference: [{
+            Industry: "Accounting",
+            Position: "Senior",
+            JobType: "Contract",
+            ExpectedSalary: 16000,
+            Location: "Bolorejo",
+            Availability: "Immediate"
+        }],
+        Awards: [{
+            Award: "Dean's List",
+            Date: "Aug 2018",
+            Description: "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris."
+        }],
+        Certification: [{
+            Name: "CNNP Routing and Switching",
+            IssuedBy: "Scrum Alliance",
+            IssueDate: "Mar 2019",
+            ValidUntil: "Mar 2020"
+        }],
+        Projects: [{
+            ProjectTitle: "Personal Website",
+            Status: "Ongoing",
+            Description: "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
+            ProjectLink: "https://www.google.com"
+        }]
+    }
     render(){
         return(
             <Container fluid>
