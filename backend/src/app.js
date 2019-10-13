@@ -16,6 +16,7 @@ const employerRoutes = require(employerPath);
 const studentPath = path.join(__dirname, '../api/routes/students')
 const studentRoutes = require(studentPath);
 
+
 // Route handlers
 app.get('', (req, res) => {
     res.send('Hello from Express Server')

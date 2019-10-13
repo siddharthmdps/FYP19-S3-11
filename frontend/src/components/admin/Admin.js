@@ -7,7 +7,15 @@ class Admin extends Component {
 
     render () {
         return (
-            <div>Hello Admin</div>
+            <div>
+                <h3>Hello Admin</h3>
+                <button type="button" className="btn btn-dark" id="btn-logout" 
+                    onClick={ () => {
+                        localStorage.clear()
+                        document.location.reload(true)
+                    }
+                }>Log Out</button>
+            </div>
         )
     }
 }

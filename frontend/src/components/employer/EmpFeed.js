@@ -62,7 +62,6 @@ class EmpFeed extends Component {
                                     </div>
                                 </div>
                             ) )
-                            
                         }
                     {/* Error */}
                     { this.state.error === true && 

@@ -7,7 +7,15 @@ class Student extends Component {
 
     render () {
         return (
-            <div>Hello Student</div>
+            <div>
+                <h3>Hello Student</h3>
+                <button type="button" className="btn btn-dark" id="btn-logout" 
+                    onClick={ () => {
+                        localStorage.clear()
+                        document.location.reload(true)
+                    }
+                }>Log Out</button>
+            </div>
         )
     }
 }

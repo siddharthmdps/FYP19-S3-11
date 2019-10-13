@@ -8,7 +8,6 @@ class PostJob extends Component {
     }
 
     postJob = () => {
-        
         const job = {
             title: document.getElementById('job-title').value,
             desc: document.getElementById('job-desc').value,
@@ -30,7 +29,6 @@ class PostJob extends Component {
             .then(data => console.log(data))
             .catch(error => console.log(error)) 
         }
-
     }
 
     render() {
@@ -43,7 +41,6 @@ class PostJob extends Component {
                             <div className="col-sm-9">
                                 <input type="text" className="form-control" id="job-title"/>
                             </div>
-
 
                             <div className="w-100"></div>
                             <div className="col-sm-3">
@@ -65,8 +62,6 @@ class PostJob extends Component {
                                     <option value="Account">Account</option>
                                 </select>
                             </div>
-
-
 
                             <div className="w-100"></div>
                             <div className="col-sm-3">
