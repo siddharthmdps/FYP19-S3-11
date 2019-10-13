@@ -1,3 +1,18 @@
 .Profile{
     
 }
+
+.Accordian{
+    /* cursor: pointer;
+    background-color: aqua; */
+}
+
+.Card{
+
+}
+
+.CardHeader{
+    cursor: pointer;
+    background-color: aqua;
+    font-weight: bold;
+}

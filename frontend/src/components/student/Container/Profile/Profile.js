@@ -21,9 +21,9 @@ class Profile extends Component {
                     <ProfileImage />
                 </Col>
                 <Col md={{offset: 1, span:9}} >
-                <Accordion defaultActiveKey="0">
-                <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="0">
+                <Accordion defaultActiveKey="0" className={classes.Accordian}>
+                <Card className={classes.Card}>
+                    <Accordion.Toggle as={Card.Header} eventKey="0" className={classes.CardHeader}>
                         Personal Particulars
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="0">
@@ -33,8 +33,8 @@ class Profile extends Component {
                     </Accordion.Collapse>
                 </Card>
                 
-                <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="1">
+                <Card className={classes.Card}>
+                    <Accordion.Toggle as={Card.Header} eventKey="1" className={classes.CardHeader}>
                         Education
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="1">
@@ -45,8 +45,8 @@ class Profile extends Component {
                     </Accordion.Collapse>
                 </Card>
 
-                <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="2">
+                <Card className={classes.Card}>
+                    <Accordion.Toggle as={Card.Header} eventKey="2" className={classes.CardHeader}>
                         Work Experience
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="2">
@@ -56,8 +56,8 @@ class Profile extends Component {
                     </Accordion.Collapse>
                 </Card>
 
-                <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="3">
+                <Card className={classes.Card}>
+                    <Accordion.Toggle as={Card.Header} eventKey="3" className={classes.CardHeader}>
                         Job Preference
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="3">
@@ -67,8 +67,8 @@ class Profile extends Component {
                     </Accordion.Collapse>
                 </Card>
 
-                <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="4">
+                <Card className={classes.Card}>
+                    <Accordion.Toggle as={Card.Header} eventKey="4" className={classes.CardHeader}>
                         Awards
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="4">
@@ -78,8 +78,8 @@ class Profile extends Component {
                     </Accordion.Collapse>
                 </Card>
 
-                <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="5">
+                <Card className={classes.Card}>
+                    <Accordion.Toggle as={Card.Header} eventKey="5" className={classes.CardHeader}>
                         Certification
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="5">
@@ -89,8 +89,8 @@ class Profile extends Component {
                     </Accordion.Collapse>
                 </Card>
 
-                <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="6">
+                <Card className={classes.Card}>
+                    <Accordion.Toggle as={Card.Header} eventKey="6" className={classes.CardHeader}>
                         Projects
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="6">
@@ -100,8 +100,8 @@ class Profile extends Component {
                     </Accordion.Collapse>
                 </Card>
 
-                <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="8">
+                <Card className={classes.Card}>
+                    <Accordion.Toggle as={Card.Header} eventKey="8" className={classes.CardHeader}>
                         Resume
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="8">
