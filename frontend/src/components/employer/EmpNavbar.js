@@ -21,7 +21,10 @@ class Navbar extends Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
               {/* link this to profile management */}
-                <a className="nav-link" href="/#" id="editprofile" onClick={this.props.setMainContent}>{this.props.username}</a> 
+                <a className="nav-link" href="/#" id="viewprofile" onClick={this.props.setMainContent}>{this.props.username}</a> 
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/#" id="editprofile" onClick={this.props.setMainContent}>Edit Profile</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/#" id="about" onClick={this.props.setMainContent}>About</a>
@@ -45,6 +48,7 @@ class Navbar extends Component {
               <button type="button" className="btn btn-dark" id="btn-logout" 
                 onClick={ () => {
                     localStorage.clear()
+                    document.location.reload(true)
                 }
               }>Log Out</button>
     

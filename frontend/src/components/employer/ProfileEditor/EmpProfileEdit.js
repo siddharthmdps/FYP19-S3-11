@@ -10,7 +10,6 @@ import '../ProfileView/Card.css'
 const EmpProfileEdit =(props)=> {
     return (
     <div>
-        <Navbar/>
         <div className= "wrapper">
             <ProfileContainer username="PegasusSim" buttonText=""/>
             <div className="card pad100 mar50">
