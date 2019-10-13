@@ -29,7 +29,7 @@ app.get('', (req, res) => {
 })
 
 // Settings
-app.use(express.urlencoded())
+app.use(express.urlencoded({ extended: true }))
 
 app.use(express.json())
 
