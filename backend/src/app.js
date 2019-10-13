@@ -23,12 +23,6 @@ const postJobRoutes = require(postJobPath);
 const studentPath = path.join(__dirname, '../api/routes/students')
 const studentRoutes = require(studentPath);
 
-<<<<<<< HEAD
-=======
-// Path for Admin
-
-
->>>>>>> master
 
 // Route handlers
 app.get('', (req, res) => {
@@ -54,16 +48,10 @@ app.use(cors(settings));
 // Route handlers
 app.use('/login', cors(settings), loginRoutes)
 
-<<<<<<< HEAD
-app.use('/createUser', settings), createUserRoutes)
+app.use('/createUser', cors(settings), createUserRoutes)
 
 app.use('/employer', cors(settings), employerRoutes)
-=======
-app.use('/createUser', cors(options), createUserRoutes)
-
-app.use('/employer', cors(options), employerRoutes)
-app.use('/employer/postjob', cors(options), postJobRoutes)
->>>>>>> master
+app.use('/employer/postjob', cors(settings), postJobRoutes)
 
 app.use('/students', cors(settings), studentRoutes)
 
