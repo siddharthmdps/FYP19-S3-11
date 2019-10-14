@@ -78,9 +78,24 @@ class Profile extends Component {
             ExpectedSalary: 16000,
             Location: "Bolorejo",
             Availability: "Immediate"
+        },
+        {
+            JobPreferenceID: 2,
+            Industry: "Accountinga",
+            Position: "Seniora",
+            JobType: "Contracta",
+            ExpectedSalary: 16000,
+            Location: "Bolorejoa",
+            Availability: "Immediate"
         }],
         Awards: [{
             AwardID: 1,
+            Award: "Dean's List",
+            Date: "Aug 2018",
+            Description: "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris."
+        }, 
+        {
+            AwardID: 2,
             Award: "Dean's List",
             Date: "Aug 2018",
             Description: "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris."
@@ -91,6 +106,12 @@ class Profile extends Component {
             IssuedBy: "Scrum Alliance",
             IssueDate: "Mar 2019",
             ValidUntil: "Mar 2020"
+        },{
+            CertificateID: 2,
+            Name: "CNNP Routing and Switchinga",
+            IssuedBy: "Scrum Alliancea",
+            IssueDate: "Mar 2019a",
+            ValidUntil: "Mar 2020a"
         }],
         Skills: [{
             SkillID: 1,
@@ -256,7 +277,14 @@ class Profile extends Component {
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="3">
                         <Card.Body>
-                            <JobPreference />
+                        {this.state.JobPreference.map(jobPreferenceDetail => {
+                            return (
+                                <React.Fragment>
+                                    <JobPreference key={jobPreferenceDetail.JobPreferenceID} details={jobPreferenceDetail} changeFn={event => this.changeJobPreference(event, jobPreferenceDetail.JobPreferenceID)} />  
+                                    <hr />
+                                </React.Fragment>
+                            );
+                        })}
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>
@@ -267,7 +295,14 @@ class Profile extends Component {
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="4">
                         <Card.Body>
-                            <Awards />
+                            {this.state.Awards.map(awardDetail => {
+                                return (
+                                    <React.Fragment>
+                                        <Awards key={awardDetail.AwardID} details={awardDetail} changeFn={event => this.changeAwards(event, awardDetail.AwardID)} />  
+                                        <hr />
+                                    </React.Fragment>
+                                );
+                            })}
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>
@@ -278,7 +313,14 @@ class Profile extends Component {
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="5">
                         <Card.Body>
-                            <Certification />
+                            {this.state.Certification.map(certificateDetail => {
+                                return (
+                                    <React.Fragment>
+                                        <Certification key={certificateDetail.CertificateID} details={certificateDetail} changeFn={event => this.changeCertification(event, certificateDetail.CertificateID)} />  
+                                        <hr />
+                                    </React.Fragment>
+                                );
+                            })}
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>
