@@ -1,9 +1,8 @@
 .statBoard{
-    display:inline-block;
-    width:66%;
+    /*display:inline-block;*/
     text-align:center;
-    margin-top:100px;
     padding: 30px;
+    /*float:left;*/
     
 }
 
@@ -11,6 +10,7 @@
     display:inline-block;
     text-align:center;
     border-bottom:3px solid #F0F0F0;
+    border-top:3px solid #F0F0F0;
 }
 
 .listAction{
@@ -21,8 +21,8 @@
 
 .listActionItem{
     float:left;
-    padding:30px;
-    margin-right: 45px;
+    padding:20px;
+    margin-right: 10px;
     height: 150px;
     width: 200px;
       

@@ -2,8 +2,7 @@ import React, {Component} from 'react'
 // Employer exclusive components
 import EmpNavbar from './EmpNavbar'
 import PostJob from './PostJob'
-import ProfileContainer from './ProfileContainer'
-import StatBoard from './StatBoard'
+import EmpPanel from './EmpPanel'
 import EmpProfileView from './ProfileView/EmpProfileView'
 import EmpFeed from './EmpFeed'
 import EmpProfileEdit from './ProfileEditor/EmpProfileEdit'
@@ -47,8 +46,7 @@ class Employer extends Component {
 
             default : return (
             <div>
-                <ProfileContainer/>
-                <StatBoard/>
+                <EmpPanel/>
                 <EmpFeed/>
             </div>
             )   

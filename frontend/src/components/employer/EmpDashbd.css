@@ -4,3 +4,19 @@
     height: 50%;
 }
 
+.panelWrapper{
+    height:100%;
+    width:33%;
+    top:55px;
+    position:fixed;
+    float:left;
+    /*display:inline-block;*/
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+
+  
