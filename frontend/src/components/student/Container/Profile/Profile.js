@@ -228,6 +228,13 @@ class Profile extends Component {
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="2">
                         <Card.Body>
+                        {this.state.WorkExp.map(workExpDetail => {
+                                return (
+                                    <React.Fragment><WorkExperience key={workExpDetail.WorkExpID} details={workExpDetail} changeFn={event => this.changeWorkExp(event, workExpDetail.WorkExpID)} />  
+                                    <hr />
+                                    </React.Fragment>
+                                );
+                            })}
                             <WorkExperience />
                         </Card.Body>
                     </Accordion.Collapse>
