@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import config from '../../config'
 import './EmpFeed.css'
 
 class EmpFeed extends Component {
@@ -15,8 +15,9 @@ class EmpFeed extends Component {
 
     // to fetch the job list from the given url
     updateJobList = () => {
-        const url = 'http://localhost:3030/joblist' // change the url here
-        fetch(url)
+        const apiURL = config.getAPIURL() + 'employer/joblist'  
+        const url = 'http://localhost:3030/employer/joblist' // change the url here
+        fetch(apiURL)
         .then(response => response.json())
         .then(data => {
             this.setState({ jobList : data })

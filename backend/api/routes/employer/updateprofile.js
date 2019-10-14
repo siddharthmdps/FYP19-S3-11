@@ -4,7 +4,6 @@ const router = express.Router();
 const env = require('dotenv').config({
     path: './src/Config.env'
 });
-
 const sha1 = require('sha1');
 const mysql = require('mysql');
 
@@ -16,15 +15,14 @@ const mypool = mysql.createPool({
     port: process.env.Db_Port
 });
 
-
-router.post('/', (req, res, next ) => {
+router.post('/',(req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    console.log(`Received new job ad`,req.body)
+    console.log(`Request to updte profile`, req.body)
 
-    // STORE JSON inside DB
+    // UPDATE JSON inside DB
     res.send({
         received: req.body
     })
-})
+});
 
-module.exports = router;
+module.exports = router
