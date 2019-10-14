@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Software Engineer",
+        "desc": "Do Software stuff with the software",
+        "employerID": "Google"
+    },
+    {
+        "title": "Technician",
+        "desc": "Fix Machines using tools and stuff",
+        "employerID": "HP"
+    },
+    {
+        "title": "Business Man",
+        "desc": "Make money for the company",
+        "employerID": "Biznez"
+    },
+    {
+        "title": "Accountant",
+        "desc": "Do calculations and stuff",
+        "employerID": "AiA"
+    }
+]
