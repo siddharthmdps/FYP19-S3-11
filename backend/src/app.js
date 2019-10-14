@@ -52,10 +52,10 @@ app.use('/login', cors(settings), loginRoutes)
 app.use('/createUser', cors(settings), createUserRoutes)
 
 // Employer
-app.use('/employer', cors(settings), employerRoutes)
 app.use('/employer/postjob', cors(settings), postJobRoutes)
 app.use('/employer/updateprofile', cors(settings), updateProfileRoutes)
 app.use('/employer/joblist', cors(settings), jobListRoutes)
+app.use('/employer', cors(settings), employerRoutes)
 
 // Student
 app.use('/students', cors(settings), studentRoutes)
