@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, Row, Col, Container} from 'react-bootstrap';
+import {Form, Row, Col} from 'react-bootstrap';
 
 const personalParticulars = props => {
     return(

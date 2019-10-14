@@ -7,45 +7,45 @@ const workExperience = props => {
         <React.Fragment>
         <Form>
             <Form.Row>
-                <Form.Group as={Col} sm = "6" controlId="positionTitle">
-                    <Form.Label>Position Title</Form.Label>
-                    <Form.Control type='text' placeholder="Senior Developer" />
+                <Form.Group as={Col} sm = "6" controlId="Position">
+                    <Form.Label>Position</Form.Label>
+                    <Form.Control type='text' placeholder="Senior Developer" value={props.details.Position} onChange={props.changeFn}/>
                 </Form.Group> 
-                <Form.Group as={Col} sm="6" controlId="comapany">
+                <Form.Group as={Col} sm="6" controlId="Company">
                     <Form.Label>Company</Form.Label>
-                    <Form.Control type='text' placeholder="Facebook" />
+                    <Form.Control type='text' placeholder="Facebook" value={props.details.Company} onChange={props.changeFn}/>
                 </Form.Group> 
             </Form.Row>
 
             <Form.Row>
-                <Form.Group as={Col} sm = "6" controlId="startDate">
+                <Form.Group as={Col} sm = "6" controlId="StartDate">
                     <Form.Label>Start Date</Form.Label>
-                    <Form.Control type='text' placeholder="MM/YY" />
+                    <Form.Control type='text' placeholder="MM/YY" value={props.details.StartDate} onChange={props.changeFn}/>
                 </Form.Group> 
-                <Form.Group as={Col} sm="6" controlId="endDate">
+                <Form.Group as={Col} sm="6" controlId="EndDate">
                     <Form.Label>End Date</Form.Label>
-                    <Form.Control type='text' placeholder="MM/YY" />
+                    <Form.Control type='text' placeholder="MM/YY" value={props.details.EndDate} onChange={props.changeFn}/>
                 </Form.Group> 
             </Form.Row>
 
             <Form.Row>
-                <Form.Group as={Col} sm = "4" controlId="mode">
+                <Form.Group as={Col} sm = "4" controlId="Mode">
                     <Form.Label>Mode</Form.Label>
-                    <Form.Control type='text' placeholder="Part Time" />
+                    <Form.Control type='text' placeholder="Part Time" value={props.details.Mode} onChange={props.changeFn}/>
                 </Form.Group> 
-                <Form.Group as={Col} sm="4" controlId="industry">
+                <Form.Group as={Col} sm="4" controlId="Industry">
                     <Form.Label>Industry</Form.Label>
-                    <Form.Control type='text' placeholder="IT" />
+                    <Form.Control type='text' placeholder="IT" value={props.details.Industry} onChange={props.changeFn}/>
                 </Form.Group> 
-                <Form.Group as={Col} sm="4" controlId="Annual Salary">
+                <Form.Group as={Col} sm="4" controlId="AnnualSalary">
                     <Form.Label>Annual Salary</Form.Label>
-                    <Form.Control type='text' placeholder="84000" />
+                    <Form.Control type='text' placeholder="84000" value={props.details.AnnualSalary} onChange={props.changeFn}/>
                 </Form.Group> 
             </Form.Row>
 
-            <Form.Group as={Row} controlId="responsibility">
+            <Form.Group as={Row} controlId="Description">
                 <Form.Label column sm="2">Job Responsibility</Form.Label>
-                <Col sm="10"><Form.Control as='textarea' rows="5" placeholder="Description..." /></Col>
+                <Col sm="10"><Form.Control as='textarea' rows="5" placeholder="Description..." value={props.details.Description} onChange={props.changeFn}/></Col>
             </Form.Group>
              
         </Form>

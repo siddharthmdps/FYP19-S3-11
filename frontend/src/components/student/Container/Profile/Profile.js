@@ -58,6 +58,17 @@ class Profile extends Component {
             Industry: "Training",
             AnnualSalary: 33000,
             Description: "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est."
+        },
+        {
+            WorkExpID: 2,
+            Position: "Juniora",
+            Company: "Vimboq",
+            StartDate: "29/06/2018",
+            EndDate: "08/04/2019",
+            Mode: "Part Timew",
+            Industry: "Traininga",
+            AnnualSalary: 33000,
+            Description: "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est."
         }],
         JobPreference: [{
             JobPreferenceID: 1,
@@ -217,7 +228,6 @@ class Profile extends Component {
                                     </React.Fragment>
                                 );
                             })}
-                        {/* <iframe style={{width: '100%', height: '100vh'}} src="https://docs.google.com/document/d/e/2PACX-1vTqVSlMkDmBxnOs8qR2p1JLPDJUvS7IWlXkMFo7niI0tYVkkin5iDb41C08_c0CPXvm1Dqe4X9Lk680/pub?embedded=true"></iframe> */}
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>
@@ -227,15 +237,15 @@ class Profile extends Component {
                         Work Experience
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="2">
-                        <Card.Body>
+                        <Card.Body>   
                         {this.state.WorkExp.map(workExpDetail => {
-                                return (
-                                    <React.Fragment><WorkExperience key={workExpDetail.WorkExpID} details={workExpDetail} changeFn={event => this.changeWorkExp(event, workExpDetail.WorkExpID)} />  
+                            return (
+                                <React.Fragment>
+                                    <WorkExperience key={workExpDetail.WorkExpID} details={workExpDetail} changeFn={event => this.changeWorkExp(event, workExpDetail.WorkExpID)} />  
                                     <hr />
-                                    </React.Fragment>
-                                );
-                            })}
-                            <WorkExperience />
+                                </React.Fragment>
+                            );
+                        })}
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>
