@@ -35,7 +35,7 @@ app.get('', (req, res) => {
 })
 
 // Settings
-app.use(express.urlencoded())
+app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 const settings = {
     'allowedHeaders': ['Content-Type'], // headers that React is sending to the API
