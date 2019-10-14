@@ -82,8 +82,8 @@ class Profile extends Component {
             ValidUntil: "Mar 2020"
         }],
         Skills: [{
-            skillID: 1,
-            skillName: 'C++',
+            SkillID: 1,
+            SkillName: 'C++',
         }],
         Projects: [{
             ProjectID: 1,
@@ -133,6 +133,50 @@ class Profile extends Component {
         let tempState = this.state.JobPreference;
         tempState.forEach(element => {
             if(element.JobPreferenceID === elementID){
+                element[event.target.id] = event.target.value;
+            }
+        });
+        this.setState(tempState);
+    }
+
+    changeAwards = (event, elementID) => {
+        console.log(event.target.value, event.target.id, elementID);
+        let tempState = this.state.Awards;
+        tempState.forEach(element => {
+            if(element.AwardID === elementID){
+                element[event.target.id] = event.target.value;
+            }
+        });
+        this.setState(tempState);
+    }
+
+    changeCertification = (event, elementID) => {
+        console.log(event.target.value, event.target.id, elementID);
+        let tempState = this.state.Certification;
+        tempState.forEach(element => {
+            if(element.CertificateID === elementID){
+                element[event.target.id] = event.target.value;
+            }
+        });
+        this.setState(tempState);
+    }
+
+    changeSkills = (event, elementID) => {
+        console.log(event.target.value, event.target.id, elementID);
+        let tempState = this.state.Skills;
+        tempState.forEach(element => {
+            if(element.SkillID === elementID){
+                element[event.target.id] = event.target.value;
+            }
+        });
+        this.setState(tempState);
+    }    
+
+    changeProjects = (event, elementID) => {
+        console.log(event.target.value, event.target.id, elementID);
+        let tempState = this.state.Projects;
+        tempState.forEach(element => {
+            if(element.ProjectID === elementID){
                 element[event.target.id] = event.target.value;
             }
         });
