@@ -2,9 +2,8 @@ const {router, env, sha1, mysql, mypool} = require('../../util')
 
 // SUB-ROUTES
 // http://servername/employer/*
-//router.get('/joblist', (req, res) => { res.send('job list') })
-router.use('/postjob', require('./postjob'))
-router.use('/joblist', require('./jobList'))
+router.get('/joblist', (req, res) => { res.send('job list') })
+router.get('/postjob', (req, res) => { res.send('post job') })
 
 
 // http://servername/employer
