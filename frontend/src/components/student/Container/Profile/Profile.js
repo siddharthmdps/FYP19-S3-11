@@ -123,6 +123,13 @@ class Profile extends Component {
             Status: "Ongoing",
             Description: "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
             ProjectLink: "https://www.google.com"
+        },
+        {
+            ProjectID: 2,
+            ProjectTitle: "Personal Websites",
+            Status: "Ongoinging",
+            Description: "Duis abibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
+            ProjectLink: "https://www.google.com.loo"
         }],
         Resume: {
             ResumeID: 1,
@@ -331,7 +338,14 @@ class Profile extends Component {
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="6">
                         <Card.Body>
-                            <Projects />
+                            {this.state.Projects.map(projectDetail => {
+                                return (
+                                    <React.Fragment>
+                                        <Projects key={projectDetail.ProjectID} details={projectDetail} changeFn={event => this.changeProjects(event, projectDetail.ProjectID)} />  
+                                        <hr />
+                                    </React.Fragment>
+                                );
+                            })}
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>
