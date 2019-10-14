@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router({strict: true});
 
 const env = require('dotenv').config({
     path: './src/Config.env'
@@ -18,4 +18,4 @@ const mypool = mysql.createPool({
 module.exports = {express, router, env, sha1, mysql, mypool}
 
 // copy this when importing
-// const {express, router, env, sha1, mysql, mypool} = require('../../util')
+// const { router, env, sha1, mysql, mypool} = require('../../util')

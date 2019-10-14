@@ -1,13 +1,10 @@
 const express = require('express')
 const path = require('path')
-const app = express()
+const app = express({ strict: true })
 const cors = require('cors')
 
 // Defining paths for Express config
-const routerPath = path.join(__dirname, '../api/routes')
-const loginRoutes = require(`${routerPath}/login`)
-const createUserRoutes = require(`${routerPath}/createUser`)
-const employerRoutes = require(`${routerPath}/employer/employerRouter`)
+const routerPath = path.join(__dirname, '../api/routes/router')
 
 
 // Settings
@@ -23,19 +20,8 @@ const settings = {
 app.use(cors(settings));
 
 
-// Route handlers
-// app.use('/login', cors(settings), loginRoutes)
-// app.use('/createUser', cors(settings), createUserRoutes)
+// Route handler
+app.use('/', require(routerPath))
 
-// Employer
-app.use('/employer', employerRoutes)
-
-// Student
-// app.use('/students', cors(settings), studentRoutes)
-
-app.get('/', (req, res) => {
-    console.log('Received get ')
-    res.send('Hello from Express Server')
-})
 
 module.exports = app

@@ -1,8 +1,8 @@
-const {express, router, env, sha1, mysql, mypool} = require('../../util')
+const {router, env, sha1, mysql, mypool} = require('../../util')
 
 // SUB-ROUTES
 // http://servername/employer/*
-router.use('/joblist', require('./jobList'))
+
 
 // http://servername/employer
 router.get('/',(req, res) => {
@@ -31,6 +31,10 @@ router.get('/',(req, res) => {
     // });
     res.send('Hello from EMPLOYER API')
 });
+
+router.get('/joblist', (req, res) => { res.send('job list') })
+
+//router.use('/joblist', require('./jobList'))
 
 // router.get('/:employerid',(req, res, next) => {
 //     const employerid = req.params.employerid;
