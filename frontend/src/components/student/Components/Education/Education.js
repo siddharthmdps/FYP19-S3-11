@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, Row, Col, Accordion, Card} from 'react-bootstrap';
+import {Form, Row, Col} from 'react-bootstrap';
 
 const education = props => {
 

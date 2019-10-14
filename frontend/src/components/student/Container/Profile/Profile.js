@@ -8,11 +8,12 @@ import JobPreference from '../../Components/JobPreference/JobPreference';
 import Awards from '../../Components/Awards/Awards';
 import Certification from '../../Components/Certification/Certification';
 import Projects from '../../Components/Projects/Projects';
-import Resume from '../../Components/Resume/Resume';
+import Document from '../../Components/Document/Document';
 import {Accordion, Card, Container, Col, Row} from 'react-bootstrap';
 
 class Profile extends Component {
     state={
+        ProfileImage: "",
         PersonalParticulars: {
             StudentID: 100,
             FirstName: "Gill",
@@ -119,23 +120,23 @@ class Profile extends Component {
         }],
         Projects: [{
             ProjectID: 1,
-            ProjectTitle: "Personal Website",
+            Title: "Personal Website",
             Status: "Ongoing",
             Description: "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-            ProjectLink: "https://www.google.com"
+            Link: "https://www.google.com"
         },
         {
             ProjectID: 2,
-            ProjectTitle: "Personal Websites",
+            Title: "Personal Websites",
             Status: "Ongoinging",
             Description: "Duis abibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-            ProjectLink: "https://www.google.com.loo"
+            Link: "https://www.google.com.loo"
         }],
-        Resume: {
-            ResumeID: 1,
-            ResumeTitle: "Resume",
-            ResumeLink: ""
-        }
+        Document: [{
+            DocumentID: 1,
+            Title: "Resume",
+            Link: ""
+        }]
     }
 
     changePersonalParticulars = event => {
@@ -216,6 +217,17 @@ class Profile extends Component {
         let tempState = this.state.Projects;
         tempState.forEach(element => {
             if(element.ProjectID === elementID){
+                element[event.target.id] = event.target.value;
+            }
+        });
+        this.setState(tempState);
+    }
+
+    changeDocument = (event, elementID) => {
+        console.log(event.target.value, event.target.id, elementID);
+        let tempState = this.state.Document;
+        tempState.forEach(element => {
+            if(element.DocumentID === elementID){
                 element[event.target.id] = event.target.value;
             }
         });
@@ -356,7 +368,14 @@ class Profile extends Component {
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="8">
                         <Card.Body>
-                            <Resume />
+                            {this.state.Document.map(documentDetail => {
+                                return (
+                                    <React.Fragment>
+                                        <Document key={documentDetail.DocumentID} details={documentDetail} changeFn={event => this.changeDocument(event, documentDetail.DocumentID)} />  
+                                        <hr />
+                                    </React.Fragment>
+                                );
+                            })}
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>

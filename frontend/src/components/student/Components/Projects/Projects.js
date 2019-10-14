@@ -7,9 +7,9 @@ const projects = props => {
         <React.Fragment>
         <Form>
             <Form.Row>
-                <Form.Group as={Col} sm = "6" controlId="ProjectTitle">
+                <Form.Group as={Col} sm = "6" controlId="Title">
                     <Form.Label>Project Title</Form.Label>
-                    <Form.Control type='text' placeholder="Calculator App" value={props.details.ProjectTitle} onChange={props.changeFn}/>
+                    <Form.Control type='text' placeholder="Calculator App" value={props.details.Title} onChange={props.changeFn}/>
                 </Form.Group> 
                 <Form.Group as={Col} sm="6" controlId="Status">
                     <Form.Label>Status</Form.Label>
@@ -22,9 +22,9 @@ const projects = props => {
                 <Col sm="10"><Form.Control as='textarea' rows="5" placeholder="Description..." value={props.details.Description} onChange={props.changeFn}/></Col>
             </Form.Group>
              
-            <Form.Group as={Row} controlId="ProjectLink">
+            <Form.Group as={Row} controlId="Link">
                 <Form.Label column sm="2">Project Link</Form.Label>
-                <Col sm="10"><Form.Control type='text' placeholder="www.pegasus.github.com" value={props.details.ProjectLink} onChange={props.changeFn}/></Col>
+                <Col sm="10"><Form.Control type='text' placeholder="www.pegasus.github.com" value={props.details.Link} onChange={props.changeFn}/></Col>
             </Form.Group>
         </Form>
         </React.Fragment>
