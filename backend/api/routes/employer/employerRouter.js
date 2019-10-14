@@ -1,6 +1,11 @@
 const {express, router, env, sha1, mysql, mypool} = require('../../util')
 
-router.get('/',(req, res, next) => {
+// SUB-ROUTES
+// http://servername/employer/*
+router.use('/joblist', require('./jobList'))
+
+// http://servername/employer
+router.get('/',(req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     // mypool.getConnection(function(err,connection) {
     //     if (err) {
@@ -97,5 +102,7 @@ router.post('/', (req, res, next) => {
         connection.release();     
     });
 });
+
+
 
 module.exports = router
