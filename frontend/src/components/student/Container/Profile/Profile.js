@@ -27,14 +27,29 @@ class Profile extends Component {
             Nationality: "Singapore"
         },
         Education: [{
+            EducationID: 1,
             University: "Faulkner University",
             Degree: "Diploma",
             FieldOfStudy: "Systems Administrator I",
             Major: "DSS",
+            StartDate: "",
+            EndDate: "",
+            Mode: "Part-Time",
+            GPA: "Second-class"
+        },
+        {
+            EducationID: 2,
+            University: "Faulkners University",
+            Degree: "Diplomas",
+            FieldOfStudy: "Systemsa Administrator I",
+            Major: "DSSa",
+            StartDate: "",
+            EndDate: "",
             Mode: "Part-Time",
             GPA: "Second-class"
         }],
         WorkExp: [{
+            WorkExpID: 1,
             Position: "Junior",
             Company: "Vimbo",
             StartDate: "29/06/2018",
@@ -45,6 +60,7 @@ class Profile extends Component {
             Description: "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est."
         }],
         JobPreference: [{
+            JobPreferenceID: 1,
             Industry: "Accounting",
             Position: "Senior",
             JobType: "Contract",
@@ -53,28 +69,73 @@ class Profile extends Component {
             Availability: "Immediate"
         }],
         Awards: [{
+            AwardID: 1,
             Award: "Dean's List",
             Date: "Aug 2018",
             Description: "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris."
         }],
         Certification: [{
+            CertificateID: 1,
             Name: "CNNP Routing and Switching",
             IssuedBy: "Scrum Alliance",
             IssueDate: "Mar 2019",
             ValidUntil: "Mar 2020"
         }],
+        Skills: [{
+            skillID: 1,
+            skillName: 'C++',
+        }],
         Projects: [{
+            ProjectID: 1,
             ProjectTitle: "Personal Website",
             Status: "Ongoing",
             Description: "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
             ProjectLink: "https://www.google.com"
-        }]
+        }],
+        Resume: {
+            ResumeID: 1,
+            ResumeTitle: "Resume",
+            ResumeLink: ""
+        }
     }
 
     changePersonalParticulars = event => {
         console.log(event.target.value, event.target.id, this.state);
         let tempState = this.state.PersonalParticulars;
         tempState[event.target.id] = event.target.value;
+        this.setState(tempState);
+    }
+
+    changeEducation = (event, elementID) => {
+        console.log(event.target.value, event.target.id, elementID);
+        let tempState = this.state.Education;
+        tempState.forEach(element => {
+            if(element.EducationID === elementID){
+                element[event.target.id] = event.target.value;
+            }
+        });
+        this.setState(tempState);
+    }
+
+    changeWorkExp = (event, elementID) => {
+        console.log(event.target.value, event.target.id, elementID);
+        let tempState = this.state.WorkExp;
+        tempState.forEach(element => {
+            if(element.WorkExpID === elementID){
+                element[event.target.id] = event.target.value;
+            }
+        });
+        this.setState(tempState);
+    }
+
+    changeJobPreference = (event, elementID) => {
+        console.log(event.target.value, event.target.id, elementID);
+        let tempState = this.state.JobPreference;
+        tempState.forEach(element => {
+            if(element.JobPreferenceID === elementID){
+                element[event.target.id] = event.target.value;
+            }
+        });
         this.setState(tempState);
     }
 
@@ -105,7 +166,13 @@ class Profile extends Component {
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="1">
                         <Card.Body>
-                            <Education />
+                            {this.state.Education.map(educationDetail => {
+                                return (
+                                    <React.Fragment><Education key={educationDetail.EducationID} details={educationDetail} changeFn={event => this.changeEducation(event, educationDetail.EducationID)} />  
+                                    <hr />
+                                    </React.Fragment>
+                                );
+                            })}
                         {/* <iframe style={{width: '100%', height: '100vh'}} src="https://docs.google.com/document/d/e/2PACX-1vTqVSlMkDmBxnOs8qR2p1JLPDJUvS7IWlXkMFo7niI0tYVkkin5iDb41C08_c0CPXvm1Dqe4X9Lk680/pub?embedded=true"></iframe> */}
                         </Card.Body>
                     </Accordion.Collapse>
