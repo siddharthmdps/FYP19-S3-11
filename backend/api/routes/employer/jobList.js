@@ -1,4 +1,4 @@
-const {express, router, env, sha1, mysql, mypool} = require('../../util')
+const { router, env, sha1, mysql, mypool} = require('../../util')
 
 // this is dummy data
 const jobList = [
@@ -26,6 +26,7 @@ const jobList = [
 
 // to return a list of jobs posted by this particular employer
 // will use username
+// http://servername/employer/joblist
 router.get('/', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     console.log(`Request for joblist received`)

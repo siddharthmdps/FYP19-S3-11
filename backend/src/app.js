@@ -4,7 +4,7 @@ const app = express({ strict: true })
 const cors = require('cors')
 
 // Defining paths for Express config
-const routerPath = path.join(__dirname, '../api/routes/router')
+const routerPath = path.join(__dirname, '../api/routes/')
 
 
 // Settings

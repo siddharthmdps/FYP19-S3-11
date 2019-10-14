@@ -1,5 +1,7 @@
+// This file will do the routing
+
 const express = require('express')
-const router = express.Router({strict : true})
+const router = express.Router()
 const path = require('path')
 
 // PATHS
@@ -12,8 +14,11 @@ const studentRoutes = require(`${currentPath}/student/studentRouter`)
 // ROUTING
 router.use('/login', loginRoutes)
 router.use('/createUser', createUserRoutes)
+
+//router.use('/employer/joblist', require(`${currentPath}/jobList`))
 router.use('/employer', employerRoutes)
-router.use('/students', studentRoutes)
+
+router.use('/student', studentRoutes)
 
 router.get('/', (req, res) => {
     console.log(`Received GET from ${currentPath}`)
