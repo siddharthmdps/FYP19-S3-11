@@ -55,6 +55,7 @@ class Navbar extends Component {
               <button type="button" className="btn btn-dark" id="btn-logout" 
                 onClick={ () => {
                     localStorage.clear()
+                    document.location.reload(true)
                 }
               }>Log Out</button>
     

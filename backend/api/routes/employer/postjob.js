@@ -1,24 +1,18 @@
-const express = require('express');
-const router = express.Router();
+const {express, router, env, sha1, mysql, mypool} = require('../../util')
 
-const env = require('dotenv').config({
-    path: './src/Config.env'
-});
+router.get('/', (req,res) => {
+    console.log('get request /employer/postjob')
+    res.send('Hello from /employer/postjob')
+})
 
-const sha1 = require('sha1');
-const mysql = require('mysql');
-
-const mypool = mysql.createPool({
-    host: process.env.Db_Host,
-    user: process.env.Db_User,
-    password: process.env.Db_Password,
-    database: process.env.Db_Source,
-    port: process.env.Db_Port
-});
-
-router.post('/', (req, res, next ) => {
+router.post('/', (req, res ) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    console.log(req.body)
+    console.log(`Received new job ad`,req.body)
+
+    // STORE JSON inside DB
+    res.send({
+        received: req.body
+    })
 })
 
 module.exports = router;

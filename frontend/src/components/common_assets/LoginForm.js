@@ -23,9 +23,9 @@ class LoginForm extends Component {
 
         this.props.updateLoginState()
         // THIS CODE COMMUNICATES WITH BACKEND
-        // var apiurl = config.getAPIURL()
+        // var apiurl = config.getAPIURL() + 'login/'
         // if(username && password && usertype) {
-        //     var url = apiurl + username + "/" + password + "/" + usertype
+        //     var url = apiurl + "login/" + username + "/" + password + "/" + usertype
         //     fetch(url, {
         //         method: 'post',
         //         data: "{'username':'" + username + "',{'password':'" + password + "', 'usertype':'" + usertype + "'}",
