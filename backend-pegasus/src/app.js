@@ -3,9 +3,6 @@ const path = require('path')
 const app = express({ strict: true })
 const cors = require('cors')
 
-// Defining paths for Express config
-const routerPath = path.join(__dirname, '../api/routes/')
-
 
 // Settings
 app.use(express.urlencoded({ extended: true }))
@@ -21,7 +18,7 @@ app.use(cors(settings));
 
 
 // Route handler
-app.use('/', require(routerPath))
+app.use('/', require(path.join(__dirname, '../api/routes/')))
 
 
 module.exports = app

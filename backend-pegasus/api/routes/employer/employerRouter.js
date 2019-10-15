@@ -4,19 +4,13 @@ const {router, env, sha1, mysql, mypool} = require('../../util')
 // SUB-ROUTES
 // http://servername/employer/*
 // GET
-router.get('/joblist', (req, res) => {
-    const jobList = require('./dummyJSON/joblist.json') // dummy JSON
-    res.send(jobList)
-})
+const {getJobList} = require('./joblist')
+router.get('/joblist', getJobList)
 
 // POST
-router.post('/postjob', (req, res) => { 
-    console.log(`Received new job ad`,req.body)
-    // STORE JSON (res.body) inside DB
-    res.send({
-        received: req.body
-    })
-})
+const {postjob} = require('./postjob')
+router.post('/postjob', postjob)
+
 router.post('/updateprofile', (req, res) => { 
     console.log(`Request to updte profile`, req.body)
 
@@ -25,8 +19,6 @@ router.post('/updateprofile', (req, res) => {
         received: req.body
     })
 })
-
-
 
 // http://servername/employer
 router.get('/',(req, res) => {
