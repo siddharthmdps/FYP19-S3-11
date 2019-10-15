@@ -2,21 +2,25 @@
     {
         "title": "Software Engineer",
         "desc": "Do Software stuff with the software",
-        "employerID": "Google"
+        "username": "Google",
+        "id": 1
     },
     {
         "title": "Technician",
         "desc": "Fix Machines using tools and stuff",
-        "employerID": "HP"
+        "username": "HP",
+        "id": 2
     },
     {
         "title": "Business Man",
         "desc": "Make money for the company",
-        "employerID": "Biznez"
+        "username": "Biznez",
+        "id": 3
     },
     {
         "title": "Accountant",
         "desc": "Do calculations and stuff",
-        "employerID": "AiA"
+        "username": "AiA",
+        "id": 4
     }
 ]
