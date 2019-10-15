@@ -8,7 +8,7 @@ const profileImage = props => {
         <React.Fragment>
             <Container className={classes.ProfileImage}>
                 <Row>
-                    <Image src = "assets/images/logo.jpg" className={classes.Image}/>
+                    <Image src = {props.imageLink} className={classes.Image}/>
                 </Row>
                 <br />
                 <Row>

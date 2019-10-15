@@ -13,7 +13,7 @@ import {Accordion, Card, Container, Col, Row} from 'react-bootstrap';
 
 class Profile extends Component {
     state={
-        ProfileImage: "",
+        ProfileImage: "https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg",
         PersonalParticulars: {
             StudentID: 100,
             FirstName: "Gill",
@@ -240,7 +240,7 @@ class Profile extends Component {
                 <br />
                 <Row>
                 <Col md={{offset: 1, span:1}}>
-                    <ProfileImage />
+                    <ProfileImage imageLink={this.state.ProfileImage}/>
                 </Col>
                 <Col md={{offset: 1, span:9}} >
                 <Accordion defaultActiveKey="0" className={classes.Accordian}>
