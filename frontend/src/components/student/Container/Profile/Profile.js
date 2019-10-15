@@ -48,6 +48,17 @@ class Profile extends Component {
             EndDate: "",
             Mode: "Part-Time",
             GPA: "Second-class"
+        },
+        {
+            EducationID: 3,
+            University: "Faulkners University",
+            Degree: "Diplomas",
+            FieldOfStudy: "Systemsa Administrator I",
+            Major: "DSSa",
+            StartDate: "",
+            EndDate: "",
+            Mode: "Part-Time",
+            GPA: "Second-class"
         }],
         WorkExp: [{
             WorkExpID: 1,
@@ -364,7 +375,7 @@ class Profile extends Component {
 
                 <Card className={classes.Card}>
                     <Accordion.Toggle as={Card.Header} eventKey="8" className={classes.CardHeader}>
-                        Resume
+                        Upload Documents
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="8">
                         <Card.Body>
