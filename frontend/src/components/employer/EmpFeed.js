@@ -15,8 +15,8 @@ class EmpFeed extends Component {
 
     // to fetch the job list from the given url
     updateJobList = () => {
-        const apiURL = config.getAPIURL() + 'employer/joblist'  
-        const url = 'http://localhost:3030/employer/joblist' // change the url here
+        const apiURL = config.getAPIURL() + 'employer/joblist/1'  
+//        const localApiUrl =  config.getLocalApiURL() + 'employer/joblist'
         fetch(apiURL)
         .then(response => response.json())
         .then(data => {

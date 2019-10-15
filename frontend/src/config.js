@@ -1,5 +1,9 @@
 export default {
     getAPIURL() {
-        return "http://localhost:3001/"
+        return "https://pegasus-backend.herokuapp.com/"
+    },
+
+    getLocalApiURL() {
+        return "http://localhost:3001"
     }
 }
