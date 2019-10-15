@@ -1,9 +1,10 @@
+const {env, sha1, mysql, mypool} = require('../../util')
+
 // return joblist matched by employer id
 const joblistJSON = require('./dummyJSON/joblist.json')
 
 const getJobList = (req, res) => {
     const empID = parseInt(req.params.id)
-
     console.log(`Requesting joblist for ${empID}`)
     
     const found = joblistJSON.some(job => job.id === empID)
