@@ -103,7 +103,12 @@ export default class Navigation extends Component {
                           <Link to="/Settings" className="btn btn-default btn-flat">Settings</Link>
                         </div>
                         <div className="pull-right">
-                          <Link to="/Signout" className="btn btn-default btn-flat">Sign out</Link>
+                        <button type="button" className="btn btn-dark" id="btn-logout" 
+                    onClick={ () => {
+                        localStorage.clear()
+                        document.location.reload(true)
+                    }
+                }>Log Out</button>
                         </div>
                       </li>
                     </ul>
