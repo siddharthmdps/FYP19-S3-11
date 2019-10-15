@@ -12,7 +12,6 @@
     "client": "cd frontend && npm start",
     "server": "cd backend && npm start",
     "prod": "concurrently \"npm run server\" \"npm run client\" ",
-    "dev": "concurrently \"npm run testserver\" \"npm run client\"  ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
