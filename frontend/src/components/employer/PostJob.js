@@ -10,17 +10,19 @@ class PostJob extends Component {
 
     postJob = () => {
         const job = {
+            empid: localStorage.getItem('id'),
             title: document.getElementById('job-title').value,
-            desc: document.getElementById('job-desc').value,
+            description: document.getElementById('job-desc').value,
             industry: document.getElementById('job-industry').value,
-            skills: document.getElementById('job-skills').value
+            requiredskills: document.getElementById('job-skills').value
         }
         
         if( job.title === "" || job.desc === "" || job.industry === "" || job.skills === "" ) alert('Please fill in all the required fields')
         else {
-            var apiurl = config.getAPIURL()
-            const url = apiurl + "employer/postjob" // REPLACE URL HERE
-            fetch (url , {
+            const apiurl = config.getAPIURL() + "employer/postjob"
+            const localhost = 'http://localhost:3001/employer/postjob/'
+
+            fetch (apiurl , {
                method: 'POST',
                headers: {
                     'Content-Type': 'application/json'
@@ -28,8 +30,13 @@ class PostJob extends Component {
                body: JSON.stringify(job)
             })
             .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error)) 
+            .then(data => {
+                if(data.message === 'success') {
+                    alert('Job posted!')
+                    document.location.reload(true)
+                }
+            })
+            .catch(error => console.log(error))
         }
     }
 

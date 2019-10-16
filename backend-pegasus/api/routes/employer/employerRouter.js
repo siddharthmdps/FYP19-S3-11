@@ -9,38 +9,13 @@ router.get('/joblist/:id', getJobList)
 
 // POST
 const postjob = require('./postjob')
-router.post('/postjob/:id', postjob)
+router.post('/postjob', postjob)
 
 const updateprofile = require('./updateprofile')
-router.post('/updateprofile/:id', updateprofile)
+router.post('/updateprofile', updateprofile)
 
 // http://servername/employer
-router.get('/',(req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    // mypool.getConnection(function(err,connection) {
-    //     if (err) {
-	// 		connection.release();
-	//   		console.log(' Error getting mysql_pool connection: ' + err);
-	//   		throw err;
-	//   	}
-    //     connection.query('SELECT * FROM employerinformation', function(error, rows, fields) {
-    //         if (error) {
-    //             res.status(500).json({
-    //                 message: error
-    //             });
-    //         }
-    //         if (rows && rows.length > 0) {
-    //             res.send(rows);   
-    //         }
-    //         else if (!rows || rows.length == 0) {
-    //             res.status(200).json({
-    //                 message: "Failed!"
-    //             });
-    //         }
-    //     });
-    // });
-    res.send('Hello from EMPLOYER API')
-});
+router.get('/',(req, res) => {res.send('Hello from EMPLOYER API')})
 
 // router.get('/:employerid',(req, res, next) => {
 //     const employerid = req.params.employerid;

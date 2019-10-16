@@ -42,9 +42,9 @@ class App extends Component {
     else {
       // PLACE YOUR APP HERE
       switch (this.state.userType) {
-        case 'Student' : return <Student/>;
-        case 'Employer' : return <Employer/>;
-        case 'Admin' : return <Admin/>;
+        case 'student' : return <Student/>;
+        case 'employer' : return <Employer/>;
+        case 'admin' : return <Admin/>;
 
         default : return <h3>usertype not known</h3>
       }
