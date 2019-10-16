@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Navbar from '../common_assets/Navbar';
+import Navbar from '../common_assets/Navbar2';
 import Profile from './Container/Profile/Profile';
 
 class Student extends Component {
