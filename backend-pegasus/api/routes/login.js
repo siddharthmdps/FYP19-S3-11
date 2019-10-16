@@ -2,8 +2,9 @@ const { router, env, sha1, mysql, mypool} = require('../util')
 
 router.post('/', (req, res, next) => {
     const username = req.body.username.toLowerCase()
-    const password = req.body.password
+    const password = sha1(req.body.password)
     var usertype = req.body.usertype.toLowerCase()
+
 
     // res.send({username, password, usertype})
 
