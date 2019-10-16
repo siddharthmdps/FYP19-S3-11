@@ -22,7 +22,8 @@ class LoginForm extends Component {
         localStorage.setItem('userType', usertype)
 
         this.props.updateLoginState()
-        // THIS CODE COMMUNICATES WITH BACKEND
+        
+        // // THIS CODE COMMUNICATES WITH BACKEND
         // var apiurl = config.getAPIURL() + 'login/'
         // if(username && password && usertype) {
         //     var url = apiurl + "login/" + username + "/" + password + "/" + usertype
