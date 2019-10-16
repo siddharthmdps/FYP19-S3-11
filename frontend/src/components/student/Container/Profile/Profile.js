@@ -247,13 +247,14 @@ class Profile extends Component {
 
     render(){
         return(
+
             <Container fluid>
                 <br />
                 <Row>
-                <Col md={{offset: 1, span:1}}>
+                <Col  md={{offset: 0, span:1}}>
                     <ProfileImage imageLink={this.state.ProfileImage}/>
                 </Col>
-                <Col md={{offset: 1, span:9}} >
+                <Col md={{offset: 2, span:9}} >
                 <Accordion defaultActiveKey="0" className={classes.Accordian}>
                 <Card className={classes.Card}>
                     <Accordion.Toggle as={Card.Header} eventKey="0" className={classes.CardHeader}>
