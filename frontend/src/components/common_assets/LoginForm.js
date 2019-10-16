@@ -14,15 +14,29 @@ class LoginForm extends Component {
         const password = document.getElementById("input-password").value
         const usertype = document.getElementById("input-usertype").value
 
+        const loginParticulars = {username, password, usertype}
         
-        console.log(username, password, usertype)
+        console.log(loginParticulars)
+        //config.getAPIURL() + 'login/'
+        var apiurl = "http://localhost:3001/login"
+        if(username && password && usertype) {
+            fetch(apiurl, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(loginParticulars)
+            })
+            .then(res => res.json())
+            .then(data => console.log(data.body))
+            .catch(error => console.log(error)) 
+        }
         
-        localStorage.setItem('isAuthenticated', true)
-        localStorage.setItem('username', username)
-        localStorage.setItem('userType', usertype)
 
-        this.props.updateLoginState()
-        
+        // localStorage.setItem('isAuthenticated', true)
+        // localStorage.setItem('username', username)
+        // localStorage.setItem('userType', usertype)
+
+        // this.props.updateLoginState()
+
         // // THIS CODE COMMUNICATES WITH BACKEND
         // var apiurl = config.getAPIURL() + 'login/'
         // if(username && password && usertype) {

@@ -1,7 +1,7 @@
 const { router, env, sha1, mysql, mypool} = require('../util')
 
 router.post('/', (req, res, next) => {
-    const username = req.body.username;
+    const username = req.body.username.toLowerCase();
     const password = req.body.password;
     var usertype = req.body.usertype.toLowerCase();
     //res.setHeader('Access-Control-Allow-Origin', '*');
