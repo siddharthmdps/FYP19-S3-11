@@ -26,7 +26,7 @@ class LoginForm extends Component {
                 body: JSON.stringify(loginParticulars)
             })
             .then(res => res.json())
-            .then(data => console.log(data.body))
+            .then(data => console.log(data.message, data.body))
             .catch(error => console.log(error)) 
         }
         

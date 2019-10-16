@@ -31,7 +31,7 @@ router.post('/', (req, res, next) => {
                     }
                     else if( !rows || rows.length == 0 ) {
                         res.status(200).json({
-                            message: 'Empty table'
+                            message: 'Not found'
                         })
                     }
                 })
