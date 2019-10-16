@@ -4,12 +4,19 @@
 .Nav{
     /* padding-right: 100px; */
 }
+.SearchIcon{
+    background-color: #fff;
+    border: none;
+}
+.SearchBox{
+    border: none;
+}
 .DropdownMenu{
     background-color: peru;
     margin-left: -100px;
     margin-top: 6px;
 }
-.Test{
+.NavProfile{
     background-color: transparent;
     margin-right: 9px;
     height: 50px;
@@ -18,12 +25,23 @@
     border-radius: 50%;
     border: none;
 }
-.Test img{
+.NavProfile img{
     height: 100%;
     width: 100%;
     border-radius: 50%;
 }
-.Test::after {
+.NavProfile::after {
     border: none;
     content: none;
 }
+.MobileMenu{
+    display: none;
+}
+@media only screen and (max-width: 600px) {
+    .NavProfile{
+        display: none;
+    }
+    .MobileMenu{
+        display: block;
+    }
+  }
