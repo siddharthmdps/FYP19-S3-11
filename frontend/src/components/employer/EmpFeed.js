@@ -11,11 +11,14 @@ class EmpFeed extends Component {
             jobList: [],
             error: false
         }
+        this.employername = localStorage.getItem('username')
     }
 
     // to fetch the job list from the given url
     updateJobList = () => {
-        const apiURL = config.getAPIURL() + 'employer/joblist/1'  
+
+        const empID = localStorage.getItem('id')
+        const apiURL = config.getAPIURL() + 'employer/joblist/' + empID
 //        const localApiUrl =  config.getLocalApiURL() + 'employer/joblist'
         fetch(apiURL)
         .then(response => response.json())
@@ -58,8 +61,8 @@ class EmpFeed extends Component {
                                         
                                         {/* <a href="#">Follow</a> */}
                                     </div>
-                                    <p>{job.desc}</p>
-                                    <span className="d-block">{job.employerID}</span>
+                                    <p>{job.description}</p>
+                                    <span className="d-block">{this.employername}</span>
                                     </div>
                                 </div>
                             ) )

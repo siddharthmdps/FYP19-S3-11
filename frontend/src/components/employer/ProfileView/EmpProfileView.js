@@ -41,9 +41,6 @@ const EmpProfileView =(props)=> {
                         </LargeCard>
                     </div>
                     <br/>
-                    <div className = "row">
-                        <EmpFeed/>
-                    </div>
                 </div>
             </div>
         </div>

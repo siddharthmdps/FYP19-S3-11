@@ -55,6 +55,9 @@ Week 12
 
 Week 13
 - Restructuring the project files and transforming the website from using different pages to single page application
-- Setting up SQL database on Microsoft Azure
 - Learning how to POST using fetch API and sharing the knowledge to group members
 - Setting up documentations for frontend and backend integrations
+
+Week 14
+- Setup mySQL database on Amazon Web services
+- Began to integrate frontend and backend

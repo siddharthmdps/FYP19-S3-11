@@ -9,10 +9,10 @@ router.get('/joblist/:id', getJobList)
 
 // POST
 const postjob = require('./postjob')
-router.post('/postjob/', postjob)
+router.post('/postjob', postjob)
 
 const updateprofile = require('./updateprofile')
-router.post('/updateprofile/', updateprofile)
+router.post('/updateprofile', updateprofile)
 
 // http://servername/employer
 router.get('/',(req, res) => {res.send('Hello from EMPLOYER API')})
