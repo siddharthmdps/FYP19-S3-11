@@ -3,9 +3,11 @@ const { router, env, sha1, mysql, mypool} = require('../util')
 router.post('/', (req, res, next) => {
     const username = req.body.username;
     const password = sha1(req.body.password);
-    var usertype = req.body.usertype;
-    usertype = usertype.toLowerCase();
+    var usertype = req.body.usertype.toLowerCase();
     res.setHeader('Access-Control-Allow-Origin', '*');
+
+    //res.send({username, password, usertype})
+
     mypool.getConnection(function(err,connection) {
         if (err) {
 			connection.release();
@@ -42,7 +44,7 @@ router.post('/', (req, res, next) => {
                 }
                 else if (!results || results.length == 0) {
                     res.status(200).json({
-                        message: "Failed!"
+                        message: "User not found!"
                     });
                 }
             });
@@ -54,6 +56,7 @@ router.post('/', (req, res, next) => {
 
         connection.release();     
     });
+
 });
 
 module.exports = router;
