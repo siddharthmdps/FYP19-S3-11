@@ -10,15 +10,16 @@ class LoginForm extends Component {
     }
 
     validateUser = () => {
-        const username = document.getElementById("input-username").value
+        const username = document.getElementById("input-username").value.toLowerCase()
         const password = document.getElementById("input-password").value
-        const usertype = document.getElementById("input-usertype").value
+        const usertype = document.getElementById("input-usertype").value.toLowerCase()
 
         const loginParticulars = {username, password, usertype}
         
-        console.log(loginParticulars)
-        //config.getAPIURL() + 'login/'
-        var apiurl = "http://localhost:3001/login"
+        
+        const apiurl = config.getAPIURL() + 'login/'
+        //const localhost = "http://localhost:3001/login"
+
         if(username && password && usertype) {
             fetch(apiurl, {
                 method: 'POST',
@@ -26,41 +27,25 @@ class LoginForm extends Component {
                 body: JSON.stringify(loginParticulars)
             })
             .then(res => res.json())
-            .then(data => console.log(data.message, data.body))
+            .then(data => {
+                console.log(data.message)
+
+
+                const userInfo = data.body[0]
+                console.log(userInfo)
+
+                if(data.message === 'success'){
+                    localStorage.setItem('isAuthenticated', true)
+                    localStorage.setItem('username', username)
+                    localStorage.setItem('userType', usertype)
+                    localStorage.setItem('id', userInfo.id)
+
+                    this.props.updateLoginState()
+                }
+            })
             .catch(error => console.log(error)) 
         }
         
-
-        // localStorage.setItem('isAuthenticated', true)
-        // localStorage.setItem('username', username)
-        // localStorage.setItem('userType', usertype)
-
-        // this.props.updateLoginState()
-
-        // // THIS CODE COMMUNICATES WITH BACKEND
-        // var apiurl = config.getAPIURL() + 'login/'
-        // if(username && password && usertype) {
-        //     var url = apiurl + "login/" + username + "/" + password + "/" + usertype
-        //     fetch(url, {
-        //         method: 'post',
-        //         data: "{'username':'" + username + "',{'password':'" + password + "', 'usertype':'" + usertype + "'}",
-        //         headers: {
-        //             'Accept': 'application/json',
-        //             'Content-Type': 'application/json'
-        //         }
-        //     }).then(res=>res.json())
-        //     .then(res => {
-        //         console.log(res)
-        //         if (res.message && res.message.indexOf("Success") !== -1) {
-        //             auth.login(() => {
-        //                 props.history.push("/home")
-        //             })
-        //         }
-        //         else {
-        //             alert('Invalid username or password')
-        //         }
-        //     })
-        // }
     }
 
     render () {
