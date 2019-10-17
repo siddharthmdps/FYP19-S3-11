@@ -1,14 +1,13 @@
 import React from 'react';
-import {Navbar, Nav, Form, FormControl, Button, Dropdown, Image, InputGroup} from 'react-bootstrap';
+import {Navbar, Nav, Form, FormControl, Dropdown, Image, InputGroup} from 'react-bootstrap';
 import Logo from './Logo';
 import classes from './Navbar2.module.css';
 
 const navbar = props => (
-    <Navbar bg="dark" expand="lg" sticky='top'>
-  <Navbar.Brand href="#home" className={classes.Logo}><Logo /></Navbar.Brand>
+  <Navbar bg="dark" expand="lg" sticky='top'>
+  <Navbar.Brand href="#home" className="mr-sm-2" className={classes.Logo}><Logo /></Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Form inline>
-  
   <InputGroup >
     <InputGroup.Prepend>
       <InputGroup.Text className={classes.SearchIcon}>
@@ -16,18 +15,10 @@ const navbar = props => (
       </InputGroup.Text>
       
     </InputGroup.Prepend>
-    <FormControl type="text" className={classes.SearchBox}/>
+    <FormControl type="text" xs={1} className={classes.SearchBox}/>
   </InputGroup>
-  
-      {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-info">Search</Button> */}
     </Form>
   <Navbar.Collapse id="basic-navbar-nav">
-    {/* <Nav className="mr-auto">
-        
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#link">Link</Nav.Link>
-    </Nav> */}
     <Nav className="mr-auto"></Nav>
     <Nav className="justify-content-end" className={classes.Nav}>
         <Dropdown>
@@ -40,17 +31,13 @@ const navbar = props => (
                 <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
+        
         <Nav className="mr-auto" className={classes.MobileMenu}>
         
-        <Nav.Link href="#home">Action</Nav.Link>
-        <Nav.Link href="#link">Another Action</Nav.Link>
-        <Nav.Link href="#link">Something else</Nav.Link>
-    </Nav>
-
-      {/* <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-success">Search</Button>
-    </Form> */}
+          <Nav.Link href="#home">Action</Nav.Link>
+          <Nav.Link href="#link">Another Action</Nav.Link>
+          <Nav.Link href="#link">Something else</Nav.Link>
+        </Nav>
     </Nav>
   </Navbar.Collapse>
 </Navbar>
