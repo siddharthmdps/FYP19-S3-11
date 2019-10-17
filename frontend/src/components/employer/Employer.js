@@ -16,7 +16,12 @@ class Employer extends Component {
     constructor () {
         super()
         this.state = {
-            username : localStorage.getItem('username'),
+            username: localStorage.getItem('username'),
+            companyName: "",
+            companyPhone: null,
+            companyEmail: null,
+            companyAddress: null,
+            industry: null,
             mainContent : null
         }
     }
@@ -32,6 +37,7 @@ class Employer extends Component {
 
         this.setState( {
             mainContent: event.target.id
+            
         })
     }
 
@@ -52,6 +58,15 @@ class Employer extends Component {
             )   
             case '*' : return <h3>{contentID} not found</h3>
         }
+    }
+
+    fetchEmployerDetails = () => {
+        const apiurl = config.getAPIURL() + "employer"
+        const localhost = 'http://localhost:3001/employer'
+    }
+
+    componentDidMount() {
+
     }
 
     render () {
