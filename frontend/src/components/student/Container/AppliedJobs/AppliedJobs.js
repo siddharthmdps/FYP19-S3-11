@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Container, Row, Col, Card} from 'react-bootstrap';
+import classes from './AppliedJobs.module.css';
 
 class AppliedJobs extends Component{
     render(){
@@ -7,7 +8,7 @@ class AppliedJobs extends Component{
             <Container fluid>
                 <br />
                 <Row>
-                    Dashboard <span style={{marginLeft: '5px' }}><sub>Control Panel</sub></span>
+                    Applied Jobs
                 </Row>
                 <br />
                 <Row>
@@ -56,13 +57,16 @@ class AppliedJobs extends Component{
                             Reports
                             </Card.Text>
                         </Card.Body>
+                        <Card.Footer>
+                            Click to contine
+                        </Card.Footer>
                     </Card>
 
                     </Col>
                 </Row>
                 <br />
                 <Row>
-                    <Col md={{span: 7}} style={{backgroundColor: 'blue', height: '100vh'}}>
+                    <Col md={{span: 3}}>
                         
                     <Card>
                         <Card.Body>
@@ -73,7 +77,7 @@ class AppliedJobs extends Component{
                         </Card.Body>
                     </Card>
                     </Col>
-                    <Col md={{span: 5}} style={{backgroundColor: 'red', height: '100vh'}}>
+                    <Col md={{span: 6}}>
                     <Card>
                         <Card.Body>
                             <Card.Title>Latest Added Candidates</Card.Title>
