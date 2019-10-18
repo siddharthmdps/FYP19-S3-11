@@ -25,9 +25,10 @@ const SelectFormField =(props)=>{
             <div className="col-sm-9">
                 <select className="form-control" id={props.pid}>
                     <option selected>Choose...</option>
-                    <option value="1">Engineering</option>
-                    <option value="2">Business</option>
-                    <option value="3">Accountancy</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Business">Business</option>
+                    <option value="Accountancy">Accountancy</option>
+                    <option value="IT">IT</option>
                 </select>
             </div>
         </div>

@@ -10,8 +10,6 @@ router.get('/joblist/:id', getJobList)
 const postjob = require('./postjob')
 router.post('/postjob', postjob)
 
-const updateprofile = require('./updateprofile')
-router.post('/updateprofile', updateprofile)
 
 // http://servername/employer
 // to provide employer info
@@ -52,5 +50,8 @@ router.get('/:id',(req, res) => {
         } )
     }
 })
+
+const updateprofile = require('./updateprofile')
+router.put('/:id', updateprofile)
 
 module.exports = router

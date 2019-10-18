@@ -55,7 +55,7 @@ class Employer extends Component {
             case 'viewprofile' : 
                 return <EmpProfileView companyName={this.state.companyName}/>
             case 'editprofile' : 
-                return <EmpProfileEdit companyName={this.state.companyName}
+                return <EmpProfileEdit empID={this.state.id} companyName={this.state.companyName}
                         companyPhone={this.state.companyPhone} companyAddress={this.state.companyAddress}
                         industry={this.state.industry} companyDescription={this.state.companyDescription}/>
             case 'about' : 
