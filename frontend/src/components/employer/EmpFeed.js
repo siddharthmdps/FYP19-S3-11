@@ -19,12 +19,12 @@ class EmpFeed extends Component {
 
         const empID = localStorage.getItem('id')
         const apiURL = config.getAPIURL() + 'employer/joblist/' + empID
-//        const localApiUrl =  config.getLocalApiURL() + 'employer/joblist'
-        fetch(apiURL)
+        const localhost =   `http://localhost:3001/employer/joblist/${empID}`
+        fetch(localhost)
         .then(response => response.json())
         .then(data => {
             this.setState({ jobList : data })
-            console.log(this.state.jobList)
+            //console.log(this.state.jobList)
         })
         .catch(error => {
             console.log(`Error: ${error}`)

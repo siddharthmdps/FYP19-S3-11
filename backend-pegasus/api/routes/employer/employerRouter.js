@@ -15,8 +15,10 @@ router.post('/updateprofile', updateprofile)
 
 // http://servername/employer
 // to provide employer info
-router.get('/',(req, res) => {
-    const empID = req.body.id
+router.get('/:id',(req, res) => {
+    const empID = req.params.id
+    console.log(`Request for employer info, empID ${empID}`)
+    
     if( !empID ) {
         res.send ('Please provide employer ID')
     }
