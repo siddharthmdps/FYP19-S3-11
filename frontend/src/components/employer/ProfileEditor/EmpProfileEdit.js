@@ -12,13 +12,13 @@ const EmpProfileEdit =(props)=> {
             <ProfileContainer companyName={props.companyName} buttonText="Find out more"/>
             <div className="card pad100 mar50">
                 <div className="card-body centered">
-                    <BasicFormField pid="CompanyName" title="Username" /> 
+                    <BasicFormField pid="CompanyName" title="Company Name" placeholder={props.companyName}/> 
                     <br/>
-                    <BasicFormField pid="CompanySize" title="Company Size" /> 
+                    <BasicFormField pid="CompanyPhone" title="Company Phone" placeholder={props.companyPhone}/> 
                     <br/> 
-                    <SelectFormField pid="CompanyIndustry" title="Industry"/>
+                    <SelectFormField pid="CompanyIndustry" title="Industry" />
                     <br/>
-                    <AreaFormField pid="CompanyDescription" title= "Company Description"/>
+                    <AreaFormField pid="CompanyDescription" title= "Company Description" placeholder={props.companyDescription}/>
                     <br/>
                     <button className="btn btn-outline-secondary" /*onClick = {}*/>Save Changes</button>
                 </div>

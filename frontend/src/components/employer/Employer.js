@@ -9,7 +9,7 @@ import EmpProfileEdit from './ProfileEditor/EmpProfileEdit'
 
 // Common assets
 import About from '../common_assets/About'
-import config from '../../config'
+const herokuURL = require('../../config')
 
 
 class Employer extends Component {
@@ -22,8 +22,11 @@ class Employer extends Component {
             companyPhone: null,
             companyEmail: null,
             companyAddress: null,
+            companyDescription: null,
             industry: null,
-            mainContent : null
+            mainContent : null,
+            numOfJobs: null,
+            numOfApplicants: null
         }
     }
 
@@ -41,30 +44,49 @@ class Employer extends Component {
         })
     }
 
+    updateNumOfJobs = (numJob) => {
+        this.setState({ numOfJobs: numJob })
+        //console.log(`num of jobs = ${this.state.numOfJobs}`)
+    }
+
     mainContent = () => {
         const contentID = this.state.mainContent
         switch (contentID) {
-            case 'viewprofile' : return <EmpProfileView companyName={this.state.companyName}/>
-            case 'editprofile' : return <EmpProfileEdit companyName={this.state.companyName}/>
-            case 'about' : return <About/>
-            case 'blog' : return <h3>blog</h3>
-            case 'postjob' : return <PostJob/>
+            case 'viewprofile' : 
+                return <EmpProfileView companyName={this.state.companyName}/>
+            case 'editprofile' : 
+                return <EmpProfileEdit companyName={this.state.companyName}
+                        companyPhone={this.state.companyPhone} companyAddress={this.state.companyAddress}
+                        industry={this.state.industry} companyDescription={this.state.companyDescription}/>
+            case 'about' : 
+                return <About/>
+            case 'blog' : 
+                return <h3>blog</h3>
+            case 'postjob' : 
+                return <PostJob/>
 
-            default : return (
-            <div className="row mb-2">
-                <div className="col-md-3"><EmpPanel companyName={this.state.companyName}/></div>
-                <div className="col-md-9"><EmpFeed/></div>
-            </div>
-            )   
+            default : 
+                return (
+                <div className="row mb-2">
+                    <div className="col-md-3">
+                        <EmpPanel companyName={this.state.companyName}
+                            numOfJobs={this.state.numOfJobs}
+                        />
+                    </div>
+                    <div className="col-md-9">
+                        <EmpFeed updateNumOfJobs={this.updateNumOfJobs}/>
+                    </div>
+                </div>
+                )    
             case '*' : return <h3>{contentID} not found</h3>
         }
     }
 
     fetchEmployerDetails = () => {
-        const apiURL = config.getAPIURL() + "employer"
+        const apiURL = `${herokuURL}employer/${this.state.id}`
         const localhost = `http://localhost:3001/employer/${this.state.id}`
 
-        fetch( localhost, {
+        fetch( apiURL, {
             method: 'GET',
             headers: {'Content-Type': 'application/json'}
         })
@@ -74,16 +96,14 @@ class Employer extends Component {
             const empInfo = data.body[0]
 
             this.setState({
-                companyName: empInfo.companyname,
-                companyPhone: empInfo.companyphone,
-                companyEmail: empInfo.companyemail,
-                companyAddress: empInfo.companyaddress,
-                industry: empInfo.industry
+                companyName:        empInfo.companyname,
+                companyPhone:       empInfo.companyphone,
+                companyEmail:       empInfo.companyemail,
+                companyAddress:     empInfo.companyaddress,
+                companyDescription: empInfo.companydescription,
+                industry:           empInfo.industry
             })
-        })
-        .catch(error => console.log(error))
-
-        console.log(this.state)
+        }).catch(error => console.log(error))
     }
 
     componentDidMount() {
@@ -97,8 +117,7 @@ class Employer extends Component {
             {/* Fixed component */}
             <EmpNavbar
                 username={this.state.username}
-                setMainContent={this.setMainContent}
-            /> 
+                setMainContent={this.setMainContent}/> 
 
             {/* Flexible content */}
             <this.mainContent/>

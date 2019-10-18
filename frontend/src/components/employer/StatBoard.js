@@ -7,13 +7,14 @@ import StatBox from './StatBox';
 
 
 const StatBoard = (props) =>{
+
     return (
     <div className= "statBoard">
         <div className="statBoxWrapper">
             <div className = "row">
-            <StatBox number="39" desc="Jobs" className= "col-xs-4"/>
-            <StatBox number="62" desc="Applicants" className= "col-xs-4"/>
-            <StatBox number="333" desc="Applications" className= "col-xs-4"/>
+            <StatBox number={props.numOfJobs} desc="Jobs" className= "col-xs-3"/>
+            <StatBox number="62" desc="Applicants" className= "col-xs-3"/>
+            <StatBox number="333" desc="Applications" className= "col-xs-3"/>
             </div>
            
         </div>

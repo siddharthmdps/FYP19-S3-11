@@ -10,7 +10,7 @@ const EmpPanel=(props)=> {
     return (
         <div className= "panelWrapper float-left">
             <ProfileContainer companyName={props.companyName}/>
-            <StatBoard/>
+            <StatBoard numOfJobs={props.numOfJobs}/>
         </div>
 
     )

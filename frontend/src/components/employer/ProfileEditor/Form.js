@@ -5,16 +5,14 @@ import React from 'react';
 const BasicFormField =(props)=> {
     return (
     <div className="row">
-    
        <div className="col-sm-3">
             <label htmlFor="">{props.title}</label>
         </div>
 
         <div className="col-sm-9">
-            <input type="text" className="form-control" id={props.pid}/>
+            <input type="text" className="form-control" id={props.pid} placeholder={props.placeholder}/>
         </div> 
     </div>
-
     )
 };
 
@@ -47,7 +45,7 @@ const AreaFormField=(props)=>{
                 </div>
 
                 <div className="col-sm-9">
-                    <textarea className="form-control" id= {props.pid} rows="3"></textarea>
+                    <textarea className="form-control" id= {props.pid} rows="3" placeholder={props.placeholder}></textarea>
                 </div>
             </div>
         </div>

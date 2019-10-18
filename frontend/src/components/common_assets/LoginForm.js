@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import '../styles/Login.css'
-import config from '../../config'
+import apiURL from '../../config'
 
 
 class LoginForm extends Component {
@@ -17,11 +17,11 @@ class LoginForm extends Component {
         const loginParticulars = {username, password, usertype}
         
         
-        const apiurl = config.getAPIURL() + 'login/'
+        const url = apiURL + 'login/'
         const localhost = "http://localhost:3001/login"
 
         if(username && password && usertype) {
-            fetch(localhost, {
+            fetch(url, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(loginParticulars)

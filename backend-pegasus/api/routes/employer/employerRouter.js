@@ -48,6 +48,7 @@ router.get('/:id',(req, res) => {
                     }
                 } )
             }
+            connection.release()
         } )
     }
 })

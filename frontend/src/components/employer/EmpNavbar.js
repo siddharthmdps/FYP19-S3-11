@@ -21,7 +21,7 @@ class Navbar extends Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
               {/* link this to profile management */}
-                <a className="nav-link" href="/#" id="viewprofile" onClick={this.props.setMainContent}>{this.props.username}</a> 
+                <a className="nav-link" href="/#" id="viewprofile" onClick={this.props.setMainContent}>{this.props.username.toUpperCase()}</a> 
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/#" id="editprofile" onClick={this.props.setMainContent}>Edit Profile</a>
