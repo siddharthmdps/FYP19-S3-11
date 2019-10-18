@@ -10,10 +10,8 @@ import './ProfileContainer.css';
 const  ProfileContainer=(props)=> {
     return (
     <div className= "profileContainer">
-    <img className = "profilePic"/>
-    <p className= "username">@{props.companyName}</p>
-    <button className="btn btn-outline-secondary" onClick = {editProfileHandler}>{props.buttonText}</button>
-
+        <img className = "profilePic"/>
+        <p className= "companyName">{props.companyName}</p>
     </div>
     )
 };

@@ -27,6 +27,7 @@ const getJobList = (req, res) => {
                 }
             })
         }
+        connection.release()
     })
 }
 

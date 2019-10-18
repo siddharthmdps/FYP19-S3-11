@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import config from '../../config'
+import apiURL from '../../config'
 import './EmpFeed.css'
 
 class EmpFeed extends Component {
@@ -18,13 +18,15 @@ class EmpFeed extends Component {
     updateJobList = () => {
 
         const empID = localStorage.getItem('id')
-        const apiURL = config.getAPIURL() + 'employer/joblist/' + empID
+        const url = apiURL + 'employer/joblist/' + empID
         const localhost =   `http://localhost:3001/employer/joblist/${empID}`
-        fetch(localhost)
+        fetch(url)
         .then(response => response.json())
         .then(data => {
             this.setState({ jobList : data })
             //console.log(this.state.jobList)
+            console.log(`total jobs : ${this.state.jobList.length}`)
+            this.props.updateNumOfJobs(this.state.jobList.length)
         })
         .catch(error => {
             console.log(`Error: ${error}`)
@@ -35,6 +37,7 @@ class EmpFeed extends Component {
     // once the component is rendered, fetch the job list from given url
     componentDidMount() {
         this.updateJobList()
+        
     }
 
     
