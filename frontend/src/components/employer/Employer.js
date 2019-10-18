@@ -9,14 +9,20 @@ import EmpProfileEdit from './ProfileEditor/EmpProfileEdit'
 
 // Common assets
 import About from '../common_assets/About'
-
+import config from '../../config'
 
 
 class Employer extends Component {
     constructor () {
         super()
         this.state = {
-            username : localStorage.getItem('username'),
+            id: localStorage.getItem('id'),
+            username: localStorage.getItem('username'),
+            companyName: null,
+            companyPhone: null,
+            companyEmail: null,
+            companyAddress: null,
+            industry: null,
             mainContent : null
         }
     }
@@ -38,20 +44,51 @@ class Employer extends Component {
     mainContent = () => {
         const contentID = this.state.mainContent
         switch (contentID) {
-            case 'viewprofile' : return <EmpProfileView/>
-            case 'editprofile' : return <EmpProfileEdit/>
+            case 'viewprofile' : return <EmpProfileView companyName={this.state.companyName}/>
+            case 'editprofile' : return <EmpProfileEdit companyName={this.state.companyName}/>
             case 'about' : return <About/>
             case 'blog' : return <h3>blog</h3>
             case 'postjob' : return <PostJob/>
 
             default : return (
-            <div>
-                <EmpPanel/>
-                <EmpFeed/>
+            <div className="row mb-2">
+                <div className="col-md-3"><EmpPanel companyName={this.state.companyName}/></div>
+                <div className="col-md-9"><EmpFeed/></div>
             </div>
             )   
             case '*' : return <h3>{contentID} not found</h3>
         }
+    }
+
+    fetchEmployerDetails = () => {
+        const apiURL = config.getAPIURL() + "employer"
+        const localhost = `http://localhost:3001/employer/${this.state.id}`
+
+        fetch( localhost, {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log('response', data.body[0])
+            const empInfo = data.body[0]
+
+            this.setState({
+                companyName: empInfo.companyname,
+                companyPhone: empInfo.companyphone,
+                companyEmail: empInfo.companyemail,
+                companyAddress: empInfo.companyaddress,
+                industry: empInfo.industry
+            })
+        })
+        .catch(error => console.log(error))
+
+        console.log(this.state)
+    }
+
+    componentDidMount() {
+        this.fetchEmployerDetails()
+        console.log(this.state)
     }
 
     render () {

@@ -18,10 +18,10 @@ class LoginForm extends Component {
         
         
         const apiurl = config.getAPIURL() + 'login/'
-        //const localhost = "http://localhost:3001/login"
+        const localhost = "http://localhost:3001/login"
 
         if(username && password && usertype) {
-            fetch(apiurl, {
+            fetch(localhost, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(loginParticulars)
@@ -32,7 +32,6 @@ class LoginForm extends Component {
 
 
                 const userInfo = data.body[0]
-                console.log(userInfo)
 
                 if(data.message === 'success'){
                     localStorage.setItem('isAuthenticated', true)
@@ -43,7 +42,9 @@ class LoginForm extends Component {
                     this.props.updateLoginState()
                 }
             })
-            .catch(error => console.log(error)) 
+            .catch(error => {
+                console.log(error)
+            }) 
         }
         
     }

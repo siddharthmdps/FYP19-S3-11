@@ -1,17 +1,15 @@
 import React from 'react';
-import Navbar from '../EmpNavbar';
 import ProfileContainer from '../ProfileContainer';
 import BasicFormField,{SelectFormField,AreaFormField} from './Form';
 import '../ProfileView/Card.css'
 
 
 //This is the edit profile page for employers.
-
 const EmpProfileEdit =(props)=> {
     return (
     <div>
         <div className= "wrapper">
-            <ProfileContainer username="PegasusSim" buttonText=""/>
+            <ProfileContainer companyName={props.companyName} buttonText="Find out more"/>
             <div className="card pad100 mar50">
                 <div className="card-body centered">
                     <BasicFormField pid="CompanyName" title="Username" /> 

@@ -13,7 +13,7 @@ const EmpProfileView =(props)=> {
     return (
     <div>
         <div className= "wrapper">
-            <ProfileContainer username="PegasusSim" buttonText="Find out more"/>
+            <ProfileContainer companyName={props.companyName} buttonText="Find out more"/>
             <div className="card mar50 pad100">
                 <div className="card-body">
                     <div className = "row">

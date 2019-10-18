@@ -9,7 +9,7 @@ import './EmpDashbd.css';
 const EmpPanel=(props)=> {
     return (
         <div className= "panelWrapper float-left">
-            <ProfileContainer/>
+            <ProfileContainer companyName={props.companyName}/>
             <StatBoard/>
         </div>
 
