@@ -16,3 +16,14 @@ button.create-account{
     max-width: 250px;
     margin: auto;
 }
+
+#btn-group-container {
+    margin-left: 0;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    max-width: 250px;
+}
+
+#usertype-label {
+    margin-right: 10px;
+}
