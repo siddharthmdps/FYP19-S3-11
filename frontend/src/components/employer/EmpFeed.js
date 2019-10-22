@@ -72,15 +72,13 @@ class EmpFeed extends Component {
                                     </div>
                                 </div>
                             ) )
-                        }
+                    }
+
                     {/* Error */}
                     { this.state.error === true && 
                         <div>Error</div>
                     }
 
-                    <small className="d-block text-right mt-3">
-                        <a href="#">All suggestions</a>
-                    </small>
                 </div>
             </main>
         )
