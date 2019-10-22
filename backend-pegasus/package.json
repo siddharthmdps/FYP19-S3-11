@@ -4,8 +4,7 @@
   "description": "Node.js REST API for FYP",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server"
+    "start": "node server.js"
   },
   "keywords": [
     "fyp",
