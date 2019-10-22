@@ -43,7 +43,7 @@ class Signup extends React.Component {
 
                 <div className="mb-3 job-experience">
                     <label for="job-experience">Job Experience <span className="text-muted">(Optional)</span></label>
-                    <input type="text" className="form-control" id="jobexp" placeholder="Describe your past experience" />
+                    <input type="text" className="form-control" id="jobexperience" placeholder="Describe your past experience" />
                 </div>
 
                 <div className="form-group row">
@@ -80,7 +80,7 @@ class Signup extends React.Component {
                 <div className="form-group row">
                     <label className="col-sm-4 col-form-label">Phone</label>
                     <div className="col-sm-8">
-                        <input type="tel" minlength="8" maxlength="8" className="form-control" id="companyphone" placeholder=""/>
+                        <input type="tel" minLength="8" maxLength="8" className="form-control" id="companyphone" placeholder=""/>
                      </div>
                 </div>
                 <div className="form-group">
@@ -136,18 +136,67 @@ class Signup extends React.Component {
         )
     }
 
+    createAccount = () => {
+        console.log(`submitting form for a new ${this.state.usertype}`)
+        switch(this.state.usertype) {
+            case "student" : this.submitStudentForm(); break;
+            case "employer" : this.submitEmployerForm(); break;
+        }
+    }
+
+    submitStudentForm = () => {
+        // grab content from DOM
+        const studentDetails = {
+            firstname:      document.getElementById('firstname').value,
+            lastname:       document.getElementById('lastname').value,
+            email:          document.getElementById('email').value,
+            address:        document.getElementById('address').value,
+            jobexperience:  document.getElementById('jobexperience').value,
+            password:       document.getElementById('password').value,
+            usertype:       this.state.usertype
+        }
+        // verify
+        // post to backend
+        // const url = "http://localhost:3030/createaccount" // REPLACE URL here
+        // fetch(url, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(studentDetails)
+        // })
+        //     .then(response => response.json)
+        //     .then(data => console.log(data))
+        //     .catch(error => console.log(`Error: `, error))
+        console.log(`student details`, studentDetails)
+    }
+    submitEmployerForm = () => {
+        const employerDetails = {
+            username:           document.getElementById('username').value,
+            companyemail:       document.getElementById('companyemail').value,
+            companyname:        document.getElementById('companyname').value,
+            companyphone:       document.getElementById('companyphone').value,
+            companydescription: document.getElementById('companydescription').value,
+            companyaddress:     document.getElementById('companyaddress').value,
+            industry:           document.getElementById('industry').value,
+            password:           document.getElementById('password').value,
+            usertype:           this.state.usertype
+        }
+        console.log(`employer details`, employerDetails)
+    }
+
     render() {
         return (
             <div className="container create-account main">
                 <div className="py-3 text-center" id="header-div">
-                    <h2>Pegasus</h2>
+                    <h2><a href="/" id="pegasus-tag">Pegasus</a></h2>
                     <p className="font-weight-light ">Kick start your professional career</p>
                 </div>
                 <this.userTypeSelector/>
                 
                 <div className="container">
                     <this.signUpForm/>
-                    <button className="btn btn-dark btn-lg btn-block create-account" onClick={createAccount}>Create Account</button>
+                    <button className="btn btn-dark btn-lg btn-block create-account" onClick={this.createAccount}>Create Account</button>
                 </div>
                 
             </div>
@@ -155,30 +204,6 @@ class Signup extends React.Component {
     }
 }
 
-const createAccount = () => {
-    // grab content from DOM
-    const userDetails = {
-        firstname: document.getElementById('firstname').value,
-        lastname: document.getElementById('lastname').value,
-        email: document.getElementById('email').value,
-        address: document.getElementById('address').value,
-        usertype: document.getElementById('usertype').value,
-        jobexp: document.getElementById('jobexp').value,
-    }
-    // verify
-    // post to backend
-    const url = "http://localhost:3030/createaccount" // REPLACE URL here
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userDetails)
-    })
-        .then(response => response.json)
-        .then(data => console.log(data))
-        .catch(error => console.log(`Error: `, error))
-    console.log(userDetails)
-}
+
 
 export default Signup

@@ -13,9 +13,8 @@ const studentRoutes = require(`${currentPath}/student/studentRouter`)
 
 // ROUTING
 router.use('/login', loginRoutes)
-router.use('/createUser', createUserRoutes)
+router.use('/createuser', createUserRoutes)
 
-//router.use('/employer/joblist', require(`${currentPath}/jobList`))
 router.use('/employer', employerRoutes)
 
 router.use('/student', studentRoutes)

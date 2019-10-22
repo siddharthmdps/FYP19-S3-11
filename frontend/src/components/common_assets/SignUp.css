@@ -2,6 +2,11 @@ div.main{
     max-width: 700px;
 }
 
+#pegasus-tag{
+    text-decoration: none;
+    color: #262322;
+}
+
 div.job-experience input{
     height: 150px;
 }

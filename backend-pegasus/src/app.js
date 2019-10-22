@@ -20,6 +20,5 @@ app.use(cors(settings));
 // Route handler
 app.use('/', require(path.join(__dirname, '../api/routes/')))
 
-// app.listen(3001, () => console.log(`app is running`))
 
 module.exports = app
