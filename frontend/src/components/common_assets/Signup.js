@@ -1,8 +1,6 @@
 import React from 'react'
 import './SignUp.css'
 
-
-
 class Signup extends React.Component {
     constructor() {
         super()
