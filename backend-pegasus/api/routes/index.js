@@ -4,16 +4,16 @@ const express = require('express')
 const router = express.Router()
 const path = require('path')
 
-// PATHS
+// IMPORTING and SETTING UP PATHS
 const currentPath = path.join(__dirname)
-const loginRoutes = require(`${currentPath}/login`)
-const createUserRoutes = require(`${currentPath}/createUser`)
+const login = require(`${currentPath}/login`)
+const createUser = require(`${currentPath}/createUser`)
 const employerRoutes = require(`${currentPath}/employer/employerRouter`)
 const studentRoutes = require(`${currentPath}/student/studentRouter`)
 
 // ROUTING
-router.use('/login', loginRoutes)
-router.use('/createuser', createUserRoutes)
+router.post('/login', login)
+router.post('/createuser', createUser)
 
 router.use('/employer', employerRoutes)
 
