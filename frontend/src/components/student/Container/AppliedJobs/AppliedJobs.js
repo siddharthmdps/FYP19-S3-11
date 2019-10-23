@@ -1,92 +1,39 @@
 import React, { Component } from 'react';
-import {Container, Row, Col, Card} from 'react-bootstrap';
+import {Container, Row, Col, Card, Button} from 'react-bootstrap';
 import classes from './AppliedJobs.module.css';
 
 class AppliedJobs extends Component{
     render(){
         return(
-            <Container fluid>
+            <Container >
                 <br />
                 <Row>
                     Applied Jobs
                 </Row>
                 <br />
-                <Row>
-                    <Col md={{span:3}}>
-
-                        <Card>
-                            <Card.Body>
-                                <Card.Title>150</Card.Title>
-                                <Card.Text>
-                                All Employers
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-
-                    </Col>
-                    <Col md={{span:3}}>
-
-                        <Card>
-                            <Card.Body>
-                                <Card.Title>53</Card.Title>
-                                <Card.Text>
-                                All Candidates
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-
-                    </Col>
-                    <Col md={{span:3}}>
-
-                    <Card>
+                
+                    <Card md={{span:12}} className={classes.Card}>
                         <Card.Body>
-                            <Card.Title>44</Card.Title>
-                            <Card.Text>
-                            All Jobs
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-
-                    </Col>
-                    <Col md={{span:3}}>
-
-                    <Card>
-                        <Card.Body>
-                            <Card.Title>Generate</Card.Title>
-                            <Card.Text>
-                            Reports
+                            <Card.Title>
+                                <Row>Software Developer</Row>
+                                <Row>Accenture</Row>
+                                <Row><Col>Mf</Col>Ff<Col></Col>Sf<Col></Col></Row>
+                            </Card.Title>
+                            <Card.Text className={classes.Description}>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, 
+                                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                             </Card.Text>
                         </Card.Body>
                         <Card.Footer>
-                            Click to contine
+                            <Col md={{span:2, offset:10}}>
+                                <span className={classes.Star}><i class="far fa-star"></i></span>
+                                
+                                <Button>Apply</Button>
+                            </Col>                        
                         </Card.Footer>
                     </Card>
-
-                    </Col>
-                </Row>
-                <br />
-                <Row>
-                    <Col md={{span: 3}}>
-                        
-                    <Card>
-                        <Card.Body>
-                            <Card.Title>Generate</Card.Title>
-                            <Card.Text>
-                            
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                    </Col>
-                    <Col md={{span: 6}}>
-                    <Card>
-                        <Card.Body>
-                            <Card.Title>Latest Added Candidates</Card.Title>
-                            <Card.Text>
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                    </Col>
-                </Row>
+                
             </Container>
         );
     }
