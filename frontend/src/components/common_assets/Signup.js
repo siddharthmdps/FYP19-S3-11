@@ -170,28 +170,38 @@ class Signup extends React.Component {
         console.log(`sending form`, userDetails)
 
         // verify
-        
-        // post to backend
-        const url = "http://localhost:3001/createuser" // REPLACE URL here
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(userDetails)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(`response from server`, data)
+        let formIsValid = true
+        for (let index in userDetails) {
+            if(userDetails[index] === null || userDetails[index] === '') 
+                formIsValid = false
+        }
 
-            if(data.message === "success") {
-                alert (`New user created successfully`)
-            }
-        })
-        .catch(error => {
-            console.log(`response from server`, error)
-            alert (`Failed to create new user. Please try again.`)
-        })
+        if(formIsValid) {
+            // post to backend
+            const apiURL = "https://pegasus-backend.herokuapp.com/createuser"
+            const localhost = "http://localhost:3001/createuser"
+            fetch(apiURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userDetails)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(`response from server`, data)
+
+                if(data.message === "success") {
+                    alert (`New user created successfully`)
+                }
+            })
+            .catch(error => {
+                console.log(`response from server`, error)
+                alert (`Failed to create new user. Please try again.`)
+            })
+        }
+        else alert (`Please fill in all the required fields`)
+
             
         
 
