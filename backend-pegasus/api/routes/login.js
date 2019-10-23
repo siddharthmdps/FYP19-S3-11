@@ -1,6 +1,6 @@
-const { router, env, sha1, mysql, mypool} = require('../util')
+const { env, sha1, mysql, mypool} = require('../util')
 
-router.post('/', (req, res, next) => {
+const login = (req,res) => {
     const username = req.body.username.toLowerCase()
     const password = sha1(req.body.password)
     var usertype = req.body.usertype.toLowerCase()
@@ -36,6 +36,7 @@ router.post('/', (req, res, next) => {
         }
         connection.release()
     } )
-});
+}
 
-module.exports = router;
+
+module.exports = login;

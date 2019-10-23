@@ -48,8 +48,11 @@ class EmpFeed extends Component {
                     <h6 className="border-bottom border-gray pb-2 mb-0">Advertised Jobs</h6>
                     {/* Loading */}
                     { this.state.jobList.length === 0 && !this.state.error &&
-                        <div>
-                            Loading...
+                        
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
                         </div>
                     }
 
@@ -69,15 +72,13 @@ class EmpFeed extends Component {
                                     </div>
                                 </div>
                             ) )
-                        }
+                    }
+
                     {/* Error */}
                     { this.state.error === true && 
                         <div>Error</div>
                     }
 
-                    <small className="d-block text-right mt-3">
-                        <a href="#">All suggestions</a>
-                    </small>
                 </div>
             </main>
         )
