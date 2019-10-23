@@ -11,7 +11,7 @@ const navbar = props => (
   <InputGroup >
     <InputGroup.Prepend>
       <InputGroup.Text className={classes.SearchIcon}>
-      <i class="fas fa-search"></i>
+      <i className="fas fa-search"></i>
       </InputGroup.Text>
       
     </InputGroup.Prepend>

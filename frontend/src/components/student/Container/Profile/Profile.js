@@ -10,144 +10,102 @@ import Certification from '../../Components/Certification/Certification';
 import Projects from '../../Components/Projects/Projects';
 import Document from '../../Components/Document/Document';
 import {Accordion, Card, Container, Col, Row} from 'react-bootstrap';
+import Axios from 'axios';
+
+const PersonalParticularsShell = {
+    "StudentID": 0,
+    "FirstName": "",
+    "MiddleName": "",
+    "LastName": "",
+    "Email": "",
+    "Phone": "",
+    "Country": "",
+    "City": "",
+    "CurrentAddress": "",
+    "PostalCode": "",
+    "Nationality": ""          
+}
+
+const EducationShell = {
+    "EducationID": 0,
+    "University": "",
+    "Degree": "",
+    "FieldOfStudy": "",
+    "Major": "",
+    "StartDate": "",
+    "EndDate": "",
+    "Mode": "",
+    "GPA": ""
+}
+
+const WorkExpShell = {
+    "WorkExpID": 0,
+    "Position": "",
+    "Company": "",
+    "StartDate": "",
+    "EndDate": "",
+    "Mode": "",
+    "Industry": "",
+    "AnnualSalary": 0,
+    "Description": "" 
+}
+
+const JobPreferenceShell = {
+    "JobPreferenceID": 0,
+    "Industry": "",
+    "Position": "",
+    "JobType": "",
+    "ExpectedSalary": 0,
+    "Location": "",
+    "Availability": ""
+}
+
+const AwardsShell = {
+    "AwardID": 0,
+    "Award": "",
+    "Date": "",
+    "Description": ""
+}
+
+const CertificationShell = {
+    "CertificateID": 0,
+    "Name": "",
+    "IssuedBy": "",
+    "IssueDate": "",
+    "ValidUntil": ""
+}
+
+const SkillsShell= {
+    "SkillID": 0,
+    "SkillName": "",
+}
+
+const ProjectsShell = {
+    "ProjectID": 0,
+    "Title": "",
+    "Status": "",
+    "Description": "",
+    "Link": ""
+}
+
+const DocumentShell = {
+    "DocumentID": 0,
+    "Title": "",
+    "Link": ""
+}
 
 class Profile extends Component {
     state={
-        ProfileImage: "https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg",
-        PersonalParticulars: {
-            StudentID: 100,
-            FirstName: "Gill",
-            MiddleName: "Mac",
-            LastName: "Oliver",
-            Email: "nisi@auctorvelit.ca",
-            Phone: "(65) 9577-7329",
-            Country: "Korea, North",
-            City: "Holman",
-            CurrentAddress: "895-7107 Aliquam, St.",
-            PostalCode: "159543",
-            Nationality: "Singapore"
-        },
-        Education: [{
-            EducationID: 1,
-            University: "Faulkner University",
-            Degree: "Diploma",
-            FieldOfStudy: "Systems Administrator I",
-            Major: "DSS",
-            StartDate: "",
-            EndDate: "",
-            Mode: "Part-Time",
-            GPA: "Second-class"
-        },
-        {
-            EducationID: 2,
-            University: "Faulkners University",
-            Degree: "Diplomas",
-            FieldOfStudy: "Systemsa Administrator I",
-            Major: "DSSa",
-            StartDate: "",
-            EndDate: "",
-            Mode: "Part-Time",
-            GPA: "Second-class"
-        },
-        {
-            EducationID: 3,
-            University: "Faulkners University",
-            Degree: "Diplomas",
-            FieldOfStudy: "Systemsa Administrator I",
-            Major: "DSSa",
-            StartDate: "",
-            EndDate: "",
-            Mode: "Part-Time",
-            GPA: "Second-class"
-        }],
-        WorkExp: [{
-            WorkExpID: 1,
-            Position: "Junior",
-            Company: "Vimbo",
-            StartDate: "29/06/2018",
-            EndDate: "08/04/2019",
-            Mode: "Part Time",
-            Industry: "Training",
-            AnnualSalary: 33000,
-            Description: "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est."
-        },
-        {
-            WorkExpID: 2,
-            Position: "Juniora",
-            Company: "Vimboq",
-            StartDate: "29/06/2018",
-            EndDate: "08/04/2019",
-            Mode: "Part Timew",
-            Industry: "Traininga",
-            AnnualSalary: 33000,
-            Description: "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est."
-        }],
-        JobPreference: [{
-            JobPreferenceID: 1,
-            Industry: "Accounting",
-            Position: "Senior",
-            JobType: "Contract",
-            ExpectedSalary: 16000,
-            Location: "Bolorejo",
-            Availability: "Immediate"
-        },
-        {
-            JobPreferenceID: 2,
-            Industry: "Accountinga",
-            Position: "Seniora",
-            JobType: "Contracta",
-            ExpectedSalary: 16000,
-            Location: "Bolorejoa",
-            Availability: "Immediate"
-        }],
-        Awards: [{
-            AwardID: 1,
-            Award: "Dean's List",
-            Date: "Aug 2018",
-            Description: "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris."
-        }, 
-        {
-            AwardID: 2,
-            Award: "Dean's List",
-            Date: "Aug 2018",
-            Description: "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris."
-        }],
-        Certification: [{
-            CertificateID: 1,
-            Name: "CNNP Routing and Switching",
-            IssuedBy: "Scrum Alliance",
-            IssueDate: "Mar 2019",
-            ValidUntil: "Mar 2020"
-        },{
-            CertificateID: 2,
-            Name: "CNNP Routing and Switchinga",
-            IssuedBy: "Scrum Alliancea",
-            IssueDate: "Mar 2019a",
-            ValidUntil: "Mar 2020a"
-        }],
-        Skills: [{
-            SkillID: 1,
-            SkillName: 'C++',
-        }],
-        Projects: [{
-            ProjectID: 1,
-            Title: "Personal Website",
-            Status: "Ongoing",
-            Description: "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-            Link: "https://www.google.com"
-        },
-        {
-            ProjectID: 2,
-            Title: "Personal Websites",
-            Status: "Ongoinging",
-            Description: "Duis abibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-            Link: "https://www.google.com.loo"
-        }],
-        Document: [{
-            DocumentID: 1,
-            Title: "Resume",
-            Link: ""
-        }]
+        "ProfileImage": "https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg",
+        "PersonalParticulars": {},
+        "Education": [],
+        "WorkExp": [],
+        "JobPreference": [],
+        "Awards": [],
+        "Certification": [],
+        "Skills": [],
+        "Projects": [],
+        "Document": []
     }
 
     changePersonalParticulars = event => {
@@ -243,6 +201,41 @@ class Profile extends Component {
             }
         });
         this.setState(tempState);
+    }
+
+
+
+    componentDidMount(){
+        Axios.get('http://localhost:3000/studentProfile')
+            .then(receivedData => {
+                console.log(receivedData.data);
+                let tempPP = {...PersonalParticularsShell}
+                for(let key in tempPP){
+                    console.log(key, receivedData.data.PersonalParticulars[key]);
+                    tempPP[key] = receivedData.data.PersonalParticulars[key];
+                }
+                this.setState({PersonalParticulars: tempPP});
+
+                let tempEducation = [];
+                for(let i in receivedData.data.Education){
+                    let tempE = {...EducationShell}
+                    for(let key in tempE){
+                        console.log(key, receivedData.data.Education[i][key]);
+                        tempE[key] = receivedData.data.Education[i][key];
+                    }
+                    tempEducation.push(tempE);
+                }
+                this.setState({Education: tempEducation});
+
+
+                this.setState({WorkExp: receivedData.data.WorkExp});
+                this.setState({JobPreference: receivedData.data.JobPreference});
+                this.setState({Awards: receivedData.data.Awards});
+                this.setState({Certification: receivedData.data.Certification});
+                this.setState({Skills: receivedData.data.Skills});
+                this.setState({Projects: receivedData.data.Projects});
+                this.setState({Document: receivedData.data.Document});
+            });
     }
 
     render(){
