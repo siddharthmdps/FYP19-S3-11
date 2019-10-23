@@ -4,6 +4,8 @@ const createUser = (req, res) => {
     usertype = req.body.usertype
     console.log(`Req to create a new user, usertype: `, usertype)
 
+    let userDetails = ""
+    let queryString = ""
 
     switch(usertype) {
         case "student":
@@ -16,7 +18,10 @@ const createUser = (req, res) => {
                 jobexperience   : req.body.jobexperience,
                 password        : sha1(req.body.password)
             }
-            res.send(student)
+            userDetails = student
+            queryString = `INSERT INTO pegasus.student 
+                    (firstname, lastname, email,  address, username, password) 
+            VALUES  ('${student.firstname}', '${student.lastname}', '${student.email}', '${student.address}', '${student.username}', '${student.password}');`
             break;
 
         case "employer":
@@ -30,10 +35,35 @@ const createUser = (req, res) => {
                 industry:           req.body.industry,
                 password:           sha1(req.body.password)
             }
-            res.send(employer)
+            userDetails = employer
+            queryString = `INSERT INTO pegasus.employer 
+            (username, companyemail, companyname,  companyphone, companydescription, companyaddress, industry, password) 
+            VALUES  ('${employer.username}', '${employer.companyemail}', '${employer.companyname}', '${employer.companyphone}', '${employer.companydescription}', '${employer.companyaddress}', '${employer.industry}', '${employer.password}');`
             break;
         default : res.send(`Unknown usertype`)
     }
+
+    mypool.getConnection( (err, connection) => {
+        if(err) {
+            connection.release()
+            console.log(`Error getting mysql_pool connection: ${err}`)
+            throw err
+        }
+        else {
+            connection.query(queryString, (err, rows, fields) => {
+                if(err) {
+                    res.status(500).json({ message: err })
+                }
+                else {
+                    res.send({
+                        message: 'success',
+                        body: userDetails
+                    })
+                }
+            })
+        }
+        connection.release()
+    } )
 }
 
 // router.post('/', (req, res) => {

@@ -138,52 +138,67 @@ class Signup extends React.Component {
 
     createAccount = () => {
         console.log(`submitting form for a new ${this.state.usertype}`)
+        let userDetails = null;
         switch(this.state.usertype) {
-            case "student" : this.submitStudentForm(); break;
-            case "employer" : this.submitEmployerForm(); break;
+            case "student" :
+                const studentDetails = {
+                    firstname:      document.getElementById('firstname').value,
+                    lastname:       document.getElementById('lastname').value,
+                    email:          document.getElementById('email').value,
+                    address:        document.getElementById('address').value,
+                    jobexperience:  document.getElementById('jobexperience').value,
+                    password:       document.getElementById('password').value,
+                    usertype:       this.state.usertype
+                }
+                userDetails = studentDetails
+            break;
+            case "employer" : 
+                const employerDetails = {
+                    username:           document.getElementById('username').value,
+                    companyemail:       document.getElementById('companyemail').value,
+                    companyname:        document.getElementById('companyname').value,
+                    companyphone:       document.getElementById('companyphone').value,
+                    companydescription: document.getElementById('companydescription').value,
+                    companyaddress:     document.getElementById('companyaddress').value,
+                    industry:           document.getElementById('industry').value,
+                    password:           document.getElementById('password').value,
+                    usertype:           this.state.usertype
+                }
+                userDetails = employerDetails
+            break;
         }
+        console.log(`sending form`, userDetails)
+
+        // verify
+        
+        // post to backend
+        const url = "http://localhost:3001/createuser" // REPLACE URL here
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userDetails)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(`response from server`, data)
+
+            if(data.message === "success") {
+                alert (`New user created successfully`)
+            }
+        })
+        .catch(error => {
+            console.log(`response from server`, error)
+            alert (`Failed to create new user. Please try again.`)
+        })
+            
+        
+
+
     }
 
-    submitStudentForm = () => {
-        // grab content from DOM
-        const studentDetails = {
-            firstname:      document.getElementById('firstname').value,
-            lastname:       document.getElementById('lastname').value,
-            email:          document.getElementById('email').value,
-            address:        document.getElementById('address').value,
-            jobexperience:  document.getElementById('jobexperience').value,
-            password:       document.getElementById('password').value,
-            usertype:       this.state.usertype
-        }
-        // verify
-        // post to backend
-        // const url = "http://localhost:3030/createaccount" // REPLACE URL here
-        // fetch(url, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(studentDetails)
-        // })
-        //     .then(response => response.json)
-        //     .then(data => console.log(data))
-        //     .catch(error => console.log(`Error: `, error))
-        console.log(`student details`, studentDetails)
-    }
-    submitEmployerForm = () => {
-        const employerDetails = {
-            username:           document.getElementById('username').value,
-            companyemail:       document.getElementById('companyemail').value,
-            companyname:        document.getElementById('companyname').value,
-            companyphone:       document.getElementById('companyphone').value,
-            companydescription: document.getElementById('companydescription').value,
-            companyaddress:     document.getElementById('companyaddress').value,
-            industry:           document.getElementById('industry').value,
-            password:           document.getElementById('password').value,
-            usertype:           this.state.usertype
-        }
-        console.log(`employer details`, employerDetails)
-    }
+
 
     render() {
         return (
