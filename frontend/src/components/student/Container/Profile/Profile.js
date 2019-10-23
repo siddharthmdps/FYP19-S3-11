@@ -9,7 +9,7 @@ import Awards from '../../Components/Awards/Awards';
 import Certification from '../../Components/Certification/Certification';
 import Projects from '../../Components/Projects/Projects';
 import Document from '../../Components/Document/Document';
-import {Accordion, Card, Container, Col, Row} from 'react-bootstrap';
+import {Accordion, Card, Container, Col, Row, Button} from 'react-bootstrap';
 import Axios from 'axios';
 
 const PersonalParticularsShell = {
@@ -203,7 +203,13 @@ class Profile extends Component {
         this.setState(tempState);
     }
 
-
+    addNewEducation = () =>{
+        let temp = {...EducationShell};
+        temp.EducationID = this.state.Education[this.state.Education.length-1]["EducationID"]+1;
+        let temp2 = this.state.Education;
+        temp2.push(temp);
+        this.setState({"Education": temp2});
+    }
 
     componentDidMount(){
         Axios.get('http://localhost:3000/studentProfile')
@@ -273,6 +279,8 @@ class Profile extends Component {
                                     </React.Fragment>
                                 );
                             })}
+                            <Button onClick={this.addNewEducation}>+ Add More</Button>
+                            <Button onClick={this.addNewEducation}>Next</Button>
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>
