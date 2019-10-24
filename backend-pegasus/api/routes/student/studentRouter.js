@@ -11,12 +11,12 @@ router.post('/studentawards', studentawards)
 
 //student cert
 //get
-const getstudentcert = require('./studentcert')
-router.get('/studentcert/:studentid', getstudentcert)
+const getstudentcertificate = require('./studentcertificate')
+router.get('/studentcertificate/:studentid', getstudentcertificate)
 
 //post
-const studentcert = require('./studentcert')
-router.post('/studentcert', studentcert)
+const studentcertificate = require('./studentcertificate')
+router.post('/studentcertificate', studentcertificate)
 
 //student education
 //get
@@ -26,6 +26,24 @@ router.get('/studenteducation/:studentid', getstudenteducation)
 //post
 const studenteducation = require('./studenteducation')
 router.post('/studenteducation', studenteducation)
+
+//student job preference
+//get
+const getstudentjobpref = require('./studentjobpref')
+router.get('/studentjobpref/:studentid', getstudentjobpref)
+
+//post
+const studentjobpref = require('./studentjobpref')
+router.post('/studentjobpref', studentjobpref)
+
+//student project
+//get
+const getstudentproject = require('./studentproject')
+router.get('/studentproject/:studentid', getstudentproject)
+
+//post
+const studentproject = require('./studentproject')
+router.post('/studentproject', studentproject)
 
 router.get('/',(req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
