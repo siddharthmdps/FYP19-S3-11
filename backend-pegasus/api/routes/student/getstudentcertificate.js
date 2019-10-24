@@ -1,12 +1,7 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
-const studenteducation = (req, res) => {
+const getstudentcert = (req, res) => {
     const studentid = parseInt(req.params.studentid);
-    const university = req.body.university;
-    const highestq = req.body.highestq;
-    const specialization = req.body.specialization;
-    const type = req.body.type;
-    const grade = req.body.grade;
 
     mypool.getConnection( (error, connection) => {
         if(error) {
@@ -15,8 +10,8 @@ const studenteducation = (req, res) => {
             throw error
         }
         else {
-            if(studentid && university && highestq && specialization) {               
-                let queryString = `INSERT INTO pegasus.studenteducation (studentid, university, highestq, specialization, type, grade) values ("${studentid}", "${university}", "${highestq}", "${specialization}", "${type}", "${grade}")`
+            if(studentid) {               
+                let queryString = `select * from pegasus.certificate where studentid = "${studentid}"`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })
@@ -38,4 +33,4 @@ const studenteducation = (req, res) => {
     } )
 }
 
-module.exports = studenteducation
+module.exports = getstudentcert

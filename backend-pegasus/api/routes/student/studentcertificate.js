@@ -2,10 +2,10 @@ const {env, sha1, mysql, mypool} = require('../../util')
 
 const studentawards = (req, res) => {
     const studentid = parseInt(req.params.studentid);
-    const certname = req.body.awardname;
-    const issuedby = req.body.awardname;
-    const dateissued = req.body.dateawarded;
-    var lifetime = req.body.awarddesc;
+    const certname = req.body.certname;
+    const issuedby = req.body.issuedby;
+    const dateissued = req.body.dateissued;
+    var lifetime = req.body.lifetime;
 
     mypool.getConnection( (error, connection) => {
         if(error) {
@@ -14,8 +14,8 @@ const studentawards = (req, res) => {
             throw error
         }
         else {
-            if(studentid && awardname && dateawarded) {               
-                let queryString = `INSERT INTO pegasus.studentcert (studentid, certname, issuedby, dateissued, lifetime) values ("${studentid}", "${certname}", "${issuedby}", "${dateissued}", "${lifetime}")`
+            if(studentid && certname && issuedby && dateissued) {               
+                let queryString = `INSERT INTO pegasus.certificate (studentid, certificatename, issuedby, dateissued, lifetime) values ("${studentid}", "${certname}", "${issuedby}", "${dateissued}", "${lifetime}")`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })

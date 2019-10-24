@@ -14,7 +14,7 @@ const studentawards = (req, res) => {
         }
         else {
             if(studentid && awardname && dateawarded) {               
-                let queryString = `INSERT INTO pegasus.studentawards (studentid, awardname, dateawarded, awarddesc) values ("${studentid}", "${awardname}", "${dateawarded}", "${awarddesc}")`
+                let queryString = `INSERT INTO pegasus.studentawards (studentid, awardname, dateawarded, awarddescription) values ("${studentid}", "${awardname}", "${dateawarded}", "${awarddesc}")`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })
