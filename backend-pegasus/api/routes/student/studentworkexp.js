@@ -1,15 +1,25 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
+var dateFormat = require('dateformat');
+
 const studentworkexp = (req, res) => {
     const studentid = parseInt(req.params.studentid);
     const position = req.body.position;
     const company = req.body.company;
-    const from = req.body.from;
-    const till = req.body.till;
+    var from = req.body.from;
+    var till = req.body.till;
     const type = req.body.type;
     const field = req.body.field;
     const salary = req.body.salary;
     const description = req.body.description;
+
+    var tempfrom = from.split("/");
+    from = new Date(tempfrom[2], tempfrom[1], tempfrom[0]);
+    from = dateFormat(from, "yyyy-mm-dd");
+
+    var temptill = till.split("/");
+    till = new Date(temptill[2], temptill[1], temptill[0]);
+    till = dateFormat(till, "yyyy-mm-dd");
 
     mypool.getConnection( (error, connection) => {
         if(error) {
