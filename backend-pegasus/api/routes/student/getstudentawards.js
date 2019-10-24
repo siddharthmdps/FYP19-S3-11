@@ -10,7 +10,7 @@ const getstudentawards = (req, res) => {
             throw error
         }
         else {
-            if(studentid && awardname && dateawarded) {               
+            if(studentid) {               
                 let queryString = `select * from pegasus.studentawards where studentid = "${studentid}"`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
