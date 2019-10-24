@@ -49,6 +49,13 @@ class Employer extends Component {
         //console.log(`num of jobs = ${this.state.numOfJobs}`)
     }
 
+    viewJobHandler = (job) => {
+        console.log(`triggered by`, job)
+        this.setState({
+            mainContent : 'viewjob'
+        })
+    }
+
     mainContent = () => {
         const contentID = this.state.mainContent
         switch (contentID) {
@@ -64,6 +71,8 @@ class Employer extends Component {
                 return <h3>blog</h3>
             case 'postjob' : 
                 return <PostJob/>
+            case 'viewjob' :
+                return <h1>View Job</h1>
 
             default : 
                 return (
@@ -74,7 +83,7 @@ class Employer extends Component {
                         />
                     </div>
                     <div className="col-md-9">
-                        <EmpFeed updateNumOfJobs={this.updateNumOfJobs}/>
+                        <EmpFeed updateNumOfJobs={this.updateNumOfJobs} viewJobHandler={this.viewJobHandler}/>
                     </div>
                 </div>
                 )    
