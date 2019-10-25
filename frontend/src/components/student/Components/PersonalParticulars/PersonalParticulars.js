@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, Row, Col} from 'react-bootstrap';
+import {Form, Row, Col, Button} from 'react-bootstrap';
 
 const personalParticulars = props => {
     return(
@@ -8,12 +8,15 @@ const personalParticulars = props => {
             <Form.Row>
                 <Form.Group as={Col} sm='4' controlId="FirstName">
                     <Form.Label>First Name</Form.Label>
-                        <Form.Control type='text' placeholder="Joshua" value={props.details.FirstName} onChange={props.changeFn}/>
+                        <Form.Control type='text' placeholder="Joshua" value={props.details.FirstName} onChange={props.changeFn} required pattern="[A-Za-z]+" />
+                        <Form.Control.Feedback type="invalid">
+                            Please choose a username.
+                        </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group as={Col}  sm='4' controlId="MiddleName">
                     <Form.Label>Middle Name</Form.Label>
-                        <Form.Control type='text' placeholder="Chee Yan Cheng" value={props.details.MiddleName} onChange={props.changeFn}/>
+                        <Form.Control type='text' placeholder="Chee Yan Cheng" value={props.details.MiddleName} onChange={props.changeFn} required/>
                 </Form.Group>
 
                 <Form.Group as={Col}  sm='4' controlId="LastName">
@@ -24,7 +27,7 @@ const personalParticulars = props => {
 
             <Form.Group as={Row} controlId="Email">
                 <Form.Label column sm="2">E Mail</Form.Label>
-                <Col sm="10"><Form.Control type='text' placeholder="someone@email.com" value={props.details.Email} onChange={props.changeFn}/></Col>
+                <Col sm="10"><Form.Control type='email' placeholder="someone@email.com" value={props.details.Email} onChange={props.changeFn}/></Col>
             </Form.Group>
 
             <Form.Group as={Row} controlId="Phone">
@@ -72,7 +75,10 @@ const personalParticulars = props => {
                 <Col sm="10">
                 <Form.Control type='text' placeholder="Singaporean" value={props.details.Nationality} onChange={props.changeFn}/>
                 </Col>
-            </Form.Group>      
+            </Form.Group>  
+            <Button variant="primary" type="submit">
+                Submit
+            </Button>    
         </Form>
         </React.Fragment>
     );

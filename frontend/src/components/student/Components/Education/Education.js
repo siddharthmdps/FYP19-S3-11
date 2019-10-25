@@ -1,16 +1,16 @@
 import React from 'react';
 import {Form, Row, Col} from 'react-bootstrap';
-
+import classes from './Education.module.css'
 const education = props => {
 
     return(
         <React.Fragment>
             <Row>
-                <Col style={{textEmphasis: "bold"}}>
+                <Col className={classes.Title}>
                 Education #{props.details.EducationID}
                 </Col>
-                <Col md={{offset: 9, span: 1}}>
-                <i className="fas fa-trash-alt" style={{color: 'red'}}></i>
+                <Col md={{offset: 9, span: 1}} className={classes.Delete}>
+                <i className="fas fa-trash-alt" ></i>
                 </Col>
             </Row>
             <Form>
