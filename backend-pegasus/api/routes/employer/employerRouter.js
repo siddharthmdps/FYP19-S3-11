@@ -6,6 +6,10 @@ const {router, env, sha1, mysql, mypool} = require('../../util')
 const getJobList = require('./joblist')
 router.get('/joblist/:id', getJobList)
 
+// GET All
+const getalljobs = require('./getalljobs')
+router.get('/getalljobs', getalljobs)
+
 // POST
 const postjob = require('./postjob')
 router.post('/postjob', postjob)
