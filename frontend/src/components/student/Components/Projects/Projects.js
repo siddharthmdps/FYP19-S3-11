@@ -1,11 +1,19 @@
 import React from 'react';
 import {Form, Row, Col} from 'react-bootstrap';
+import classes from '../../../common_assets/Miscellaneous.module.css';
 
 const projects = props => {
     
     return(
         <React.Fragment>
-        <Form>
+            <Row>
+                <Col className={classes.Title}>
+                    Project #{props.details.ProjectID}
+                </Col>
+                <Col md={{ offset: 9, span: 1 }} className={classes.Delete}>
+                    <i className="fas fa-trash-alt" ></i>
+                </Col>
+            </Row>
             <Form.Row>
                 <Form.Group as={Col} sm = "6" controlId="Title">
                     <Form.Label>Project Title</Form.Label>
@@ -26,7 +34,6 @@ const projects = props => {
                 <Form.Label column sm="2">Project Link</Form.Label>
                 <Col sm="10"><Form.Control type='text' placeholder="www.pegasus.github.com" value={props.details.Link} onChange={props.changeFn}/></Col>
             </Form.Group>
-        </Form>
         </React.Fragment>
     );
 }

@@ -8,8 +8,9 @@
     background-color: #fff;
     border: none;
 }
-.SearchBox{
+.SearchBox[type='text']{
     border: none;
+    background-color: white;
 }
 .DropdownMenu{
     background-color: peru;
@@ -45,3 +46,5 @@
         display: block;
     }
   }
+
+ 

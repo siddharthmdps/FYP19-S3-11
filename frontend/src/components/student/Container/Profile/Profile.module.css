@@ -11,12 +11,31 @@
 
 }
 
-.CardHeader{
+.CardHeader {
     cursor: pointer;
-    background-color: aqua;
-    font-weight: bold;
+    background-color: #FDFEFE;
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #85C1E9;
+}
+
+.Active,
+.CardHeader:hover {
+    cursor: pointer;
+    background-color: #34495E ;
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FDFEFE;
+}
+
+.inactive {
+    background-color: red;
 }
 
 .Frame{
     width: 100vh;
+}
+
+.background {
+   
 }

@@ -4,7 +4,7 @@ import Logo from './Logo';
 import classes from './Navbar2.module.css';
 
 const navbar = props => (
-  <Navbar bg="dark" expand="lg" sticky='top'>
+  <Navbar bg="dark" variant='light' expand="lg" sticky='top'>
   <Navbar.Brand href="#home" className="mr-sm-2" className={classes.Logo}><Logo /></Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Form inline>
