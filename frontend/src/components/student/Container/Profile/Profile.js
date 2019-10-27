@@ -216,7 +216,7 @@ class Profile extends Component {
                 isActive[index] = false;
         }
 
-        this.setState({isActive});
+        this.setState({ isActive });
     }
 
     addNewEducation = () => {
@@ -309,31 +309,39 @@ class Profile extends Component {
                         <ProfileImage imageLink={this.state.ProfileImage} />
                     </Col>
                     <Col md={{ offset: 2, span: 9 }} >
-                        <Accordion  className={classes.Accordian}>
+                        <Accordion className={classes.Accordian}>
                             <Card className={classes.background}>
-                                <Accordion.Toggle 
-                                    as={Card.Header} eventKey="0" 
-                                    className={this.state.isActive[0] ? classes.Active : classes.CardHeader} 
+                                <Accordion.Toggle
+                                    as={Card.Header} eventKey="0"
+                                    className={this.state.isActive[0] ? classes.Active : classes.CardHeader}
                                     onClick={() => this.togglePanel(0)}>
                                     Personal Particulars
                                 </Accordion.Toggle>
-                                <Accordion.Collapse eventKey="0">
+                                <Accordion.Collapse eventKey="0" className={classes.Cards}>
                                     <Card.Body>
                                         <Form className={ppClasses.Validate}>
                                             <PersonalParticulars
                                                 details={this.state.PersonalParticulars}
                                                 changeFn={event => this.changePersonalParticulars(event)} />
                                         </Form>
+                                        <div style={{ 'textAlign': 'center' }}>
+                                            <Button
+                                                variant="primary"
+                                                type="submit"
+                                                className={classes.Submit}>
+                                                Submit
+                                        </Button>
+                                        </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
 
                             <Card className={classes.Card}>
-                                <Accordion.Toggle 
-                                as={Card.Header} 
-                                eventKey="1" 
-                                className={this.state.isActive[1] ? classes.Active : classes.CardHeader} 
-                                onClick={() => this.togglePanel(1)}>
+                                <Accordion.Toggle
+                                    as={Card.Header}
+                                    eventKey="1"
+                                    className={this.state.isActive[1] ? classes.Active : classes.CardHeader}
+                                    onClick={() => this.togglePanel(1)}>
                                     Education
                                 </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="1">
@@ -347,22 +355,23 @@ class Profile extends Component {
                                                             changeFn={event => this.changeEducation(event, educationDetail.EducationID)}
                                                         />
                                                     </Form>
-                                                    <hr />
                                                 </React.Fragment>
                                             );
                                         })}
-                                        <Button onClick={this.addNewEducation}>+ Add More</Button>
-                                        <Button onClick={this.addNewEducation}>Next</Button>
+                                        <div style={{ 'textAlign': 'center' }}>
+                                            <Button onClick={this.addNewEducation} className={classes.Submit}>+ Add More</Button>
+                                            <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
+                                        </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
 
                             <Card className={classes.Card}>
-                                <Accordion.Toggle 
-                                as={Card.Header} 
-                                eventKey="2" 
-                                className={this.state.isActive[2] ? classes.Active : classes.CardHeader} 
-                                onClick={() => this.togglePanel(2)}>
+                                <Accordion.Toggle
+                                    as={Card.Header}
+                                    eventKey="2"
+                                    className={this.state.isActive[2] ? classes.Active : classes.CardHeader}
+                                    onClick={() => this.togglePanel(2)}>
                                     Work Experience
                     </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="2">
@@ -376,22 +385,23 @@ class Profile extends Component {
                                                             details={workExpDetail}
                                                             changeFn={event => this.changeWorkExp(event, workExpDetail.WorkExpID)} />
                                                     </Form>
-                                                    <hr />
                                                 </React.Fragment>
                                             );
                                         })}
-                                        <Button onClick={this.addNewWorkExp}>+ Add More</Button>
-                                        <Button onClick={this.addNewWorkExp}>Next</Button>
+                                        <div style={{ 'textAlign': 'center' }}>
+                                            <Button onClick={this.addNewEducation} className={classes.Submit}>+ Add More</Button>
+                                            <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
+                                        </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
 
                             <Card className={classes.Card}>
-                                <Accordion.Toggle 
-                                as={Card.Header} 
-                                eventKey="3" 
-                                className={this.state.isActive[3] ? classes.Active : classes.CardHeader} 
-                                onClick={() => this.togglePanel(3)}>
+                                <Accordion.Toggle
+                                    as={Card.Header}
+                                    eventKey="3"
+                                    className={this.state.isActive[3] ? classes.Active : classes.CardHeader}
+                                    onClick={() => this.togglePanel(3)}>
                                     Job Preference
                     </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="3">
@@ -405,22 +415,23 @@ class Profile extends Component {
                                                             details={jobPreferenceDetail}
                                                             changeFn={event => this.changeJobPreference(event, jobPreferenceDetail.JobPreferenceID)} />
                                                     </Form>
-                                                    <hr />
                                                 </React.Fragment>
                                             );
                                         })}
-                                        <Button onClick={this.addNewJobPref}>+ Add More</Button>
-                                        <Button onClick={this.addNewJobPref}>Next</Button>
+                                        <div style={{ 'textAlign': 'center' }}>
+                                            <Button onClick={this.addNewEducation} className={classes.Submit}>+ Add More</Button>
+                                            <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
+                                        </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
 
                             <Card className={classes.Card}>
-                                <Accordion.Toggle 
-                                as={Card.Header} 
-                                eventKey="4" 
-                                className={this.state.isActive[4] ? classes.Active : classes.CardHeader} 
-                                onClick={() => this.togglePanel(4)}>
+                                <Accordion.Toggle
+                                    as={Card.Header}
+                                    eventKey="4"
+                                    className={this.state.isActive[4] ? classes.Active : classes.CardHeader}
+                                    onClick={() => this.togglePanel(4)}>
                                     Awards
                     </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="4">
@@ -434,22 +445,23 @@ class Profile extends Component {
                                                             details={awardDetail}
                                                             changeFn={event => this.changeAwards(event, awardDetail.AwardID)} />
                                                     </Form>
-                                                    <hr />
                                                 </React.Fragment>
                                             );
                                         })}
-                                        <Button onClick={this.addNewAwards}>+ Add More</Button>
-                                        <Button onClick={this.addNewAwards}>Next</Button>
+                                        <div style={{ 'textAlign': 'center' }}>
+                                            <Button onClick={this.addNewEducation} className={classes.Submit}>+ Add More</Button>
+                                            <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
+                                        </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
 
                             <Card className={classes.Card}>
-                                <Accordion.Toggle 
-                                as={Card.Header} 
-                                eventKey="5" 
-                                className={this.state.isActive[5] ? classes.Active : classes.CardHeader} 
-                                onClick={() => this.togglePanel(5)}>
+                                <Accordion.Toggle
+                                    as={Card.Header}
+                                    eventKey="5"
+                                    className={this.state.isActive[5] ? classes.Active : classes.CardHeader}
+                                    onClick={() => this.togglePanel(5)}>
                                     Certification
                     </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="5">
@@ -463,22 +475,23 @@ class Profile extends Component {
                                                             details={certificateDetail}
                                                             changeFn={event => this.changeCertification(event, certificateDetail.CertificateID)} />
                                                     </Form>
-                                                    <hr />
                                                 </React.Fragment>
                                             );
                                         })}
-                                        <Button onClick={this.addNewCertificate}>+ Add More</Button>
-                                        <Button onClick={this.addNewCertificate}>Next</Button>
+                                        <div style={{ 'textAlign': 'center' }}>
+                                            <Button onClick={this.addNewEducation} className={classes.Submit}>+ Add More</Button>
+                                            <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
+                                        </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
 
                             <Card className={classes.Card}>
-                                <Accordion.Toggle 
-                                as={Card.Header} 
-                                eventKey="6" 
-                                className={this.state.isActive[6] ? classes.Active : classes.CardHeader} 
-                                onClick={() => this.togglePanel(6)}>
+                                <Accordion.Toggle
+                                    as={Card.Header}
+                                    eventKey="6"
+                                    className={this.state.isActive[6] ? classes.Active : classes.CardHeader}
+                                    onClick={() => this.togglePanel(6)}>
                                     Projects
                     </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="6">
@@ -492,22 +505,23 @@ class Profile extends Component {
                                                             details={projectDetail}
                                                             changeFn={event => this.changeProjects(event, projectDetail.ProjectID)} />
                                                     </Form>
-                                                    <hr />
                                                 </React.Fragment>
                                             );
                                         })}
-                                        <Button onClick={this.addNewProjects}>+ Add More</Button>
-                                        <Button onClick={this.addNewProjects}>Next</Button>
+                                        <div style={{ 'textAlign': 'center' }}>
+                                            <Button onClick={this.addNewEducation} className={classes.Submit}>+ Add More</Button>
+                                            <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
+                                        </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
 
                             <Card className={classes.Card}>
-                                <Accordion.Toggle 
-                                as={Card.Header} 
-                                eventKey="8" 
-                                className={this.state.isActive[8] ? classes.Active : classes.CardHeader} 
-                                onClick={() => this.togglePanel(8)}>
+                                <Accordion.Toggle
+                                    as={Card.Header}
+                                    eventKey="8"
+                                    className={this.state.isActive[8] ? classes.Active : classes.CardHeader}
+                                    onClick={() => this.togglePanel(8)}>
                                     Upload Documents
                     </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="8">
@@ -521,7 +535,6 @@ class Profile extends Component {
                                                             details={documentDetail}
                                                             changeFn={event => this.changeDocument(event, documentDetail.DocumentID)} />
                                                     </Form>
-                                                    <hr />
                                                 </React.Fragment>
                                             );
                                         })}

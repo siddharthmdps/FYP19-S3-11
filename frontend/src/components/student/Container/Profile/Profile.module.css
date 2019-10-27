@@ -1,16 +1,7 @@
-.Profile{
-    
-}
-
 .Accordian{
     /* cursor: pointer;
     background-color: aqua; */
 }
-
-.Card{
-
-}
-
 .CardHeader {
     cursor: pointer;
     background-color: #FDFEFE;
@@ -19,23 +10,72 @@
     color: #85C1E9;
 }
 
-.Active,
 .CardHeader:hover {
     cursor: pointer;
-    background-color: #34495E ;
-    font-weight: lighter;
+    font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
-    color: #FDFEFE;
+    color: #2874A6;
 }
 
-.inactive {
-    background-color: red;
+.Active {
+    cursor: pointer;
+    background-color: #34495E ;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FDFEFE;
 }
 
 .Frame{
     width: 100vh;
 }
 
-.background {
-   
+.Cards{
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#2874A6;
+    background-color: #fff;
+}
+
+.Submit {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    text-align: center;
+    margin-right: 2%;
+    margin-top: 1%;
+}
+
+.Submit:hover {
+    background-color: #1B4F72;
+    box-shadow: 0px 15px 20px rgba(46, 119, 229, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+.Submit:active {
+    content: "";
+    background: #1B4F72;
+    position: relative;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.Submit:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
 }
