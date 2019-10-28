@@ -29,7 +29,8 @@
     text-decoration: line-through;
 }
 
-.Input:hover{
+.Input:hover,
+.Input:focus {
     background-color: #1B4F72;
     box-shadow: 0px 15px 20px rgba(46, 119, 229, 0.4);
     color: #fff;

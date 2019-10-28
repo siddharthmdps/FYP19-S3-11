@@ -2,12 +2,14 @@
 .Image{
     /* height: 171px;
     width: 180px; */
+    border-radius: 50%;
 }
 
 .CentralContent{
-    justify-content: center;
+    justify-content: center;    
     text-align: center;
 }
+
 .CentralContent:hover{
     cursor: pointer;
 }
