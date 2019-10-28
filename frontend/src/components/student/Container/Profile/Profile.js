@@ -238,7 +238,10 @@ class Profile extends Component {
 
     addNewWorkExp = () => {
         let temp = { ...WorkExpShell };
-        temp.WorkExpID = this.state.WorkExp[this.state.WorkExp.length - 1]["WorkExpID"] + 1;
+        if(this.state.WorkExp.length === 0)
+            temp.WorkExpID = 1;
+        else
+            temp.WorkExpID = this.state.WorkExp[this.state.WorkExp.length - 1]["WorkExpID"] + 1;
         let temp2 = this.state.WorkExp;
         temp2.push(temp);
         this.setState({ "WorkExp": temp2 });
@@ -246,7 +249,10 @@ class Profile extends Component {
 
     addNewJobPref = () => {
         let temp = { ...JobPreferenceShell };
-        temp.JobPreferenceID = this.state.JobPreference[this.state.JobPreference.length - 1]["JobPreferenceID"] + 1;
+        if(this.state.JobPreference.length === 0)
+            temp.JobPreferenceID = 1;
+        else
+            temp.JobPreferenceID = this.state.JobPreference[this.state.JobPreference.length - 1]["JobPreferenceID"] + 1;
         let temp2 = this.state.JobPreference;
         temp2.push(temp);
         this.setState({ "JobPreference": temp2 });
@@ -254,7 +260,10 @@ class Profile extends Component {
 
     addNewAwards = () => {
         let temp = { ...AwardsShell };
-        temp.AwardID = this.state.Awards[this.state.Awards.length - 1]["AwardID"] + 1;
+        if(this.state.Awards.length === 0)
+            temp.AwardID = 1;
+        else
+            temp.AwardID = this.state.Awards[this.state.Awards.length - 1]["AwardID"] + 1;
         let temp2 = this.state.Awards;
         temp2.push(temp);
         this.setState({ "Awards": temp2 });
@@ -262,7 +271,10 @@ class Profile extends Component {
 
     addNewCertificate = () => {
         let temp = { ...CertificationShell };
-        temp.CertificateID = this.state.Certification[this.state.Certification.length - 1]["CertificateID"] + 1;
+        if(this.state.Certification.length === 0)
+            temp.CertificateID = 1;
+        else
+            temp.CertificateID = this.state.Certification[this.state.Certification.length - 1]["CertificateID"] + 1;
         let temp2 = this.state.Certification;
         temp2.push(temp);
         this.setState({ "Certification": temp2 });
@@ -270,7 +282,10 @@ class Profile extends Component {
 
     addNewProjects = () => {
         let temp = { ...ProjectsShell };
-        temp.ProjectID = this.state.Projects[this.state.Projects.length - 1]["ProjectID"] + 1;
+        if(this.state.Projects.length === 0)
+            temp.ProjectID = 1;
+        else
+            temp.ProjectID = this.state.Projects[this.state.Projects.length - 1]["ProjectID"] + 1;
         let temp2 = this.state.Projects;
         temp2.push(temp);
         this.setState({ "Projects": temp2 });

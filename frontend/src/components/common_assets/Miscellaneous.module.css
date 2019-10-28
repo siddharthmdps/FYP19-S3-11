@@ -5,3 +5,8 @@
 .Delete{
     color: red;
 }
+
+.Delete:hover {
+    cursor: pointer;
+    transform: scale(1.5, 1.5);
+}

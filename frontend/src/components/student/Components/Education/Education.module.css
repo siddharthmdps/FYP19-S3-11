@@ -6,7 +6,8 @@
 }
 .Delete:hover {
     color: #000;
-    transform: translateY(-7px);
+    cursor: pointer;
+    /* transform: translateY(-7px); */
 }
 
 .Submit {
