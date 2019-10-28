@@ -427,7 +427,7 @@ class Profile extends Component {
 // Removing elements in the Profile ends here
 
     test = () => {
-        this.setState({"activatedToggle": "0"});
+        this.setState({"activatedToggle": "2"});
 
     }
 
@@ -470,10 +470,23 @@ class Profile extends Component {
             <Container fluid>
                 <br />
                 <Row >
-                    <Col md={{ offset: 0, span: 1 }}>
+                    <Col md={{ span: 3 }}>
                         <ProfileImage imageLink={this.state.ProfileImage} />
+
+                        <Card>
+                        <Card.Body>Recommended Jobs</Card.Body>
+                        </Card>
+                        
+                        <Card>
+                        <Card.Body>Applied Jobs</Card.Body>
+                        </Card>
+                        
+                        <Card>
+                        <Card.Body>Saved Jobs</Card.Body>
+                        </Card>
+                        
                     </Col>
-                    <Col md={{ offset: 2, span: 9 }} >
+                    <Col md={{ span: 9 }} >
                         <Accordion className={classes.Accordian} activeKey={this.state.activatedToggle}>
                             <Card className={classes.background}>
                                 <Accordion.Toggle
@@ -490,7 +503,7 @@ class Profile extends Component {
                                                 changeFn={event => this.changePersonalParticulars(event)} />
                                         </Form>
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button1>
+                                            <Button1 click={this.test}>
                                                 Next >
                                         </Button1>
                                         </div>
@@ -522,8 +535,8 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button1 onClick={this.addNewEducation}>+ Add More</Button1>
-                                            <Button1 onClick={this.addNewEducation}>Next ></Button1>
+                                            <Button1 click={this.addNewEducation}>+ Add More</Button1>
+                                            <Button1 click={this.addNewEducation}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -553,8 +566,8 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button1 onClick={this.addNewWorkExp}>+ Add More</Button1>
-                                            <Button1 onClick={this.addNewEducation}>Next ></Button1>
+                                            <Button1 click={this.addNewWorkExp}>+ Add More</Button1>
+                                            <Button1 click={this.addNewEducation}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -584,8 +597,8 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button1 onClick={this.addNewJobPref}>+ Add More</Button1>
-                                            <Button1 onClick={this.addNewEducation}>Next ></Button1>
+                                            <Button1 click={this.addNewJobPref}>+ Add More</Button1>
+                                            <Button1 click={this.addNewEducation}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -615,8 +628,8 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button1 onClick={this.addNewAwards}>+ Add More</Button1>
-                                            <Button1 onClick={this.test}>Next ></Button1>
+                                            <Button1 click={this.addNewAwards}>+ Add More</Button1>
+                                            <Button1 click={this.test}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -646,8 +659,8 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button1 onClick={this.addNewCertificate}>+ Add More</Button1>
-                                            <Button1 onClick={this.addNewEducation}>Next ></Button1>
+                                            <Button1 click={this.addNewCertificate}>+ Add More</Button1>
+                                            <Button1 click={this.addNewEducation}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -677,8 +690,8 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button1 onClick={this.addNewProjects}>+ Add More</Button1>
-                                            <Button1 onClick={this.addNewEducation}>Next ></Button1>
+                                            <Button1 click={this.addNewProjects}>+ Add More</Button1>
+                                            <Button1 click={this.addNewEducation}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>

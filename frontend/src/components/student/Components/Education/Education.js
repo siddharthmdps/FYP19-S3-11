@@ -1,6 +1,7 @@
 import React from 'react';
-import { Form, Row, Col } from 'react-bootstrap';
+import { Form, Row, Col, Button } from 'react-bootstrap';
 import classes from '../../../common_assets/Miscellaneous.module.css';
+import Button1 from '../../../common_assets/Button1/Button1';
 
 const education = props => {
 
@@ -11,7 +12,7 @@ const education = props => {
                     Education #{props.details.EducationID}
                 </Col>
                 <Col md={{ offset: 9, span: 1 }} className={classes.Delete}>
-                    <i className="fas fa-trash-alt" onClick={props.remove}></i>
+                    <Button1 click={props.remove}><i className="fas fa-trash-alt"></i></Button1>
                 </Col>
             </Row>
             <Form.Group as={Row} controlId="University">
