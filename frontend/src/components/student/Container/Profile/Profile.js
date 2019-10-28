@@ -227,7 +227,10 @@ class Profile extends Component {
 
     addNewEducation = () => {
         let temp = { ...EducationShell };
-        temp.EducationID = this.state.Education[this.state.Education.length - 1]["EducationID"] + 1;
+        if(this.state.Education.length === 0)
+            temp.EducationID = 1;    
+        else 
+            temp.EducationID = this.state.Education[this.state.Education.length - 1]["EducationID"] + 1;
         let temp2 = this.state.Education;
         temp2.push(temp);
         this.setState({ "Education": temp2 });
@@ -379,9 +382,9 @@ class Profile extends Component {
                                     <Card.Body>
                                         {this.state.Education.map(educationDetail => {
                                             return (
-                                                <React.Fragment>
+                                                <React.Fragment key={educationDetail.EducationID}>
                                                     <Form className={ppClasses.Validate}>
-                                                        <Education key={educationDetail.EducationID}
+                                                        <Education
                                                             details={educationDetail}
                                                             changeFn={event => this.changeEducation(event, educationDetail.EducationID)}
                                                             remove={this.removeEducation.bind(this, educationDetail["EducationID"])}
@@ -410,10 +413,9 @@ class Profile extends Component {
                                     <Card.Body>
                                         {this.state.WorkExp.map(workExpDetail => {
                                             return (
-                                                <React.Fragment>
+                                                <React.Fragment key={workExpDetail.WorkExpID}>
                                                     <Form className={ppClasses.Validate}>
                                                         <WorkExperience
-                                                            key={workExpDetail.WorkExpID}
                                                             details={workExpDetail}
                                                             changeFn={event => this.changeWorkExp(event, workExpDetail.WorkExpID)} />
                                                     </Form>
@@ -440,10 +442,9 @@ class Profile extends Component {
                                     <Card.Body>
                                         {this.state.JobPreference.map(jobPreferenceDetail => {
                                             return (
-                                                <React.Fragment>
+                                                <React.Fragment key={jobPreferenceDetail.JobPreferenceID}>
                                                     <Form className={ppClasses.Validate}>
                                                         <JobPreference
-                                                            key={jobPreferenceDetail.JobPreferenceID}
                                                             details={jobPreferenceDetail}
                                                             changeFn={event => this.changeJobPreference(event, jobPreferenceDetail.JobPreferenceID)} />
                                                     </Form>
@@ -470,10 +471,9 @@ class Profile extends Component {
                                     <Card.Body>
                                         {this.state.Awards.map(awardDetail => {
                                             return (
-                                                <React.Fragment>
+                                                <React.Fragment key={awardDetail.AwardID}>
                                                     <Form className={ppClasses.Validate}>
                                                         <Awards
-                                                            key={awardDetail.AwardID}
                                                             details={awardDetail}
                                                             changeFn={event => this.changeAwards(event, awardDetail.AwardID)} />
                                                     </Form>
@@ -500,10 +500,9 @@ class Profile extends Component {
                                     <Card.Body>
                                         {this.state.Certification.map(certificateDetail => {
                                             return (
-                                                <React.Fragment>
+                                                <React.Fragment key={certificateDetail.CertificateID}>
                                                     <Form className={ppClasses.Validate}>
                                                         <Certification
-                                                            key={certificateDetail.CertificateID}
                                                             details={certificateDetail}
                                                             changeFn={event => this.changeCertification(event, certificateDetail.CertificateID)} />
                                                     </Form>
@@ -530,10 +529,9 @@ class Profile extends Component {
                                     <Card.Body>
                                         {this.state.Projects.map(projectDetail => {
                                             return (
-                                                <React.Fragment>
+                                                <React.Fragment key={projectDetail.ProjectID}>
                                                     <Form className={ppClasses.Validate}>
                                                         <Projects
-                                                            key={projectDetail.ProjectID}
                                                             details={projectDetail}
                                                             changeFn={event => this.changeProjects(event, projectDetail.ProjectID)} />
                                                     </Form>
@@ -560,10 +558,9 @@ class Profile extends Component {
                                     <Card.Body>
                                         {this.state.Document.map(documentDetail => {
                                             return (
-                                                <React.Fragment>
+                                                <React.Fragment key={documentDetail.DocumentID}>
                                                     <Form className={ppClasses.Validate}>
                                                         <Document
-                                                            key={documentDetail.DocumentID}
                                                             details={documentDetail}
                                                             changeFn={event => this.changeDocument(event, documentDetail.DocumentID)} />
                                                     </Form>
