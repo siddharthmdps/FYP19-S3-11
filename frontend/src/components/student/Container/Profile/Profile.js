@@ -296,7 +296,6 @@ class Profile extends Component {
 // Removing elements in the Profile starts here
 
     removeEducation = (eID) => {
-
         let temp = this.state.Education;
         let found=false;
         let eIndex = -1;
@@ -314,6 +313,113 @@ class Profile extends Component {
         this.setState({ "Education": temp });
     }
 
+    removeWorkExp = (wID) => {
+        let temp = this.state.WorkExp;
+        let found=false;
+        let wIndex = -1;
+        temp.forEach((element, index) => {    
+            if(element["WorkExpID"]===wID){
+                found=true;
+                wIndex=index;
+            }
+            if(found){
+                element["WorkExpID"]--;
+            }
+        });
+        if(found)
+            temp.splice(wIndex, 1);
+        this.setState({ "WorkExp": temp });
+    }
+
+    removeJobPreference = (jID) => {
+        let temp = this.state.JobPreference;
+        let found=false;
+        let jIndex = -1;
+        temp.forEach((element, index) => {    
+            if(element["JobPreferenceID"]===jID){
+                found=true;
+                jIndex=index;
+            }
+            if(found){
+                element["JobPreferenceID"]--;
+            }
+        });
+        if(found)
+            temp.splice(jIndex, 1);
+        this.setState({ "JobPreference": temp });
+    }
+
+    removeAwards = (aID) => {
+        let temp = this.state.Awards;
+        let found=false;
+        let aIndex = -1;
+        temp.forEach((element, index) => {    
+            if(element["AwardID"]===aID){
+                found=true;
+                aIndex=index;
+            }
+            if(found){
+                element["AwardID"]--;
+            }
+        });
+        if(found)
+            temp.splice(aIndex, 1);
+        this.setState({ "Awards": temp });
+    }
+
+    removeCertification = (cID) => {
+        let temp = this.state.Certification;
+        let found=false;
+        let cIndex = -1;
+        temp.forEach((element, index) => {    
+            if(element["CertificateID"]===cID){
+                found=true;
+                cIndex=index;
+            }
+            if(found){
+                element["CertificateID"]--;
+            }
+        });
+        if(found)
+            temp.splice(cIndex, 1);
+        this.setState({ "Certification": temp });
+    }
+
+    removeSkills = (sID) => {
+        let temp = this.state.Skills;
+        let found=false;
+        let sIndex = -1;
+        temp.forEach((element, index) => {    
+            if(element["SkillID"]===sID){
+                found=true;
+                sIndex=index;
+            }
+            if(found){
+                element["SkillID"]--;
+            }
+        });
+        if(found)
+            temp.splice(sIndex, 1);
+        this.setState({ "Skills": temp });
+    }
+
+    removeProjects = (pID) => {
+        let temp = this.state.Projects;
+        let found=false;
+        let pIndex = -1;
+        temp.forEach((element, index) => {    
+            if(element["ProjectID"]===pID){
+                found=true;
+                pIndex=index;
+            }
+            if(found){
+                element["ProjectID"]--;
+            }
+        });
+        if(found)
+            temp.splice(pIndex, 1);
+        this.setState({ "Projects": temp });
+    }
 // Removing elements in the Profile ends here
 
     componentDidMount() {
