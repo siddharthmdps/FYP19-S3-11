@@ -11,8 +11,8 @@ const document = props => {
             </Form.Group>
 
             <Form.Group as={Row} controlId="document">
-                <Form.Label column sm="2">Upload resume here</Form.Label>
-                <Col sm="10"><Form.Control type='file' /></Col>
+                <Form.Label column sm="2">Upload</Form.Label>
+                <Col sm="10"><Form.Control type='file'/></Col>
             </Form.Group>
         </React.Fragment>
     );
