@@ -10,7 +10,7 @@ const jobPreference = props => {
                     Job Preference #{props.details.JobPreferenceID}
                 </Col>
                 <Col md={{ offset: 9, span: 1 }} className={classes2.Delete}>
-                    <i className="fas fa-trash-alt" ></i>
+                    <i className="fas fa-trash-alt" onClick={props.remove}></i>
                 </Col>
             </Row>
             <Form.Row>

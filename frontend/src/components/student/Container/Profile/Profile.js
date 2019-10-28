@@ -107,7 +107,8 @@ class Profile extends Component {
         "Skills": [],
         "Projects": [],
         "Document": [],
-        "isActive": []
+        "isActive": [],
+        "activatedToggle": "0"
     }
 
 // Handling Form Inputs starts here
@@ -221,6 +222,7 @@ class Profile extends Component {
         }
 
         this.setState({ isActive });
+        this.setState({"activatedToggle": i.toString()});
     }
 
 // Adding new elements in the Profile starts here
@@ -422,6 +424,11 @@ class Profile extends Component {
     }
 // Removing elements in the Profile ends here
 
+    test = () => {
+        this.setState({"activatedToggle": "0"});
+
+    }
+
     componentDidMount() {
         Axios.get('http://localhost:3000/studentProfile')
             .then(receivedData => {
@@ -453,6 +460,7 @@ class Profile extends Component {
                 this.setState({ Projects: receivedData.data.Projects });
                 this.setState({ Document: receivedData.data.Document });
             });
+            this.togglePanel(0);
     }
 
     render() {
@@ -464,7 +472,7 @@ class Profile extends Component {
                         <ProfileImage imageLink={this.state.ProfileImage} />
                     </Col>
                     <Col md={{ offset: 2, span: 9 }} >
-                        <Accordion className={classes.Accordian}>
+                        <Accordion className={classes.Accordian} activeKey={this.state.activatedToggle}>
                             <Card className={classes.background}>
                                 <Accordion.Toggle
                                     as={Card.Header} eventKey="0"
@@ -538,14 +546,16 @@ class Profile extends Component {
                                                     <Form className={ppClasses.Validate}>
                                                         <WorkExperience
                                                             details={workExpDetail}
-                                                            changeFn={event => this.changeWorkExp(event, workExpDetail.WorkExpID)} />
+                                                            changeFn={event => this.changeWorkExp(event, workExpDetail.WorkExpID)} 
+                                                            remove={this.removeWorkExp.bind(this, workExpDetail["WorkExpID"])}
+                                                        />
                                                     </Form>
                                                 </React.Fragment>
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
                                             <Button onClick={this.addNewWorkExp} className={classes.Submit}>+ Add More</Button>
-                                            <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
+                                            <Button onClick={this.addNewEducation} className={classes.Submit}>Next ></Button>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -567,7 +577,9 @@ class Profile extends Component {
                                                     <Form className={ppClasses.Validate}>
                                                         <JobPreference
                                                             details={jobPreferenceDetail}
-                                                            changeFn={event => this.changeJobPreference(event, jobPreferenceDetail.JobPreferenceID)} />
+                                                            changeFn={event => this.changeJobPreference(event, jobPreferenceDetail.JobPreferenceID)} 
+                                                            remove={this.removeJobPreference.bind(this, jobPreferenceDetail["JobPreferenceID"])}
+                                                        />
                                                     </Form>
                                                 </React.Fragment>
                                             );
@@ -596,14 +608,16 @@ class Profile extends Component {
                                                     <Form className={ppClasses.Validate}>
                                                         <Awards
                                                             details={awardDetail}
-                                                            changeFn={event => this.changeAwards(event, awardDetail.AwardID)} />
+                                                            changeFn={event => this.changeAwards(event, awardDetail.AwardID)} 
+                                                            remove={this.removeAwards.bind(this, awardDetail["AwardID"])}
+                                                        />
                                                     </Form>
                                                 </React.Fragment>
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
                                             <Button onClick={this.addNewAwards} className={classes.Submit}>+ Add More</Button>
-                                            <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
+                                            <Button onClick={this.test} className={classes.Submit}>Next</Button>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -625,7 +639,9 @@ class Profile extends Component {
                                                     <Form className={ppClasses.Validate}>
                                                         <Certification
                                                             details={certificateDetail}
-                                                            changeFn={event => this.changeCertification(event, certificateDetail.CertificateID)} />
+                                                            changeFn={event => this.changeCertification(event, certificateDetail.CertificateID)} 
+                                                            remove={this.removeCertification.bind(this, certificateDetail["CertificateID"])}
+                                                        />
                                                     </Form>
                                                 </React.Fragment>
                                             );
@@ -654,7 +670,9 @@ class Profile extends Component {
                                                     <Form className={ppClasses.Validate}>
                                                         <Projects
                                                             details={projectDetail}
-                                                            changeFn={event => this.changeProjects(event, projectDetail.ProjectID)} />
+                                                            changeFn={event => this.changeProjects(event, projectDetail.ProjectID)} 
+                                                            remove={this.removeProjects.bind(this, projectDetail["ProjectID"])}
+                                                        />
                                                     </Form>
                                                 </React.Fragment>
                                             );

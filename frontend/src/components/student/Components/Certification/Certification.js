@@ -11,7 +11,7 @@ const certification = props => {
                     Certificate #{props.details.CertificateID}
                 </Col>
                 <Col md={{ offset: 9, span: 1 }} className={classes.Delete}>
-                    <i className="fas fa-trash-alt" ></i>
+                    <i className="fas fa-trash-alt" onClick={props.remove}></i>
                 </Col>
             </Row>
             <Form.Row>
