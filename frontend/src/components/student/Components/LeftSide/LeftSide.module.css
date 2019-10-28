@@ -6,4 +6,8 @@
 
 .CentralContent{
     justify-content: center;
+    text-align: center;
+}
+.CentralContent:hover{
+    cursor: pointer;
 }
