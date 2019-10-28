@@ -389,7 +389,7 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button onClick={this.addNewEducation} className={classes.Submit}>+ Add More</Button>
+                                            <Button onClick={this.addNewWorkExp} className={classes.Submit}>+ Add More</Button>
                                             <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
                                         </div>
                                     </Card.Body>
@@ -419,7 +419,7 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button onClick={this.addNewEducation} className={classes.Submit}>+ Add More</Button>
+                                            <Button onClick={this.addNewJobPref} className={classes.Submit}>+ Add More</Button>
                                             <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
                                         </div>
                                     </Card.Body>
@@ -449,7 +449,7 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button onClick={this.addNewEducation} className={classes.Submit}>+ Add More</Button>
+                                            <Button onClick={this.addNewAwards} className={classes.Submit}>+ Add More</Button>
                                             <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
                                         </div>
                                     </Card.Body>
@@ -479,7 +479,7 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button onClick={this.addNewEducation} className={classes.Submit}>+ Add More</Button>
+                                            <Button onClick={this.addNewCertificate} className={classes.Submit}>+ Add More</Button>
                                             <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
                                         </div>
                                     </Card.Body>
@@ -509,7 +509,7 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button onClick={this.addNewEducation} className={classes.Submit}>+ Add More</Button>
+                                            <Button onClick={this.addNewProjects} className={classes.Submit}>+ Add More</Button>
                                             <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
                                         </div>
                                     </Card.Body>

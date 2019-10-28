@@ -78,10 +78,7 @@ const personalParticulars = props => {
                 <Col sm="10">
                 <Form.Control type='text' placeholder="Singaporean" value={props.details.Nationality} onChange={props.changeFn} required/>
                 </Col>
-            </Form.Group>  
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>    
+            </Form.Group>     
         </React.Fragment>
     );
 }
