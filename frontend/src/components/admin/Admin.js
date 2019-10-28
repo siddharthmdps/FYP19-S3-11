@@ -30,8 +30,9 @@ class Admin extends Component {
           <Route exact path="/Dashboard" component={Dashboard} />
           <Route exact path="/Candidate" component={Candidate} />
           <Route exact path="/Employer" component={Employer} />
-          <Route exact path="/Reports" component={Reports} />
+          
           <Route exact path="/Jobs" component={Jobs} />
+          <Route exact path="/Reports" component={Reports} />
           
           <Route exact path="/Chat" component={Chat} />
           <Route exact path="/Settings" component={Settings} />

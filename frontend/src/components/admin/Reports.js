@@ -1,69 +1,92 @@
 import React, { Component } from 'react'
+import { Row, Col, Tab, Nav, Sonnet } from 'react-bootstrap';
+import {Doughnut} from 'react-chartjs-2';
+
+const data = {
+	labels: [
+		'Red',
+		'Green',
+		'Yellow'
+	],
+	datasets: [{
+		data: [300, 50, 100],
+		backgroundColor: [
+		'#FF6384',
+		'#36A2EB',
+		'#FFCE56'
+		],
+		hoverBackgroundColor: [
+		'#FF6384',
+		'#36A2EB',
+		'#FFCE56'
+		]
+	}]
+};
+
+const data2 = {
+	labels: [
+		'Red',
+		'Green',
+		'Yellow'
+	],
+	datasets: [{
+		data: [100, 50, 20],
+		backgroundColor: [
+		'#FF6384',
+		'#36A2EB',
+		'#FFCE56'
+		],
+		hoverBackgroundColor: [
+		'#FF6384',
+		'#36A2EB',
+		'#FFCE56'
+		]
+	}]
+};
 
 export default class Reports extends Component {
     render() {
         return (
             <div>
-  {/* Custom Tabs (Pulled to the right) */}
-  <div className="nav-tabs-custom">
-    <ul className="nav nav-tabs pull-right">
-      
-      <li className="dropdown">
-        <a className="dropdown-toggle" data-toggle="dropdown" href="#">Employment Rate By Schools <span className="caret" />
-        </a>
-        <ul className="dropdown-menu">
-          <li role="presentation"><a role="menuitem" tabIndex={-1} href="#tab_2-2" data-toggle="tab">By Schools</a></li>
-          <li role="presentation"><a role="menuitem" tabIndex={-1} href="#tab_3-2">By Schools > By Fields</a></li>
-          <li role="presentation"><a role="menuitem" tabIndex={-1} href="#">Yearly employment rate by schools</a></li>
-          <li role="presentation"><a role="menuitem" tabIndex={-1} href="#">Yearly employment rate by schools > by fields</a></li>
-        </ul>
-      </li>
-      <li class="active"><a href="#tab_1-1" data-toggle="tab">Overall Employment Rate</a></li>
-      {/*<li><a href="#tab_2-2" data-toggle="tab">Tab 2</a></li>
-      <li><a href="#tab_3-2" data-toggle="tab">Tab 3</a></li>*/}
-      <li className="pull-left header"><i className="fa fa-th" /> Employability Reports </li>
-    </ul>
-    <div className="tab-content">
-      <div className="tab-pane active" id="tab_1-1">
-        <b>How to use:</b>
-        <p>Exactly like the original bootstrap tabs except you should use
-          the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.</p>
-        A wonderful serenity has taken possession of my entire soul,
-        like these sweet mornings of spring which I enjoy with my whole heart.
-        I am alone, and feel the charm of existence in this spot,
-        which was created for the bliss of souls like mine. I am so happy,
-        my dear friend, so absorbed in the exquisite sense of mere tranquil existence,
-        that I neglect my talents. I should be incapable of drawing a single stroke
-        at the present moment; and yet I feel that I never was a greater artist than now.
-      </div>
-      {/* /.tab-pane */}
-      <div className="tab-pane" id="tab_2-2">
-        The European languages are members of the same family. Their separate existence is a myth.
-        For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-        in their grammar, their pronunciation and their most common words. Everyone realizes why a
-        new common language would be desirable: one could refuse to pay expensive translators. To
-        achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-        words. If several languages coalesce, the grammar of the resulting language is more simple
-        and regular than that of the individual languages.
-      </div>
-      {/* /.tab-pane */}
-      <div className="tab-pane" id="tab_3-2">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-        It has survived not only five centuries, but also the leap into electronic typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-        like Aldus PageMaker including versions of Lorem Ipsum.
-      </div>
-      {/* /.tab-pane */}
-    </div>
-    {/* /.tab-content */}
-  </div>
+ <h1>Generate Reports</h1>
+
+  <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+  <Row>
+    <Col sm={3}>
+      <Nav variant="pills" className="flex-column">
+        <Nav.Item>
+          <Nav.Link eventKey="first">Tab 1</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="second">Tab 2</Nav.Link>
+        </Nav.Item>
+      </Nav>
+    </Col>
+    <Col sm={9}>
+      <Tab.Content>
+        <Tab.Pane eventKey="first">
+        <Doughnut data={data} />
+
+        </Tab.Pane>
+        <Tab.Pane eventKey="second">
+        <Doughnut data={data2} />
+
+        </Tab.Pane>
+      </Tab.Content>
+    </Col>
+  </Row>
+</Tab.Container>
   {/* nav-tabs-custom */}
+
+
+
 </div>
+
+
 
 
         )
     }
 }
+
+

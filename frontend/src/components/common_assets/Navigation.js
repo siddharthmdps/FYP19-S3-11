@@ -41,40 +41,8 @@ export default class Navigation extends Component {
               <div className="navbar-custom-menu">
                 <ul className="nav navbar-nav">
                   {/* Messages: style can be found in dropdown.less*/}
-                  <li className="dropdown messages-menu">
-                    {/* Menu toggle button */}
-                    <Link to="/chat" className="dropdown-toggle" data-toggle="dropdown">
-                      <i className="fa fa-envelope-o" />
-                      <span className="label label-success">4</span>
-                    </Link>
-                    <ul className="dropdown-menu">
-                      <li className="header">You have 4 messages</li>
-                      <li>
-                        {/* inner menu: contains the messages */}
-                        <ul className="menu">
-                          <li>{/* start message */}
-                            <Link to="/chat">
-                              <div className="pull-left">
-                                {/* User Image */}
-                                <img src="../../dist/img/user2-160x160.jpg" className="img-circle" alt="User" />
-                              </div>
-                              {/* Message title and timestamp */}
-                              <h4>
-                                Admin Team
-                          <small><i className="fa fa-clock-o" /> 5 mins</small>
-                              </h4>
-                              {/* The message */}
-                              <p>Chat placeholder. For future if using.</p>
-                            </Link>
-                          </li>
-                          {/* end message */}
-                        </ul>
-                        {/* /.menu */}
-                      </li>
-                      <li className="footer"><Link to="/Chat">See All Messages</Link></li>
-                    </ul>
-                  </li>
-                  {/* /.messages-menu */}
+   
+ 
                   
                        
                       
