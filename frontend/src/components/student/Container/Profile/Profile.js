@@ -110,6 +110,8 @@ class Profile extends Component {
         "isActive": []
     }
 
+// Handling Form Inputs starts here
+
     changePersonalParticulars = event => {
         console.log(event.target.id);
 
@@ -207,6 +209,8 @@ class Profile extends Component {
         this.setState(tempState);
     }
 
+// Handling Form Inputs ends here
+
     togglePanel(i) {
         let isActive = [...this.state.isActive];
         isActive[i] = !isActive[i];
@@ -218,6 +222,8 @@ class Profile extends Component {
 
         this.setState({ isActive });
     }
+
+// Adding new elements in the Profile starts here
 
     addNewEducation = () => {
         let temp = { ...EducationShell };
@@ -266,6 +272,31 @@ class Profile extends Component {
         temp2.push(temp);
         this.setState({ "Projects": temp2 });
     }
+
+// Adding new elements in the Profile ends here
+
+// Removing elements in the Profile starts here
+
+    removeEducation = (eID) => {
+
+        let temp = this.state.Education;
+        let found=false;
+        let eIndex = -1;
+        temp.forEach((element, index) => {    
+            if(element["EducationID"]===eID){
+                found=true;
+                eIndex=index;
+            }
+            if(found){
+                element["EducationID"]--;
+            }
+        });
+        if(found)
+            temp.splice(eIndex, 1);
+        this.setState({ "Education": temp });
+    }
+
+// Removing elements in the Profile ends here
 
     componentDidMount() {
         Axios.get('http://localhost:3000/studentProfile')
@@ -353,6 +384,7 @@ class Profile extends Component {
                                                         <Education key={educationDetail.EducationID}
                                                             details={educationDetail}
                                                             changeFn={event => this.changeEducation(event, educationDetail.EducationID)}
+                                                            remove={this.removeEducation.bind(this, educationDetail["EducationID"])}
                                                         />
                                                     </Form>
                                                 </React.Fragment>
