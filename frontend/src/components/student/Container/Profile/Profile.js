@@ -9,8 +9,10 @@ import Awards from '../../Components/Awards/Awards';
 import Certification from '../../Components/Certification/Certification';
 import Projects from '../../Components/Projects/Projects';
 import Document from '../../Components/Document/Document';
-import { Accordion, Card, Container, Col, Row, Button, Form } from 'react-bootstrap';
+import Button1 from '../../../common_assets/Button1/Button1';
+import { Accordion, Card, Container, Col, Row, Form } from 'react-bootstrap';
 import ppClasses from '../../../common_assets/Validate.module.css';
+
 import Axios from 'axios';
 
 const PersonalParticularsShell = {
@@ -488,12 +490,9 @@ class Profile extends Component {
                                                 changeFn={event => this.changePersonalParticulars(event)} />
                                         </Form>
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button
-                                                variant="primary"
-                                                type="submit"
-                                                className={classes.Submit}>
-                                                Submit
-                                        </Button>
+                                            <Button1>
+                                                Next >
+                                        </Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -523,8 +522,8 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button onClick={this.addNewEducation} className={classes.Submit}>+ Add More</Button>
-                                            <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
+                                            <Button1 onClick={this.addNewEducation}>+ Add More</Button1>
+                                            <Button1 onClick={this.addNewEducation}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -554,8 +553,8 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button onClick={this.addNewWorkExp} className={classes.Submit}>+ Add More</Button>
-                                            <Button onClick={this.addNewEducation} className={classes.Submit}>Next ></Button>
+                                            <Button1 onClick={this.addNewWorkExp}>+ Add More</Button1>
+                                            <Button1 onClick={this.addNewEducation}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -585,8 +584,8 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button onClick={this.addNewJobPref} className={classes.Submit}>+ Add More</Button>
-                                            <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
+                                            <Button1 onClick={this.addNewJobPref}>+ Add More</Button1>
+                                            <Button1 onClick={this.addNewEducation}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -616,8 +615,8 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button onClick={this.addNewAwards} className={classes.Submit}>+ Add More</Button>
-                                            <Button onClick={this.test} className={classes.Submit}>Next</Button>
+                                            <Button1 onClick={this.addNewAwards}>+ Add More</Button1>
+                                            <Button1 onClick={this.test}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -647,8 +646,8 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button onClick={this.addNewCertificate} className={classes.Submit}>+ Add More</Button>
-                                            <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
+                                            <Button1 onClick={this.addNewCertificate}>+ Add More</Button1>
+                                            <Button1 onClick={this.addNewEducation}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -678,8 +677,8 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div style={{ 'textAlign': 'center' }}>
-                                            <Button onClick={this.addNewProjects} className={classes.Submit}>+ Add More</Button>
-                                            <Button onClick={this.addNewEducation} className={classes.Submit}>Next</Button>
+                                            <Button1 onClick={this.addNewProjects}>+ Add More</Button1>
+                                            <Button1 onClick={this.addNewEducation}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
