@@ -44,3 +44,7 @@
 .ButtonSection{
     text-align: center;
 }
+
+.SkillInline{
+    display: inline;
+}

@@ -7,6 +7,7 @@ import WorkExperience from '../../Components/WorkExperience/WorkExperience';
 import JobPreference from '../../Components/JobPreference/JobPreference';
 import Awards from '../../Components/Awards/Awards';
 import Certification from '../../Components/Certification/Certification';
+import Skills from '../../Components/Skills/Skills';
 import Projects from '../../Components/Projects/Projects';
 import Document from '../../Components/Document/Document';
 import Button1 from '../../../common_assets/Button1/Button1';
@@ -80,7 +81,8 @@ const CertificationShell = {
 
 const SkillsShell = {
     "SkillID": 0,
-    "SkillName": ""
+    "SkillName": "",
+    "Edit": false
 }
 
 const ProjectsShell = {
@@ -184,7 +186,11 @@ class Profile extends Component {
         let tempState = this.state.Skills;
         tempState.forEach(element => {
             if (element.SkillID === elementID) {
-                element[event.target.id] = event.target.value;
+                if(event.key === 'Enter'){
+                    element["Edit"] = false;
+                }
+                else
+                    element["SkillName"] = event.target.value;
             }
         });
         this.setState(tempState);
@@ -285,6 +291,18 @@ class Profile extends Component {
         let temp2 = this.state.Certification;
         temp2.push(temp);
         this.setState({ "Certification": temp2 });
+    }
+
+    addNewSkill = () => {
+        let temp = { ...SkillsShell };
+        if(this.state.Skills.length === 0)
+            temp.SkillID = 1;
+        else
+            temp.SkillID = this.state.Skills[this.state.Skills.length - 1]["SkillID"] + 1;
+        temp.Edit = true;
+        let temp2 = this.state.Skills;
+        temp2.push(temp);
+        this.setState({ "Skills": temp2 });
     }
 
     addNewProjects = () => {
@@ -429,6 +447,16 @@ class Profile extends Component {
     }
 // Removing elements in the Profile ends here
 
+    removeEdit = (elementID) => {
+        let tempState = this.state.Skills;
+        tempState.forEach(element => {
+            if (element.SkillID === elementID) {
+                    element["Edit"] = false;
+            }
+        });
+        this.setState(tempState);
+    }
+
     test = () => {
         this.setState({"activatedToggle": "2"});
 
@@ -465,7 +493,7 @@ class Profile extends Component {
                 this.setState({ Projects: receivedData.data.Projects });
                 this.setState({ Document: receivedData.data.Document });
             });
-            this.togglePanel(0);
+            this.togglePanel(7);
     }
 
     render() {
@@ -682,6 +710,38 @@ class Profile extends Component {
                                         })}
                                         <div className={classes.ButtonSection}>
                                             <Button1 click={this.addNewProjects}>+ Add More</Button1>
+                                            <Button1 click={this.addNewEducation}>Next ></Button1>
+                                        </div>
+                                    </Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+
+                            <Card className={classes.Card}>
+                                <Accordion.Toggle
+                                    as={Card.Header}
+                                    eventKey="7"
+                                    className={this.state.isActive[7] ? classes.Active : classes.CardHeader}
+                                    onClick={() => this.togglePanel(7)}>
+                                    Skills
+                    </Accordion.Toggle>
+                                <Accordion.Collapse eventKey="7">
+                                    <Card.Body>
+                                        {this.state.Skills.map(skillDetail => {
+                                            return (
+                                                <React.Fragment key={skillDetail.SkillID}>
+                                                    <Form className={ppClasses.Validate} className={classes.SkillInline}>
+                                                        <Skills
+                                                            details={skillDetail}
+                                                            changeFn={event => this.changeSkills(event, skillDetail.SkillID)} 
+                                                            remove={this.removeSkills.bind(this, skillDetail["SkillID"])}
+                                                            removeEdit={this.removeEdit.bind(this, skillDetail.SkillID)}
+                                                        />
+                                                    </Form>
+                                                </React.Fragment>
+                                            );
+                                        })}
+                                        <div className={classes.ButtonSection}>
+                                            <Button1 click={this.addNewSkill}>+ Add More</Button1>
                                             <Button1 click={this.addNewEducation}>Next ></Button1>
                                         </div>
                                     </Card.Body>

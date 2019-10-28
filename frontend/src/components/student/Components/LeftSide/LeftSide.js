@@ -8,14 +8,20 @@ const leftSide = props => {
     return(
         <React.Fragment>
             <Container>
-                <Row className={classes.CentralContent}>
+                {/* <Row className={classes.CentralContent}>
                     <Image src = {props.imageLink} className={classes.Image}/>
                 </Row>
                 <br />
                 <Row className={classes.CentralContent}>
                     <Button1>Upload</Button1>
                 </Row>
-                <br />
+                <br /> */}
+                <Card className={classes.CentralContent}>
+                <Card.Body onClick={()=>{alert("Eh!")}}><Image src = {props.imageLink} className={classes.Image}/></Card.Body>
+                </Card>
+                <Card className={classes.CentralContent}>
+                <Card.Body onClick={()=>{alert("Eh!")}}><Button1>Upload</Button1></Card.Body>
+                </Card>
                 <Card className={classes.CentralContent}>
                 <Card.Body onClick={()=>{alert("Eh!")}}>Recommended Jobs</Card.Body>
                 </Card>
