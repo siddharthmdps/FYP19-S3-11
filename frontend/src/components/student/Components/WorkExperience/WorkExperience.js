@@ -1,7 +1,6 @@
 import React from 'react';
-// import Select from 'react-select';
-import {Form, Row, Col, Dropdown,DropdownButton} from 'react-bootstrap';
-import {Button1} from '../../../common_assets/Button1/Button1'
+import {Form, Row, Col} from 'react-bootstrap';
+import Button1 from '../../../common_assets/Button1/Button1';
 import classes from '../../../common_assets/Validate.module.css';
 import classes2 from '../../../common_assets/Miscellaneous.module.css';
 
@@ -14,7 +13,7 @@ const workExperience = props => {
                     Work #{props.details.WorkExpID }
                 </Col>
                 <Col md={{ offset: 9, span: 1 }} className={classes2.Delete}>
-                <Button1 click={props.remove}><i className="fas fa-trash-alt"></i></Button1>
+                    <Button1 click={props.remove}><i className="fas fa-trash-alt"></i></Button1>
                 </Col>
             </Row> 
             <Form.Row>

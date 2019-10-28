@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Row, Container, Card} from 'react-bootstrap';
+import {Image, Container, Card} from 'react-bootstrap';
 import Button1 from '../../../common_assets/Button1/Button1'
 import classes from './LeftSide.module.css';
 
