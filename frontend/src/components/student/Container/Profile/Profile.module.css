@@ -2,6 +2,11 @@
     /* cursor: pointer;
     background-color: aqua; */
 }
+
+.LeftSide{
+    position: fixed;
+}
+
 .CardHeader {
     cursor: pointer;
     background-color: #FDFEFE;
@@ -34,4 +39,8 @@
     font-family: Arial, Helvetica, sans-serif;
     color:#2874A6;
     background-color: #fff;
+}
+
+.ButtonSection{
+    text-align: center;
 }

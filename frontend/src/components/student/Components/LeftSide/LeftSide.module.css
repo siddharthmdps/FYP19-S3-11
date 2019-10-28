@@ -3,3 +3,7 @@
     /* height: 171px;
     width: 180px; */
 }
+
+.CentralContent{
+    justify-content: center;
+}

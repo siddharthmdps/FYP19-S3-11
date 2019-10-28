@@ -15,6 +15,7 @@ const education = props => {
                     <Button1 click={props.remove}><i className="fas fa-trash-alt"></i></Button1>
                 </Col>
             </Row>
+            <br />
             <Form.Group as={Row} controlId="University">
                 <Form.Label column sm="2">University</Form.Label>
                 <Col sm="10">
@@ -58,6 +59,7 @@ const education = props => {
                     <Form.Control type='text' placeholder="3.8" value={props.details.GPA} onChange={props.changeFn} required />
                 </Form.Group>
             </Form.Row>
+            <br />
         </React.Fragment>
     );
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Profile.module.css';
-import ProfileImage from '../../Components/ProfileImage/ProfileImage';
+import LeftSide from '../../Components/LeftSide/LeftSide';
 import PersonalParticulars from '../../Components/PersonalParticulars/PersonalParticulars';
 import Education from '../../Components/Education/Education';
 import WorkExperience from '../../Components/WorkExperience/WorkExperience';
@@ -110,7 +110,7 @@ class Profile extends Component {
         "Projects": [],
         "Document": [],
         "isActive": [],
-        "activatedToggle": "0"
+        "activatedToggle": "-1"
     }
 
 // Handling Form Inputs starts here
@@ -224,7 +224,10 @@ class Profile extends Component {
         }
 
         this.setState({ isActive });
-        this.setState({"activatedToggle": i.toString()});
+        if(this.state.activatedToggle==i)
+            this.setState({"activatedToggle": "-1"});
+        else
+            this.setState({"activatedToggle": i.toString()});
     }
 
 // Adding new elements in the Profile starts here
@@ -470,23 +473,11 @@ class Profile extends Component {
             <Container fluid>
                 <br />
                 <Row >
-                    <Col md={{ span: 3 }}>
-                        <ProfileImage imageLink={this.state.ProfileImage} />
-
-                        <Card>
-                        <Card.Body>Recommended Jobs</Card.Body>
-                        </Card>
-                        
-                        <Card>
-                        <Card.Body>Applied Jobs</Card.Body>
-                        </Card>
-                        
-                        <Card>
-                        <Card.Body>Saved Jobs</Card.Body>
-                        </Card>
+                    <Col md={{ span: 3 }} className={classes.LeftSide}>
+                        <LeftSide imageLink={this.state.ProfileImage} />
                         
                     </Col>
-                    <Col md={{ span: 9 }} >
+                    <Col md={{ offset: 3, span: 9 }} >
                         <Accordion className={classes.Accordian} activeKey={this.state.activatedToggle}>
                             <Card className={classes.background}>
                                 <Accordion.Toggle
@@ -502,7 +493,7 @@ class Profile extends Component {
                                                 details={this.state.PersonalParticulars}
                                                 changeFn={event => this.changePersonalParticulars(event)} />
                                         </Form>
-                                        <div style={{ 'textAlign': 'center' }}>
+                                        <div className={classes.ButtonSection}>
                                             <Button1 click={this.test}>
                                                 Next >
                                         </Button1>
@@ -534,7 +525,7 @@ class Profile extends Component {
                                                 </React.Fragment>
                                             );
                                         })}
-                                        <div style={{ 'textAlign': 'center' }}>
+                                        <div className={classes.ButtonSection}>
                                             <Button1 click={this.addNewEducation}>+ Add More</Button1>
                                             <Button1 click={this.addNewEducation}>Next ></Button1>
                                         </div>
@@ -565,7 +556,7 @@ class Profile extends Component {
                                                 </React.Fragment>
                                             );
                                         })}
-                                        <div style={{ 'textAlign': 'center' }}>
+                                        <div className={classes.ButtonSection}>
                                             <Button1 click={this.addNewWorkExp}>+ Add More</Button1>
                                             <Button1 click={this.addNewEducation}>Next ></Button1>
                                         </div>
@@ -596,7 +587,7 @@ class Profile extends Component {
                                                 </React.Fragment>
                                             );
                                         })}
-                                        <div style={{ 'textAlign': 'center' }}>
+                                        <div className={classes.ButtonSection}>
                                             <Button1 click={this.addNewJobPref}>+ Add More</Button1>
                                             <Button1 click={this.addNewEducation}>Next ></Button1>
                                         </div>
@@ -627,7 +618,7 @@ class Profile extends Component {
                                                 </React.Fragment>
                                             );
                                         })}
-                                        <div style={{ 'textAlign': 'center' }}>
+                                        <div className={classes.ButtonSection}>
                                             <Button1 click={this.addNewAwards}>+ Add More</Button1>
                                             <Button1 click={this.test}>Next ></Button1>
                                         </div>
@@ -658,7 +649,7 @@ class Profile extends Component {
                                                 </React.Fragment>
                                             );
                                         })}
-                                        <div style={{ 'textAlign': 'center' }}>
+                                        <div className={classes.ButtonSection}>
                                             <Button1 click={this.addNewCertificate}>+ Add More</Button1>
                                             <Button1 click={this.addNewEducation}>Next ></Button1>
                                         </div>
@@ -689,7 +680,7 @@ class Profile extends Component {
                                                 </React.Fragment>
                                             );
                                         })}
-                                        <div style={{ 'textAlign': 'center' }}>
+                                        <div className={classes.ButtonSection}>
                                             <Button1 click={this.addNewProjects}>+ Add More</Button1>
                                             <Button1 click={this.addNewEducation}>Next ></Button1>
                                         </div>
