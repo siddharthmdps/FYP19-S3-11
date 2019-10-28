@@ -4,9 +4,8 @@ const studentawards = (req, res) => {
     const studentid = parseInt(req.params.studentid);
     const certname = req.body.certname;
     const issuedby = req.body.issuedby;
-    const year = parseInt(req.body.year);
-    const month = req.body.month;
-    var lifetime = req.body.lifetime;
+    const issueddate = req.body.issueddate;
+    const validuntil = req.body.validuntil;
 
     mypool.getConnection( (error, connection) => {
         if(error) {
@@ -16,7 +15,7 @@ const studentawards = (req, res) => {
         }
         else {
             if(studentid && certname && issuedby && year && month) {               
-                let queryString = `INSERT INTO pegasus.certificate (studentid, certificatename, issuedby, year, month, lifetime) values ("${studentid}", "${certname}", "${issuedby}", "${year}", "${month}", "${lifetime}")`
+                let queryString = `INSERT INTO pegasus.studentcertificate (studentid, certificatename, issuedby, issueddate, validuntil) values ("${studentid}", "${certname}", "${issuedby}", "${issueddate}", "${validuntil}")`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })
