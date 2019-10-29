@@ -4,7 +4,7 @@
 }
 
 .LeftSide{
-    position: fixed;
+    position: flex;
 }
 
 .CardHeader {
@@ -49,4 +49,10 @@
 
 .SkillInline{
     display: inline;
+}
+
+@media only screen and (min-width: 768px) {
+    .LeftSide{
+        position: fixed;
+    }
 }
