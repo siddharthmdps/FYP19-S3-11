@@ -23,10 +23,14 @@ class AppliedJobs extends Component {
 
                 <Card md={{ span: 12 }} className={classes.Card}>
                     <Card.Body>
-                        <Card.Title>
-                            <Row>Software Developer</Row>
-                            <Row>Accenture</Row>
-                            <Row><Col>Mf</Col>Ff<Col></Col>Sf<Col></Col></Row>
+                        <Card.Title> 
+                            <Row className={classes.Row} style={{fontWeight:'600'}}>Software Developer</Row>
+                            <Row className={classes.Row}>Accenture</Row>
+                            <Row>
+                                <Col className={classes.CardCol}>Location</Col>
+                                <Col className={classes.CardCol}>Industry</Col>
+                                <Col className={classes.CardCol}>Work Exp Req</Col>
+                            </Row>
                         </Card.Title>
                         <Card.Text className={classes.Description}>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
