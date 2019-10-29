@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Navbar from '../common_assets/Navbar2';
 import Profile from './Container/Profile/Profile';
+import ViewProfile from './Container/ViewProfile/ViewProfile'
 import AppliedJobs from './Container/AppliedJobs/AppliedJobs';
 
 class Student extends Component {
@@ -8,8 +9,9 @@ class Student extends Component {
         return (
             <div>
                 <Navbar />
-                <Profile />
+                {/* <Profile /> */}
                 {/* <AppliedJobs /> */}
+                <ViewProfile />
             </div>
         )
     }
