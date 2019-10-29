@@ -22,24 +22,33 @@
 
 
 .Skill:hover {
-    background-color: #1B4F72;
+    background-color: #F44336 ;
     box-shadow: 0px 15px 20px rgba(46, 119, 229, 0.4);
     color: #fff;
-    transform: translateY(-7px);
+    /* transform: translateY(-7px); */
     text-decoration: line-through;
 }
 
-.Input:hover{
-    background-color: #1B4F72;
+.Input:hover,
+.Input:focus {
+    
     box-shadow: 0px 15px 20px rgba(46, 119, 229, 0.4);
     color: #fff;
-    transform: translateY(-7px);
+    /* transform: translateY(-7px); */
     text-decoration: none;
+}
+
+.Input:hover {
+    background-color: #F44336 ;
+}
+
+.Input:focus {
+    background-color: #1B4F72;
 }
 
 .Skill:active {
     content: "";
-    background: #1B4F72;
+    background: #F44336;
     position: relative;
     opacity: 0;
     transition: all 0.8s
