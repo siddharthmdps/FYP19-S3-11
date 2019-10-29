@@ -1,11 +1,5 @@
-
 .Image{
-    /* height: 171px;
-    width: 180px; */
     border-radius: 50%;
-    height: 241px;
-    width: 241px;
-    object-fit: cover;
 }
 
 .CentralContent {
