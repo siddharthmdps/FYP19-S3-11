@@ -31,7 +31,7 @@
 
 .Input:hover,
 .Input:focus {
-    box-shadow: 0px 15px 20px rgba(229, 46, 46, 0.4);
+    box-shadow: 0px 15px 20px rgba(46, 119, 229, 0.4);
     color: #fff;
     /* transform: translateY(-7px); */
     text-decoration: none;
