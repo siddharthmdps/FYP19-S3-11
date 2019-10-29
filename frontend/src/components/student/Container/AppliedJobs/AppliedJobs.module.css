@@ -5,8 +5,15 @@
     font-weight: 700!important;
 }
 
-.Card{
-    border-radius: 0%;
+.Card {
+    border-radius: 25px;
+    border-color: #5A81F8!important;
+}
+
+.Card:hover {
+    cursor: pointer;
+    box-shadow:  0px 1px 16px 4px rgba(28, 108, 255, 0.925);
+    transition: all .4s ease;
 }
 
 .Job{
@@ -48,4 +55,10 @@
     border-color: transparent!important;
     background-color: #1565C0!important;
     cursor: not-allowed!important;
+}
+
+.Footer {
+    background-color: #fff;
+    border-radius: 0px 0px 25px 25px!important;
+    /* border-color: #64B5F6!important; */
 }
