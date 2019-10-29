@@ -1,22 +1,26 @@
 import React from 'react';
 import classes from './Timeline.module.css';
+import { Card } from 'react-bootstrap';
 
-export const Timeline = ({ children }) =>
-  <div className={classes.Container}>
-    <ul className={classes.Timeline}>
-      {children}
-    </ul>
-  </div>
+export const Timeline = props =>
+    <React.Fragment className={classes.Container}>
+        
+        <Card className={classes.Timeline}>
+            <label className={classes.TitleIcon}></label>
+            <Card.Title className={classes.Title}>{props.title}</Card.Title>
+            {props.children}
+        </Card>
+    </React.Fragment>
 
 export const Event = ({ title, subtitle, interval, children }) =>
-  <li className={classes.Event}>
+  <Card.Body className={classes.Event}>
     <label className={classes.Icon}></label>
     <div className={classes.Body}>
       <p className={classes.Date}>{interval}</p>
-      <h3>{title}</h3>
-      {subtitle && <h4>{subtitle}</h4>}
+      <p><strong>{title}</strong></p>
+      <p><strong>{subtitle}</strong></p>
       <div className={classes.Description}>
         {children}
       </div>
     </div>
-  </li>
+  </Card.Body>
