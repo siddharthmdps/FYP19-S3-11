@@ -1,7 +1,7 @@
 import React from 'react';
 import {Form, Col, Row} from 'react-bootstrap';
-import Button1 from '../../../common_assets/Button1/Button1'
-import classes from '../../../common_assets/Miscellaneous.module.css';
+import Button1 from '../../../../common_assets/Button1/Button1'
+import classes from '../../../../common_assets/Miscellaneous.module.css';
 
 const certification = props => {
     

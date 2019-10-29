@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, Container, Card, ResponsiveEmbed} from 'react-bootstrap';
-import Button1 from '../../../common_assets/Button1/Button1'
+import Button1 from '../../../../common_assets/Button1/Button1'
 import classes from './LeftSide.module.css';
 
 const leftSide = props => {
