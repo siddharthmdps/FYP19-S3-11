@@ -1,0 +1,23 @@
+.Image{
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.LeftSide {
+    color: #1565C0;
+    
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-wrap: break-word;
+}
+.CentralContent{
+    justify-content: center;    
+    text-align: center;
+}
+
+.Clickable:hover{
+    cursor: pointer;
+    color: #1B4F72;
+    font-weight: bolder;
+}
+
