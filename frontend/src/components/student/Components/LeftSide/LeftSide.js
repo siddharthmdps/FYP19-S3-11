@@ -8,7 +8,7 @@ const leftSide = props => {
     return(
         <React.Fragment>
             <Container>
-                <Card className={classes.CentralContent}>
+                <Card className={classes.CentralContent} >
                 <Card.Body onClick={()=>{alert("Eh!")}}><Image src = {props.imageLink} className={classes.Image}/></Card.Body>
                 <Card.Body onClick={()=>{alert("Eh!")}}><Button1>Upload</Button1></Card.Body>
                 </Card>

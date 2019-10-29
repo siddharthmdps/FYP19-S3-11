@@ -8,11 +8,18 @@
     object-fit: cover;
 }
 
-.CentralContent{
+.CentralContent {
+    color: #1565C0;
     justify-content: center;    
     text-align: center;
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .CentralContent:hover{
     cursor: pointer;
+    /* color: #3949AB; */
+    color: #1B4F72;
+    font-weight: bolder;
 }
+
