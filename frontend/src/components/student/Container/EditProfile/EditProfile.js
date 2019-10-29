@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classes from './Profile.module.css';
+import classes from './EditProfile.module.css';
 import LeftSide from '../../Components/EditProfile/LeftSide/LeftSide';
 import PersonalParticulars from '../../Components/EditProfile/PersonalParticulars/PersonalParticulars';
 import Education from '../../Components/EditProfile/Education/Education';
