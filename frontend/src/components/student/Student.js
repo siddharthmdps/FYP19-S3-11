@@ -9,7 +9,7 @@ class Student extends Component {
         return (
             <div>
                 <Navbar />
-                {/* <Profile /> */}
+                <Profile />
                 {/* <AppliedJobs /> */}
                 <ViewProfile />
             </div>

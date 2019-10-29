@@ -14,6 +14,7 @@ const jobPreference = props => {
                     <Button1 click={props.remove} delete><i className="fas fa-trash-alt"></i></Button1>
                 </Col>
             </Row>
+            <br/>
             <Form.Row>
                 <Form.Group as={Col} sm='6' controlId="Industry">
                     <Form.Label>Industry</Form.Label>

@@ -456,6 +456,24 @@ class Profile extends Component {
             temp.splice(pIndex, 1);
         this.setState({ "Projects": temp });
     }
+
+    removeDocument = (dID) => {
+        let temp = this.state.Document;
+        let found=false;
+        let dIndex = -1;
+        temp.forEach((element, index) => {    
+            if(element["DocumentID"]===dID){
+                found=true;
+                dIndex=index;
+            }
+            if(found){
+                element["DocumentID"]--;
+            }
+        });
+        if(found)
+            temp.splice(dIndex, 1);
+        this.setState({ "Document": temp });
+    }
 // Removing elements in the Profile ends here
 
     removeEdit = (elementID) => {
@@ -596,7 +614,7 @@ class Profile extends Component {
                                             );
                                         })}
                                         <div className={classes.ButtonSection}>
-                                            <Button1 click={this.addNewWorkExp}>+ Add More</Button1>
+                                            <Button1 click={this.addNewWorkExp} clicked>+ Add More</Button1>
                                             <Button1 click={this.addNewEducation}>Next ></Button1>
                                         </div>
                                     </Card.Body>
@@ -775,7 +793,8 @@ class Profile extends Component {
                                                     <Form className={ppClasses.Validate}>
                                                         <Document
                                                             details={documentDetail}
-                                                            changeFn={event => this.changeDocument(event, documentDetail.DocumentID)} />
+                                                            changeFn={event => this.changeDocument(event, documentDetail.DocumentID)} 
+                                                            remove={this.removeDocument.bind(this, documentDetail["DocumentID"])}/>
                                                     </Form>
                                                 </React.Fragment>
                                             );
