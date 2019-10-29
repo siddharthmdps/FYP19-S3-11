@@ -1,4 +1,5 @@
-.Button1 {
+.Button1,
+.Delete {
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     font-size: 11px;
@@ -35,9 +36,24 @@
     transition: all 0.8s
 }
 
-.Button1:active:after {
+.Button1:active:after,
+.Delete:active:after {
     padding: 0;
     margin: 0;
     opacity: 1;
     transition: 0s
+}
+
+.Delete:hover {
+    background-color: #F44336;
+    box-shadow: 0px 15px 20px rgba(229, 46, 46, 0.4);
+    color: #fff;
+}
+
+.Delete:active {
+    content: "";
+    background: #F44336;
+    position: relative;
+    opacity: 0;
+    transition: all 0.8s
 }

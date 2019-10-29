@@ -13,7 +13,7 @@ const workExperience = props => {
                     Work #{props.details.WorkExpID }
                 </Col>
                 <Col md={{ offset: 9, span: 1 }} className={classes2.Delete}>
-                    <Button1 click={props.remove}><i className="fas fa-trash-alt"></i></Button1>
+                    <Button1 click={props.remove} delete><i className="fas fa-trash-alt"></i></Button1>
                 </Col>
             </Row> 
             <Form.Row>

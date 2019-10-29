@@ -12,7 +12,7 @@ const awards = props => {
                     Award #{props.details.AwardID}
                 </Col>
                 <Col md={{ offset: 9, span: 1 }} className={classes.Delete}>
-                    <Button1 click={props.remove}><i className="fas fa-trash-alt"></i></Button1>
+                    <Button1 click={props.remove} delete><i className="fas fa-trash-alt"></i></Button1>
                 </Col>
             </Row>
             <Form.Row>

@@ -316,6 +316,17 @@ class Profile extends Component {
         this.setState({ "Projects": temp2 });
     }
 
+    addNewDocument = () => {
+        let temp = {...DocumentShell};
+        if (this.state.Document.length === 0)
+            temp.DocumentID = 1;
+        else
+            temp.DocumentID = this.state.Document[this.state.Document.length-1]["DocumentID"] + 1;
+        let temp2 = this.state.Document;
+        temp2.push(temp);
+        this.setState({"Document": temp2});
+    }
+
 // Adding new elements in the Profile ends here
 
 // Removing elements in the Profile starts here
@@ -769,6 +780,10 @@ class Profile extends Component {
                                                 </React.Fragment>
                                             );
                                         })}
+                                        <div className={classes.ButtonSection}>
+                                            <Button1 click={this.addNewDocument}>+ Add More</Button1>
+                                            <Button1 click={this.addNewEducation}>Next ></Button1>
+                                        </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
