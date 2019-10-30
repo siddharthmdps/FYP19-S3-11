@@ -4,15 +4,15 @@ import classes from './AppliedJobs.module.css';
 
 class AppliedJobs extends Component {
     state = {
-        "active" : false
+        "active": false
     };
 
-    toggle = () => this.setState({"active": !this.state.active});
+    toggle = () => this.setState({ "active": !this.state.active });
 
     render() {
         const active = this.state.active;
         const unfav = <i class="far fa-star" />
-        const fav =  <i class="fas fa-star" style={{"color":"#FFCA28"}}/>
+        const fav = <i class="fas fa-star" style={{ "color": "#FFCA28" }} />
         return (
             <Container >
                 <br />
@@ -23,8 +23,8 @@ class AppliedJobs extends Component {
 
                 <Card md={{ span: 12 }} className={classes.Card}>
                     <Card.Body>
-                        <Card.Title> 
-                            <Row className={classes.Row} style={{fontWeight:'600'}}>Software Developer</Row>
+                        <Card.Title>
+                            <Row className={classes.Row} style={{ fontWeight: '600' }}>Software Developer</Row>
                             <Row className={classes.Row}>Accenture</Row>
                             <Row>
                                 <Col className={classes.CardCol}>Location</Col>
@@ -38,7 +38,7 @@ class AppliedJobs extends Component {
                             when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                             </Card.Text>
                     </Card.Body>
-                    <Card.Footer className={classes.Footer}>
+                        <Card.Footer className={classes.Footer}>
                         <Col md={{ span: 2, offset: 10 }}>
                             <span className={classes.Star} onClick={this.toggle}>
                                 {active ? fav : unfav}

@@ -9,6 +9,7 @@
     border-radius: 25px;
     border-color: #5A81F8!important;
     font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif;
+    height: 15rem;
 }
 
 .Card:hover {
@@ -61,6 +62,9 @@
 }
 
 .Footer {
+    display: inherit;
+    /* padding-top: 20px; */
+    height: 18rem!important;
     background-color: #fff;
     border-radius: 0px 0px 25px 25px!important;
     /* border-color: #64B5F6!important; */
