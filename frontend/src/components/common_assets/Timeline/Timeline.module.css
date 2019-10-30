@@ -1,4 +1,3 @@
-
 *{
     margin: 0;
     padding: 0;
@@ -6,9 +5,10 @@
     vertical-align: baseline;
 }
 
-.Timeline{ 
-    position: relative;   
-    list-style: none; 
+.Timeline{
+    color: #ef795a;
+    width: 18rem;
+    margin-right: 20px;
 }
 
 .Timeline:before {
@@ -38,6 +38,8 @@
 
 .Event{
     position: relative;
+    /* background-color: #ef795a; */
+    /* display: flex; */
 }
 
 .Icon{

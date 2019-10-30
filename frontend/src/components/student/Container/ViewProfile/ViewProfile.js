@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './ViewProfile.module.css';
 import LeftSide from '../../Components/ViewProfile/LeftSide/LeftSide';
-import { Card, Container, Col, Row } from 'react-bootstrap';
+import { Card, Container, Col, Row, CardColumns } from 'react-bootstrap';
 import {Timeline, Event} from '../../../common_assets/Timeline/Timeline';
 import Axios from 'axios';
 
@@ -149,7 +149,9 @@ class Profile extends Component {
                         <LeftSide imageLink={this.state.ProfileImage} details={this.state.PersonalParticulars} />
                         
                     </Col>
-                    <Col md={{ offset: 3, span: 3 }} >
+
+                    <Col md={{ offset: 3, span: 9 }} >
+                    <CardColumns className={classes.CardColumn}>
                         <Timeline title={"Education"}>
                             {this.state.Education.map(educationDetail => {
                                 return (
@@ -161,8 +163,6 @@ class Profile extends Component {
                                 );
                             })}
                         </Timeline>
-                    </Col>
-                    <Col md={{ span: 3 }} >
                         <Timeline title={"Work Experience"}>
                             {this.state.Education.map(educationDetail => {
                                 return (
@@ -174,8 +174,6 @@ class Profile extends Component {
                                 );
                             })}
                         </Timeline>
-                    </Col>
-                    <Col md={{ span: 3 }} >
                         <Timeline title={"Work Experience"}>
                             {this.state.Education.map(educationDetail => {
                                 return (
@@ -187,8 +185,6 @@ class Profile extends Component {
                                 );
                             })}
                         </Timeline>
-                    </Col>
-                    <Col md={{ span: 3 }} >
                         <Timeline title={"Work Experience"}>
                             {this.state.Education.map(educationDetail => {
                                 return (
@@ -200,6 +196,7 @@ class Profile extends Component {
                                 );
                             })}
                         </Timeline>
+                        </CardColumns>
                     </Col>
                 </Row>
             </Container>

@@ -6,6 +6,14 @@
     position: flex;
 }
 
+.CardColumn{
+    /* background-color: blue; */
+    display: flex;
+    justify-content: start;
+    flex-flow: row wrap;
+    
+}
+
 .CardHeader {
     cursor: pointer;
     background-color: #FDFEFE;
