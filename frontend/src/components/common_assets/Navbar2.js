@@ -5,7 +5,7 @@ import classes from './Navbar2.module.css';
 
 const navbar = props => (
   <Navbar className={classes.Nav} sticky='top'>
-    <Navbar.Brand href="#home" className="mr-sm-2" ><Logo /></Navbar.Brand>
+    <Navbar.Brand href="#home" className="mr-sm-2"><Logo/></Navbar.Brand>
     <Nav as='ul' className={classes.Navli} >
       <Nav.Item as="li">
         <Nav.Link href="/home" className={classes.NavItem}>Job Search</Nav.Link>
