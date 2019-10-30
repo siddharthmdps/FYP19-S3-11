@@ -15,8 +15,8 @@ const postjob = (req, res) => {
         else {
             let queryString = `INSERT INTO pegasus.job
                                 SET title="${job.title}", industry="${job.industry}",
-                                description="${job.description}", requiredskills="${job.requiredskills}",
-                                dateposted="${currentDate}",
+                                    description="${job.description}", requiredskills="${job.requiredskills}",
+                                    dateposted="${currentDate}",
                                 empid = (
                                     SELECT id FROM pegasus.employer
                                     WHERE employer.id = "${job.empid}"
