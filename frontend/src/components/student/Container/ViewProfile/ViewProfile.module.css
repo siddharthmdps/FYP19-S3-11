@@ -9,6 +9,7 @@
 .CardColumn{
     /* background-color: blue; */
     display: flex;
+    flex-flow: column;
     justify-content: start;
     flex-flow: row wrap;
     
