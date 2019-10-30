@@ -1,0 +1,18 @@
+.Card{
+    border-radius: 0%;
+}
+.Job{
+    display: block;
+}
+.Company{
+    display: block;
+}
+.Description{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+.Star:hover{
+    color: red;
+}

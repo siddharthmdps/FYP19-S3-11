@@ -1,23 +1,20 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import Navbar from '../common_assets/Navbar2';
+import Profile from './Container/EditProfile/EditProfile';
+import ViewProfile from './Container/ViewProfile/ViewProfile'
+import AppliedJobs from './Container/AppliedJobs/AppliedJobs';
 
 class Student extends Component {
-    constructor () {
-        super()
-    }
-
     render () {
         return (
             <div>
-                <h3>Hello Student</h3>
-                <button type="button" className="btn btn-dark" id="btn-logout" 
-                    onClick={ () => {
-                        localStorage.clear()
-                        document.location.reload(true)
-                    }
-                }>Log Out</button>
+                <Navbar />
+                <Profile />
+                {/* <AppliedJobs /> */}
+                {/* <ViewProfile /> */}
             </div>
         )
     }
 }
 
-export default Student
+export default Student;
