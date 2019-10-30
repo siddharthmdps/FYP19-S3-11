@@ -164,11 +164,11 @@ class Profile extends Component {
                             })}
                         </Timeline>
                         <Timeline title={"Work Experience"}>
-                            {this.state.Education.map(educationDetail => {
+                            {this.state.WorkExp.map(workDetail => {
                                 return (
-                                    <React.Fragment key={educationDetail.EducationID}>
-                                        <Event interval={educationDetail.StartDate +" - "+educationDetail.EndDate} title={educationDetail.Degree + " in " + educationDetail.FieldOfStudy + " (" + educationDetail.Major + ")"} subtitle={educationDetail.University}>
-                                            {educationDetail.GPA}
+                                    <React.Fragment key={workDetail.WorkExpID}>
+                                        <Event interval={workDetail.StartDate +" - "+workDetail.EndDate} title={workDetail.Position + " at " + workDetail.Company + " (" + workDetail.Mode + ")"} subtitle={workDetail.Industry + ", " + workDetail.AnnualSalary}>
+                                            {workDetail.Description}
                                         </Event>
                                     </React.Fragment>
                                 );
