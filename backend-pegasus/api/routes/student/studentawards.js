@@ -1,4 +1,4 @@
-const {env, sha1, mysql, mypool} = require('../../util')
+const {router, env, sha1, mysql, mypool} = require('../../util')
 
 const studentawards = (req, res) => {
     const studentid = parseInt(req.params.studentid);
