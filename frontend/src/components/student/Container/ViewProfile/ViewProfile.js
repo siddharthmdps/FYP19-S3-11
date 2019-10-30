@@ -3,6 +3,7 @@ import classes from './ViewProfile.module.css';
 import LeftSide from '../../Components/ViewProfile/LeftSide/LeftSide';
 import { Card, Container, Col, Row, CardColumns } from 'react-bootstrap';
 import {Timeline, Event} from '../../../common_assets/Timeline/Timeline';
+import {ViewCard, Element} from '../../Components/ViewProfile/ViewCard/ViewCard';
 import Axios from 'axios';
 
 const PersonalParticularsShell = {
@@ -174,17 +175,30 @@ class Profile extends Component {
                                 );
                             })}
                         </Timeline>
-                        <Timeline title={"Work Experience"}>
-                            {this.state.Education.map(educationDetail => {
+
+                        <ViewCard title={"Awards"}>
+                            {this.state.Awards.map(awardDetail => {
                                 return (
-                                    <React.Fragment key={educationDetail.EducationID}>
-                                        <Event interval={educationDetail.StartDate +" - "+educationDetail.EndDate} title={educationDetail.Degree + " in " + educationDetail.FieldOfStudy + " (" + educationDetail.Major + ")"} subtitle={educationDetail.University}>
-                                            {educationDetail.GPA}
-                                        </Event>
+                                    <React.Fragment key={awardDetail.AwardID}>
+                                        <Element interval={awardDetail.Date} title={awardDetail.Award}>
+                                            {awardDetail.Des}
+                                        </Element>
                                     </React.Fragment>
                                 );
                             })}
-                        </Timeline>
+                        </ViewCard>
+
+                        <ViewCard title={"Awards"}>
+                            {this.state.Awards.map(awardDetail => {
+                                return (
+                                    <React.Fragment key={awardDetail.AwardID}>
+                                        <Element interval={awardDetail.Date} title={awardDetail.Award}>
+                                            {awardDetail.Des}
+                                        </Element>
+                                    </React.Fragment>
+                                );
+                            })}
+                        </ViewCard>
                         <Timeline title={"Work Experience"}>
                             {this.state.Education.map(educationDetail => {
                                 return (

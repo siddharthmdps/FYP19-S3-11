@@ -11,7 +11,11 @@
     display: flex;
     flex-flow: column;
     justify-content: start;
+    align-items: flex-start;
+    flex-flow: column wrap;
     flex-flow: row wrap;
+    height: 100vh;
+    background-color: black;
     
 }
 
