@@ -5,6 +5,8 @@ const {router, env, sha1, mysql, mypool} = require('../../util')
 // GET
 const getJobList = require('./joblist')
 router.get('/joblist/:id', getJobList)
+const getJobView = require('./jobview')
+router.get('/jobview/:jobID', getJobView)
 
 // GET All
 const getalljobs = require('./getalljobs')
