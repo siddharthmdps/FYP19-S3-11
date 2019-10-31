@@ -1,6 +1,5 @@
 .Nav {
     /* background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%); */
-    /* background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%); */
     /* background-image: linear-gradient( 179.4deg,  rgba(12,20,69,1) -16.9%, rgba(71,30,84,1) 119.9% ); */
     background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%); 
     /* background-image: linear-gradient(to right, #434343 0%, black 100%); */
@@ -50,7 +49,7 @@
 
 .DropdownMenu{
     background: rgb(2,0,36);
-    background: linear-gradient(180deg, rgba(2,0,36,1) 25%, rgba(26,26,246,1) 46%, rgba(76,93,193,0.9094012605042017) 75%);
+    background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
     /* background-color: #17202A; */
     margin-left: -100px;
     margin-top: 6px;
