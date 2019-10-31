@@ -9,7 +9,8 @@ export const Timeline = props => (
             <Card.Title className={classes.Title}>{props.title}</Card.Title>
             {props.children}
         </Card>
-    </React.Fragment>);
+    </React.Fragment>
+    );
 
 export const Event = props => (
   <Card.Body className={classes.Event} style={{ width: '18rem' }}>

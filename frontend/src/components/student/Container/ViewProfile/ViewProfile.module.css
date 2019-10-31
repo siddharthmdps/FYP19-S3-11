@@ -15,8 +15,6 @@
     flex-flow: column wrap;
     flex-flow: row wrap;
     height: 100vh;
-    background-color: black;
-    
 }
 
 .CardHeader {

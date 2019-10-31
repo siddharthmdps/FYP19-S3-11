@@ -4,6 +4,7 @@ import classes from './AppliedJobs.module.css';
 
 class AppliedJobs extends Component {
     state = {
+
         "active": false
     };
 
@@ -46,15 +47,15 @@ class AppliedJobs extends Component {
                         <div className={classes.ButtonDiv}>
                             <Button className={classes.Applied} disabled >Applied</Button>
                         </div>
-                            <div className={classes.StarDiv}>
-                                <span className={classes.Star} onClick={this.toggle}>
-                                    {active ? fav : unfav}
-                                </span>
-                            </div>
+                        <div className={classes.StarDiv}>
+                            <span className={classes.Star} onClick={this.toggle}>
+                                {active ? fav : unfav}
+                            </span>
+                        </div>
                         {/* </Col> */}
                     </Card.Footer>
                 </Card>
-
+                <br/>
             </Container>
         );
     }

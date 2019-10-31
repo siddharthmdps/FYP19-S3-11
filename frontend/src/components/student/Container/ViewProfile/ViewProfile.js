@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import classes from './ViewProfile.module.css';
 import LeftSide from '../../Components/ViewProfile/LeftSide/LeftSide';
 import { Card, Container, Col, Row, CardColumns } from 'react-bootstrap';
-import {Timeline, Event} from '../../../common_assets/Timeline/Timeline';
-import {ViewCard, Element} from '../../Components/ViewProfile/ViewCard/ViewCard';
+import { Timeline, Event } from '../../../common_assets/Timeline/Timeline';
+import { ViewCard, Element } from '../../Components/ViewProfile/ViewCard/ViewCard';
 import Axios from 'axios';
 
 const PersonalParticularsShell = {
@@ -105,7 +105,7 @@ class Profile extends Component {
         "activatedToggle": "-1"
     }
 
-// Handling Form Inputs starts here
+    // Handling Form Inputs starts here
 
     componentDidMount() {
         Axios.get('http://localhost:3000/studentProfile')
@@ -138,7 +138,7 @@ class Profile extends Component {
                 this.setState({ Projects: receivedData.data.Projects });
                 this.setState({ Document: receivedData.data.Document });
             });
-            
+
     }
 
     render() {
@@ -148,68 +148,73 @@ class Profile extends Component {
                 <Row >
                     <Col md={{ span: 3 }} className={classes.LeftSide}>
                         <LeftSide imageLink={this.state.ProfileImage} details={this.state.PersonalParticulars} />
-                        
+
                     </Col>
-
                     <Col md={{ offset: 3, span: 9 }} >
-                    <CardColumns className={classes.CardColumn}>
-                        <Timeline title={"Education"}>
-                            {this.state.Education.map(educationDetail => {
-                                return (
-                                    <React.Fragment key={educationDetail.EducationID}>
-                                        <Event interval={educationDetail.StartDate +" - "+educationDetail.EndDate} title={educationDetail.Degree + " in " + educationDetail.FieldOfStudy + " (" + educationDetail.Major + ")"} subtitle={educationDetail.University}>
-                                            {educationDetail.GPA}
-                                        </Event>
-                                    </React.Fragment>
-                                );
-                            })}
-                        </Timeline>
-                        <Timeline title={"Work Experience"}>
-                            {this.state.WorkExp.map(workDetail => {
-                                return (
-                                    <React.Fragment key={workDetail.WorkExpID}>
-                                        <Event interval={workDetail.StartDate +" - "+workDetail.EndDate} title={workDetail.Position + " at " + workDetail.Company + " (" + workDetail.Mode + ")"} subtitle={workDetail.Industry + ", " + workDetail.AnnualSalary}>
-                                            {workDetail.Description}
-                                        </Event>
-                                    </React.Fragment>
-                                );
-                            })}
-                        </Timeline>
+                        <CardColumns className={classes.CardColumn}>
+                            <Timeline title={"Education"}>
+                                {this.state.Education.map(educationDetail => {
+                                    return (
+                                        <React.Fragment key={educationDetail.EducationID}>
+                                            <Event 
+                                            interval={educationDetail.StartDate + " - " + educationDetail.EndDate}
+                                            title={educationDetail.Degree + " in " +
+                                            educationDetail.FieldOfStudy + " (" +
+                                            educationDetail.Major + ")"}
+                                            subtitle={educationDetail.University}
+                                            >
+                                                {educationDetail.GPA}
+                                            </Event>
+                                        </React.Fragment>
+                                    );
+                                })}
+                            </Timeline>
+                            <Timeline title={"Work Experience"}>
+                                {this.state.WorkExp.map(workDetail => {
+                                    return (
+                                        <React.Fragment key={workDetail.WorkExpID}>
+                                            <Event interval={workDetail.StartDate + " - " + workDetail.EndDate} title={workDetail.Position + " at " + workDetail.Company + " (" + workDetail.Mode + ")"} subtitle={workDetail.Industry + ", " + workDetail.AnnualSalary}>
+                                                {workDetail.Description}
+                                            </Event>
+                                        </React.Fragment>
+                                    );
+                                })}
+                            </Timeline>
 
-                        <ViewCard title={"Awards"}>
-                            {this.state.Awards.map(awardDetail => {
-                                return (
-                                    <React.Fragment key={awardDetail.AwardID}>
-                                        <Element interval={awardDetail.Date} title={awardDetail.Award}>
-                                            {awardDetail.Des}
-                                        </Element>
-                                    </React.Fragment>
-                                );
-                            })}
-                        </ViewCard>
+                            <ViewCard title={"Awards"}>
+                                {this.state.Awards.map(awardDetail => {
+                                    return (
+                                        <React.Fragment key={awardDetail.AwardID}>
+                                            <Element interval={awardDetail.Date} title={awardDetail.Award}>
+                                                {awardDetail.Des}
+                                            </Element>
+                                        </React.Fragment>
+                                    );
+                                })}
+                            </ViewCard>
 
-                        <ViewCard title={"Awards"}>
-                            {this.state.Awards.map(awardDetail => {
-                                return (
-                                    <React.Fragment key={awardDetail.AwardID}>
-                                        <Element interval={awardDetail.Date} title={awardDetail.Award}>
-                                            {awardDetail.Des}
-                                        </Element>
-                                    </React.Fragment>
-                                );
-                            })}
-                        </ViewCard>
-                        <Timeline title={"Work Experience"}>
-                            {this.state.Education.map(educationDetail => {
-                                return (
-                                    <React.Fragment key={educationDetail.EducationID}>
-                                        <Event interval={educationDetail.StartDate +" - "+educationDetail.EndDate} title={educationDetail.Degree + " in " + educationDetail.FieldOfStudy + " (" + educationDetail.Major + ")"} subtitle={educationDetail.University}>
-                                            {educationDetail.GPA}
-                                        </Event>
-                                    </React.Fragment>
-                                );
-                            })}
-                        </Timeline>
+                            <ViewCard title={"Awards"}>
+                                {this.state.Awards.map(awardDetail => {
+                                    return (
+                                        <React.Fragment key={awardDetail.AwardID}>
+                                            <Element interval={awardDetail.Date} title={awardDetail.Award}>
+                                                {awardDetail.Des}
+                                            </Element>
+                                        </React.Fragment>
+                                    );
+                                })}
+                            </ViewCard>
+                            <Timeline title={"Work Experience"}>
+                                {this.state.Education.map(educationDetail => {
+                                    return (
+                                        <React.Fragment key={educationDetail.EducationID}>
+                                            <Event interval={educationDetail.StartDate + " - " + educationDetail.EndDate} title={educationDetail.Degree + " in " + educationDetail.FieldOfStudy + " (" + educationDetail.Major + ")"} subtitle={educationDetail.University}>
+                                                {educationDetail.GPA}
+                                            </Event>
+                                        </React.Fragment>
+                                    );
+                                })}
+                            </Timeline>
                         </CardColumns>
                     </Col>
                 </Row>
