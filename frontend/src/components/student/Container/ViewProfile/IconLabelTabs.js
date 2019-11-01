@@ -15,79 +15,79 @@ import DoneIcon from '@material-ui/icons/Done';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-  
+
     return (
-      <Typography
-        component="div"
-        role="tabpanel"
-        hidden={value !== index}
-        id={`full-width-tabpanel-${index}`}
-        aria-labelledby={`full-width-tab-${index}`}
-        {...other}
-      >
-        <Box p={6}>{children}</Box>
-      </Typography>
+        <Typography
+            component="div"
+            role="tabpanel"
+            hidden={value !== index}
+            id={`full-width-tabpanel-${index}`}
+            aria-labelledby={`full-width-tab-${index}`}
+            {...other}
+        >
+            <Box p={6}>{children}</Box>
+        </Typography>
     );
-  }
-  
-  TabPanel.propTypes = {
+}
+
+TabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.any.isRequired,
     value: PropTypes.any.isRequired,
-  };
+};
 
 const useStyles = makeStyles({
-  root: {
-    flexGrow: 1,
-    maxWidth: 1250,
-  },
+    root: {
+        flexGrow: 1,
+        maxWidth: 1250,
+    },
 });
 
 export default function IconLabelTabs() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-  
+    const classes = useStyles();
+    const [value, setValue] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
-  return (
-    <Paper square className={classes.root}>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        variant="fullWidth"
-        indicatorColor="primary"
-        textColor="primary"
-        aria-label="icon label tabs example"
-      >
-        <Tab icon={<SchoolIcon />} label="Education" /> 
-        <Tab icon={<WorkIcon />} label="Work Experience" /> 
-        <Tab icon={<ImportContactsIcon />} label="Certifications" />
-        <Tab icon={<StarHalfIcon />} label="Awards" />
-        <Tab icon={<WebIcon />} label="Projects" />
-        <Tab icon={<DoneIcon />} label="Skills" />
-      </Tabs>
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
-      <TabPanel value={value} index={0} >
-          Item One
+    return (
+        <Paper square className={classes.root}>
+            <Tabs
+                value={value}
+                onChange={handleChange}
+                variant="fullWidth"
+                indicatorColor="primary"
+                textColor="primary"
+                aria-label="icon label tabs example"
+            >
+                <Tab icon={<SchoolIcon />} label="Education" />
+                <Tab icon={<WorkIcon />} label="Work Experience" />
+                <Tab icon={<ImportContactsIcon />} label="Certifications" />
+                <Tab icon={<StarHalfIcon />} label="Awards" />
+                <Tab icon={<WebIcon />} label="Projects" />
+                <Tab icon={<DoneIcon />} label="Skills" />
+            </Tabs>
+
+            <TabPanel value={value} index={0} >
+                Time line
         </TabPanel>
-        <TabPanel value={value} index={1} >
-          Item Two
+            <TabPanel value={value} index={1} >
+                Time line
         </TabPanel>
-        <TabPanel value={value} index={2} >
-          Item Three
+            <TabPanel value={value} index={2} >
+                Time line
         </TabPanel>
-        <TabPanel value={value} index={3} >
-          Item Four
+            <TabPanel value={value} index={3} >
+                Time line
         </TabPanel>
-        <TabPanel value={value} index={4} >
-          Item Five
+            <TabPanel value={value} index={4} >
+                May use time line or other stuffs
         </TabPanel>
-        <TabPanel value={value} index={5} >
-          Item Six
+            <TabPanel value={value} index={5} >
+                Other stuffs
         </TabPanel>
-    </Paper>
-  );
+        </Paper>
+    );
 }
