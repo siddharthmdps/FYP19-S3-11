@@ -12,6 +12,8 @@ import SchoolIcon from '@material-ui/icons/School';
 import WorkIcon from '@material-ui/icons/Work';
 import StarIcon from '@material-ui/icons/Star';
 
+import Tab from './IconLabelTabs';
+
 const PersonalParticularsShell = {
     "StudentID": 0,
     "FirstName": "",
@@ -222,8 +224,9 @@ class Profile extends Component {
                                 })}
                             </Timeline>
                         </CardColumns> */}
-                        
+
                         <body >
+                            <Tab></Tab>
                             <VerticalTimeline>
                                 {this.state.Education.map(educationDetail => {
                                     return (
@@ -236,30 +239,38 @@ class Profile extends Component {
                                             icon={<WorkIcon />}
                                         >
                                             <h3 className="vertical-timeline-element-title">{educationDetail.Degree + " in " +
-                                            educationDetail.FieldOfStudy + " (" +
-                                            educationDetail.Major + ")"}</h3>
+                                                educationDetail.FieldOfStudy + " (" +
+                                                educationDetail.Major + ")"}</h3>
                                             <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
                                             <p>
                                                 {educationDetail.University}
-                                                <br/>
+                                                <br />
                                                 {educationDetail.GPA}
                                             </p>
                                         </VerticalTimelineElement>
                                     );
                                 })}
 
-                                <VerticalTimelineElement
-                                    className="vertical-timeline-element--work"
-                                    date="2010 - 2011"
-                                    iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                                    icon={<WorkIcon />}
-                                >
-                                    <h3 className="vertical-timeline-element-title">Art Director</h3>
-                                    <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
-                                    <p>
-                                        Creative Direction, User Experience, Visual Design, SEO, Online Marketing
-                                    </p>
-                                </VerticalTimelineElement>
+                                {this.state.WorkExp.map(workDetail => {
+                                    return (
+                                        <VerticalTimelineElement
+                                            className="vertical-timeline-element--work"
+                                            date={workDetail.StartDate + " - " + workDetail.EndDate}
+                                            iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                            icon={<WorkIcon />}
+                                        >
+                                            <h3 className="vertical-timeline-element-title">{workDetail.Position + " at " +
+                                                workDetail.Company + " (" + workDetail.Mode + ")"} </h3>
+                                            <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
+                                            <p>
+                                                {workDetail.Industry + ", " + workDetail.AnnualSalary}
+                                                <br />
+                                                {workDetail.Description}
+                                            </p>
+                                        </VerticalTimelineElement>
+                                    );
+                                })}
+
                                 <VerticalTimelineElement
                                     className="vertical-timeline-element--work"
                                     date="2008 - 2010"
@@ -272,6 +283,7 @@ class Profile extends Component {
                                         User Experience, Visual Design
                                     </p>
                                 </VerticalTimelineElement>
+
                                 <VerticalTimelineElement
                                     className="vertical-timeline-element--work"
                                     date="2006 - 2008"
