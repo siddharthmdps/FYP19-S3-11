@@ -5,7 +5,7 @@ import { Card } from 'react-bootstrap';
 export const Timeline = props => (
     <React.Fragment>
         <Card className={classes.Timeline} style={{ width: '18rem' }}>
-            <label className={classes.TitleIcon}> <i class="fas fa-user-graduate"></i> </label>
+            <label className={classes.TitleIcon}> <i class="fas fa-graduation-cap"></i> </label>
             <Card.Title className={classes.Title}>{props.title}</Card.Title>
             {props.children}
         </Card>
