@@ -1,3 +1,5 @@
+//import 'bootstrap/dist/css/bootstrap.min.css';
+
 import React, {Component} from 'react'
 // Employer exclusive components
 import EmpNavbar from './EmpNavbar'
@@ -6,10 +8,13 @@ import EmpPanel from './EmpPanel'
 import EmpProfileView from './ProfileView/EmpProfileView'
 import EmpFeed from './EmpFeed'
 import EmpProfileEdit from './ProfileEditor/EmpProfileEdit'
+import EmpJobView from './JobView/EmpJobView'
 
 // Common assets
 import About from '../common_assets/About'
+
 const herokuURL = require('../../config')
+
 
 
 class Employer extends Component {
@@ -26,8 +31,18 @@ class Employer extends Component {
             industry: null,
             mainContent : null,
             numOfJobs: null,
-            numOfApplicants: null
+            numOfApplicants: null,
+            
+            jobpostdate: null,
+            jobdescription: null,
+            jobid: null,
+            jobindustry: null,
+            joblocation: null,
+            jobrequiredskills: null,
+            jobtitle: null
+        
         }
+        
     }
 
     /*
@@ -49,6 +64,20 @@ class Employer extends Component {
         //console.log(`num of jobs = ${this.state.numOfJobs}`)
     }
 
+    viewJobHandler = (job) => {
+        console.log(`triggered by`, job)
+        this.setState({
+            mainContent : 'viewjob',
+            jobid: job.id,
+            jobpostdate: job.dateposted,
+            jobdescription: job.description,
+            jobindustry:job.industry,
+            joblocation: job.location,
+            jobrequiredskills: job.requiredskills,
+            jobtitle: job.title
+        })
+    }
+
     mainContent = () => {
         const contentID = this.state.mainContent
         switch (contentID) {
@@ -64,6 +93,15 @@ class Employer extends Component {
                 return <h3>blog</h3>
             case 'postjob' : 
                 return <PostJob/>
+            case 'viewjob' :
+                return <EmpJobView 
+                jobtitle={this.state.jobtitle} 
+                jobskills={this.state.jobrequiredskills} 
+                jobdescription={this.state.jobdescription} 
+                joblocation = "Singapore"/*{this.state.joblocation}*/
+                jobindustry={this.state.jobindustry}
+                dateposted={this.state.jobpostdate}
+                />
 
             default : 
                 return (
@@ -74,7 +112,7 @@ class Employer extends Component {
                         />
                     </div>
                     <div className="col-md-9">
-                        <EmpFeed updateNumOfJobs={this.updateNumOfJobs}/>
+                        <EmpFeed updateNumOfJobs={this.updateNumOfJobs} viewJobHandler={this.viewJobHandler}/>
                     </div>
                 </div>
                 )    
