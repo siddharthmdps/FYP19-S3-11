@@ -1,11 +1,13 @@
 const {router, env, sha1, mysql, mypool} = require('../../util')
 
 const studentawards = (req, res) => {
-    const studentid = parseInt(req.params.studentid);
-    const awardname = req.body.awardname;
-    const year = parseInt(req.body.year);
-    const month = req.body.month;
-    const awarddesc = req.body.awarddesc;
+    const studentid = parseInt(req.params.StudentID);
+    const awardname = req.body.Award;
+    var tmpdate = req.body.Date;
+    tmpdate = tmpdate.split(" ");
+    const year = tmpdate[1];
+    const month = tmpdate[0];
+    const awarddesc = req.body.Description;
 
     mypool.getConnection( (error, connection) => {
         if(error) {

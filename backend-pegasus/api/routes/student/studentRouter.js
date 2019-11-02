@@ -54,6 +54,15 @@ router.get('/studentworkexp/:studentid', getstudentworkexp)
 const studentworkexp = require('./studentworkexp')
 router.post('/studentworkexp', studentworkexp)
 
+//student document
+//get
+const getstudentdocument = require('./getstudentdocument')
+router.get('/studentdocument/:studentid', getstudentdocument)
+
+//post
+const studentdocument = require('./studentdocument')
+router.post('/studentdocument', studentdocument)
+
 router.get('/studentinfo/:studentid',(req, res, next) => {
     const studentid = req.params.studentid;
     res.setHeader('Access-Control-Allow-Origin', '*');
