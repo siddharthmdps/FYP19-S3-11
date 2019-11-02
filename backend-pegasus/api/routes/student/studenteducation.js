@@ -15,7 +15,7 @@ const studenteducation = (req, res) => {
             throw error
         }
         else {
-            if(studentid && awardname && dateawarded) {               
+            if(studentid && university && highestq && specialization) {               
                 let queryString = `INSERT INTO pegasus.studenteducation (studentid, university, highestq, specialization, type, grade) values ("${studentid}", "${university}", "${highestq}", "${specialization}", "${type}", "${grade}")`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {

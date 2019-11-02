@@ -1,8 +1,7 @@
-const {env, sha1, mysql, mypool} = require('../../util')
+const {router, env, sha1, mysql, mypool} = require('../../util')
 
 const getstudentawards = (req, res) => {
     const studentid = parseInt(req.params.studentid);
-
     mypool.getConnection( (error, connection) => {
         if(error) {
             connection.release()
@@ -10,15 +9,15 @@ const getstudentawards = (req, res) => {
             throw error
         }
         else {
-            if(studentid && awardname && dateawarded) {               
-                let queryString = `select * from pegasus.studentawards where studentid = "${studentid}"`
+            if(studentid) {               
+                let queryString = `select ID as 'AwardID',awardname as 'Award', CONCAT(month, " ", year) as 'Date', awarddescription as 'Description' from pegasus.studentawards where studentid = "${studentid}"`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })
                     }
                     else {
                         res.json({
-                            message: "success"
+                            Awards: rows
                         })
                     }
                 }) 

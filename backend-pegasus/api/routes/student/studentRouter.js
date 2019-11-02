@@ -1,8 +1,8 @@
-const {express, router, env, sha1, mysql, mypool} = require('../../util')
+const {router, env, sha1, mysql, mypool} = require('../../util')
 
 //student awards
 //get
-const getstudentaward = require('./studentawards')
+const getstudentaward = require('./getstudentawards')
 router.get('/studentawards/:studentid', getstudentaward)
 
 //post
@@ -11,49 +11,50 @@ router.post('/studentawards', studentawards)
 
 //student cert
 //get
-const getstudentcert = require('./studentcert')
-router.get('/studentcert/:studentid', getstudentcert)
+const getstudentcertificate = require('./getstudentcertificate')
+router.get('/studentcertificate/:studentid', getstudentcertificate)
 
 //post
-const studentcert = require('./studentcert')
-router.post('/studentcert', studentcert)
+const studentcertificate = require('./studentcertificate')
+router.post('/studentcertificate', studentcertificate)
 
 //student education
 //get
-const getstudenteducation = require('./studenteducation')
+const getstudenteducation = require('./getstudenteducation')
 router.get('/studenteducation/:studentid', getstudenteducation)
 
 //post
 const studenteducation = require('./studenteducation')
 router.post('/studenteducation', studenteducation)
 
-router.get('/',(req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    mypool.getConnection(function(err,connection) {
-        if (err) {
-			connection.release();
-	  		console.log(' Error getting mysql_pool connection: ' + err);
-	  		throw err;
-	  	}
-        connection.query('SELECT firstname,lastname,email,phone,country,city,address FROM pegasus.student', function(error, rows, fields) {
-            if (error) {
-                res.status(500).json({
-                    message: error
-                });
-            }
-            if (rows && rows.length > 0) {
-                res.send(rows);   
-            }
-            else if (!rows || rows.length == 0) {
-                res.status(200).json({
-                    message: "Failed!"
-                });
-            }
-        });
-    });
-});
+//student job preference
+//get
+const getstudentjobpref = require('./getstudentjobpref')
+router.get('/studentjobpref/:studentid', getstudentjobpref)
 
-router.get('/:studentid',(req, res, next) => {
+//post
+const studentjobpref = require('./studentjobpref')
+router.post('/studentjobpref', studentjobpref)
+
+//student project
+//get
+const getstudentproject = require('./getstudentproject')
+router.get('/studentproject/:studentid', getstudentproject)
+
+//post
+const studentproject = require('./studentproject')
+router.post('/studentproject', studentproject)
+
+//student work exp
+//get
+const getstudentworkexp = require('./getstudentworkexp')
+router.get('/studentworkexp/:studentid', getstudentworkexp)
+
+//post
+const studentworkexp = require('./studentworkexp')
+router.post('/studentworkexp', studentworkexp)
+
+router.get('/studentinfo/:studentid',(req, res, next) => {
     const studentid = req.params.studentid;
     res.setHeader('Access-Control-Allow-Origin', '*');
     mypool.getConnection(function(err,connection) {
@@ -63,14 +64,16 @@ router.get('/:studentid',(req, res, next) => {
 	  		throw err;
 	  	}
         if (studentid) {
-            connection.query('SELECT firstname,lastname,email,phone,country,city,address FROM pegasus.student WHERE studentid = ?', [studentid], function(error, results, fields) {
+            connection.query("SELECT ID as 'StudentID',FirstName,MiddleName,LastName,Email,Phone,Country,City,CurrentAddress,PostalCode,Nationality FROM student WHERE id = ?", [studentid], function(error, results, fields) {
                 if (error) {
                     res.status(500).json({
                         message: error
                     });
                 }
                 if (results && results.length > 0) {
-                    res.send(results); 
+                    res.status(200).json({
+                        PersonalParticulars: results[0]
+                    });
                 }
                 else if (!results || results.length == 0) {
                     res.status(200).json({
@@ -82,13 +85,17 @@ router.get('/:studentid',(req, res, next) => {
     });
 });
 
-router.post('/createStudent', (req, res, next) => {
-    const name = req.body.name;
+router.post('/studentinfo/createStudent', (req, res, next) => {
+    const firstname = req.body.firstname;
+    const middlename = req.body.middlename;
+    const lastname = req.body.lastname;
     const email = req.body.email;
     const phone = req.body.phone;
     const country = req.body.country;
     const city = req.body.city;
-    const address = req.body.address;
+    const currentaddress = req.body.currentaddress;
+    const postalcode = req.body.postalcode;
+    const nationality = req.body.nationality;
     const username = req.body.username;
     const password = req.body.password;
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -99,7 +106,7 @@ router.post('/createStudent', (req, res, next) => {
 	  		throw err;
 	  	}
         if (username && fullname && email && password && usertype) {
-            connection.query('INSERT INTO pegasus.student (name, email, phone, country, city, address, username, password) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', [name, email, phone, country, city, address, username, password], function(error, results, fields) {
+            connection.query('INSERT INTO pegasus.student (firstname, middlename, lastname, email, phone, country, city, currentaddress, postalcode, nationality, username, password) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [firstname, middlename, lastname, email, phone, country, city, currentaddress, postalcode, nationality, username, password], function(error, results, fields) {
                 if (error) {
                     res.status(500).json({
                         message: error

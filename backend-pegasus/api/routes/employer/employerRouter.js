@@ -5,6 +5,12 @@ const {router, env, sha1, mysql, mypool} = require('../../util')
 // GET
 const getJobList = require('./joblist')
 router.get('/joblist/:id', getJobList)
+const getJobView = require('./jobview')
+router.get('/jobview/:jobID', getJobView)
+
+// GET All
+const getalljobs = require('./getalljobs')
+router.get('/getalljobs', getalljobs)
 
 // POST
 const postjob = require('./postjob')
@@ -13,7 +19,7 @@ router.post('/postjob', postjob)
 
 // http://servername/employer
 // to provide employer info
-router.get('/:id',(req, res) => {
+router.get('/employerinfo/:id',(req, res) => {
     const empID = req.params.id
     console.log(`Request for employer info, empID ${empID}`)
     
@@ -34,7 +40,7 @@ router.get('/:id',(req, res) => {
                         res.status(500).json({ message: error })
                     }
                     if(rows && rows.length > 0) {
-                        res.json({
+                        res.status(200).json({
                             message: 'success',
                             body: rows
                         })
@@ -51,7 +57,7 @@ router.get('/:id',(req, res) => {
     }
 })
 
-router.post('/createEmployer', (req, res, next) => {
+router.post('/employerinfo/createEmployer', (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
     const companyname = req.body.companyname;

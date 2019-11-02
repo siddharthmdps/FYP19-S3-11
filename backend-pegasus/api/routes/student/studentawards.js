@@ -1,9 +1,10 @@
-const {env, sha1, mysql, mypool} = require('../../util')
+const {router, env, sha1, mysql, mypool} = require('../../util')
 
 const studentawards = (req, res) => {
     const studentid = parseInt(req.params.studentid);
     const awardname = req.body.awardname;
-    const dateawarded = req.body.dateawarded;
+    const year = parseInt(req.body.year);
+    const month = req.body.month;
     const awarddesc = req.body.awarddesc;
 
     mypool.getConnection( (error, connection) => {
@@ -13,8 +14,8 @@ const studentawards = (req, res) => {
             throw error
         }
         else {
-            if(studentid && awardname && dateawarded) {               
-                let queryString = `INSERT INTO pegasus.studentawards (studentid, awardname, dateawarded, awarddesc) values ("${studentid}", "${awardname}", "${dateawarded}", "${awarddesc}")`
+            if(studentid && awardname && year && month) {               
+                let queryString = `INSERT INTO pegasus.studentawards (studentid, awardname, year, month, awarddescription) values ("${studentid}", "${awardname}", "${year}", "${month}", "${awarddesc}")`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })

@@ -101,7 +101,8 @@ class Employer extends Component {
                 joblocation = "Singapore"/*{this.state.joblocation}*/
                 jobindustry={this.state.jobindustry}
                 dateposted={this.state.jobpostdate}
-                />
+                 />
+     
 
             default : 
                 return (
