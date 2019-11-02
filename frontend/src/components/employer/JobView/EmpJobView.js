@@ -1,26 +1,15 @@
 import React,{Component} from 'react';
 import EmpJobCard,{EmpAppCard, BaseCard} from './EmpJobCard';
 import apiURL from '../../../config';
+import {Row,Col} from 'react-bootstrap';
 
 
 //This component is the employer' posted job view (individual)
 // An employer can view all the applicants that have applied under a particular job posted.
 
-//TO BE UPDATED 
-// EmpJobCard fields: jobPostID, companyName, jobDescription, reqSkills
-// EmpAppCard fields: appName, appBackground, appSkills, appContact.
+//EmpJobCard is ready to be deployed.
+//Pending: EmpAppCard Linkage.
 
-//refer to employer.js --> detailedjob handler --> console
-
-/* jobTitle: "Software Engineer",
-            jobID: 1234,
-            jobDescription: "Determines operational feasibility by evaluating analysis, problem definition, requirements, solution development, and proposed solutions.Documents and demonstrates solutions by developing documentation, flowcharts, layouts, diagrams, charts, code comments and clear code. Prepares and installs solutions by determining and designing system specifications, standards, and programming",
-            jobSkills:"Java, HTML, CSS3 and Javascript",
-            jobLocation: "Singapore",
-            jobIndustry: "Medical",
-            jobExperience: "Fresh Graduate",
-*/
-// just backing up
 class EmpJobView extends Component{
     constructor(props){
         super()
@@ -56,30 +45,35 @@ class EmpJobView extends Component{
     }
 
     render(){
+        //console.log(this.props.jobskills)
+        //console.log(this.props.jobtitle)
         return(
             <div>
-                <div className = "row">
+                <Row>
                     <EmpJobCard 
-                    title={this.props.jobTitle} 
-                    companyName={this.props.employername} 
-                    reqSkills = {this.props.jobSkills}>
-                        {this.props.jobDescription}
+                    title={this.props.jobtitle} 
+                    companyName={this.employername} 
+                    reqSkills = {this.props.jobskills}
+                    joblocation ={this.props.joblocation}
+                    jobindustry = {this.props.jobindustry}
+                    dateposted={this.props.dateposted}>
+                        {this.props.jobdescription}
                     </EmpJobCard>
-                </div>
+                </Row>
                 <br/>
                 {/* Render */}
                 { this.state.appList.length > 0 && !this.state.error && 
                     this.state.appList.map( (applicant) => (
-                        <div className = "row">
-                            <div className = "col-sm-8 mx-auto">
+                        <Row>
+                            <Col sm={8} className = "mx-auto">
                                 <EmpAppCard 
-                                appName={applicant.name} 
+                                appName = "Maya Albarax"/*{applicant.name} */
                                 appSkills = {applicant.skills} 
                                 appContact={applicant.contact}>
                                     {applicant.background}
                                 </EmpAppCard>
-                            </div>
-                        </div>
+                            </Col>
+                        </Row>
 
                                 
                     ) )
