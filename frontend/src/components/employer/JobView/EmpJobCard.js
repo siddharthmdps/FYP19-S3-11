@@ -1,7 +1,9 @@
 //These are components used by EmpJobView.js.
 
-//just backing up
+//Pending: 
+// AppCard
 import React from 'react';
+import {Card,Header,Button,Col,Row} from'react-bootstrap';
 import '../ProfileView/Card.css';
 
 const BaseCard =(props)=> {
@@ -13,25 +15,64 @@ const BaseCard =(props)=> {
     )
 };
 
+//Future Enhancement: Adding nav for students
+
 const EmpJobCard =(props)=> {
     return (
             <div className = "col-sm-8 mx-auto">
-                <BaseCard>
-                    <div className="card-header">
-                        <h5>{props.title}<i class="fas fa-edit"></i></h5>
+                <Card>
+                    <Card.Header>
+                        <Card.Title>
+                            <Row>
+                                <Col sm={10}>{props.title}</Col>
+                                <Col sm={2}>
+                                    <Button variant="primary"> 
+                                        Edit&nbsp;
+                                        <i class="fas fa-edit"></i>
+                                    </Button>
+                                </Col>
+                            </Row>
+                            
+                        </Card.Title>
+                    </Card.Header>
+                    
+                    <Card.Body>
 
-                    </div>
+                        <Card.Subtitle>{props.companyName}</Card.Subtitle>
+                        <br/>
+                        <Card.Text>
+                            <Row>
+                                <Col sm={6}>
+                                    <i class="fas fa-globe-asia"> </i>
+                                    &nbsp;
+                                    {props.joblocation}
+                                </Col>
+                                <Col sm={6}>
+                                <i class="fas fa-industry"></i>
+                                &nbsp;
+                                {props.jobindustry}
+                                </Col>
+                            </Row>
+                        </Card.Text>
+
+                        <Card.Text> {props.children}</Card.Text>
+                        <Card.Text>
+                            <i class="fas fa-tasks"></i> 
+                            <em>&nbsp; Skills Required <br/></em> 
+                            {props.reqSkills}
+                        </Card.Text>
+
+                        <Card.Text>{props.dateposted}</Card.Text>
+                        
+                    </Card.Body>
+
+                </Card>
                 
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{props.companyName}</li>
-                        <li class="list-group-item">{props.children}</li>
-                        <li class="list-group-item">{props.reqSkills}</li>
-                    </ul>
-                </BaseCard>
             </div>
             
     )
 };
+
 
 const EmpAppCard = (props) =>{
     return (
@@ -87,5 +128,5 @@ const EmpAppCard = (props) =>{
     )
 }
 
-export {BaseCard,EmpAppCard};
+export {EmpAppCard};
 export default EmpJobCard;
