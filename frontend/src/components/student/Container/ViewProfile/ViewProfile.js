@@ -231,8 +231,8 @@ class Profile extends Component {
                         </CardColumns> */}
 
                         {/* <body > */}
-                        <Tab activeTab={this.state.ActiveTab} click={this.updateActiveTab}>
-                            <VerticalTimeline education>
+                        <Tab activeTab={this.state.ActiveTab} click={this.updateActiveTab} Education={this.state.Education} WorkExp = {this.state.WorkExp} Certification={this.state.Certification} Awards = {this.state.Awards}>
+                            {/* <VerticalTimeline education>
                                 {this.state.Education.map(educationDetail => {
                                     return (
                                         <VerticalTimelineElement
@@ -255,11 +255,11 @@ class Profile extends Component {
                                         </VerticalTimelineElement>
                                     );
                                 })}
-                            </VerticalTimeline>
+                            </VerticalTimeline> */}
                         </Tab>
 
-                        <VerticalTimeline>
-                            {this.state.Education.map(educationDetail => {
+                        {/* <VerticalTimeline> */}
+                            {/* {this.state.Education.map(educationDetail => {
                                 return (
                                     <VerticalTimelineElement
                                         className="vertical-timeline-element--work"
@@ -280,9 +280,9 @@ class Profile extends Component {
                                         </p>
                                     </VerticalTimelineElement>
                                 );
-                            })}
+                            })} */}
 
-                            {this.state.WorkExp.map(workDetail => {
+                            {/* {this.state.WorkExp.map(workDetail => {
                                 return (
                                     <VerticalTimelineElement
                                         className="vertical-timeline-element--work"
@@ -300,9 +300,9 @@ class Profile extends Component {
                                         </p>
                                     </VerticalTimelineElement>
                                 );
-                            })}
+                            })} */}
 
-                            <VerticalTimelineElement
+                            {/* <VerticalTimelineElement
                                 className="vertical-timeline-element--work"
                                 date="2008 - 2010"
                                 iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
@@ -367,7 +367,7 @@ class Profile extends Component {
                                 iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
                                 icon={<StarIcon />}
                             />
-                        </VerticalTimeline>
+                        </VerticalTimeline> */}
                         {/* </body> */}
                     </Col>
                 </Row>

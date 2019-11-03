@@ -13,6 +13,9 @@ import SchoolIcon from '@material-ui/icons/School';
 import WebIcon from '@material-ui/icons/Web';
 import DoneIcon from '@material-ui/icons/Done';
 
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
+
 import classes from './IconLabelTabs.module.css';
 
 function TabPanel(props) {
@@ -78,17 +81,90 @@ export default function IconLabelTabs(props) {
                 <Tab icon={<DoneIcon />} label="Skills" />
             </Tabs>
 
-            <TabPanel value={value} index={0} onClick={event => tab(event)}>
-                {props.children.education ? props.children : 'Time line'}
+            <TabPanel value={value} index={0} style={{backgroundColor: "rgb(33, 150, 243)"}}>
+                <VerticalTimeline>
+                    {props.Education.map(educationDetail => {
+                        return (
+                            <VerticalTimelineElement
+                                className="vertical-timeline-element--work"
+                                contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
+                                date={educationDetail.StartDate + " - " + educationDetail.EndDate}
+                                iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                icon={<SchoolIcon />}
+                            >
+                                <h3 className="vertical-timeline-element-title">{educationDetail.Degree + " in " +
+                                    educationDetail.FieldOfStudy + " (" +
+                                    educationDetail.Major + ")"}</h3>
+                                <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
+                                <p>
+                                    {educationDetail.University}
+                                    <br />
+                                    {educationDetail.GPA}
+                                </p>
+                            </VerticalTimelineElement>
+                        );
+                    })}
+                    </VerticalTimeline>
             </TabPanel>
-            <TabPanel value={value} index={1} >
-                Time line
+            <TabPanel value={value} index={1} style={{backgroundColor: "rgb(33, 150, 243)"}}>
+                <VerticalTimeline>
+                    {props.WorkExp.map(workDetail => {
+                        return (
+                            <VerticalTimelineElement
+                                className="vertical-timeline-element--work"
+                                date={workDetail.StartDate + " - " + workDetail.EndDate}
+                                iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                icon={<WorkIcon />}
+                            >
+                                <h3 className="vertical-timeline-element-title">{workDetail.Position + " at " +
+                                    workDetail.Company + " (" + workDetail.Mode + ")"} </h3>
+                                <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
+                                <p>
+                                    {workDetail.Industry + ", " + workDetail.AnnualSalary}
+                                    <br />
+                                    {workDetail.Description}
+                                </p>
+                            </VerticalTimelineElement>
+                        );
+                    })}
+                </VerticalTimeline>
             </TabPanel>
             <TabPanel value={value} index={2} >
-                Time line
+                <VerticalTimeline>
+                    {props.Certification.map(certificateDetail => {
+                        return (
+                            <VerticalTimelineElement
+                                className="vertical-timeline-element--work"
+                                date={certificateDetail.IssueDate + " - " + certificateDetail.ValidUntil}
+                                iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                icon={<ImportContactsIcon />}
+                            >
+                                <h3 className="vertical-timeline-element-title">{certificateDetail.Name}</h3>
+                                <h4 className="vertical-timeline-element-subtitle">- {certificateDetail.IssuedBy}</h4>
+                            </VerticalTimelineElement>
+                        );
+                    })}
+                </VerticalTimeline>
             </TabPanel>
             <TabPanel value={value} index={3} >
-                Time line
+                <VerticalTimeline>
+                    {props.Awards.map(awardDetail => {
+                        return (
+                            <VerticalTimelineElement
+                                className="vertical-timeline-element--work"
+                                date={awardDetail.Date}
+                                iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                icon={<StarHalfIcon />}
+                            >
+                                <h3 className="vertical-timeline-element-title">{awardDetail.Award}</h3>
+                                <p>
+                                    {awardDetail.Description}
+                                </p>
+                            </VerticalTimelineElement>
+                        );
+                    })}
+                </VerticalTimeline>
             </TabPanel>
             <TabPanel value={value} index={4} >
                 May use time line or other stuffs
