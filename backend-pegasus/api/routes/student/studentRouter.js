@@ -7,7 +7,7 @@ router.get('/studentawards/:studentid', getstudentaward)
 
 //post
 const studentawards = require('./studentawards')
-router.post('/studentawards', studentawards)
+router.post('/poststudentawards', studentawards)
 
 //student cert
 //get
@@ -16,7 +16,7 @@ router.get('/studentcertificate/:studentid', getstudentcertificate)
 
 //post
 const studentcertificate = require('./studentcertificate')
-router.post('/studentcertificate', studentcertificate)
+router.post('/poststudentcertificate', studentcertificate)
 
 //student education
 //get
@@ -25,7 +25,7 @@ router.get('/studenteducation/:studentid', getstudenteducation)
 
 //post
 const studenteducation = require('./studenteducation')
-router.post('/studenteducation', studenteducation)
+router.post('/poststudenteducation', studenteducation)
 
 //student job preference
 //get
@@ -34,7 +34,7 @@ router.get('/studentjobpref/:studentid', getstudentjobpref)
 
 //post
 const studentjobpref = require('./studentjobpref')
-router.post('/studentjobpref', studentjobpref)
+router.post('/poststudentjobpref', studentjobpref)
 
 //student project
 //get
@@ -43,7 +43,7 @@ router.get('/studentproject/:studentid', getstudentproject)
 
 //post
 const studentproject = require('./studentproject')
-router.post('/studentproject', studentproject)
+router.post('/poststudentproject', studentproject)
 
 //student work exp
 //get
@@ -52,7 +52,7 @@ router.get('/studentworkexp/:studentid', getstudentworkexp)
 
 //post
 const studentworkexp = require('./studentworkexp')
-router.post('/studentworkexp', studentworkexp)
+router.post('/poststudentworkexp', studentworkexp)
 
 //student document
 //get
@@ -61,7 +61,7 @@ router.get('/studentdocument/:studentid', getstudentdocument)
 
 //post
 const studentdocument = require('./studentdocument')
-router.post('/studentdocument', studentdocument)
+router.post('/poststudentdocument', studentdocument)
 
 router.get('/studentinfo/:studentid',(req, res, next) => {
     const studentid = req.params.studentid;
