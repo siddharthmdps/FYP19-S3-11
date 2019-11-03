@@ -18,6 +18,6 @@
 .Clickable:hover{
     cursor: pointer;
     color: #1B4F72;
-    font-weight: bolder;
+    font-weight: 700;
 }
 

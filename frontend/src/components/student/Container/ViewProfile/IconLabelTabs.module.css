@@ -1,0 +1,7 @@
+.Test:active,
+.Test:focus {
+    box-shadow: none;
+    background-color: transparent;
+    border-color: none;
+
+}

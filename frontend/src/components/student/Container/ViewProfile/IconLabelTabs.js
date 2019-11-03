@@ -13,6 +13,8 @@ import SchoolIcon from '@material-ui/icons/School';
 import WebIcon from '@material-ui/icons/Web';
 import DoneIcon from '@material-ui/icons/Done';
 
+import classes from './IconLabelTabs.module.css';
+
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -43,7 +45,9 @@ const useStyles = makeStyles({
     },
 });
 
-export default function IconLabelTabs() {
+
+
+export default function IconLabelTabs(props) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -51,6 +55,10 @@ export default function IconLabelTabs() {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    let  tab = (event) => {
+        console.log(event.target.value, event.target.id);
+    }
 
     return (
         <Paper square className={classes.root}>
@@ -62,7 +70,7 @@ export default function IconLabelTabs() {
                 textColor="primary"
                 aria-label="icon label tabs example"
             >
-                <Tab icon={<SchoolIcon />} label="Education" />
+                <Tab className={classes.Test} icon={<SchoolIcon />} label="Education" />
                 <Tab icon={<WorkIcon />} label="Work Experience" />
                 <Tab icon={<ImportContactsIcon />} label="Certifications" />
                 <Tab icon={<StarHalfIcon />} label="Awards" />
@@ -70,24 +78,24 @@ export default function IconLabelTabs() {
                 <Tab icon={<DoneIcon />} label="Skills" />
             </Tabs>
 
-            <TabPanel value={value} index={0} >
-                Time line
-        </TabPanel>
+            <TabPanel value={value} index={0} onClick={event => tab(event)}>
+                {props.children.education ? props.children : 'Time line'}
+            </TabPanel>
             <TabPanel value={value} index={1} >
                 Time line
-        </TabPanel>
+            </TabPanel>
             <TabPanel value={value} index={2} >
                 Time line
-        </TabPanel>
+            </TabPanel>
             <TabPanel value={value} index={3} >
                 Time line
-        </TabPanel>
+            </TabPanel>
             <TabPanel value={value} index={4} >
                 May use time line or other stuffs
-        </TabPanel>
+            </TabPanel>
             <TabPanel value={value} index={5} >
                 Other stuffs
-        </TabPanel>
+            </TabPanel>
         </Paper>
     );
 }

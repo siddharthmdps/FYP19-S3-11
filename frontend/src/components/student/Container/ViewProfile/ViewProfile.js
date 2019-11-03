@@ -110,7 +110,8 @@ class Profile extends Component {
         "Projects": [],
         "Document": [],
         "isActive": [],
-        "activatedToggle": "-1"
+        "activatedToggle": "-1",
+        'ActiveTab': 'Education'
     }
 
     // Handling Form Inputs starts here
@@ -147,6 +148,10 @@ class Profile extends Component {
                 this.setState({ Document: receivedData.data.Document });
             });
 
+    }
+
+    updateActiveTab() {
+        
     }
 
     render() {
@@ -225,9 +230,9 @@ class Profile extends Component {
                             </Timeline>
                         </CardColumns> */}
 
-                        <body >
-                            <Tab></Tab>
-                            <VerticalTimeline>
+                        {/* <body > */}
+                        <Tab activeTab={this.state.ActiveTab} click={this.updateActiveTab}>
+                            <VerticalTimeline education>
                                 {this.state.Education.map(educationDetail => {
                                     return (
                                         <VerticalTimelineElement
@@ -250,94 +255,120 @@ class Profile extends Component {
                                         </VerticalTimelineElement>
                                     );
                                 })}
-
-                                {this.state.WorkExp.map(workDetail => {
-                                    return (
-                                        <VerticalTimelineElement
-                                            className="vertical-timeline-element--work"
-                                            date={workDetail.StartDate + " - " + workDetail.EndDate}
-                                            iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                                            icon={<WorkIcon />}
-                                        >
-                                            <h3 className="vertical-timeline-element-title">{workDetail.Position + " at " +
-                                                workDetail.Company + " (" + workDetail.Mode + ")"} </h3>
-                                            <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
-                                            <p>
-                                                {workDetail.Industry + ", " + workDetail.AnnualSalary}
-                                                <br />
-                                                {workDetail.Description}
-                                            </p>
-                                        </VerticalTimelineElement>
-                                    );
-                                })}
-
-                                <VerticalTimelineElement
-                                    className="vertical-timeline-element--work"
-                                    date="2008 - 2010"
-                                    iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                                    icon={<WorkIcon />}
-                                >
-                                    <h3 className="vertical-timeline-element-title">Web Designer</h3>
-                                    <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
-                                    <p>
-                                        User Experience, Visual Design
-                                    </p>
-                                </VerticalTimelineElement>
-
-                                <VerticalTimelineElement
-                                    className="vertical-timeline-element--work"
-                                    date="2006 - 2008"
-                                    iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                                    icon={<WorkIcon />}
-                                >
-                                    <h3 className="vertical-timeline-element-title">Web Designer</h3>
-                                    <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
-                                    <p>
-                                        User Experience, Visual Design
-                                    </p>
-                                </VerticalTimelineElement>
-                                <VerticalTimelineElement
-                                    className="vertical-timeline-element--education"
-                                    date="April 2013"
-                                    iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-                                    icon={<SchoolIcon />}
-                                >
-                                    <h3 className="vertical-timeline-element-title">Content Marketing for Web, Mobile and Social Media</h3>
-                                    <h4 className="vertical-timeline-element-subtitle">Online Course</h4>
-                                    <p>
-                                        Strategy, Social Media
-                                    </p>
-                                </VerticalTimelineElement>
-                                <VerticalTimelineElement
-                                    className="vertical-timeline-element--education"
-                                    date="November 2012"
-                                    iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-                                    icon={<SchoolIcon />}
-                                >
-                                    <h3 className="vertical-timeline-element-title">Agile Development Scrum Master</h3>
-                                    <h4 className="vertical-timeline-element-subtitle">Certification</h4>
-                                    <p>
-                                        Creative Direction, User Experience, Visual Design
-                                    </p>
-                                </VerticalTimelineElement>
-                                <VerticalTimelineElement
-                                    className="vertical-timeline-element--education"
-                                    date="2002 - 2006"
-                                    iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-                                    icon={<SchoolIcon />}
-                                >
-                                    <h3 className="vertical-timeline-element-title">Bachelor of Science in Interactive Digital Media Visual Imaging</h3>
-                                    <h4 className="vertical-timeline-element-subtitle">Bachelor Degree</h4>
-                                    <p>
-                                        Creative Direction, Visual Design
-                                    </p>
-                                </VerticalTimelineElement>
-                                <VerticalTimelineElement
-                                    iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
-                                    icon={<StarIcon />}
-                                />
                             </VerticalTimeline>
-                        </body>
+                        </Tab>
+
+                        <VerticalTimeline>
+                            {this.state.Education.map(educationDetail => {
+                                return (
+                                    <VerticalTimelineElement
+                                        className="vertical-timeline-element--work"
+                                        contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                        contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
+                                        date={educationDetail.StartDate + " - " + educationDetail.EndDate}
+                                        iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                        icon={<WorkIcon />}
+                                    >
+                                        <h3 className="vertical-timeline-element-title">{educationDetail.Degree + " in " +
+                                            educationDetail.FieldOfStudy + " (" +
+                                            educationDetail.Major + ")"}</h3>
+                                        <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
+                                        <p>
+                                            {educationDetail.University}
+                                            <br />
+                                            {educationDetail.GPA}
+                                        </p>
+                                    </VerticalTimelineElement>
+                                );
+                            })}
+
+                            {this.state.WorkExp.map(workDetail => {
+                                return (
+                                    <VerticalTimelineElement
+                                        className="vertical-timeline-element--work"
+                                        date={workDetail.StartDate + " - " + workDetail.EndDate}
+                                        iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                        icon={<WorkIcon />}
+                                    >
+                                        <h3 className="vertical-timeline-element-title">{workDetail.Position + " at " +
+                                            workDetail.Company + " (" + workDetail.Mode + ")"} </h3>
+                                        <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
+                                        <p>
+                                            {workDetail.Industry + ", " + workDetail.AnnualSalary}
+                                            <br />
+                                            {workDetail.Description}
+                                        </p>
+                                    </VerticalTimelineElement>
+                                );
+                            })}
+
+                            <VerticalTimelineElement
+                                className="vertical-timeline-element--work"
+                                date="2008 - 2010"
+                                iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                icon={<WorkIcon />}
+                            >
+                                <h3 className="vertical-timeline-element-title">Web Designer</h3>
+                                <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
+                                <p>
+                                    User Experience, Visual Design
+                                    </p>
+                            </VerticalTimelineElement>
+
+                            <VerticalTimelineElement
+                                className="vertical-timeline-element--work"
+                                date="2006 - 2008"
+                                iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                icon={<WorkIcon />}
+                            >
+                                <h3 className="vertical-timeline-element-title">Web Designer</h3>
+                                <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
+                                <p>
+                                    User Experience, Visual Design
+                                    </p>
+                            </VerticalTimelineElement>
+                            <VerticalTimelineElement
+                                className="vertical-timeline-element--education"
+                                date="April 2013"
+                                iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+                                icon={<SchoolIcon />}
+                            >
+                                <h3 className="vertical-timeline-element-title">Content Marketing for Web, Mobile and Social Media</h3>
+                                <h4 className="vertical-timeline-element-subtitle">Online Course</h4>
+                                <p>
+                                    Strategy, Social Media
+                                    </p>
+                            </VerticalTimelineElement>
+                            <VerticalTimelineElement
+                                className="vertical-timeline-element--education"
+                                date="November 2012"
+                                iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+                                icon={<SchoolIcon />}
+                            >
+                                <h3 className="vertical-timeline-element-title">Agile Development Scrum Master</h3>
+                                <h4 className="vertical-timeline-element-subtitle">Certification</h4>
+                                <p>
+                                    Creative Direction, User Experience, Visual Design
+                                    </p>
+                            </VerticalTimelineElement>
+                            <VerticalTimelineElement
+                                className="vertical-timeline-element--education"
+                                date="2002 - 2006"
+                                iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
+                                icon={<SchoolIcon />}
+                            >
+                                <h3 className="vertical-timeline-element-title">Bachelor of Science in Interactive Digital Media Visual Imaging</h3>
+                                <h4 className="vertical-timeline-element-subtitle">Bachelor Degree</h4>
+                                <p>
+                                    Creative Direction, Visual Design
+                                    </p>
+                            </VerticalTimelineElement>
+                            <VerticalTimelineElement
+                                iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
+                                icon={<StarIcon />}
+                            />
+                        </VerticalTimeline>
+                        {/* </body> */}
                     </Col>
                 </Row>
             </Container>
