@@ -231,7 +231,7 @@ class Profile extends Component {
                         </CardColumns> */}
 
                         {/* <body > */}
-                        <Tab activeTab={this.state.ActiveTab} click={this.updateActiveTab} Education={this.state.Education} WorkExp = {this.state.WorkExp} Certification={this.state.Certification} Awards = {this.state.Awards}>
+                        <Tab activeTab={this.state.ActiveTab} click={this.updateActiveTab} Education={this.state.Education} WorkExp = {this.state.WorkExp} Certification={this.state.Certification} Awards = {this.state.Awards} Skills={this.state.Skills}>
                             {/* <VerticalTimeline education>
                                 {this.state.Education.map(educationDetail => {
                                     return (

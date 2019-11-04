@@ -1,6 +1,7 @@
 import React from 'react';
+import classes from './IconLabelTabs.module.css';
+
 import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
@@ -12,15 +13,16 @@ import WorkIcon from '@material-ui/icons/Work';
 import SchoolIcon from '@material-ui/icons/School';
 import WebIcon from '@material-ui/icons/Web';
 import DoneIcon from '@material-ui/icons/Done';
+import StarIcon from '@material-ui/icons/Star';
 
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
+import {Button} from 'react-bootstrap'
 
-import classes from './IconLabelTabs.module.css';
 
-function TabPanel(props) {
+let TabPanel = props => {
     const { children, value, index, ...other } = props;
-
+    
     return (
         <Typography
             component="div"
@@ -41,27 +43,42 @@ TabPanel.propTypes = {
     value: PropTypes.any.isRequired,
 };
 
-const useStyles = makeStyles({
-    root: {
-        flexGrow: 1,
-        maxWidth: 1250,
-    },
-});
+// const useStyles = makeStyles({
+//     root: {
+//         flexGrow: 1,
+//         maxWidth: 1250,
+//     },
+//     Skill: {
+//         textTransform: 'uppercase',
+//         fontSize: '11px',
+//         letterSpacing: '2.5px',
+//         fontWeight: '500',
+//         color: '#000',
+//         backgroundColor: '#fff',
+//         border: 'none',
+//         borderRadius: '45px';
+//         box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+//         transition: all 0.3s ease 0s;
+//         cursor: pointer;
+//         outline: none;
+//         position: relative;
+//         text-align: center;
+//         display: inline-block;
+//         text-align: center;
+//         margin-right: 2%;
+//         margin-top: 1%;
+//     }
+// });
 
 
 
-export default function IconLabelTabs(props) {
-    const classes = useStyles();
+let IconLabelTabs = props => {
     const [value, setValue] = React.useState(0);
 
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
-    let  tab = (event) => {
-        console.log(event.target.value, event.target.id);
-    }
 
     return (
         <Paper square className={classes.root}>
@@ -105,6 +122,10 @@ export default function IconLabelTabs(props) {
                             </VerticalTimelineElement>
                         );
                     })}
+                    <VerticalTimelineElement
+                                iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
+                                icon={<StarIcon />}
+                            />
                     </VerticalTimeline>
             </TabPanel>
             <TabPanel value={value} index={1} style={{backgroundColor: "rgb(33, 150, 243)"}}>
@@ -128,6 +149,10 @@ export default function IconLabelTabs(props) {
                             </VerticalTimelineElement>
                         );
                     })}
+                    <VerticalTimelineElement
+                                iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
+                                icon={<StarIcon />}
+                            />
                 </VerticalTimeline>
             </TabPanel>
             <TabPanel value={value} index={2} >
@@ -145,6 +170,10 @@ export default function IconLabelTabs(props) {
                             </VerticalTimelineElement>
                         );
                     })}
+                    <VerticalTimelineElement
+                                iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
+                                icon={<StarIcon />}
+                            />
                 </VerticalTimeline>
             </TabPanel>
             <TabPanel value={value} index={3} >
@@ -164,14 +193,26 @@ export default function IconLabelTabs(props) {
                             </VerticalTimelineElement>
                         );
                     })}
+                    <VerticalTimelineElement
+                                iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
+                                icon={<StarIcon />}
+                            />
                 </VerticalTimeline>
             </TabPanel>
             <TabPanel value={value} index={4} >
                 May use time line or other stuffs
             </TabPanel>
             <TabPanel value={value} index={5} >
-                Other stuffs
+                {props.Skills.map(skillDetail => {
+                    return (
+                        <Button className={classes.Skill} key={skillDetail.SkillID}>
+                            {skillDetail.SkillName}
+                        </Button>
+                    );
+                })}
             </TabPanel>
         </Paper>
     );
 }
+
+export default IconLabelTabs;

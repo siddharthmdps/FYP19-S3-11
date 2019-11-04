@@ -11,8 +11,8 @@ class Student extends Component {
             <div>
                 <Navbar />
                 {/* <Profile /> */}
-                {/* <AppliedJobs /> */}
-                <ViewProfile />
+                <AppliedJobs />
+                {/* <ViewProfile /> */}
             </div>
         )
     }

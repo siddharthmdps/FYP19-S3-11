@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Alert } from 'react-bootstrap';
 import classes from './AppliedJobs.module.css';
+
+import Axios from 'axios';
 
 class AppliedJobs extends Component {
     state = {
-
+        "AppliedJobs": [],
         "active": false
     };
 
     toggle = () => this.setState({ "active": !this.state.active });
+
+    componentDidMount(){
+        Axios.get("http://localhost:3000/AppliedJobs")
+            .then(receivedData =>{
+                this.setState({ AppliedJobs: receivedData.data });
+                console.log(receivedData.data);
+            });
+    }
 
     render() {
         const active = this.state.active;
@@ -22,40 +32,42 @@ class AppliedJobs extends Component {
                 </Row>
                 <br />
 
-                <Card md={{ span: 12 }} className={classes.Card}>
-                    <Card.Body style={{ height: '185px' }}>
+                {this.state.AppliedJobs.map(jobDetail => {
+                    return(
+                        <React.Fragment>
+                        <Card md={{ span: 12 }} className={classes.Card}>
+                    <Card.Body style={{ height: '185px' }} onClick={()=> window.open(jobDetail.JobURL, "_blank")}>
                         <Card.Title>
-                            <Row className={classes.Row} style={{ fontWeight: '600' }}>Software Developer</Row>
-                            <Row className={classes.Row}>Accenture</Row>
+                            <Row className={classes.Row} style={{ fontWeight: '600' }}>{jobDetail.JobTitle}</Row>
+                            <Row className={classes.Row}>{jobDetail.Company}</Row>
                             <Row>
-                                <Col className={classes.CardCol}>Location</Col>
-                                <Col className={classes.CardCol}>Industry</Col>
-                                <Col className={classes.CardCol}>Work Exp Req</Col>
+                                <Col className={classes.CardCol}> <i class="fas fa-map-marker-alt"></i> {jobDetail.Location}</Col>
+                                <Col className={classes.CardCol}> <i class="fas fa-building"></i> {jobDetail.Industry}</Col>
+                                <Col className={classes.CardCol}> <i class="fas fa-briefcase"></i> {jobDetail.WorkExpReq}</Col>
                             </Row>
                         </Card.Title>
                         <Card.Text className={classes.Description}>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                            and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            {jobDetail.Description}
                             </Card.Text>
                     </Card.Body>
                     <Card.Footer className={classes.Footer}>
-                        {/* <Col md={{ span: 12 }}> */}
                         <div className={classes.ButtonDiv}>
-                            <Button className={classes.Applied} disabled >Applied</Button>
+                        <Alert variant="success">
+                        <i className="fas fa-check-circle"></i> You have applied for this job
+                        </Alert>
+                            {/* <Button className={classes.Applied} disabled >Applied</Button> */}
                         </div>
                         <div className={classes.StarDiv}>
                             <span className={classes.Star} onClick={this.toggle}>
                                 {active ? fav : unfav}
                             </span>
                         </div>
-                        {/* </Col> */}
                     </Card.Footer>
                 </Card>
-                <br/>
+                <br />
+                </React.Fragment>
+                    );
+                })}                
             </Container>
         );
     }
