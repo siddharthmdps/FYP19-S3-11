@@ -37,7 +37,7 @@ class AppliedJobs extends Component {
                 {this.state.AppliedJobs.map(jobDetail => {
                     return(
                         <React.Fragment>
-                            <JobCard jobDetail={jobDetail} Applied toggle={this.toggle}/>
+                            <JobCard jobDetail={jobDetail} Applied/>
                             <br />
                         </React.Fragment>
                     );

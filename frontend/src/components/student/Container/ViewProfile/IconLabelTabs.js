@@ -17,7 +17,7 @@ import StarIcon from '@material-ui/icons/Star';
 
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import {Button} from 'react-bootstrap'
+import {Button, Card} from 'react-bootstrap'
 
 
 let TabPanel = props => {
@@ -90,12 +90,12 @@ let IconLabelTabs = props => {
                 textColor="primary"
                 aria-label="icon label tabs example"
             >
-                <Tab className={classes.Test} icon={<SchoolIcon />} label="Education" />
-                <Tab icon={<WorkIcon />} label="Work Experience" />
-                <Tab icon={<ImportContactsIcon />} label="Certifications" />
-                <Tab icon={<StarHalfIcon />} label="Awards" />
-                <Tab icon={<WebIcon />} label="Projects" />
-                <Tab icon={<DoneIcon />} label="Skills" />
+                <Tab className={classes.Tab} icon={<SchoolIcon />} label="Education" />
+                <Tab className={classes.Tab} icon={<WorkIcon />} label="Work Experience" />
+                <Tab className={classes.Tab} icon={<ImportContactsIcon />} label="Certifications" />
+                <Tab className={classes.Tab} icon={<StarHalfIcon />} label="Awards" />
+                <Tab className={classes.Tab} icon={<WebIcon />} label="Projects" />
+                <Tab className={classes.Tab} icon={<DoneIcon />} label="Skills" />
             </Tabs>
 
             <TabPanel value={value} index={0} style={{backgroundColor: "rgb(33, 150, 243)"}}>
@@ -200,7 +200,17 @@ let IconLabelTabs = props => {
                 </VerticalTimeline>
             </TabPanel>
             <TabPanel value={value} index={4} >
-                May use time line or other stuffs
+                {props.Projects.map(projectDetail => {
+                    return (
+                        <React.Fragment key={projectDetail.ProjectID}>
+                        <Card className={classes.Project}>
+                            {/* <Card.Body>{projectDetail.Title} ({projectDetail.Status})</Card.Body> */}
+                            <Card.Body><strong>{projectDetail.Title} ({projectDetail.Status})</strong> <br/> <br /> {projectDetail.Description}</Card.Body>
+                        </Card>
+                        <br />
+                        </React.Fragment>
+                    );
+                })}
             </TabPanel>
             <TabPanel value={value} index={5} >
                 {props.Skills.map(skillDetail => {

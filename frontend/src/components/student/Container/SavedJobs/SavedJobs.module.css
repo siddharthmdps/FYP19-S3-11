@@ -50,20 +50,13 @@
     color: #FFCA28!important;
 }
 
-.Applied {
+.Saved {
     /* vertical-align: middle; */
     text-transform: uppercase;
     font-family: 'Roboto',sans-serif;
     border-color: transparent!important;
     background-color: #1565C0!important;
     cursor: not-allowed!important;
-}
-
-.Apply{
-    text-transform: uppercase;
-    font-family: 'Roboto',sans-serif;
-    border-color: transparent!important;
-    background-color: #1565C0!important;
 }
 
 .Footer {
@@ -88,5 +81,5 @@
     float: right;
     position: relative;
     right: 4%;
-    top: 11%; 
+    top: 11%;
 }

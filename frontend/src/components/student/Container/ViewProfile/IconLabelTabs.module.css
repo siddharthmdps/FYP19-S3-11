@@ -1,14 +1,19 @@
-.Test:active,
-.Test:focus {
+.Tab:active,
+.Tab:focus {
     box-shadow: none;
     background-color: transparent;
     border-color: none;
-
+    outline: none;
 }
 
 .root{
     flex-grow: 1;
     max-width: 1250;
+}
+
+.Project{
+    background-color: rgb(33, 150, 243);
+    color: #fff;
 }
 
 .Skill, .Skill:hover, .Skill:active, .Skill:focus{
