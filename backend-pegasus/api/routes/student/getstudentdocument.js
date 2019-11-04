@@ -1,6 +1,6 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
-const getstudentworkexp = (req, res) => {
+const getstudentdocument = (req, res) => {
     const studentid = parseInt(req.params.studentid);
 
     mypool.getConnection( (error, connection) => {
@@ -11,7 +11,7 @@ const getstudentworkexp = (req, res) => {
         }
         else {
             if(studentid) {               
-                let queryString = `select id as 'WorkExpID', Position, Company, StartDate, EndDate, Mode, Industry, AnnualSalary, Description from pegasus.studentworkexp where studentid = "${studentid}"`
+                let queryString = `select id as 'DocumentID', Title, Link from pegasus.studentproject where studentid = "${studentid}"`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })
@@ -33,4 +33,4 @@ const getstudentworkexp = (req, res) => {
     } )
 }
 
-module.exports = getstudentworkexp
+module.exports = getstudentdocument

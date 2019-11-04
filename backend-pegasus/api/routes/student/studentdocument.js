@@ -1,12 +1,11 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
-const studentjobpref = (req, res) => {
+const studentdocument = (req, res) => {
+    
     for(var key in req.body) {
         if(req.body.hasOwnProperty(key)) {
             const studentid = req.body[key].studentid;
             const title = req.body[key].Title;
-            const status = req.body[key].Status;
-            const description = req.body[key].Description;
             const link = req.body[key].Link;
 
             mypool.getConnection( (error, connection) => {
@@ -16,8 +15,8 @@ const studentjobpref = (req, res) => {
                     throw error
                 }
                 else {
-                    if(studentid && projectname && status && description) {               
-                        let queryString = `INSERT INTO pegasus.studentproject (studentid, title, status, description, link) values ("${studentid}", "${title}", "${status}", "${description}", "${link}")`
+                    if(studentid && title) {               
+                        let queryString = `INSERT INTO pegasus.studentdocument (studentid, title, link) values ("${studentid}", "${title}", "${link}")`
                         connection.query(queryString, (err, rows, fields) => {
                             if(err) {
                                 res.status(500).json({ message: err })
@@ -39,4 +38,4 @@ const studentjobpref = (req, res) => {
     })
 }
 
-module.exports = studentjobpref
+module.exports = studentdocument
