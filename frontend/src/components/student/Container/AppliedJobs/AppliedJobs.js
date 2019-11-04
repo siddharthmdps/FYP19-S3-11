@@ -4,6 +4,8 @@ import classes from './AppliedJobs.module.css';
 
 import Axios from 'axios';
 
+import JobCard from '../../Components/JobCard/JobCard';
+
 class AppliedJobs extends Component {
     state = {
         "AppliedJobs": [],
@@ -35,37 +37,9 @@ class AppliedJobs extends Component {
                 {this.state.AppliedJobs.map(jobDetail => {
                     return(
                         <React.Fragment>
-                        <Card md={{ span: 12 }} className={classes.Card}>
-                    <Card.Body style={{ height: '185px' }} onClick={()=> window.open(jobDetail.JobURL, "_blank")}>
-                        <Card.Title>
-                            <Row className={classes.Row} style={{ fontWeight: '600' }}>{jobDetail.JobTitle}</Row>
-                            <Row className={classes.Row}>{jobDetail.Company}</Row>
-                            <Row>
-                                <Col className={classes.CardCol}> <i class="fas fa-map-marker-alt"></i> {jobDetail.Location}</Col>
-                                <Col className={classes.CardCol}> <i class="fas fa-building"></i> {jobDetail.Industry}</Col>
-                                <Col className={classes.CardCol}> <i class="fas fa-briefcase"></i> {jobDetail.WorkExpReq}</Col>
-                            </Row>
-                        </Card.Title>
-                        <Card.Text className={classes.Description}>
-                            {jobDetail.Description}
-                            </Card.Text>
-                    </Card.Body>
-                    <Card.Footer className={classes.Footer}>
-                        <div className={classes.ButtonDiv}>
-                        <Alert variant="success">
-                        <i className="fas fa-check-circle"></i> You have applied for this job
-                        </Alert>
-                            {/* <Button className={classes.Applied} disabled >Applied</Button> */}
-                        </div>
-                        <div className={classes.StarDiv}>
-                            <span className={classes.Star} onClick={this.toggle}>
-                                {active ? fav : unfav}
-                            </span>
-                        </div>
-                    </Card.Footer>
-                </Card>
-                <br />
-                </React.Fragment>
+                            <JobCard jobDetail={jobDetail} Applied toggle={this.toggle}/>
+                            <br />
+                        </React.Fragment>
                     );
                 })}                
             </Container>
