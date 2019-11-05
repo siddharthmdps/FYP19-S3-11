@@ -1,7 +1,8 @@
 import React from 'react';
 import classes from './JobCard.module.css';
 
-import { Container, Row, Col, Card, Button, Alert } from 'react-bootstrap';
+
+import { Container, Row, Col, Card, Button, Alert, Spinner} from 'react-bootstrap';
 
 const AppliedFooter = () => (
     <Alert variant="success">
@@ -9,18 +10,19 @@ const AppliedFooter = () => (
     </Alert>
 );
 
-const SavedFooter = (id, active, toggle) => {
+const SavedFooter = (id, status, changeStatus) => {
 
     const unfav = <i className="far fa-star" />
     const fav = <i className="fas fa-star" style={{ color: "#FFCA28" }} />
+    const waiting =   <Spinner animation="border" variant="warning" />
     return(
         <React.Fragment>
             <div className={classes.ButtonDiv}>
             <Button className={classes.Apply}>Apply</Button>
             </div>
             <div className={classes.StarDiv}>
-                <span className={classes.Star} onClick={() => toggle(id)}>
-                    {active ? fav : unfav}
+                <span className={classes.Star} onClick={() => changeStatus(id, "notActive")}>
+                    {status==="active" ? fav : status==="notActive"? unfav: status==="waiting"?waiting:null}
                 </span>
             </div> 
         </React.Fragment>
@@ -52,7 +54,7 @@ const jobCard = props => (
         <Card.Footer className={classes.Footer}>
 
             {props.Applied?AppliedFooter():null}
-            {props.Saved?SavedFooter(props.jobDetail.id, props.jobDetail.active, props.toggle):null}
+            {props.Saved?SavedFooter(props.jobDetail.id, props.jobDetail.status, props.changeStatus):null}
             <div className={classes.ButtonDiv}>
 
                 {/* <Button className={classes.Applied} disabled >Applied</Button> */}

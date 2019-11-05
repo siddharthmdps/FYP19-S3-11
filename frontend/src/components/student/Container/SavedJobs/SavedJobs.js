@@ -9,17 +9,15 @@ import JobCard from '../../Components/JobCard/JobCard';
 class SavedJobs extends Component {
     state = {
         "SavedJobs": [],
-        "active": false
     };
 
-    toggle = (id) => {
+    changeStatus = (id, status) => {
         let temp = this.state.SavedJobs;
         temp.forEach(element => {
             if(element.id === id)
-                element.active = !element.active;
+                element.status = status;
         });
         console.log(temp, id);
-        // temp[id]["active"] = !temp[id]["active"];
         this.setState({ "SavedJobs": temp });
     };
 
@@ -28,7 +26,7 @@ class SavedJobs extends Component {
             .then(receivedData =>{
                 let temp = receivedData.data;
                 temp.forEach(element => {
-                    element.active = true;
+                    element.status = "active";
                 });
                 this.setState({ SavedJobs: temp });
                 console.log(temp);
@@ -36,9 +34,6 @@ class SavedJobs extends Component {
     }
 
     render() {
-        const active = this.state.active;
-        const unfav = <i class="far fa-star" />
-        const fav = <i class="fas fa-star" style={{ "color": "#FFCA28" }} />
         return (
             <Container >
                 <br />
@@ -50,7 +45,7 @@ class SavedJobs extends Component {
                 {this.state.SavedJobs.map(jobDetail => {
                     return(
                         <React.Fragment key={jobDetail.id}>
-                            <JobCard jobDetail={jobDetail} Saved toggle={(id) => this.toggle(id)} />
+                            <JobCard jobDetail={jobDetail} Saved changeStatus={(id, status) => this.changeStatus(id, status)} />
                             <br />
                         </React.Fragment>
                     );
