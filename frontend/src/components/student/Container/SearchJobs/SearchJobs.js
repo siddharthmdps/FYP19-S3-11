@@ -38,7 +38,7 @@ class SearchJobs extends Component {
 
     render() {
         return (
-            <Container style={{margin: '0 0', padding: '0 0'}}>
+            <Container className={classes.Container}>
                 {/* <br />
                 <Row className={classes.Title}>
                     Search Jobs
@@ -60,9 +60,6 @@ class SearchJobs extends Component {
                         {/* </InputGroup> */}
                     </div>
                 </div>
-
-
-
                 <div className={classes.Jobs}>
                     {this.state.SearchJobs.map(jobDetail => {
                         return (
