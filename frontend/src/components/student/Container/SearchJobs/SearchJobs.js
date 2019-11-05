@@ -49,7 +49,7 @@ class SearchJobs extends Component {
 
                 <InputGroup size="lg" >
                     <InputGroup.Prepend className={classes.SearchPrepend}>
-                    <InputGroup.Text id="inputGroup-sizing-lg" className={classes.SearchPrepend}><i class="fas fa-search"></i></InputGroup.Text>
+                    <InputGroup.Text id="inputGroup-sizing-lg" className={classes.SearchPrepend}><i className="fas fa-search"></i></InputGroup.Text>
                     </InputGroup.Prepend>
                     <FormControl aria-label="Large" 
                         aria-describedby="inputGroup-sizing-sm" 
