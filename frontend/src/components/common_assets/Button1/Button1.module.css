@@ -22,8 +22,8 @@
 }
 
 .Button1:hover {
-    background-color: #1e3c72;
-    box-shadow: 0px 15px 20px rgba(44, 120, 233, 0.534);
+    background-color: #46CE88;
+    box-shadow: 0px 15px 20px rgba(35, 221, 134, 0.651);
     color: #fff;
     transform: translateY(-7px);
 }
@@ -31,11 +31,11 @@
 .Button1:active,
 .Button1:focus {
     content: "";
-    background: #003df7;
+    background: #46CE88;
     position: relative;
     opacity: 0;
     transition: all 0.8s;
-    background-color: #003df7;
+    background-color: #46CE88;
 }
 
 .Button1:active:after,
