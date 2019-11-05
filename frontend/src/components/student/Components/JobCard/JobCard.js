@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './JobCard.module.css';
 
 
-import { Container, Row, Col, Card, Button, Alert, Spinner} from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Alert, Spinner } from 'react-bootstrap';
 
 const AppliedFooter = () => (
     <Alert variant="success">
@@ -14,17 +14,17 @@ const SavedFooter = (id, status, changeStatus) => {
 
     const unfav = <i className="far fa-star" />
     const fav = <i className="fas fa-star" style={{ color: "#FFCA28" }} />
-    const waiting =   <Spinner animation="border" variant="warning" />
-    return(
+    const waiting = <Spinner animation="border" variant="warning" />
+    return (
         <React.Fragment>
             <div className={classes.ButtonDiv}>
-            <Button className={classes.Apply}>Apply</Button>
+                <Button className={classes.Apply}>Apply</Button>
             </div>
             <div className={classes.StarDiv}>
                 <span className={classes.Star} onClick={() => changeStatus(id, "notActive")}>
-                    {status==="active" ? fav : status==="notActive"? unfav: status==="waiting"?waiting:null}
+                    {status === "active" ? fav : status === "notActive" ? unfav : status === "waiting" ? waiting : null}
                 </span>
-            </div> 
+            </div>
         </React.Fragment>
     )
 };
@@ -37,26 +37,26 @@ const OtherFooter = () => (
 
 const jobCard = props => (
     <Card md={{ span: 12 }} className={classes.Card}>
-        <Card.Body className={classes.CardBody} onClick={()=> window.open(props.jobDetail.JobURL, "_blank")}>
+        <Card.Body className={classes.CardBody} onClick={() => window.open(props.jobDetail.JobURL, "_blank")}>
             <Card.Title>
                 <Row className={classes.Row} style={{ fontWeight: '600' }}>{props.jobDetail.JobTitle}</Row>
                 <Row className={classes.Row}>{props.jobDetail.Company}</Row>
-                <Row >
-                    <Col md={{span : 3}} sm={{span : 12}} className={classes.CardCol}> <i className="fas fa-map-marker-alt"></i> {props.jobDetail.Location}</Col>
-                    <Col md={{span : 6}} sm={{span : 12}} className={classes.CardCol}> <i className="fas fa-building"></i> {props.jobDetail.Industry}</Col>
-                    <Col md={{span : 3}} sm={{span : 12}} className={classes.CardCol}> <i className="fas fa-briefcase"></i> {props.jobDetail.WorkExpReq}</Col>
+                <Row>
+                    <Col md={{ span: 3 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-map-marker-alt"></i> {props.jobDetail.Location}</Col>
+                    <Col md={{ span: 6 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-building"></i> {props.jobDetail.Industry}</Col>
+                    <Col md={{ span: 3 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-briefcase"></i> {props.jobDetail.WorkExpReq}</Col>
                 </Row>
             </Card.Title>
             <Card.Text className={classes.Description}>
-                <div style={{height: '100%'}}>
+                <div className={classes.Desc}>
                     {props.jobDetail.Description}
                 </div>
             </Card.Text>
         </Card.Body>
         <Card.Footer className={classes.Footer}>
 
-            {props.Applied?AppliedFooter():null}
-            {props.Saved?SavedFooter(props.jobDetail.id, props.jobDetail.status, props.changeStatus):null}
+            {props.Applied ? AppliedFooter() : null}
+            {props.Saved ? SavedFooter(props.jobDetail.id, props.jobDetail.status, props.changeStatus) : null}
             <div className={classes.ButtonDiv}>
 
                 {/* <Button className={classes.Applied} disabled >Applied</Button> */}
