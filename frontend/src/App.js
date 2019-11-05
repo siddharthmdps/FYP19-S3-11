@@ -13,6 +13,7 @@ import EditProfile from './components/student/Container/EditProfile/EditProfile'
 import ViewProfile from './components/student/Container/ViewProfile/ViewProfile'
 import AppliedJobs from './components/student/Container/AppliedJobs/AppliedJobs'
 import SavedJobs from './components/student/Container/SavedJobs/SavedJobs'
+import SearchJobs from './components/student/Container/SearchJobs/SearchJobs'
 
 // importing CSS
 import './App.css'
@@ -61,12 +62,13 @@ class App extends Component {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={this.getContentToRender}></Route>
+          <Route exact path="/" component={Student}></Route>
           <Route exact path="/signup" component={SignUp}></Route>
           <Route exact path="/editprofile" component={EditProfile}></Route>
           <Route exact path="/viewprofile" component={ViewProfile}></Route>
           <Route exact path="/appliedjobs" component={AppliedJobs}></Route>
           <Route exact path="/savedjobs" component={SavedJobs}></Route>
+          <Route exact path="/searchjobs" component={SearchJobs}></Route>
         </Switch>
       </Router>
     )
