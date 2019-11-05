@@ -5,6 +5,21 @@
     font-weight: 700!important;
 }
 
+.SearchPrepend{
+    background-color: #fff;
+    border: 0px;
+}
+
+.SearchBox{
+    border: 0px;
+}
+.SearchBox:focus, .SearchBox:active{
+    border-bottom: 1px solid gray;
+    box-shadow: none;
+    border-color: none;
+    outline: none;
+}
+
 .Card {
     border-radius: 25px;
     border-color: #5A81F8!important;

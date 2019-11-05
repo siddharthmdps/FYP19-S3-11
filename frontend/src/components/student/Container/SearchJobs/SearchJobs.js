@@ -47,17 +47,16 @@ class SearchJobs extends Component {
                 </Row>
                 <br />
 
-                <InputGroup className="mb-3">
-                    <InputGroup.Prepend>
-                    <InputGroup.Text id="basic-addon1"><i class="fas fa-search"></i></InputGroup.Text>
+                <InputGroup size="lg" >
+                    <InputGroup.Prepend className={classes.SearchPrepend}>
+                    <InputGroup.Text id="inputGroup-sizing-lg" className={classes.SearchPrepend}><i class="fas fa-search"></i></InputGroup.Text>
                     </InputGroup.Prepend>
-                    <FormControl
-                    placeholder="Username"
-                    aria-label="Username"
-                    aria-describedby="basic-addon1"
-                    type="text"
-                    onChange={(event) => this.getSearch(event)}
-                    onKeyDown={(event)=> {if(event.key === 'Enter') this.getSearchedJobs()}}
+                    <FormControl aria-label="Large" 
+                        aria-describedby="inputGroup-sizing-sm" 
+                        placeholder="Search here!"
+                        onChange={(event) => this.getSearch(event)}
+                        onKeyDown={(event)=> {if(event.key === 'Enter') this.getSearchedJobs()}}
+                        className={classes.SearchBox}
                     />
                 </InputGroup>
 
