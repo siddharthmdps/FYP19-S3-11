@@ -7,17 +7,30 @@
 
 .SearchPrepend{
     background-color: #fff;
-    border: 0px;
+    border: 1px solid white;
 }
 
 .SearchBox{
-    border: 0px;
+    width: 80%;
+    border: 1px solid lightgray;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif;
+    box-shadow: 0px 0px 5px 0px rgba(189,182,189,1);
 }
+
+.SearchBox:hover {
+    border-color: lightblue;
+    box-shadow:  0px 0px 5px 0px rgba(60, 124, 252, 0.925);
+}
+
 .SearchBox:focus, .SearchBox:active{
-    border-bottom: 1px solid gray;
+    /* border-bottom: 1px solid gray; */
     box-shadow: none;
     border-color: none;
     outline: none;
+}
+
+.Jobs {
+    padding-top: 30px;
 }
 
 .Card {

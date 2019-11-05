@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Card, Button, Alert, InputGroup, FormControl } from 'react-bootstrap';
 import classes from './SearchJobs.module.css';
-
 import Axios from 'axios';
-
 import JobCard from '../../Components/JobCard/JobCard';
 
 class SearchJobs extends Component {
@@ -15,7 +13,7 @@ class SearchJobs extends Component {
     changeStatus = (id, status) => {
         let temp = this.state.SavedJobs;
         temp.forEach(element => {
-            if(element.id === id)
+            if (element.id === id)
                 element.status = status;
         });
         console.log(temp, id);
@@ -23,12 +21,12 @@ class SearchJobs extends Component {
     };
 
     getSearch = event => {
-        this.setState({Search: event.target.value});
+        this.setState({ Search: event.target.value });
     }
 
-    getSearchedJobs(){
+    getSearchedJobs() {
         Axios.get("http://localhost:3000/AppliedJobs")
-            .then(receivedData =>{
+            .then(receivedData => {
                 let temp = receivedData.data;
                 temp.forEach(element => {
                     element.status = "active";
@@ -47,27 +45,29 @@ class SearchJobs extends Component {
                 </Row>
                 <br />
 
-                <InputGroup size="lg" >
-                    <InputGroup.Prepend className={classes.SearchPrepend}>
-                    <InputGroup.Text id="inputGroup-sizing-lg" className={classes.SearchPrepend}><i class="fas fa-search"></i></InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <FormControl aria-label="Large" 
-                        aria-describedby="inputGroup-sizing-sm" 
-                        placeholder="Search here!"
+                <InputGroup size="lg">
+                    {/* <InputGroup.Prepend className={classes.SearchPrepend}>
+                        <InputGroup.Text id="inputGroup-sizing-lg" className={classes.SearchPrepend}><i className="fas fa-search"></i></InputGroup.Text>
+                    </InputGroup.Prepend> */}
+                    <FormControl aria-label="Large"
+                        aria-describedby="inputGroup-sizing-sm"
+                        placeholder={"Search here!"}
                         onChange={(event) => this.getSearch(event)}
-                        onKeyDown={(event)=> {if(event.key === 'Enter') this.getSearchedJobs()}}
+                        onKeyDown={(event) => { if (event.key === 'Enter') this.getSearchedJobs() }}
                         className={classes.SearchBox}
                     />
                 </InputGroup>
 
-                {this.state.SearchJobs.map(jobDetail => {
-                    return(
-                        <React.Fragment key={jobDetail.id}>
-                            <JobCard jobDetail={jobDetail} changeStatus={(id, status) => this.changeStatus(id, status)} />
-                            <br />
-                        </React.Fragment>
-                    );
-                })}                
+                <div className={classes.Jobs}>
+                    {this.state.SearchJobs.map(jobDetail => {
+                        return (
+                            <React.Fragment key={jobDetail.id}>
+                                <JobCard jobDetail={jobDetail} changeStatus={(id, status) => this.changeStatus(id, status)} />
+                                <br />
+                            </React.Fragment>
+                        );
+                    })}
+                </div>
             </Container>
         );
     }
