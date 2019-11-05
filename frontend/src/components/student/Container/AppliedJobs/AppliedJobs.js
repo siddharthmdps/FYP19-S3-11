@@ -9,7 +9,9 @@ import JobCard from '../../Components/JobCard/JobCard';
 class AppliedJobs extends Component {
     state = {
         "AppliedJobs": [],
-        "active": false
+        "active": false,
+        "jobsPerPage": 5,
+        "pageNo": 1
     };
 
     toggle = () => this.setState({ "active": !this.state.active });
@@ -34,7 +36,7 @@ class AppliedJobs extends Component {
                 </Row>
                 <br />
 
-                {this.state.AppliedJobs.map(jobDetail => {
+                {this.state.AppliedJobs.slice().map(jobDetail => {
                     return(
                         <React.Fragment>
                             <JobCard jobDetail={jobDetail} Applied/>
