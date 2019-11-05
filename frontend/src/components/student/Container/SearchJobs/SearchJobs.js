@@ -44,7 +44,7 @@ class SearchJobs extends Component {
                     Search Jobs
                 </Row>
                 <br /> */}
-                <div className={classes.TopHead} sm={{span: 12}} md={{span: 12}}>
+                <div className={classes.TopHead} sm={{span: 12}}>
                     <div className={classes.MainBox}>
                         {/* <InputGroup size="lg" > */}
                         {/* <InputGroup.Prepend className={classes.SearchPrepend}>
@@ -60,7 +60,8 @@ class SearchJobs extends Component {
                         {/* </InputGroup> */}
                     </div>
                 </div>
-                <div className={classes.Jobs}>
+                
+                <Col className={classes.Jobs} md={{offset:1, span: 10}}>
                     {this.state.SearchJobs.map(jobDetail => {
                         return (
                             <React.Fragment key={jobDetail.id}>
@@ -69,7 +70,7 @@ class SearchJobs extends Component {
                             </React.Fragment>
                         );
                     })}
-                </div>
+                </Col>
             </Container>
         );
     }

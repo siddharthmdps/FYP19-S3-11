@@ -36,14 +36,16 @@ class AppliedJobs extends Component {
                 </Row>
                 <br />
 
-                {this.state.AppliedJobs.slice().map(jobDetail => {
+                {this.state.AppliedJobs.slice(((this.state.pageNo-1)*this.state.jobsPerPage), ((this.state.pageNo-1)*this.state.jobsPerPage)+this.state.jobsPerPage).map(jobDetail => {
                     return(
                         <React.Fragment>
                             <JobCard jobDetail={jobDetail} Applied/>
                             <br />
                         </React.Fragment>
                     );
-                })}                
+                })} 
+                <br />
+                
             </Container>
         );
     }
