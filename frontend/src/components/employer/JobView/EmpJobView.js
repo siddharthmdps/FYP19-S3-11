@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
-import EmpJobCard,{EmpAppCard, BaseCard} from './EmpJobCard';
+import EmpJobCard,{EmpAppCard} from './EmpJobCard';
 import apiURL from '../../../config';
-import {Row,Col} from 'react-bootstrap';
+import {Row,Col,Card} from 'react-bootstrap';
 
 
 //This component is the employer' posted job view (individual)
@@ -22,31 +22,37 @@ class EmpJobView extends Component{
         this.employername = localStorage.getItem('username')
     }
 
-    // fetch the job post and its applicants
+    // fetch  applicants
     componentDidMount() {
         this.getApplicants(this.props.jobID)
+        console.log(this.props.jobID)
     }
 
     //link will return an array of applicants (JSON Notation)
     
     getApplicants=(jobID)=>{
+        const localhost = `http://localhost:3001/employer/jobview/${jobID}`
         const url = apiURL + 'employer/jobview/' + {jobID}
 
-        fetch(url)
+        fetch(localhost, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
         .then(response => response.json())
         .then(data => {
-            this.setState({appList:data})
+            this.setState({appList:data}) 
+            console.log(`total applicants : ${this.state.appList.length}`)
         })
 
         .catch(error => {
-            console.log(`Error: ${error}`)
+            console.log(`Error at getApplicants : ${error}`)
             this.setState({ error: true })
         })
     }
 
     render(){
-        //console.log(this.props.jobskills)
-        //console.log(this.props.jobtitle)
         return(
             <div>
                 <Row>
@@ -56,28 +62,38 @@ class EmpJobView extends Component{
                     reqSkills = {this.props.jobskills}
                     joblocation ={this.props.joblocation}
                     jobindustry = {this.props.jobindustry}
-                    dateposted={this.props.dateposted}>
+                    dateposted={this.props.dateposted}
+                    editJobHandler={this.props.editJobHandler}
+                    >
                         {this.props.jobdescription}
-                    </EmpJobCard>
+                    </EmpJobCard>>
                 </Row>
                 <br/>
+                <Row>
+                    <Col sm={8} className = "mx-auto">
+                        <EmpAppCard appName = "Maya Suplex" appSkills = "Rubbish Management" appContact= "91231011"/>
+                    </Col>
+                </Row>
+                
                 {/* Render */}
                 { this.state.appList.length > 0 && !this.state.error && 
                     this.state.appList.map( (applicant) => (
-                        <Row>
+                    <Row>
                             <Col sm={8} className = "mx-auto">
-                                <EmpAppCard 
-                                appName = "Maya Albarax"/*{applicant.name} */
+                                <EmpAppCard>
+                                {/* appName = {applicant.firstname + " " + applicant.lastname}
                                 appSkills = {applicant.skills} 
-                                appContact={applicant.contact}>
-                                    {applicant.background}
+                                appContact={applicant.phone}> */}
                                 </EmpAppCard>
                             </Col>
                         </Row>
-
-                                
-                    ) )
+                    )
+                    )
                 }
+
+                
+                
+            
             </div>
         )
     }
