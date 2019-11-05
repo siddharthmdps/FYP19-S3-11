@@ -38,25 +38,30 @@ class SearchJobs extends Component {
 
     render() {
         return (
-            <Container >
-                <br />
+            <Container style={{margin: '0 0', padding: '0 0'}}>
+                {/* <br />
                 <Row className={classes.Title}>
                     Search Jobs
                 </Row>
-                <br />
-
-                <InputGroup size="lg" >
-                    <InputGroup.Prepend className={classes.SearchPrepend}>
+                <br /> */}
+                <div className={classes.TopHead}>
+                    <div className={classes.MainBox}>
+                        {/* <InputGroup size="lg" > */}
+                        {/* <InputGroup.Prepend className={classes.SearchPrepend}>
                     <InputGroup.Text id="inputGroup-sizing-lg" className={classes.SearchPrepend}><i className="fas fa-search"></i></InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <FormControl aria-label="Large" 
-                        aria-describedby="inputGroup-sizing-sm" 
-                        placeholder="Search here!"
-                        onChange={(event) => this.getSearch(event)}
-                        onKeyDown={(event) => { if (event.key === 'Enter') this.getSearchedJobs() }}
-                        className={classes.SearchBox}
-                    />
-                </InputGroup>
+                    </InputGroup.Prepend> */}
+                        <FormControl aria-label="Large"
+                            aria-describedby="inputGroup-sizing-sm"
+                            placeholder="Search by company, job, industry !"
+                            onChange={(event) => this.getSearch(event)}
+                            onKeyDown={(event) => { if (event.key === 'Enter') this.getSearchedJobs() }}
+                            className={classes.SearchBox}
+                        />
+                        {/* </InputGroup> */}
+                    </div>
+                </div>
+
+
 
                 <div className={classes.Jobs}>
                     {this.state.SearchJobs.map(jobDetail => {

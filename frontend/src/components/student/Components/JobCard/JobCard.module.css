@@ -7,14 +7,14 @@
 
 .Card {
     border-radius: 25px;
-    border-color: #5A81F8!important;
+    border-color: #82E3B1!important;
     font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif;
     height: 16rem;
 }
 
 .Card:hover {
     cursor: pointer;
-    box-shadow:  0px 1px 16px 4px rgba(60, 124, 252, 0.925);
+    box-shadow:  0px 1px 16px 4px rgba(30, 236, 140, 0.925);
     transition: all .4s ease;
 }
 
