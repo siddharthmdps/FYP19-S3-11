@@ -37,19 +37,21 @@ const OtherFooter = () => (
 
 const jobCard = props => (
     <Card md={{ span: 12 }} className={classes.Card}>
-        <Card.Body style={{ height: '185px' }} onClick={()=> window.open(props.jobDetail.JobURL, "_blank")}>
+        <Card.Body className={classes.CardBody} onClick={()=> window.open(props.jobDetail.JobURL, "_blank")}>
             <Card.Title>
                 <Row className={classes.Row} style={{ fontWeight: '600' }}>{props.jobDetail.JobTitle}</Row>
                 <Row className={classes.Row}>{props.jobDetail.Company}</Row>
-                <Row>
-                    <Col className={classes.CardCol}> <i className="fas fa-map-marker-alt"></i> {props.jobDetail.Location}</Col>
-                    <Col className={classes.CardCol}> <i className="fas fa-building"></i> {props.jobDetail.Industry}</Col>
-                    <Col className={classes.CardCol}> <i className="fas fa-briefcase"></i> {props.jobDetail.WorkExpReq}</Col>
+                <Row >
+                    <Col md={{span : 3}} sm={{span : 12}} className={classes.CardCol}> <i className="fas fa-map-marker-alt"></i> {props.jobDetail.Location}</Col>
+                    <Col md={{span : 6}} sm={{span : 12}} className={classes.CardCol}> <i className="fas fa-building"></i> {props.jobDetail.Industry}</Col>
+                    <Col md={{span : 3}} sm={{span : 12}} className={classes.CardCol}> <i className="fas fa-briefcase"></i> {props.jobDetail.WorkExpReq}</Col>
                 </Row>
             </Card.Title>
             <Card.Text className={classes.Description}>
-                {props.jobDetail.Description}
-                </Card.Text>
+                <div style={{height: '100%'}}>
+                    {props.jobDetail.Description}
+                </div>
+            </Card.Text>
         </Card.Body>
         <Card.Footer className={classes.Footer}>
 
