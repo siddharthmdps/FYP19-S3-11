@@ -8,7 +8,7 @@ const navbar = props => (
     <Navbar.Brand href="#home" className="mr-sm-2"><Logo/></Navbar.Brand>
     <Nav as='ul' className={classes.Navli} >
       <Nav.Item as="li">
-        <Nav.Link href="/" className={classes.NavItem}>Job Search</Nav.Link>
+        <Nav.Link href="/searchjobs" className={classes.NavItem}>Job Search</Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
         <Nav.Link eventKey="link-1" className={classes.NavItem}>Companies</Nav.Link>
