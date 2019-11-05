@@ -38,13 +38,13 @@ class SearchJobs extends Component {
 
     render() {
         return (
-            <Container className={classes.Container}>
+            <Container className={classes.Container} fluid>
                 {/* <br />
                 <Row className={classes.Title}>
                     Search Jobs
                 </Row>
                 <br /> */}
-                <div className={classes.TopHead}>
+                <div className={classes.TopHead} sm={{span: 12}} md={{span: 12}}>
                     <div className={classes.MainBox}>
                         {/* <InputGroup size="lg" > */}
                         {/* <InputGroup.Prepend className={classes.SearchPrepend}>
