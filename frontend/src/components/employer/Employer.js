@@ -9,6 +9,7 @@ import EmpProfileView from './ProfileView/EmpProfileView'
 import EmpFeed from './EmpFeed'
 import EmpProfileEdit from './ProfileEditor/EmpProfileEdit'
 import EmpJobView from './JobView/EmpJobView'
+import EditJob from './JobEdit/EditJob'
 
 // Common assets
 import About from '../common_assets/About'
@@ -31,15 +32,7 @@ class Employer extends Component {
             industry: null,
             mainContent : null,
             numOfJobs: null,
-            numOfApplicants: null,
-            
-            jobpostdate: null,
-            jobdescription: null,
-            jobid: null,
-            jobindustry: null,
-            joblocation: null,
-            jobrequiredskills: null,
-            jobtitle: null
+            numOfApplicants: null
         
         }
         
@@ -66,16 +59,36 @@ class Employer extends Component {
 
     viewJobHandler = (job) => {
         console.log(`triggered by`, job)
-        this.setState({
-            mainContent : 'viewjob',
+        
+        //declaring global variable job details
+        window.jobDetails= {
             jobid: job.id,
             jobpostdate: job.dateposted,
             jobdescription: job.description,
             jobindustry:job.industry,
             joblocation: job.location,
             jobrequiredskills: job.requiredskills,
-            jobtitle: job.title
-        })
+            jobtitle: job.title 
+        };
+
+        this.setState({mainContent : 'viewjob'})
+    }
+
+    editJobHandler = (job) => {
+        // console.log(`triggered by`, job)
+        
+        // //declaring global variable job details
+        // window.jobEditDetails= {
+        //     jobid: job.id,
+        //     jobpostdate: job.dateposted,
+        //     jobdescription: job.description,
+        //     jobindustry:job.industry,
+        //     joblocation: job.location,
+        //     jobrequiredskills: job.requiredskills,
+        //     jobtitle: job.title 
+        // };
+
+        this.setState({mainContent : 'editjob'})
     }
 
     mainContent = () => {
@@ -95,14 +108,26 @@ class Employer extends Component {
                 return <PostJob/>
             case 'viewjob' :
                 return <EmpJobView 
-                jobtitle={this.state.jobtitle} 
-                jobskills={this.state.jobrequiredskills} 
-                jobdescription={this.state.jobdescription} 
+                jobtitle={window.jobDetails.jobtitle} 
+                jobskills={window.jobDetails.jobrequiredskills} 
+                jobdescription={window.jobDetails.jobdescription} 
                 joblocation = "Singapore"/*{this.state.joblocation}*/
-                jobindustry={this.state.jobindustry}
-                dateposted={this.state.jobpostdate}
+                jobindustry={window.jobDetails.jobindustry}
+                dateposted={window.jobDetails.jobpostdate}
+                editJobHandler={this.editJobHandler}
+                
                  />
      
+            case 'editjob':
+                return <EditJob
+                jobtitle={window.jobDetails.jobtitle} 
+                jobskills={window.jobDetails.jobrequiredskills} 
+                jobdescription={window.jobDetails.jobdescription} 
+                joblocation = "Singapore"/*{this.state.joblocation}*/
+                jobindustry={window.jobDetails.jobindustry}
+                dateposted={window.jobDetails.jobpostdate}
+                
+                />
 
             default : 
                 return (
@@ -125,7 +150,7 @@ class Employer extends Component {
         const apiURL = `${herokuURL}employer/${this.state.id}`
         const localhost = `http://localhost:3001/employer/${this.state.id}`
 
-        fetch( apiURL, {
+        fetch( localhost, {
             method: 'GET',
             headers: {'Content-Type': 'application/json'}
         })
@@ -144,6 +169,7 @@ class Employer extends Component {
             })
         }).catch(error => console.log(error))
     }
+    
 
     componentDidMount() {
         this.fetchEmployerDetails()
