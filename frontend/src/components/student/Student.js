@@ -1,17 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Navbar from '../common_assets/Navbar2';
 import Profile from './Container/EditProfile/EditProfile';
 import ViewProfile from './Container/ViewProfile/ViewProfile'
+import SavedJobs from './Container/SavedJobs/SavedJobs';
 import AppliedJobs from './Container/AppliedJobs/AppliedJobs';
+import Tab from './Container/ViewProfile/IconLabelTabs';
 
 class Student extends Component {
-    render () {
+    render() {
         return (
             <div>
-                <Navbar />
-                <Profile />
+                {/* <Navbar /> */}
+                {/* <Profile /> */}
                 {/* <AppliedJobs /> */}
-                {/* <ViewProfile /> */}
+                {/* <SavedJobs /> */}
+                <ViewProfile />
             </div>
         )
     }
