@@ -53,7 +53,7 @@ class SearchJobs extends Component {
                     </InputGroup.Prepend> */}
                         <FormControl aria-label="Large"
                             aria-describedby="inputGroup-sizing-sm"
-                            placeholder="Search by company, job, industry !"
+                            placeholder="Search by company, job, industry"
                             onChange={(event) => this.getSearch(event)}
                             onKeyDown={(event) => { if (event.key === 'Enter') this.getSearchedJobs() }}
                             className={classes.SearchBox}
