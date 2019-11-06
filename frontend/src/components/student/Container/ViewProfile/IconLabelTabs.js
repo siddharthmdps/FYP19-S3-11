@@ -19,7 +19,7 @@ import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeli
 import 'react-vertical-timeline-component/style.min.css';
 import { Button, Card } from 'react-bootstrap'
 import Bounce from 'react-reveal/Bounce';
-
+import Flip from 'react-reveal/Flip';
 
 let TabPanel = props => {
     const { children, value, index, ...other } = props;
@@ -223,11 +223,11 @@ let IconLabelTabs = props => {
                     return (
                         <React.Fragment key={projectDetail.ProjectID}>
                             <Bounce right>
-                            <Card className={classes.Project}>
-                                {/* <Card.Body>{projectDetail.Title} ({projectDetail.Status})</Card.Body> */}
-                                <Card.Body><strong>{projectDetail.Title} ({projectDetail.Status})</strong> <br /> <br /> {projectDetail.Description}</Card.Body>
-                            </Card>
-                            <br />
+                                <Card className={classes.Project}>
+                                    {/* <Card.Body>{projectDetail.Title} ({projectDetail.Status})</Card.Body> */}
+                                    <Card.Body><strong>{projectDetail.Title} ({projectDetail.Status})</strong> <br /> <br /> {projectDetail.Description}</Card.Body>
+                                </Card>
+                                <br />
                             </Bounce>
                         </React.Fragment>
                     );
