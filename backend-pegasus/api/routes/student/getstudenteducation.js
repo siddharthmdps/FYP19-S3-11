@@ -11,7 +11,7 @@ const getstudenteducation = (req, res) => {
         }
         else {
             if(studentid) {               
-                let queryString = `select * from pegasus.studenteducation where studentid = "${studentid}"`
+                let queryString = `select id as 'EducationID', University, FieldOfStudy, Major, StartDate, EndDate, Mode, GPA from pegasus.studenteducation where studentid = "${studentid}"`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })

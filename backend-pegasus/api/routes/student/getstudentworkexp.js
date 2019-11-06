@@ -11,7 +11,7 @@ const getstudentworkexp = (req, res) => {
         }
         else {
             if(studentid) {               
-                let queryString = `select * from pegasus.studentworkexp where studentid = "${studentid}"`
+                let queryString = `select id as 'WorkExpID', Position, Company, StartDate, EndDate, Mode, Industry, AnnualSalary, Description from pegasus.studentworkexp where studentid = "${studentid}"`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })
