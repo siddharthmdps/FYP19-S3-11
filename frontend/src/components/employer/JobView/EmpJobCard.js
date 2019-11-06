@@ -13,7 +13,7 @@ awardname, awarddate, certname, certbody, projecttitle and dateapplied
 import React from 'react';
 import {Card,Header,Button,Col,Row} from'react-bootstrap';
 import '../ProfileView/Card.css';
-import './EmpCard.css'
+//import './EmpCard.css'
 
 //Future Enhancement: Adding nav for students
 //<div className = "col-sm-8 mx-auto">
