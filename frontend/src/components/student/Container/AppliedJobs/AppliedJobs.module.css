@@ -84,13 +84,15 @@
     top: 11%;
 }
 
-/* .PageItem a {
-    background-color: lightcoral;
-} */
+.PageinationButton{
+    background-color: #FFCA28;
+    color: black;
+}
+.PageinationButtonActive{
+    background-color: brown;
+}
 
-.Pagination.Item:focus
- {
-    background-color: red;
-    z-index: 2;
+.PageItem a{
+    background-color: #FFCA28;
 }
 
