@@ -46,7 +46,7 @@ class SearchJobs extends Component {
                 <br /> */}
                 <div className={classes.TopHead} sm={{span: 12}}>
                     <div className={classes.MainBox}>
-                        <h1 className={classes.Title}>Search Job</h1>
+                        <h1 className={classes.Title}>Find Your Next Job.</h1>
                         {/* <InputGroup size="lg" > */}
                         {/* <InputGroup.Prepend className={classes.SearchPrepend}>
                     <InputGroup.Text id="inputGroup-sizing-lg" className={classes.SearchPrepend}><i className="fas fa-search"></i></InputGroup.Text>
