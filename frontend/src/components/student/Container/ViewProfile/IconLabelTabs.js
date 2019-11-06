@@ -17,12 +17,12 @@ import StarIcon from '@material-ui/icons/Star';
 
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import {Button, Card} from 'react-bootstrap'
+import { Button, Card } from 'react-bootstrap'
 
 
 let TabPanel = props => {
     const { children, value, index, ...other } = props;
-    
+
     return (
         <Typography
             component="div"
@@ -98,16 +98,17 @@ let IconLabelTabs = props => {
                 <Tab className={classes.Tab} icon={<DoneIcon />} label="Skills" />
             </Tabs>
 
-            <TabPanel value={value} index={0} style={{backgroundColor: "rgb(33, 150, 243)"}}>
-                <VerticalTimeline>
+            <TabPanel value={value} index={0} style={{ backgroundColor: "#fff" }}>
+                <VerticalTimeline className={classes.verticalTimeline}>
                     {props.Education.map(educationDetail => {
                         return (
                             <VerticalTimelineElement
-                                className="vertical-timeline-element--work"
-                                contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                                contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
+                                className={classes.EduTab}
+                                contentStyle={{ background: 'white', color: 'black', borderTop: '3px solid #00FF99',
+                                boxShadow: '0px 2px 14px 2px rgba(148,140,148,1)' }}
+                                contentArrowStyle={{ borderRight: '7px solid  #00FF33' }}
                                 date={educationDetail.StartDate + " - " + educationDetail.EndDate}
-                                iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                iconStyle={{ background: '#00FF99', color: '#fff' }}
                                 icon={<SchoolIcon />}
                             >
                                 <h3 className="vertical-timeline-element-title">{educationDetail.Degree + " in " +
@@ -123,18 +124,21 @@ let IconLabelTabs = props => {
                         );
                     })}
                     <VerticalTimelineElement
-                                iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
-                                icon={<StarIcon />}
-                            />
-                    </VerticalTimeline>
+                        iconStyle={{ background: '#9900FF', color: '#fff' }}
+                        icon={<StarIcon />}
+                    />
+                </VerticalTimeline>
             </TabPanel>
-            <TabPanel value={value} index={1} style={{backgroundColor: "rgb(33, 150, 243)"}}>
-                <VerticalTimeline>
+            <TabPanel value={value} index={1} style={{ backgroundColor: "#fff" }}>
+                <VerticalTimeline className={classes.verticalTimeline}>
                     {props.WorkExp.map(workDetail => {
                         return (
                             <VerticalTimelineElement
                                 className="vertical-timeline-element--work"
+                                contentStyle={{ background: 'white', color: 'black', borderTop: '3px solid rgb(33, 150, 243)',
+                                boxShadow: '0px 2px 14px 2px rgba(148,140,148,1)' }}
                                 date={workDetail.StartDate + " - " + workDetail.EndDate}
+                                contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
                                 iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
                                 icon={<WorkIcon />}
                             >
@@ -150,19 +154,22 @@ let IconLabelTabs = props => {
                         );
                     })}
                     <VerticalTimelineElement
-                                iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
-                                icon={<StarIcon />}
-                            />
+                        iconStyle={{ background: '#9900FF', color: '#fff' }}
+                        icon={<StarIcon />}
+                    />
                 </VerticalTimeline>
             </TabPanel>
-            <TabPanel value={value} index={2} >
-                <VerticalTimeline>
+            <TabPanel value={value} index={2} style={{ backgroundColor: "#fff" }}>
+                <VerticalTimeline className={classes.verticalTimeline}>
                     {props.Certification.map(certificateDetail => {
                         return (
                             <VerticalTimelineElement
                                 className="vertical-timeline-element--work"
+                                contentStyle={{ background: 'white', color: 'black', borderTop: '3px solid red',
+                                boxShadow: '0px 2px 14px 2px rgba(148,140,148,1)' }}
+                                contentArrowStyle={{ borderRight: '7px solid  red' }}
                                 date={certificateDetail.IssueDate + " - " + certificateDetail.ValidUntil}
-                                iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                iconStyle={{ background: 'red', color: '#fff' }}
                                 icon={<ImportContactsIcon />}
                             >
                                 <h3 className="vertical-timeline-element-title">{certificateDetail.Name}</h3>
@@ -171,19 +178,22 @@ let IconLabelTabs = props => {
                         );
                     })}
                     <VerticalTimelineElement
-                                iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
-                                icon={<StarIcon />}
-                            />
+                        iconStyle={{ background: '#9900FF', color: '#fff' }}
+                        icon={<StarIcon />}
+                    />
                 </VerticalTimeline>
             </TabPanel>
             <TabPanel value={value} index={3} >
-                <VerticalTimeline>
+                <VerticalTimeline className={classes.verticalTimeline}>
                     {props.Awards.map(awardDetail => {
                         return (
                             <VerticalTimelineElement
                                 className="vertical-timeline-element--work"
                                 date={awardDetail.Date}
-                                iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                                contentStyle={{ background: 'white', color: 'black', borderTop: '3px solid #FFD700',
+                                boxShadow: '0px 2px 14px 2px rgba(148,140,148,1)' }}
+                                contentArrowStyle={{ borderRight: '7px solid  #FFD700' }}
+                                iconStyle={{ background: '#FFDF00', color: '#fff' }}
                                 icon={<StarHalfIcon />}
                             >
                                 <h3 className="vertical-timeline-element-title">{awardDetail.Award}</h3>
@@ -194,20 +204,20 @@ let IconLabelTabs = props => {
                         );
                     })}
                     <VerticalTimelineElement
-                                iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
-                                icon={<StarIcon />}
-                            />
+                        iconStyle={{ background: '#9900FF', color: '#fff' }}
+                        icon={<StarIcon />}
+                    />
                 </VerticalTimeline>
             </TabPanel>
             <TabPanel value={value} index={4} >
                 {props.Projects.map(projectDetail => {
                     return (
                         <React.Fragment key={projectDetail.ProjectID}>
-                        <Card className={classes.Project}>
-                            {/* <Card.Body>{projectDetail.Title} ({projectDetail.Status})</Card.Body> */}
-                            <Card.Body><strong>{projectDetail.Title} ({projectDetail.Status})</strong> <br/> <br /> {projectDetail.Description}</Card.Body>
-                        </Card>
-                        <br />
+                            <Card className={classes.Project}>
+                                {/* <Card.Body>{projectDetail.Title} ({projectDetail.Status})</Card.Body> */}
+                                <Card.Body><strong>{projectDetail.Title} ({projectDetail.Status})</strong> <br /> <br /> {projectDetail.Description}</Card.Body>
+                            </Card>
+                            <br />
                         </React.Fragment>
                     );
                 })}

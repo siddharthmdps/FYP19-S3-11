@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Card, Button, Alert,Pagination } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Alert, Pagination } from 'react-bootstrap';
 import classes from './AppliedJobs.module.css';
 
 import Axios from 'axios';
@@ -19,36 +19,37 @@ class AppliedJobs extends Component {
 
     pagination = () => {
         let temp = [];
-        let number = this.state.AppliedJobs.length/this.state.jobsPerPage;
-        if(this.state.AppliedJobs.length%this.state.jobsPerPage !== 0)
+        let number = this.state.AppliedJobs.length / this.state.jobsPerPage;
+        if (this.state.AppliedJobs.length % this.state.jobsPerPage !== 0)
             number++;
-        
-        for (let index=1; index<=number; index++){
+
+        for (let index = 1; index <= number; index++) {
             temp.push(
-            <Pagination.Item key={index} active={index === this.state.pageNo} onClick={() => { this.setState({pageNo: index}); this.refreshPagination(index, number)}} className={classes.PageItem}>
-                {index}
-            </Pagination.Item>
+                <Pagination.Item
+                    key={index} active={index === this.state.pageNo} onClick={() => { this.setState({ pageNo: index }); this.refreshPagination(index, number) }} className={classes.PageItem}>
+                    {index}
+                </Pagination.Item>
             );
         }
-        this.setState({pageItems: temp});
+        this.setState({ pageItems: temp });
     };
 
     refreshPagination = (newActive, number) => {
         let temp = [];
-        
-        for (let index=1; index<=number; index++){
+
+        for (let index = 1; index <= number; index++) {
             temp.push(
-            <Pagination.Item key={index} active={index === newActive} onClick={() => { this.setState({pageNo: index}); this.refreshPagination(index, number)}} className={classes.PageItem}>
-                {index}
-            </Pagination.Item>
+                <Pagination.Item key={index} active={index === newActive} onClick={() => { this.setState({ pageNo: index }); this.refreshPagination(index, number) }} className={classes.PageItem}>
+                    {index}
+                </Pagination.Item>
             );
         }
-        this.setState({pageItems: temp});
+        this.setState({ pageItems: temp });
     };
 
-    componentDidMount(){
+    componentDidMount() {
         Axios.get("http://localhost:3000/AppliedJobs")
-            .then(receivedData =>{
+            .then(receivedData => {
                 this.setState({ AppliedJobs: receivedData.data });
                 console.log(receivedData.data);
                 this.pagination()
@@ -67,14 +68,14 @@ class AppliedJobs extends Component {
                 </Row>
                 <br />
 
-                {this.state.AppliedJobs.slice(((this.state.pageNo-1)*this.state.jobsPerPage), ((this.state.pageNo-1)*this.state.jobsPerPage)+this.state.jobsPerPage).map(jobDetail => {
-                    return(
+                {this.state.AppliedJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
+                    return (
                         <React.Fragment>
-                            <JobCard jobDetail={jobDetail} Applied/>
+                            <JobCard jobDetail={jobDetail} Applied />
                             <br />
                         </React.Fragment>
                     );
-                })} 
+                })}
                 <br />
                 <Pagination size="lg">{this.state.pageItems}</Pagination>
             </Container>

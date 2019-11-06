@@ -84,6 +84,13 @@
     top: 11%;
 }
 
-.PageItem a{
-    background-color: #FFCA28;
+/* .PageItem a {
+    background-color: lightcoral;
+} */
+
+.Pagination.Item:focus
+ {
+    background-color: red;
+    z-index: 2;
 }
+

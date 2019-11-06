@@ -12,8 +12,8 @@
 }
 
 .Project{
-    background-color: rgb(33, 150, 243);
-    color: #fff;
+    background-color: rgba(31, 223, 47, 0.295);
+    color: #000;
 }
 
 .Skill, .Skill:hover, .Skill:active, .Skill:focus{
@@ -38,3 +38,24 @@
     margin-top: 1%;
 }
 
+.verticalTimeline::before {
+    /* this is the vertical line */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 18px;
+    height: 100%;
+    width: 4px;
+    background: rgba(148,140,148,1);
+  }
+
+  .verticalTimeline::after {
+    /* clearfix */
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  .EduTab {
+
+  }
