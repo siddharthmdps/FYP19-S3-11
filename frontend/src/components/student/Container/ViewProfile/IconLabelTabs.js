@@ -18,6 +18,7 @@ import StarIcon from '@material-ui/icons/Star';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { Button, Card } from 'react-bootstrap'
+import Bounce from 'react-reveal/Bounce';
 
 
 let TabPanel = props => {
@@ -104,8 +105,10 @@ let IconLabelTabs = props => {
                         return (
                             <VerticalTimelineElement
                                 className={classes.EduTab}
-                                contentStyle={{ background: 'white', color: 'black', borderTop: '3px solid #00FF99',
-                                boxShadow: '0px 2px 14px 2px rgba(148,140,148,1)' }}
+                                contentStyle={{
+                                    background: 'white', color: 'black', borderTop: '3px solid #00FF99',
+                                    boxShadow: '0px 2px 14px 2px rgba(148,140,148,1)'
+                                }}
                                 contentArrowStyle={{ borderRight: '7px solid  #00FF33' }}
                                 date={educationDetail.StartDate + " - " + educationDetail.EndDate}
                                 iconStyle={{ background: '#00FF99', color: '#fff' }}
@@ -135,8 +138,10 @@ let IconLabelTabs = props => {
                         return (
                             <VerticalTimelineElement
                                 className="vertical-timeline-element--work"
-                                contentStyle={{ background: 'white', color: 'black', borderTop: '3px solid rgb(33, 150, 243)',
-                                boxShadow: '0px 2px 14px 2px rgba(148,140,148,1)' }}
+                                contentStyle={{
+                                    background: 'white', color: 'black', borderTop: '3px solid rgb(33, 150, 243)',
+                                    boxShadow: '0px 2px 14px 2px rgba(148,140,148,1)'
+                                }}
                                 date={workDetail.StartDate + " - " + workDetail.EndDate}
                                 contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
                                 iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
@@ -165,8 +170,10 @@ let IconLabelTabs = props => {
                         return (
                             <VerticalTimelineElement
                                 className="vertical-timeline-element--work"
-                                contentStyle={{ background: 'white', color: 'black', borderTop: '3px solid red',
-                                boxShadow: '0px 2px 14px 2px rgba(148,140,148,1)' }}
+                                contentStyle={{
+                                    background: 'white', color: 'black', borderTop: '3px solid red',
+                                    boxShadow: '0px 2px 14px 2px rgba(148,140,148,1)'
+                                }}
                                 contentArrowStyle={{ borderRight: '7px solid  red' }}
                                 date={certificateDetail.IssueDate + " - " + certificateDetail.ValidUntil}
                                 iconStyle={{ background: 'red', color: '#fff' }}
@@ -190,8 +197,10 @@ let IconLabelTabs = props => {
                             <VerticalTimelineElement
                                 className="vertical-timeline-element--work"
                                 date={awardDetail.Date}
-                                contentStyle={{ background: 'white', color: 'black', borderTop: '3px solid #FFD700',
-                                boxShadow: '0px 2px 14px 2px rgba(148,140,148,1)' }}
+                                contentStyle={{
+                                    background: 'white', color: 'black', borderTop: '3px solid #FFD700',
+                                    boxShadow: '0px 2px 14px 2px rgba(148,140,148,1)'
+                                }}
                                 contentArrowStyle={{ borderRight: '7px solid  #FFD700' }}
                                 iconStyle={{ background: '#FFDF00', color: '#fff' }}
                                 icon={<StarHalfIcon />}
@@ -213,11 +222,13 @@ let IconLabelTabs = props => {
                 {props.Projects.map(projectDetail => {
                     return (
                         <React.Fragment key={projectDetail.ProjectID}>
+                            <Bounce right>
                             <Card className={classes.Project}>
                                 {/* <Card.Body>{projectDetail.Title} ({projectDetail.Status})</Card.Body> */}
                                 <Card.Body><strong>{projectDetail.Title} ({projectDetail.Status})</strong> <br /> <br /> {projectDetail.Description}</Card.Body>
                             </Card>
                             <br />
+                            </Bounce>
                         </React.Fragment>
                     );
                 })}
