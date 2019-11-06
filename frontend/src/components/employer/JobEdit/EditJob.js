@@ -21,6 +21,60 @@ class EditJob extends Component {
         this.employername = localStorage.getItem('username')
     }
 
+    MyForm =()=>{
+        return(
+        <Card>
+            <Card.Header>
+                <Card.Title>
+                    <Form.Group controlId="jobtitle">
+                        <Form.Label>Job Title</Form.Label>
+                        <Form.Control type='text'  placeholder ={this.state.jobtitle} onChange={this.handleChange} />
+                    </Form.Group> 
+                    
+                </Card.Title>
+            </Card.Header>
+            
+            <Card.Body>
+                <Card.Text>
+                <Form>
+                <Form.Group as={Row} controlId="formPlaintextCompanyName">
+                    <Form.Label column sm="2">
+                    Company Name
+                    </Form.Label>
+                    <Col sm="10">
+                    <Form.Control plaintext readOnly defaultValue= {this.employername} />
+                    </Col>
+                </Form.Group>
+                    <Form.Group controlId="formJobLocation">
+                        <Form.Label>Job Location</Form.Label>
+                        <Form.Control type="text" placeholder={this.props.joblocation} onChange={this.handleChange}/>
+                    </Form.Group>
+
+                    <Form.Group controlId="formJobIndustry">
+                        <Form.Label>Industry</Form.Label>
+                        <Form.Control type="text" placeholder={this.props.jobindustry} onChange={this.handleChange}/>
+                    </Form.Group>
+                    <Form.Group controlId="formJobDescription">
+                        <Form.Label>Job Description</Form.Label>
+                        <Form.Control as="textarea" rows="3" placeholder={this.props.jobdescription} onChange={this.handleChange}/>
+                    </Form.Group>
+                    <Form.Group controlId="formSkillsRequired">
+                        <Form.Label>Skills Required</Form.Label>
+                        <Form.Control as="textarea" rows="3" placeholder={this.props.jobskills} onChange={this.handleChange}/>
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Save
+                    </Button>
+                    </Form>
+                </Card.Text>
+
+            {/* update props.dateposted */}                
+            </Card.Body>
+
+        </Card>
+        )
+    }
+
     handleChange(event) {
         this.setState({value: event.target.value});
       }
@@ -40,7 +94,7 @@ class EditJob extends Component {
         }
 
         const url = apiURL + "employer/postjob"
-        const localhost = 'http://localhost:3001/employer/postjob/'
+        const localhost = 'http://localhost:3001/employer/savejob/'
 
         fetch (localhost , {
             method: 'PUT',
@@ -63,55 +117,7 @@ class EditJob extends Component {
     render() {
         return (
             <Col sm={8} className= "mx-auto">
-                <Card>
-                    <Card.Header>
-                        <Card.Title>
-                            <Form.Group controlId="jobtitle">
-                                <Form.Label>Job Title</Form.Label>
-                                <Form.Control type='text'  placeholder ={this.state.jobtitle} onChange={this.handleChange} />
-                            </Form.Group> 
-                            
-                        </Card.Title>
-                    </Card.Header>
-                    
-                    <Card.Body>
-                        <Card.Text>
-                        <Form>
-                        <Form.Group as={Row} controlId="formPlaintextCompanyName">
-                            <Form.Label column sm="2">
-                            Company Name
-                            </Form.Label>
-                            <Col sm="10">
-                            <Form.Control plaintext readOnly defaultValue= {this.employername} />
-                            </Col>
-                        </Form.Group>
-                            <Form.Group controlId="formJobLocation">
-                                <Form.Label>Job Location</Form.Label>
-                                <Form.Control type="text" placeholder={this.props.joblocation} onChange={this.handleChange}/>
-                            </Form.Group>
-
-                            <Form.Group controlId="formJobIndustry">
-                                <Form.Label>Industry</Form.Label>
-                                <Form.Control type="text" placeholder={this.props.jobindustry} onChange={this.handleChange}/>
-                            </Form.Group>
-                            <Form.Group controlId="formJobDescription">
-                                <Form.Label>Job Description</Form.Label>
-                                <Form.Control as="textarea" rows="3" placeholder={this.props.jobdescription} onChange={this.handleChange}/>
-                            </Form.Group>
-                            <Form.Group controlId="formSkillsRequired">
-                                <Form.Label>Skills Required</Form.Label>
-                                <Form.Control as="textarea" rows="3" placeholder={this.props.jobskills} onChange={this.handleChange}/>
-                            </Form.Group>
-                            <Button variant="primary" type="submit">
-                                Save
-                            </Button>
-                            </Form>
-                        </Card.Text>
-
-                    {/* update props.dateposted */}                
-                    </Card.Body>
-
-                </Card>
+                {this.MyForm()}
             </Col>
         )}
     };
