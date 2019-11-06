@@ -22,24 +22,14 @@ class EmpJobView extends Component{
         this.employername = localStorage.getItem('username')
     }
 
-    // fetch  applicants
-    componentDidMount() {
-        this.getApplicants(this.props.jobID)
-        console.log(this.props.jobID)
-    }
-
     //link will return an array of applicants (JSON Notation)
     
     getApplicants=(jobID)=>{
+        console.log("JOB ID :" + jobID)
         const localhost = `http://localhost:3001/employer/jobview/${jobID}`
         const url = apiURL + 'employer/jobview/' + {jobID}
 
-        fetch(localhost, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
+       fetch(localhost)
         .then(response => response.json())
         .then(data => {
             this.setState({appList:data}) 
@@ -50,6 +40,40 @@ class EmpJobView extends Component{
             console.log(`Error at getApplicants : ${error}`)
             this.setState({ error: true })
         })
+    }
+
+    // fetch  applicants
+    componentDidMount() {
+        this.getApplicants(this.props.jobID)
+        console.log(this.props.jobID)
+    }
+
+    applicantContent=()=>{
+        console.log(this.state.appList)
+         // Loading
+         if (this.state.appList.length === 0 && !this.state.error){
+            return (
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            )
+        }
+        else if (this.state.appList.length > 0 && !this.state.error) {
+            return (
+                this.state.appList.map( (applicant) => {
+                    // job.dateposted = job.dateposted.substr(0,10)
+                    return (
+                        <Row>  
+                            <EmpAppCard appName = {applicant.firstname.concat(" ",applicant.lastname)} appSkills = {applicant.skills} appPhone={applicant.phone} appEmail = {applicant.email}/> 
+                        </Row>
+                        
+                    )
+                })
+            )
+        }
+        else return <div>Error</div>
     }
 
     render(){
@@ -69,34 +93,10 @@ class EmpJobView extends Component{
                     </EmpJobCard>>
                 </Row>
                 <br/>
-                <Row>
-                    <Col sm={8} className = "mx-auto">
-                        <EmpAppCard appName = "Maya Suplex" appSkills = "Rubbish Management" appContact= "91231011"/>
-                    </Col>
-                </Row>
-                
-                {/* Render */}
-                { this.state.appList.length > 0 && !this.state.error && 
-                    this.state.appList.map( (applicant) => (
-                    <Row>
-                            <Col sm={8} className = "mx-auto">
-                                <EmpAppCard>
-                                {/* appName = {applicant.firstname + " " + applicant.lastname}
-                                appSkills = {applicant.skills} 
-                                appContact={applicant.phone}> */}
-                                </EmpAppCard>
-                            </Col>
-                        </Row>
-                    )
-                    )
-                }
-
-                
-                
-            
+                <this.applicantContent/>
             </div>
         )
-    }
+    };
 
 
 }
