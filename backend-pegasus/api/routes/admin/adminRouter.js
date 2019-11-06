@@ -14,8 +14,11 @@ router.get('/getallstudents', getallstudents)
 
 
 // PUT
+const editemployer = require('./editemployer')
+router.put('/editemployer/:id', editemployer)
 
-
+const editstudent = require('./editstudent')
+router.put('/editstudent/:id', editstudent)
 
 router.get('/', (req, res) => {
     res.send('hello from backend server, admin route')
