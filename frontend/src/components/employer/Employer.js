@@ -107,7 +107,8 @@ class Employer extends Component {
             case 'postjob' : 
                 return <PostJob/>
             case 'viewjob' :
-                return <EmpJobView 
+                return <EmpJobView
+                jobID={window.jobDetails.jobid}
                 jobtitle={window.jobDetails.jobtitle} 
                 jobskills={window.jobDetails.jobrequiredskills} 
                 jobdescription={window.jobDetails.jobdescription} 
@@ -149,7 +150,7 @@ class Employer extends Component {
     fetchEmployerDetails = () => {
         const apiURL = `${herokuURL}employer/${this.state.id}`
         const localhost = `http://localhost:3001/employer/${this.state.id}`
-
+        console.log("EMPIDv1: " + this.state.id)
         fetch( localhost, {
             method: 'GET',
             headers: {'Content-Type': 'application/json'}
@@ -172,7 +173,7 @@ class Employer extends Component {
     
 
     componentDidMount() {
-        this.fetchEmployerDetails()
+        //this.fetchEmployerDetails()
         console.log(this.state)
     }
 
