@@ -15,6 +15,10 @@
     text-align: center;
 }
 
+.Clickable {
+    color: #43CD86;
+}
+
 .Clickable:hover{
     cursor: pointer;
     color: #3EB650;

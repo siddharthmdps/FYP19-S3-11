@@ -19,7 +19,7 @@ const leftSide = props => {
                         <ListGroupItem >{props.details.FirstName} {props.details.MiddleName} {props.details.LastName}</ListGroupItem>
                         <ListGroupItem> <i className="fas fa-flag"></i> {props.details.Nationality}</ListGroupItem>
                         <ListGroupItem className={classes.Clickable} >
-                            <i className="fas fa-envelope"></i> <a href={"mailto:" +props.details.Email}  >{props.details.Email}</a>
+                            <i className="fas fa-envelope"></i> <a className={classes.Clickable} href={"mailto:" +props.details.Email}  >{props.details.Email}</a>
                         </ListGroupItem>
                         <ListGroupItem> <i className="fas fa-mobile"></i> {props.details.Phone}</ListGroupItem>
                         <ListGroupItem> <i className="fas fa-map-marker-alt"></i> {props.details.CurrentAddress} <br /> {props.details.City} {props.details.Country} {props.details.PostalCode}</ListGroupItem>
