@@ -16,17 +16,6 @@ const leftSide = props => {
                 </Card.Body>
                 <Card.Body ><Button1>Upload</Button1></Card.Body>
                 </Card>
-                <Card className={classes.CentralContent}>
-                <Card.Body onClick={()=>{alert("Eh!")}}>Recommended Jobs</Card.Body>
-                </Card>
-
-                <Card className={classes.CentralContent}>
-                <Card.Body>Applied Jobs</Card.Body>
-                </Card>
-                
-                <Card className={classes.CentralContent}>
-                <Card.Body>Saved Jobs</Card.Body>
-                </Card>
             </Container>
         </React.Fragment>
     );
