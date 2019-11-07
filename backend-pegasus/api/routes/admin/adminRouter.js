@@ -20,6 +20,9 @@ router.put('/editemployer/:id', editemployer)
 const editstudent = require('./editstudent')
 router.put('/editstudent/:id', editstudent)
 
+const editjob = require('./editjob')
+router.put('/editjob/:id', editjob)
+
 const deleteemployer = require('./deleteemployer')
 router.put('/deleteemployer/:id', deleteemployer)
 
