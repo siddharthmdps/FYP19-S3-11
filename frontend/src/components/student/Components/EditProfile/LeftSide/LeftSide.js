@@ -21,7 +21,9 @@ const leftSide = props => {
                 </Card.Body>
                 <Card.Body ><Button1>Upload</Button1></Card.Body>
                 </Card>
-                <CircularProgressbar value={percentage} text={`${percentage}%`} />;
+                <Card>
+                <CircularProgressbar value={percentage} text={`${percentage}%`} strokeWidth={1}/>
+                </Card>
             </Container>
         </React.Fragment>
     );
