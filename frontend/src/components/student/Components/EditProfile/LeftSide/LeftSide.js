@@ -3,6 +3,11 @@ import {Image, Container, Card, ResponsiveEmbed} from 'react-bootstrap';
 import Button1 from '../../../../common_assets/Button1/Button1'
 import classes from './LeftSide.module.css';
 
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
+let percentage = 66
+
 const leftSide = props => {
     
     return(
@@ -16,6 +21,7 @@ const leftSide = props => {
                 </Card.Body>
                 <Card.Body ><Button1>Upload</Button1></Card.Body>
                 </Card>
+                <CircularProgressbar value={percentage} text={`${percentage}%`} />;
             </Container>
         </React.Fragment>
     );
