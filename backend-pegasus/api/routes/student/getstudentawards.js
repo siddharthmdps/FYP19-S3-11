@@ -10,7 +10,7 @@ const getstudentawards = (req, res) => {
         }
         else {
             if(studentid) {               
-                let queryString = `select ID as 'AwardID',awardname as 'Award', CONCAT(month, " ", year) as 'Date', awarddescription as 'Description' from pegasus.studentawards where studentid = "${studentid}"`
+                let queryString = `select ID as 'AwardID',awardname as 'Award', DATE_FORMAT(awarddate, '%b %Y') as 'Date', awarddescription as 'Description' from pegasus.studentawards where studentid = "${studentid}"`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })

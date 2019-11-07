@@ -1,5 +1,7 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
+var dateFormat = require('dateformat');
+
 const studenteducation = (req, res) => {
     for(var key in req.body) {
         if(req.body.hasOwnProperty(key)) {

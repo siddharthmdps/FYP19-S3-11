@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
-import EmpJobCard,{EmpAppCard, BaseCard} from './EmpJobCard';
+import EmpJobCard,{EmpAppCard} from './EmpJobCard';
 import apiURL from '../../../config';
-import {Row,Col} from 'react-bootstrap';
+import {Row,Col,Card} from 'react-bootstrap';
 
 
 //This component is the employer' posted job view (individual)
@@ -22,31 +22,61 @@ class EmpJobView extends Component{
         this.employername = localStorage.getItem('username')
     }
 
-    // fetch the job post and its applicants
-    componentDidMount() {
-        this.getApplicants(this.props.jobID)
-    }
-
     //link will return an array of applicants (JSON Notation)
     
     getApplicants=(jobID)=>{
+        console.log("JOB ID :" + jobID)
+        const localhost = `http://localhost:3001/employer/jobview/${jobID}`
         const url = apiURL + 'employer/jobview/' + {jobID}
 
-        fetch(url)
+       fetch(localhost)
         .then(response => response.json())
         .then(data => {
-            this.setState({appList:data})
+            this.setState({appList:data}) 
+            console.log(`total applicants : ${this.state.appList.length}`)
         })
 
         .catch(error => {
-            console.log(`Error: ${error}`)
+            console.log(`Error at getApplicants : ${error}`)
             this.setState({ error: true })
         })
     }
 
+    // fetch  applicants
+    componentDidMount() {
+        this.getApplicants(this.props.jobID)
+        console.log(this.props.jobID)
+    }
+
+    applicantContent=()=>{
+        console.log(this.state.appList)
+         // Loading
+         if (this.state.appList.length === 0 && !this.state.error){
+            return (
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            )
+        }
+        else if (this.state.appList.length > 0 && !this.state.error) {
+            return (
+                this.state.appList.map( (applicant) => {
+                    // job.dateposted = job.dateposted.substr(0,10)
+                    return (
+                        <Row>  
+                            <EmpAppCard appName = {applicant.firstname.concat(" ",applicant.lastname)} appSkills = {applicant.skills} appPhone={applicant.phone} appEmail = {applicant.email}/> 
+                        </Row>
+                        
+                    )
+                })
+            )
+        }
+        else return <div>Error</div>
+    }
+
     render(){
-        //console.log(this.props.jobskills)
-        //console.log(this.props.jobtitle)
         return(
             <div>
                 <Row>
@@ -56,31 +86,17 @@ class EmpJobView extends Component{
                     reqSkills = {this.props.jobskills}
                     joblocation ={this.props.joblocation}
                     jobindustry = {this.props.jobindustry}
-                    dateposted={this.props.dateposted}>
+                    dateposted={this.props.dateposted}
+                    editJobHandler={this.props.editJobHandler}
+                    >
                         {this.props.jobdescription}
-                    </EmpJobCard>
+                    </EmpJobCard>>
                 </Row>
                 <br/>
-                {/* Render */}
-                { this.state.appList.length > 0 && !this.state.error && 
-                    this.state.appList.map( (applicant) => (
-                        <Row>
-                            <Col sm={8} className = "mx-auto">
-                                <EmpAppCard 
-                                appName = "Maya Albarax"/*{applicant.name} */
-                                appSkills = {applicant.skills} 
-                                appContact={applicant.contact}>
-                                    {applicant.background}
-                                </EmpAppCard>
-                            </Col>
-                        </Row>
-
-                                
-                    ) )
-                }
+                <this.applicantContent/>
             </div>
         )
-    }
+    };
 
 
 }

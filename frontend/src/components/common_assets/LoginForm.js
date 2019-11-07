@@ -17,11 +17,11 @@ class LoginForm extends Component {
         const password = document.getElementById("input-password").value
         const usertype = document.getElementById("input-usertype").value
 
-        const loginParticulars = { username, password, usertype }
+        const loginParticulars = { "username" : username, "password" : password, "usertype" : usertype }
         
         //console.log('Login particulars', loginParticulars)
 
-        const url = apiURL + 'login/'
+        const url = apiURL + 'login'
         const localhost = "http://localhost:3001/login"
 
         if(username && password && usertype) {

@@ -11,7 +11,7 @@ const getstudentcert = (req, res) => {
         }
         else {
             if(studentid) {               
-                let queryString = `select id as 'CertificateID',certificatename as 'Name',IssuedBy,IssuedDate,ValidUntil from pegasus.studentcertificate where studentid = "${studentid}"`
+                let queryString = `select id as 'CertificateID',certificatename as 'Name',IssuedBy,DATE_FORMAT(IssuedDate, '%b %Y') as 'IssuedDate',DATE_FORMAT(ValidUntil, '%b %Y') as 'ValidUntil' from pegasus.studentcertificate where studentid = "${studentid}"`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })
