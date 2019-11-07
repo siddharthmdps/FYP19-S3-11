@@ -20,6 +20,12 @@ router.put('/editemployer/:id', editemployer)
 const editstudent = require('./editstudent')
 router.put('/editstudent/:id', editstudent)
 
+const deleteemployer = require('./deleteemployer')
+router.put('/deleteemployer/:id', deleteemployer)
+
+const deletestudent = require('./deletestudent')
+router.put('/deletestudent/:id', deletestudent)
+
 router.get('/', (req, res) => {
     res.send('hello from backend server, admin route')
 })
