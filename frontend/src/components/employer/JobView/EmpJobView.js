@@ -90,7 +90,7 @@ class EmpJobView extends Component{
                     editJobHandler={this.props.editJobHandler}
                     >
                         {this.props.jobdescription}
-                    </EmpJobCard>>
+                    </EmpJobCard>
                 </Row>
                 <br/>
                 <this.applicantContent/>
