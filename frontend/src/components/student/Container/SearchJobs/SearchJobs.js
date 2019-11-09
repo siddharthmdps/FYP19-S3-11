@@ -44,7 +44,7 @@ class SearchJobs extends Component {
                     Search Jobs
                 </Row>
                 <br /> */}
-                <div className={classes.TopHead} sm={{span: 12}}>
+                <div className={classes.TopHead} sm={{ span: 12 }}>
                     <div className={classes.MainBox}>
                         <h1 className={classes.Title}>Find Your Next Job.</h1>
                         {/* <InputGroup size="lg" > */}
@@ -59,10 +59,16 @@ class SearchJobs extends Component {
                             className={classes.SearchBox}
                         />
                         {/* </InputGroup> */}
+                        <div className={classes.CardNum}>
+                            <span className={classes.CardSpan}>5</span>
+                            <span className={classes.CardSpan}>10</span>
+                            <span className={classes.CardSpan}>15</span>
+                            <span className={classes.CardSpan}>20</span>
+                        </div>
                     </div>
                 </div>
-                
-                <Col className={classes.Jobs} md={{offset:1, span: 10}}>
+
+                <Col className={classes.Jobs} md={{ offset: 1, span: 10 }}>
                     {this.state.SearchJobs.map(jobDetail => {
                         return (
                             <React.Fragment key={jobDetail.id}>
