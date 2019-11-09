@@ -11,12 +11,17 @@ const getsuccessfulapplications = (req,res) => {
         else {
             let result = {
                 total: 0,
-                successful: 0
+                successful: 0,
+                shortlisted: 0,
+                pending: 0
             }
             const getTotal = `SELECT COUNT(*) as total FROM pegasus.jobapplication`
             const getSuccessful = `SELECT COUNT(*) as successful FROM pegasus.jobapplication 
                                 WHERE status="successful"`
-            
+            const getShortListed = `SELECT COUNT(*) as shortlisted FROM pegasus.jobapplication 
+                                WHERE status="shortlisted"`
+            const getPending = `SELECT COUNT(*) as pending FROM pegasus.jobapplication 
+            WHERE status="pending"`
             // get total applications
             connection.query(getTotal, (err, rows, fields) => {
                 if(err) {
@@ -41,7 +46,6 @@ const getsuccessfulapplications = (req,res) => {
                 }
                 if( rows &&  ( rows.length > 0 ) ) {
                     result.successful = rows[0].successful
-                    res.send(result)
                 }
                 else if ( !rows || rows.length == 0 ) {
                     res.status(200).json({
@@ -50,6 +54,37 @@ const getsuccessfulapplications = (req,res) => {
                 }
             })
             
+            // get shortlisted applications
+            connection.query(getShortListed, (err, rows, fields) => {
+                if(err) {
+                    res.status(500).json({ message: err })
+                }
+                if( rows &&  ( rows.length > 0 ) ) {
+                    result.shortlisted = rows[0].shortlisted
+                    //res.send(result)
+                }
+                else if ( !rows || rows.length == 0 ) {
+                    res.status(200).json({
+                        message: 'Empty table'
+                    })
+                }
+            })
+
+            // get shortlisted applications
+            connection.query(getPending, (err, rows, fields) => {
+                if(err) {
+                    res.status(500).json({ message: err })
+                }
+                if( rows &&  ( rows.length > 0 ) ) {
+                    result.pending = rows[0].pending
+                    res.send(result)
+                }
+                else if ( !rows || rows.length == 0 ) {
+                    res.status(200).json({
+                        message: 'Empty table'
+                    })
+                }
+            })
         }
         connection.release()
     })
