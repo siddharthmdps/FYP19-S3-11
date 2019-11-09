@@ -28,7 +28,7 @@ class LoginForm extends Component {
             this.setState({ loading: true })
 
 
-            fetch(localhost, {
+            fetch(url, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(loginParticulars)
