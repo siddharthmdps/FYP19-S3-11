@@ -28,7 +28,7 @@ class LoginForm extends Component {
             this.setState({ loading: true })
 
 
-            fetch(url, {
+            fetch(localhost, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(loginParticulars)
@@ -40,7 +40,7 @@ class LoginForm extends Component {
                 console.log(data.message)
 
 
-                const userInfo = data.body[0]
+                const userInfo = data.body
 
                 if(data.message === 'success'){
                     localStorage.setItem('isAuthenticated', true)

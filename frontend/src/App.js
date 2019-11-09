@@ -60,9 +60,9 @@ class App extends Component {
   render() { 
     return (
       <Router>
-        <Navbar />
+        {/* <Navbar /> */}
         <Switch>
-          <Route exact path="/" component={Student}></Route>
+          <Route exact path="/" component={this.getContentToRender}></Route>
           <Route exact path="/signup" component={SignUp}></Route>
           <Route exact path="/editprofile" component={EditProfile}></Route>
           <Route exact path="/viewprofile" component={ViewProfile}></Route>

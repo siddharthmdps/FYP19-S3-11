@@ -1,5 +1,8 @@
-var date = new Date()
+let student = {
+    name: 'tom',
+    age: 23
+}
 
-date = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+delete student['name']
 
-console.log(date)
+console.log(student)
