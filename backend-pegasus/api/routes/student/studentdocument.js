@@ -1,7 +1,7 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
 const studentdocument = (req, res) => {
-    
+
     for(var key in req.body) {
         if(req.body.hasOwnProperty(key)) {
             const studentid = req.body[key].studentid;
