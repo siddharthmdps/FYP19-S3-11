@@ -39,14 +39,11 @@ class LoginForm extends Component {
 
                 console.log(data.message)
 
-
-                const userInfo = data.body
-
                 if(data.message === 'success'){
                     localStorage.setItem('isAuthenticated', true)
                     localStorage.setItem('username', username)
                     localStorage.setItem('userType', usertype)
-                    localStorage.setItem('id', userInfo.id)
+                    localStorage.setItem('id', data.body.id)
 
                     this.props.updateLoginState()
                 }
