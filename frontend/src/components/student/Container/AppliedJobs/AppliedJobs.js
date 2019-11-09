@@ -59,14 +59,14 @@ class AppliedJobs extends Component {
         for (let index=1; index<=number; index++){
             if(index === this.state.pageNo){
                 temp.push(
-                <Button key={index} style={{backgroundColor: '#43CD86', color: 'black'}} onClick={() => { this.setState({pageNo: index}); this.refreshPagination(index, number) }}>
+                <Button key={index} style={{backgroundColor: '#43CD86', color: 'black' }} onClick={() => { this.setState({pageNo: index}); this.refreshPagination(index, number) }} className={classes.PaginationButton}>
                     {index}
                 </Button>
                 );
             }
             else{
                 temp.push(
-                    <Button key={index} style={{backgroundColor: '#fff', color: 'black'}} onClick={() => { this.setState({pageNo: index}); this.refreshPagination(index, number) }}>
+                    <Button key={index} style={{backgroundColor: '#fff', color: 'black'}} onClick={() => { this.setState({pageNo: index}); this.refreshPagination(index, number) }} className={classes.PaginationButton}>
                         {index}
                     </Button>
                     );
@@ -81,14 +81,14 @@ class AppliedJobs extends Component {
         for (let index=1; index<=number; index++){
             if(index === newActive){
                 temp.push(
-                <Button key={index} style={{backgroundColor: '#43CD86', color: 'black'}} onClick={() => { this.setState({pageNo: index}); this.refreshPagination(index, number) }}>
+                <Button key={index} style={{backgroundColor: '#43CD86', color: 'black'}} onClick={() => { this.setState({pageNo: index}); this.refreshPagination(index, number) }} className={classes.PaginationButton}>
                     {index}
                 </Button>
                 );
             }
             else{
                 temp.push(
-                    <Button key={index} style={{backgroundColor: '#fff', color: 'black'}} onClick={() => { this.setState({pageNo: index}); this.refreshPagination(index, number) }}>
+                    <Button key={index} style={{backgroundColor: '#fff', color: 'black'}} onClick={() => { this.setState({pageNo: index}); this.refreshPagination(index, number) }} className={classes.PaginationButton}>
                         {index}
                     </Button>
                     );
