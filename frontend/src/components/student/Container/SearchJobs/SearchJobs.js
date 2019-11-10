@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, Button, Alert, InputGroup, FormControl } fro
 import classes from './SearchJobs.module.css';
 import Axios from 'axios';
 import JobCard from '../../Components/JobCard/JobCard';
+import Select from './Select';
 
 class SearchJobs extends Component {
     state = {
@@ -46,7 +47,7 @@ class SearchJobs extends Component {
                 <br /> */}
                 <div className={classes.TopHead} sm={{ span: 12 }}>
                     <div className={classes.MainBox}>
-                        <h1 className={classes.Title}>Find Your Next Job.</h1>
+                        <h1 className={classes.SearchTitle}>Find Your Next Job.</h1>
                         {/* <InputGroup size="lg" > */}
                         {/* <InputGroup.Prepend className={classes.SearchPrepend}>
                     <InputGroup.Text id="inputGroup-sizing-lg" className={classes.SearchPrepend}><i className="fas fa-search"></i></InputGroup.Text>
@@ -67,6 +68,17 @@ class SearchJobs extends Component {
                         </div>
                     </div>
                 </div>
+                <br />
+
+                <div className={classes.FilterBox}>
+                    <Col md={{ span: 3, offset: 1 }} >
+                        <h1 className={classes.FilterTitle}>Advanced Search</h1>
+                    </Col>
+                    <div className={classes.Categories}>
+                        <Select />
+                    </div>
+                </div>
+
 
                 <Col className={classes.Jobs} md={{ offset: 1, span: 10 }}>
                     {this.state.SearchJobs.map(jobDetail => {
