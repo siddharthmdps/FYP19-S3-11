@@ -4,6 +4,8 @@ const login = (req,res) => {
     const username = req.body.username.toLowerCase()
     const password = sha1(req.body.password)
     var usertype = req.body.usertype.toLowerCase()
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    var usertypeid = req.body.usertype + "id";
 
     // Search in corresponding table based on usertype
     // Respond with user ID
@@ -21,9 +23,14 @@ const login = (req,res) => {
                         res.status(500).json({ message: error })
                     }
                     if(rows && rows.length > 0) {
+                        //var response = '{' + usertypeid + ' : ' + rows[0]["id"] + '}' 
+
+                        let result = rows[0]
+                        delete result['password']
+
                         res.json({
                             message: 'success',
-                            body: rows
+                            body: result
                         })
                     }
                     else if( !rows || rows.length == 0 ) {

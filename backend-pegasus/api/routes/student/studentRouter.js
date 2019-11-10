@@ -1,5 +1,9 @@
 const {router, env, sha1, mysql, mypool} = require('../../util')
 
+// get
+const getJobSearchResults = require('./searchjob')
+router.get('/searchjob/:keyword', getJobSearchResults)
+
 //student awards
 //get
 const getstudentaward = require('./getstudentawards')
