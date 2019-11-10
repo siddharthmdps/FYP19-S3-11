@@ -1,80 +1,105 @@
 import React, { Component } from 'react'
-import { Table, Form, Col, Row } from 'react-bootstrap';
+import ReactDOM from 'react-dom';
+import { Table, Form, Col, Row, Pagination } from 'react-bootstrap';
 
+export default class Candidate extends Component {
+  state = {
+    isLoading: true,
+    users: [],
+    error: null
+  };
 
-export default class Jobs extends Component {
+  fetchUsers() {
+    fetch(`https://jsonplaceholder.typicode.com/users`)
+      .then(response => response.json())
+      .then(data =>
+        this.setState({
+          users: data,
+          isLoading: false,
+        })
+      )
+      .catch(error => this.setState({ error, isLoading: false }));
+  }
+
+  componentDidMount() {
+    this.fetchUsers();
+  }
+
   render() {
+    const { isLoading, users, error } = this.state;
+
+    if (isLoading)
+      return <div>Loading...</div>
+
+    const rows = users.map(row =>
+      <tr>
+        <td>{row.id}</td>
+        <td>{row.company.name}</td>
+        <td>{row.company.catchPhrase}</td>
+        <td>{row.company.bs}</td>
+        <td>Edit</td>
+      </tr>
+    )
+
     return (
-      <div>
-        <h1>All Jobs</h1>
+      <React.Fragment>
+        <br />
+        <Row>
+          <h1>Joblist <span style={{ marginLeft: '5px' }}><sub></sub></span></h1>
+        </Row>
         <br />
         <Form.Group as={Row} md="2" controlId="exampleForm.ControlSelect1">
-          
-            <Form.Label >Show </Form.Label>
-            <Col sm={2}><Form.Control as="select" >
-              <option>10</option>
-              <option>20</option>
-              <option>30</option>
-              <option>40</option>
-              <option>50</option>
-            </Form.Control></Col>
-            <Form.Label >Entries </Form.Label>
-
-          
-          
+          <Form.Label >Show </Form.Label>
+          <Col sm={2}><Form.Control size="sm" as="select" >
+            <option>10</option>
+            <option>20</option>
+            <option>30</option>
+            <option>40</option>
+            <option>50</option>
+          </Form.Control></Col>
+          <Form.Label >Entries </Form.Label>
+          <Col md={{ span: 2, offset: 7 }}><Form.Control size="sm" type="text" placeholder="Search" /></Col>
         </Form.Group>
-        <Row>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Date Posted</th>
-              <th>Job Position</th>
-              <th>Job Information</th>
-              <td>Edit</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Mark</td>
-              <td>11/1/2019</td>
-              <td>Writer</td>
-              <td>Do job for me and get paid.</td>
-              <td>Edit</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>12/4/2019</td>
-              <td>Developer</td>
-              <td>Do job for me and get paid.</td>
-              <td>Edit</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>12/4/2019</td>
-              <td>Engineer</td>
-              <td>Do job for me and get paid.</td>
-              <td>Edit</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>12/4/2019</td>
-              <td>Thornton</td>
-              <td>Do job for me and get paid.</td>
-              <td>Edit</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>12/4/2019</td>
-              <td>Thornton</td>
-              <td>Do job for me and get paid.</td>
-              <td>Edit</td>
-            </tr>
-          </tbody>
-        </Table>
-        </Row>
-      </div>
+        <div>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Company</th>
+                <th>Company Description</th>
+                <th>Job Description</th>
+                <th>Edit Job</th>
 
-    )
+              </tr>
+            </thead>
+            <tbody>
+              {rows}
+            </tbody>
+          </Table>
+          <Row>
+            Showing 1 to 10 of 52 Jobs
+                    <Col md={{ span: 2, offset: 4 }}><Pagination>
+              <Pagination.First />
+              <Pagination.Prev />
+              <Pagination.Item>{1}</Pagination.Item>
+              <Pagination.Ellipsis />
+
+              <Pagination.Item>{10}</Pagination.Item>
+              <Pagination.Item>{11}</Pagination.Item>
+              <Pagination.Item active>{12}</Pagination.Item>
+              <Pagination.Item>{13}</Pagination.Item>
+              <Pagination.Item disabled>{14}</Pagination.Item>
+
+              <Pagination.Ellipsis />
+              <Pagination.Item>{20}</Pagination.Item>
+              <Pagination.Next />
+              <Pagination.Last />
+            </Pagination></Col></Row>
+        </div>
+
+      </React.Fragment>
+    );
   }
 }
+
+ReactDOM.render(<Candidate />, document.getElementById("root"));

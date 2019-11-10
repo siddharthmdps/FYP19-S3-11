@@ -1,0 +1,11 @@
+.Title{
+    font-weight: bold;
+}
+
+.Delete{
+    color: red;
+}
+
+.Delete:hover {
+    cursor: pointer;
+}

@@ -21,7 +21,7 @@ const postjob = (req, res) => {
                                     SELECT id FROM pegasus.employer
                                     WHERE employer.id = "${job.empid}"
                                 )`
-            connection.query(queryString, (err, rows, fields) => {
+            connection.query(queryString, (err) => {
                 if(err) {
                     res.status(500).json({ message: err })
                 }

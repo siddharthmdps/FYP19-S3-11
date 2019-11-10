@@ -1,0 +1,27 @@
+.Image{
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.LeftSide {
+    color: #43CD86;
+    font-weight: lighter;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif;
+    overflow-wrap: break-word;
+}
+
+.CentralContent{
+    justify-content: center;    
+    text-align: center;
+}
+
+.Clickable {
+    color: #43CD86;
+}
+
+.Clickable:hover{
+    cursor: pointer;
+    color: #3EB650;
+    font-weight: 700;
+}
+
