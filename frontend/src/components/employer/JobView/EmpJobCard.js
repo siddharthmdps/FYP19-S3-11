@@ -226,7 +226,7 @@ class EmpAppCard extends Component {
         }
         else return <div>Error</div>
     }
-
+    
     jobExpContent = () => {
         console.log(this.state.jobExpList)
         // Loading
@@ -383,6 +383,33 @@ class EmpAppCard extends Component {
         )
     }
 
+    shortlist = (appId, jobId) => {
+        const application = {
+            jobid: jobId,
+            appid: appId
+        }
+
+        const url = apiURL + "employer/shortlist"
+        const localhost = 'http://localhost:3001/employer/shortlist/'
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(application)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.message === 'success') {
+                    alert('Applicant has been shortlisted!')
+                    document.location.reload(true)
+                }
+            })
+            .catch(error => console.log(error))
+        // alert('Applicant has been shortlisted!')
+        // document.location.reload(true)
+      
     shortlist = (appId, appName) => {
         this.showAlert();
 
@@ -462,13 +489,14 @@ class EmpAppCard extends Component {
                         </small>
                     
                     </Card.Text> */}
-                        <Button variant="success" >Shortlist</Button>
+
+                        <Button variant="success" onClick={this.shortlist(123, 456)} >Shortlist</Button>
+
 
 
                         {/* onClick={this.shortlist("asjdkasj", "Juna")} */}
                     </Card.Body>
                 </Card>
-            </div>
         )
     }
 }
