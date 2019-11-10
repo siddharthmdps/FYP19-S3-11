@@ -12,7 +12,7 @@ import SchoolIcon from '@material-ui/icons/School';
 import WorkIcon from '@material-ui/icons/Work';
 import StarIcon from '@material-ui/icons/Star';
 
-import Tab from './IconLabelTabs';
+import Tabs from './IconLabelTabs';
 
 const PersonalParticularsShell = {
     "StudentID": 0,
@@ -231,13 +231,15 @@ class Profile extends Component {
                         </CardColumns> */}
 
                         {/* <body > */}
-                        <Tab activeTab={this.state.ActiveTab} 
+                        {/* <Tabs variant="scrollable"> */}
+                        <Tabs activeTab={this.state.ActiveTab} 
                         click={this.updateActiveTab} 
                         Education={this.state.Education} 
                         WorkExp = {this.state.WorkExp} 
                         Certification={this.state.Certification} 
                         Awards = {this.state.Awards} 
                         Projects={this.state.Projects} Skills={this.state.Skills}>
+                            
                             {/* <VerticalTimeline education>
                                 {this.state.Education.map(educationDetail => {
                                     return (
@@ -262,7 +264,8 @@ class Profile extends Component {
                                     );
                                 })}
                             </VerticalTimeline> */}
-                        </Tab>
+                            {/* </Tab> */}
+                        </Tabs>
 
                         {/* <VerticalTimeline> */}
                             {/* {this.state.Education.map(educationDetail => {
