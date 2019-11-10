@@ -42,7 +42,13 @@ const navbar = props => (
           <Nav.Link href="/editprofile" className={classes.NavItem}>Edit Profile</Nav.Link>
           <Nav.Link href="/savedjobs" className={classes.NavItem}>Saved Jobs</Nav.Link>
           <Nav.Link href="/appliedjobs" className={classes.NavItem}>Applied Jobs</Nav.Link>
-          <Nav.Link href="/" className={classes.NavItem}>Log out</Nav.Link>
+          <Nav.Link 
+             className={classes.NavItem}
+            onClick={ () => {
+              localStorage.clear()
+              document.location.reload(true)
+            } }
+          >Log out</Nav.Link>
         </Nav>
     </Navbar.Collapse>
   </Navbar>
