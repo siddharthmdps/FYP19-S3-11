@@ -383,14 +383,32 @@ class EmpAppCard extends Component {
         )
     }
 
-    shortlist = (appId, appName) => {
-        this.showAlert();
+    shortlist = (appId, jobId) => {
+        const application = {
+            jobid: jobId,
+            appid: appId
+        }
 
-        return (
-            <div>
+        const url = apiURL + "employer/shortlist"
+        const localhost = 'http://localhost:3001/employer/shortlist/'
 
-            </div>
-        )
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(application)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.message === 'success') {
+                    alert('Applicant has been shortlisted!')
+                    document.location.reload(true)
+                }
+            })
+            .catch(error => console.log(error))
+        // alert('Applicant has been shortlisted!')
+        // document.location.reload(true)
     }
 
 
@@ -462,13 +480,13 @@ class EmpAppCard extends Component {
                         </small>
                     
                     </Card.Text> */}
-                        <Button variant="success" >Shortlist</Button>
+                        <Button variant="success" onClick={this.shortlist(123, 456)} >Shortlist</Button>
 
 
                         {/* onClick={this.shortlist("asjdkasj", "Juna")} */}
                     </Card.Body>
                 </Card>
-            </div>
+            </div >
         )
     }
 }
