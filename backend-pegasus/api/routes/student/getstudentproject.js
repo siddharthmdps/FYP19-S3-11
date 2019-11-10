@@ -18,7 +18,7 @@ const getstudentproject = (req, res) => {
                     }
                     else {
                         res.json({
-                            message: "success"
+                            Projects: rows
                         })
                     }
                 }) 

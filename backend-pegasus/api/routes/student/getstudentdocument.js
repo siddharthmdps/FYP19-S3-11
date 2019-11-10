@@ -18,7 +18,7 @@ const getstudentdocument = (req, res) => {
                     }
                     else {
                         res.json({
-                            message: "success"
+                            Document: rows
                         })
                     }
                 }) 

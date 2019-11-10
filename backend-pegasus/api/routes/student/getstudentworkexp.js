@@ -18,7 +18,7 @@ const getstudentworkexp = (req, res) => {
                     }
                     else {
                         res.json({
-                            message: "success"
+                            WorkExp: rows
                         })
                     }
                 }) 
