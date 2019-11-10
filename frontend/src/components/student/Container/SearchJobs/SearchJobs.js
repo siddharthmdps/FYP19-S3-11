@@ -4,6 +4,7 @@ import classes from './SearchJobs.module.css';
 import Axios from 'axios';
 import JobCard from '../../Components/JobCard/JobCard';
 import Select from './Select';
+import Sidedrawer from './Sidedrawer';
 
 class SearchJobs extends Component {
     state = {
@@ -52,13 +53,17 @@ class SearchJobs extends Component {
                         {/* <InputGroup.Prepend className={classes.SearchPrepend}>
                     <InputGroup.Text id="inputGroup-sizing-lg" className={classes.SearchPrepend}><i className="fas fa-search"></i></InputGroup.Text>
                     </InputGroup.Prepend> */}
-                        <FormControl aria-label="Large"
-                            aria-describedby="inputGroup-sizing-sm"
-                            placeholder="Search by company, job, industry"
-                            onChange={(event) => this.getSearch(event)}
-                            onKeyDown={(event) => { if (event.key === 'Enter') this.getSearchedJobs() }}
-                            className={classes.SearchBox}
-                        />
+                        <div style={{textAlign: 'center'}}>
+                            <FormControl aria-label="Large"
+                                aria-describedby="inputGroup-sizing-sm"
+                                placeholder="Search by company, job, industry"
+                                onChange={(event) => this.getSearch(event)}
+                                onKeyDown={(event) => { if (event.key === 'Enter') this.getSearchedJobs() }}
+                                className={classes.SearchBox}
+                            />
+                            <Sidedrawer />
+                        </div>
+
                         {/* </InputGroup> */}
                         <div className={classes.CardNum}>
                             <span className={classes.CardSpan}>5</span>
@@ -70,14 +75,14 @@ class SearchJobs extends Component {
                 </div>
                 <br />
 
-                <div className={classes.FilterBox}>
+                {/* <div className={classes.FilterBox}>
                     <Col md={{ span: 3, offset: 1 }} >
                         <h1 className={classes.FilterTitle}>Advanced Search</h1>
                     </Col>
                     <div className={classes.Categories}>
                         <Select />
                     </div>
-                </div>
+                </div> */}
 
 
                 <Col className={classes.Jobs} md={{ offset: 1, span: 10 }}>

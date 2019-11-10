@@ -1,12 +1,15 @@
 .Container {
     position: relative;
-    /* background-color: lightgreen; */
+    text-align: center!important;
+    /* justify-content: center!important; */
+    /* background-color: lightgreen!important; */
 }
 
 .Title {
-    position: relative;
     /* left: 9.5%; */
-    display: block;
+    display: inline;
+    margin-left: 10px;
+    white-space: nowrap;
 }
 
 /* .InputLabel {
@@ -18,11 +21,14 @@
 */
 
 .formControl {
-    min-width: 120px!important;
+    padding-bottom: 8px;
+    display: inline;
 } 
 
 .Select {
+    margin-left: 10px;
     min-width: 120;
     /* padding-left: 9.5%!important; */
-    display: inline-block;
+    display: inline;
+    text-align: center!important;
 }

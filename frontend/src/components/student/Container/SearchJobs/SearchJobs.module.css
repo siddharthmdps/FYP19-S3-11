@@ -27,14 +27,13 @@
 .FilterBox {
     background-color: #fff;
     width: 100%;
-    height: 300px;
-    border: 1px solid grey;
+    height: 250px;
+    border: 1px solid rgb(140, 212, 97);
     position: relative;
 }
 
 .FilterTitle {
     color: #474545;
-
 }
 
 .Categories {
@@ -48,13 +47,21 @@
 }
 
 .SearchBox{
-    position: absolute;
+    position: relative;
     border: 1px solid lightgray;
     font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif;
     box-shadow: 0px 0px 5px 0px rgba(189,182,189,1);
-    top: 40%;
+    top: 50px;
     width: 80%;
-    left: 10%;
+    display: inline-block;
+}
+
+.Sidedrawer {
+    position: relative;
+    color: #d4d3d3;
+    display: inline-block;
+    top: 50px;
+    white-space: nowrap;
 }
 
 .SearchBox:hover {
