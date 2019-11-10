@@ -10,11 +10,11 @@ const navbar = props => (
   <React.Fragment>
 
     <Navbar className={classes.Nav} sticky='top' expand="md">
-      <Navbar.Brand href="#home" className="mr-sm-2"><Logo /></Navbar.Brand>
+      <Navbar.Brand href="/" className="mr-sm-2"><Logo /></Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav as='ul' className={[classes.Navli, "mr-auto"]} >
-          <Nav.Item as="li">
+          {/* <Nav.Item as="li">
             <Nav.Link href="/searchjobs" className={classes.NavItem}>Job Search</Nav.Link>
           </Nav.Item>
           <Nav.Item as="li">
@@ -22,7 +22,12 @@ const navbar = props => (
           </Nav.Item>
           <Nav.Item as="li">
             <Nav.Link eventKey="link-2" className={classes.NavItem}>About Us</Nav.Link>
-          </Nav.Item>
+          </Nav.Item> */}
+          {Object.keys(props.NavLeftSide).map(key => (
+            <Nav.Item as="li" key={key}>
+            <Nav.Link href={props.NavLeftSide[key]} className={classes.NavItem}>{key}</Nav.Link>
+            </Nav.Item>
+          ))}
         </Nav>
 
         <Dropdown>
@@ -33,11 +38,14 @@ const navbar = props => (
           <Slide down>
             <div>
               <Dropdown.Menu className={classes.DropdownMenu}>
-                <Dropdown.Item href="/viewprofile" className={classes.DropDownItem}>View Public Profile</Dropdown.Item>
+              {Object.keys(props.NavRightSide).map(key => (
+                <Dropdown.Item href={props.NavRightSide[key]} className={classes.DropDownItem}>{key}</Dropdown.Item>
+              ))}
+                {/* <Dropdown.Item href="/viewprofile" className={classes.DropDownItem}>View Public Profile</Dropdown.Item>
                 <Dropdown.Item href="/editprofile" className={classes.DropDownItem}>Edit Profile</Dropdown.Item>
                 <Dropdown.Item href="/savedjobs" className={classes.DropDownItem}>Saved Jobs</Dropdown.Item>
                 <Dropdown.Item href="/appliedjobs" className={classes.DropDownItem}>Applied Jobs</Dropdown.Item>
-                <Dropdown.Item href="/" className={classes.DropDownItem}>Log out</Dropdown.Item>
+                <Dropdown.Item href="/" className={classes.DropDownItem}>Log out</Dropdown.Item> */}
               </Dropdown.Menu>
             </div>
           </Slide>

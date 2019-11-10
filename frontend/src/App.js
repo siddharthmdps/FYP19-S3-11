@@ -18,7 +18,19 @@ import SearchJobs from './components/student/Container/SearchJobs/SearchJobs'
 // importing CSS
 import './App.css'
 
+let NavLeftSide={
+  "Job Search": "/searchjobs",
+  "Companies": "/",
+  "Blog": "/"
+}
 
+let NavRightSide={
+  "View Profile": "/viewprofile",
+  "Edit Profile": "/editprofile",
+  "Saved Jobs": "/savedjobs",
+  "Applied Jobs": "/appliedjobs",
+  "Logout": "/",
+}
 /* 
 App will first check the 'localStorage' to check whether the user already logged in or not.
 If the user is already logged in, the app will redirect to corresponding app (student.js, employer.js or admin.js)
@@ -60,7 +72,7 @@ class App extends Component {
   render() { 
     return (
       <Router>
-        <Navbar />
+        <Navbar NavLeftSide = {NavLeftSide} NavRightSide={NavRightSide}/>
         <Switch>
           <Route exact path="/" component={Student}></Route>
           <Route exact path="/signup" component={SignUp}></Route>
