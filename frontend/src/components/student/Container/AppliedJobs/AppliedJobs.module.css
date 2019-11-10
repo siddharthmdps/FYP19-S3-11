@@ -83,10 +83,3 @@
     right: 4%;
     top: 11%;
 }
-
-.PageinationButton:active, .PageinationButton:focus{
-    box-shadow: none;
-    background-color: transparent;
-    border-color: none;
-    outline: none;
-}
