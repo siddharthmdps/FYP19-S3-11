@@ -226,8 +226,7 @@ class EmpAppCard extends Component {
         }
         else return <div>Error</div>
     }
-
-
+    
     jobExpContent = () => {
         console.log(this.state.jobExpList)
         // Loading
@@ -410,6 +409,15 @@ class EmpAppCard extends Component {
             .catch(error => console.log(error))
         // alert('Applicant has been shortlisted!')
         // document.location.reload(true)
+      
+    shortlist = (appId, appName) => {
+        this.showAlert();
+
+        return (
+            <div>
+
+            </div>
+        )
     }
 
 
@@ -481,13 +489,14 @@ class EmpAppCard extends Component {
                         </small>
                     
                     </Card.Text> */}
+
                         <Button variant="success" onClick={this.shortlist(123, 456)} >Shortlist</Button>
+
 
 
                         {/* onClick={this.shortlist("asjdkasj", "Juna")} */}
                     </Card.Body>
                 </Card>
-            </div >
         )
     }
 }
