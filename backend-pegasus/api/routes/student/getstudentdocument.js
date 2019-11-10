@@ -3,8 +3,6 @@ const {env, sha1, mysql, mypool} = require('../../util')
 const getstudentdocument = (req, res) => {
     const studentid = parseInt(req.params.studentid);
 
-    // res.send(`Requesting document, stdID : ${studentid}`)
-
     mypool.getConnection( (error, connection) => {
         if(error) {
             connection.release()
@@ -20,12 +18,7 @@ const getstudentdocument = (req, res) => {
                     }
                     else {
                         res.json({
-<<<<<<< HEAD
                             Document: rows
-=======
-                            message: "success",
-                            body: rows
->>>>>>> 58cb9dfdb8ec88cfb31394e03537eda52e4b65ce
                         })
                     }
                 }) 

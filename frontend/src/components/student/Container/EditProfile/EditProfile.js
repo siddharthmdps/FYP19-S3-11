@@ -13,7 +13,6 @@ import Document from '../../Components/EditProfile/Document/Document';
 import Button1 from '../../../common_assets/Button1/Button1';
 import { Accordion, Card, Container, Col, Row, Form } from 'react-bootstrap';
 import ppClasses from '../../../common_assets/Validate.module.css';
-import apiURL from '../../../../config';
 
 import Axios from 'axios';
 
@@ -493,7 +492,6 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        var studentid = 1;
         Axios.get('http://localhost:3000/studentProfile')
             .then(receivedData => {
                 console.log(receivedData.data);
@@ -523,13 +521,6 @@ class Profile extends Component {
                 this.setState({ Skills: receivedData.data.Skills });
                 this.setState({ Projects: receivedData.data.Projects });
                 this.setState({ Document: receivedData.data.Document });
-            });
-        
-        var getawardurl = apiURL + 'student/studentawards/' + studentid;
-        Axios.get(getawardurl)
-            .then(receivedData => {
-                console.log(receivedData.Awards);
-                this.setState({ Awards: receivedData.data.Awards });
             });
             this.togglePanel(7);
     }

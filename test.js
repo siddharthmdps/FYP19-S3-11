@@ -1,12 +1,5 @@
-let student = {
-    name: 'tom',
-    age: 23
-}
+var date = new Date()
 
-let changename = () => {
-    student.name = 'jim'
-}
-changename()
+date = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
 
-console.log(student)
-
+console.log(date)

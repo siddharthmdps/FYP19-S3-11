@@ -31,7 +31,7 @@
 
 .Input:hover,
 .Input:focus {
-    box-shadow: 0px 15px 20px rgba(35, 221, 134, 0.651);
+    box-shadow: 0px 15px 20px rgba(229, 46, 46, 0.4);
     color: #fff;
     /* transform: translateY(-7px); */
     text-decoration: none;
@@ -42,7 +42,7 @@
 }
 
 .Input:focus {
-    background-color: #46CE88;
+    background-color: #1B4F72;
 }
 
 .Skill:active {

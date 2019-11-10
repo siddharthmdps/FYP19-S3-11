@@ -13,7 +13,7 @@
     font-weight: lighter;
     font-family: Arial, Helvetica, sans-serif;
     /* color: #85C1E9; */
-    color: #43CD86;
+    color: #1565C0;
 }
 
 .CardHeader:hover {
@@ -21,12 +21,12 @@
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     /* color: #1976D2; */
-    color: rgb(46, 172, 107);
+    color: #1B4F72;
 }
 
 .Active {
     cursor: pointer;
-    background-color: #51EA9B;
+    background-color: #34495E ;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     color: #FDFEFE;

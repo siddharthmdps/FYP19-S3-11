@@ -39,11 +39,11 @@ class Navbar extends Component {
             </ul>
     
             <div className="row search-box-container">
-              {/* search box */}
-              {/* <form id="search-box" className="form-inline mt-2 mt-md-0">
+    
+              <form id="search-box" className="form-inline mt-2 mt-md-0">
                 <input className="form-control mr-sm-2" type="text" placeholder="Enter keyword" aria-label="Search"/>
                 <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-              </form> */}
+              </form>
     
               <button type="button" className="btn btn-dark" id="btn-logout" 
                 onClick={ () => {

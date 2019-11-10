@@ -14,7 +14,7 @@ const leftSide = props => {
                         <Image src = {props.imageLink} className={classes.Image}/>
                     </ResponsiveEmbed>
                 </Card.Body>
-                <Card.Body ><Button1>Upload</Button1></Card.Body>
+                <Card.Body onClick={()=>{alert("Eh!")}}><Button1>Upload</Button1></Card.Body>
                 </Card>
                 <Card className={classes.CentralContent}>
                 <Card.Body onClick={()=>{alert("Eh!")}}>Recommended Jobs</Card.Body>

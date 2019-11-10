@@ -4,7 +4,7 @@
 }
 
 .CentralContent {
-    color: #43CD86;
+    color: #1565C0;
     justify-content: center;    
     text-align: center;
     font-weight: lighter;
@@ -15,7 +15,7 @@
 .CentralContent:hover{
     cursor: pointer;
     /* color: #3949AB; */
-    color: rgb(46, 172, 107);;
+    color: #1B4F72;
     font-weight: bolder;
 }
 

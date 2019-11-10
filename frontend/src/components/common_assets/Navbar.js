@@ -32,6 +32,16 @@ class Navbar extends Component {
               <li className="nav-item">
                 <a className="nav-link" href="/#">Blog</a>
               </li>
+              {/* only render this for employers */}
+              {
+                this.props.usertype === 'Employer'
+                ? (
+                  <li className="nav-item">
+                    <a className="nav-link" href="/postjob" onClick= {this.props.pjHandler}>Post A New Job</a>
+                  </li>
+                )
+                : null
+              }
               
             </ul>
     

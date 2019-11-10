@@ -9,7 +9,7 @@ class AppliedJobs extends Component {
             <Container fluid>
                 <br />
                 <Row>
-                    <h1>Dashboard <span style={{ marginLeft: '5px' }}><sub></sub></span></h1>
+                    Dashboard <span style={{ marginLeft: '5px' }}><sub></sub></span>
                 </Row>
                 <br />
                 <Row>
@@ -75,7 +75,7 @@ class AppliedJobs extends Component {
 
                         <Card>
                             <Card.Body>
-                                <Card.Title>Latest Added Jobs</Card.Title>
+                                <Card.Title>Pending Jobs</Card.Title>
                                 <Card.Text>
 
                                 </Card.Text>
