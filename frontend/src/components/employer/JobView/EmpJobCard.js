@@ -11,7 +11,7 @@ awardname, awarddate, certname, certbody, projecttitle and dateapplied
 */
 
 import React, { Component } from 'react';
-import { Card, Button, Col, Row, Alert } from 'react-bootstrap';
+import { Card, Button, Col, Row, Alert, Table } from 'react-bootstrap';
 import '../ProfileView/Card.css';
 import apiURL from '../../../config'
 //import './EmpCard.css'
@@ -96,14 +96,13 @@ class EmpAppCard extends Component {
 
     //gets all the education of the applicant
     getEducation = (appID) => {
-        //unconfirmed link
-        const localhost = `http://localhost:3001/employer/jobview/appEdu/${appID}`
-        const url = apiURL + 'employer/jobview/appEdu' + { appID }
+        const localhost = `http://localhost:3001/student/studenteducation/${appID}`
+        const url = apiURL + 'student/studenteducation/' + { appID }
 
         fetch(localhost)
             .then(response => response.json())
             .then(data => {
-                this.setState({ educationList: data })
+                this.setState({ educationList: data.Education })
                 console.log(`Number of education : ${this.state.educationList.length}`)
             })
 
@@ -115,15 +114,14 @@ class EmpAppCard extends Component {
 
     //gets all the job experience of the applicant
     getJobExp = (appID) => {
-        //unconfirmed link
-        const localhost = `http://localhost:3001/employer/jobview/appjobexp/${appID}`
-        const url = apiURL + 'employer/jobview/appjobexp' + { appID }
+        const localhost = `http://localhost:3001/student/studentworkexp/${appID}`
+        const url = apiURL + 'student/studentworkexp/' + { appID }
 
         fetch(localhost)
             .then(response => response.json())
             .then(data => {
-                this.setState({ jobExpList: data })
-                console.log(`Number of education : ${this.state.jobExpList.length}`)
+                this.setState({ jobExpList: data.WorkExp })
+                console.log(`Number of job experiences : ${this.state.jobExpList.length}`)
             })
 
             .catch(error => {
@@ -134,14 +132,13 @@ class EmpAppCard extends Component {
 
     //gets all the awards of the applicant
     getAwards = (appID) => {
-        //unconfirmed link
-        const localhost = `http://localhost:3001/employer/jobview/appawards/${appID}`
-        const url = apiURL + 'employer/jobview/appawards' + { appID }
+        const localhost = `http://localhost:3001/student/studentawards/${appID}`
+        const url = apiURL + 'student/studentawards/' + { appID }
 
         fetch(localhost)
             .then(response => response.json())
             .then(data => {
-                this.setState({ awardsList: data })
+                this.setState({ awardsList: data.Awards })
                 console.log(`Number of awards : ${this.state.awardsList.length}`)
             })
 
@@ -153,14 +150,14 @@ class EmpAppCard extends Component {
 
     //gets all the awards of the applicant
     getCerts = (appID) => {
-        //unconfirmed link
-        const localhost = `http://localhost:3001/employer/jobview/appcerts/${appID}`
-        const url = apiURL + 'employer/jobview/appcerts' + { appID }
+        const localhost = `http://localhost:3001/student/studentcertificate/${appID}`
+        const url = apiURL + 'student/studentcertificate/' + { appID }
+
 
         fetch(localhost)
             .then(response => response.json())
             .then(data => {
-                this.setState({ certsList: data })
+                this.setState({ certsList: data.Certification })
                 console.log(`Number of certs : ${this.state.certsList.length}`)
             })
 
@@ -173,13 +170,13 @@ class EmpAppCard extends Component {
     //gets all the awards of the applicant
     getProjects = (appID) => {
         //unconfirmed link
-        const localhost = `http://localhost:3001/employer/jobview/appprojects/${appID}`
-        const url = apiURL + 'employer/jobview/appprojects' + { appID }
+        const localhost = `http://localhost:3001/student/studentproject/${appID}`
+        const url = apiURL + 'student/studentproject/' + { appID }
 
         fetch(localhost)
             .then(response => response.json())
             .then(data => {
-                this.setState({ projectsList: data })
+                this.setState({ projectsList: data.Projects })
                 console.log(`Number of projects : ${this.state.projectsList.length}`)
             })
 
@@ -212,21 +209,20 @@ class EmpAppCard extends Component {
         }
         else if (this.state.educationList.length > 0 && !this.state.error) {
             return (
-                this.state.educationList.map((education) => {
-                    return (
-                        <li className="cardli">
-                            {education.degree} &nbsp; {education.fieldofstudy} ({education.major})
-                            <br />
-                            {education.university} | {education.gpa}
-                        </li>
-
-                    )
-                })
-            )
+                this.state.educationList.map(education => (
+                    <tr>
+                        <td>{education.FieldOfStudy}</td>
+                        <td>{education.Major}</td>
+                        <td>{education.University}</td>
+                        <td>{education.GPA}</td>
+                        <td>{education.Mode}</td>
+                    </tr>
+                )))
         }
-        else return <div>Error</div>
+
+        else return <div>No Education Records found</div>
     }
-    
+
     jobExpContent = () => {
         console.log(this.state.jobExpList)
         // Loading
@@ -243,30 +239,23 @@ class EmpAppCard extends Component {
             return (
                 this.state.jobExpList.map((jobExp) => {
                     return (
-                        <li className="cardli">
-                            <Row>
-                                <Col md={3}>
-                                    {jobExp.mode}
-                                </Col>
-                                <Col md={3}>
-                                    {jobExp.postion}
-                                </Col>
-                            </Row>
-                            <Row>
-                                {jobExp.company}
-                            </Row>
+                        <tr>
+                            <td>{jobExp.Position}</td>
+                            <td>{jobExp.Mode}</td>
+                            <td>{jobExp.Company}</td>
+                            <td>{jobExp.Industry}</td>
+                            <td>{jobExp.Description}</td>
+                            <td>{jobExp.StartDate}</td>
+                            <td>{jobExp.EndDate}</td>
+                            <td>{jobExp.AnnualSalary}</td>
 
-                            <Row>
-                                {jobExp.description}
-                            </Row>
-
-                        </li>
+                        </tr>
 
                     )
                 })
             )
         }
-        else return <div>Error</div>
+        else return <div></div>
     }
 
     awardsContent = () => {
@@ -285,15 +274,11 @@ class EmpAppCard extends Component {
             return (
                 this.state.awardsList.map((award) => {
                     return (
-                        <li className="cardli">
-                            <Row>
-                                {award.awardname}
-                            </Row>
-                            <Row>
-                                {award.awarddate}
-                            </Row>
-                        </li>
-
+                        <tr>
+                            <td>{award.Award}</td>
+                            <td>{award.Description}</td>
+                            <td>{award.Date}</td>
+                        </tr>
                     )
                 })
             )
@@ -317,17 +302,12 @@ class EmpAppCard extends Component {
             return (
                 this.state.certsList.map((cert) => {
                     return (
-                        <li className="cardli">
-                            <Row>
-                                {cert.certificatename}
-                            </Row>
-                            <Row>
-                                Issued by: {cert.issuedby} <br />
-                                Issued on: {cert.issueddate}
-                                Valid till: {cert.validuntil}
-                            </Row>
-                        </li>
-
+                        <tr>
+                            <td>{cert.Name}</td>
+                            <td>{cert.IssuedBy}</td>
+                            <td>{cert.IssuedDate}</td>
+                            <td>{cert.ValidUntil}</td>
+                        </tr>
                     )
                 })
             )
@@ -351,18 +331,12 @@ class EmpAppCard extends Component {
             return (
                 this.state.projectsList.map((project) => {
                     return (
-                        <li className="cardli">
-                            <Row>
-                                {project.title}
-                            </Row>
-                            <Row>
-                                {project.description}
-                            </Row>
-                            <Row>
-                                {project.link}
-                            </Row>
-                        </li>
-
+                        <tr>
+                            <td>{project.Title}</td>
+                            <td>{project.Status}</td>
+                            <td>{project.Description}</td>
+                            <td><a href={project.Link} /></td>
+                        </tr>
                     )
                 })
             )
@@ -384,12 +358,13 @@ class EmpAppCard extends Component {
     }
 
     shortlist = (appId, jobId) => {
+        //to update shortlist link
         const application = {
             jobid: jobId,
             appid: appId
         }
 
-        const url = apiURL + "employer/shortlist"
+        const url = apiURL + `employer/shortlist/`
         const localhost = 'http://localhost:3001/employer/shortlist/'
 
         fetch(url, {
@@ -409,17 +384,7 @@ class EmpAppCard extends Component {
             .catch(error => console.log(error))
         // alert('Applicant has been shortlisted!')
         // document.location.reload(true)
-      
-    shortlist = (appId, appName) => {
-        this.showAlert();
-
-        return (
-            <div>
-
-            </div>
-        )
     }
-
 
 
     render() {
@@ -442,45 +407,118 @@ class EmpAppCard extends Component {
                             <i class="fas fa-book"></i>
                             &nbsp; <em> Education</em>
                             <br />
-                            <this.educationContent />
-                            <ul className="cardul">
+                            <Row>
+                                <Col sm={12}>
+                                    <Table striped bordered hover variant="light">
+                                        <thead>
+                                            <tr>
+                                                <th>Degree</th>
+                                                <th>Major</th>
+                                                <th>University</th>
+                                                <th>GPA</th>
+                                                <th>Mode</th>
 
-                            </ul>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <this.educationContent />
+                                        </tbody>
+                                    </Table>
+                                </Col>
+
+                            </Row>
                         </Card.Text>
 
                         <Card.Text>
                             <i class="fas fa-briefcase"></i>
                             &nbsp; <em>Job Experience</em>
-                            <ul className="cardul">
-                                <this.jobExpContent />
-                            </ul>
+                            <Row>
+                                <Col sm={12}>
+                                    <Table striped bordered hover variant="light">
+                                        <thead>
+                                            <tr>
+                                                <th>Mode</th>
+                                                <th>Company</th>
+                                                <th>Industry</th>
+                                                <th>Job Description</th>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
+                                                <th>Annual Salary</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <this.jobExpContent />
+                                        </tbody>
+                                    </Table>
+                                </Col>
+                            </Row>
                         </Card.Text>
 
                         <Card.Text>
                             <i class="fas fa-medal"></i>
                             &nbsp; <em>Awards Obtained</em>
-                            <ul className="cardul">
-                                <this.awardsContent />
-                            </ul>
+                            <Row>
+                                <Col sm={12}>
+                                    <Table striped bordered hover variant="light">
+                                        <thead>
+                                            <tr>
+                                                <th>Title of Award</th>
+                                                <th>Description</th>
+                                                <th>Date Awarded</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <this.awardsContent />
+                                        </tbody>
+                                    </Table>
+                                </Col>
+                            </Row>
                         </Card.Text>
 
                         <Card.Text>
                             <i class="fas fa-stamp"></i>
                             &nbsp; <em>Professional Certifications Obtained</em>
-                            <ul className="cardul">
-                                <this.certsContent />
-                            </ul>
+                            <Row>
+                                <Col sm={12}>
+                                    <Table striped bordered hover variant="light">
+                                        <thead>
+                                            <tr>
+                                                <th>Name of Certification</th>
+                                                <th>Issued By</th>
+                                                <th>Issued on</th>
+                                                <th>Valid Until</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <this.certsContent />
+                                        </tbody>
+                                    </Table>
+                                </Col>
+                            </Row>
                         </Card.Text>
 
                         <Card.Text>
                             <i class="fas fa-folder-open"></i>
                             &nbsp; <em>Featured Projects</em>
-                            <ul className="cardul">
-                                <this.projectsContent />
-                            </ul>
+                            <Row>
+                                <Col sm={12}>
+                                    <Table striped bordered hover variant="light">
+                                        <thead>
+                                            <tr>
+                                                <th>Project Title</th>
+                                                <th>Project Status</th>
+                                                <th>Description</th>
+                                                <th>Project Link</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <this.projectsContent />
+                                        </tbody>
+                                    </Table>
+                                </Col>
+                            </Row>
                         </Card.Text>
 
-                        {/*<Card.Text>{props.appSkills}</Card.Text>*/}
                         <Card.Text><i class="fas fa-phone"></i> &nbsp;{this.props.appPhone}</Card.Text>
                         <Card.Text><i class="far fa-envelope"></i> &nbsp;{this.props.appEmail}</Card.Text>
                         {/* <Card.Text>
@@ -490,13 +528,10 @@ class EmpAppCard extends Component {
                     
                     </Card.Text> */}
 
-                        <Button variant="success" onClick={this.shortlist(123, 456)} >Shortlist</Button>
-
-
-
-                        {/* onClick={this.shortlist("asjdkasj", "Juna")} */}
+                        <Button variant="success" onClick={() => { this.shortlist(123, 456) }} >Shortlist</Button>
                     </Card.Body>
                 </Card>
+            </div >
         )
     }
 }
