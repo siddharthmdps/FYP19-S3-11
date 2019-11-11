@@ -510,8 +510,18 @@ class Profile extends Component {
                         console.log(key, receivedData.data.Education[i][key]);
                         tempE[key] = receivedData.data.Education[i][key];
                     }
+
+                    let tempDate = new Date(tempE["StartDate"]);
+                    tempE.StartDate = `${tempDate.getFullYear()}-${tempDate.getMonth()+1}-${tempDate.getDate()}`;
+                    tempDate = new Date(tempE["EndDate"]);
+                    tempE.EndDate = `${tempDate.getFullYear()}-${tempDate.getMonth()+1}-${tempDate.getDate()}`;
                     tempEducation.push(tempE);
+                    
                 }
+                // console.log(tempEducation);
+                // let temp = new Date(tempEducation["StartDate"]);
+                // tempEducation.StartDate = temp.toString("DD/MM/YYYY");
+                // console.log(temp, tempEducation["StartDate"]);
                 this.setState({ Education: tempEducation });
 
 
