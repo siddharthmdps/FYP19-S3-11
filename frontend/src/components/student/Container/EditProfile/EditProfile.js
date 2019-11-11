@@ -493,15 +493,15 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:3000/studentProfile')
+        Axios.get(`${apiURL}student/studenteducation/1`)
             .then(receivedData => {
-                console.log(receivedData.data);
-                let tempPP = { ...PersonalParticularsShell }
-                for (let key in tempPP) {
-                    console.log(key, receivedData.data.PersonalParticulars[key]);
-                    tempPP[key] = receivedData.data.PersonalParticulars[key];
-                }
-                this.setState({ PersonalParticulars: tempPP });
+                console.log(receivedData.data.Education);
+                // let tempPP = { ...PersonalParticularsShell }
+                // for (let key in tempPP) {
+                //     console.log(key, receivedData.data.PersonalParticulars[key]);
+                //     tempPP[key] = receivedData.data.PersonalParticulars[key];
+                // }
+                // this.setState({ PersonalParticulars: tempPP });
 
                 let tempEducation = [];
                 for (let i in receivedData.data.Education) {
@@ -515,13 +515,13 @@ class Profile extends Component {
                 this.setState({ Education: tempEducation });
 
 
-                this.setState({ WorkExp: receivedData.data.WorkExp });
-                this.setState({ JobPreference: receivedData.data.JobPreference });
-                this.setState({ Awards: receivedData.data.Awards });
-                this.setState({ Certification: receivedData.data.Certification });
-                this.setState({ Skills: receivedData.data.Skills });
-                this.setState({ Projects: receivedData.data.Projects });
-                this.setState({ Document: receivedData.data.Document });
+                // this.setState({ WorkExp: receivedData.data.WorkExp });
+                // this.setState({ JobPreference: receivedData.data.JobPreference });
+                // this.setState({ Awards: receivedData.data.Awards });
+                // this.setState({ Certification: receivedData.data.Certification });
+                // this.setState({ Skills: receivedData.data.Skills });
+                // this.setState({ Projects: receivedData.data.Projects });
+                // this.setState({ Document: receivedData.data.Document });
             });
 
             var getawardurl = apiURL + 'student/studentawards/' + "1";
