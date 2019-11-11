@@ -12,6 +12,9 @@ router.get('/getallemployers', getallemployers)
 const getallstudents = require('./getallstudents')
 router.get('/getallstudents', getallstudents)
 
+const getsuccessfulapplications = require('./getsuccessfulapplications')
+router.get('/getsuccessfulapplications', getsuccessfulapplications)
+
 
 // PUT
 const editemployer = require('./editemployer')
@@ -31,6 +34,10 @@ router.put('/deletestudent/:id', deletestudent)
 
 const deletejob = require('./deletejob')
 router.put('/deletejob/:id', deletejob)
+
+// POST
+const addjob = require('./addjob')
+router.post('/addjob', addjob)
 
 router.get('/', (req, res) => {
     res.send('hello from backend server, admin route')

@@ -13,7 +13,8 @@ const searchjob = (req,res) => {
         }
         else {
             let queryString = `SELECT * FROM pegasus.job 
-                                WHERE pegasus.job.title LIKE '%${keyword}%'`
+                                WHERE pegasus.job.title LIKE '%${keyword}%'
+                                LIMIT 50`
             connection.query(queryString, (err, rows, fields) => {
                 if(err) {
                     res.status(500).json({ message: err })
@@ -23,7 +24,7 @@ const searchjob = (req,res) => {
                 }
                 else if ( !rows || rows.length == 0 ) {
                     res.status(200).json({
-                        message: 'Empty table'
+                        message: 'NOT FOUND'
                     })
                 }
             })

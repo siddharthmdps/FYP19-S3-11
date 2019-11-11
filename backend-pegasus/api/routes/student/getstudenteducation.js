@@ -18,7 +18,7 @@ const getstudenteducation = (req, res) => {
                     }
                     else {
                         res.json({
-                            message: "success"
+                            Education: rows
                         })
                     }
                 }) 

@@ -3,6 +3,10 @@ let student = {
     age: 23
 }
 
-delete student['name']
+let changename = () => {
+    student.name = 'jim'
+}
+changename()
 
 console.log(student)
+
