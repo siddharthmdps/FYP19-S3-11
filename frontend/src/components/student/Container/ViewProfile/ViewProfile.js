@@ -147,7 +147,8 @@ class Profile extends Component {
                 this.setState({ Projects: receivedData.data.Projects });
                 this.setState({ Document: receivedData.data.Document });
             });
-
+            
+            
     }
 
     updateActiveTab() {
