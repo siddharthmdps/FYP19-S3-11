@@ -55,7 +55,6 @@ export default function SwipeableTemporaryDrawer() {
       >
         {sideList('left')}
       </SwipeableDrawer>
-      
     </div>
   );
 }
