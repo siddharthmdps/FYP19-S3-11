@@ -42,10 +42,6 @@ If the user is already logged in, the app will redirect to corresponding app (st
 class App extends Component {
   constructor(){
     super()
-    // this.state = {
-    //   isAuthenticated : localStorage.getItem('isAuthenticated'), // to check whether user is already logged in
-    //   userType : localStorage.getItem('userType') // to check the user type (student, employer, admin)
-    // }
   }
 
 
