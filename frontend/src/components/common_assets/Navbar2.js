@@ -5,6 +5,8 @@ import classes from './Navbar2.module.css';
 import {SwipeableDrawer, AppBar, Toolbar, IconButton, Typography, Button} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
+import auth from '../../utils/auth'
+
 const navbar = props => (
   <React.Fragment>
     
@@ -42,13 +44,7 @@ const navbar = props => (
           <Nav.Link href="/editprofile" className={classes.NavItem}>Edit Profile</Nav.Link>
           <Nav.Link href="/savedjobs" className={classes.NavItem}>Saved Jobs</Nav.Link>
           <Nav.Link href="/appliedjobs" className={classes.NavItem}>Applied Jobs</Nav.Link>
-          <Nav.Link 
-             className={classes.NavItem}
-            onClick={ () => {
-              localStorage.clear()
-              document.location.reload(true)
-            } }
-          >Log out</Nav.Link>
+          <Nav.Link className={classes.NavItem} onClick={ auth.logout }>Log out</Nav.Link>
         </Nav>
     </Navbar.Collapse>
   </Navbar>

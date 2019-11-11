@@ -2,21 +2,34 @@
 import React, {Component} from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-// importing Components
+// importing Common Components
 import Navbar from './components/common_assets/Navbar2'
 import LoginForm from './components/common_assets/LoginForm'
-import Employer from './components/employer/Employer'
-import Student from './components/student/Student'
-import Admin from './components/admin/Admin'
 import SignUp from './components/common_assets/Signup'
+
+// importing Employer Components
+import Employer from './components/employer/Employer'
+import EmpProfileEdit from './components/employer/ProfileEditor/EmpProfileEdit'
+import PostJob from './components/employer/PostJob'
+
+
+// importing Student Components
+import Student from './components/student/Student'
 import EditProfile from './components/student/Container/EditProfile/EditProfile'
 import ViewProfile from './components/student/Container/ViewProfile/ViewProfile'
 import AppliedJobs from './components/student/Container/AppliedJobs/AppliedJobs'
 import SavedJobs from './components/student/Container/SavedJobs/SavedJobs'
 import SearchJobs from './components/student/Container/SearchJobs/SearchJobs'
 
+// importing Admin Components
+import Admin from './components/admin/Admin'
+
+// importing utils
+import {ProtectedRoute} from './utils/protected.routes'
+
 // importing CSS
 import './App.css'
+import auth from './utils/auth';
 
 
 /* 
@@ -26,33 +39,20 @@ If the user is already logged in, the app will redirect to corresponding app (st
 class App extends Component {
   constructor(){
     super()
-    this.state = {
-      isAuthenticated : localStorage.getItem('isAuthenticated'), // to check whether user is already logged in
-      userType : localStorage.getItem('userType') // to check the user type (student, employer, admin)
-    }
+    // this.state = {
+    //   isAuthenticated : localStorage.getItem('isAuthenticated'), // to check whether user is already logged in
+    //   userType : localStorage.getItem('userType') // to check the user type (student, employer, admin)
+    // }
   }
 
-  updateLoginState = () => {
-    this.setState ({
-      isAuthenticated : localStorage.getItem('isAuthenticated'),
-      userType : localStorage.getItem('userType')
-    })
-  }
 
   getContentToRender = () => {
-    // user is not logged in
-    if (!this.state.isAuthenticated) {
-      return <LoginForm updateLoginState={this.updateLoginState}/>
-    }
-    // if the user is logged in, render the corresponding component (based on the usertype)
+    if(!auth.isAuthenticated()) return <LoginForm/>
     else {
-      // PLACE YOUR APP HERE
-      switch (this.state.userType) {
-        case 'student' : return <Student/>;
-        case 'employer' : return <Employer/>;
-        case 'admin' : return <Admin/>;
-
-        default : return <h3>usertype not known</h3>
+      switch(localStorage.getItem('usertype')){
+        case 'student': return <Student/>
+        case 'employer': return <Employer/>
+        case 'admin': return <Admin/>
       }
     }
   }
@@ -60,15 +60,23 @@ class App extends Component {
   render() { 
     return (
       <Router>
-        {/* <Navbar /> */}
         <Switch>
+          {/* Public Routes */}
           <Route exact path="/" component={this.getContentToRender}></Route>
+          <Route exact path="/login" component={LoginForm}></Route>
           <Route exact path="/signup" component={SignUp}></Route>
-          <Route exact path="/editprofile" component={EditProfile}></Route>
-          <Route exact path="/viewprofile" component={ViewProfile}></Route>
-          <Route exact path="/appliedjobs" component={AppliedJobs}></Route>
-          <Route exact path="/savedjobs" component={SavedJobs}></Route>
-          <Route exact path="/searchjobs" component={SearchJobs}></Route>
+
+          {/* Employer Routes */}
+          <ProtectedRoute exact path="/employer" component={Employer}></ProtectedRoute>
+          <ProtectedRoute exact path="/employer/editprofile" component={EmpProfileEdit}></ProtectedRoute>
+
+          {/* Student Routes */}
+          <ProtectedRoute exact path="/student" component={EditProfile}></ProtectedRoute>
+          <ProtectedRoute exact path="/student/editprofile" component={EditProfile}></ProtectedRoute>
+          <ProtectedRoute exact path="/student/viewprofile" component={ViewProfile}></ProtectedRoute>
+          <ProtectedRoute exact path="/student/appliedjobs" component={AppliedJobs}></ProtectedRoute>
+          <ProtectedRoute exact path="/student/savedjobs" component={SavedJobs}></ProtectedRoute>
+          <ProtectedRoute exact path="/student/searchjobs" component={SearchJobs}></ProtectedRoute>
         </Switch>
       </Router>
     )
