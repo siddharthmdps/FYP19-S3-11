@@ -493,16 +493,21 @@ class Profile extends Component {
     }
 
     componentDidMount() {
+
+        Axios.get(`${apiURL}student/studentinfo/1`)
+            .then(receivedData => {
+                console.log(receivedData.data.PersonalParticulars);
+                let tempPP = { ...PersonalParticularsShell }
+                for (let key in tempPP) {
+                    console.log(key, receivedData.data.PersonalParticulars[key]);
+                    tempPP[key] = receivedData.data.PersonalParticulars[key];
+                }
+                this.setState({ PersonalParticulars: tempPP });
+            });
+
         Axios.get(`${apiURL}student/studenteducation/1`)
             .then(receivedData => {
                 console.log(receivedData.data.Education);
-                // let tempPP = { ...PersonalParticularsShell }
-                // for (let key in tempPP) {
-                //     console.log(key, receivedData.data.PersonalParticulars[key]);
-                //     tempPP[key] = receivedData.data.PersonalParticulars[key];
-                // }
-                // this.setState({ PersonalParticulars: tempPP });
-
                 let tempEducation = [];
                 for (let i in receivedData.data.Education) {
                     let tempE = { ...EducationShell }
@@ -510,18 +515,12 @@ class Profile extends Component {
                         console.log(key, receivedData.data.Education[i][key]);
                         tempE[key] = receivedData.data.Education[i][key];
                     }
-
                     let tempDate = new Date(tempE["StartDate"]);
                     tempE.StartDate = `${tempDate.getFullYear()}-${tempDate.getMonth()+1}-${tempDate.getDate()}`;
                     tempDate = new Date(tempE["EndDate"]);
                     tempE.EndDate = `${tempDate.getFullYear()}-${tempDate.getMonth()+1}-${tempDate.getDate()}`;
                     tempEducation.push(tempE);
-                    
                 }
-                // console.log(tempEducation);
-                // let temp = new Date(tempEducation["StartDate"]);
-                // tempEducation.StartDate = temp.toString("DD/MM/YYYY");
-                // console.log(temp, tempEducation["StartDate"]);
                 this.setState({ Education: tempEducation });
 
 
@@ -532,6 +531,25 @@ class Profile extends Component {
                 // this.setState({ Skills: receivedData.data.Skills });
                 // this.setState({ Projects: receivedData.data.Projects });
                 // this.setState({ Document: receivedData.data.Document });
+            });
+
+        Axios.get(`${apiURL}student/studentworkexp/1`)
+            .then(receivedData => {
+                console.log(receivedData.data.WorkExp);
+                let tempWorkExp = [];
+                for (let i in receivedData.data.WorkExp) {
+                    let tempW = { ...WorkExpShell }
+                    for (let key in tempW) {
+                        console.log(key, receivedData.data.WorkExp[i][key]);
+                        tempW[key] = receivedData.data.WorkExp[i][key];
+                    }
+                    let tempDate = new Date(tempW["StartDate"]);
+                    tempW.StartDate = `${tempDate.getFullYear()}-${tempDate.getMonth()+1}-${tempDate.getDate()}`;
+                    tempDate = new Date(tempW["EndDate"]);
+                    tempW.EndDate = `${tempDate.getFullYear()}-${tempDate.getMonth()+1}-${tempDate.getDate()}`;
+                    tempWorkExp.push(tempW);
+                }
+                this.setState({ WorkExp: tempWorkExp });
             });
 
             var getawardurl = apiURL + 'student/studentawards/' + "1";
