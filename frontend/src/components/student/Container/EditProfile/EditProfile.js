@@ -522,15 +522,6 @@ class Profile extends Component {
                     tempEducation.push(tempE);
                 }
                 this.setState({ Education: tempEducation });
-
-
-                // this.setState({ WorkExp: receivedData.data.WorkExp });
-                // this.setState({ JobPreference: receivedData.data.JobPreference });
-                // this.setState({ Awards: receivedData.data.Awards });
-                // this.setState({ Certification: receivedData.data.Certification });
-                // this.setState({ Skills: receivedData.data.Skills });
-                // this.setState({ Projects: receivedData.data.Projects });
-                // this.setState({ Document: receivedData.data.Document });
             });
 
         Axios.get(`${apiURL}student/studentworkexp/1`)
