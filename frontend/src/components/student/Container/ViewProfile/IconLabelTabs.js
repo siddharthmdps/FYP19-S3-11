@@ -178,6 +178,7 @@ let IconLabelTabs = props => {
                                 date={certificateDetail.IssueDate + " - " + certificateDetail.ValidUntil}
                                 iconStyle={{ background: 'red', color: '#fff' }}
                                 icon={<ImportContactsIcon />}
+                                key={certificateDetail.CertificateID}
                             >
                                 <h3 className="vertical-timeline-element-title">{certificateDetail.Name}</h3>
                                 <h4 className="vertical-timeline-element-subtitle">- {certificateDetail.IssuedBy}</h4>
