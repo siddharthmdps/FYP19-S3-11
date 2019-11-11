@@ -34,7 +34,7 @@ const navbar = props => (
             <Dropdown.Item href="/editprofile" className={classes.DropDownItem}>Edit Profile</Dropdown.Item>
             <Dropdown.Item href="/savedjobs" className={classes.DropDownItem}>Saved Jobs</Dropdown.Item>
             <Dropdown.Item href="/appliedjobs" className={classes.DropDownItem}>Applied Jobs</Dropdown.Item>
-            <Dropdown.Item href="/" className={classes.DropDownItem} onClick={ auth.logout }>Log out</Dropdown.Item>
+            <Dropdown.Item href="/" className={classes.DropDownItem}>Log out</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
 
