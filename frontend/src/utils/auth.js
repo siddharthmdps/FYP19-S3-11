@@ -34,7 +34,6 @@ class Auth {
     }
 
     logout(cb) {
-        console.log('ding')
         localStorage.clear()
         window.location = `/login`
         cb()

@@ -3,15 +3,17 @@ import React, {Component} from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // importing Common Components
-import Navbar from './components/common_assets/Navbar2'
+import Navbar2 from './components/common_assets/Navbar2'
 import LoginForm from './components/common_assets/LoginForm'
 import SignUp from './components/common_assets/Signup'
+import About from './components/common_assets/About';
 
 // importing Employer Components
 import Employer from './components/employer/Employer'
-import EmpProfileEdit from './components/employer/ProfileEditor/EmpProfileEdit'
+import EmpNavbar from './components/employer/EmpNavbar'
+import EmpViewProfile from './components/employer/ProfileView/EmpProfileView'
+import EmpEditProfile from './components/employer/ProfileEditor/EmpEditProfile'
 import PostJob from './components/employer/PostJob'
-
 
 // importing Student Components
 import Student from './components/student/Student'
@@ -32,6 +34,7 @@ import './App.css'
 import auth from './utils/auth';
 
 
+
 /* 
 App will first check the 'localStorage' to check whether the user already logged in or not.
 If the user is already logged in, the app will redirect to corresponding app (student.js, employer.js or admin.js)
@@ -46,7 +49,7 @@ class App extends Component {
   }
 
 
-  getContentToRender = () => {
+  ContentToRender = () => {
     if(!auth.isAuthenticated()) return <LoginForm/>
     else {
       switch(localStorage.getItem('usertype')){
@@ -57,28 +60,48 @@ class App extends Component {
     }
   }
 
+  // render accordingly depending on the usertype
+  NavbarToRender = () => {
+    if(!auth.isAuthenticated()) return null
+    switch(localStorage.getItem('usertype')){
+        case 'student'  : return <Navbar2/>
+        case 'employer' : return <EmpNavbar/>
+        case 'admin'    : return null
+    }
+  }
+
   render() { 
     return (
-      <Router>
-        <Switch>
-          {/* Public Routes */}
-          <Route exact path="/" component={this.getContentToRender}></Route>
-          <Route exact path="/login" component={LoginForm}></Route>
-          <Route exact path="/signup" component={SignUp}></Route>
+      <div>
+        <this.NavbarToRender/>
+        <Router>
+          <Switch>
+            {/* Public Routes */}
+            <Route exact path="/" component={this.ContentToRender}></Route>
+            <Route exact path="/login" component={LoginForm}></Route>
+            <Route exact path="/signup" component={SignUp}></Route>
 
-          {/* Employer Routes */}
-          <ProtectedRoute exact path="/employer" component={Employer}></ProtectedRoute>
-          <ProtectedRoute exact path="/employer/editprofile" component={EmpProfileEdit}></ProtectedRoute>
 
-          {/* Student Routes */}
-          <ProtectedRoute exact path="/student" component={EditProfile}></ProtectedRoute>
-          <ProtectedRoute exact path="/student/editprofile" component={EditProfile}></ProtectedRoute>
-          <ProtectedRoute exact path="/student/viewprofile" component={ViewProfile}></ProtectedRoute>
-          <ProtectedRoute exact path="/student/appliedjobs" component={AppliedJobs}></ProtectedRoute>
-          <ProtectedRoute exact path="/student/savedjobs" component={SavedJobs}></ProtectedRoute>
-          <ProtectedRoute exact path="/student/searchjobs" component={SearchJobs}></ProtectedRoute>
-        </Switch>
-      </Router>
+            {/* Employer Routes */}
+            <ProtectedRoute exact path="/employer" component={Employer}></ProtectedRoute>
+            <ProtectedRoute exact path="/employer/viewprofile" component={EmpViewProfile}></ProtectedRoute>
+            <ProtectedRoute exact path="/employer/editprofile" component={EmpEditProfile}></ProtectedRoute>
+            <ProtectedRoute exact path="/employer/about" component={About}></ProtectedRoute>
+            <ProtectedRoute exact path="/employer/postjob" component={PostJob}></ProtectedRoute>
+
+            {/* Student Routes */}
+            <ProtectedRoute exact path="/student" component={EditProfile}></ProtectedRoute>
+            <ProtectedRoute exact path="/student/editprofile" component={EditProfile}></ProtectedRoute>
+            <ProtectedRoute exact path="/student/viewprofile" component={ViewProfile}></ProtectedRoute>
+            <ProtectedRoute exact path="/student/appliedjobs" component={AppliedJobs}></ProtectedRoute>
+            <ProtectedRoute exact path="/student/savedjobs" component={SavedJobs}></ProtectedRoute>
+            <ProtectedRoute exact path="/student/searchjobs" component={SearchJobs}></ProtectedRoute>
+
+            {/* Admin Routes */}
+            <ProtectedRoute exact path="/admin" component={Admin}></ProtectedRoute>
+          </Switch>
+        </Router>
+      </div>
     )
   }
 }

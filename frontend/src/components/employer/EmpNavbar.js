@@ -22,7 +22,7 @@ class Navbar extends Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
               {/* link this to profile management */}
-                <a className="nav-link" href="/employer/viewprofile" id="viewprofile"></a> 
+    <a className="nav-link" href="/employer/viewprofile" id="viewprofile">{localStorage.getItem('username').toUpperCase()}</a> 
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/employer/editprofile" id="editprofile" >Edit Profile</a>
@@ -48,7 +48,6 @@ class Navbar extends Component {
     
               <button type="button" className="btn btn-dark" id="btn-logout" 
                 onClick={ auth.logout }>Log Out</button>
-    
             </div>
             
           </div>
