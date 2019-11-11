@@ -15,6 +15,8 @@ import AppliedJobs from './components/student/Container/AppliedJobs/AppliedJobs'
 import SavedJobs from './components/student/Container/SavedJobs/SavedJobs'
 import SearchJobs from './components/student/Container/SearchJobs/SearchJobs'
 
+import { SnackbarProvider } from 'notistack';
+
 // importing CSS
 import './App.css'
 
@@ -71,6 +73,7 @@ class App extends Component {
 
   render() { 
     return (
+      <SnackbarProvider maxSnack={3}>
       <Router>
         <Navbar NavLeftSide = {NavLeftSide} NavRightSide={NavRightSide}/>
         <Switch>
@@ -83,6 +86,7 @@ class App extends Component {
           <Route exact path="/searchjobs" component={SearchJobs}></Route>
         </Switch>
       </Router>
+      </SnackbarProvider>
     )
   }
 }
