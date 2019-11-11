@@ -477,6 +477,36 @@ class Profile extends Component {
     }
 // Removing elements in the Profile ends here
 
+// Submit elements to put in Backend starts here
+    submitPersonalParticulars = () => {
+        this.togglePanel(1);
+    }
+    submitEducation = () => {
+        this.togglePanel(2);
+    }
+    submitWorkExp = () => {
+        this.togglePanel(3);
+    }
+    submitJobPreference = () => {
+        this.togglePanel(4);
+    }
+    submitAwards = () => {
+        this.togglePanel(5);
+    }
+    submitCertification = () => {
+        this.togglePanel(6);
+    }
+    submitProjects = () => {
+        this.togglePanel(7);
+    }
+    submitSkills = () => {
+        this.togglePanel(8);
+    }
+    submitDocuments = () => {
+        this.togglePanel(9);
+    }
+// Submit elements to put in Backend ends here
+
     removeEdit = (elementID) => {
         let tempState = this.state.Skills;
         tempState.forEach(element => {
@@ -485,12 +515,7 @@ class Profile extends Component {
             }
         });
         this.setState(tempState);
-    }
-
-    test = () => {
-        this.setState({"activatedToggle": "2"});
-
-    }
+    }    
 
     componentDidMount() {
 
@@ -632,7 +657,7 @@ class Profile extends Component {
                                                 changeFn={event => this.changePersonalParticulars(event)} />
                                         </Form>
                                         <div className={classes.ButtonSection}>
-                                            <Button1 click={this.test}>
+                                            <Button1 click={this.submitPersonalParticulars}>
                                                 Next >
                                         </Button1>
                                         </div>
@@ -665,7 +690,7 @@ class Profile extends Component {
                                         })}
                                         <div className={classes.ButtonSection}>
                                             <Button1 click={this.addNewEducation}>+ Add More</Button1>
-                                            <Button1 click={this.addNewEducation}>Next ></Button1>
+                                            <Button1 click={this.submitEducation}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -696,7 +721,7 @@ class Profile extends Component {
                                         })}
                                         <div className={classes.ButtonSection}>
                                             <Button1 click={this.addNewWorkExp} clicked>+ Add More</Button1>
-                                            <Button1 click={this.addNewEducation}>Next ></Button1>
+                                            <Button1 click={this.submitWorkExp}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -727,7 +752,7 @@ class Profile extends Component {
                                         })}
                                         <div className={classes.ButtonSection}>
                                             <Button1 click={this.addNewJobPref}>+ Add More</Button1>
-                                            <Button1 click={this.addNewEducation}>Next ></Button1>
+                                            <Button1 click={this.submitJobPreference}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -758,7 +783,7 @@ class Profile extends Component {
                                         })}
                                         <div className={classes.ButtonSection}>
                                             <Button1 click={this.addNewAwards}>+ Add More</Button1>
-                                            <Button1 click={this.test}>Next ></Button1>
+                                            <Button1 click={this.submitAwards}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -789,7 +814,7 @@ class Profile extends Component {
                                         })}
                                         <div className={classes.ButtonSection}>
                                             <Button1 click={this.addNewCertificate}>+ Add More</Button1>
-                                            <Button1 click={this.addNewEducation}>Next ></Button1>
+                                            <Button1 click={this.submitCertification}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -820,7 +845,7 @@ class Profile extends Component {
                                         })}
                                         <div className={classes.ButtonSection}>
                                             <Button1 click={this.addNewProjects}>+ Add More</Button1>
-                                            <Button1 click={this.addNewEducation}>Next ></Button1>
+                                            <Button1 click={this.submitProjects}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -852,7 +877,7 @@ class Profile extends Component {
                                         })}
                                         <div className={classes.ButtonSection}>
                                             <Button1 click={this.addNewSkill}>+ Add More</Button1>
-                                            <Button1 click={this.addNewEducation}>Next ></Button1>
+                                            <Button1 click={this.submitSkills}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
@@ -882,7 +907,7 @@ class Profile extends Component {
                                         })}
                                         <div className={classes.ButtonSection}>
                                             <Button1 click={this.addNewDocument}>+ Add More</Button1>
-                                            <Button1 click={this.addNewEducation}>Next ></Button1>
+                                            <Button1 click={this.submitDocuments}>Next ></Button1>
                                         </div>
                                     </Card.Body>
                                 </Accordion.Collapse>
