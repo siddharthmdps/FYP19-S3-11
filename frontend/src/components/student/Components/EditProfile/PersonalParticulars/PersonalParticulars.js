@@ -7,7 +7,7 @@ const personalParticulars = props => {
             <Form.Row>
                 <Form.Group as={Col} sm='4' controlId="FirstName">
                     <Form.Label>First Name</Form.Label>
-                        <Form.Control type='text' placeholder="Joshua" value={props.details.FirstName} onChange={props.changeFn} required pattern="[A-Za-z]+"/>
+                        <Form.Control type='text' placeholder="Michael" value={props.details.FirstName} onChange={props.changeFn} required pattern="[A-Za-z]+"/>
                         <Form.Control.Feedback type="invalid">
                             Please choose a username.
                         </Form.Control.Feedback>
@@ -15,12 +15,12 @@ const personalParticulars = props => {
 
                 <Form.Group as={Col}  sm='4' controlId="MiddleName">
                     <Form.Label>Middle Name</Form.Label>
-                        <Form.Control type='text' placeholder="Chee Yan Cheng" value={props.details.MiddleName} onChange={props.changeFn} required/>
+                        <Form.Control type='text' placeholder="Bakari" value={props.details.MiddleName} onChange={props.changeFn} required/>
                 </Form.Group>
 
                 <Form.Group as={Col}  sm='4' controlId="LastName">
                     <Form.Label>Last Name</Form.Label>
-                    <Form.Control type='text' placeholder="Oliver" value={props.details.LastName} onChange={props.changeFn} required/>
+                    <Form.Control type='text' placeholder="Jordan" value={props.details.LastName} onChange={props.changeFn} required/>
                 </Form.Group>
             </Form.Row>
 
