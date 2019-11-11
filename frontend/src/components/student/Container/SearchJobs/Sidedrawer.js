@@ -40,31 +40,14 @@ export default function SwipeableTemporaryDrawer() {
     //   onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))} */}
-
         <Select/>
       </List>
-
-      {/* <Divider />
-
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List> */}
     </div>
   );
 
   return (
     <div>
-      <Button onClick={toggleDrawer('left', true)} ><p className={classes2.Sidedrawer}>Advanced Search</p></Button>
+      <Button onClick={toggleDrawer('left', true)} className={classes2.Sidedrawer} style={{color: '#d4d3d3'}}>Advanced Search</Button>
       <SwipeableDrawer
         open={state.left}
         onClose={toggleDrawer('left', false)}

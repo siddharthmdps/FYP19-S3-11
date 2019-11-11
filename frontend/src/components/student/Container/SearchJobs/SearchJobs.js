@@ -116,6 +116,7 @@ class SearchJobs extends Component {
                                 onKeyDown={(event) => { if (event.key === 'Enter') this.getSearchedJobs() }}
                                 className={classes.SearchBox}
                             />
+                            <br />
                             <Sidedrawer />
                         </div>
 
