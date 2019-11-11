@@ -18,22 +18,22 @@ const certification = props => {
             <br/>
             <Form.Row>
                 <Form.Group as={Col} sm = "6" controlId="Name">
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label>Name <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                     <Form.Control type='text' placeholder="Certificated Java Developer" value={props.details.Name} onChange={props.changeFn} required/>
                 </Form.Group> 
                 <Form.Group as={Col} sm="6" controlId="IssuedBy">
-                    <Form.Label>Issued By</Form.Label>
+                    <Form.Label>Issued By <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                     <Form.Control type='text' placeholder="Oracle" value={props.details.IssuedBy} onChange={props.changeFn} required/>
                 </Form.Group> 
             </Form.Row>
 
             <Form.Row>
                 <Form.Group as={Col} sm = "6" controlId="IssueDate">
-                    <Form.Label>Issue Date</Form.Label>
+                    <Form.Label>Issue Date <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                     <Form.Control type='text' placeholder="MM/YY" value={props.details.IssueDate} onChange={props.changeFn} required/>
                 </Form.Group> 
                 <Form.Group as={Col} sm="6" controlId="ValidUntil">
-                    <Form.Label>Valid Until</Form.Label>
+                    <Form.Label>Valid Until <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                     <Form.Control type='text' placeholder="MM/YY" value={props.details.ValidUntil} onChange={props.changeFn} required/>
                 </Form.Group> 
             </Form.Row>
