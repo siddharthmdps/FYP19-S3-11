@@ -567,12 +567,36 @@ class Profile extends Component {
                 this.setState({ JobPreference: tempJobPreference });
             });
 
-            var getawardurl = apiURL + 'student/studentawards/' + "1";
-            Axios.get(getawardurl)
-                .then(receivedData => {
-                    console.log(receivedData.Awards);
-                    this.setState({ Awards: receivedData.data.Awards });
-                });
+            Axios.get(`${apiURL}student/studentawards/1`)
+            .then(receivedData => {
+                console.log(receivedData.data.Awards);
+                let tempAwards = [];
+                for (let i in receivedData.data.Awards) {
+                    let tempA = { ...AwardsShell }
+                    for (let key in tempA) {
+                        console.log(key, receivedData.data.Awards[i][key]);
+                        tempA[key] = receivedData.data.Awards[i][key];
+                    }
+                    tempAwards.push(tempA);
+                }
+                this.setState({ Awards: tempAwards });
+            });
+
+            Axios.get(`${apiURL}student/studentcertificate/1`)
+            .then(receivedData => {
+                console.log(receivedData.data.Certification);
+                let tempCertification = [];
+                for (let i in receivedData.data.Certification) {
+                    let tempC = { ...CertificationShell }
+                    for (let key in tempC) {
+                        console.log(key, receivedData.data.Certification[i][key]);
+                        tempC[key] = receivedData.data.Certification[i][key];
+                    }
+                    tempCertification.push(tempC);
+                }
+                this.setState({ Certification: tempCertification });
+            });
+
 
             this.togglePanel(0);
     }
