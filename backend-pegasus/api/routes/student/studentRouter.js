@@ -99,6 +99,7 @@ router.get('/studentinfo/:studentid',(req, res, next) => {
                     });
                 }
             });
+            connection.release();
         }
     });
 });
