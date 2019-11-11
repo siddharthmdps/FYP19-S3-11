@@ -424,7 +424,7 @@ class EmpAppCard extends Component {
 
     render() {
         return (
-            <div className="col-sm-8 mx-auto" style={{ paddingBottom: "10px" }}>
+            <div className="col-sm-8 mx-auto" >
                 <Card >
                     <Card.Header>
                         <Row>

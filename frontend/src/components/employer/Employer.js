@@ -8,7 +8,7 @@ import EmpPanel from './EmpPanel'
 import EmpProfileView from './ProfileView/EmpProfileView'
 import EmpFeed from './EmpFeed'
 import EmpProfileEdit from './ProfileEditor/EmpProfileEdit'
-import EmpJobView from './JobView/EmpJobView'
+//import EmpJobView from './JobView/EmpJobView'
 import EditJob from './JobEdit/EditJob'
 
 // Common assets
@@ -97,18 +97,18 @@ class Employer extends Component {
                 return <h3>blog</h3>
             case 'postjob':
                 return <PostJob />
-            case 'viewjob':
-                return <EmpJobView
-                    jobID={window.jobDetails.jobid}
-                    jobtitle={window.jobDetails.jobtitle}
-                    jobskills={window.jobDetails.jobrequiredskills}
-                    jobdescription={window.jobDetails.jobdescription}
-                    joblocation={window.jobDetails.joblocation}
-                    jobindustry={window.jobDetails.jobindustry}
-                    dateposted={window.jobDetails.jobpostdate}
-                    editJobHandler={this.editJobHandler}
+            // case 'viewjob':
+            //     return <EmpJobView
+            //         jobID={window.jobDetails.jobid}
+            //         jobtitle={window.jobDetails.jobtitle}
+            //         jobskills={window.jobDetails.jobrequiredskills}
+            //         jobdescription={window.jobDetails.jobdescription}
+            //         joblocation={window.jobDetails.joblocation}
+            //         jobindustry={window.jobDetails.jobindustry}
+            //         dateposted={window.jobDetails.jobpostdate}
+            //         editJobHandler={this.editJobHandler}
 
-                />
+            //     />
 
             case 'editjob':
                 return <EditJob
