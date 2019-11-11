@@ -552,6 +552,21 @@ class Profile extends Component {
                 this.setState({ WorkExp: tempWorkExp });
             });
 
+            Axios.get(`${apiURL}student/studentjobpref/1`)
+            .then(receivedData => {
+                console.log(receivedData.data.JobPreference);
+                let tempJobPreference = [];
+                for (let i in receivedData.data.JobPreference) {
+                    let tempJP = { ...JobPreferenceShell }
+                    for (let key in tempJP) {
+                        console.log(key, receivedData.data.JobPreference[i][key]);
+                        tempJP[key] = receivedData.data.JobPreference[i][key];
+                    }
+                    tempJobPreference.push(tempJP);
+                }
+                this.setState({ JobPreference: tempJobPreference });
+            });
+
             var getawardurl = apiURL + 'student/studentawards/' + "1";
             Axios.get(getawardurl)
                 .then(receivedData => {
