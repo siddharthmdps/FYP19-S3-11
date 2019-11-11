@@ -597,6 +597,20 @@ class Profile extends Component {
                 this.setState({ Certification: tempCertification });
             });
 
+            Axios.get(`${apiURL}student/studentproject/1`)
+            .then(receivedData => {
+                console.log(receivedData.data.Projects);
+                let tempProjects = [];
+                for (let i in receivedData.data.Projects) {
+                    let tempP = { ...ProjectsShell }
+                    for (let key in tempP) {
+                        console.log(key, receivedData.data.Projects[i][key]);
+                        tempP[key] = receivedData.data.Projects[i][key];
+                    }
+                    tempProjects.push(tempP);
+                }
+                this.setState({ Projects: tempProjects });
+            });
 
             this.togglePanel(0);
     }
