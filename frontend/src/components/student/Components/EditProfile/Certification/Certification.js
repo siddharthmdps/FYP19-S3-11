@@ -30,11 +30,11 @@ const certification = props => {
             <Form.Row>
                 <Form.Group as={Col} sm = "6" controlId="IssueDate">
                     <Form.Label>Issue Date <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
-                    <Form.Control type='text' placeholder="MM/YY" value={props.details.IssueDate} onChange={props.changeFn} required/>
+                    <Form.Control type='date' placeholder="MM/YY" value={props.details.IssueDate} onChange={props.changeFn} required/>
                 </Form.Group> 
                 <Form.Group as={Col} sm="6" controlId="ValidUntil">
                     <Form.Label>Valid Until <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
-                    <Form.Control type='text' placeholder="MM/YY" value={props.details.ValidUntil} onChange={props.changeFn} required/>
+                    <Form.Control type='date' placeholder="MM/YY" value={props.details.ValidUntil} onChange={props.changeFn} required/>
                 </Form.Group> 
             </Form.Row>
         </React.Fragment>

@@ -23,7 +23,7 @@ const awards = props => {
                 </Form.Group> 
                 <Form.Group as={Col} sm="6" controlId="Date">
                     <Form.Label>Awarded Date <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
-                    <Form.Control type='text' placeholder="MM/YY" value={props.details.Date} onChange={props.changeFn} required/>
+                    <Form.Control type='date' placeholder="MM/YY" value={props.details.Date} onChange={props.changeFn} required/>
                 </Form.Group> 
             </Form.Row>
 
