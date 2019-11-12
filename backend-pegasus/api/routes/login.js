@@ -40,8 +40,8 @@ const login = (req,res) => {
                     }
                 })
             }
+            connection.release()
         }
-        connection.release()
     } )
 }
 

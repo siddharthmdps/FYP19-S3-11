@@ -11,6 +11,7 @@ const studentawards = (req, res) => {
     for(var key in req.body) {
         if(req.body.hasOwnProperty(key)) {
             const studentid = req.body[key].StudentID;
+            const certid = req.body[key].CertificateID;
             const certname = req.body[key].Name;
             const issuedby = req.body[key].IssuedBy;
             
@@ -30,6 +31,8 @@ const studentawards = (req, res) => {
             var validuntil = new Date(year, month, 1);
             validuntil = dateFormat(validuntil, "yyyy-mm-dd");
 
+            var foundduplicate = false;
+
             mypool.getConnection( (error, connection) => {
                 if(error) {
                     connection.release()
@@ -37,12 +40,24 @@ const studentawards = (req, res) => {
                     throw error
                 }
                 else {
-                    if(studentid && certname && issuedby && year && month) {               
-                        let queryString = `INSERT INTO pegasus.studentcertificate (studentid, certificatename, issuedby, issueddate, validuntil) values ("${studentid}", "${certname}", "${issuedby}", "${issueddate}", "${validuntil}")`
-                        connection.query(queryString, (err, rows, fields) => {
+                    if(studentid && certname && issuedby && year && month) {    
+                        let queryString1 = `select * from pegasus.studentcertificate where id = "${certid}" and studentid = "${studentid}"` ;           
+                        let queryString2 = `INSERT INTO pegasus.studentcertificate (studentid, certificatename, issuedby, issueddate, validuntil) values ("${studentid}", "${certname}", "${issuedby}", "${issueddate}", "${validuntil}")`
+                        connection.query(queryString1, (err, rows, fields) => {
                             if(err) {
                                 res.status(500).json({ message: err })
                             }
+                            if(rows.length > 0) {
+                                foundduplicate = true;
+                            }
+                            if(foundduplicate) {
+                                queryString2 = `UPDATE pegasus.studentcertificate set certificatename = "${certname}", issuedby = "${issuedby}", issueddate = "${issueddate}", validuntil = "${validuntil}" where id = "${certid}" and studentid = "${studentid}"`
+                            }
+                            connection.query(queryString2, (err, rows, fields) => {
+                                if(err) {
+                                    res.status(500).json({ message: err });
+                                }
+                            }) 
                         }) 
                     } else {
                         res.status(400).json({

@@ -9,63 +9,63 @@ router.get('/searchjob/:keyword', getJobSearchResults)
 const getstudentaward = require('./getstudentawards')
 router.get('/studentawards/:studentid', getstudentaward)
 
-//post
+//put
 const studentawards = require('./studentawards')
-router.post('/poststudentawards', studentawards)
+router.put('/putstudentawards', studentawards)
 
 //student cert
 //get
 const getstudentcertificate = require('./getstudentcertificate')
 router.get('/studentcertificate/:studentid', getstudentcertificate)
 
-//post
+//put
 const studentcertificate = require('./studentcertificate')
-router.post('/poststudentcertificate', studentcertificate)
+router.put('/putstudentcertificate', studentcertificate)
 
 //student education
 //get
 const getstudenteducation = require('./getstudenteducation')
 router.get('/studenteducation/:studentid', getstudenteducation)
 
-//post
+//put
 const studenteducation = require('./studenteducation')
-router.post('/poststudenteducation', studenteducation)
+router.put('/putstudenteducation', studenteducation)
 
 //student job preference
 //get
 const getstudentjobpref = require('./getstudentjobpref')
 router.get('/studentjobpref/:studentid', getstudentjobpref)
 
-//post
+//put
 const studentjobpref = require('./studentjobpref')
-router.post('/poststudentjobpref', studentjobpref)
+router.put('/putstudentjobpref', studentjobpref)
 
 //student project
 //get
 const getstudentproject = require('./getstudentproject')
 router.get('/studentproject/:studentid', getstudentproject)
 
-//post
+//put
 const studentproject = require('./studentproject')
-router.post('/poststudentproject', studentproject)
+router.put('/putstudentproject', studentproject)
 
 //student work exp
 //get
 const getstudentworkexp = require('./getstudentworkexp')
 router.get('/studentworkexp/:studentid', getstudentworkexp)
 
-//post
+//put
 const studentworkexp = require('./studentworkexp')
-router.post('/poststudentworkexp', studentworkexp)
+router.put('/putstudentworkexp', studentworkexp)
 
 //student document
 //get
 const getstudentdocument = require('./getstudentdocument')
 router.get('/studentdocument/:studentid', getstudentdocument)
 
-//post
+//put
 const studentdocument = require('./studentdocument')
-router.post('/poststudentdocument', studentdocument)
+router.put('/putstudentdocument', studentdocument)
 
 
 //gt all student details
