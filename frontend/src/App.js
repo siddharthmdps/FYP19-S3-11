@@ -123,6 +123,7 @@ class App extends Component {
 
   render() { 
     return (
+      <SnackbarProvider maxSnack={3}>
       <div>
        <Router>
         <this.NavbarToRender/>
@@ -160,6 +161,7 @@ class App extends Component {
           <this.FooterToRender/>
         </Router>
       </div>
+      </SnackbarProvider>
     )
   }
 }
