@@ -41,6 +41,8 @@ const navbar = props => (
             <div>
               <Dropdown.Menu className={classes.DropdownMenu}>
               {Object.keys(props.NavRightSide).map(key => (
+                key==="Logout"?
+                <Dropdown.Item onClick={auth.logout} className={classes.DropDownItem}>{key}</Dropdown.Item>:
                 <Dropdown.Item href={props.NavRightSide[key]} className={classes.DropDownItem}>{key}</Dropdown.Item>
               ))}
                 {/* <Dropdown.Item href="/viewprofile" className={classes.DropDownItem}>View Public Profile</Dropdown.Item>
