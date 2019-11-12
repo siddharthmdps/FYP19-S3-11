@@ -47,7 +47,12 @@
     margin-left: -100px;
     margin-top: 6px;
     color: white;
+    transition: 0.2s;
+    transition-timing-function: ease-in;
+    /* Also the same as */
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
 }
+
 
 .DropDownItem {
     color: #fff!important;
@@ -74,6 +79,7 @@
     border: none;
     outline: none;
     opacity: 0.75;
+    border: 2px solid transparent;
 }
 
 .NavProfile:focus{
@@ -86,6 +92,7 @@
 
 .NavProfile:hover {
     opacity: 1.0;
+    border-color: #43CD86;
 }
 
 .NavProfile img{
