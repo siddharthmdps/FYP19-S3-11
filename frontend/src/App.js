@@ -45,16 +45,16 @@ import auth from './utils/auth';
 
 
 let NavLeftSide={
-  "Job Search": "/searchjobs",
+  "Job Search": "/student/searchjobs",
   "Companies": "/",
   "Blog": "/"
 }
 
 let NavRightSide={
-  "View Profile": "/viewprofile",
-  "Edit Profile": "/editprofile",
-  "Saved Jobs": "/savedjobs",
-  "Applied Jobs": "/appliedjobs",
+  "View Profile": "/student/viewprofile",
+  "Edit Profile": "/student/editprofile",
+  "Saved Jobs": "/student/savedjobs",
+  "Applied Jobs": "/student/appliedjobs",
   "Logout": "/",
 }
 /* 
@@ -106,7 +106,7 @@ class App extends Component {
   NavbarToRender = () => {
     if(!auth.isAuthenticated()) return null
     switch(localStorage.getItem('usertype')){
-        case 'student'  : return <Navbar2/>
+        case 'student'  : return <Navbar2 NavLeftSide={NavLeftSide} NavRightSide={NavRightSide}/>
         case 'employer' : return <EmpNavbar/>
         case 'admin'    : return <Navigation/>
     }
