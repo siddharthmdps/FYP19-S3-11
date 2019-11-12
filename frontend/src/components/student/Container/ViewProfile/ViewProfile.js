@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classes from './ViewProfile.module.css';
 import LeftSide from '../../Components/ViewProfile/LeftSide/LeftSide';
 import { Card, Container, Col, Row, CardColumns } from 'react-bootstrap';
-import { Timeline, Event } from '../../../common_assets/Timeline/Timeline';
+// import { Timeline, Event } from '../../../common_assets/Timeline/Timeline';
 import { ViewCard, Element } from '../../Components/ViewProfile/ViewCard/ViewCard';
 import Axios from 'axios';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
