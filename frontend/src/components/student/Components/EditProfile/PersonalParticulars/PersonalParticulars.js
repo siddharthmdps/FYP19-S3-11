@@ -15,7 +15,7 @@ const personalParticulars = props => {
 
                 <Form.Group as={Col} sm='4' controlId="MiddleName">
                     <Form.Label>Middle Name</Form.Label>
-                    <Form.Control type='text' placeholder="Bakari" value={props.details.MiddleName} onChange={props.changeFn} />
+                    <Form.Control style={{backgroundColor: 'white', borderColor: 'lightgrey'}} type='text' placeholder="Bakari" value={props.details.MiddleName} onChange={props.changeFn} />
                 </Form.Group>
 
                 <Form.Group as={Col} sm='4' controlId="LastName">
