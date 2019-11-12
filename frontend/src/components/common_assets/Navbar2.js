@@ -25,9 +25,9 @@ const navbar = props => (
           <Nav.Item as="li">
             <Nav.Link eventKey="link-2" className={classes.NavItem}>About Us</Nav.Link>
           </Nav.Item> */}
-          {Object.keys(props.NavLeftSide).map(key => (
-            <Nav.Item as="li" key={key}>
-            <Nav.Link href={props.NavLeftSide[key]} className={classes.NavItem}>{key}</Nav.Link>
+          {Object.keys(props.NavLeftSide).map((element, idk) => (
+            <Nav.Item as="li" key={idk}>
+            <Nav.Link href={props.NavLeftSide[element]} className={classes.NavItem}>{element}</Nav.Link>
             </Nav.Item>
           ))}
         </Nav>
@@ -40,8 +40,10 @@ const navbar = props => (
           <Slide down>
             <div>
               <Dropdown.Menu className={classes.DropdownMenu}>
-              {Object.keys(props.NavRightSide).map(key => (
-                <Dropdown.Item href={props.NavRightSide[key]} className={classes.DropDownItem}>{key}</Dropdown.Item>
+              {Object.keys(props.NavRightSide).map((element, idk) => (
+                element==="Logout"?
+                <Dropdown.Item key={idk} onClick={auth.logout} className={classes.DropDownItem}>{element}</Dropdown.Item>:
+                <Dropdown.Item key={idk} href={props.NavRightSide[element]} className={classes.DropDownItem}>{element}</Dropdown.Item>
               ))}
                 {/* <Dropdown.Item href="/viewprofile" className={classes.DropDownItem}>View Public Profile</Dropdown.Item>
                 <Dropdown.Item href="/editprofile" className={classes.DropDownItem}>Edit Profile</Dropdown.Item>
@@ -56,12 +58,17 @@ const navbar = props => (
 
 
         <Nav className="mr-auto" className={[classes.Navli, classes.MobileMenu]}>
+          {Object.keys(props.NavRightSide).map((element, idk) => (
+            element==="Logout"?
+            <Nav.Link key={idk} onClick={auth.logout} className={classes.DropDownItem}>{element}</Nav.Link>:
+            <Nav.Link key={idk} href={props.NavRightSide[element]} className={classes.DropDownItem}>{element}</Nav.Link>
+          ))}
 
-          <Nav.Link href="/viewprofile" className={classes.NavItem}>View Public Profile</Nav.Link>
+          {/* <Nav.Link href="/viewprofile" className={classes.NavItem}>View Public Profile</Nav.Link>
           <Nav.Link href="/editprofile" className={classes.NavItem}>Edit Profile</Nav.Link>
           <Nav.Link href="/savedjobs" className={classes.NavItem}>Saved Jobs</Nav.Link>
           <Nav.Link href="/appliedjobs" className={classes.NavItem}>Applied Jobs</Nav.Link>
-          <Nav.Link className={classes.NavItem} onClick={ auth.logout }>Log out</Nav.Link>
+          <Nav.Link className={classes.NavItem} onClick={ auth.logout }>Log out</Nav.Link> */}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

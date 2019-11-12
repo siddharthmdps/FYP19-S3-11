@@ -30,7 +30,9 @@ const PersonalParticularsShell = {
     "City": "",
     "CurrentAddress": "",
     "PostalCode": "",
-    "Nationality": ""
+    "Nationality": "",
+    "Availability": "",
+    "LinkedIn": ""
 }
 
 const EducationShell = {
@@ -60,11 +62,8 @@ const WorkExpShell = {
 const JobPreferenceShell = {
     "JobPreferenceID": 0,
     "Industry": "",
-    "Position": "",
-    "JobType": "",
-    "ExpectedSalary": 0,
-    "Location": "",
-    "Availability": ""
+    "WorkExp": "",
+    "Location": ""
 }
 
 const AwardsShell = {
@@ -152,16 +151,25 @@ class EditProfile extends Component {
         this.setState(tempState);
     }
 
-    changeJobPreference = (event, elementID) => {
-        console.log(event.target.value, event.target.id, elementID);
+    changeJobPreference = event => {
+        console.log(event.target.id);
+
         let tempState = this.state.JobPreference;
-        tempState.forEach(element => {
-            if (element.JobPreferenceID === elementID) {
-                element[event.target.id] = event.target.value;
-            }
-        });
+        tempState[event.target.id] = event.target.value;
+
         this.setState(tempState);
     }
+
+    // changeJobPreference = (event, elementID) => {
+    //     console.log(event.target.value, event.target.id, elementID);
+    //     let tempState = this.state.JobPreference;
+    //     tempState.forEach(element => {
+    //         if (element.JobPreferenceID === elementID) {
+    //             element[event.target.id] = event.target.value;
+    //         }
+    //     });
+    //     this.setState(tempState);
+    // }
 
     changeAwards = (event, elementID) => {
         console.log(event.target.value, event.target.id, elementID);
@@ -264,16 +272,16 @@ class EditProfile extends Component {
         this.setState({ "WorkExp": temp2 });
     }
 
-    addNewJobPref = () => {
-        let temp = { ...JobPreferenceShell };
-        if (this.state.JobPreference.length === 0)
-            temp.JobPreferenceID = 1;
-        else
-            temp.JobPreferenceID = this.state.JobPreference[this.state.JobPreference.length - 1]["JobPreferenceID"] + 1;
-        let temp2 = this.state.JobPreference;
-        temp2.push(temp);
-        this.setState({ "JobPreference": temp2 });
-    }
+    // addNewJobPref = () => {
+    //     let temp = { ...JobPreferenceShell };
+    //     if (this.state.JobPreference.length === 0)
+    //         temp.JobPreferenceID = 1;
+    //     else
+    //         temp.JobPreferenceID = this.state.JobPreference[this.state.JobPreference.length - 1]["JobPreferenceID"] + 1;
+    //     let temp2 = this.state.JobPreference;
+    //     temp2.push(temp);
+    //     this.setState({ "JobPreference": temp2 });
+    // }
 
     addNewAwards = () => {
         let temp = { ...AwardsShell };
@@ -371,23 +379,23 @@ class EditProfile extends Component {
         this.setState({ "WorkExp": temp });
     }
 
-    removeJobPreference = (jID) => {
-        let temp = this.state.JobPreference;
-        let found = false;
-        let jIndex = -1;
-        temp.forEach((element, index) => {
-            if (element["JobPreferenceID"] === jID) {
-                found = true;
-                jIndex = index;
-            }
-            if (found) {
-                element["JobPreferenceID"]--;
-            }
-        });
-        if (found)
-            temp.splice(jIndex, 1);
-        this.setState({ "JobPreference": temp });
-    }
+    // removeJobPreference = (jID) => {
+    //     let temp = this.state.JobPreference;
+    //     let found = false;
+    //     let jIndex = -1;
+    //     temp.forEach((element, index) => {
+    //         if (element["JobPreferenceID"] === jID) {
+    //             found = true;
+    //             jIndex = index;
+    //         }
+    //         if (found) {
+    //             element["JobPreferenceID"]--;
+    //         }
+    //     });
+    //     if (found)
+    //         temp.splice(jIndex, 1);
+    //     this.setState({ "JobPreference": temp });
+    // }
 
     removeAwards = (aID) => {
         let temp = this.state.Awards;
@@ -813,7 +821,6 @@ class EditProfile extends Component {
                                                         <JobPreference
                                                             details={jobPreferenceDetail}
                                                             changeFn={event => this.changeJobPreference(event, jobPreferenceDetail.JobPreferenceID)}
-                                                            remove={this.removeJobPreference.bind(this, jobPreferenceDetail["JobPreferenceID"])}
                                                         />
                                                     </Form>
                                                 </React.Fragment>
