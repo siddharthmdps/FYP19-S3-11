@@ -36,16 +36,16 @@ import auth from './utils/auth';
 
 
 let NavLeftSide={
-  "Job Search": "/searchjobs",
+  "Job Search": "/student/searchjobs",
   "Companies": "/",
   "Blog": "/"
 }
 
 let NavRightSide={
-  "View Profile": "/viewprofile",
-  "Edit Profile": "/editprofile",
-  "Saved Jobs": "/savedjobs",
-  "Applied Jobs": "/appliedjobs",
+  "View Profile": "/student/viewprofile",
+  "Edit Profile": "/student/editprofile",
+  "Saved Jobs": "/student/savedjobs",
+  "Applied Jobs": "/student/appliedjobs",
   "Logout": "/",
 }
 /* 
@@ -73,7 +73,7 @@ class App extends Component {
   NavbarToRender = () => {
     if(!auth.isAuthenticated()) return null
     switch(localStorage.getItem('usertype')){
-        case 'student'  : return <Navbar2/>
+        case 'student'  : return <Navbar2 NavLeftSide={NavLeftSide} NavRightSide={NavRightSide}/>
         case 'employer' : return <EmpNavbar/>
         case 'admin'    : return null
     }
@@ -81,36 +81,38 @@ class App extends Component {
 
   render() { 
     return (
-      <div>
-        <this.NavbarToRender/>
-        <Router>
-          <Switch>
-            {/* Public Routes */}
-            <Route exact path="/" component={this.ContentToRender}></Route>
-            <Route exact path="/login" component={LoginForm}></Route>
-            <Route exact path="/signup" component={SignUp}></Route>
+      <SnackbarProvider maxSnack={3}>
+        <div>
+          <this.NavbarToRender/>
+          <Router>
+            <Switch>
+              {/* Public Routes */}
+              <Route exact path="/" component={this.ContentToRender}></Route>
+              <Route exact path="/login" component={LoginForm}></Route>
+              <Route exact path="/signup" component={SignUp}></Route>
 
 
-            {/* Employer Routes */}
-            <ProtectedRoute exact path="/employer" component={Employer}></ProtectedRoute>
-            <ProtectedRoute exact path="/employer/viewprofile" component={EmpViewProfile}></ProtectedRoute>
-            <ProtectedRoute exact path="/employer/editprofile" component={EmpEditProfile}></ProtectedRoute>
-            <ProtectedRoute exact path="/employer/about" component={About}></ProtectedRoute>
-            <ProtectedRoute exact path="/employer/postjob" component={PostJob}></ProtectedRoute>
+              {/* Employer Routes */}
+              <ProtectedRoute exact path="/employer" component={Employer}></ProtectedRoute>
+              <ProtectedRoute exact path="/employer/viewprofile" component={EmpViewProfile}></ProtectedRoute>
+              <ProtectedRoute exact path="/employer/editprofile" component={EmpEditProfile}></ProtectedRoute>
+              <ProtectedRoute exact path="/employer/about" component={About}></ProtectedRoute>
+              <ProtectedRoute exact path="/employer/postjob" component={PostJob}></ProtectedRoute>
 
-            {/* Student Routes */}
-            <ProtectedRoute exact path="/student" component={EditProfile}></ProtectedRoute>
-            <ProtectedRoute exact path="/student/editprofile" component={EditProfile}></ProtectedRoute>
-            <ProtectedRoute exact path="/student/viewprofile" component={ViewProfile}></ProtectedRoute>
-            <ProtectedRoute exact path="/student/appliedjobs" component={AppliedJobs}></ProtectedRoute>
-            <ProtectedRoute exact path="/student/savedjobs" component={SavedJobs}></ProtectedRoute>
-            <ProtectedRoute exact path="/student/searchjobs" component={SearchJobs}></ProtectedRoute>
+              {/* Student Routes */}
+              <ProtectedRoute exact path="/student" component={EditProfile}></ProtectedRoute>
+              <ProtectedRoute exact path="/student/editprofile" component={EditProfile}></ProtectedRoute>
+              <ProtectedRoute exact path="/student/viewprofile" component={ViewProfile}></ProtectedRoute>
+              <ProtectedRoute exact path="/student/appliedjobs" component={AppliedJobs}></ProtectedRoute>
+              <ProtectedRoute exact path="/student/savedjobs" component={SavedJobs}></ProtectedRoute>
+              <ProtectedRoute exact path="/student/searchjobs" component={SearchJobs}></ProtectedRoute>
 
-            {/* Admin Routes */}
-            <ProtectedRoute exact path="/admin" component={Admin}></ProtectedRoute>
-          </Switch>
-        </Router>
-      </div>
+              {/* Admin Routes */}
+              <ProtectedRoute exact path="/admin" component={Admin}></ProtectedRoute>
+            </Switch>
+          </Router>
+        </div>
+      </SnackbarProvider>
     )
   }
 }
