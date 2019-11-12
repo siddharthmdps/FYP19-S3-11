@@ -176,7 +176,7 @@ export class EditEmpModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group>
-                                        <Button variant="primary" type="submit" onClick={this.props.onHide}>
+                                        <Button variant="primary" type="submit">
                                             Update Employer Account
                                         </Button>
                                     </Form.Group>

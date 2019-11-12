@@ -15,7 +15,7 @@ export class AddJobModal extends Component {
     };
     handleSubmit(event) {
         event.preventDefault();
-        fetch('https://pegasus-backend.herokuapp.com/addjob', {
+        fetch('https://pegasus-backend.herokuapp.com/admin/addjob', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

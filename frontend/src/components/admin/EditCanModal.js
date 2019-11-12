@@ -221,7 +221,7 @@ export class EditCanModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group>
-                                        <Button variant="primary" type="submit" onClick={this.props.onHide}>
+                                        <Button variant="primary" type="submit">
                                             Update Candidate Account
                                         </Button>
                                     </Form.Group>

@@ -111,6 +111,7 @@ export class EditJobModal extends Component {
                                         <Form.Control
                                             type="text"
                                             name="title"
+                                            required
                                             defaultValue={this.props.title}
                                             placeholder="title"></Form.Control>
                                     </Form.Group>
@@ -120,7 +121,7 @@ export class EditJobModal extends Component {
                                         <Form.Control
                                             type="text"
                                             name="industry"
-                                            required
+                                            
                                             defaultValue={this.props.industry}
                                             placeholder="industry"></Form.Control>
                                     </Form.Group>
@@ -130,7 +131,7 @@ export class EditJobModal extends Component {
                                         <Form.Control
                                             type="text"
                                             name="description"
-                                            required
+                                            
                                             defaultValue={this.props.description}
                                             placeholder="description"></Form.Control>
                                     </Form.Group>
@@ -140,7 +141,7 @@ export class EditJobModal extends Component {
                                         <Form.Control
                                             type="text"
                                             name="requiredskills"
-                                            required
+                                            
                                             defaultValue={this.props.requiredskills}
                                             placeholder="requiredskills"></Form.Control>
                                     </Form.Group>
@@ -150,7 +151,7 @@ export class EditJobModal extends Component {
                                         <Form.Control
                                             type="text"
                                             name="dateposted"
-                                            required
+                                            
                                             defaultValue={this.props.dateposted}
                                             placeholder="dateposted"></Form.Control>
                                     </Form.Group>
@@ -160,7 +161,7 @@ export class EditJobModal extends Component {
                                         <Form.Control
                                             type="text"
                                             name="location"
-                                            required
+                                            
                                             defaultValue={this.props.location}
                                             placeholder="location"></Form.Control>
                                     </Form.Group>
@@ -170,13 +171,13 @@ export class EditJobModal extends Component {
                                         <Form.Control
                                             type="text"
                                             name="yearsofexperience"
-                                            required
+                                            
                                             defaultValue={this.props.yearsofexperience}
                                             placeholder="yearsofexperience"></Form.Control>
                                     </Form.Group>
 
                                     <Form.Group>
-                                        <Button variant="primary" type="submit" onClick={this.props.onHide}>
+                                        <Button variant="primary" type="submit">
                                             Update Job Listing
                                         </Button>
                                     </Form.Group>
