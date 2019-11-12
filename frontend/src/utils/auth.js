@@ -7,10 +7,10 @@ class Auth {
     // return result
     login(loginParticulars, cb) {
         console.log('Login particulars', loginParticulars)
-        const url = apiURL + 'login'
+        const herokuserver = apiURL + 'login'
         const localhost = "http://localhost:3001/login"
 
-        fetch(localhost, {
+        fetch(herokuserver, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(loginParticulars)

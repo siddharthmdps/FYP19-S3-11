@@ -409,7 +409,7 @@ class EmpAppCard extends Component {
             .catch(error => console.log(error))
         // alert('Applicant has been shortlisted!')
         // document.location.reload(true)
-      
+        }
     shortlist = (appId, appName) => {
         this.showAlert();
 
@@ -497,6 +497,7 @@ class EmpAppCard extends Component {
                         {/* onClick={this.shortlist("asjdkasj", "Juna")} */}
                     </Card.Body>
                 </Card>
+                </div>
         )
     }
 }
