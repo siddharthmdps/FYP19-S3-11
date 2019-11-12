@@ -1,170 +1,107 @@
-//import 'bootstrap/dist/css/bootstrap.min.css';
-
 import React, { Component } from 'react'
-// Employer exclusive components
-import EmpNavbar from './EmpNavbar'
-import PostJob from './PostJob'
-import EmpPanel from './EmpPanel'
-import EmpFeed from './EmpFeed'
-import EmpJobView from './JobView/EmpJobView'
-import EditJob from './JobEdit/EditJob'
+import ReactDOM from 'react-dom';
+import { Table, Form, Col, Row, Pagination } from 'react-bootstrap';
 
-import EmpProfileView from './ProfileView/EmpProfileView'
-import EmpProfileEdit from './ProfileEditor/EmpEditProfile'
+export default class Employer extends Component {
+    state = {
+        isLoading: true,
+        users: [],
+        error: null
+    };
 
-import About from '../common_assets/About'
-
-const herokuURL = require('../../config')
-
-
-
-class Employer extends Component {
-    constructor() {
-        super()
-        this.state = {
-            id: localStorage.getItem('id'),
-            username: localStorage.getItem('username'),
-            companyName: null,
-            companyPhone: null,
-            companyEmail: null,
-            companyAddress: null,
-            companyDescription: null,
-            industry: null,
-            numOfJobs: null,
-            numOfApplicants: null,
-            mainContent: null
-
-        }
-
-    }
-
-
-
-    updateNumOfJobs = (numJob) => {
-        this.setState({ numOfJobs: numJob })
-        //console.log(`num of jobs = ${this.state.numOfJobs}`)
-    }
-
-    viewJobHandler = (job) => {
-        console.log(`triggered by`, job)
-
-        //declaring global variable job details
-        window.jobDetails = {
-            jobid: job.id,
-            jobpostdate: job.dateposted,
-            jobdescription: job.description,
-            jobindustry: job.industry,
-            joblocation: job.location,
-            jobrequiredskills: job.requiredskills,
-            jobtitle: job.title
-        };
-
-        this.setState({ mainContent: 'viewjob' })
-    }
-
-
-
-    mainContent = () => {
-        const contentID = this.state.mainContent
-        switch (contentID) {
-            // case 'viewprofile':
-            //     return <EmpProfileView companyName={this.state.companyName} companyDescription={this.state.companyDescription} industry={this.state.industry} companyEmail={this.state.companyEmail} industry={this.state.industry} />
-            // case 'editprofile':
-            //     return <EmpProfileEdit empID={this.state.id} companyName={this.state.companyName}
-            //         companyPhone={this.state.companyPhone} companyAddress={this.state.companyAddress}
-            //         industry={this.state.industry} companyDescription={this.state.companyDescription} />
-            // case 'about':
-            //     return <About />
-            case 'blog':
-                return <h3>blog</h3>
-            case 'postjob':
-                return <PostJob />
-            case 'viewjob':
-                return <EmpJobView
-                    jobID={window.jobDetails.jobid}
-                    jobtitle={window.jobDetails.jobtitle}
-                    jobskills={window.jobDetails.jobrequiredskills}
-                    jobdescription={window.jobDetails.jobdescription}
-                    joblocation={window.jobDetails.joblocation}
-                    jobindustry={window.jobDetails.jobindustry}
-                    dateposted={window.jobDetails.jobpostdate}
-                    editJobHandler={this.editJobHandler}
-
-                />
-
-            case 'editjob':
-                return <EditJob
-                    jobID={window.jobDetails.jobid}
-                    jobtitle={window.jobDetails.jobtitle}
-                    jobskills={window.jobDetails.jobrequiredskills}
-                    jobdescription={window.jobDetails.jobdescription}
-                    joblocation={window.jobDetails.joblocation}
-                    jobindustry={window.jobDetails.jobindustry}
-                    dateposted={window.jobDetails.jobpostdate}
-                    mainPageHandler={this.mainPageHandler}
-                />
-
-
-            case '*': return <h3>{contentID} not found</h3>
-            default: return <div className="row mb-2">
-                <div className="col-md-4">
-                    <EmpPanel companyName={this.state.companyName}
-                        numOfJobs={this.state.numOfJobs}
-                    />
-                </div>
-                <div className="col-md-8">
-                    <EmpFeed updateNumOfJobs={this.updateNumOfJobs} viewJobHandler={this.viewJobHandler} />
-                </div>
-            </div>
-
-        }
-    }
-
-    fetchEmployerDetails = () => {
-        const apiURL = `${herokuURL}employer/employerinfo/${this.state.id}`
-        const localhost = `http://localhost:3001/employer/employerinfo/${this.state.id}`
-        console.log("EMPIDv1: " + this.state.id)
-        fetch(localhost, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log('response', data.body[0])
-                const empInfo = data.body[0]
-
+    fetchUsers() {
+        fetch(`https://jsonplaceholder.typicode.com/users`)
+            .then(response => response.json())
+            .then(data =>
                 this.setState({
-                    companyName: empInfo.companyname,
-                    companyPhone: empInfo.companyphone,
-                    companyEmail: empInfo.companyemail,
-                    companyAddress: empInfo.companyaddress,
-                    companyDescription: empInfo.companydescription,
-                    industry: empInfo.industry
+                    users: data,
+                    isLoading: false,
                 })
-            }).catch(error => console.log(error))
+            )
+            .catch(error => this.setState({ error, isLoading: false }));
     }
-
 
     componentDidMount() {
-        this.fetchEmployerDetails()
-        //console.log(this.state)
+        this.fetchUsers();
     }
 
     render() {
-        return (
+        const { isLoading, users, error } = this.state;
 
+        if (isLoading)
+            return <div>Loading...</div>
 
-            <div>
-                {/* Fixed component */}
-                <EmpNavbar
-                    username={this.state.username}
-                    setMainContent={this.setMainContent} />
-
-                {/* Flexible content */}
-                <this.mainContent />
-            </div>
+        const rows = users.map(row =>
+            <tr>
+                <td>{row.id}</td>
+                <td>{row.username}</td>
+                <td>{row.name}</td>
+                <td>{row.company.name}</td>
+                <td>{row.email}</td>
+                <td>Disable</td>
+            </tr>
         )
+
+        return (
+            <React.Fragment>
+            <br />
+                <Row>
+                    <h1>Employer Login Credentials <span style={{ marginLeft: '5px' }}><sub></sub></span></h1>
+                </Row>
+                <br />
+                <Form.Group as={Row} md="2" controlId="exampleForm.ControlSelect1">
+                    <Form.Label >Show </Form.Label>
+                    <Col sm={2}><Form.Control size="sm" as="select" >
+                        <option>10</option>
+                        <option>20</option>
+                        <option>30</option>
+                        <option>40</option>
+                        <option>50</option>
+                    </Form.Control></Col>
+                    <Form.Label >Entries </Form.Label>
+                    <Col md={{ span: 2, offset: 7 }}><Form.Control size="sm" type="text" placeholder="Search" /></Col>
+                </Form.Group>
+                <div>
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Name</th>
+                                <th>Company</th>
+                                <th>Email</th>
+                                <th>Disable/Enable Account</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {rows}
+                        </tbody>
+                    </Table>
+                    <Row>
+                        Showing 1 to 10 of 52 credentials
+                    <Col md={{ span: 2, offset: 4 }}><Pagination>
+  <Pagination.First />
+  <Pagination.Prev />
+  <Pagination.Item>{1}</Pagination.Item>
+  <Pagination.Ellipsis />
+
+  <Pagination.Item>{10}</Pagination.Item>
+  <Pagination.Item>{11}</Pagination.Item>
+  <Pagination.Item active>{12}</Pagination.Item>
+  <Pagination.Item>{13}</Pagination.Item>
+  <Pagination.Item disabled>{14}</Pagination.Item>
+
+  <Pagination.Ellipsis />
+  <Pagination.Item>{20}</Pagination.Item>
+  <Pagination.Next />
+  <Pagination.Last />
+</Pagination></Col></Row>
+                </div>
+
+            </React.Fragment>
+        );
     }
 }
 
-export default Employer
+ReactDOM.render(<Employer />, document.getElementById("root"));
