@@ -85,6 +85,13 @@ const personalParticulars = props => {
                     </Form.Control>
                 </Col>
             </Form.Group>
+
+            <Form.Group as={Row} controlId="LinkedIn">
+                <Form.Label column sm="2">LinkedIn <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
+                <Col sm="10">
+                    <Form.Control type='text' placeholder="https://www.linkedin.com/in/abcd1234/" value={props.details.LinkedIn} onChange={props.changeFn} required />
+                </Col>
+            </Form.Group>
         </React.Fragment>
     );
 }
