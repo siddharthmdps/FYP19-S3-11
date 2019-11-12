@@ -90,7 +90,12 @@ class EmpAppCard extends Component {
             certsList: [],
             projectsList: [],
             showAlert: false,
-            error: false
+            error: false,
+            noEducation: false,
+            noJobExp: false,
+            noAwards: false,
+            noCerts: false,
+            noProjects: false
         }
     }
 
@@ -110,6 +115,10 @@ class EmpAppCard extends Component {
                 console.log(`Error at getEducation : ${error}`)
                 this.setState({ error: true })
             })
+
+        if (`${this.state.educationList.length}<1`) {
+            this.setState({ noEducation: true })
+        }
     }
 
     //gets all the job experience of the applicant

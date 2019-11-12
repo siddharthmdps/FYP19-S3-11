@@ -19,41 +19,46 @@ const workExperience = props => {
             <br/>
             <Form.Row>
                 <Form.Group as={Col} sm = "6" controlId="Position">
-                    <Form.Label>Position</Form.Label>
+                    <Form.Label>Position <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                     <Form.Control type='text' placeholder="Senior Developer" value={props.details.Position} onChange={props.changeFn} required/>
                 </Form.Group> 
                 <Form.Group as={Col} sm="6" controlId="Company">
-                    <Form.Label>Company</Form.Label>
+                    <Form.Label>Company <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                     <Form.Control type='text' placeholder="Facebook" value={props.details.Company} onChange={props.changeFn} required/>
                 </Form.Group> 
             </Form.Row>
 
             <Form.Row>
                 <Form.Group as={Col} sm = "6" controlId="StartDate">
-                    <Form.Label>Start Date</Form.Label>
-                    <Form.Control type='text' placeholder="MM/YY" value={props.details.StartDate} onChange={props.changeFn} required/>
+                    <Form.Label>Start Date <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
+                    <Form.Control type='date' placeholder="MM/YY" value={props.details.StartDate} onChange={props.changeFn} required/>
                 </Form.Group> 
                 <Form.Group as={Col} sm="6" controlId="EndDate">
-                    <Form.Label>End Date</Form.Label>
-                    <Form.Control type='text' placeholder="MM/YY" value={props.details.EndDate} onChange={props.changeFn} required/>
+                    <Form.Label>End Date <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
+                    <Form.Control type='date' placeholder="MM/YY" value={props.details.EndDate} onChange={props.changeFn} required/>
                 </Form.Group> 
             </Form.Row>
 
             <Form.Row>
                 <Form.Group as={Col} sm = "4" controlId="Mode">
-                    <Form.Label>Mode</Form.Label>
+                    <Form.Label>Mode <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                     {/* <Form.Control componentClass='select' type='text' placeholder="Part Time" value={props.details.Mode} onChange={props.changeFn} required/> */}
                     <Form.Control as='select' value={props.details.Mode} onChange={props.changeFn} className={classes.ptft} required>
                         <option>Part-Time</option>
                         <option>Full-Time</option>
+                        <option>Intern</option>
+                        <option>Contract</option>
                     </Form.Control>
                 </Form.Group> 
                 <Form.Group as={Col} sm="4" controlId="Industry">
-                    <Form.Label>Industry</Form.Label>
-                    <Form.Control type='text' placeholder="IT" value={props.details.Industry} onChange={props.changeFn} required/>
+                    <Form.Label>Industry <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
+                    <Form.Control as='select' placeholder="IT" value={props.details.Industry} className={classes.ptft} onChange={props.changeFn} required>
+                        <option>IT</option>
+                        <option>Business</option>
+                    </Form.Control>
                 </Form.Group> 
                 <Form.Group as={Col} sm="4" controlId="AnnualSalary">
-                    <Form.Label>Annual Salary</Form.Label>
+                    <Form.Label>Annual Salary <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                     <Form.Control type='text' placeholder="84000" value={props.details.AnnualSalary} onChange={props.changeFn} required/>
                 </Form.Group> 
             </Form.Row>

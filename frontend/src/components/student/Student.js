@@ -10,7 +10,6 @@ class Student extends Component {
     render() {
         return (
             <div>
-                {/* <Navbar /> */}
                 {/* <Profile /> */}
                 {/* <AppliedJobs /> */}
                 {/* <SavedJobs /> */}

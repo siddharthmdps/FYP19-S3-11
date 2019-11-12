@@ -18,7 +18,7 @@ const getstudentjobpref = (req, res) => {
                     }
                     else {
                         res.json({
-                            message: "success"
+                            JobPreference: rows
                         })
                     }
                 }) 
