@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // importing Common Components
 import Navbar2 from './components/common_assets/Navbar/Navbar'
-import LoginForm from './components/common_assets/LoginForm'
+import LoginForm from './components/common_assets/Login/Login'
 import SignUp from './components/common_assets/Signup'
 import About from './components/common_assets/About';
 
