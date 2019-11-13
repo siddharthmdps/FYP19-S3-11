@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileContainer from '../ProfileContainer';
+import ProfileContainer from '../Components/LeftSide/CompanyInfo';
 import BasicFormField,{SelectFormField,AreaFormField} from './Form';
 import '../ProfileView/Card.css'
 import apiURL from '../../../config'

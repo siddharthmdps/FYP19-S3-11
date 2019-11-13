@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileContainer from '../ProfileContainer';
+import ProfileContainer from '../Components/LeftSide/CompanyInfo';
 import SmallCard from './SmallCard';
 import LargeCard from './LargeCard';
 import EmpFeed from '../EmpFeed'
