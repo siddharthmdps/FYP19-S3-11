@@ -140,7 +140,7 @@ class Employer extends Component {
         return (
             <Container fluid>
                 <Row>
-                    <br />
+                    {/* <br /> */}
                     <Col md={{ span: 3 }} className={classes.LeftSide}>
                         <LeftSide companyName={this.state.companyName} numOfJobs={this.state.numOfJobs} />
                     </Col>
