@@ -9,7 +9,7 @@ import SignUp from './components/common_assets/Signup'
 import About from './components/common_assets/About';
 
 // importing Employer Components
-import Employer from './components/employer/Employer'
+import Employer from './components/employer/Container/Employer'
 import EmpNavbar from './components/employer/EmpNavbar'
 import EmpViewProfile from './components/employer/ProfileView/EmpProfileView'
 import EmpEditProfile from './components/employer/ProfileEditor/EmpEditProfile'

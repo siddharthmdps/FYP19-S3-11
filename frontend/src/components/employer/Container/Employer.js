@@ -2,19 +2,19 @@
 
 import React, { Component } from 'react'
 // Employer exclusive components
-import EmpNavbar from './EmpNavbar'
-import PostJob from './PostJob'
-import LeftSide from './Components/LeftSide/LeftSide'
-import EmpFeed from './EmpFeed'
-import NewEmpFeed from './Components/EmpFeed/NewEmpFeed';
+import EmpNavbar from '../EmpNavbar'
+import PostJob from '../PostJob'
+import LeftSide from '../Components/LeftSide/LeftSide'
+import EmpFeed from '../EmpFeed'
+import NewEmpFeed from '../Components/EmpFeed/NewEmpFeed';
 //import EmpJobView from './JobView/EmpJobView'
-import EditJob from './JobEdit/EditJob'
+import EditJob from '../JobEdit/EditJob'
 import { Container, Card, Form, Col, Row } from 'react-bootstrap';
 
 import classes from './Employer.module.css'
 
 
-const herokuURL = require('../../config')
+const herokuURL = require('../../../config')
 
 
 
