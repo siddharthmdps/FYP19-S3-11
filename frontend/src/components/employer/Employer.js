@@ -6,7 +6,7 @@ import EmpNavbar from './EmpNavbar'
 import PostJob from './PostJob'
 import LeftSide from './Components/LeftSide/LeftSide'
 import EmpFeed from './EmpFeed'
-import NewEmpFeed from './NewEmpFeed';
+import NewEmpFeed from './Components/EmpFeed/NewEmpFeed';
 //import EmpJobView from './JobView/EmpJobView'
 import EditJob from './JobEdit/EditJob'
 import { Container, Card, Form, Col, Row } from 'react-bootstrap';

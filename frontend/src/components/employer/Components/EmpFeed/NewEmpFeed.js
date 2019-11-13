@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import apiURL from '../../config'
+import apiURL from '../../../../config'
 import classes from './NewEmpFeed.module.css'
 import { Container, Card, Form, Col, Row } from 'react-bootstrap';
 
