@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import apiURL from '../../config'
-import './EmpFeed.css'
+import classes from './NewEmpFeed.module.css'
 
 class EmpFeed extends Component {
     constructor(props){

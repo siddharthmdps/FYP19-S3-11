@@ -6,6 +6,7 @@ import EmpNavbar from './EmpNavbar'
 import PostJob from './PostJob'
 import LeftSide from './Components/LeftSide/LeftSide'
 import EmpFeed from './EmpFeed'
+import NewEmpFeed from './NewEmpFeed';
 //import EmpJobView from './JobView/EmpJobView'
 import EditJob from './JobEdit/EditJob'
 import { Container, Card, Form, Col, Row } from 'react-bootstrap';
@@ -141,13 +142,11 @@ class Employer extends Component {
                 <Row>
                     <br />
                     <Col md={{ span: 3 }} className={classes.LeftSide}>
-                        {/* <EmpPanel companyName={this.state.companyName}
-                            numOfJobs={this.state.numOfJobs}
-                        /> */}
                         <LeftSide companyName={this.state.companyName} numOfJobs={this.state.numOfJobs} />
                     </Col>
                     <Col md={{ span: 9, offset: 3}}>
-                        <EmpFeed updateNumOfJobs={this.updateNumOfJobs} viewJobHandler={this.viewJobHandler} />
+                        {/* <EmpFeed updateNumOfJobs={this.updateNumOfJobs} viewJobHandler={this.viewJobHandler} /> */}
+                        <NewEmpFeed updateNumOfJobs={this.updateNumOfJobs} viewJobHandler={this.viewJobHandler} />
                     </Col>
                 </Row>
             </Container>
