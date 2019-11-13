@@ -3,8 +3,8 @@ import React, {Component} from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // importing Common Components
-import Navbar2 from './components/common_assets/Navbar2'
-import LoginForm from './components/common_assets/LoginForm'
+import Navbar2 from './components/common_assets/Navbar/Navbar'
+import LoginForm from './components/common_assets/Login/Login'
 import SignUp from './components/common_assets/Signup'
 import About from './components/common_assets/About';
 
@@ -35,6 +35,9 @@ import {AdminJobs} from './components/admin/Jobs'
 import Reports from './components/admin/Reports'
 import Settings from './components/admin/Settings'
 
+// importing Blog Components
+import Blog from './components/blog/Container/Blog'
+
 // importing utils
 import {ProtectedRoute} from './utils/protected.routes'
 import { SnackbarProvider } from 'notistack';
@@ -43,27 +46,20 @@ import { SnackbarProvider } from 'notistack';
 import './App.css'
 import auth from './utils/auth';
 
-
-let NavLeftSide={
-  "Job Search": "/student/searchjobs",
-  "Companies": "/",
-  "Blog": "/"
-}
-
-let NavRightSide={
-  "View Profile": "/student/viewprofile",
-  "Edit Profile": "/student/editprofile",
-  "Saved Jobs": "/student/savedjobs",
-  "Applied Jobs": "/student/appliedjobs",
-  "Logout": "/",
-}
 /* 
 App will first check the 'localStorage' to check whether the user already logged in or not.
 If the user is already logged in, the app will redirect to corresponding app (student.js, employer.js or admin.js)
 */
 class App extends Component {
-  constructor(){
-    super()
+  // constructor(){
+  //   super()
+  // }
+
+  state = {
+    NavLeftSide: {},
+    NavRightSide: {},
+    Navbar: "",
+    Blog: false
   }
 
   componentDidMount() {
@@ -89,6 +85,10 @@ class App extends Component {
 
     document.getElementsByTagName( "head" )[0].appendChild( link3 );
      }
+    }
+  useBlogNavbar = allow => {
+    console.log("useBlog called", allow);
+    this.setState({Blog: allow});
   }
 
   ContentToRender = () => {
@@ -106,8 +106,8 @@ class App extends Component {
   NavbarToRender = () => {
     if(!auth.isAuthenticated()) return null
     switch(localStorage.getItem('usertype')){
-        case 'student'  : return <Navbar2 NavLeftSide={NavLeftSide} NavRightSide={NavRightSide}/>
-        case 'employer' : return <EmpNavbar/>
+        case 'student'  : return  <Navbar2 Student Blog={this.state.Blog}/>
+        case 'employer' : return <Navbar2 Employer Blog={this.state.Blog}/>
         case 'admin'    : return <Navigation/>
     }
   }
@@ -119,48 +119,45 @@ class App extends Component {
         case 'employer' : return null
         case 'admin'    : return <FooterPage/>
     }
+    
   }
 
   render() { 
     return (
       <SnackbarProvider maxSnack={3}>
-      <div>
-       <Router>
-        <this.NavbarToRender/>
-          <Switch>
-            {/* Public Routes */}
-            <Route exact path="/" component={this.ContentToRender}></Route>
-            <Route exact path="/login" component={LoginForm}></Route>
-            <Route exact path="/signup" component={SignUp}></Route>
+        <div>
+          <this.NavbarToRender/>
+          <Router>
+            <Switch>
+              {/* Public Routes */}
+              <Route exact path="/" component={this.ContentToRender}></Route>
+              <Route exact path="/login" component={LoginForm}></Route>
+              <Route exact path="/signup" component={SignUp}></Route>
 
 
-            {/* Employer Routes */}
-            <ProtectedRoute exact path="/employer" component={Employer}></ProtectedRoute>
-            <ProtectedRoute exact path="/employer/viewprofile" component={EmpViewProfile}></ProtectedRoute>
-            <ProtectedRoute exact path="/employer/editprofile" component={EmpEditProfile}></ProtectedRoute>
-            <ProtectedRoute exact path="/employer/about" component={About}></ProtectedRoute>
-            <ProtectedRoute exact path="/employer/postjob" component={PostJob}></ProtectedRoute>
+              {/* Employer Routes */}
+              <ProtectedRoute exact path="/employer" component={Employer}></ProtectedRoute>
+              <ProtectedRoute exact path="/employer/viewprofile" component={EmpViewProfile}></ProtectedRoute>
+              <ProtectedRoute exact path="/employer/editprofile" component={EmpEditProfile}></ProtectedRoute>
+              <ProtectedRoute exact path="/employer/about" component={About}></ProtectedRoute>
+              <ProtectedRoute exact path="/employer/postjob" component={PostJob}></ProtectedRoute>
 
-            {/* Student Routes */}
-            <ProtectedRoute exact path="/student" component={EditProfile}></ProtectedRoute>
-            <ProtectedRoute exact path="/student/editprofile" component={EditProfile}></ProtectedRoute>
-            <ProtectedRoute exact path="/student/viewprofile" component={ViewProfile}></ProtectedRoute>
-            <ProtectedRoute exact path="/student/appliedjobs" component={AppliedJobs}></ProtectedRoute>
-            <ProtectedRoute exact path="/student/savedjobs" component={SavedJobs}></ProtectedRoute>
-            <ProtectedRoute exact path="/student/searchjobs" component={SearchJobs}></ProtectedRoute>
+              {/* Student Routes */}
+              <ProtectedRoute exact path="/student" component={EditProfile}></ProtectedRoute>
+              <ProtectedRoute exact path="/student/editprofile" component={EditProfile}></ProtectedRoute>
+              <ProtectedRoute exact path="/student/viewprofile" component={ViewProfile}></ProtectedRoute>
+              <ProtectedRoute exact path="/student/appliedjobs" component={AppliedJobs}></ProtectedRoute>
+              <ProtectedRoute exact path="/student/savedjobs" component={SavedJobs}></ProtectedRoute>
+              <ProtectedRoute exact path="/student/searchjobs" component={SearchJobs}></ProtectedRoute>
 
-            {/* Admin Routes */}
-            <ProtectedRoute exact path="/admin" component={Home}></ProtectedRoute>
-            <ProtectedRoute exact path="/admin/dashboard" component={Dashboard}></ProtectedRoute>
-            <ProtectedRoute exact path="/admin/candidate" component={AdminCandidate}></ProtectedRoute>
-            <ProtectedRoute exact path="/admin/employer" component={AdminEmployer}></ProtectedRoute>
-            <ProtectedRoute exact path="/admin/jobs" component={AdminJobs}></ProtectedRoute>
-            <ProtectedRoute exact path="/admin/reports" component={Reports}></ProtectedRoute>
-            <ProtectedRoute exact path="/admin/settings" component={Settings}></ProtectedRoute>
-          </Switch>
-          <this.FooterToRender/>
-        </Router>
-      </div>
+              {/* Admin Routes */}
+              <ProtectedRoute exact path="/admin" component={Admin}></ProtectedRoute>
+
+              {/* Blog Routes */}
+              <Route exact path="/blog" render={(props) => <Blog {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+            </Switch>
+          </Router>
+        </div>
       </SnackbarProvider>
     )
   }

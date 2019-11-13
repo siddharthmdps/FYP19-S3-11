@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from '../common_assets/Navbar2';
+import Navbar from '../common_assets/Navbar/Navbar';
 import Profile from './Container/EditProfile/EditProfile';
 import ViewProfile from './Container/ViewProfile/ViewProfile'
 import SavedJobs from './Container/SavedJobs/SavedJobs';
