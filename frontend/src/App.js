@@ -26,6 +26,9 @@ import SearchJobs from './components/student/Container/SearchJobs/SearchJobs'
 // importing Admin Components
 import Admin from './components/admin/Admin'
 
+// importing Blog Components
+import Blog from './components/blog/Container/Blog'
+
 // importing utils
 import {ProtectedRoute} from './utils/protected.routes'
 import { SnackbarProvider } from 'notistack';
@@ -38,7 +41,7 @@ import auth from './utils/auth';
 let NavLeftSide={
   "Job Search": "/student/searchjobs",
   "Companies": "/",
-  "Blog": "/"
+  "Blog": "/blog"
 }
 
 let NavRightSide={
@@ -46,17 +49,54 @@ let NavRightSide={
   "Edit Profile": "/student/editprofile",
   "Saved Jobs": "/student/savedjobs",
   "Applied Jobs": "/student/appliedjobs",
-  "Logout": "/",
+  "Logout": "/"
 }
 /* 
 App will first check the 'localStorage' to check whether the user already logged in or not.
 If the user is already logged in, the app will redirect to corresponding app (student.js, employer.js or admin.js)
 */
 class App extends Component {
-  constructor(){
-    super()
+  // constructor(){
+  //   super()
+  // }
+
+  state = {
+    NavLeftSide: {},
+    NavRightSide: {},
+    Navbar: ""
   }
 
+  useStudentNavbar(){
+    if(this.state.Navbar!== "Student"){
+      let tempLeft = {
+        "Job Search": "/student/searchjobs",
+        "Companies": "/",
+        "Blog": "/blog"
+      };
+
+      let tempRight = {
+        "View Profile": "/student/viewprofile",
+        "Edit Profile": "/student/editprofile",
+        "Saved Jobs": "/student/savedjobs",
+        "Applied Jobs": "/student/appliedjobs",
+        "Logout": "/",
+      };
+
+      this.setState({NavLeftSide:tempLeft, NavRightSide: tempRight, Navbar: "Student"});
+    }
+  }
+
+  useBlogNavbar(){
+    if(this.state.Navbar!== "Blog"){
+      let tempLeft = {
+        "< Back to Site": "/"
+      };
+
+      let tempRight = {};
+
+      this.setState({NavLeftSide:tempLeft, NavRightSide: tempRight, Navbar: "Blog"});
+    }
+  }
 
   ContentToRender = () => {
     if(!auth.isAuthenticated()) return <LoginForm/>
@@ -73,10 +113,11 @@ class App extends Component {
   NavbarToRender = () => {
     if(!auth.isAuthenticated()) return null
     switch(localStorage.getItem('usertype')){
-        case 'student'  : return <Navbar2 NavLeftSide={NavLeftSide} NavRightSide={NavRightSide}/>
+        case 'student'  : {this.useStudentNavbar(); return  <Navbar2 NavLeftSide={this.state.NavLeftSide} NavRightSide={this.state.NavRightSide}/>}
         case 'employer' : return <EmpNavbar/>
         case 'admin'    : return null
     }
+    
   }
 
   render() { 
@@ -109,6 +150,9 @@ class App extends Component {
 
               {/* Admin Routes */}
               <ProtectedRoute exact path="/admin" component={Admin}></ProtectedRoute>
+
+              {/* Blog Routes */}
+              <Route exact path="/blog" render={(props) => <Blog {...props} currentNavbar={this.state.Navbar} studentNavbar={this.useStudentNavbar} blogNavbar={this.useBlogNavbar}/>}></Route>
             </Switch>
           </Router>
         </div>
