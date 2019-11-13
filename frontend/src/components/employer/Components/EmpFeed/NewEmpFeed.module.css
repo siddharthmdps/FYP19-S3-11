@@ -2,16 +2,15 @@
     /* background-color: lightgreen; */
     width: 100%;
     border-bottom: 1px solid lightgray;
-    padding-left: 2px;
-    padding-right: 2px;
+    padding: 2px;
     
 }
 
 .JobContainer:hover {
-    transform: translate(-35px);
+    transform: translate(-15px);
     box-shadow: 0px 1px 13px 3px rgba(0,0,0,0.77);
     transition: 0.2s;
-    transition-timing-function: linear;
+    transition-timing-function: steps(400);
 }
 
 .JobContainer:hover,
@@ -19,7 +18,8 @@
 .JobContainer:hover a i,
 .JobContainer:hover p {
     color: #fff;
-    background-color: rgb(79, 80, 79);
+    /* background-color: rgb(79, 80, 79); */
+    background-color: rgb(29, 32, 29);
     /* transition: 0.22s; */
     font-weight: 700;
     cursor: pointer;
@@ -27,7 +27,7 @@
 }
 
 .JobTitleBox {
-    margin-top: 5px;
+    /* margin-top: 5px; */
     /* background-color: salmon; */
 }
 
