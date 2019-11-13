@@ -102,6 +102,6 @@ router.post('/employerinfo/createEmployer', (req, res, next) => {
 });
 
 const updateprofile = require('./updateprofile')
-router.put('/:id', updateprofile)
+router.put('/updateprofile/:id', updateprofile)
 
 module.exports = router
