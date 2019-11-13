@@ -74,7 +74,7 @@ class App extends Component {
     if(!auth.isAuthenticated()) return null
     switch(localStorage.getItem('usertype')){
         case 'student'  : return  <Navbar2 Student Blog={this.state.Blog}/>
-        case 'employer' : return <EmpNavbar/>
+        case 'employer' : return <Navbar2 Employer Blog={this.state.Blog}/>
         case 'admin'    : return null
     }
     

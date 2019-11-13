@@ -36,6 +36,23 @@ class TopNavbar extends Component{
     }
   }
 
+  useEmployerNavbar(){
+    if(this.state.Navbar!== "Employer"){
+      let tempLeft = {
+        "Employer": "/employer/viewprofile",
+        "Edit Profile": "/employer/editprofile",
+        "Post a new Job": "/employer/postjob",
+        "Blog": "/blog"
+      };
+
+      let tempRight = {
+        "Logout": "/"
+      };
+
+      this.setState({NavLeftSide:tempLeft, NavRightSide: tempRight, Navbar: "Employer"});
+    }
+  }
+
   useBlogNavbar(){
     if(this.state.Navbar!== "Blog"){
       let tempLeft = {
@@ -50,11 +67,14 @@ class TopNavbar extends Component{
 
   componentDidMount(){
     console.log(this.props);
-    if(this.props.Student){
-      this.useStudentNavbar();
-    }
     if(this.props.Blog){
       this.useBlogNavbar();
+    }
+    else if(this.props.Student){
+      this.useStudentNavbar();
+    }
+    else if(this.props.Employer){
+      this.useEmployerNavbar();
     }
   }
 
