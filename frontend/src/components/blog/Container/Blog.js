@@ -4,7 +4,7 @@ import classes from './Blog.module.css';
 class Blog extends Component {
 
     componentDidMount(){
-        
+        this.props.useBlog(true);
     }
 
     render(){

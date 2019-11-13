@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // importing Common Components
-import Navbar2 from './components/common_assets/Navbar2'
+import Navbar2 from './components/common_assets/Navbar/Navbar'
 import LoginForm from './components/common_assets/LoginForm'
 import SignUp from './components/common_assets/Signup'
 import About from './components/common_assets/About';
@@ -37,20 +37,6 @@ import { SnackbarProvider } from 'notistack';
 import './App.css'
 import auth from './utils/auth';
 
-
-let NavLeftSide={
-  "Job Search": "/student/searchjobs",
-  "Companies": "/",
-  "Blog": "/blog"
-}
-
-let NavRightSide={
-  "View Profile": "/student/viewprofile",
-  "Edit Profile": "/student/editprofile",
-  "Saved Jobs": "/student/savedjobs",
-  "Applied Jobs": "/student/appliedjobs",
-  "Logout": "/"
-}
 /* 
 App will first check the 'localStorage' to check whether the user already logged in or not.
 If the user is already logged in, the app will redirect to corresponding app (student.js, employer.js or admin.js)
@@ -63,39 +49,13 @@ class App extends Component {
   state = {
     NavLeftSide: {},
     NavRightSide: {},
-    Navbar: ""
+    Navbar: "",
+    Blog: false
   }
 
-  useStudentNavbar(){
-    if(this.state.Navbar!== "Student"){
-      let tempLeft = {
-        "Job Search": "/student/searchjobs",
-        "Companies": "/",
-        "Blog": "/blog"
-      };
-
-      let tempRight = {
-        "View Profile": "/student/viewprofile",
-        "Edit Profile": "/student/editprofile",
-        "Saved Jobs": "/student/savedjobs",
-        "Applied Jobs": "/student/appliedjobs",
-        "Logout": "/",
-      };
-
-      this.setState({NavLeftSide:tempLeft, NavRightSide: tempRight, Navbar: "Student"});
-    }
-  }
-
-  useBlogNavbar(){
-    if(this.state.Navbar!== "Blog"){
-      let tempLeft = {
-        "< Back to Site": "/"
-      };
-
-      let tempRight = {};
-
-      this.setState({NavLeftSide:tempLeft, NavRightSide: tempRight, Navbar: "Blog"});
-    }
+  useBlogNavbar = allow => {
+    console.log("useBlog called", allow);
+    this.setState({Blog: allow});
   }
 
   ContentToRender = () => {
@@ -113,7 +73,7 @@ class App extends Component {
   NavbarToRender = () => {
     if(!auth.isAuthenticated()) return null
     switch(localStorage.getItem('usertype')){
-        case 'student'  : {this.useStudentNavbar(); return  <Navbar2 NavLeftSide={this.state.NavLeftSide} NavRightSide={this.state.NavRightSide}/>}
+        case 'student'  : return  <Navbar2 Student Blog={this.state.Blog}/>
         case 'employer' : return <EmpNavbar/>
         case 'admin'    : return null
     }
@@ -152,7 +112,7 @@ class App extends Component {
               <ProtectedRoute exact path="/admin" component={Admin}></ProtectedRoute>
 
               {/* Blog Routes */}
-              <Route exact path="/blog" render={(props) => <Blog {...props} currentNavbar={this.state.Navbar} studentNavbar={this.useStudentNavbar} blogNavbar={this.useBlogNavbar}/>}></Route>
+              <Route exact path="/blog" render={(props) => <Blog {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
             </Switch>
           </Router>
         </div>
