@@ -10,6 +10,8 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 import { FormControlLabel, Radio , TextField, Grid, RadioGroup, Fab, Button} from '@material-ui/core';
 import { Person as PersonIcon, Lock as LockIcon, ExitToApp as ExitAppIcon } from '@material-ui/icons';
 
+import { withSnackbar } from 'notistack';
+
 class Login extends Component {
 
     state = {
@@ -37,13 +39,12 @@ class Login extends Component {
                 if(loginResult){
                     window.location = `/${this.state.userType}`
                 } 
-                else 
-                    alert('Login failed, please try again.')
+                else
+                    this.props.enqueueSnackbar('Login failed, please try again.', { variant: 'error' }); 
             })
         }
-        else {
-            alert ('Please fill in all the required fields')
-        }
+        else 
+            this.props.enqueueSnackbar('Please fill in all the required fields', { variant: 'error' }); 
         
     }
 
@@ -153,4 +154,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withSnackbar(Login);
