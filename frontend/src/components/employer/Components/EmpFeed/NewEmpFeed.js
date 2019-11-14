@@ -58,7 +58,7 @@ class EmpFeed extends Component {
                     job.dateposted = job.dateposted.substr(0, 10)
                     return (
                         <React.Fragment>
-                            <Container>
+                            <Container >
                                 <Row >
                                     <div className={classes.JobContainer}>
                                         <div className={classes.JobTitleBox}>
@@ -91,7 +91,6 @@ class EmpFeed extends Component {
                         <this.feedContent />
                     </Card.Body>
                 </Card>
-                <br/>
             </React.Fragment>
         )
     }
