@@ -10,18 +10,16 @@ import { Card, Form, Row, Col, Container } from 'react-bootstrap';
 
 
 class EmpEditProfile extends React.Component {
-    constructor() {
-        super()
-        this.empID = localStorage.getItem('id')
-        this.state = {
-            username: localStorage.getItem('username'),
-            companyname: "",
-            companyphone: "",
-            companydescription: "",
-            companyaddress: "",
-            industry: "",
-            loading: false
-        }
+
+    empID = localStorage.getItem('id')
+    state = {
+        username: localStorage.getItem('username'),
+        companyname: "",
+        companyphone: "",
+        companydescription: "",
+        companyaddress: "",
+        industry: "",
+        loading: false
     }
 
     updateProfile = () => {
