@@ -26,10 +26,10 @@ class EmpEditProfile extends React.Component {
         this.setState({ loading: true})
         //console.log(`Updating profile of ${props.empID}`)
         const newEmpInfo = {
-            companyname         : document.getElementById("CompanyName").value,
-            companyphone        : document.getElementById("CompanyPhone").value,
-            industry            : document.getElementById("CompanyIndustry").value,
-            companydescription  : document.getElementById("CompanyDescription").value
+            companyname         : this.state.companyname,
+            companyphone        : this.state.companyphone,
+            industry            : this.state.industry,
+            companydescription  : this.state.companydescription
         }
     
         const url = `${apiURL}employer/${this.empID}`

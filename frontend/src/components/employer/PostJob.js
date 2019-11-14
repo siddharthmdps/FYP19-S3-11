@@ -7,12 +7,15 @@ import classes from './PostJob.module.css';
 
 
 class PostJob extends Component {
-    constructor(props) {
-        super()
-        this.props = props
-        this.state = {
-            loading: false
-        }
+
+    empid = localStorage.getItem('id');
+    state = {
+        title: "",
+        description: "",
+        industry: "",
+        requiredskills: "",
+        yearsofexperience: "",
+        loading: false
     }
 
     postJob = () => {
