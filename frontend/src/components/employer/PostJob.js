@@ -95,7 +95,6 @@ class PostJob extends Component {
         'background: linear-gradient(to right, #0f2027, #203a43, #2c5364);';
         return (
             <React.Fragment>
-                <br />
                 <Col className={classes.Container} md={{ offset: 3, span: 6 }}>
                     <Card>
                         <Card.Body>
@@ -129,7 +128,7 @@ class PostJob extends Component {
 
                             <Form.Group as={Row} controlId="Description" style={{ textAlign: 'center' }}>
                                 <Form.Label column sm='3'>Description</Form.Label>
-                                <Col sm='8'> <Form.Control as='textarea' rows="5" placeholder="Description..." value={this.state.description} onChange={this.changeDescriptionHandler} /> </Col>
+                                <Col sm='8'> <Form.Control style={{height: '45vh'}} as='textarea' rows="5" placeholder="Description..." value={this.state.description} onChange={this.changeDescriptionHandler} /> </Col>
                             </Form.Group>
                             <div style={{ textAlign: 'center' }}>
                                 <Button1 click={this.postJob}>

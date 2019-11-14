@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import CompanyLogo from '../Components/LeftSide/CompanyInfo';
 import classes from './EmpProfileView.module.css';
 import { Card, Container, Row, Col } from 'react-bootstrap';
@@ -27,23 +27,25 @@ class EmpProfileView extends Component {
         Axios.get(`${apiURL}employer/employerinfo/${this.empID}`)
             .then(response => {
                 this.setState({
-                    companyname     : response.data.body[0].companyname,
-                    companyphone    : response.data.body[0].companyphone,
-                    companydescription  : response.data.body[0].companydescription,
-                    companyaddress  : response.data.body[0].companyaddress,
-                    industry        : response.data.body[0].industry
+                    companyname: response.data.body[0].companyname,
+                    companyphone: response.data.body[0].companyphone,
+                    companydescription: response.data.body[0].companydescription,
+                    companyaddress: response.data.body[0].companyaddress,
+                    industry: response.data.body[0].industry
                 })
                 console.log(response.data);
             })
             .catch(error => {
                 alert(`failed to fetch employer details : ${error}`)
-        })
+            })
     }
 
-    render(){
+    render() {
+        document.body.style =
+            'background: linear-gradient(to right, #0f2027, #203a43, #2c5364);';
         return (
             <React.Fragment>
-                <Container>
+                <Container className={classes.ViewProfile}>
                     <Row>
                         <Col md={{ offset: 1, span: 4 }}>
                             <Card>
@@ -55,7 +57,7 @@ class EmpProfileView extends Component {
                         <Col md={{ offset: 0, span: 6 }}>
                             <Card>
                                 <Card.Body>
-                                <Card.Title>Company Phone</Card.Title>
+                                    <Card.Title>Company Phone</Card.Title>
                                     {this.state.companyphone}
                                 </Card.Body>
                             </Card>
@@ -74,16 +76,15 @@ class EmpProfileView extends Component {
                             <Card>
                                 <Card.Body>
                                     <Card.Title>Brief Overview</Card.Title>
-    <pre>
-    {`
-    ${this.state.companydescription}
-    `}
-    </pre>
+<pre>
+{`
+${this.state.companydescription}
+`}
+</pre>
                                 </Card.Body>
                             </Card>
                         </Col>
                     </Row>
-
                     <br />
                 </Container>
             </React.Fragment>

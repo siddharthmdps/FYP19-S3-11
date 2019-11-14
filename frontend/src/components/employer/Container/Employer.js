@@ -138,7 +138,7 @@ class Employer extends Component {
 
     render() {
         return (
-            <Container fluid>
+            <Container fluid className={classes.Employer}>
                 <Row>
                     {/* <br /> */}
                     <Col md={{ span: 3 }} className={classes.LeftSide}>

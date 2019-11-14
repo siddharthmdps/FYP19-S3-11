@@ -100,7 +100,7 @@ class EmpEditProfile extends React.Component {
         document.body.style =
             'background: linear-gradient(to right, #0f2027, #203a43, #2c5364);';
         return (
-            <Container fluid>
+            <Container fluid >
                 <Row>
                     <Col sm={12} md={{span:2, offset: 1}}>
                         <Card style={{borderRadius: '50px', background: 'transparent'}}>
