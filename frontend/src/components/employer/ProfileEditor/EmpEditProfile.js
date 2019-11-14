@@ -8,28 +8,26 @@ import { Card, Form, Row, Col, Container } from 'react-bootstrap';
 
 
 class EmpEditProfile extends React.Component {
-    constructor() {
-        super()
-        this.empID = localStorage.getItem('id')
-        this.state = {
-            username: localStorage.getItem('username'),
-            companyname: "",
-            companyphone: "",
-            companydescription: "",
-            companyaddress: "",
-            industry: "",
-            loading: false
-        }
+
+    empID = localStorage.getItem('id')
+    state = {
+        username: localStorage.getItem('username'),
+        companyname: "",
+        companyphone: "",
+        companydescription: "",
+        companyaddress: "",
+        industry: "",
+        loading: false
     }
 
     updateProfile = () => {
         this.setState({ loading: true })
         //console.log(`Updating profile of ${props.empID}`)
         const newEmpInfo = {
-            companyname: document.getElementById("CompanyName").value,
-            companyphone: document.getElementById("CompanyPhone").value,
-            industry: document.getElementById("CompanyIndustry").value,
-            companydescription: document.getElementById("CompanyDescription").value
+            companyname         : this.state.companyname,
+            companyphone        : this.state.companyphone,
+            industry            : this.state.industry,
+            companydescription  : this.state.companydescription
         }
 
         const url = `${apiURL}employer/${this.empID}`

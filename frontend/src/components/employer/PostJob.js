@@ -7,23 +7,26 @@ import classes from './PostJob.module.css';
 
 
 class PostJob extends Component {
-    constructor(props) {
-        super()
-        this.props = props
-        this.state = {
-            loading: false
-        }
+
+    empid = localStorage.getItem('id');
+    state = {
+        title: "",
+        industry: "",
+        requiredskills: "",
+        yearsofexperience: "",
+        description: "",
+        loading: false
     }
 
     postJob = () => {
         this.setState({ loading: true })
         const job = {
-            empid: localStorage.getItem('id'),
-            title: document.getElementById('job-title').value,
-            description: document.getElementById('job-desc').value,
-            industry: document.getElementById('job-industry').value,
-            requiredskills: document.getElementById('job-skills').value,
-            yearsofexperience: document.getElementById('yearsofexperience').value
+            empid: this.empid,
+            title: this.state.title,
+            description: this.state.description,
+            industry: this.state.industry,
+            requiredskills: this.state.requiredskills,
+            yearsofexperience: this.state.yearsofexperience
         }
 
         if (job.title === "" || job.desc === "" || job.industry === "" || job.skills === "") alert('Please fill in all the required fields')
@@ -62,6 +65,31 @@ class PostJob extends Component {
         } else return null
     }
 
+    changeTitleHandler = event => {
+        console.log(event.target.value);
+        this.setState({title: event.target.value});
+    }
+
+    changeIndustryHandler = event => {
+        console.log(event.target.value);
+        this.setState({industry: event.target.value});
+    }
+
+    changeRequiredSkillsHandler = event => {
+        console.log(event.target.value);
+        this.setState({requiredskills: event.target.value});
+    }
+
+    changeYearsOfExperienceHandler = event => {
+        console.log(event.target.value);
+        this.setState({yearsofexperience: event.target.value});
+    }
+
+    changeDescriptionHandler = event => {
+        console.log(event.target.value);
+        this.setState({description: event.target.value});
+    }
+
     render() {
         document.body.style = 
         'background: linear-gradient(to right, #0f2027, #203a43, #2c5364);';
@@ -71,32 +99,40 @@ class PostJob extends Component {
                 <Col className={classes.Container} md={{ offset: 3, span: 6 }}>
                     <Card>
                         <Card.Body>
-                            <Form.Group as={Row} style={{ textAlign: 'center' }}>
+                            <Form.Group as={Row} controlId="JobTitle" style={{ textAlign: 'center' }}>
                                 <Form.Label column sm='3'>Job Title</Form.Label>
-                                <Col sm='8'> <Form.Control type='text' placeholder="Software Engineer" /> </Col>
+                                <Col sm='8'> <Form.Control type='text' placeholder="Software Engineer" value={this.state.title} onChange={this.changeTitleHandler} /> </Col>
                             </Form.Group>
 
-                            <Form.Group as={Row} style={{ textAlign: 'center' }}>
+                            <Form.Group as={Row} controlId="Industry" style={{ textAlign: 'center' }}>
                                 <Form.Label column sm='3'>Industry</Form.Label>
-                                <Col sm='8'> <Form.Control type='text' placeholder="IT/Software" /> </Col>
+                                <Col sm='8'> 
+                                    <Form.Control as="select" placeholder="IT/Software" value={this.state.industry} onChange={this.changeIndustryHandler} >
+                                        <option value="">Choose...</option>
+                                        <option value="Engineering">Engineering</option>
+                                        <option value="Business">Business</option>
+                                        <option value="Accountancy">Accountancy</option>
+                                        <option value="IT">IT</option>
+                                    </Form.Control> 
+                                </Col>
                             </Form.Group>
 
-                            <Form.Group as={Row} style={{ textAlign: 'center' }}>
+                            <Form.Group as={Row} controlId="RequiredSkills" style={{ textAlign: 'center' }}>
                                 <Form.Label column sm='3'>Required Skills</Form.Label>
-                                <Col sm='8'> <Form.Control type='text' placeholder="C++, SQL... etc" /> </Col>
+                                <Col sm='8'> <Form.Control type='text' placeholder="C++, SQL... etc" value={this.state.requiredskills} onChange={this.changeRequiredSkillsHandler} /> </Col>
                             </Form.Group>
 
-                            <Form.Group as={Row} style={{ textAlign: 'center', whiteSpace: 'nowrap' }}>
+                            <Form.Group as={Row} controlId="YearsOfExperience" style={{ textAlign: 'center', whiteSpace: 'nowrap' }}>
                                 <Form.Label column sm='3'>Years of Experience</Form.Label>
-                                <Col sm='8'> <Form.Control type='text' placeholder="3 years" /> </Col>
+                                <Col sm='8'> <Form.Control type='text' placeholder="3 years" value={this.state.yearsofexperience} onChange={this.changeYearsOfExperienceHandler} /> </Col>
                             </Form.Group>
 
-                            <Form.Group as={Row} style={{ textAlign: 'center' }}>
+                            <Form.Group as={Row} controlId="Description" style={{ textAlign: 'center' }}>
                                 <Form.Label column sm='3'>Description</Form.Label>
-                                <Col sm='8'> <Form.Control as='textarea' rows="5" placeholder="Description..." /> </Col>
+                                <Col sm='8'> <Form.Control as='textarea' rows="5" placeholder="Description..." value={this.state.description} onChange={this.changeDescriptionHandler} /> </Col>
                             </Form.Group>
                             <div style={{ textAlign: 'center' }}>
-                                <Button1>
+                                <Button1 click={this.postJob}>
                                     Submit
                                 </Button1>
                             </div>
