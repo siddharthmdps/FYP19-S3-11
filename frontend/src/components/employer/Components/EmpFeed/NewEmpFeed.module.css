@@ -19,17 +19,18 @@
 .JobContainer:hover p {
     color: #fff;
     /* background-color: rgb(79, 80, 79); */
-    background-color: rgb(29, 32, 29);
+    /* background-color: rgb(29, 32, 29); */
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     /* transition: 0.22s; */
     font-weight: 700;
     cursor: pointer;
     border-bottom: none;
 }
 
-.JobTitleBox {
-    /* margin-top: 5px; */
-    /* background-color: salmon; */
-}
+/* .JobTitleBox {
+    margin-top: 5px;
+    background-color: salmon;
+} */
 
 /* .JobTitleBox:hover div,
 .JobTitleBox:hover,
