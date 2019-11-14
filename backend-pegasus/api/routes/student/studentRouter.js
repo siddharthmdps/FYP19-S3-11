@@ -67,6 +67,14 @@ router.get('/studentdocument/:studentid', getstudentdocument)
 const studentdocument = require('./studentdocument')
 router.put('/putstudentdocument', studentdocument)
 
+//student skills
+//get
+const getstudentskills = require('./getstudentskills')
+router.get('/studentskills/:studentid', getstudentskills)
+
+//put
+const studentskills = require('./studentskills')
+router.put('/putstudentskills', studentskills)
 
 //gt all student details
 const getallstudentdetails = require('./getallstudentdetails')
