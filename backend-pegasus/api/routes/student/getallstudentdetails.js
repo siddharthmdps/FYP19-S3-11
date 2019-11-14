@@ -26,7 +26,8 @@ const getallstudentdetails = (req, res) => {
                 left join pegasus.studenteducation on studenteducation.studentid = student.id
                 left join pegasus.studentjobpref on studentjobpref.studentid = student.id
                 left join pegasus.studentproject on studentproject.studentid = student.id
-                left join pegasus.studentworkexp on studentworkexp.studentid = student.id where student.id = "${studentid}"
+                left join pegasus.studentworkexp on studentworkexp.studentid = student.id 
+                left join pegasus.studentskills on studentskills.studentid = student.id where student.id = "${studentid}"
                 group by student.id, studentawards.awardname, studentcertificate.certificatename, studentdocument.Title, studenteducation.University, studentjobpref.Industry, studentproject.Title, studentworkexp.Position`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
