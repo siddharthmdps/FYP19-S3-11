@@ -58,7 +58,7 @@ class EmpFeed extends Component {
                     job.dateposted = job.dateposted.substr(0, 10)
                     return (
                         <React.Fragment>
-                            <Container>
+                            <Container >
                                 <Row >
                                     <div className={classes.JobContainer}>
                                         <div className={classes.JobTitleBox}>
@@ -81,6 +81,8 @@ class EmpFeed extends Component {
     }
 
     render() {
+        document.body.style = 
+        'background: linear-gradient(to right, #0f2027, #203a43, #2c5364);';
         return (
             <React.Fragment >
                 <Card>
@@ -89,7 +91,6 @@ class EmpFeed extends Component {
                         <this.feedContent />
                     </Card.Body>
                 </Card>
-                <br/>
             </React.Fragment>
         )
     }

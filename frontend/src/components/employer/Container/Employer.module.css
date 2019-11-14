@@ -6,6 +6,12 @@
     position: flex;
 }
 
+.AdvertBox {
+    padding: 0;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 8px 3px rgba(235,235,235,1);
+}
+
 @media only screen and (min-width: 768px) {
     .LeftSide{
         position: fixed;

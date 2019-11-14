@@ -144,7 +144,7 @@ class Employer extends Component {
                     <Col md={{ span: 3 }} className={classes.LeftSide}>
                         <LeftSide companyName={this.state.companyName} numOfJobs={this.state.numOfJobs} />
                     </Col>
-                    <Col md={{ span: 9, offset: 3}}>
+                    <Col md={{ span: 9, offset: 3}} className={classes.AdvertBox}>
                         {/* <EmpFeed updateNumOfJobs={this.updateNumOfJobs} viewJobHandler={this.viewJobHandler} /> */}
                         <NewEmpFeed updateNumOfJobs={this.updateNumOfJobs} viewJobHandler={this.viewJobHandler} />
                     </Col>
