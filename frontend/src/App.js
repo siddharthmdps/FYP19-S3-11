@@ -28,6 +28,9 @@ import Admin from './components/admin/Admin'
 
 // importing Blog Components
 import Blog from './components/blog/Container/Blog'
+import ContactUs from './components/blog/Container/ContactUs/ContactUs'
+import AboutUs from './components/blog/Container/AboutUs/AboutUs'
+import ProjectMM from './components/blog/Container/ProjectMeetingMinutes/ProjectMeetingMinutes'
 
 // importing utils
 import {ProtectedRoute} from './utils/protected.routes'
@@ -112,7 +115,10 @@ class App extends Component {
               <ProtectedRoute exact path="/admin" component={Admin}></ProtectedRoute>
 
               {/* Blog Routes */}
-              <Route exact path="/blog" render={(props) => <Blog {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/blog" render={props => <Blog {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/contactus" render={props => <ContactUs {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/aboutus" render={props => <AboutUs {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/projectmeetingminutes" render={props => <ProjectMM {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
             </Switch>
           </Router>
         </div>

@@ -5,6 +5,11 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 import Logo from '../../../common_assets/Logo';
 
 class AboutUs extends Component {
+
+    componentDidMount(){
+        this.props.useBlog(true);
+    }
+
     render(){
         return(
             <Container fluid className={classes.AboutUs}>
