@@ -15,7 +15,7 @@ class AboutUs extends Component {
                 </Row> */}
                 <Row>
                     <Col sm={12} md={{span: 4, offset: 1}} className={classes.Logo}>
-                        <Image src="./PegLogo.png" style={{ width: '100%'}} />
+                        <Image src="./PegLogoBig.png" style={{ width: '100%'}} />
                         <br />
                         <span className={classes.SubText}>SIM Online Recruitment</span>
                     </Col>
@@ -30,7 +30,7 @@ Project Assessor: Tan Kheng Teck
 
 Project Supervisor: Dr Loo Poh Kok
 
-This project was successfully completed because of the following team members:
+This project was successfully completed by the following team members:
 
 Siddharth Singh (UOW ID: 5922690)
 Roles: Team Leader, Front-end development (Student section)
