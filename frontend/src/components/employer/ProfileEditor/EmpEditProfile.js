@@ -1,8 +1,12 @@
 import React from 'react';
 import ProfileContainer from '../Components/LeftSide/CompanyInfo';
-import BasicFormField,{SelectFormField,AreaFormField} from './Form';
-import '../ProfileView/Card.css'
+import classes from './EmpEditProfile.module.css'
 import apiURL from '../../../config'
+
+import Button from '../../common_assets/Button1/Button1'
+
+import Axios from 'axios';
+import { Card, Form, Row, Col, Container } from 'react-bootstrap';
 
 
 class EmpEditProfile extends React.Component {
@@ -11,11 +15,11 @@ class EmpEditProfile extends React.Component {
         this.empID = localStorage.getItem('id')
         this.state = {
             username: localStorage.getItem('username'),
-            companyname: null,
-            companyphone: null,
-            companydescription: null,
-            companyaddress: null,
-            industry: null,
+            companyname: "",
+            companyphone: "",
+            companydescription: "",
+            companyaddress: "",
+            industry: "",
             loading: false
         }
     }
@@ -47,30 +51,41 @@ class EmpEditProfile extends React.Component {
         .catch(error => {console.log(error)})
     }
 
-    getEmployerDetails = () => {
-        const url = `${apiURL}employer/employerinfo/${this.empID}`
-        fetch(url, {
-            method: 'GET',
-        })
-        .then(res => res.json())
-        .then(data => {
-            //console.log(data.body[0])
-            const empInfo = data.body[0]
-            this.setState({
-                companyname     : empInfo.companyname,
-                companyphone    : empInfo.companyphone,
-                companydescription  : empInfo.companydescription,
-                companyaddress  : empInfo.companyaddress,
-                industry        : empInfo.industry
+    componentDidMount() {
+        Axios.get(`${apiURL}employer/employerinfo/${this.empID}`)
+            .then(response => {
+                this.setState({
+                    companyname     : response.data.body[0].companyname,
+                    companyphone    : response.data.body[0].companyphone,
+                    companydescription  : response.data.body[0].companydescription,
+                    companyaddress  : response.data.body[0].companyaddress,
+                    industry        : response.data.body[0].industry
+                })
+                console.log(response.data);
             })
-        })
-        .catch((error) => {
-            alert(`failed to fetch employer details : ${error}`)
+            .catch(error => {
+                alert(`failed to fetch employer details : ${error}`)
         })
     }
 
-    componentDidMount() {
-        this.getEmployerDetails()
+    companyNameChangeHandler = event => {
+        console.log(event.target.value);
+        this.setState({companyname: event.target.value});
+    }
+
+    companyPhoneChangeHandler = event => {
+        console.log(event.target.value);
+        this.setState({companyphone: event.target.value});
+    }
+
+    companyIndustryChangeHandler = event => {
+        console.log(event.target.value);
+        this.setState({industry: event.target.value});
+    }
+
+    companyDescriptionChangeHandler = event => {
+        console.log(event.target.value);
+        this.setState({companydescription: event.target.value});
     }
 
     SpinningWheel = () => {
@@ -88,28 +103,52 @@ class EmpEditProfile extends React.Component {
     EditForm = () => {
 
         return(
-            <div>
-                <div className= "wrapper">
-                    <ProfileContainer companyName={this.state.companyname} buttonText="Find out more"/>
-                    <div className="card pad100 mar50">
-                        <div className="card-body centered">
-                            <BasicFormField pid="CompanyName" title="Company Name" placeholder={this.state.companyname}/> 
-                            <br/>
-                            <BasicFormField pid="CompanyPhone" title="Company Phone" placeholder={this.state.companyphone}/> 
-                            <br/> 
-                            <SelectFormField pid="CompanyIndustry" title="Industry" />
-                            <br/>
-                            <AreaFormField pid="CompanyDescription" title= "Company Description" placeholder={this.state.companydescription}/>
-                            <br/>
-                            <button className="btn btn-outline-secondary" 
-                            onClick={this.updateProfile}>
-                                Save Changes
-                            </button>
-                            <this.SpinningWheel/>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Container fluid>
+                <Row>
+                    <Col sm={12} md={4}>
+                        <ProfileContainer companyName={this.state.companyname} buttonText="Find out more"/>
+                    </Col>
+                    <Col sm={12} md={8}>
+                        <Card className={classes.EditProfile}>
+                            <Card.Body>
+                                <Form.Group controlId="CompanyName" as={Row}>
+                                    <Form.Label column sm="3">Company Name</Form.Label>
+                                    <Col sm="9"><Form.Control type="text" placeholder="Abcd Pte. Ltd." value={this.state.companyname} onChange = {event => this.companyNameChangeHandler(event)}/></Col>
+                                </Form.Group>
+                                
+                                <Form.Group controlId="CompanyPhone" as={Row}>
+                                    <Form.Label column sm="3">Company Phone</Form.Label>
+                                    <Col sm="9"><Form.Control type="text" placeholder="12345678" value={this.state.companyphone} onChange = {event => this.companyPhoneChangeHandler(event)}/></Col>
+                                </Form.Group>
+
+                                <Form.Group controlId="CompanyIndustry" as={Row}>
+                                    <Form.Label column sm="3">Industry</Form.Label>
+                                    <Col sm="9">
+                                        <Form.Control as="select" placeholder="IT" value={this.state.industry} onChange = {event => this.companyIndustryChangeHandler(event)}>
+                                            <option value="">Choose...</option>
+                                            <option value="Engineering">Engineering</option>
+                                            <option value="Business">Business</option>
+                                            <option value="Accountancy">Accountancy</option>
+                                            <option value="IT">IT</option>
+                                        </Form.Control>
+                                    </Col>
+                                </Form.Group>
+
+                                <Form.Group controlId="CompanyDescription" as={Row}>
+                                    <Form.Label column sm="3">Company Description</Form.Label>
+                                    <Col sm="9"><Form.Control as="textarea" rows="5" placeholder="Description..." value={this.state.companydescription} onChange = {event => this.companyDescriptionChangeHandler(event)}/></Col>
+                                </Form.Group>
+
+                                <Button click={this.updateProfile}>Submit</Button>
+
+                                <this.SpinningWheel/>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+                    
+                
+            </Container>
         )
     }
 
