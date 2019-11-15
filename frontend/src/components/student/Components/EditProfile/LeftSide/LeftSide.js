@@ -12,7 +12,7 @@ const leftSide = props => {
                         <div className={classes.Parent}>
                             <ResponsiveEmbed aspectRatio="1by1" style={{ position: 'absolute' }}>
                                 <div className={classes.Overlay}>
-                                    <p>Edit</p>
+                                    <p className={classes.Text}>Upload New</p>
                                 </div>
                             </ResponsiveEmbed>
                             <ResponsiveEmbed aspectRatio="1by1" >
@@ -20,7 +20,7 @@ const leftSide = props => {
                             </ResponsiveEmbed>
                         </div>
                     </Card.Body>
-                    <Card.Body ><Button1>Upload</Button1></Card.Body>
+                    <Card.Body style={{display: 'none'}} ><Button1>Upload</Button1></Card.Body>
                 </Card>
                 <Card>
                     <Card.Body>

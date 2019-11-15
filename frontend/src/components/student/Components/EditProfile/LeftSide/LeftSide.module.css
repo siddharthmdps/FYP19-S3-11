@@ -25,16 +25,29 @@
 }
 .Overlay {
     /* position: absolute; */
-    background-color: rgba(156, 223, 161, 0.658);
+    background-color: rgba(31, 32, 32, 0.521);
     border-radius: 50%;
     opacity: 0;
     transition: opacity .5s;
     z-index: 99;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .Overlay:hover {
     cursor: pointer;
     opacity: 1;
     transition: opacity .5s;
+}
+
+.Text {
+    position: relative;
+    top: 49%;
+    color: #fff;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 30px;
+    letter-spacing: 1px;
+    font-weight: bolder;
 }
 
