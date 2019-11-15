@@ -4,15 +4,21 @@ import Button1 from '../../../../common_assets/Button1/Button1'
 import classes from './LeftSide.module.css';
 
 const leftSide = props => {
-
     return (
         <React.Fragment>
             <Container>
                 <Card className={classes.CentralContent}>
-                    <Card.Body onClick={() => { alert("Eh!") }}>
-                        <ResponsiveEmbed aspectRatio="1by1">
-                            <Image src={props.imageLink} className={classes.Image} />
-                        </ResponsiveEmbed>
+                    <Card.Body >
+                        <div className={classes.Parent}>
+                            <ResponsiveEmbed aspectRatio="1by1" style={{ position: 'absolute' }}>
+                                <div className={classes.Overlay}>
+                                    <p>Edit</p>
+                                </div>
+                            </ResponsiveEmbed>
+                            <ResponsiveEmbed aspectRatio="1by1" >
+                                <Image src={props.imageLink} className={classes.Image} bsPrefix />
+                            </ResponsiveEmbed>
+                        </div>
                     </Card.Body>
                     <Card.Body ><Button1>Upload</Button1></Card.Body>
                 </Card>
