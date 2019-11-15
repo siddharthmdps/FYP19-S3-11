@@ -490,10 +490,29 @@ class EditProfile extends Component {
 
     // Submit elements to put in Backend starts here
     submitPersonalParticulars = () => {
-        this.togglePanel(1);
+        const temp = {...this.state.PersonalParticulars};
+        console.log(temp);
+        Axios.post('https://pegasus-backend.herokuapp.com/student/studentinfo/updateStudent', temp)
+            .then(response => {
+                this.togglePanel(1);
+            })
+            .catch(error => {
+                this.props.enqueueSnackbar('Error storing Personal Particulars!', { variant: 'error' });
+            });
     }
     submitEducation = () => {
-        this.togglePanel(2);
+        const temp = {...this.state.Education};
+        for (let idk in temp) {
+            temp[idk]['StudentID'] = 1;
+        }
+        console.log(temp);
+        Axios.post('https://pegasus-backend.herokuapp.com/student/putstudenteducation', temp)
+            .then(response => {
+                this.togglePanel(2);
+            })
+            .catch(error => {
+                this.props.enqueueSnackbar('Error storing Education!', { variant: 'error' });
+            });
     }
     submitWorkExp = () => {
         this.togglePanel(3);

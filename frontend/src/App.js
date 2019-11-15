@@ -31,6 +31,7 @@ import Blog from './components/blog/Container/Blog'
 import ContactUs from './components/blog/Container/ContactUs/ContactUs'
 import AboutUs from './components/blog/Container/AboutUs/AboutUs'
 import ProjectMM from './components/blog/Container/ProjectMeetingMinutes/ProjectMeetingMinutes'
+import PersonalDiaries from './components/blog/Container/PersonalDiaries/PersonalDiaries'
 
 // importing utils
 import {ProtectedRoute} from './utils/protected.routes'
@@ -119,6 +120,7 @@ class App extends Component {
               <Route exact path="/contactus" render={props => <ContactUs {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
               <Route exact path="/aboutus" render={props => <AboutUs {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
               <Route exact path="/projectmeetingminutes" render={props => <ProjectMM {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/personaldiaries" render={props => <PersonalDiaries {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
             </Switch>
           </Router>
         </div>

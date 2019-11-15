@@ -210,6 +210,12 @@
     
 }
 
+.NoRecord{
+    text-align: center;
+    color: red;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
 /* @media only screen and (min-width: 1200px) {
     .Jobs {
         position: relative;

@@ -59,6 +59,7 @@ class TopNavbar extends Component{
         "< Back to Site": "/",
         "Product": "/blog",
         "Project Meeting Minutes": "/projectmeetingminutes",
+        "Personal Diary": "/personaldiaries",
         "About Us": "/aboutus",
         "Contact Us": "/contactus",
       };
