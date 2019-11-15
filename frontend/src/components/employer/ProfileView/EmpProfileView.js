@@ -46,48 +46,83 @@ class EmpProfileView extends Component {
         return (
             <React.Fragment>
                 <Container className={classes.ViewProfile}>
-                    <Row>
-                        <Col md={{ offset: 1, span: 4 }}>
-                            <Card>
-                                <Card.Body>
-                                    <CompanyLogo companyName={this.state.companyname} buttonText="Find out more!" />
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col md={{ offset: 0, span: 6 }}>
-                            <Card>
-                                <Card.Body>
-                                    <Card.Title>Company Phone</Card.Title>
-                                    {this.state.companyphone}
-                                </Card.Body>
-                            </Card>
-
-                            <Card>
-                                <Card.Body>
-                                    <Card.Title>Industry</Card.Title>
-                                    {this.state.industry}
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
-                    <br />
-                    <Row>
-                        <Col md={{ offset: 1, span: 10 }}>
-                            <Card>
-                                <Card.Body>
-                                    <Card.Title>Brief Overview</Card.Title>
-<pre>
-{`
+                    <Card>
+                        <Row >
+                            <Col md={{ offset: 1, span: 4 }} className={classes.Company}>
+                                    <Card.Body>
+                                        <CompanyLogo companyName={this.state.companyname} buttonText="Find out more!" />
+                                    </Card.Body>
+                            </Col>
+                            <Col md={{ offset: 0, span: 6 }} className={classes.CompanyInfoBox}>
+                                    <Card.Body>
+                                        <Card.Title>Company Phone</Card.Title>
+                                        {this.state.companyphone}
+                                    </Card.Body>
+                                    <Card.Body>
+                                        <Card.Title>Industry</Card.Title>
+                                        {this.state.industry}
+                                    </Card.Body>
+                            </Col>
+                        </Row>
+                        <Row style={{height: '45vh'}}>
+                            <Col md={{ offset: 1, span: 10 }}>
+                                    <Card.Body>
+                                        <Card.Title>Brief Overview</Card.Title>
+<pre className={classes.Overview}>
+    {`
 ${this.state.companydescription}
 `}
 </pre>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
-                    <br />
+                                    </Card.Body>
+                            </Col>
+                        </Row>
+                    </Card>
                 </Container>
             </React.Fragment>
+            //             <React.Fragment>
+            //                 <Container className={classes.ViewProfile}>
+            //                     <Row>
+            //                         <Col md={{ offset: 1, span: 4 }}>
+            //                             <Card>
+            //                                 <Card.Body>
+            //                                     <CompanyLogo companyName={this.state.companyname} buttonText="Find out more!" />
+            //                                 </Card.Body>
+            //                             </Card>
+            //                         </Col>
+            //                         <Col md={{ offset: 0, span: 6 }}>
+            //                             <Card>
+            //                                 <Card.Body>
+            //                                     <Card.Title>Company Phone</Card.Title>
+            //                                     {this.state.companyphone}
+            //                                 </Card.Body>
+            //                             </Card>
+
+            //                             <Card>
+            //                                 <Card.Body>
+            //                                     <Card.Title>Industry</Card.Title>
+            //                                     {this.state.industry}
+            //                                 </Card.Body>
+            //                             </Card>
+            //                         </Col>
+            //                     </Row>
+            //                     <br />
+            //                     <Row>
+            //                         <Col md={{ offset: 1, span: 10 }}>
+            //                             <Card>
+            //                                 <Card.Body>
+            //                                     <Card.Title>Brief Overview</Card.Title>
+            // <pre>
+            // {`
+            // ${this.state.companydescription}
+            // `}
+            // </pre>
+            //                                 </Card.Body>
+            //                             </Card>
+            //                         </Col>
+            //                     </Row>
+            //                     <br />
+            //                 </Container>
+            //             </React.Fragment>
         )
     }
 };
