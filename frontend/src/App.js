@@ -126,8 +126,9 @@ class App extends Component {
     return (
       <SnackbarProvider maxSnack={3}>
         <div>
-          <this.NavbarToRender/>
+          
           <Router>
+          <this.NavbarToRender/>
             <Switch>
               {/* Public Routes */}
               <Route exact path="/" component={this.ContentToRender}></Route>
@@ -151,11 +152,19 @@ class App extends Component {
               <ProtectedRoute exact path="/student/searchjobs" component={SearchJobs}></ProtectedRoute>
 
               {/* Admin Routes */}
-              <ProtectedRoute exact path="/admin" component={Admin}></ProtectedRoute>
+              <ProtectedRoute exact path="/admin" component={Home}></ProtectedRoute>
+            <ProtectedRoute exact path="/admin/dashboard" component={Dashboard}></ProtectedRoute>
+            <ProtectedRoute exact path="/admin/candidate" component={AdminCandidate}></ProtectedRoute>
+            <ProtectedRoute exact path="/admin/employer" component={AdminEmployer}></ProtectedRoute>
+            <ProtectedRoute exact path="/admin/jobs" component={AdminJobs}></ProtectedRoute>
+            <ProtectedRoute exact path="/admin/reports" component={Reports}></ProtectedRoute>
+            <ProtectedRoute exact path="/admin/settings" component={Settings}></ProtectedRoute>
+
 
               {/* Blog Routes */}
               <Route exact path="/blog" render={(props) => <Blog {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
             </Switch>
+            <this.FooterToRender/>
           </Router>
         </div>
       </SnackbarProvider>

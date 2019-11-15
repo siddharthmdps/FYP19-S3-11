@@ -102,7 +102,9 @@ export class EmployerTable extends Component {
                 }
 
                 this._isMounted && this.setState({ TRs: obj, isLoading: false });
-                $("#tableSample").DataTable();
+                $("#tableSample").DataTable(
+                    //{'scrollX': true}
+                    );
             });
     }
     componentDidUpdate() {
