@@ -7,16 +7,17 @@
 }
 
 .JobContainer:hover {
-    transform: translate(-15px);
+    transform: translate(-22px);
     box-shadow: 0px 1px 13px 3px rgba(0,0,0,0.77);
     transition: 0.2s;
-    transition-timing-function: steps(400);
+    transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
 }
 
 .JobContainer:hover,
 .JobContainer:hover div,
 .JobContainer:hover a i,
 .JobContainer:hover p {
+    border-radius: 5px;
     color: #fff;
     /* background-color: rgb(79, 80, 79); */
     /* background-color: rgb(29, 32, 29); */

@@ -85,7 +85,7 @@ class EmpFeed extends Component {
         'background: linear-gradient(to right, #0f2027, #203a43, #2c5364);';
         return (
             <React.Fragment >
-                <Card>
+                <Card >
                     <Card.Body>
                         <div className={classes.Advert}>Advertised Jobs</div>
                         <this.feedContent />
