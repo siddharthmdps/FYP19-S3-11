@@ -126,8 +126,8 @@ class App extends Component {
     return (
       <SnackbarProvider maxSnack={3}>
         <div>
-          <this.NavbarToRender/>
           <Router>
+            <this.NavbarToRender/>
             <Switch>
               {/* Public Routes */}
               <Route exact path="/" component={this.ContentToRender}></Route>
