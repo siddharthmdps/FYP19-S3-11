@@ -3,7 +3,8 @@ import {Form, Col, Row} from 'react-bootstrap';
 import Button1 from '../../../../common_assets/Button1/Button1';
 import classes2 from '../../../../common_assets/Miscellaneous.module.css';
 import Industries from '../../../../common_assets/CommonLists/Industries';
-import WorkExpReq from '../../../../common_assets/CommonLists/WorkExpReq';
+import WorkExpReqList from '../../../../common_assets/CommonLists/WorkExpReqList';
+import Location from '../../../../common_assets/CommonLists/Locations';
 
 const jobPreference = props => {
     return(
@@ -35,7 +36,7 @@ const jobPreference = props => {
                 <Form.Group as={Col} sm='12' controlId="WorkExp">
                     <Form.Label>Work Experience</Form.Label>
                         <Form.Control as='select' value={props.details.WorkExp} onChange={props.changeFn} required>
-                            <WorkExpReq/>
+                            <WorkExpReqList/>
                         </Form.Control>
                 </Form.Group>
 
@@ -48,7 +49,9 @@ const jobPreference = props => {
             <Form.Row>
                 <Form.Group as={Col} sm='12' controlId="Location">
                     <Form.Label>Location</Form.Label>
-                        <Form.Control type='text' placeholder="Singapore" value={props.details.Location} onChange={props.changeFn} required/>
+                        <Form.Control as='select' placeholder="Singapore" value={props.details.Location} onChange={props.changeFn} required>
+                            <Location />
+                        </Form.Control>
                 </Form.Group>
             </Form.Row>
         </React.Fragment>

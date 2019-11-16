@@ -2,6 +2,7 @@ import React from 'react'
 
 const locations = () => (
     <React.Fragment>
+    <option value="">Choose</option>    
     <option value="Afghanistan">Afghanistan</option>
     <option value="Åland Islands">Åland Islands</option>
     <option value="Albania">Albania</option>

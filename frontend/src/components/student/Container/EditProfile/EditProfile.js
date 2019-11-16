@@ -108,7 +108,7 @@ class EditProfile extends Component {
         "PersonalParticulars": {},
         "Education": [],
         "WorkExp": [],
-        "JobPreference": [],
+        "JobPreference": {},
         "Awards": [],
         "Certification": [],
         "Skills": [],
@@ -125,8 +125,8 @@ class EditProfile extends Component {
 
         let tempState = this.state.PersonalParticulars;
         tempState[event.target.id] = event.target.value;
-
-        this.setState(tempState);
+        console.log(tempState);
+        this.setState({PersonalPaticulars: tempState});
     }
 
     changeEducation = (event, elementID) => {
@@ -152,12 +152,12 @@ class EditProfile extends Component {
     }
 
     changeJobPreference = event => {
-        console.log(event.target.id);
+        console.log(event.target.id, event.target.value);
 
         let tempState = this.state.JobPreference;
         tempState[event.target.id] = event.target.value;
 
-        this.setState(tempState);
+        this.setState({JobPreference: tempState});
     }
 
     // changeJobPreference = (event, elementID) => {
@@ -617,16 +617,12 @@ class EditProfile extends Component {
         Axios.get(`${apiURL}student/studentjobpref/1`)
             .then(receivedData => {
                 console.log(receivedData.data.JobPreference);
-                let tempJobPreference = [];
-                for (let i in receivedData.data.JobPreference) {
-                    let tempJP = { ...JobPreferenceShell }
-                    for (let key in tempJP) {
-                        console.log(key, receivedData.data.JobPreference[i][key]);
-                        tempJP[key] = receivedData.data.JobPreference[i][key];
-                    }
-                    tempJobPreference.push(tempJP);
+                let tempJP = { ...JobPreferenceShell};
+                for (let key in tempJP) {
+                    console.log(key, receivedData.data.JobPreference[key]);
+                        tempJP[key] = receivedData.data.JobPreference[key];
                 }
-                this.setState({ JobPreference: tempJobPreference });
+                this.setState({ JobPreference: tempJP });
             })
             .catch(error => {
                 console.log(error);
@@ -837,18 +833,12 @@ class EditProfile extends Component {
                                 </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="3" className={classes.Cards}>
                                     <Card.Body>
-                                        {this.state.JobPreference.map(jobPreferenceDetail => {
-                                            return (
-                                                <React.Fragment key={jobPreferenceDetail.JobPreferenceID}>
-                                                    <Form className={ppClasses.Validate}>
-                                                        <JobPreference
-                                                            details={jobPreferenceDetail}
-                                                            changeFn={event => this.changeJobPreference(event, jobPreferenceDetail.JobPreferenceID)}
-                                                        />
-                                                    </Form>
-                                                </React.Fragment>
-                                            );
-                                        })}
+                                        <Form className={ppClasses.Validate}>
+                                            <JobPreference
+                                                details={this.state.JobPreference}
+                                                changeFn={event => this.changeJobPreference(event)} />
+                                        </Form>
+                                            
                                         <div className={classes.ButtonSection}>
                                             {/* <Button1 click={this.addNewJobPref}>+ Add More</Button1> */}
                                             <Button1 click={this.submitJobPreference}>Next ></Button1>
