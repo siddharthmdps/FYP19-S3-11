@@ -220,12 +220,16 @@ class EditProfile extends Component {
             });
         }
         else if(event.target.id === "Link"){
-            console.log(event.target.value, event.target.files[0], elementID);
-            tempState.forEach(element => {
-                if (element.DocumentID === elementID) {
-                    element[event.target.id] = event.target.files[0];
-                }
-            });
+            if(event.target.files[0]["type"]!= "application/pdf")
+                this.props.enqueueSnackbar('Only Pdf supported!', { variant: 'error' });
+            else{
+                console.log(event.target.value, event.target.files[0], elementID);
+                tempState.forEach(element => {
+                    if (element.DocumentID === elementID) {
+                        element[event.target.id] = event.target.files[0];
+                    }
+                });
+            }
         }
         this.setState({Document: tempState});
     }
