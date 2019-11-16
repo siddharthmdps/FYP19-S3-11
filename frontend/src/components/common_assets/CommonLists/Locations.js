@@ -1,6 +1,7 @@
 import React from 'react'
 
 const locations = () => (
+    <React.Fragment>
     <option value="Afghanistan">Afghanistan</option>
     <option value="Åland Islands">Åland Islands</option>
     <option value="Albania">Albania</option>
@@ -245,6 +246,7 @@ const locations = () => (
     <option value="Yemen">Yemen</option>
     <option value="Zambia">Zambia</option>
     <option value="Zimbabwe">Zimbabwe</option>
+    </React.Fragment>
 );
 
 export default locations;

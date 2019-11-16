@@ -1,7 +1,7 @@
 import React from 'react'
 
 const industries = () => (
-<React.Fragment>
+<React.Fragment> 
 <option value="Accounting">Accounting</option>
 <option value="Airlines/Aviation">Airlines/Aviation</option>
 <option value="Alternative Dispute Resolution">Alternative Dispute Resolution</option>
