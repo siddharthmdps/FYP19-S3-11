@@ -1,6 +1,6 @@
 .ProjectMM{
     display: flex;
-
+    overflow-y: scroll;
 }
 .LeftSide {
     min-height: 100vh;

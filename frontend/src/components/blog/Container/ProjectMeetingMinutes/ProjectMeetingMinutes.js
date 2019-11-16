@@ -19,9 +19,9 @@ class VerticalTabs extends Component {
         return (
             <Container fluid>
                 <Tab.Container id="tab">
-                    <Row className={classes.ProjectMM}>
+                    <Row className={classes.ProjectMM} >
                         <Col sm={3} className={classes.LeftSide}>
-                        <Nav variant="pills" className="flex-column">
+                        <Nav variant="pills" className="flex-column" style={{height: '100vh', width: 'auto', overflowY: 'scroll'}}>
                             <Nav.Item>
                             <Nav.Link eventKey="10">Project Meeting 10 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
                             </Nav.Item>
