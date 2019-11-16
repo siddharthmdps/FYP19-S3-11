@@ -64,7 +64,7 @@ class EmpProfileView extends Component {
                                     </Card.Body>
                             </Col>
                         </Row>
-                        <Row style={{height: '40vh'}}>
+                        <Row style={{height: '32vh'}}>
                             <Col md={{ offset: 1, span: 10 }}>
                                     <Card.Body>
                                         <Card.Title>Brief Overview</Card.Title>
