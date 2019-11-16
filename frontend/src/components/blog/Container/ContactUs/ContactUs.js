@@ -32,7 +32,7 @@ Email :
 
 Siddharth Singh: `}{<a className={classes.Clickable} href={"mailto:singh041@mymail.sim.edu.sg"} >singh041@mymail.sim.edu.sg</a>}{` 
 
-Siddharth Singh: `}{<a className={classes.Clickable} href={"mailto:singh041@mymail.sim.edu.sg"} >singh041@mymail.sim.edu.sg</a>}{` 
+Joshua Cheng: `}{<a className={classes.Clickable} href={"mailto:jcycheng001@mymail.sim.edu.sg"} >jcycheng001@mymail.sim.edu.sg</a>}{` 
 
 Siddharth Singh: `}{<a className={classes.Clickable} href={"mailto:singh041@mymail.sim.edu.sg"} >singh041@mymail.sim.edu.sg</a>}{` 
 

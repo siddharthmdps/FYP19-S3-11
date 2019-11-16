@@ -38,10 +38,10 @@ Project Supervisor: Dr Loo Poh Kok
 This project was successfully completed by the following team members:
 
 Siddharth Singh (UOW ID: 5922690)
-Roles: Team Leader, Front-end development (Student section)
+Roles: Team Leader, Front-end development
 
 Joshua Cheng Chee Yan (UOW ID: 5921971)
-Roles: Front-end development (Student section)
+Roles: Front-end development
 
 Zhi Ting Chia (UOW ID: 5655602)
 Roles: Front-end development (Employer section)
@@ -52,7 +52,7 @@ Roles: Front-end development (Admin section)
 Min Marn Oo (UOW ID: 5841021)
 Roles: Back-end development (Emplyer section)
 
-Min San (UOW ID: 6213558)
+Min San (UOW ID: 6213558) 
 Roles: Back-end development
 `}
 </pre>
