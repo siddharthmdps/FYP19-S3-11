@@ -36,7 +36,7 @@ const jobPreference = props => {
                 <Form.Group as={Col} sm='12' controlId="WorkExp">
                     <Form.Label>Work Experience</Form.Label>
                         <Form.Control as='select' value={props.details.WorkExp} onChange={props.changeFn} required>
-                            <WorkExpReqList/>
+                            <WorkExpReqList />
                         </Form.Control>
                 </Form.Group>
 
