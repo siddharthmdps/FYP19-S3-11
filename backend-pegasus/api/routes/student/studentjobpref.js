@@ -4,14 +4,11 @@ const studentjobpref = (req, res) => {
     const studentid = req.body.StudentID;
     const jobprefid = req.body.JobPreferenceID;
     const industry = req.body.Industry;
-    const position = req.body.Position;
-    const jobtype = req.body.JobType;
-    const expectedsalary = req.body.ExpectedSalary;
+    const workexp = req.body.WorkExp;
     const location = req.body.Location;
-    const availability = req.body.Availability;
 
     var foundduplicate = false;
-    
+
     mypool.getConnection( (error, connection) => {
         if(error) {
             connection.release()
@@ -21,7 +18,7 @@ const studentjobpref = (req, res) => {
         else {
             if(studentid && industry && position && type) {   
                 let queryString1 = `select * from pegasus.studentjobpref where id = "${jobprefid}" and studentid = "${studentid}"` ;             
-                let queryString2 = `INSERT INTO pegasus.studentjobpref (studentid, industry, position, jobtype, expectedsalary, location, availability) values ("${studentid}", "${industry}", "${position}", "${jobtype}", "${expectedsalary}", "${location}", "${availability}")`
+                let queryString2 = `INSERT INTO pegasus.studentjobpref (studentid, industry, workexp, location) values ("${studentid}", "${industry}", "${workexp}", "${location}")`
                 connection.query(queryString1, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })
@@ -31,7 +28,7 @@ const studentjobpref = (req, res) => {
                     foundduplicate = true;
                 }
                 if(foundduplicate) {
-                    queryString2 = `UPDATE pegasus.studentjobpref set industry = "${industry}", position = "${position}", jobtype = "${jobtype}", expectedsalary = "${expectedsalary}", location = "${location}", availability = "${availability}" where id = "${jobprefid}" and studentid = "${studentid}"`
+                    queryString2 = `UPDATE pegasus.studentjobpref set industry = "${industry}", workexp = "${workexp}" location = "${location}" where id = "${jobprefid}" and studentid = "${studentid}"`
                 }
                 connection.query(queryString2, (err, rows, fields) => {
                     if(err) {

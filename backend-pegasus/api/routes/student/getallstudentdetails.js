@@ -11,12 +11,12 @@ const getallstudentdetails = (req, res) => {
         }
         else {
             if(studentid) {               
-                let queryString = `select distinct student.id,student.firstname,student.lastname,student.email,student.phone,student.country,student.city,student.currentaddress,student.postalcode,student.nationality,
+                let queryString = `select distinct student.id,student.firstname,student.lastname,student.email,student.phone,student.country,student.city,student.currentaddress,student.postalcode,student.nationality,student.availability,student.linkedin,
                 studentawards.ID as 'AwardID',studentawards.awardname as 'Award', DATE_FORMAT(studentawards.awarddate, '%b %Y') as 'Date', studentawards.awarddescription as 'Description',
                 studentcertificate.ID as 'CertificateID',studentcertificate.certificatename as 'Name',studentcertificate.IssuedBy,DATE_FORMAT(studentcertificate.IssuedDate, '%b %Y') as 'IssuedDate',DATE_FORMAT(studentcertificate.ValidUntil, '%b %Y') as 'ValidUntil',
                 studentdocument.id as 'DocumentID', studentdocument.Title, studentdocument.Link,
-                studenteducation.id as 'EducationID', studenteducation.University, studenteducation.FieldOfStudy, studenteducation.Major, studenteducation.StartDate, studenteducation.EndDate, studenteducation.Mode, studenteducation.GPA,
-                studentjobpref.id as 'JobPreferenceID', studentjobpref.Industry, studentjobpref.Position, studentjobpref.JobType, studentjobpref.ExpectedSalary, studentjobpref.Location, studentjobpref.Availability,
+                studenteducation.id as 'EducationID',studenteducation.Degree, studenteducation.University, studenteducation.FieldOfStudy, studenteducation.Major, studenteducation.StartDate, studenteducation.EndDate, studenteducation.Mode, studenteducation.GPA,
+                studentjobpref.id as 'JobPreferenceID', studentjobpref.Industry, studentjobpref.WorkExp studentjobpref.Location, 
                 studentproject.id as 'ProjectID', studentproject.Title, studentproject.Status, studentproject.Description, studentproject.Link,
                 studentworkexp.id as 'WorkExpID', studentworkexp.Position, studentworkexp.Company, studentworkexp.StartDate, studentworkexp.EndDate, studentworkexp.Mode, studentworkexp.Industry, studentworkexp.AnnualSalary, studentworkexp.Description
                 from pegasus.student 

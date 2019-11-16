@@ -17,23 +17,14 @@ const deletestudentawards = (req, res) => {
             throw error
         }
         else {
-            if(studentid && industry && position && type) {   
-                let queryString1 = `select * from pegasus.studentjobpref where id = "${jobprefid}" and studentid = "${studentid}"` ;             
-                let queryString2 = `INSERT INTO pegasus.studentjobpref (studentid, industry, position, jobtype, expectedsalary, location, availability) values ("${studentid}", "${industry}", "${position}", "${jobtype}", "${expectedsalary}", "${location}", "${availability}")`
+            if(studentid && jobprefid) {   
+                let queryString1 = `delete from pegasus.studentjobpref where id = "${jobprefid}" and studentid = "${studentid}"` ;   
+                if(!studentid) {
+                    queryString1 = `delete from pegasus.studentjobpref where studentid = "${studentid}"` ;   
+                }       
                 connection.query(queryString1, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })
-                    }
-                }) 
-                if(rows.length > 0) {
-                    foundduplicate = true;
-                }
-                if(foundduplicate) {
-                    queryString2 = `UPDATE pegasus.studentjobpref set industry = "${industry}", position = "${position}", jobtype = "${jobtype}", expectedsalary = "${expectedsalary}", location = "${location}", availability = "${availability}" where id = "${jobprefid}" and studentid = "${studentid}"`
-                }
-                connection.query(queryString2, (err, rows, fields) => {
-                    if(err) {
-                        res.status(500).json({ message: err });
                     }
                 }) 
             } else {
