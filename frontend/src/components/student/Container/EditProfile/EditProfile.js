@@ -104,6 +104,7 @@ const DocumentShell = {
 class EditProfile extends Component {
 
     state = {
+        "StudentID": "1",
         "ProfileImage": "default.png",
         "PersonalParticulars": {},
         "Education": [],
@@ -209,13 +210,23 @@ class EditProfile extends Component {
     }
 
     changeDocument = (event, elementID) => {
-        console.log(event.target.value, event.target.id, elementID);
         let tempState = this.state.Document;
-        tempState.forEach(element => {
-            if (element.DocumentID === elementID) {
-                element[event.target.id] = event.target.value;
-            }
-        });
+        if(event.target.id === "Title"){
+            console.log(event.target.value, event.target.id, elementID);
+            tempState.forEach(element => {
+                if (element.DocumentID === elementID) {
+                    element[event.target.id] = event.target.value;
+                }
+            });
+        }
+        else if(event.target.id === "Link"){
+            console.log(event.target.value, event.target.files[0], elementID);
+            tempState.forEach(element => {
+                if (element.DocumentID === elementID) {
+                    element[event.target.id] = event.target.files[0];
+                }
+            });
+        }
         this.setState({Document: tempState});
     }
 
@@ -446,70 +457,6 @@ class EditProfile extends Component {
             temp.splice(dIndex, 1);
         this.setState({ "Document": temp });
     }
-    // Removing elements in the Profile ends here
-
-    // Submit elements to put in Backend starts here
-    submitPersonalParticulars = () => {
-        const temp = {...this.state.PersonalParticulars};
-        console.log(temp);
-        Axios.post('https://pegasus-backend.herokuapp.com/student/studentinfo/updateStudent', temp)
-            .then(response => {
-                this.togglePanel(1);
-            })
-            .catch(error => {
-                this.props.enqueueSnackbar('Error storing Personal Particulars!', { variant: 'error' });
-            });
-    }
-    submitEducation = () => {
-        const temp = {...this.state.Education};
-        for (let idk in temp) {
-            temp[idk]['StudentID'] = 1;
-            temp[idk]['StartDate'] = new Date(temp[idk]['StartDate']);
-            temp[idk]['StartDate'] = `${temp[idk]['StartDate'].getDate()}/${temp[idk]['StartDate'].getMonth() + 1}/${temp[idk]['StartDate'].getFullYear()}`;
-            temp[idk]['EndDate'] = new Date(temp[idk]['EndDate']);
-            temp[idk]['EndDate'] = `${temp[idk]['EndDate'].getDate()}/${temp[idk]['EndDate'].getMonth() + 1}/${temp[idk]['EndDate'].getFullYear()}`;
-        }
-        console.log(temp);
-        Axios.put('https://pegasus-backend.herokuapp.com/student/putstudenteducation', temp)
-            .then(response => {
-                this.togglePanel(2);
-            })
-            .catch(error => {
-                this.props.enqueueSnackbar('Error storing Education!', { variant: 'error' });
-            });
-    }
-    submitWorkExp = () => {
-        this.togglePanel(3);
-    }
-    submitJobPreference = () => {
-        this.togglePanel(4);
-    }
-    submitAwards = () => {
-        this.togglePanel(5);
-    }
-    submitCertification = () => {
-        this.togglePanel(6);
-    }
-    submitProjects = () => {
-        this.togglePanel(7);
-    }
-    submitSkills = () => {
-        this.togglePanel(8);
-    }
-    submitDocuments = () => {
-        this.togglePanel(9);
-    }
-    // Submit elements to put in Backend ends here
-
-    removeEdit = (elementID) => {
-        let tempState = this.state.Skills;
-        tempState.forEach(element => {
-            if (element.SkillID === elementID) {
-                element["Edit"] = false;
-            }
-        });
-        this.setState(tempState);
-    }
 
     adjustDate = (date, format) => {
         let temp = new Date(date);
@@ -529,189 +476,261 @@ class EditProfile extends Component {
         return format;
     }
 
-    componentDidMount() {
+    // Removing elements in the Profile ends here
 
-        Axios.get(`${apiURL}student/studentinfo/1`)
-            .then(receivedData => {
-                console.log(receivedData.data.PersonalParticulars);
-                let tempPP = { ...PersonalParticularsShell }
-                for (let key in tempPP) {
-                    console.log(key, receivedData.data.PersonalParticulars[key]);
-                    if(receivedData.data.PersonalParticulars[key] != null)
-                        tempPP[key] = receivedData.data.PersonalParticulars[key];
-                }
-                this.setState({ PersonalParticulars: tempPP });
+    // Submit elements to put in Backend starts here
+    submitPersonalParticulars = () => {
+        const temp = {...this.state.PersonalParticulars};
+        console.log(temp);
+        Axios.put('https://pegasus-backend.herokuapp.com/student/studentinfo/updateStudent', temp)
+            .then(response => {
+                this.togglePanel(1);
             })
             .catch(error => {
-                console.log(error);
-                this.props.enqueueSnackbar('Error getting Personal Particulars!', { variant: 'error' });
+                this.props.enqueueSnackbar('Error storing Personal Particulars!', { variant: 'error' });
             });
-
-        Axios.get(`${apiURL}student/studenteducation/1`)
-            .then(receivedData => {
-                console.log(receivedData.data.Education);
-                let tempEducation = [];
-                for (let i in receivedData.data.Education) {
-                    let tempE = { ...EducationShell }
-                    for (let key in tempE) {
-                        console.log(key, receivedData.data.Education[i][key]);
-                        if(receivedData.data.Education[i][key] != null)
-                            tempE[key] = receivedData.data.Education[i][key];
-                    }
-                    tempE.StartDate = this.adjustDate(tempE.StartDate, "yyyy-mm-dd");
-                    tempE.EndDate = this.adjustDate(tempE.EndDate, "yyyy-mm-dd");
-                    tempEducation.push(tempE);
-                }
-                this.setState({ Education: tempEducation });
-            })
-            .catch(error => {
-                console.log(error);
-                this.props.enqueueSnackbar('Error getting Education details!', { variant: 'error' });
-            });
-
-        Axios.get(`${apiURL}student/studentworkexp/1`)
-            .then(receivedData => {
-                console.log(receivedData.data.WorkExp);
-                let tempWorkExp = [];
-                for (let i in receivedData.data.WorkExp) {
-                    let tempW = { ...WorkExpShell }
-                    for (let key in tempW) {
-                        console.log(key, receivedData.data.WorkExp[i][key]);
-                        if(receivedData.data.WorkExp[i][key] != null)
-                            tempW[key] = receivedData.data.WorkExp[i][key];
-                    }
-                    tempW.StartDate = this.adjustDate(tempW.StartDate, "yyyy-mm-dd");
-                    tempW.EndDate = this.adjustDate(tempW.EndDate, "yyyy-mm-dd");
-                    tempWorkExp.push(tempW);
-                }
-                this.setState({ WorkExp: tempWorkExp });
-            })
-            .catch(error => {
-                console.log(error);
-                this.props.enqueueSnackbar('Error getting Work Experience details!', { variant: 'error' });
-            });
-
-        Axios.get(`${apiURL}student/studentjobpref/1`)
-            .then(receivedData => {
-                console.log(receivedData.data.JobPreference);
-                let tempJP = { ...JobPreferenceShell};
-                for (let key in tempJP) {
-                    console.log(key, receivedData.data.JobPreference[key]);
-                    if(receivedData.data.JobPreference[key]!=null)
-                        tempJP[key] = receivedData.data.JobPreference[key];
-                }
-                this.setState({ JobPreference: tempJP });
-            })
-            .catch(error => {
-                console.log(error);
-                this.props.enqueueSnackbar('Error getting Job Preference details!', { variant: 'error' });
-            });
-
-        Axios.get(`${apiURL}student/studentawards/1`)
-            .then(receivedData => {
-                console.log(receivedData.data.Awards);
-                let tempAwards = [];
-                for (let i in receivedData.data.Awards) {
-                    let tempA = { ...AwardsShell }
-                    for (let key in tempA) {
-                        console.log(key, receivedData.data.Awards[i][key]);
-                        if(receivedData.data.Awards[i][key]!=null)
-                            tempA[key] = receivedData.data.Awards[i][key];
-                    }
-                    tempA.Date = this.adjustDate(tempA.Date, "yyyy-mm-dd");
-                    tempAwards.push(tempA);
-                }
-                this.setState({ Awards: tempAwards });
-            })
-            .catch(error => {
-                console.log(error);
-                this.props.enqueueSnackbar('Error getting Award details!', { variant: 'error' });
-            });
-
-        Axios.get(`${apiURL}student/studentcertificate/1`)
-            .then(receivedData => {
-                console.log(receivedData.data.Certification);
-                let tempCertification = [];
-                for (let i in receivedData.data.Certification) {
-                    let tempC = { ...CertificationShell }
-                    for (let key in tempC) {
-                        console.log(key, receivedData.data.Certification[i][key]);
-                        if(receivedData.data.Certification[i][key]!=null)
-                            tempC[key] = receivedData.data.Certification[i][key];
-                    }
-                    tempC.IssueDate = this.adjustDate(tempC.IssueDate, "yyyy-mm-dd");
-                    tempC.ValidUntil = this.adjustDate(tempC.ValidUntil, "yyyy-mm-dd");
-                    tempCertification.push(tempC);
-                }
-                this.setState({ Certification: tempCertification });
-            })
-            .catch(error => {
-                console.log(error);
-                this.props.enqueueSnackbar('Error getting Certification details!', { variant: 'error' });
-            });
-
-        Axios.get(`${apiURL}student/studentproject/1`)
-            .then(receivedData => {
-                console.log(receivedData.data.Projects);
-                let tempProjects = [];
-                for (let i in receivedData.data.Projects) {
-                    let tempP = { ...ProjectsShell }
-                    for (let key in tempP) {
-                        console.log(key, receivedData.data.Projects[i][key]);
-                        if(receivedData.data.Projects[i][key]!=null)
-                            tempP[key] = receivedData.data.Projects[i][key];
-                    }
-                    tempProjects.push(tempP);
-                }
-                this.setState({ Projects: tempProjects });
-            })
-            .catch(error => {
-                console.log(error);
-                this.props.enqueueSnackbar('Error getting Project details!', { variant: 'error' });
-            });
-
-        Axios.get(`${apiURL}student/studentskills/1`)
-            .then(receivedData => {
-                console.log(receivedData.data.Skills);
-                let tempSkills = [];
-                for (let i in receivedData.data.Skills) {
-                    let tempS = { ...SkillsShell }
-                    for (let key in tempS) {
-                        console.log(key, receivedData.data.Skills[i][key]);
-                        if(receivedData.data.Skills[i][key]!=null)
-                            tempS[key] = receivedData.data.Skills[i][key];
-                    }
-                    tempSkills.push(tempS);
-                }
-                this.setState({ Skills: tempSkills });
-            })
-            .catch(error => {
-                console.log(error);
-                this.props.enqueueSnackbar('Error getting Skills!', { variant: 'error' });
-            });
-
-        Axios.get(`${apiURL}student/studentdocument/1`)
-            .then(receivedData => {
-                console.log(receivedData.data.Document);
-                let tempDocument = [];
-                for (let i in receivedData.data.Document) {
-                    let tempD = { ...DocumentShell }
-                    for (let key in tempD) {
-                        console.log(key, receivedData.data.Document[i][key]);
-                        if(receivedData.data.Document[i][key]!=null)
-                            tempD[key] = receivedData.data.Document[i][key];
-                    }
-                    tempDocument.push(tempD);
-                }
-                this.setState({ Document: tempDocument });
-            })
-            .catch(error => {
-                console.log(error);
-                this.props.enqueueSnackbar('Error getting Document details!', { variant: 'error' });
-            });
-
-        this.togglePanel(0);
     }
+    submitEducation = () => {
+        let temp = [...this.state.Education];
+        for (let idk in temp) {
+            temp[idk]['StudentID'] = 1;
+            temp[idk]['StartDate'] = this.adjustDate(temp[idk]['StartDate'], "dd/mm/yyyy");
+            temp[idk]['EndDate'] = this.adjustDate(temp[idk]['EndDate'], "dd/mm/yyyy");
+        }
+        console.log(temp);
+        Axios.put('https://pegasus-backend.herokuapp.com/student/putstudenteducation', temp)
+            .then(response => {
+                this.togglePanel(2);
+            })
+            .catch(error => {
+                this.props.enqueueSnackbar('Error storing Education!', { variant: 'error' });
+            });
+    }
+
+    submitWorkExp = () => {
+        this.togglePanel(3);
+    }
+
+    submitJobPreference = () => {
+        this.togglePanel(4);
+    }
+
+    submitAwards = () => {
+        this.togglePanel(5);
+    }
+
+    submitCertification = () => {
+        this.togglePanel(6);
+    }
+
+    submitProjects = () => {
+        this.togglePanel(7);
+    }
+
+    submitSkills = () => {
+        this.togglePanel(8);
+    }
+
+    submitDocuments = () => {
+        this.togglePanel(9);
+    }
+    // Submit elements to put in Backend ends here
+
+    removeEdit = (elementID) => {
+        let tempState = this.state.Skills;
+        tempState.forEach(element => {
+            if (element.SkillID === elementID) {
+                element["Edit"] = false;
+            }
+        });
+        this.setState(tempState);
+    }
+
+    
+
+    // componentDidMount() {
+
+    //     Axios.get(`${apiURL}student/studentinfo/${this.state.StudentID}`)
+    //         .then(receivedData => {
+    //             console.log(receivedData.data.PersonalParticulars);
+    //             let tempPP = { ...PersonalParticularsShell }
+    //             for (let key in tempPP) {
+    //                 console.log(key, receivedData.data.PersonalParticulars[key]);
+    //                 if(receivedData.data.PersonalParticulars[key] != null)
+    //                     tempPP[key] = receivedData.data.PersonalParticulars[key];
+    //             }
+    //             this.setState({ PersonalParticulars: tempPP });
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //             this.props.enqueueSnackbar('Error getting Personal Particulars!', { variant: 'error' });
+    //         });
+
+    //     Axios.get(`${apiURL}student/studenteducation/${this.state.StudentID}`)
+    //         .then(receivedData => {
+    //             console.log(receivedData.data.Education);
+    //             let tempEducation = [];
+    //             for (let i in receivedData.data.Education) {
+    //                 let tempE = { ...EducationShell }
+    //                 for (let key in tempE) {
+    //                     console.log(key, receivedData.data.Education[i][key]);
+    //                     if(receivedData.data.Education[i][key] != null)
+    //                         tempE[key] = receivedData.data.Education[i][key];
+    //                 }
+    //                 tempE.StartDate = this.adjustDate(tempE.StartDate, "yyyy-mm-dd");
+    //                 tempE.EndDate = this.adjustDate(tempE.EndDate, "yyyy-mm-dd");
+    //                 tempEducation.push(tempE);
+    //             }
+    //             this.setState({ Education: tempEducation });
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //             this.props.enqueueSnackbar('Error getting Education details!', { variant: 'error' });
+    //         });
+
+    //     Axios.get(`${apiURL}student/studentworkexp/${this.state.StudentID}`)
+    //         .then(receivedData => {
+    //             console.log(receivedData.data.WorkExp);
+    //             let tempWorkExp = [];
+    //             for (let i in receivedData.data.WorkExp) {
+    //                 let tempW = { ...WorkExpShell }
+    //                 for (let key in tempW) {
+    //                     console.log(key, receivedData.data.WorkExp[i][key]);
+    //                     if(receivedData.data.WorkExp[i][key] != null)
+    //                         tempW[key] = receivedData.data.WorkExp[i][key];
+    //                 }
+    //                 tempW.StartDate = this.adjustDate(tempW.StartDate, "yyyy-mm-dd");
+    //                 tempW.EndDate = this.adjustDate(tempW.EndDate, "yyyy-mm-dd");
+    //                 tempWorkExp.push(tempW);
+    //             }
+    //             this.setState({ WorkExp: tempWorkExp });
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //             this.props.enqueueSnackbar('Error getting Work Experience details!', { variant: 'error' });
+    //         });
+
+    //     Axios.get(`${apiURL}student/studentjobpref/${this.state.StudentID}`)
+    //         .then(receivedData => {
+    //             console.log(receivedData.data.JobPreference);
+    //             let tempJP = { ...JobPreferenceShell};
+    //             for (let key in tempJP) {
+    //                 console.log(key, receivedData.data.JobPreference[key]);
+    //                 if(receivedData.data.JobPreference[key]!=null)
+    //                     tempJP[key] = receivedData.data.JobPreference[key];
+    //             }
+    //             this.setState({ JobPreference: tempJP });
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //             this.props.enqueueSnackbar('Error getting Job Preference details!', { variant: 'error' });
+    //         });
+
+    //     Axios.get(`${apiURL}student/studentawards/${this.state.StudentID}`)
+    //         .then(receivedData => {
+    //             console.log(receivedData.data.Awards);
+    //             let tempAwards = [];
+    //             for (let i in receivedData.data.Awards) {
+    //                 let tempA = { ...AwardsShell }
+    //                 for (let key in tempA) {
+    //                     console.log(key, receivedData.data.Awards[i][key]);
+    //                     if(receivedData.data.Awards[i][key]!=null)
+    //                         tempA[key] = receivedData.data.Awards[i][key];
+    //                 }
+    //                 tempA.Date = this.adjustDate(tempA.Date, "yyyy-mm-dd");
+    //                 tempAwards.push(tempA);
+    //             }
+    //             this.setState({ Awards: tempAwards });
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //             this.props.enqueueSnackbar('Error getting Award details!', { variant: 'error' });
+    //         });
+
+    //     Axios.get(`${apiURL}student/studentcertificate/${this.state.StudentID}`)
+    //         .then(receivedData => {
+    //             console.log(receivedData.data.Certification);
+    //             let tempCertification = [];
+    //             for (let i in receivedData.data.Certification) {
+    //                 let tempC = { ...CertificationShell }
+    //                 for (let key in tempC) {
+    //                     console.log(key, receivedData.data.Certification[i][key]);
+    //                     if(receivedData.data.Certification[i][key]!=null)
+    //                         tempC[key] = receivedData.data.Certification[i][key];
+    //                 }
+    //                 tempC.IssueDate = this.adjustDate(tempC.IssueDate, "yyyy-mm-dd");
+    //                 tempC.ValidUntil = this.adjustDate(tempC.ValidUntil, "yyyy-mm-dd");
+    //                 tempCertification.push(tempC);
+    //             }
+    //             this.setState({ Certification: tempCertification });
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //             this.props.enqueueSnackbar('Error getting Certification details!', { variant: 'error' });
+    //         });
+
+    //     Axios.get(`${apiURL}student/studentproject/${this.state.StudentID}`)
+    //         .then(receivedData => {
+    //             console.log(receivedData.data.Projects);
+    //             let tempProjects = [];
+    //             for (let i in receivedData.data.Projects) {
+    //                 let tempP = { ...ProjectsShell }
+    //                 for (let key in tempP) {
+    //                     console.log(key, receivedData.data.Projects[i][key]);
+    //                     if(receivedData.data.Projects[i][key]!=null)
+    //                         tempP[key] = receivedData.data.Projects[i][key];
+    //                 }
+    //                 tempProjects.push(tempP);
+    //             }
+    //             this.setState({ Projects: tempProjects });
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //             this.props.enqueueSnackbar('Error getting Project details!', { variant: 'error' });
+    //         });
+
+    //     Axios.get(`${apiURL}student/studentskills/${this.state.StudentID}`)
+    //         .then(receivedData => {
+    //             console.log(receivedData.data.Skills);
+    //             let tempSkills = [];
+    //             for (let i in receivedData.data.Skills) {
+    //                 let tempS = { ...SkillsShell }
+    //                 for (let key in tempS) {
+    //                     console.log(key, receivedData.data.Skills[i][key]);
+    //                     if(receivedData.data.Skills[i][key]!=null)
+    //                         tempS[key] = receivedData.data.Skills[i][key];
+    //                 }
+    //                 tempSkills.push(tempS);
+    //             }
+    //             this.setState({ Skills: tempSkills });
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //             this.props.enqueueSnackbar('Error getting Skills!', { variant: 'error' });
+    //         });
+
+    //     Axios.get(`${apiURL}student/studentdocument/${this.state.StudentID}`)
+    //         .then(receivedData => {
+    //             console.log(receivedData.data.Document);
+    //             let tempDocument = [];
+    //             for (let i in receivedData.data.Document) {
+    //                 let tempD = { ...DocumentShell }
+    //                 for (let key in tempD) {
+    //                     console.log(key, receivedData.data.Document[i][key]);
+    //                     if(receivedData.data.Document[i][key]!=null)
+    //                         tempD[key] = receivedData.data.Document[i][key];
+    //                 }
+    //                 tempDocument.push(tempD);
+    //             }
+    //             this.setState({ Document: tempDocument });
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //             this.props.enqueueSnackbar('Error getting Document details!', { variant: 'error' });
+    //         });
+
+    //     this.togglePanel(0);
+    // }
 
     render() {
         return (
