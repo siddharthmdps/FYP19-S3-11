@@ -3,6 +3,7 @@ import {Form, Row, Col} from 'react-bootstrap';
 import Button1 from '../../../../common_assets/Button1/Button1';
 import classes from '../../../../common_assets/Validate.module.css';
 import classes2 from '../../../../common_assets/Miscellaneous.module.css';
+import Industries from '../../../../common_assets/CommonLists/Industries';
 
 const workExperience = props => {
     
@@ -53,8 +54,7 @@ const workExperience = props => {
                 <Form.Group as={Col} sm="4" controlId="Industry">
                     <Form.Label>Industry <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                     <Form.Control as='select' placeholder="IT" value={props.details.Industry} className={classes.ptft} onChange={props.changeFn} required>
-                        <option>IT</option>
-                        <option>Business</option>
+                        <Industries />
                     </Form.Control>
                 </Form.Group> 
                 <Form.Group as={Col} sm="4" controlId="AnnualSalary">
