@@ -1,6 +1,6 @@
 .Login{
     height: 100vh;
-    background: url('LoginBackground.jpg') no-repeat center center fixed; 
+    background: url('BG.jpg') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -22,8 +22,4 @@
     margin-top: 20%;
     background: rgba(246, 254, 245, 0.6);
     text-align: center;
-}
-
-.LoginButton{
-    
 }
