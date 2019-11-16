@@ -24,6 +24,8 @@ const studentworkexp = (req, res) => {
             enddate = new Date(temptill[2], temptill[1], temptill[0]);
             enddate = dateFormat(enddate, "yyyy-mm-dd");
 
+            var foundduplicate = false;
+            
             mypool.getConnection( (error, connection) => {
                 if(error) {
                     connection.release()

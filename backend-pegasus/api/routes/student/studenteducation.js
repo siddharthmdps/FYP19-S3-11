@@ -16,6 +16,8 @@ const studenteducation = (req, res) => {
             const mode = req.body[key].Mode;
             const gpa = req.body[key].GPA;
 
+            var foundduplicate = false;
+
             var starttemp = startdate.split("/");
             startdate = new Date(starttemp[2], starttemp[1], starttemp[0]);
             startdate = dateFormat(startdate, "yyyy-mm-dd");

@@ -10,6 +10,8 @@ const studentproject = (req, res) => {
             const description = req.body[key].Description;
             const link = req.body[key].Link;
 
+            var foundduplicate = false;
+            
             mypool.getConnection( (error, connection) => {
                 if(error) {
                     connection.release()

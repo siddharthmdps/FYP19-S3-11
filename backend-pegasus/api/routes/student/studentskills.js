@@ -7,6 +7,8 @@ const studentskills = (req, res) => {
             const skillid = req.body[key].SkillID;
             const skillname = req.body[key].SkillName;
 
+            var foundduplicate = false;
+            
             mypool.getConnection( (error, connection) => {
                 if(error) {
                     connection.release()

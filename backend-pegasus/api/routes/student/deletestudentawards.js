@@ -1,6 +1,6 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
-const studentjobpref = (req, res) => {
+const deletestudentawards = (req, res) => {
     const studentid = req.body.StudentID;
     const jobprefid = req.body.JobPreferenceID;
     const industry = req.body.Industry;
@@ -10,8 +10,6 @@ const studentjobpref = (req, res) => {
     const location = req.body.Location;
     const availability = req.body.Availability;
 
-    var foundduplicate = false;
-    
     mypool.getConnection( (error, connection) => {
         if(error) {
             connection.release()
@@ -52,4 +50,4 @@ const studentjobpref = (req, res) => {
     })
 }
 
-module.exports = studentjobpref
+module.exports = deletestudentawards
