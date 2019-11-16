@@ -117,10 +117,10 @@ class App extends Component {
 
               {/* Blog Routes */}
               <Route exact path="/blog" render={props => <Blog {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
-              <Route exact path="/contactus" render={props => <ContactUs {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
-              <Route exact path="/aboutus" render={props => <AboutUs {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
-              <Route exact path="/projectmeetingminutes" render={props => <ProjectMM {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
-              <Route exact path="/personaldiaries" render={props => <PersonalDiaries {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/blog/contactus" render={props => <ContactUs {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/blog/aboutus" render={props => <AboutUs {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/blog/projectmeetingminutes" render={props => <ProjectMM {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/blog/personaldiaries" render={props => <PersonalDiaries {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
             </Switch>
           </Router>
         </div>

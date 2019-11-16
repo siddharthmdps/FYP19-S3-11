@@ -58,10 +58,10 @@ class TopNavbar extends Component{
       let tempLeft = {
         "< Back to Site": "/",
         "Product": "/blog",
-        "Project Meeting Minutes": "/projectmeetingminutes",
-        "Personal Diary": "/personaldiaries",
-        "About Us": "/aboutus",
-        "Contact Us": "/contactus",
+        "Project Meeting Minutes": "/blog/projectmeetingminutes",
+        "Personal Diary": "/blog/personaldiaries",
+        "About Us": "/blog/aboutus",
+        "Contact Us": "/blog/contactus",
       };
 
       let tempRight = {};

@@ -15,9 +15,9 @@ class VerticalTabs extends Component {
 
     DPhandler = (name) => {
         if(name === 'Sid')
-            this.setState({dp: "https://media.licdn.com/dms/image/C5103AQFc-T4Uz_i39g/profile-displayphoto-shrink_100_100/0?e=1579132800&v=beta&t=lmNYgELtJQMvs-C_kD7SAqpWWtKK8DzRlErgsq-oh-w"});
+            this.setState({dp: "Sid.jpeg"});
         else if(name === 'Joshua')
-            this.setState({dp: "https://joliverc18.github.io/joshua.jpeg"});
+            this.setState({dp: "Joshua.jpeg"});
     }
 
     componentDidMount(){
