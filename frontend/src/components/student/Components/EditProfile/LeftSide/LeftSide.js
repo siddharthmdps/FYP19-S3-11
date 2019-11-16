@@ -20,7 +20,7 @@ const leftSide = props => {
                             </ResponsiveEmbed>
                         </div>
                     </Card.Body>
-                    <Card.Body style={{display: 'none'}} ><Button1>Upload</Button1></Card.Body>
+                    <Card.Body ><Button1>Upload</Button1></Card.Body>
                 </Card>
                 <Card>
                     <Card.Body>

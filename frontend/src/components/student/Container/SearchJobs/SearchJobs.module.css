@@ -212,8 +212,20 @@
 
 .NoRecord{
     text-align: center;
-    color: red;
     font-family: 'Helvetica Neue', sans-serif;
+}
+
+.NoRecordHighlight {
+    font-weight: bold;
+    font-size: 1.286em;
+    line-height: 38px;
+    color: rgba(26, 209, 124, 0.925);
+}
+
+.NoRecordMessage {
+    font-weight: 400;
+    line-height: 34px;
+    letter-spacing: 1px;
 }
 
 /* @media only screen and (min-width: 1200px) {

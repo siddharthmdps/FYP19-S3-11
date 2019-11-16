@@ -151,8 +151,12 @@ class SearchJobs extends Component {
                                 <br />
                             </React.Fragment>
                         );
-                    }): <div className={classes.NoRecord}>No record found</div>}
-
+                    }): 
+                    <div className={classes.NoRecord}>
+                        <div className={classes.NoRecordHighlight}>No results</div>
+                        <div className={classes.NoRecordMessage}>Sorry there are no results for this search, please try another phrase.</div>
+                    </div>
+                    }
                 </Col>
 
                 <Grid container  justify="center">
