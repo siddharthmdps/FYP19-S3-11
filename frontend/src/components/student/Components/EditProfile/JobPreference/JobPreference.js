@@ -18,7 +18,7 @@ const jobPreference = props => {
             <Form.Row>
                 <Form.Group as={Col} sm='12' controlId="Industry">
                     <Form.Label>Industry</Form.Label>
-                        <Form.Control type='text' placeholder="Accounting" value={props.details.Industry} onChange={props.changeFn} required/>
+                        <Form.Control type='text' placeholder="Accounting" value={props.details.Industry} onChange={props.changeFn} required></Form.Control>
                 </Form.Group>
 
                 {/* <Form.Group as={Col}  sm='6' controlId="Position">

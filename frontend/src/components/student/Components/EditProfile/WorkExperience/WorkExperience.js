@@ -53,7 +53,7 @@ const workExperience = props => {
                 </Form.Group> 
                 <Form.Group as={Col} sm="4" controlId="Industry">
                     <Form.Label>Industry <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
-                    <Form.Control as='select' placeholder="IT" value={props.details.Industry} className={classes.ptft} onChange={props.changeFn} required>
+                    <Form.Control as='select' value={props.details.Industry} className={classes.ptft} onChange={props.changeFn} required>
                         <Industries />
                     </Form.Control>
                 </Form.Group> 
