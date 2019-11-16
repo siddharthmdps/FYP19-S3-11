@@ -504,9 +504,13 @@ class EditProfile extends Component {
         const temp = {...this.state.Education};
         for (let idk in temp) {
             temp[idk]['StudentID'] = 1;
+            temp[idk]['StartDate'] = new Date(temp[idk]['StartDate']);
+            temp[idk]['StartDate'] = `${temp[idk]['StartDate'].getDate()}/${temp[idk]['StartDate'].getMonth() + 1}/${temp[idk]['StartDate'].getFullYear()}`;
+            temp[idk]['EndDate'] = new Date(temp[idk]['EndDate']);
+            temp[idk]['EndDate'] = `${temp[idk]['EndDate'].getDate()}/${temp[idk]['EndDate'].getMonth() + 1}/${temp[idk]['EndDate'].getFullYear()}`;
         }
         console.log(temp);
-        Axios.post('https://pegasus-backend.herokuapp.com/student/putstudenteducation', temp)
+        Axios.put('https://pegasus-backend.herokuapp.com/student/putstudenteducation', temp)
             .then(response => {
                 this.togglePanel(2);
             })
