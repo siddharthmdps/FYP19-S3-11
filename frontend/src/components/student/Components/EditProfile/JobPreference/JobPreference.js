@@ -3,6 +3,7 @@ import {Form, Col, Row} from 'react-bootstrap';
 import Button1 from '../../../../common_assets/Button1/Button1';
 import classes2 from '../../../../common_assets/Miscellaneous.module.css';
 import Industries from '../../../../common_assets/CommonLists/Industries';
+import WorkExpReq from '../../../../common_assets/CommonLists/WorkExpReq';
 
 const jobPreference = props => {
     return(
@@ -33,7 +34,9 @@ const jobPreference = props => {
             <Form.Row>
                 <Form.Group as={Col} sm='12' controlId="WorkExp">
                     <Form.Label>Work Experience</Form.Label>
-                        <Form.Control type='text' placeholder="0 to 3 years" value={props.details.WorkExp} onChange={props.changeFn} required/>
+                        <Form.Control as='select' value={props.details.WorkExp} onChange={props.changeFn} required>
+                            <WorkExpReq/>
+                        </Form.Control>
                 </Form.Group>
 
                 {/* <Form.Group as={Col}  sm='6' controlId="ExpectedSalary">
