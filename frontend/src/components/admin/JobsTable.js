@@ -162,14 +162,14 @@ export class JobsTable extends Component {
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>empid</th>
-                                    <th>title</th>
-                                    <th>industry</th>
-                                    <th>description</th>
-                                    <th>requiredskills</th>
-                                    <th>dateposted</th>
-                                    <th>location</th>
-                                    <th>yearsofexperience</th>
+                                    <th>Employer ID</th>
+                                    <th>Title</th>
+                                    <th>Industry</th>
+                                    <th>Description</th>
+                                    <th>Required Skills</th>
+                                    <th>Date Posted</th>
+                                    <th>Location</th>
+                                    <th>Years of experience</th>
                                     <th>Options</th>
                                 </tr>
                             </thead>

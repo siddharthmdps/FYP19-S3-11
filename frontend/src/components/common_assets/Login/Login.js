@@ -133,7 +133,8 @@ class Login extends Component {
 
                                 </RadioGroup>
 
-                                <Fab style={{backgroundColor: '#90e4b3'}} variant="extended" aria-label="add" className={classes.LoginButton} onClick={this.validateUser}>
+                                <Fab    style={{backgroundColor: 'lightgreen', width: '80%'}} 
+                                variant="extended" color="primary" aria-label="add" className={classes.LoginButton} onClick={this.validateUser}>
                                     <ExitAppIcon />
                                     Login
                                 </Fab>
@@ -141,7 +142,7 @@ class Login extends Component {
                                 <this.setLoadingSpin/>
                                 <br />
                                 New to Pegasus? 
-                                <Button style={{color: '#90e4b3'}} className={classes.button} href="/signup">
+                                <Button style={{color: 'lightgreen'}}className={classes.button} href="/signup">
                                     Join Now
                                 </Button>
                             </Card.Body>
