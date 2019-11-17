@@ -3,6 +3,8 @@ import apiURL from '../../../../config'
 import classes from './NewEmpFeed.module.css'
 import { Container, Card, Form, Col, Row } from 'react-bootstrap';
 
+import EmpJobView from '../../JobView/EmpJobView';
+
 class EmpFeed extends Component {
     constructor(props) {
         super()
@@ -55,12 +57,13 @@ class EmpFeed extends Component {
         else if (this.state.jobList.length > 0 && !this.state.error) {
             return (
                 this.state.jobList.map((job) => {
+                    console.log(job);
                     job.dateposted = job.dateposted.substr(0, 10)
                     return (
                         <React.Fragment>
                             <Container >
                                 <Row >
-                                    <div className={classes.JobContainer}>
+                                    <div className={classes.JobContainer} onClick={()=> {window.open(`/employer/viewjob/${job.id}`, "_blank");}}>
                                         <div className={classes.JobTitleBox}>
                                             <div className={classes.JobTitle}>{job.title}</div>
                                             {/* <a onClick={() => {
