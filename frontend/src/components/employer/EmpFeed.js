@@ -24,7 +24,7 @@ class EmpFeed extends Component {
         .then(data => {
             this.setState({ jobList : data })
             //console.log(this.state.jobList)
-            console.log(`total jobs : ${this.state.jobList.length}`)
+            //console.log(`total jobs : ${this.state.jobList.length}`)
             this.props.updateNumOfJobs(this.state.jobList.length)
         })
         .catch(error => {
