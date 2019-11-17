@@ -552,189 +552,189 @@ class EditProfile extends Component {
 
     
 
-    // componentDidMount() {
+    componentDidMount() {
 
-    //     Axios.get(`${apiURL}student/studentinfo/${this.state.StudentID}`)
-    //         .then(receivedData => {
-    //             console.log(receivedData.data.PersonalParticulars);
-    //             let tempPP = { ...PersonalParticularsShell }
-    //             for (let key in tempPP) {
-    //                 console.log(key, receivedData.data.PersonalParticulars[key]);
-    //                 if(receivedData.data.PersonalParticulars[key] != null)
-    //                     tempPP[key] = receivedData.data.PersonalParticulars[key];
-    //             }
-    //             this.setState({ PersonalParticulars: tempPP });
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //             this.props.enqueueSnackbar('Error getting Personal Particulars!', { variant: 'error' });
-    //         });
+        Axios.get(`${apiURL}student/studentinfo/${this.state.StudentID}`)
+            .then(receivedData => {
+                console.log(receivedData.data.PersonalParticulars);
+                let tempPP = { ...PersonalParticularsShell }
+                for (let key in tempPP) {
+                    console.log(key, receivedData.data.PersonalParticulars[key]);
+                    if(receivedData.data.PersonalParticulars[key] != null)
+                        tempPP[key] = receivedData.data.PersonalParticulars[key];
+                }
+                this.setState({ PersonalParticulars: tempPP });
+            })
+            .catch(error => {
+                console.log(error);
+                this.props.enqueueSnackbar('Error getting Personal Particulars!', { variant: 'error' });
+            });
 
-    //     Axios.get(`${apiURL}student/studenteducation/${this.state.StudentID}`)
-    //         .then(receivedData => {
-    //             console.log(receivedData.data.Education);
-    //             let tempEducation = [];
-    //             for (let i in receivedData.data.Education) {
-    //                 let tempE = { ...EducationShell }
-    //                 for (let key in tempE) {
-    //                     console.log(key, receivedData.data.Education[i][key]);
-    //                     if(receivedData.data.Education[i][key] != null)
-    //                         tempE[key] = receivedData.data.Education[i][key];
-    //                 }
-    //                 tempE.StartDate = this.adjustDate(tempE.StartDate, "yyyy-mm-dd");
-    //                 tempE.EndDate = this.adjustDate(tempE.EndDate, "yyyy-mm-dd");
-    //                 tempEducation.push(tempE);
-    //             }
-    //             this.setState({ Education: tempEducation });
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //             this.props.enqueueSnackbar('Error getting Education details!', { variant: 'error' });
-    //         });
+        Axios.get(`${apiURL}student/studenteducation/${this.state.StudentID}`)
+            .then(receivedData => {
+                console.log(receivedData.data.Education);
+                let tempEducation = [];
+                for (let i in receivedData.data.Education) {
+                    let tempE = { ...EducationShell }
+                    for (let key in tempE) {
+                        console.log(key, receivedData.data.Education[i][key]);
+                        if(receivedData.data.Education[i][key] != null)
+                            tempE[key] = receivedData.data.Education[i][key];
+                    }
+                    tempE.StartDate = this.adjustDate(tempE.StartDate, "yyyy-mm-dd");
+                    tempE.EndDate = this.adjustDate(tempE.EndDate, "yyyy-mm-dd");
+                    tempEducation.push(tempE);
+                }
+                this.setState({ Education: tempEducation });
+            })
+            .catch(error => {
+                console.log(error);
+                this.props.enqueueSnackbar('Error getting Education details!', { variant: 'error' });
+            });
 
-    //     Axios.get(`${apiURL}student/studentworkexp/${this.state.StudentID}`)
-    //         .then(receivedData => {
-    //             console.log(receivedData.data.WorkExp);
-    //             let tempWorkExp = [];
-    //             for (let i in receivedData.data.WorkExp) {
-    //                 let tempW = { ...WorkExpShell }
-    //                 for (let key in tempW) {
-    //                     console.log(key, receivedData.data.WorkExp[i][key]);
-    //                     if(receivedData.data.WorkExp[i][key] != null)
-    //                         tempW[key] = receivedData.data.WorkExp[i][key];
-    //                 }
-    //                 tempW.StartDate = this.adjustDate(tempW.StartDate, "yyyy-mm-dd");
-    //                 tempW.EndDate = this.adjustDate(tempW.EndDate, "yyyy-mm-dd");
-    //                 tempWorkExp.push(tempW);
-    //             }
-    //             this.setState({ WorkExp: tempWorkExp });
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //             this.props.enqueueSnackbar('Error getting Work Experience details!', { variant: 'error' });
-    //         });
+        Axios.get(`${apiURL}student/studentworkexp/${this.state.StudentID}`)
+            .then(receivedData => {
+                console.log(receivedData.data.WorkExp);
+                let tempWorkExp = [];
+                for (let i in receivedData.data.WorkExp) {
+                    let tempW = { ...WorkExpShell }
+                    for (let key in tempW) {
+                        console.log(key, receivedData.data.WorkExp[i][key]);
+                        if(receivedData.data.WorkExp[i][key] != null)
+                            tempW[key] = receivedData.data.WorkExp[i][key];
+                    }
+                    tempW.StartDate = this.adjustDate(tempW.StartDate, "yyyy-mm-dd");
+                    tempW.EndDate = this.adjustDate(tempW.EndDate, "yyyy-mm-dd");
+                    tempWorkExp.push(tempW);
+                }
+                this.setState({ WorkExp: tempWorkExp });
+            })
+            .catch(error => {
+                console.log(error);
+                this.props.enqueueSnackbar('Error getting Work Experience details!', { variant: 'error' });
+            });
 
-    //     Axios.get(`${apiURL}student/studentjobpref/${this.state.StudentID}`)
-    //         .then(receivedData => {
-    //             console.log(receivedData.data.JobPreference);
-    //             let tempJP = { ...JobPreferenceShell};
-    //             for (let key in tempJP) {
-    //                 console.log(key, receivedData.data.JobPreference[key]);
-    //                 if(receivedData.data.JobPreference[key]!=null)
-    //                     tempJP[key] = receivedData.data.JobPreference[key];
-    //             }
-    //             this.setState({ JobPreference: tempJP });
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //             this.props.enqueueSnackbar('Error getting Job Preference details!', { variant: 'error' });
-    //         });
+        Axios.get(`${apiURL}student/studentjobpref/${this.state.StudentID}`)
+            .then(receivedData => {
+                console.log(receivedData.data.JobPreference);
+                let tempJP = { ...JobPreferenceShell};
+                for (let key in tempJP) {
+                    console.log(key, receivedData.data.JobPreference[key]);
+                    if(receivedData.data.JobPreference[key]!=null)
+                        tempJP[key] = receivedData.data.JobPreference[key];
+                }
+                this.setState({ JobPreference: tempJP });
+            })
+            .catch(error => {
+                console.log(error);
+                this.props.enqueueSnackbar('Error getting Job Preference details!', { variant: 'error' });
+            });
 
-    //     Axios.get(`${apiURL}student/studentawards/${this.state.StudentID}`)
-    //         .then(receivedData => {
-    //             console.log(receivedData.data.Awards);
-    //             let tempAwards = [];
-    //             for (let i in receivedData.data.Awards) {
-    //                 let tempA = { ...AwardsShell }
-    //                 for (let key in tempA) {
-    //                     console.log(key, receivedData.data.Awards[i][key]);
-    //                     if(receivedData.data.Awards[i][key]!=null)
-    //                         tempA[key] = receivedData.data.Awards[i][key];
-    //                 }
-    //                 tempA.Date = this.adjustDate(tempA.Date, "yyyy-mm-dd");
-    //                 tempAwards.push(tempA);
-    //             }
-    //             this.setState({ Awards: tempAwards });
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //             this.props.enqueueSnackbar('Error getting Award details!', { variant: 'error' });
-    //         });
+        Axios.get(`${apiURL}student/studentawards/${this.state.StudentID}`)
+            .then(receivedData => {
+                console.log(receivedData.data.Awards);
+                let tempAwards = [];
+                for (let i in receivedData.data.Awards) {
+                    let tempA = { ...AwardsShell }
+                    for (let key in tempA) {
+                        console.log(key, receivedData.data.Awards[i][key]);
+                        if(receivedData.data.Awards[i][key]!=null)
+                            tempA[key] = receivedData.data.Awards[i][key];
+                    }
+                    tempA.Date = this.adjustDate(tempA.Date, "yyyy-mm-dd");
+                    tempAwards.push(tempA);
+                }
+                this.setState({ Awards: tempAwards });
+            })
+            .catch(error => {
+                console.log(error);
+                this.props.enqueueSnackbar('Error getting Award details!', { variant: 'error' });
+            });
 
-    //     Axios.get(`${apiURL}student/studentcertificate/${this.state.StudentID}`)
-    //         .then(receivedData => {
-    //             console.log(receivedData.data.Certification);
-    //             let tempCertification = [];
-    //             for (let i in receivedData.data.Certification) {
-    //                 let tempC = { ...CertificationShell }
-    //                 for (let key in tempC) {
-    //                     console.log(key, receivedData.data.Certification[i][key]);
-    //                     if(receivedData.data.Certification[i][key]!=null)
-    //                         tempC[key] = receivedData.data.Certification[i][key];
-    //                 }
-    //                 tempC.IssueDate = this.adjustDate(tempC.IssueDate, "yyyy-mm-dd");
-    //                 tempC.ValidUntil = this.adjustDate(tempC.ValidUntil, "yyyy-mm-dd");
-    //                 tempCertification.push(tempC);
-    //             }
-    //             this.setState({ Certification: tempCertification });
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //             this.props.enqueueSnackbar('Error getting Certification details!', { variant: 'error' });
-    //         });
+        Axios.get(`${apiURL}student/studentcertificate/${this.state.StudentID}`)
+            .then(receivedData => {
+                console.log(receivedData.data.Certification);
+                let tempCertification = [];
+                for (let i in receivedData.data.Certification) {
+                    let tempC = { ...CertificationShell }
+                    for (let key in tempC) {
+                        console.log(key, receivedData.data.Certification[i][key]);
+                        if(receivedData.data.Certification[i][key]!=null)
+                            tempC[key] = receivedData.data.Certification[i][key];
+                    }
+                    tempC.IssueDate = this.adjustDate(tempC.IssueDate, "yyyy-mm-dd");
+                    tempC.ValidUntil = this.adjustDate(tempC.ValidUntil, "yyyy-mm-dd");
+                    tempCertification.push(tempC);
+                }
+                this.setState({ Certification: tempCertification });
+            })
+            .catch(error => {
+                console.log(error);
+                this.props.enqueueSnackbar('Error getting Certification details!', { variant: 'error' });
+            });
 
-    //     Axios.get(`${apiURL}student/studentproject/${this.state.StudentID}`)
-    //         .then(receivedData => {
-    //             console.log(receivedData.data.Projects);
-    //             let tempProjects = [];
-    //             for (let i in receivedData.data.Projects) {
-    //                 let tempP = { ...ProjectsShell }
-    //                 for (let key in tempP) {
-    //                     console.log(key, receivedData.data.Projects[i][key]);
-    //                     if(receivedData.data.Projects[i][key]!=null)
-    //                         tempP[key] = receivedData.data.Projects[i][key];
-    //                 }
-    //                 tempProjects.push(tempP);
-    //             }
-    //             this.setState({ Projects: tempProjects });
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //             this.props.enqueueSnackbar('Error getting Project details!', { variant: 'error' });
-    //         });
+        Axios.get(`${apiURL}student/studentproject/${this.state.StudentID}`)
+            .then(receivedData => {
+                console.log(receivedData.data.Projects);
+                let tempProjects = [];
+                for (let i in receivedData.data.Projects) {
+                    let tempP = { ...ProjectsShell }
+                    for (let key in tempP) {
+                        console.log(key, receivedData.data.Projects[i][key]);
+                        if(receivedData.data.Projects[i][key]!=null)
+                            tempP[key] = receivedData.data.Projects[i][key];
+                    }
+                    tempProjects.push(tempP);
+                }
+                this.setState({ Projects: tempProjects });
+            })
+            .catch(error => {
+                console.log(error);
+                this.props.enqueueSnackbar('Error getting Project details!', { variant: 'error' });
+            });
 
-    //     Axios.get(`${apiURL}student/studentskills/${this.state.StudentID}`)
-    //         .then(receivedData => {
-    //             console.log(receivedData.data.Skills);
-    //             let tempSkills = [];
-    //             for (let i in receivedData.data.Skills) {
-    //                 let tempS = { ...SkillsShell }
-    //                 for (let key in tempS) {
-    //                     console.log(key, receivedData.data.Skills[i][key]);
-    //                     if(receivedData.data.Skills[i][key]!=null)
-    //                         tempS[key] = receivedData.data.Skills[i][key];
-    //                 }
-    //                 tempSkills.push(tempS);
-    //             }
-    //             this.setState({ Skills: tempSkills });
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //             this.props.enqueueSnackbar('Error getting Skills!', { variant: 'error' });
-    //         });
+        Axios.get(`${apiURL}student/studentskills/${this.state.StudentID}`)
+            .then(receivedData => {
+                console.log(receivedData.data.Skills);
+                let tempSkills = [];
+                for (let i in receivedData.data.Skills) {
+                    let tempS = { ...SkillsShell }
+                    for (let key in tempS) {
+                        console.log(key, receivedData.data.Skills[i][key]);
+                        if(receivedData.data.Skills[i][key]!=null)
+                            tempS[key] = receivedData.data.Skills[i][key];
+                    }
+                    tempSkills.push(tempS);
+                }
+                this.setState({ Skills: tempSkills });
+            })
+            .catch(error => {
+                console.log(error);
+                this.props.enqueueSnackbar('Error getting Skills!', { variant: 'error' });
+            });
 
-    //     Axios.get(`${apiURL}student/studentdocument/${this.state.StudentID}`)
-    //         .then(receivedData => {
-    //             console.log(receivedData.data.Document);
-    //             let tempDocument = [];
-    //             for (let i in receivedData.data.Document) {
-    //                 let tempD = { ...DocumentShell }
-    //                 for (let key in tempD) {
-    //                     console.log(key, receivedData.data.Document[i][key]);
-    //                     if(receivedData.data.Document[i][key]!=null)
-    //                         tempD[key] = receivedData.data.Document[i][key];
-    //                 }
-    //                 tempDocument.push(tempD);
-    //             }
-    //             this.setState({ Document: tempDocument });
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //             this.props.enqueueSnackbar('Error getting Document details!', { variant: 'error' });
-    //         });
+        Axios.get(`${apiURL}student/studentdocument/${this.state.StudentID}`)
+            .then(receivedData => {
+                console.log(receivedData.data.Document);
+                let tempDocument = [];
+                for (let i in receivedData.data.Document) {
+                    let tempD = { ...DocumentShell }
+                    for (let key in tempD) {
+                        console.log(key, receivedData.data.Document[i][key]);
+                        if(receivedData.data.Document[i][key]!=null)
+                            tempD[key] = receivedData.data.Document[i][key];
+                    }
+                    tempDocument.push(tempD);
+                }
+                this.setState({ Document: tempDocument });
+            })
+            .catch(error => {
+                console.log(error);
+                this.props.enqueueSnackbar('Error getting Document details!', { variant: 'error' });
+            });
 
-    //     this.togglePanel(0);
-    // }
+        this.togglePanel(0);
+    }
 
     render() {
         return (
