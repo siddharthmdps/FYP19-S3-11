@@ -21,11 +21,7 @@ class Admin extends Component {
   render() {
     return (
       <div className="container" style={{maxWidth: '1300px'}}>
-          <br />
-          <br />
-          <br />
-          <br />
-
+          
         </div>
     )
   }
