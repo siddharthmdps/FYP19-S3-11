@@ -12,7 +12,7 @@ const FooterPage = () => {
       </MDBContainer>
       <div className="footer-copyright text-center py-3">
         <MDBContainer fluid>
-          &copy; {new Date().getFullYear()} Copyright: Pegasus
+          &copy; {new Date().getFullYear()} Copyright: Pegasus@SIM
         </MDBContainer>
       </div>
     </MDBFooter>
