@@ -5,6 +5,8 @@ import {
 } from "mdbreact";
 import { NavDropdown } from 'react-bootstrap'
 
+
+
 class NavbarPage extends Component {
   state = {
     isOpen: false
@@ -14,17 +16,19 @@ class NavbarPage extends Component {
     this.setState({ isOpen: !this.state.isOpen });
   }
 
+
+
   render() {
     return (
-      <MDBNavbar color="blue" scrolling fixed="top" dark expand="md">
-        <MDBNavbarBrand onClick={this.toggleCollapse}>
-          <MDBNavLink to="/"><strong className="white-text">Pegasus</strong></MDBNavLink>
+      <MDBNavbar color="blue" scrolling dark expand="md">
+        <MDBNavbarBrand>
+          <MDBNavLink to="/admin"><strong className="white-text">Pegasus@SIM</strong></MDBNavLink>
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
           <MDBNavbarNav left>
             <MDBNavItem>
-              <MDBNavLink to="#dashboard">Dashboard</MDBNavLink>
+              <MDBNavLink to="/admin/dashboard">Dashboard</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
               <MDBDropdown>
@@ -32,16 +36,16 @@ class NavbarPage extends Component {
                   <span className="mr-2">Account Credentials</span>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                  <NavDropdown.Item href="/employer">Employer</NavDropdown.Item>
-                  <NavDropdown.Item href="/candidate">Candidate</NavDropdown.Item>
+                  <NavDropdown.Item href="/admin/employer">Employer</NavDropdown.Item>
+                  <NavDropdown.Item href="/admin/candidate">Candidate</NavDropdown.Item>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="#!">Job List</MDBNavLink>
+              <MDBNavLink to="/admin/jobs">Job Listing</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="#!">Reports</MDBNavLink>
+              <MDBNavLink to="/admin/reports">Reports</MDBNavLink>
             </MDBNavItem>
 
           </MDBNavbarNav>
@@ -59,7 +63,7 @@ class NavbarPage extends Component {
                   <MDBIcon icon="user" />
                 </MDBDropdownToggle>
                 <MDBDropdownMenu right className="dropdown-default">
-                  <NavDropdown.Item href="/employer">Settings</NavDropdown.Item>
+                  <NavDropdown.Item href="/admin/Settings">Settings</NavDropdown.Item>
                   <NavDropdown.Item onClick={ () => {
                         localStorage.clear()
                         document.location.reload(true)
