@@ -9,11 +9,12 @@ import SignUp from './components/common_assets/Signup'
 import About from './components/common_assets/About';
 
 // importing Employer Components
-import Employer from './components/employer/Employer'
+import Employer from './components/employer/Container/Employer'
 import EmpNavbar from './components/employer/EmpNavbar'
 import EmpViewProfile from './components/employer/ProfileView/EmpProfileView'
 import EmpEditProfile from './components/employer/ProfileEditor/EmpEditProfile'
 import PostJob from './components/employer/PostJob'
+import ViewJob from './components/employer/JobView/EmpJobView'
 
 // importing Student Components
 import Student from './components/student/Student'
@@ -142,6 +143,7 @@ class App extends Component {
               <ProtectedRoute exact path="/employer/editprofile" component={EmpEditProfile}></ProtectedRoute>
               <ProtectedRoute exact path="/employer/about" component={About}></ProtectedRoute>
               <ProtectedRoute exact path="/employer/postjob" component={PostJob}></ProtectedRoute>
+              <ProtectedRoute exact path="/employer/viewjob/:jobid" component={ViewJob}></ProtectedRoute>
 
               {/* Student Routes */}
               <ProtectedRoute exact path="/student" component={EditProfile}></ProtectedRoute>
