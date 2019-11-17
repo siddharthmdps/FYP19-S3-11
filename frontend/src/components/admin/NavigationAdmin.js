@@ -20,7 +20,7 @@ class NavbarPage extends Component {
 
   render() {
     return (
-      <MDBNavbar color="blue" scrolling dark expand="md" style={{transition: '3s', transitionDelay: '2s'}}>
+      <MDBNavbar color="blue" scrolling dark expand="md" >
         <MDBNavbarBrand>
           <MDBNavLink to="/admin"><strong className="white-text">Pegasus@SIM</strong></MDBNavLink>
         </MDBNavbarBrand>
