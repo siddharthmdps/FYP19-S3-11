@@ -76,12 +76,13 @@ const personalParticulars = props => {
             <Form.Group as={Row} controlId="Availability">
                 <Form.Label column sm="2">Availability <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                 <Col sm='10'>
-                    <Form.Control as='select' placeholder="Immediately" value={props.details.Availability} onChange={props.changeFn} required >
-                        <option>Immediate</option>
-                        <option>1 - 3 months</option>
-                        <option>3 - 6 months</option>
-                        <option>6 - 12 months</option>
-                        <option>More than a year</option>
+                    <Form.Control as='select' value={props.details.Availability} onChange={props.changeFn} required >
+                        <option value="">Choose an option</option>
+                        <option value="Immediate">Immediate</option>
+                        <option value="1 - 3 months">1 - 3 months</option>
+                        <option value="3 - 6 months">3 - 6 months</option>
+                        <option value="6 - 12 months">6 - 12 months</option>
+                        <option value="More than a year">More than a year</option>
                     </Form.Control>
                 </Col>
             </Form.Group>

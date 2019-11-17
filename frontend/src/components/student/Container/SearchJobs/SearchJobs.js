@@ -81,12 +81,13 @@ class SearchJobs extends Component {
     }
 
     getSearchedJobs() {
-        Axios.get("http://localhost:3000/AppliedJobs")
+        Axios.get(`https://pegasus-backend.herokuapp.com/student/searchjob/${this.state.Search}`)
             .then(receivedData => {
                 let temp = receivedData.data;
-                temp.forEach(element => {
-                    element.status = "active";
-                });
+                console.log(temp);
+                // temp.forEach(element => {
+                //     element.status = "active";
+                // });
                 this.setState({ SearchJobs: temp });
                 console.log(temp);
                 this.pagination();
@@ -142,14 +143,20 @@ class SearchJobs extends Component {
 
 
                 <Col className={classes.Jobs} md={{ offset: 1, span: 10 }}>
-                    {this.state.SearchJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
+                    {this.state.SearchJobs.message!=="NOT FOUND"?
+                    this.state.SearchJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
                         return (
                             <React.Fragment key={jobDetail.id}>
                                 <JobCard jobDetail={jobDetail} changeStatus={(id, status) => this.changeStatus(id, status)} />
                                 <br />
                             </React.Fragment>
                         );
-                    })}
+                    }): 
+                    <div className={classes.NoRecord}>
+                        <div className={classes.NoRecordHighlight}>No results</div>
+                        <div className={classes.NoRecordMessage}>Sorry there are no results for this search, please try another phrase.</div>
+                    </div>
+                    }
                 </Col>
 
                 <Grid container  justify="center">

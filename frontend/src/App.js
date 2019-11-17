@@ -38,6 +38,10 @@ import Settings from './components/admin/Settings'
 
 // importing Blog Components
 import Blog from './components/blog/Container/Blog'
+import ContactUs from './components/blog/Container/ContactUs/ContactUs'
+import AboutUs from './components/blog/Container/AboutUs/AboutUs'
+import ProjectMM from './components/blog/Container/ProjectMeetingMinutes/ProjectMeetingMinutes'
+import PersonalDiaries from './components/blog/Container/PersonalDiaries/PersonalDiaries'
 
 // importing utils
 import {ProtectedRoute} from './utils/protected.routes'
@@ -164,7 +168,11 @@ class App extends Component {
 
 
               {/* Blog Routes */}
-              <Route exact path="/blog" render={(props) => <Blog {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/blog" render={props => <Blog {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/blog/contactus" render={props => <ContactUs {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/blog/aboutus" render={props => <AboutUs {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/blog/projectmeetingminutes" render={props => <ProjectMM {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/blog/personaldiaries" render={props => <PersonalDiaries {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
             </Switch>
             <this.FooterToRender/>
           </Router>
