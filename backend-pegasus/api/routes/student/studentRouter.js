@@ -141,13 +141,13 @@ router.post('/studentinfo/createStudent', (req, res, next) => {
                         message: error
                     });
                 }
-                if (results && results.length > 0) {
+                if (results) {
                     res.status(200).json({
-                    message: "Success! User created for " + fullname + "!"
+                        message: "Success"
                     });    
                 }
-                else if (!results || results.length == 0) {
-                    res.status(200).json({
+                else if (!results) {
+                    res.status(500).json({
                         message: "Failed!"
                     });
                 }
@@ -183,23 +183,16 @@ router.put('/studentinfo/updateStudent', (req, res, next) => {
 	  		console.log(' Error getting mysql_pool connection: ' + err);
 	  		throw err;
 	  	}
-        if (username && fullname && email && password && usertype) {
-            connection.query(`UPDATE pegasus.student SET firstname = "${firstname}", middlename = "${middlename}", lastname = "${lastname}", email = "${email}", phone = "${phone}", country = "${country}", city = "${city}", currentaddress = "${currentaddress}", postalcode = "${postalcode}", nationality = "${nationality}", availability = "${availability}", linkedin = "${linkedin}" WHERE studentid = "${studentid}"`, function(error, results, fields) {
+        if (firstname && email && currentaddress) {
+            connection.query(`UPDATE pegasus.student SET firstname = "${firstname}", middlename = "${middlename}", lastname = "${lastname}", email = "${email}", phone = "${phone}", country = "${country}", city = "${city}", currentaddress = "${currentaddress}", postalcode = "${postalcode}", nationality = "${nationality}", availability = "${availability}", linkedin = "${linkedin}" WHERE id = "${studentid}"`, function(error, results, fields) {
                 if (error) {
                     res.status(500).json({
                         message: error
                     });
                 }
-                if (results && results.length > 0) {
-                    res.status(200).json({
-                    message: "Success! User created for " + fullname + "!"
-                    });    
-                }
-                else if (!results || results.length == 0) {
-                    res.status(200).json({
-                        message: "Failed!"
-                    });
-                }
+                res.status(200).json({
+                    message: "Success"
+                }); 
             });
         } else {
             res.status(400).json({
