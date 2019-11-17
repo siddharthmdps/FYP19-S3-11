@@ -2,15 +2,19 @@
 
 import React, { Component } from 'react'
 // Employer exclusive components
-import EmpNavbar from './EmpNavbar'
-import PostJob from './PostJob'
-import EmpPanel from './EmpPanel'
-import EmpFeed from './EmpFeed'
+import EmpNavbar from '../EmpNavbar'
+import PostJob from '../PostJob'
+import LeftSide from '../Components/LeftSide/LeftSide'
+import EmpFeed from '../EmpFeed'
+import NewEmpFeed from '../Components/EmpFeed/NewEmpFeed';
 //import EmpJobView from './JobView/EmpJobView'
-import EditJob from './JobEdit/EditJob'
+import EditJob from '../JobEdit/EditJob'
+import { Container, Card, Form, Col, Row } from 'react-bootstrap';
+
+import classes from './Employer.module.css'
 
 
-const herokuURL = require('../../config')
+const herokuURL = require('../../../config')
 
 
 
@@ -134,16 +138,18 @@ class Employer extends Component {
 
     render() {
         return (
-            <div className="row mb-2">
-                <div className="col-md-4">
-                    <EmpPanel companyName={this.state.companyName}
-                        numOfJobs={this.state.numOfJobs}
-                    />
-                </div>
-                <div className="col-md-8">
-                    <EmpFeed updateNumOfJobs={this.updateNumOfJobs} viewJobHandler={this.viewJobHandler} />
-                </div>
-            </div>
+            <Container fluid className={classes.Employer}>
+                <Row style={{marginRight: '1px'}}>
+                    {/* <br /> */}
+                    <Col md={{ span: 3 }} className={classes.LeftSide}>
+                        <LeftSide companyName={this.state.companyName} numOfJobs={this.state.numOfJobs} />
+                    </Col>
+                    <Col md={{ span: 9, offset: 3}} className={classes.AdvertBox}>
+                        {/* <EmpFeed updateNumOfJobs={this.updateNumOfJobs} viewJobHandler={this.viewJobHandler} /> */}
+                        <NewEmpFeed updateNumOfJobs={this.updateNumOfJobs} viewJobHandler={this.viewJobHandler} />
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }
