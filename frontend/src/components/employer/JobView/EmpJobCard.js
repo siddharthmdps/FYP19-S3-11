@@ -4,17 +4,11 @@
 // It accepts parameters in the form of props such as title, companyName, joblocation, jobindustry and reqSkills.
 // Job description is to be passed in as children.
 
-//EmpAppCard is card that briefly summarises details about each applicant.
-//It accepts parameters in the form of props such as 
-/*appName,appSkills,appContact,degree,university, gpa, position,company,
-awardname, awarddate, certname, certbody, projecttitle and dateapplied
-*/
 
 import React, { Component } from 'react';
 import { Card, Button, Col, Row, Alert, Table } from 'react-bootstrap';
 import '../ProfileView/Card.css';
 import apiURL from '../../../config'
-//import './EmpCard.css'
 
 // need to handle if empty.s
 
@@ -82,8 +76,10 @@ class EmpAppCard extends Component {
     constructor(props) {
         super()
         this.props = props;
+        // console.log(props.appID)
 
         this.state = {
+            appId: props.appId,
             educationList: [],
             jobExpList: [],
             awardsList: [],
@@ -91,11 +87,7 @@ class EmpAppCard extends Component {
             projectsList: [],
             showAlert: false,
             error: false,
-            noEducation: false,
-            noJobExp: false,
-            noAwards: false,
-            noCerts: false,
-            noProjects: false
+            isLoading: true
         }
     }
 
@@ -108,18 +100,14 @@ class EmpAppCard extends Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({ educationList: data.Education })
-                console.log(`Number of education : ${this.state.educationList.length}`)
+                // console.log(`Number of education : ${this.state.educationList.length}`)
             })
 
             .catch(error => {
-                console.log(`Error at getEducation : ${error}`)
                 this.setState({ error: true })
             })
-
-        if (`${this.state.educationList.length}<1`) {
-            this.setState({ noEducation: true })
-        }
     }
+
 
     //gets all the job experience of the applicant
     getJobExp = (appID) => {
@@ -130,13 +118,14 @@ class EmpAppCard extends Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({ jobExpList: data.WorkExp })
-                console.log(`Number of job experiences : ${this.state.jobExpList.length}`)
+                // console.log(`Number of job experiences : ${this.state.jobExpList.length}`)
             })
 
             .catch(error => {
                 console.log(`Error at getJobExp : ${error}`)
                 this.setState({ error: true })
             })
+
     }
 
     //gets all the awards of the applicant
@@ -148,7 +137,7 @@ class EmpAppCard extends Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({ awardsList: data.Awards })
-                console.log(`Number of awards : ${this.state.awardsList.length}`)
+                // console.log(`Number of awards : ${this.state.awardsList.length}`)
             })
 
             .catch(error => {
@@ -174,6 +163,7 @@ class EmpAppCard extends Component {
                 console.log(`Error at getCerts : ${error}`)
                 this.setState({ error: true })
             })
+
     }
 
     //gets all the awards of the applicant
@@ -186,28 +176,43 @@ class EmpAppCard extends Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({ projectsList: data.Projects })
-                console.log(`Number of projects : ${this.state.projectsList.length}`)
+                // console.log(`Number of projects : ${this.state.projectsList.length}`)
             })
 
             .catch(error => {
                 console.log(`Error at getProjects : ${error}`)
                 this.setState({ error: true })
             })
+
+        // if (`${this.state.projectsList.length}<1`) {
+        //     this.setState({ noProjects: true })
+        // }
+    }
+
+    handleUndefined(item) {
+        if (item === undefined)
+            return []
+        return item
     }
 
     componentDidMount() {
-        console.log(this.props.appID)
+        // if (!this.state.appId) {
+        //     this.setState({ error: true })
+        // }
+        // if (this.state.appId) {
         this.getEducation(this.props.appID)
         this.getJobExp(this.props.appID)
         this.getAwards(this.props.appID)
         this.getCerts(this.props.appID)
         this.getProjects(this.props.appID)
+        this.setState({ isLoading: false })
+        // }
     }
 
+
     educationContent = () => {
-        console.log(this.state.educationList)
-        // Loading
-        if (this.state.educationList.length === 0 && !this.state.error) {
+        let eduList = this.handleUndefined(this.state.educationList)
+        if (this.state.isLoading) {
             return (
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border" role="status">
@@ -216,26 +221,29 @@ class EmpAppCard extends Component {
                 </div>
             )
         }
-        else if (this.state.educationList.length > 0 && !this.state.error) {
-            return (
-                this.state.educationList.map(education => (
-                    <tr>
-                        <td>{education.FieldOfStudy}</td>
-                        <td>{education.Major}</td>
-                        <td>{education.University}</td>
-                        <td>{education.GPA}</td>
-                        <td>{education.Mode}</td>
-                    </tr>
-                )))
+
+        if (!eduList.length) {
+            return <div>No Records found</div>
         }
 
-        else return <div>No Education Records found</div>
+        return (
+            eduList.map(education => (
+                <tr>
+                    <td>{education.FieldOfStudy}</td>
+                    <td>{education.Major}</td>
+                    <td>{education.University}</td>
+                    <td>{education.GPA}</td>
+                    <td>{education.Mode}</td>
+                </tr>
+            ))
+        );
+
     }
 
     jobExpContent = () => {
-        console.log(this.state.jobExpList)
-        // Loading
-        if (this.state.jobExpList.length === 0 && !this.state.error) {
+        let jobList = this.handleUndefined(this.state.jobExpList)
+
+        if (this.state.isLoading) {
             return (
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border" role="status">
@@ -244,33 +252,40 @@ class EmpAppCard extends Component {
                 </div>
             )
         }
-        else if (this.state.jobExpList.length > 0 && !this.state.error) {
+
+        if (!jobList.length) {
             return (
-                this.state.jobExpList.map((jobExp) => {
-                    return (
-                        <tr>
-                            <td>{jobExp.Position}</td>
-                            <td>{jobExp.Mode}</td>
-                            <td>{jobExp.Company}</td>
-                            <td>{jobExp.Industry}</td>
-                            <td>{jobExp.Description}</td>
-                            <td>{jobExp.StartDate}</td>
-                            <td>{jobExp.EndDate}</td>
-                            <td>{jobExp.AnnualSalary}</td>
+                <div>No records found</div>
 
-                        </tr>
-
-                    )
-                })
             )
         }
-        else return <div></div>
+        return (
+            jobList.map((jobExp) => {
+                return (
+                    <tr>
+                        <td>{jobExp.Position}</td>
+                        <td>{jobExp.Mode}</td>
+                        <td>{jobExp.Company}</td>
+                        <td>{jobExp.Industry}</td>
+                        <td>{jobExp.Description}</td>
+                        <td>{jobExp.StartDate}</td>
+                        <td>{jobExp.EndDate}</td>
+                        <td>{jobExp.AnnualSalary}</td>
+                    </tr>
+
+                )
+            })
+        )
+
+
+
     }
 
     awardsContent = () => {
-        console.log(this.state.awardsList)
+        let awardsList = this.handleUndefined(this.awardsList)
+
         // Loading
-        if (this.state.awardsList.length === 0 && !this.state.error) {
+        if (this.state.isLoading) {
             return (
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border" role="status">
@@ -279,26 +294,34 @@ class EmpAppCard extends Component {
                 </div>
             )
         }
-        else if (this.state.awardsList.length > 0 && !this.state.error) {
+
+        if (!awardsList.length) {
             return (
-                this.state.awardsList.map((award) => {
-                    return (
-                        <tr>
-                            <td>{award.Award}</td>
-                            <td>{award.Description}</td>
-                            <td>{award.Date}</td>
-                        </tr>
-                    )
-                })
+                <div>No records found</div>
+
             )
         }
-        else return <div>Error</div>
+
+        return (
+            this.state.awardsList.map((award) => {
+                return (
+                    <tr>
+                        <td>{award.Award}</td>
+                        <td>{award.Description}</td>
+                        <td>{award.Date}</td>
+                    </tr>
+                )
+            })
+        )
+
+
     }
 
     certsContent = () => {
-        console.log(this.state.certsList)
+        let certsList = this.handleUndefined(this.certsList)
+
         // Loading
-        if (this.state.certsList.length === 0 && !this.state.error) {
+        if (this.state.isLoading) {
             return (
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border" role="status">
@@ -307,50 +330,60 @@ class EmpAppCard extends Component {
                 </div>
             )
         }
-        else if (this.state.certsList.length > 0 && !this.state.error) {
+
+        if (!certsList.length) {
             return (
-                this.state.certsList.map((cert) => {
-                    return (
-                        <tr>
-                            <td>{cert.Name}</td>
-                            <td>{cert.IssuedBy}</td>
-                            <td>{cert.IssuedDate}</td>
-                            <td>{cert.ValidUntil}</td>
-                        </tr>
-                    )
-                })
+                <div>No records found</div>
+
             )
         }
-        else return <div>Error</div>
+
+
+        return (
+            this.state.certsList.map((cert) => {
+                return (
+                    <tr>
+                        <td>{cert.Name}</td>
+                        <td>{cert.IssuedBy}</td>
+                        <td>{cert.IssuedDate}</td>
+                        <td>{cert.ValidUntil}</td>
+                    </tr>
+                )
+            })
+        )
     }
 
+
+
     projectsContent = () => {
-        console.log(this.state.projectsList)
-        // Loading
-        if (this.state.projectsList.length === 0 && !this.state.error) {
-            return (
-                <div class="d-flex justify-content-center">
-                    <div class="spinner-border" role="status">
-                        <span class="sr-only">Loading...</span>
+        if (!this.state.noProjects) {
+            // Loading
+            if (this.state.projectsList.length === 0 && !this.state.error) {
+                return (
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
                     </div>
-                </div>
-            )
+                )
+            }
+            else if (this.state.projectsList.length > 0 && !this.state.error) {
+                return (
+                    this.state.projectsList.map((project) => {
+                        return (
+                            <tr>
+                                <td>{project.Title}</td>
+                                <td>{project.Status}</td>
+                                <td>{project.Description}</td>
+                                <td><a href={project.Link} /></td>
+                            </tr>
+                        )
+                    })
+                )
+            }
+            else return <div> Error</div>
         }
-        else if (this.state.projectsList.length > 0 && !this.state.error) {
-            return (
-                this.state.projectsList.map((project) => {
-                    return (
-                        <tr>
-                            <td>{project.Title}</td>
-                            <td>{project.Status}</td>
-                            <td>{project.Description}</td>
-                            <td><a href={project.Link} /></td>
-                        </tr>
-                    )
-                })
-            )
-        }
-        else return <div>Error</div>
+        else return <div>No projects content found</div>
     }
 
     hideAlert = () => {
@@ -430,7 +463,7 @@ class EmpAppCard extends Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <this.educationContent />
+                                            {this.educationContent()}
                                         </tbody>
                                     </Table>
                                 </Col>
@@ -456,7 +489,7 @@ class EmpAppCard extends Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <this.jobExpContent />
+                                            {this.jobExpContent()}
                                         </tbody>
                                     </Table>
                                 </Col>
@@ -477,13 +510,13 @@ class EmpAppCard extends Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <this.awardsContent />
+                                            {this.awardsContent()}
                                         </tbody>
                                     </Table>
                                 </Col>
                             </Row>
                         </Card.Text>
-
+                        {/*
                         <Card.Text>
                             <i class="fas fa-stamp"></i>
                             &nbsp; <em>Professional Certifications Obtained</em>
@@ -535,8 +568,8 @@ class EmpAppCard extends Component {
                             Applied {this.props.dateapplied} 
                         </small>
                     
-                    </Card.Text> */}
-
+                    </Card.Text> */} */}
+    
                         <Button variant="success" onClick={() => { this.shortlist(123, 456) }} >Shortlist</Button>
                     </Card.Body>
                 </Card>
