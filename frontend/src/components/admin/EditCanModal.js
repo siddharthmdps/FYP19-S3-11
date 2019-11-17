@@ -102,7 +102,7 @@ export class EditCanModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="firstname">
-                                        <Form.Label>firstname:</Form.Label>
+                                        <Form.Label>First Name:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="firstname"
@@ -112,7 +112,7 @@ export class EditCanModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="middlename">
-                                        <Form.Label>middlename:</Form.Label>
+                                        <Form.Label>Middle Name:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="middlename"
@@ -122,7 +122,7 @@ export class EditCanModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="lastname">
-                                        <Form.Label>lastname Name:</Form.Label>
+                                        <Form.Label>Last Name:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="lastname"
@@ -132,7 +132,7 @@ export class EditCanModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="email">
-                                        <Form.Label>email Phone:</Form.Label>
+                                        <Form.Label>E-mail:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="email"
@@ -142,7 +142,7 @@ export class EditCanModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="phone">
-                                        <Form.Label>phone E-mail:</Form.Label>
+                                        <Form.Label>Phone:</Form.Label>
                                         <Form.Control
                                             type="number"
                                             name="phone"
@@ -152,7 +152,7 @@ export class EditCanModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="country">
-                                        <Form.Label>country Description:</Form.Label>
+                                        <Form.Label>Country:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="country"
@@ -162,7 +162,7 @@ export class EditCanModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="city">
-                                        <Form.Label>city Address:</Form.Label>
+                                        <Form.Label>City:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="city"
@@ -172,7 +172,7 @@ export class EditCanModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="currentaddress">
-                                        <Form.Label>currentaddress:</Form.Label>
+                                        <Form.Label>Current Address:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="currentaddress"
@@ -182,7 +182,7 @@ export class EditCanModal extends Component {
                                     </Form.Group>
                                     
                                     <Form.Group controlId="postalcode">
-                                        <Form.Label>postalcode:</Form.Label>
+                                        <Form.Label>Postal Code:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="postalcode"
@@ -192,7 +192,7 @@ export class EditCanModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="nationality">
-                                        <Form.Label>nationality:</Form.Label>
+                                        <Form.Label>Nationality:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="nationality"
@@ -202,7 +202,7 @@ export class EditCanModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="username">
-                                        <Form.Label>username:</Form.Label>
+                                        <Form.Label>Username:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="username"
@@ -212,7 +212,7 @@ export class EditCanModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="password">
-                                        <Form.Label>password:</Form.Label>
+                                        <Form.Label>Password:</Form.Label>
                                         <Form.Control
                                             type="password"
                                             name="password"

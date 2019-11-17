@@ -42,14 +42,14 @@ const jobCard = props => (
                 <Row className={classes.Row} style={{ fontWeight: '600' }}>{props.jobDetail.JobTitle}</Row>
                 <Row className={classes.Row}>{props.jobDetail.Company}</Row>
                 <Row>
-                    <Col md={{ span: 3 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-map-marker-alt"></i> {props.jobDetail.Location}</Col>
-                    <Col md={{ span: 6 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-building"></i> {props.jobDetail.Industry}</Col>
-                    <Col md={{ span: 3 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-briefcase"></i> {props.jobDetail.WorkExpReq}</Col>
+                    <Col md={{ span: 3 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-map-marker-alt"></i> {props.jobDetail.location}</Col>
+                    <Col md={{ span: 6 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-building"></i> {props.jobDetail.industry}</Col>
+                    <Col md={{ span: 3 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-briefcase"></i> {props.jobDetail.yearsofexperience}</Col>
                 </Row>
             </Card.Title>
             <Card.Text className={classes.Description}>
                 <div className={classes.Desc}>
-                    {props.jobDetail.Description}
+                    {props.jobDetail.description}
                 </div>
             </Card.Text>
         </Card.Body>

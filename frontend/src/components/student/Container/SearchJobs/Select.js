@@ -9,6 +9,8 @@ import classes2 from './Select.module.css';
 import { Col, Row } from 'react-bootstrap';
 import Divider from '@material-ui/core/Divider';
 
+import { Form } from 'react-bootstrap';
+
 const useStyles = makeStyles(theme => ({
     formControl: {
         margin: theme.spacing(1),
@@ -65,6 +67,19 @@ export default function SimpleSelect() {
 
 
                 <div className={classes2.Select}>
+
+                <Form.Group controlId="Availability" className={classes2.formControl} style={{ minWidth: '120px' }}>
+                    <Form.Label>Availability</Form.Label>
+                        <Form.Control as='select' value={"props.details.Availability"} onChange={"props.changeFn"} required >
+                            <option value="">Choose an Option</option>
+                            <option value="Immediate">Immediate</option>
+                            <option value="1 - 3 months">1 - 3 months</option>
+                            <option value="3 - 6 months">3 - 6 months</option>
+                            <option value="6 - 12 months">6 - 12 months</option>
+                            <option value="More than a year">More than a year</option>
+                        </Form.Control>
+                </Form.Group>
+
                     <FormControl className={classes2.formControl} style={{ minWidth: '120px' }}>
                         <InputLabel shrink id="Months" className={classes2.InputLabel}>
                             Months

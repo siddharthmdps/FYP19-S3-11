@@ -161,9 +161,9 @@ export class AppliedJobs extends Component {
                         <Table striped bordered hover>
                             <thead>
                                 <tr>
-                                    <th>Employeer ID</th>
+                                    <th>Employer Username</th>
                                     <th>Title</th>
-                                    <th>Description</th>
+                                    <th>Company</th>
                                     <th>Date posted</th>
                                 </tr>
                             </thead>
@@ -193,7 +193,7 @@ export class AppliedJobs extends Component {
                             <thead >
                                 <tr>
                                     <th>Username</th>
-                                    <th>Email</th>
+                                    <th>Course</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -221,7 +221,7 @@ export class AppliedJobs extends Component {
                             <thead>
                                 <tr>
                                     <th>Username</th>
-                                    <th>Email</th>
+                                    <th>Company</th>
                                 </tr>
                             </thead>
                             <tbody>

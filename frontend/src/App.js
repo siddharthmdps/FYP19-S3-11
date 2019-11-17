@@ -9,11 +9,12 @@ import SignUp from './components/common_assets/Signup'
 import About from './components/common_assets/About';
 
 // importing Employer Components
-import Employer from './components/employer/Employer'
+import Employer from './components/employer/Container/Employer'
 import EmpNavbar from './components/employer/EmpNavbar'
 import EmpViewProfile from './components/employer/ProfileView/EmpProfileView'
 import EmpEditProfile from './components/employer/ProfileEditor/EmpEditProfile'
 import PostJob from './components/employer/PostJob'
+import ViewJob from './components/employer/JobView/EmpJobView'
 
 // importing Student Components
 import Student from './components/student/Student'
@@ -37,6 +38,10 @@ import Settings from './components/admin/Settings'
 
 // importing Blog Components
 import Blog from './components/blog/Container/Blog'
+import ContactUs from './components/blog/Container/ContactUs/ContactUs'
+import AboutUs from './components/blog/Container/AboutUs/AboutUs'
+import ProjectMM from './components/blog/Container/ProjectMeetingMinutes/ProjectMeetingMinutes'
+import PersonalDiaries from './components/blog/Container/PersonalDiaries/PersonalDiaries'
 
 // importing utils
 import {ProtectedRoute} from './utils/protected.routes'
@@ -142,6 +147,7 @@ class App extends Component {
               <ProtectedRoute exact path="/employer/editprofile" component={EmpEditProfile}></ProtectedRoute>
               <ProtectedRoute exact path="/employer/about" component={About}></ProtectedRoute>
               <ProtectedRoute exact path="/employer/postjob" component={PostJob}></ProtectedRoute>
+              <ProtectedRoute exact path="/employer/viewjob/:jobid" component={ViewJob}></ProtectedRoute>
 
               {/* Student Routes */}
               <ProtectedRoute exact path="/student" component={EditProfile}></ProtectedRoute>
@@ -153,16 +159,20 @@ class App extends Component {
 
               {/* Admin Routes */}
               <ProtectedRoute exact path="/admin" component={Home}></ProtectedRoute>
-            <ProtectedRoute exact path="/admin/dashboard" component={Dashboard}></ProtectedRoute>
-            <ProtectedRoute exact path="/admin/candidate" component={AdminCandidate}></ProtectedRoute>
-            <ProtectedRoute exact path="/admin/employer" component={AdminEmployer}></ProtectedRoute>
-            <ProtectedRoute exact path="/admin/jobs" component={AdminJobs}></ProtectedRoute>
-            <ProtectedRoute exact path="/admin/reports" component={Reports}></ProtectedRoute>
-            <ProtectedRoute exact path="/admin/settings" component={Settings}></ProtectedRoute>
+              <ProtectedRoute exact path="/admin/dashboard" component={Dashboard}></ProtectedRoute>
+              <ProtectedRoute exact path="/admin/candidate" component={AdminCandidate}></ProtectedRoute>
+              <ProtectedRoute exact path="/admin/employer" component={AdminEmployer}></ProtectedRoute>
+              <ProtectedRoute exact path="/admin/jobs" component={AdminJobs}></ProtectedRoute>
+              <ProtectedRoute exact path="/admin/reports" component={Reports}></ProtectedRoute>
+              <ProtectedRoute exact path="/admin/settings" component={Settings}></ProtectedRoute>
 
 
               {/* Blog Routes */}
-              <Route exact path="/blog" render={(props) => <Blog {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/blog" render={props => <Blog {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/blog/contactus" render={props => <ContactUs {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/blog/aboutus" render={props => <AboutUs {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/blog/projectmeetingminutes" render={props => <ProjectMM {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
+              <Route exact path="/blog/personaldiaries" render={props => <PersonalDiaries {...props} useBlog={(allow)=>this.useBlogNavbar(allow)}/>}></Route>
             </Switch>
             <this.FooterToRender/>
           </Router>

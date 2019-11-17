@@ -131,7 +131,7 @@ export class Reports extends Component {
 
 								</Tab.Pane>
 								<Tab.Pane eventKey="second">
-									<h2 style={{textAlign:'center'}}>Reports of Successful Applications</h2>
+									<h2 style={{textAlign:'center'}}>Employibility rate by course</h2>
 									<br></br>
 									<h3 style={{textAlign:'center'}}>
 										<abbr style={{color:'red'}}>total: {this.state.total},</abbr>

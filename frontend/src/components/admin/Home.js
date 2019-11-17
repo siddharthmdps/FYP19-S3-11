@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import classes from './Home.module.css';
 
 export class Home extends Component {
     render() {
         return (
-            <React.Fragment>
-            <div className="mt-5 d-flex justify-content-center">
-                <h4><p>Welcome to Pegusus@SIM</p></h4> 
-                <h1><p>Admin Management Portal</p></h1>
+            <div className={classes.Home}>
+                <div>
+                    <h4>Welcome to Pegusus@SIM</h4>
+                    <h1>Admin Management Portal</h1>
+                </div>
             </div>
-            </React.Fragment>
         )
     }
 }
