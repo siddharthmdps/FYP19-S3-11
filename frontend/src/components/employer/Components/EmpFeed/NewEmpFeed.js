@@ -21,7 +21,7 @@ class EmpFeed extends Component {
     updateJobList = () => {
         const empID = localStorage.getItem('id')
         const url = apiURL + 'employer/joblist/' + empID
-        const localhost = `http://localhost:3001/employer/joblist/${empID}`
+        const localhost = `http://192.168.43.1:3001/employer/joblist/${empID}`
         fetch(url)
             .then(response => response.json())
             .then(data => {

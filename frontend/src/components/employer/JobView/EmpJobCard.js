@@ -39,12 +39,12 @@ const EmpJobCard = (props) => {
                     <Card.Text>
                         <Row>
                             <Col sm={6}>
-                                <i class="fas fa-globe-asia"> </i>
+                                <i className="fas fa-globe-asia"> </i>
                                 &nbsp;
                             {props.joblocation}
                             </Col>
                             <Col sm={6}>
-                                <i class="fas fa-industry"></i>
+                                <i className="fas fa-industry"></i>
                                 &nbsp;
                         {props.jobindustry}
                             </Col>
@@ -53,7 +53,7 @@ const EmpJobCard = (props) => {
 
                     <Card.Text> {props.children}</Card.Text>
                     <Card.Text>
-                        <i class="fas fa-tasks"></i>
+                        <i className="fas fa-tasks"></i>
                         <em>&nbsp; Skills Required <br /></em>
                         {props.reqSkills}
                     </Card.Text>

@@ -3,6 +3,8 @@ import EmpJobCard, { EmpAppCard } from './EmpJobCard';
 import apiURL from '../../../config';
 import { Row, Col, Card } from 'react-bootstrap';
 
+import Axios from 'axios';
+
 
 //This component is the employer' posted job view (individual)
 // An employer can view all the applicants that have applied under a particular job posted.
@@ -26,7 +28,7 @@ class EmpJobView extends Component {
 
     getApplicants = (jobID) => {
         console.log("JOB ID :" + jobID)
-        const localhost = `http://localhost:3001/employer/jobview/${jobID}`
+        const localhost = `http://192.168.43.1:3001/employer/jobview/${jobID}`
         const url = apiURL + 'employer/jobview/' + { jobID }
 
         fetch(localhost)
@@ -44,8 +46,18 @@ class EmpJobView extends Component {
 
     // fetch  applicants
     componentDidMount() {
-        this.getApplicants(this.props.jobID)
-        console.log(this.props.jobID)
+        console.log(this.props);
+        const { jobid } = this.props.match.params;
+        Axios.get(`${apiURL}employer/jobview/${jobid}`)
+            .then(response => {
+                console.log(jobid, response.data);
+            })
+            .catch(error => {
+                console.log("error getting job details");
+            })
+
+
+        //this.getApplicants(jobID)
     }
 
     applicantContent = () => {
