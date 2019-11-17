@@ -6,8 +6,8 @@ export class Home extends Component {
         return ( 
             <div className={classes.Home}>
                 <div className={classes.HomeContent}>
-                    <h4>Welcome to Pegusus@SIM</h4>
-                    <h1>Admin Management Portal</h1>
+                    <h1>Welcome to Pegusus@SIM</h1>
+                    <h2>Admin Management Portal</h2>
                 </div>
             </div>
         )
