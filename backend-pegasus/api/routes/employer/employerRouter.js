@@ -7,6 +7,9 @@ const getJobList = require('./joblist')
 router.get('/joblist/:id', getJobList)
 const getJobView = require('./jobview')
 router.get('/jobview/:jobID', getJobView)
+const getjobinfo = require('./getjobinfo')
+router.get('/getjobinfo/:jobID', getjobinfo)
+
 
 // GET All
 const getalljobs = require('./getalljobs')
@@ -16,6 +19,15 @@ router.get('/getalljobs', getalljobs)
 const postjob = require('./postjob')
 router.post('/postjob', postjob)
 
+// PUT
+const shortlist = require('./shortlist')
+router.put('/shortlist/:appID', shortlist)
+
+const hire = require('./hire')
+router.put('/hire/:appID', hire)
+
+const updateprofile = require('./updateprofile')
+router.put('/updateprofile/:id', updateprofile)
 
 // http://servername/employer
 // to provide employer info
@@ -101,7 +113,5 @@ router.post('/employerinfo/createEmployer', (req, res, next) => {
     });
 });
 
-const updateprofile = require('./updateprofile')
-router.put('/updateprofile/:id', updateprofile)
 
 module.exports = router

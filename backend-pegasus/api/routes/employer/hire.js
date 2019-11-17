@@ -1,9 +1,9 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
 // save the new job under the given employer id
-const shortlist = (req, res) => {
+const hire = (req, res) => {
     const appID = req.params.appID
-    console.log(`Application id : ${appID} shortlisted`)
+    console.log(`Application id ${appID} changed status to 'hired'`)
 
     mypool.getConnection( (error, connection) => {
         if(error) {
@@ -12,14 +12,14 @@ const shortlist = (req, res) => {
             throw error
         }
         else {
-            let queryString = `UPDATE pegasus.jobapplication SET status='shortlisted' WHERE id=${appID}`
+            let queryString = `UPDATE pegasus.jobapplication SET status='successful' WHERE id=${appID}`
             connection.query(queryString, (err) => {
                 if(err) {
                     res.status(500).json({ message: err })
                 }
                 else {
                     res.json({
-                        message: "shortlisted"
+                        message: "status updated"
                     })
                 }
             })
@@ -28,4 +28,4 @@ const shortlist = (req, res) => {
     } )
 }
 
-module.exports = shortlist
+module.exports = hire
