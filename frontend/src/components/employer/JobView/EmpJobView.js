@@ -1,7 +1,7 @@
-import React,{Component} from 'react';
-import EmpJobCard,{EmpAppCard} from './EmpJobCard';
+import React, { Component } from 'react';
+import EmpJobCard, { EmpAppCard } from './EmpJobCard';
 import apiURL from '../../../config';
-import {Row,Col,Card} from 'react-bootstrap';
+import { Row, Col, Card } from 'react-bootstrap';
 
 
 //This component is the employer' posted job view (individual)
@@ -10,8 +10,8 @@ import {Row,Col,Card} from 'react-bootstrap';
 //EmpJobCard is ready to be deployed.
 //Pending: EmpAppCard Linkage.
 
-class EmpJobView extends Component{
-    constructor(props){
+class EmpJobView extends Component {
+    constructor(props) {
         super()
         this.props = props;
 
@@ -23,23 +23,23 @@ class EmpJobView extends Component{
     }
 
     //link will return an array of applicants (JSON Notation)
-    
-    getApplicants=(jobID)=>{
+
+    getApplicants = (jobID) => {
         console.log("JOB ID :" + jobID)
         const localhost = `http://localhost:3001/employer/jobview/${jobID}`
-        const url = apiURL + 'employer/jobview/' + {jobID}
+        const url = apiURL + 'employer/jobview/' + { jobID }
 
-       fetch(localhost)
-        .then(response => response.json())
-        .then(data => {
-            this.setState({appList:data}) 
-            console.log(`total applicants : ${this.state.appList.length}`)
-        })
+        fetch(localhost)
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ appList: data })
+                console.log(`total applicants : ${this.state.appList.length}`)
+            })
 
-        .catch(error => {
-            console.log(`Error at getApplicants : ${error}`)
-            this.setState({ error: true })
-        })
+            .catch(error => {
+                console.log(`Error at getApplicants : ${error}`)
+                this.setState({ error: true })
+            })
     }
 
     // fetch  applicants
@@ -48,10 +48,10 @@ class EmpJobView extends Component{
         console.log(this.props.jobID)
     }
 
-    applicantContent=()=>{
+    applicantContent = () => {
         console.log(this.state.appList)
-         // Loading
-         if (this.state.appList.length === 0 && !this.state.error){
+        // Loading
+        if (this.state.appList.length === 0 && !this.state.error) {
             return (
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border" role="status">
@@ -61,14 +61,16 @@ class EmpJobView extends Component{
             )
         }
         else if (this.state.appList.length > 0 && !this.state.error) {
+
             return (
-                this.state.appList.map( (applicant) => {
+                this.state.appList.map((applicant) => {
                     // job.dateposted = job.dateposted.substr(0,10)
+                    console.log(applicant)
                     return (
-                        <Row>  
-                            <EmpAppCard appName = {applicant.firstname.concat(" ",applicant.lastname)} appSkills = {applicant.skills} appPhone={applicant.phone} appEmail = {applicant.email}/> 
+                        <Row>
+                            <EmpAppCard appID={1} appName={applicant.firstname.concat(" ", applicant.lastname)} appSkills={applicant.skills} appPhone={applicant.phone} appEmail={applicant.email} />
                         </Row>
-                        
+
                     )
                 })
             )
@@ -76,24 +78,24 @@ class EmpJobView extends Component{
         else return <div>Error</div>
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 <Row>
-                    <EmpJobCard 
-                    title={this.props.jobtitle} 
-                    companyName={this.employername} 
-                    reqSkills = {this.props.jobskills}
-                    joblocation ={this.props.joblocation}
-                    jobindustry = {this.props.jobindustry}
-                    dateposted={this.props.dateposted}
-                    editJobHandler={this.props.editJobHandler}
+                    <EmpJobCard
+                        title={this.props.jobtitle}
+                        companyName={this.employername}
+                        reqSkills={this.props.jobskills}
+                        joblocation={this.props.joblocation}
+                        jobindustry={this.props.jobindustry}
+                        dateposted={this.props.dateposted}
+                        editJobHandler={this.props.editJobHandler}
                     >
                         {this.props.jobdescription}
                     </EmpJobCard>
                 </Row>
-                <br/>
-                <this.applicantContent/>
+                <br />
+                <this.applicantContent />
             </div>
         )
     };

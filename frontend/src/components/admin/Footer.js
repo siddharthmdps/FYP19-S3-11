@@ -1,17 +1,22 @@
-import React, { Component } from 'react'
+import React from "react";
+import { MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
-export default class Footer extends Component {
-  render() {
-    return (
-      <div>
-        <footer className="main-footer">
-          <div className="pull-right hidden-xs">
-    </div>
-          Copyright © 2019 <b>FYP2K19S3</b>. All rights
-          reserved.
-  </footer>
-      </div>
+const FooterPage = () => {
+  return (
+      <MDBFooter color="blue" className="font-small pt-4 mt-4" >
+        {/* <MDBContainer fluid className="text-center text-md-left">
+        <MDBRow>
 
-    )
-  }
+
+        </MDBRow>
+      </MDBContainer> */}
+        <div className="footer-copyright text-center py-3">
+          <MDBContainer fluid>
+            &copy; {new Date().getFullYear()} Copyright: Pegasus@SIM
+        </MDBContainer>
+        </div>
+      </MDBFooter>
+  );
 }
+
+export default FooterPage;

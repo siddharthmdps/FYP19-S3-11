@@ -83,16 +83,3 @@
     right: 4%;
     top: 11%;
 }
-
-.PageinationButton{
-    background-color: #FFCA28;
-    color: black;
-}
-.PageinationButtonActive{
-    background-color: brown;
-}
-
-.PageItem a{
-    background-color: #FFCA28;
-}
-

@@ -18,17 +18,17 @@ const projects = props => {
             <br/>
             <Form.Row>
                 <Form.Group as={Col} sm = "6" controlId="Title">
-                    <Form.Label>Project Title</Form.Label>
+                    <Form.Label>Project Title <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                     <Form.Control type='text' placeholder="Calculator App" value={props.details.Title} onChange={props.changeFn}/>
                 </Form.Group> 
                 <Form.Group as={Col} sm="6" controlId="Status">
-                    <Form.Label>Status</Form.Label>
+                    <Form.Label>Status <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                     <Form.Control type='text' placeholder="Oracle" value={props.details.Status} onChange={props.changeFn}/>
                 </Form.Group> 
             </Form.Row>
 
             <Form.Group as={Row} controlId="Description">
-                <Form.Label column sm="2">Project Description</Form.Label>
+                <Form.Label column sm="2">Project Description <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                 <Col sm="10"><Form.Control as='textarea' rows="5" placeholder="Description..." value={props.details.Description} onChange={props.changeFn}/></Col>
             </Form.Group>
              

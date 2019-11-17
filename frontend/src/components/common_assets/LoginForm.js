@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import '../styles/Login.css'
 import apiURL from '../../config'
 
+import auth from '../../utils/auth'
 
 class LoginForm extends Component {
     constructor(props) {
@@ -12,48 +13,25 @@ class LoginForm extends Component {
         }
     }
 
-    validateUser = () => {
+    validateUser = (cb) => {
         const username = document.getElementById("input-username").value.toLowerCase()
         const password = document.getElementById("input-password").value
         const usertype = document.getElementById("input-usertype").value
 
         const loginParticulars = { "username" : username, "password" : password, "usertype" : usertype }
         
-        //console.log('Login particulars', loginParticulars)
-
-        const url = apiURL + 'login'
-        const localhost = "http://localhost:3001/login"
+        
 
         if(username && password && usertype) {
-            this.setState({ loading: true })
+            this.setState({loading : true})
+            auth.login(loginParticulars, (loginResult) => {
+                this.setState({loading : false})
 
-
-            fetch(localhost, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(loginParticulars)
+                // if login is successful, route the user to their home page
+                if(loginResult){
+                    window.location = `/${usertype}`
+                } else alert('Login failed, please try again.')
             })
-            .then(res => res.json())
-            .then(data => {
-                this.setState({ loading: false })
-
-                console.log(data.message)
-
-
-                const userInfo = data.body
-
-                if(data.message === 'success'){
-                    localStorage.setItem('isAuthenticated', true)
-                    localStorage.setItem('username', username)
-                    localStorage.setItem('userType', usertype)
-                    localStorage.setItem('id', userInfo.id)
-
-                    this.props.updateLoginState()
-                }
-            })
-            .catch(error => {
-                alert (`Log in failed. Please try again`)
-            }) 
         }
         else {
             alert ('Please fill in all the required fields')
@@ -64,9 +42,9 @@ class LoginForm extends Component {
     setLoadingSpin = () => {
         if (this.state.loading) {
             return (
-                <div class="d-flex justify-content-center">
-                    <div class="spinner-border" role="status">
-                        <span class="sr-only">Loading...</span>
+                <div className="d-flex justify-content-center">
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
                     </div>
                 </div>
             )

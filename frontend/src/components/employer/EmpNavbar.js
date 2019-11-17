@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import auth from '../../utils/auth';
 
 class Navbar extends Component {
   constructor(props) {
@@ -21,37 +22,32 @@ class Navbar extends Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
               {/* link this to profile management */}
-                <a className="nav-link" href="/#" id="viewprofile" onClick={this.props.setMainContent}>{this.props.username.toUpperCase()}</a> 
+    <a className="nav-link" href="/employer/viewprofile" id="viewprofile">{localStorage.getItem('username').toUpperCase()}</a> 
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/#" id="editprofile" onClick={this.props.setMainContent}>Edit Profile</a>
+                <a className="nav-link" href="/employer/editprofile" id="editprofile" >Edit Profile</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/#" id="about" onClick={this.props.setMainContent}>About</a>
+                <a className="nav-link" href="/employer/about" id="about" >About</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/#" id="blog" onClick={this.props.setMainContent}>Blog</a>
+                <a className="nav-link" href="/employer/blog" id="blog" >Blog</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/#" id="postjob" onClick={this.props.setMainContent}>Post A New Job</a>
+                <a className="nav-link" href="/employer/postjob" id="postjob" >Post A New Job</a>
               </li>
               
             </ul>
     
             <div className="row search-box-container">
-    
-              <form id="search-box" className="form-inline mt-2 mt-md-0">
+              {/* search box */}
+              {/* <form id="search-box" className="form-inline mt-2 mt-md-0">
                 <input className="form-control mr-sm-2" type="text" placeholder="Enter keyword" aria-label="Search"/>
                 <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-              </form>
+              </form> */}
     
               <button type="button" className="btn btn-dark" id="btn-logout" 
-                onClick={ () => {
-                    localStorage.clear()
-                    document.location.reload(true)
-                }
-              }>Log Out</button>
-    
+                onClick={ auth.logout }>Log Out</button>
             </div>
             
           </div>

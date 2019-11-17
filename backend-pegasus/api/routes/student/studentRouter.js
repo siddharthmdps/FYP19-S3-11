@@ -67,6 +67,11 @@ router.get('/studentdocument/:studentid', getstudentdocument)
 const studentdocument = require('./studentdocument')
 router.post('/poststudentdocument', studentdocument)
 
+
+//gt all student details
+const getallstudentdetails = require('./getallstudentdetails')
+router.get('/getallstudentdetails/:studentid', getallstudentdetails)
+
 router.get('/studentinfo/:studentid',(req, res, next) => {
     const studentid = req.params.studentid;
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -94,6 +99,7 @@ router.get('/studentinfo/:studentid',(req, res, next) => {
                     });
                 }
             });
+            connection.release();
         }
     });
 });

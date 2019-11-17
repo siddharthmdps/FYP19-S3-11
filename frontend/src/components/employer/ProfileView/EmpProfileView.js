@@ -1,53 +1,130 @@
-import React from 'react';
-import ProfileContainer from '../ProfileContainer';
-import SmallCard from './SmallCard';
-import LargeCard from './LargeCard';
-import EmpFeed from '../EmpFeed'
-import './Card.css';
+import React, { Component } from 'react';
+import CompanyLogo from '../Components/LeftSide/CompanyInfo';
+import classes from './EmpProfileView.module.css';
+import { Card, Container, Row, Col } from 'react-bootstrap';
+
+import apiURL from '../../../config'
+import Axios from 'axios';
 
 
 //This is the profile of the company the students will view when they click to find out more
 // about the company
 
-const EmpProfileView =(props)=> {
-    return (
-    <div>
-        <div className= "wrapper">
-            <ProfileContainer companyName={props.companyName} buttonText="Find out more"/>
-            <div className="card mar50 pad100">
-                <div className="card-body">
-                    <div className = "row">
-                        <SmallCard title="Company Size" text="500-1000 employees"/>
-                        
-                        <SmallCard title= "Industry" text = "Software Engineering"/>
-                    </div>
-                    <br/>
-                    <div className = "row">
-                        <LargeCard title="Brief Overview">
-                            At PegasusSIM, we believe in recruiting and training talent, regardless of the amount of experience an individual has.
-                            We provide fully paid training, along with healthcare insurance and gym benefits becuase we truly care about the health
-                            and wellbeing of our dear employees.
+class EmpProfileView extends Component {
 
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare tempus nulla. 
-                            In hac habitasse platea dictumst. Integer lectus leo, tincidunt sit amet rhoncus nec, blandit sit amet purus. Nulla tristique, elit ut molestie mattis, massa purus fermentum ligula, et mattis urna odio et quam. 
-                            Aenean in ex id quam scelerisque dictum non ut purus. Nullam volutpat tellus vitae leo rutrum, sit amet semper ipsum maximus. 
-                            Etiam semper molestie nibh, a mollis ligula maximus eget. Nulla facilisi.
+    empID = localStorage.getItem('id')
+    state = {
+        username: localStorage.getItem('username'),
+        companyname: "",
+        companyphone: "",
+        companydescription: "",
+        companyaddress: "",
+        industry: "",
+        loading: false
+    }
 
-                            Proin in mauris turpis. Ut pellentesque ante et orci blandit, vel laoreet ipsum viverra. 
-                            Vestibulum in quam eget enim accumsan elementum. Donec arcu tortor, vehicula ut gravida nec, venenatis in dui. 
-                            Praesent rhoncus lorem nec facilisis rutrum. Nunc tellus ante, ullamcorper at erat nec, posuere tincidunt odio. 
-                            Aliquam erat volutpat. Etiam ultrices dolor sed volutpat suscipit. Phasellus in enim dictum, condimentum odio vel, pulvinar erat. Quisque eu urna et ante scelerisque commodo a nec nisi. Nulla sit amet nulla quis velit fermentum facilisis.
-                            Sed quis dolor nec mauris pellentesque vestibulum. Ut elit orci, tempor ac odio sit amet, malesuada pretium urna. Mauris vel felis lacinia, suscipit diam quis, cursus urna. Proin a porta orci.
-                        </LargeCard>
-                    </div>
-                    <br/>
-                </div>
-            </div>
-        </div>
+    componentDidMount() {
+        Axios.get(`${apiURL}employer/employerinfo/${this.empID}`)
+            .then(response => {
+                this.setState({
+                    companyname: response.data.body[0].companyname,
+                    companyphone: response.data.body[0].companyphone,
+                    companydescription: response.data.body[0].companydescription,
+                    companyaddress: response.data.body[0].companyaddress,
+                    industry: response.data.body[0].industry
+                })
+                console.log(response.data);
+            })
+            .catch(error => {
+                alert(`failed to fetch employer details : ${error}`)
+            })
+    }
 
-    </div>
+    render() {
+        document.body.style =
+            'background: linear-gradient(to right, #0f2027, #203a43, #2c5364);';
+        return (
+            <React.Fragment>
+                <Container className={classes.ViewProfile}>
+                    <Card>
+                        <Row >
+                            <Col md={{ offset: 1, span: 4 }} className={classes.Company}>
+                                    <Card.Body>
+                                        <CompanyLogo companyName={this.state.companyname} buttonText="Find out more!" />
+                                    </Card.Body>
+                            </Col>
+                            <Col md={{ offset: 0, span: 6 }} className={classes.CompanyInfoBox}>
+                                    <Card.Body>
+                                        <Card.Title>Company Phone</Card.Title>
+                                        {this.state.companyphone}
+                                    </Card.Body>
+                                    <Card.Body>
+                                        <Card.Title>Industry</Card.Title>
+                                        {this.state.industry}
+                                    </Card.Body>
+                            </Col>
+                        </Row>
+                        <Row style={{height: '32vh'}}>
+                            <Col md={{ offset: 1, span: 10 }}>
+                                    <Card.Body>
+                                        <Card.Title>Brief Overview</Card.Title>
+<pre className={classes.Overview}>
+    {`
+${this.state.companydescription}
+`}
+</pre>
+                                    </Card.Body>
+                            </Col>
+                        </Row>
+                    </Card>
+                </Container>
+            </React.Fragment>
+            //             <React.Fragment>
+            //                 <Container className={classes.ViewProfile}>
+            //                     <Row>
+            //                         <Col md={{ offset: 1, span: 4 }}>
+            //                             <Card>
+            //                                 <Card.Body>
+            //                                     <CompanyLogo companyName={this.state.companyname} buttonText="Find out more!" />
+            //                                 </Card.Body>
+            //                             </Card>
+            //                         </Col>
+            //                         <Col md={{ offset: 0, span: 6 }}>
+            //                             <Card>
+            //                                 <Card.Body>
+            //                                     <Card.Title>Company Phone</Card.Title>
+            //                                     {this.state.companyphone}
+            //                                 </Card.Body>
+            //                             </Card>
 
-    )
+            //                             <Card>
+            //                                 <Card.Body>
+            //                                     <Card.Title>Industry</Card.Title>
+            //                                     {this.state.industry}
+            //                                 </Card.Body>
+            //                             </Card>
+            //                         </Col>
+            //                     </Row>
+            //                     <br />
+            //                     <Row>
+            //                         <Col md={{ offset: 1, span: 10 }}>
+            //                             <Card>
+            //                                 <Card.Body>
+            //                                     <Card.Title>Brief Overview</Card.Title>
+            // <pre>
+            // {`
+            // ${this.state.companydescription}
+            // `}
+            // </pre>
+            //                                 </Card.Body>
+            //                             </Card>
+            //                         </Col>
+            //                     </Row>
+            //                     <br />
+            //                 </Container>
+            //             </React.Fragment>
+        )
+    }
 };
 
 export default EmpProfileView;

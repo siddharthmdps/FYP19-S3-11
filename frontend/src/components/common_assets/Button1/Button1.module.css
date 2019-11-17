@@ -33,7 +33,7 @@
     content: "";
     background: #46CE88;
     position: relative;
-    opacity: 0;
+    /* opacity: 0; */
     transition: all 0.8s;
     background-color: #46CE88;
 }

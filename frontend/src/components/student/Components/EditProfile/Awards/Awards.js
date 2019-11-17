@@ -18,17 +18,17 @@ const awards = props => {
             <br/>
             <Form.Row>
                 <Form.Group as={Col} sm = "6" controlId="Award">
-                    <Form.Label>Award Name</Form.Label>
+                    <Form.Label>Award Name <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                     <Form.Control type='text' placeholder="Dean's Merit Award" value={props.details.Award} onChange={props.changeFn} required/>
                 </Form.Group> 
                 <Form.Group as={Col} sm="6" controlId="Date">
-                    <Form.Label>Awarded Date</Form.Label>
-                    <Form.Control type='text' placeholder="MM/YY" value={props.details.Date} onChange={props.changeFn} required/>
+                    <Form.Label>Awarded Date <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
+                    <Form.Control type='date' placeholder="MM/YY" value={props.details.Date} onChange={props.changeFn} required/>
                 </Form.Group> 
             </Form.Row>
 
             <Form.Group as={Row} controlId="Description">
-                <Form.Label column sm="2">Description</Form.Label>
+                <Form.Label column sm="2">Description <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                 <Col sm="10"><Form.Control as='textarea' rows="5" placeholder="Description..." value={props.details.Description} onChange={props.changeFn} required/></Col>
             </Form.Group>
         </React.Fragment>
