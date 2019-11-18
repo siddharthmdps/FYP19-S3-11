@@ -35,7 +35,6 @@ const EmpJobCard = (props) => {
                 </Card.Header>
 
                 <Card.Body>
-
                     <Card.Subtitle>{props.jobDetail.companyName}</Card.Subtitle>
                     <br />
                     <Card.Text>

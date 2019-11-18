@@ -33,8 +33,8 @@ const leftSide = (props) => {
                     </Card.Body>
                     <ListGroup className="list-group-flush" className={classes.CentralContent}>
                         <ListGroupItem className={classes.Clickable}> Preview Company Profile </ListGroupItem>
-                        <ListGroupItem onClick={props.pjHandler} className={classes.Clickable}> Post Jobs </ListGroupItem>
-                        <ListGroupItem className={classes.Clickable}> Browse Candidates </ListGroupItem>
+                        <ListGroupItem onClick={props.pjHandler} className={classes.Clickable}>View Jobs</ListGroupItem>
+                        <ListGroupItem className={classes.Clickable}>View Applicants</ListGroupItem>
                     </ListGroup>
                     {/* <button type="button" className={classes.BtnNoOutline} >Preview Company Profile</button>
 
