@@ -20,7 +20,7 @@ const EmpJobCard = (props) => {
                 <Card.Header>
                     <Card.Title>
                         <Row>
-                            <Col sm={9}>{props.title}</Col>
+                            <Col sm={9}>{props.jobDetail.title}</Col>
                             <Col sm={3}>
                                 <Button variant="primary" onClick={props.editJobHandler}>
                                     Edit&nbsp;
@@ -34,19 +34,19 @@ const EmpJobCard = (props) => {
 
                 <Card.Body>
 
-                    <Card.Subtitle>{props.companyName}</Card.Subtitle>
+                    <Card.Subtitle>{props.jobDetail.companyName}</Card.Subtitle>
                     <br />
                     <Card.Text>
                         <Row>
                             <Col sm={6}>
                                 <i className="fas fa-globe-asia"> </i>
                                 &nbsp;
-                            {props.joblocation}
+                            {props.jobDetail.joblocation}
                             </Col>
                             <Col sm={6}>
                                 <i className="fas fa-industry"></i>
                                 &nbsp;
-                        {props.jobindustry}
+                        {props.jobDetail.jobindustry}
                             </Col>
                         </Row>
                     </Card.Text>
@@ -55,12 +55,12 @@ const EmpJobCard = (props) => {
                     <Card.Text>
                         <i className="fas fa-tasks"></i>
                         <em>&nbsp; Skills Required <br /></em>
-                        {props.reqSkills}
+                        {props.jobDetail.reqSkills}
                     </Card.Text>
 
                     <Card.Text>
                         <small className="text-muted">
-                            Last updated  {props.dateposted}
+                            Last updated  {props.jobDetail.dateposted}
                         </small>
 
                     </Card.Text>
@@ -200,6 +200,7 @@ class EmpAppCard extends Component {
         //     this.setState({ error: true })
         // }
         // if (this.state.appId) {
+            console.log(this.props);
         this.getEducation(this.props.appID)
         this.getJobExp(this.props.appID)
         this.getAwards(this.props.appID)

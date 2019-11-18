@@ -19,6 +19,7 @@ class EmpJobView extends Component {
 
         this.state = {
             appList: [],
+            jobDetail: {},
             error: false
         }
         this.employername = localStorage.getItem('username')
@@ -26,37 +27,59 @@ class EmpJobView extends Component {
 
     //link will return an array of applicants (JSON Notation)
 
-    getApplicants = (jobID) => {
-        console.log("JOB ID :" + jobID)
-        const localhost = `http://192.168.43.1:3001/employer/jobview/${jobID}`
-        const url = apiURL + 'employer/jobview/' + { jobID }
+    // getApplicants = (jobID) => {
+    //     console.log("JOB ID :" + jobID)
+    //     const localhost = `http://192.168.43.1:3001/employer/jobview/${jobID}`
+    //     const url = apiURL + 'employer/jobview/' + { jobID }
 
-        fetch(localhost)
-            .then(response => response.json())
-            .then(data => {
-                this.setState({ appList: data })
-                console.log(`total applicants : ${this.state.appList.length}`)
-            })
+    //     fetch(localhost)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             this.setState({ appList: data })
+    //             console.log(`total applicants : ${this.state.appList.length}`)
+    //         })
 
-            .catch(error => {
-                console.log(`Error at getApplicants : ${error}`)
-                this.setState({ error: true })
-            })
-    }
+    //         .catch(error => {
+    //             console.log(`Error at getApplicants : ${error}`)
+    //             this.setState({ error: true })
+    //         })
+    // }
 
     // fetch  applicants
     componentDidMount() {
-        console.log(this.props);
         const { jobid } = this.props.match.params;
-        Axios.get(`${apiURL}employer/jobview/${jobid}`)
+
+        //Get Job data
+        Axios.get(`${apiURL}employer/getjobinfo/${jobid}`)
             .then(response => {
                 console.log(jobid, response.data);
+                let temp = {
+                    title: response.data[0]['title'],
+                    companyName: response.data[0]['empid'],
+                    reqSkills: response.data[0]['requiredskills'],
+                    joblocation: response.data[0]['location'],
+                    jobindustry: response.data[0]['industry'],
+                    dateposted: response.data[0]['dateposted'],
+                    jobdescription: response.data[0]['jobdescription']
+                };
+                console.log(temp);
+                this.setState({ jobDetail: temp });
+                // editJobHandler={this.props.editJobHandler}
             })
             .catch(error => {
                 console.log("error getting job details");
             })
 
-
+        //Get Applicant data
+        Axios.get(`${apiURL}employer/jobview/${jobid}`)
+            .then(response => {
+                console.log(response.data);
+                this.setState({ appList: response.data })
+            })
+            .catch(error => {
+                console.log(`Error at getApplicants : ${error}`)
+                this.setState({ error: true })
+            })
         //this.getApplicants(jobID)
     }
 
@@ -95,15 +118,9 @@ class EmpJobView extends Component {
             <div>
                 <Row>
                     <EmpJobCard
-                        title={this.props.jobtitle}
-                        companyName={this.employername}
-                        reqSkills={this.props.jobskills}
-                        joblocation={this.props.joblocation}
-                        jobindustry={this.props.jobindustry}
-                        dateposted={this.props.dateposted}
-                        editJobHandler={this.props.editJobHandler}
+                        jobDetail = {this.state.jobDetail}
                     >
-                        {this.props.jobdescription}
+                        {this.state.jobdescription}
                     </EmpJobCard>
                 </Row>
                 <br />
