@@ -491,7 +491,158 @@ class EditProfile extends Component {
         return format;
     }
 
+    copy = o => {
+        var output, v, key;
+        output = Array.isArray(o) ? [] : {};
+        for (key in o) {
+            v = o[key];
+            output[key] = (typeof v === "object") ? this.copy(v) : v;
+        }
+        return output;
+     }
+
     // Removing elements in the Profile ends here
+
+    //Validation of the Profile starts here
+
+    validatePersonalParticulars = () => {
+        if(this.state.PersonalParticulars.FirstName === ""){
+            this.props.enqueueSnackbar('First Name cannot be empty!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.LastName === ""){
+            this.props.enqueueSnackbar('Last Name cannot be empty!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.Email === ""){
+            this.props.enqueueSnackbar('Email is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.Phone === ""){
+            this.props.enqueueSnackbar('Phone is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.CurrentAddress === ""){
+            this.props.enqueueSnackbar('Current Address is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.City === ""){
+            this.props.enqueueSnackbar('City is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.Country === ""){
+            this.props.enqueueSnackbar('Country is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.PostalCode === ""){
+            this.props.enqueueSnackbar('Postal Code is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.Nationality === ""){
+            this.props.enqueueSnackbar('Nationality is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.Availability === ""){
+            this.props.enqueueSnackbar('Availability is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.LinkedIn === ""){
+            this.props.enqueueSnackbar('LinkedIn is not valid!', { variant: 'error' });
+            return false;
+        }
+        return true;
+
+    }
+
+    validateEducation = () => {
+        for (let idk in this.state.Education) {
+            if(this.state.Education[idk]['University'] === ""){
+                this.props.enqueueSnackbar(`University of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['Degree'] === ""){
+                this.props.enqueueSnackbar(`Degree of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['FieldOfStudy'] === ""){
+                this.props.enqueueSnackbar(`FieldOfStudy of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['Major'] === ""){
+                this.props.enqueueSnackbar(`Major of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['StartDate'] === ""){
+                this.props.enqueueSnackbar(`StartDate of ${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['EndDate'] === ""){
+                this.props.enqueueSnackbar(`EndDate of ${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['Mode'] === ""){
+                this.props.enqueueSnackbar(`Mode of ${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['GPA'] === ""){
+                this.props.enqueueSnackbar(`GPA of ${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+        }
+        return true;
+    }
+
+    validateWorkExp = () => {
+        for(let idk in this.state.WorkExp){
+            if(this.state.WorkExp[idk]['Position']===""){
+                this.props.enqueueSnackbar(`Position of ${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['Company']===""){
+                this.props.enqueueSnackbar(`Company of ${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['StartDate']===""){
+                this.props.enqueueSnackbar(`StartDate of ${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['EndDate']===""){
+                this.props.enqueueSnackbar(`EndDate of ${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['Mode']===""){
+                this.props.enqueueSnackbar(`Mode of ${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['Industry']===""){
+                this.props.enqueueSnackbar(`Industry of ${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['AnnualSalary']===""){
+                this.props.enqueueSnackbar(`AnnualSalary of ${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+        }
+        return true;
+    }
+
+    validateJobPreference = () => {
+        if(this.state.JobPreference.Industry===""){
+            this.props.enqueueSnackbar('Industry cannot be empty!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.JobPreference.WorkExp===""){
+            this.props.enqueueSnackbar('WorkExp cannot be empty!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.JobPreference.Location===""){
+            this.props.enqueueSnackbar('Location cannot be empty!', { variant: 'error' });
+            return false;
+        }
+        return true;
+    }
+
+    //Validation of the Profile ends here
 
     // Submit elements to put in Backend starts here
     submitNewProfile = () => {
@@ -508,40 +659,75 @@ class EditProfile extends Component {
     }
 
     submitPersonalParticulars = () => {
-        const temp = {...this.state.PersonalParticulars};
-        console.log(temp);
-        Axios.put('https://pegasus-backend.herokuapp.com/student/studentinfo/updateStudent', temp)
+        if(this.validatePersonalParticulars()){
+            const temp = {...this.state.PersonalParticulars};
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/studentinfo/updateStudent', temp)
             .then(response => {
+                this.props.enqueueSnackbar('Personal Particulars uploaded!', { variant: 'success' });
                 this.togglePanel(1);
             })
             .catch(error => {
                 this.props.enqueueSnackbar('Error storing Personal Particulars!', { variant: 'error' });
             });
+        }
     }
 
     submitEducation = () => {
-        let temp = [...this.state.Education];
-        for (let idk in temp) {
-            temp[idk]['StudentID'] = 1;
-            temp[idk]['StartDate'] = this.adjustDate(temp[idk]['StartDate'], "dd/mm/yyyy");
-            temp[idk]['EndDate'] = this.adjustDate(temp[idk]['EndDate'], "dd/mm/yyyy");
+        if(this.validateEducation()){
+            let temp = this.copy(this.state.Education);
+            console.log(temp)
+            for (let idk in temp) {
+                temp[idk]['StudentID'] = 1;
+                temp[idk]['StartDate'] = this.adjustDate(temp[idk]['StartDate'], "dd/mm/yyyy");
+                temp[idk]['EndDate'] = this.adjustDate(temp[idk]['EndDate'], "dd/mm/yyyy");
+            }
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudenteducation', temp)
+                .then(response => {
+                    this.props.enqueueSnackbar('Education details uploaded!', { variant: 'success' });
+                    this.togglePanel(2);
+                })
+                .catch(error => {
+                    this.props.enqueueSnackbar('Error storing Education!', { variant: 'error' });
+                });
         }
-        console.log(temp);
-        Axios.put('https://pegasus-backend.herokuapp.com/student/putstudenteducation', temp)
-            .then(response => {
-                this.togglePanel(2);
-            })
-            .catch(error => {
-                this.props.enqueueSnackbar('Error storing Education!', { variant: 'error' });
-            });
     }
 
     submitWorkExp = () => {
-        this.togglePanel(3);
+        if(this.validateWorkExp()){
+            let temp = this.copy(this.state.WorkExp);
+            console.log(temp)
+            for (let idk in temp) {
+                temp[idk]['StudentID'] = 1;
+                temp[idk]['StartDate'] = this.adjustDate(temp[idk]['StartDate'], "dd/mm/yyyy");
+                temp[idk]['EndDate'] = this.adjustDate(temp[idk]['EndDate'], "dd/mm/yyyy");
+            }
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentworkexp', temp)
+                .then(response => {
+                    this.props.enqueueSnackbar('Work Exp. details uploaded!', { variant: 'success' });
+                    this.togglePanel(3);
+                })
+                .catch(error => {
+                    this.props.enqueueSnackbar('Error storing Work Exp.!', { variant: 'error' });
+                });
+        }
     }
 
     submitJobPreference = () => {
-        this.togglePanel(4);
+        if(this.validateJobPreference()){
+            const temp = {...this.state.JobPreference};
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentjobpref', temp)
+            .then(response => {
+                this.props.enqueueSnackbar('Job Preference uploaded!', { variant: 'success' });
+                this.togglePanel(4);
+            })
+            .catch(error => {
+                this.props.enqueueSnackbar('Error storing Job Preference!', { variant: 'error' });
+            });
+        }
     }
 
     submitAwards = () => {
