@@ -5,7 +5,8 @@ class Signup extends React.Component {
     constructor() {
         super()
         this.state = {
-            usertype : "student"
+            usertype : "student",
+            loading : false
         }
     }
 
@@ -13,19 +14,23 @@ class Signup extends React.Component {
         return (
             <div id="create-account">
                 <div className="row">
-                    <div className="col-md-6 mb-3">
+                    <div className="col-md-4 mb-3">
                         <label for="firstName">First name</label>
-                        <input type="text" className="form-control" id="firstname" required="" />
+                        <input type="text" className="form-control" id="firstname" required="" placeholder="Jonathan"/>
                     </div>
-                    <div className="col-md-6 mb-3">
+                    <div className="col-md-4 mb-3">
+                        <label for="lastName">Middle name</label>
+                        <input type="text" className="form-control" id="middlename" required="" placeholder="McDonald"/>
+                    </div>
+                    <div className="col-md-4 mb-3">
                         <label for="lastName">Last name</label>
-                        <input type="text" className="form-control" id="lastname" required="" />
+                        <input type="text" className="form-control" id="lastname" required="" placeholder="Donut"/>
                     </div>
                 </div>
                 <div className="form-group row">
                     <label className="col-sm-4 col-form-label">Username</label>
                     <div className="col-sm-8">
-                        <input type="text" className="form-control" id="username"/>
+                        <input type="text" className="form-control" id="username" placeholder="jonathandonut"/>
                      </div>
                 </div>
                 <div className="form-group row">
@@ -35,17 +40,46 @@ class Signup extends React.Component {
                      </div>
                 </div>
                 <div className="form-group row">
-                    <label className="col-sm-4 col-form-label">Address</label>
+                    <label className="col-sm-4 col-form-label">Phone</label>
                     <div className="col-sm-8">
-                        <input type="text" className="form-control" id="address" placeholder="Block 123, #20-123, ABC Street"/>
+                        <input type="tel" className="form-control" id="phone" placeholder="5868-8455"/>
+                     </div>
+                </div>
+                <div className="form-group row">
+                    <label className="col-sm-4 col-form-label">Country</label>
+                    <div className="col-sm-8">
+                        <input type="text" className="form-control" id="country" placeholder="England"/>
+                     </div>
+                </div>
+                <div className="form-group row">
+                    <label className="col-sm-4 col-form-label">City</label>
+                    <div className="col-sm-8">
+                        <input type="text" className="form-control" id="city" placeholder="London"/>
                      </div>
                 </div>
 
+                <div className="form-group row">
+                    <label className="col-sm-4 col-form-label">Address</label>
+                    <div className="col-sm-8">
+                        <input type="text" className="form-control" id="currentaddress" placeholder="Block 123, #20-123, Fisn'N Chips Street"/>
+                     </div>
+                </div>
+                <div className="form-group row">
+                    <label className="col-sm-4 col-form-label">Postal Code</label>
+                    <div className="col-sm-8">
+                        <input type="number" className="form-control" id="postalcode" placeholder="5868"/>
+                     </div>
+                </div>
+                <div className="form-group row">
+                    <label className="col-sm-4 col-form-label">Nationality</label>
+                    <div className="col-sm-8">
+                        <input type="text" className="form-control" id="nationality" placeholder="England"/>
+                     </div>
+                </div>
                 <div className="mb-3 job-experience">
                     <label for="job-experience">Job Experience <span className="text-muted">(Optional)</span></label>
                     <input type="text" className="form-control" id="jobexperience" placeholder="Describe your past experience" />
                 </div>
-
                 <div className="form-group row">
                     <label className="col-sm-4 col-form-label">Password</label>
                     <div className="col-sm-8">
@@ -109,6 +143,19 @@ class Signup extends React.Component {
         )
     }
 
+    setLoadingSpin = () => {
+        if (this.state.loading) {
+            return (
+                <div className="d-flex justify-content-center">
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>
+            )
+        }
+        else return null
+    }
+
     signUpForm = () => {
         switch(this.state.usertype){
             case "student": return <this.studentForm/>
@@ -143,9 +190,16 @@ class Signup extends React.Component {
             case "student" :
                 const studentDetails = {
                     firstname:      document.getElementById('firstname').value,
+                    middlename:      document.getElementById('middlename').value,
                     lastname:       document.getElementById('lastname').value,
                     email:          document.getElementById('email').value,
-                    address:        document.getElementById('address').value,
+                    phone:      document.getElementById('phone').value,
+                    country:      document.getElementById('country').value,
+                    city:      document.getElementById('city').value,
+                    currentaddress:        document.getElementById('currentaddress').value,
+                    postalcode:      document.getElementById('postalcode').value,
+                    nationality:      document.getElementById('nationality').value,
+                    username:      document.getElementById('username').value,
                     jobexperience:  document.getElementById('jobexperience').value,
                     password:       document.getElementById('password').value,
                     usertype:       this.state.usertype
@@ -177,6 +231,7 @@ class Signup extends React.Component {
         }
 
         if(formIsValid) {
+            this.setState({loading : true})
             // post to backend
             const apiURL = "https://pegasus-backend.herokuapp.com/createuser"
             const localhost = "http://localhost:3001/createuser"
@@ -189,9 +244,10 @@ class Signup extends React.Component {
             })
             .then(response => response.json())
             .then(data => {
+                this.setState({loading : false})
                 console.log(`response from server`, data)
 
-                if(data.message === "success") {
+                if(data.message === "successfully created new user") {
                     alert (`New user created successfully`)
                 }
             })
@@ -222,6 +278,7 @@ class Signup extends React.Component {
                 <div className="container">
                     <this.signUpForm/>
                     <button className="btn btn-dark btn-lg btn-block create-account" onClick={this.createAccount}>Create Account</button>
+                    <this.setLoadingSpin/>
                 </div>
                 
             </div>

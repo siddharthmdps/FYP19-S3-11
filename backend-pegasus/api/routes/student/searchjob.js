@@ -12,8 +12,11 @@ const searchjob = (req,res) => {
             throw err
         }
         else {
-            let queryString = `SELECT * FROM pegasus.job 
-                                WHERE pegasus.job.title LIKE '%${keyword}%'
+            let queryString = `SELECT * FROM pegasus.job
+                                WHERE title LIKE '%${keyword}%'
+                                    OR industry LIKE '%${keyword}%'
+                                    OR description LIKE '%${keyword}%'
+                                    OR requiredskills LIKE '%${keyword}%'
                                 LIMIT 50`
             connection.query(queryString, (err, rows, fields) => {
                 if(err) {
