@@ -12,11 +12,11 @@ class LeftSide  extends Component {
                         <Card.Body >
                             <div className={classes.Parent}>
                                 <ResponsiveEmbed aspectRatio="1by1" style={{ position: 'absolute' }}>
-                                    <div className={classes.Overlay}>
-                                        <input type='file' style={{display: 'none'}} onChange={this.props.changeFn} ref={fileInput => this.fileInput = fileInput} />
-                                        <button className={classes.Text} onClick={() => this.fileInput.click()}>Upload New</button>
+                                    <div className={classes.Overlay} onClick={() => this.fileInput.click()}>
+                                        <span className={classes.Text} >Upload New</span>
                                     </div>
                                 </ResponsiveEmbed>
+                                        <input type='file' style={{display: 'none'}} onChange={this.props.changeFn} ref={fileInput => this.fileInput = fileInput} />
                                 <ResponsiveEmbed aspectRatio="1by1" >
                                     <Image src={this.props.imageLink} className={classes.Image} bsPrefix />
                                 </ResponsiveEmbed>
