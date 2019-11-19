@@ -1,0 +1,17 @@
+.Container {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    background-color: lightgreen;
+}
+
+.MainBody {
+    background-color: salmon;
+}
+
+.Card {
+    position: relative;
+    margin-top: 25%;
+    background-color: #fff;
+}

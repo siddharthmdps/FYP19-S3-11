@@ -1,11 +1,13 @@
 import React from 'react'
+import {Col, Row, Card, Container} from 'react-bootstrap';
 import './SignUp.css'
+import classes from './Signup.module.css';
 
 class Signup extends React.Component {
     constructor() {
         super()
         this.state = {
-            usertype : "student"
+            usertype: "student"
         }
     }
 
@@ -25,20 +27,20 @@ class Signup extends React.Component {
                 <div className="form-group row">
                     <label className="col-sm-4 col-form-label">Username</label>
                     <div className="col-sm-8">
-                        <input type="text" className="form-control" id="username"/>
-                     </div>
+                        <input type="text" className="form-control" id="username" />
+                    </div>
                 </div>
                 <div className="form-group row">
                     <label className="col-sm-4 col-form-label">Email</label>
                     <div className="col-sm-8">
-                        <input type="text" className="form-control" id="email" placeholder="you@example.com"/>
-                     </div>
+                        <input type="text" className="form-control" id="email" placeholder="you@example.com" />
+                    </div>
                 </div>
                 <div className="form-group row">
                     <label className="col-sm-4 col-form-label">Address</label>
                     <div className="col-sm-8">
-                        <input type="text" className="form-control" id="address" placeholder="Block 123, #20-123, ABC Street"/>
-                     </div>
+                        <input type="text" className="form-control" id="address" placeholder="Block 123, #20-123, ABC Street" />
+                    </div>
                 </div>
 
                 <div className="mb-3 job-experience">
@@ -49,8 +51,8 @@ class Signup extends React.Component {
                 <div className="form-group row">
                     <label className="col-sm-4 col-form-label">Password</label>
                     <div className="col-sm-8">
-                        <input type="password" className="form-control" id="password" placeholder=""/>
-                     </div>
+                        <input type="password" className="form-control" id="password" placeholder="" />
+                    </div>
                 </div>
             </div>
         )
@@ -62,63 +64,63 @@ class Signup extends React.Component {
                 <div className="form-group row">
                     <label className="col-sm-4 col-form-label">Username</label>
                     <div className="col-sm-8">
-                        <input type="text" className="form-control" id="username" placeholder=""/>
-                     </div>
+                        <input type="text" className="form-control" id="username" placeholder="" />
+                    </div>
                 </div>
                 <div className="form-group row">
                     <label className="col-sm-4 col-form-label">Email</label>
                     <div className="col-sm-8">
-                        <input type="email" className="form-control" id="companyemail" placeholder="username@example.com"/>
-                     </div>
+                        <input type="email" className="form-control" id="companyemail" placeholder="username@example.com" />
+                    </div>
                 </div>
                 <div className="form-group row">
                     <label className="col-sm-4 col-form-label">Company Name</label>
                     <div className="col-sm-8">
-                        <input type="text" className="form-control" id="companyname" placeholder=""/>
-                     </div>
+                        <input type="text" className="form-control" id="companyname" placeholder="" />
+                    </div>
                 </div>
                 <div className="form-group row">
                     <label className="col-sm-4 col-form-label">Phone</label>
                     <div className="col-sm-8">
-                        <input type="tel" minLength="8" maxLength="8" className="form-control" id="companyphone" placeholder=""/>
-                     </div>
+                        <input type="tel" minLength="8" maxLength="8" className="form-control" id="companyphone" placeholder="" />
+                    </div>
                 </div>
                 <div className="form-group">
                     <label>Describe your company</label>
-                    <input type="text" className="form-control" id="companydescription" placeholder=""/>
+                    <input type="text" className="form-control" id="companydescription" placeholder="" />
                 </div>
                 <div className="form-group row">
                     <label className="col-sm-4 col-form-label">Address</label>
                     <div className="col-sm-8">
-                        <input type="text" className="form-control" id="companyaddress" placeholder=""/>
-                     </div>
+                        <input type="text" className="form-control" id="companyaddress" placeholder="" />
+                    </div>
                 </div>
                 <div className="form-group row">
                     <label className="col-sm-4 col-form-label">Industry</label>
                     <div className="col-sm-8">
-                        <input type="text" className="form-control" id="industry" placeholder=""/>
-                     </div>
+                        <input type="text" className="form-control" id="industry" placeholder="" />
+                    </div>
                 </div>
                 <div className="form-group row">
                     <label className="col-sm-4 col-form-label">Password</label>
                     <div className="col-sm-8">
-                        <input type="password" className="form-control" id="password" placeholder=""/>
-                     </div>
+                        <input type="password" className="form-control" id="password" placeholder="" />
+                    </div>
                 </div>
             </div>
         )
     }
 
     signUpForm = () => {
-        switch(this.state.usertype){
-            case "student": return <this.studentForm/>
-            case "employer": return <this.employerForm/>
+        switch (this.state.usertype) {
+            case "student": return <this.studentForm />
+            case "employer": return <this.employerForm />
         }
     }
 
     setUserType = () => {
         const usertype = document.getElementById("usertype-select").value
-        this.setState ({
+        this.setState({
             usertype: usertype
         })
     }
@@ -126,7 +128,7 @@ class Signup extends React.Component {
     userTypeSelector = () => {
         return (
             <div className="container" id="btn-group-container">
-                
+
                 <select class="custom-select" id="usertype-select" onChange={this.setUserType}>
                     <option selected>Select user type</option>
                     <option value="student">Student</option>
@@ -139,44 +141,44 @@ class Signup extends React.Component {
     createAccount = () => {
         console.log(`submitting form for a new ${this.state.usertype}`)
         let userDetails = null;
-        switch(this.state.usertype) {
-            case "student" :
+        switch (this.state.usertype) {
+            case "student":
                 const studentDetails = {
-                    firstname:      document.getElementById('firstname').value,
-                    lastname:       document.getElementById('lastname').value,
-                    email:          document.getElementById('email').value,
-                    address:        document.getElementById('address').value,
-                    jobexperience:  document.getElementById('jobexperience').value,
-                    password:       document.getElementById('password').value,
-                    usertype:       this.state.usertype
+                    firstname: document.getElementById('firstname').value,
+                    lastname: document.getElementById('lastname').value,
+                    email: document.getElementById('email').value,
+                    address: document.getElementById('address').value,
+                    jobexperience: document.getElementById('jobexperience').value,
+                    password: document.getElementById('password').value,
+                    usertype: this.state.usertype
                 }
                 userDetails = studentDetails
-            break;
-            case "employer" : 
+                break;
+            case "employer":
                 const employerDetails = {
-                    username:           document.getElementById('username').value,
-                    companyemail:       document.getElementById('companyemail').value,
-                    companyname:        document.getElementById('companyname').value,
-                    companyphone:       document.getElementById('companyphone').value,
+                    username: document.getElementById('username').value,
+                    companyemail: document.getElementById('companyemail').value,
+                    companyname: document.getElementById('companyname').value,
+                    companyphone: document.getElementById('companyphone').value,
                     companydescription: document.getElementById('companydescription').value,
-                    companyaddress:     document.getElementById('companyaddress').value,
-                    industry:           document.getElementById('industry').value,
-                    password:           document.getElementById('password').value,
-                    usertype:           this.state.usertype
+                    companyaddress: document.getElementById('companyaddress').value,
+                    industry: document.getElementById('industry').value,
+                    password: document.getElementById('password').value,
+                    usertype: this.state.usertype
                 }
                 userDetails = employerDetails
-            break;
+                break;
         }
         console.log(`sending form`, userDetails)
 
         // verify
         let formIsValid = true
         for (let index in userDetails) {
-            if(userDetails[index] === null || userDetails[index] === '') 
+            if (userDetails[index] === null || userDetails[index] === '')
                 formIsValid = false
         }
 
-        if(formIsValid) {
+        if (formIsValid) {
             // post to backend
             const apiURL = "https://pegasus-backend.herokuapp.com/createuser"
             const localhost = "http://localhost:3001/createuser"
@@ -187,28 +189,21 @@ class Signup extends React.Component {
                 },
                 body: JSON.stringify(userDetails)
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log(`response from server`, data)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(`response from server`, data)
 
-                if(data.message === "success") {
-                    alert (`New user created successfully`)
-                }
-            })
-            .catch(error => {
-                console.log(`response from server`, error)
-                alert (`Failed to create new user. Please try again.`)
-            })
+                    if (data.message === "success") {
+                        alert(`New user created successfully`)
+                    }
+                })
+                .catch(error => {
+                    console.log(`response from server`, error)
+                    alert(`Failed to create new user. Please try again.`)
+                })
         }
-        else alert (`Please fill in all the required fields`)
-
-            
-        
-
-
+        else alert(`Please fill in all the required fields`)
     }
-
-
 
     render() {
         return (
@@ -217,14 +212,24 @@ class Signup extends React.Component {
                     <h2><a href="/" id="pegasus-tag">Pegasus</a></h2>
                     <p className="font-weight-light ">Kick start your professional career</p>
                 </div>
-                <this.userTypeSelector/>
-                
+                <this.userTypeSelector />
+
                 <div className="container">
-                    <this.signUpForm/>
+                    <this.signUpForm />
                     <button className="btn btn-dark btn-lg btn-block create-account" onClick={this.createAccount}>Create Account</button>
                 </div>
-                
             </div>
+            // <React.Fragment>
+            //     <Row className={classes.Container}>
+            //         <Col md={{span: 6, offset: 3}} className={classes.MainBody}>
+            //             <Card>
+            //                 <Card.Body>
+            //                     Hello
+            //                 </Card.Body>
+            //             </Card>
+            //         </Col>
+            //     </Row>
+            // </React.Fragment>
         )
     }
 }
