@@ -8,7 +8,10 @@ const getallstudents = (req,res) => {
             throw err
         }
         else {
-            let queryString = `SELECT * FROM pegasus.student`
+            let queryString = `SELECT student.*, studenteducation.fieldofstudy 
+                                FROM pegasus.student
+                                JOIN pegasus.studenteducation
+                                    ON studenteducation.studentid = student.id`
             connection.query(queryString, (err, rows, fields) => {
                 if(err) {
                     res.status(500).json({ message: err })
