@@ -22,7 +22,7 @@ class LeftSide  extends Component {
                                 </ResponsiveEmbed>
                             </div>
                         </Card.Body>
-                        <Card.Body>{this.props.children}</Card.Body>
+                        {/* <Card.Body>{this.props.children}</Card.Body> */}
                     </Card>
                 </Container>
             </React.Fragment>

@@ -11,7 +11,7 @@ import Skills from '../../Components/EditProfile/Skills/Skills';
 import Projects from '../../Components/EditProfile/Projects/Projects';
 import Document from '../../Components/EditProfile/Document/Document';
 import Button1 from '../../../common_assets/Button1/Button1';
-import { Accordion, Card, Container, Col, Row, Form } from 'react-bootstrap';
+import { Accordion, Card, Container, Col, Row, Form, Image } from 'react-bootstrap';
 import ppClasses from '../../../common_assets/Validate.module.css';
 import apiURL from '../../../../config';
 
@@ -950,15 +950,16 @@ class EditProfile extends Component {
                 <br />
                 <Row >
                     <Col md={{ span: 3 }} className={classes.LeftSide}>
-                        <LeftSide imageLink={this.state.ProfileImage} changeFn={event => this.changeNewProfile(event)} >
+                        <LeftSide imageLink={this.state.ProfileImage} changeFn={event => this.changeNewProfile(event)} />
                         {/* <Button1 click={this.submitNewProfile}>Upload</Button1> */}
-                        </LeftSide>
-                        <Modal
+                        {/* </LeftSide> */}
+                        {this.state.NewProfile.Modal?<Modal
                             show={this.state.NewProfile.Modal}
                             onHide={() => this.setState({NewProfile: {"Modal": false, "Location": ""}})}
                             NewProfile={this.state.NewProfile.Location} 
                             click={this.submitNewProfile}
-                        />
+                        />: null}
+                        {/*  */}
                     </Col>
                     <Col md={{ offset: 3, span: 9 }} >
                         <Accordion className={classes.Accordian} activeKey={this.state.activatedToggle}>
