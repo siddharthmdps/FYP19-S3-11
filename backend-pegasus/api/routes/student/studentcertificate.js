@@ -1,35 +1,14 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
-var month_names =["Jan","Feb","Mar",
-                  "Apr","May","Jun",
-                  "Jul","Aug","Sep",
-                  "Oct","Nov","Dec"];
-
-var dateFormat = require('dateformat');
-
 const studentawards = (req, res) => {    
     for(var key in req.body) {
         if(req.body.hasOwnProperty(key)) {
             const studentid = req.body[key].StudentID;
             const certid = req.body[key].CertificateID;
             const certname = req.body[key].Name;
-            const issuedby = req.body[key].IssuedBy;
-            
-            var tmpdate = req.body[key].IssueDate;
-            tmpdate = tmpdate.toString().split(" ");
-            var index = tmpdate[0];
-            var year = tmpdate[1];
-            var month = month_names.indexOf(index);
-            var issueddate = new Date(year, month, 1);
-            issueddate = dateFormat(issueddate, "yyyy-mm-dd");
-
-            tmpdate = req.body[key].ValidUntil;
-            tmpdate = tmpdate.toString().split(" ");
-            index = tmpdate[0];
-            year = tmpdate[1];
-            month = month_names.indexOf(index);
-            var validuntil = new Date(year, month, 1);
-            validuntil = dateFormat(validuntil, "yyyy-mm-dd");
+            const issuedby = req.body[key].IssuedBy;            
+            var issueddate = req.body[key].IssueDate;
+            var validuntil = req.body[key].ValidUntil;
 
             var foundduplicate = false;
 
@@ -40,7 +19,7 @@ const studentawards = (req, res) => {
                     throw error
                 }
                 else {
-                    if(studentid && certname && issuedby && year && month) {    
+                    if(studentid && certname && issuedby && issueddate) {    
                         let queryString1 = `select * from pegasus.studentcertificate where id = "${certid}" and studentid = "${studentid}"` ;           
                         let queryString2 = `INSERT INTO pegasus.studentcertificate (studentid, certificatename, issuedby, issueddate, validuntil) values ("${studentid}", "${certname}", "${issuedby}", "${issueddate}", "${validuntil}")`
                         connection.query(queryString1, (err, rows, fields) => {
@@ -57,6 +36,11 @@ const studentawards = (req, res) => {
                                 if(err) {
                                     res.status(500).json({ message: err });
                                 }
+                                else {
+                                    res.json({
+                                        message: "success"
+                                    })
+                                }
                             }) 
                         }) 
                     } else {
@@ -70,9 +54,6 @@ const studentawards = (req, res) => {
             } )
         }
     }
-    res.json({
-        message: "success"
-    })
 }
 
 module.exports = studentawards

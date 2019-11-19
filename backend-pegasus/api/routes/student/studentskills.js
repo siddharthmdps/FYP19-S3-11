@@ -16,7 +16,7 @@ const studentskills = (req, res) => {
                     throw error
                 }
                 else {
-                    if(studentid && projectname && status && description) {  
+                    if(studentid && skillname) {  
                         let queryString1 = `select * from pegasus.studentskills where id = "${skillid}" and studentid = "${studentid}"` ;                  
                         let queryString2 = `INSERT INTO pegasus.studentskills (studentid, skillname) values ("${skillname}")`
                         connection.query(queryString1, (err, rows, fields) => {
@@ -33,6 +33,11 @@ const studentskills = (req, res) => {
                                 if(err) {
                                     res.status(500).json({ message: err });
                                 }
+                                else {
+                                    res.json({
+                                        message: "success"
+                                    })
+                                }
                             }) 
                         }) 
                     } else {
@@ -45,9 +50,6 @@ const studentskills = (req, res) => {
             } )
         }
     }
-    res.json({
-        message: "success"
-    })
 }
 
 module.exports = studentskills

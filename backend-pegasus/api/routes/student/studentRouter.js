@@ -90,7 +90,7 @@ router.get('/studentinfo/:studentid',(req, res, next) => {
 	  		throw err;
 	  	}
         if (studentid) {
-            connection.query("SELECT ID as 'StudentID',FirstName,MiddleName,LastName,Email,Phone,Country,City,CurrentAddress,PostalCode,Nationality,Availability, LinkedIn FROM student WHERE id = ?", [studentid], function(error, results, fields) {
+            connection.query("SELECT ID as 'StudentID',FirstName,MiddleName,LastName,Email,Phone,Country,City,CurrentAddress,PostalCode,Nationality,Availability, LinkedIn,ProfileImage FROM student WHERE id = ?", [studentid], function(error, results, fields) {
                 if (error) {
                     res.status(500).json({
                         message: error

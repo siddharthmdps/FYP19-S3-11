@@ -1,7 +1,5 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
-var dateFormat = require('dateformat');
-
 const studenteducation = (req, res) => {
     for(var key in req.body) {
         if(req.body.hasOwnProperty(key)) {
@@ -17,14 +15,6 @@ const studenteducation = (req, res) => {
             const gpa = req.body[key].GPA;
 
             var foundduplicate = false;
-
-            var starttemp = startdate.split("/");
-            startdate = new Date(starttemp[2], starttemp[1], starttemp[0]);
-            startdate = dateFormat(startdate, "yyyy-mm-dd");
-
-            var endtemp = enddate.split("/");
-            enddate = new Date(endtemp[2], endtemp[1], endtemp[0]);
-            enddate = dateFormat(enddate, "yyyy-mm-dd");
 
             mypool.getConnection( (error, connection) => {
                 if(error) {

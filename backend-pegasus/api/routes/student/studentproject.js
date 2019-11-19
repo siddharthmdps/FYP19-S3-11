@@ -19,7 +19,7 @@ const studentproject = (req, res) => {
                     throw error
                 }
                 else {
-                    if(studentid && projectname && status && description) {  
+                    if(studentid && title && status && description) {  
                         let queryString1 = `select * from pegasus.studentproject where id = "${projectid}" and studentid = "${studentid}"` ;                  
                         let queryString2 = `INSERT INTO pegasus.studentproject (studentid, title, status, description, link) values ("${studentid}", "${title}", "${status}", "${description}", "${link}")`
                         connection.query(queryString1, (err, rows, fields) => {
@@ -36,6 +36,11 @@ const studentproject = (req, res) => {
                                 if(err) {
                                     res.status(500).json({ message: err });
                                 }
+                                else {
+                                    res.json({
+                                        message: "success"
+                                    })
+                                }
                             }) 
                         }) 
                     } else {
@@ -48,9 +53,6 @@ const studentproject = (req, res) => {
             } )
         }
     }
-    res.json({
-        message: "success"
-    })
 }
 
 module.exports = studentproject
