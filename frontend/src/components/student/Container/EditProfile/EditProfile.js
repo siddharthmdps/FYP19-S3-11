@@ -15,14 +15,11 @@ import { Accordion, Card, Container, Col, Row, Form } from 'react-bootstrap';
 import ppClasses from '../../../common_assets/Validate.module.css';
 import apiURL from '../../../../config';
 
+import Modal from '../../Components/EditProfile/LeftSide/Modal'
+
 import { withSnackbar } from 'notistack';
 
 import Axios from 'axios';
-
-const NewProfile = {
-    "NewUpload": false,
-    "Location": ""
-}
 
 const PersonalParticularsShell = {
     "StudentID": 0,
@@ -111,7 +108,7 @@ class EditProfile extends Component {
     state = {
         "StudentID": "1",
         "ProfileImage": "default.png",
-        "NewProfile": {},
+        "NewProfile": {"Modal": false, "Location": ""},
         "PersonalParticulars": {},
         "Education": [],
         "WorkExp": [],
@@ -129,7 +126,7 @@ class EditProfile extends Component {
 
     changeNewProfile = event => {
         console.log(event.target.value);
-        this.setState({NewProfile: {"NewUpload": true, "Location": event.target.files[0]}})
+        this.setState({NewProfile: {"Modal": true, "Location": event.target.files[0]}})
     }
 
     changePersonalParticulars = event => {
@@ -954,8 +951,14 @@ class EditProfile extends Component {
                 <Row >
                     <Col md={{ span: 3 }} className={classes.LeftSide}>
                         <LeftSide imageLink={this.state.ProfileImage} changeFn={event => this.changeNewProfile(event)} >
-                        <Button1 click={this.submitNewProfile}>Upload</Button1>
+                        {/* <Button1 click={this.submitNewProfile}>Upload</Button1> */}
                         </LeftSide>
+                        <Modal
+                            show={this.state.NewProfile.Modal}
+                            onHide={() => this.setState({NewProfile: {"Modal": false, "Location": ""}})}
+                            NewProfile={this.state.NewProfile.Location} 
+                            click={this.submitNewProfile}
+                        />
                     </Col>
                     <Col md={{ offset: 3, span: 9 }} >
                         <Accordion className={classes.Accordian} activeKey={this.state.activatedToggle}>
