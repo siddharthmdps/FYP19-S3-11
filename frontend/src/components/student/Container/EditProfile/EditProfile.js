@@ -19,6 +19,11 @@ import { withSnackbar } from 'notistack';
 
 import Axios from 'axios';
 
+const NewProfile = {
+    "NewUpload": false,
+    "Location": ""
+}
+
 const PersonalParticularsShell = {
     "StudentID": 0,
     "FirstName": "",
@@ -106,6 +111,7 @@ class EditProfile extends Component {
     state = {
         "StudentID": "1",
         "ProfileImage": "default.png",
+        "NewProfile": {},
         "PersonalParticulars": {},
         "Education": [],
         "WorkExp": [],
@@ -120,6 +126,11 @@ class EditProfile extends Component {
     }
 
     // Handling Form Inputs starts here
+
+    changeNewProfile = event => {
+        console.log(event.target.value);
+        this.setState({NewProfile: {"NewUpload": true, "Location": event.target.files[0]}})
+    }
 
     changePersonalParticulars = event => {
         console.log(event.target.id);
@@ -483,6 +494,19 @@ class EditProfile extends Component {
     // Removing elements in the Profile ends here
 
     // Submit elements to put in Backend starts here
+    submitNewProfile = () => {
+        if(this.state.NewProfile.NewUpload){
+
+            const fd = new FormData();
+            fd.append('file', this.state.NewProfile.Location, this.state.NewProfile.Location.name);
+            console.log(fd);
+            Axios.post('http://localhost:8000/upload', fd)
+            .then(response => {
+                console.log(response);
+            });
+        }
+    }
+
     submitPersonalParticulars = () => {
         const temp = {...this.state.PersonalParticulars};
         console.log(temp);
@@ -494,6 +518,7 @@ class EditProfile extends Component {
                 this.props.enqueueSnackbar('Error storing Personal Particulars!', { variant: 'error' });
             });
     }
+
     submitEducation = () => {
         let temp = [...this.state.Education];
         for (let idk in temp) {
@@ -742,8 +767,9 @@ class EditProfile extends Component {
                 <br />
                 <Row >
                     <Col md={{ span: 3 }} className={classes.LeftSide}>
-                        <LeftSide imageLink={this.state.ProfileImage} />
-
+                        <LeftSide imageLink={this.state.ProfileImage} changeFn={event => this.changeNewProfile(event)} >
+                        <Button1 click={this.submitNewProfile}>Upload</Button1>
+                        </LeftSide>
                     </Col>
                     <Col md={{ offset: 3, span: 9 }} >
                         <Accordion className={classes.Accordian} activeKey={this.state.activatedToggle}>
