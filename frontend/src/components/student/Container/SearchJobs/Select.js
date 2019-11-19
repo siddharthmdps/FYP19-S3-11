@@ -28,15 +28,15 @@ const useStyles = makeStyles(theme => ({
 
 export default function SimpleSelect(props) {
     const classes = useStyles();
-    const [age, setAge] = React.useState('');
+    // const [age, setAge] = React.useState('');
 
     //   React.useEffect(() => {
     //     setLabelWidth(inputLabel.current.offsetWidth);
     //   }, []);
 
-    const handleChange = event => {
-        setAge(event.target.value);
-    };
+    // const handleChange = event => {
+    //     setAge(event.target.value);
+    // };
 
     return (
         <Col md={{ span: 12 }} >
@@ -44,7 +44,7 @@ export default function SimpleSelect(props) {
                 <Form.Row>
                     <Form.Group as={Col} sm='12' controlId="Industry">
                         <Form.Label className={classes2.Label}>Industry</Form.Label>
-                        <Form.Control as='select' onChange={props.changeFn} required>
+                        <Form.Control as='select' value={props.filter.Industry} onChange={props.changeFn} required>
                             <Industries />
                         </Form.Control>
                     </Form.Group>
@@ -57,7 +57,7 @@ export default function SimpleSelect(props) {
                 <Form.Row>
                     <Form.Group as={Col} sm='12' controlId="WorkExp">
                         <Form.Label className={classes2.Label}>Work Experience</Form.Label>
-                        <Form.Control as='select' onChange={props.changeFn} required>
+                        <Form.Control as='select' value={props.filter.WorkExp} onChange={props.changeFn} required>
                             <WorkExpReqList />
                         </Form.Control>
                     </Form.Group>
@@ -71,7 +71,7 @@ export default function SimpleSelect(props) {
                 <Form.Row>
                     <Form.Group as={Col} sm='12' controlId="Location">
                         <Form.Label className={classes2.Label}>Location</Form.Label>
-                        <Form.Control as='select' placeholder="Singapore"  onChange={props.changeFn} required>
+                        <Form.Control as='select' value={props.filter.Location} placeholder="Singapore"  onChange={props.changeFn} required>
                             <Location />
                         </Form.Control>
                     </Form.Group>
