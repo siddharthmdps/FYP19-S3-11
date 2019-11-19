@@ -3,11 +3,11 @@ import classes from './Home.module.css';
 
 export class Home extends Component {
     render() {
-        return (
+        return ( 
             <div className={classes.Home}>
-                <div>
-                    <h4>Welcome to Pegusus@SIM</h4>
-                    <h1>Admin Management Portal</h1>
+                <div className={classes.HomeContent}>
+                    <h1>Welcome to Pegusus@SIM</h1>
+                    <h2>Admin Management Portal</h2>
                 </div>
             </div>
         )
