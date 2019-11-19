@@ -54,6 +54,11 @@ const studentworkexp = (req, res) => {
                                     if(err) {
                                         res.status(500).json({ message: err });
                                     }
+                                    else {
+                                        res.json({
+                                            message: "success"
+                                        })
+                                    }
                                 }) 
                             }
                         }) 

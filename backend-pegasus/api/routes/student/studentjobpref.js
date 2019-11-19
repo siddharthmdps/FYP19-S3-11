@@ -34,6 +34,11 @@ const studentjobpref = (req, res) => {
                     if(err) {
                         res.status(500).json({ message: err });
                     }
+                    else {
+                        res.json({
+                            message: "success"
+                        })
+                    }
                 }) 
             } else {
                 res.status(400).json({
@@ -44,9 +49,6 @@ const studentjobpref = (req, res) => {
         }
         connection.release()
     } )
-    res.json({
-        message: "success"
-    })
 }
 
 module.exports = studentjobpref
