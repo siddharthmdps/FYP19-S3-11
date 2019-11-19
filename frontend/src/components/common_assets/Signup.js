@@ -232,7 +232,6 @@ class Signup extends React.Component {
     userTypeSelector = () => {
         return (
             <div className="container" id="btn-group-container">
-
                 <select class="custom-select" id="usertype-select" onChange={this.setUserType}>
                     <option selected>Select user type</option>
                     <option value="student">Student</option>
@@ -317,7 +316,7 @@ class Signup extends React.Component {
                 <Row >
                     <Col md={{ span: 6, offset: 5 }}>
                         <div className={classes.Title}>
-                            <h1 >Pegasus</h1>
+                            <h1 >Sign Up</h1>
                             <p style={{ fontWeight: '400' }}>Kick start your professional career</p>
                         </div>
                     </Col>
@@ -326,6 +325,7 @@ class Signup extends React.Component {
                     <Col md={{ span: 6, offset: 5 }}>
                         <Card className={classes.Card}>
                             <Card.Body>
+                                <this.userTypeSelector />
                                 <this.signUpForm />
                                 <div style={{ textAlign: 'center' }}>
                                     <Button1>Register</Button1>
