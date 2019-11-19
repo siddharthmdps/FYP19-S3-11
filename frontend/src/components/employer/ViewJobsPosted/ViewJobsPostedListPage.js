@@ -4,47 +4,21 @@
 // It accepts parameters in the form of props such as title, companyName, joblocation, jobindustry and reqSkills.
 // Job description is to be passed in as children.
 
+//installed @material-ui/core
+// installed material-table
+//installed @material-ui/icons -- to uninstall
+
+//to uninstall react-table
+
 
 import React, { Component } from 'react';
 import { Row, Col, Table } from 'react-bootstrap';
 import '../ProfileView/Card.css';
 import apiURL from '../../../config'
 
+//import MaterialUITable
+import MaterialTable from 'material-table'
 
-// var jobsTD = [
-//     {
-//         appId: 12,
-//         appName: 'Rawon',
-//         jobId: 1,
-//         jobTitle: "Marukan Honey Collector",
-//         university: "University of Frankfurt",
-//         course: "Bachelor in Agriculture"
-//     },
-//     {
-//         appId: 3,
-//         appName: "Naeun",
-//         jobId: 4,
-//         jobTitle: "Model",
-//         university: "University of Korea",
-//         course: "Bachelor in Media"
-//     },
-//     {
-//         appId: 3,
-//         appName: "Naeun",
-//         jobId: 1,
-//         jobTitle: "Marukan Honey Collector",
-//         university: "University of Korea",
-//         course: "Bachelor in Media"
-//     }, {
-//         appId: 7,
-//         appName: "GunHoo",
-//         jobId: 1,
-//         jobTitle: "Marukan Honey Collector",
-//         university: "University of Germany",
-//         course: "Bachelor in Charisma"
-//     }
-
-// ];
 
 class JobsList extends Component {
     constructor(props) {
@@ -94,6 +68,24 @@ class JobsList extends Component {
         return item
     }
 
+    adjustDate = (date, format) => {
+        let temp = new Date(date);
+        let tempDate = temp.getDate();
+        let tempMonth = temp.getMonth() + 1;
+        let tempYear = temp.getFullYear();
+        if (tempMonth < 10)
+            tempMonth = '0' + tempMonth;
+        if (tempDate < 10)
+            tempDate = '0' + tempDate;
+
+        format = format.replace("dd", tempDate);
+        format = format.replace("mm", tempMonth);
+        format = format.replace("yyyy", tempYear);
+
+        console.log("Formatted date: " + format);
+        return format;
+    }
+
     jobsContent() {
         // appsReceived = handleUndefined(this.state.applications)
         // console.log(this.state.applications)
@@ -134,10 +126,87 @@ class JobsList extends Component {
 
     }
 
+    // jobsTable() {
+    //     let jobsPosted = this.handleUndefined(this.state.jobs)
+
+    //     return (
+    //         <ReactTable
+    //             data={jobsPosted}
+    //             columns={[
+    //                 // {
+    //                 //     Header: "#",
+    //                 //     accessor: "{index+1}
+    //                 // },
+    //                 {
+    //                     Header: "Job Title",
+    //                     accessor: "title"
+    //                 },
+    //                 {
+    //                     Header: "Industry",
+    //                     accessor: "industry"
+    //                 }
+    //             ]}
+    //             defaultSorted={[
+    //                 {
+    //                     id: "title",
+    //                     desc: true
+    //                 }
+    //             ]}
+    //             defaultPageSize={10}
+    //             className="-striped -highlight"
+    //         />
+
+
+    //     )
+    // }
+
+    jobsTable2() {
+        let jobsPosted = this.handleUndefined(this.state.jobs)
+
+        // < td > { job.description }</td>
+        //     <td>{job.requiredskills}</td>
+        //     <td>{job.yearsofexperience}</td>
+        //     <td>{job.dateposted}</td>
+
+        return (
+            <MaterialTable
+                title="Jobs Posted"
+                columns={[
+                    {
+                        title: "Job Title",
+                        field: "title"
+                    },
+                    {
+                        title: "Industry",
+                        field: "industry"
+                    },
+                    {
+                        title: "Job Description",
+                        field: "description"
+                    },
+                    {
+                        title: "Work Experience",
+                        field: "yearsofexperience"
+                    },
+                    {
+                        title: "Date Posted",
+                        field: "dateposted"
+                    }
+                    ,
+                    {
+                        title: "Location",
+                        field: "location"
+                    }
+                ]}
+                data={jobsPosted}
+            />
+        )
+    }
+
     render() {
         return (
             <div>
-                <Row>
+                {/* <Row>
                     <Col md={2} />
                     <Col md={8}>
                         <Table striped bordered hover variant="light">
@@ -154,8 +223,16 @@ class JobsList extends Component {
 
                             <tbody>
                                 {this.jobsContent()}
+
                             </tbody>
                         </Table>
+                    </Col>
+                    <Col md={2} /> 
+                </Row> */}
+                <Row>
+                    <Col md={2} />
+                    <Col md={8}>
+                        {this.jobsTable2()}
                     </Col>
                     <Col md={2} />
                 </Row>

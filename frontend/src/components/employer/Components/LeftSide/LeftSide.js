@@ -30,13 +30,13 @@ const leftSide = (props) => {
                         </Form.Group>
                     </Form.Row>
 
-                    </Card.Body>
-                    <ListGroup className="list-group-flush" className={classes.CentralContent}>
-                        <ListGroupItem className={classes.Clickable}> Preview Company Profile </ListGroupItem>
-                        <ListGroupItem onClick={props.pjHandler} className={classes.Clickable}> Post Jobs </ListGroupItem>
-                        <ListGroupItem className={classes.Clickable}> Browse Candidates </ListGroupItem>
-                    </ListGroup>
-                    {/* <button type="button" className={classes.BtnNoOutline} >Preview Company Profile</button>
+                </Card.Body>
+                <ListGroup className="list-group-flush" className={classes.CentralContent}>
+                    <ListGroupItem className={classes.Clickable}> Preview Company Profile </ListGroupItem>
+                    <ListGroupItem onClick={props.pjHandler} className={classes.Clickable}> Post Jobs </ListGroupItem>
+                    <ListGroupItem onClick="/employer/viewjobs" href="/employer/viewjobs" className={classes.Clickable}> View Jobs Posted </ListGroupItem>
+                </ListGroup>
+                {/* <button type="button" className={classes.BtnNoOutline} >Preview Company Profile</button>
 
                     <button onClick={props.pjHandler} type="button" className={classes.BtnNoOutline} >Post Jobs</button>
 
