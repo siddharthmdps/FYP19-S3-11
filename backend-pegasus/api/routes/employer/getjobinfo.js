@@ -1,7 +1,9 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
 // return joblist matched by employer id
-const getalljobs = (req, res) => {
+const getjobinfo = (req, res) => {
+    const jobID = parseInt(req.params.jobID)
+    console.log(`Requesting for a detailed job info, jobID: ${jobID}`)
 
     mypool.getConnection((err, connection) => {
         if(err) {
@@ -10,8 +12,7 @@ const getalljobs = (req, res) => {
             throw err
         }
         else {
-            let queryString = `SELECT job.*, employer.username FROM pegasus.job 
-                            JOIN pegasus.employer ON pegasus.job.empid = pegasus.employer.id;`
+            let queryString = `SELECT * FROM pegasus.job WHERE id=${jobID}`
             connection.query(queryString, (err, rows, fields) => {
                 if(err) {
                     res.status(500).json({ message: err })
@@ -30,4 +31,4 @@ const getalljobs = (req, res) => {
     })
 }
 
-module.exports = getalljobs
+module.exports = getjobinfo
