@@ -9,6 +9,8 @@ import React, { Component } from 'react';
 import { Card, Button, Col, Row, Alert, Table } from 'react-bootstrap';
 import '../ProfileView/Card.css';
 import apiURL from '../../../config'
+import classes from './EmpJobCard.module.css';
+import Button1 from '../../common_assets/Button1/Button1';
 
 // need to handle if empty.s
 
@@ -16,16 +18,16 @@ import apiURL from '../../../config'
 const EmpJobCard = (props) => {
     return (
         <div className="col-sm-8 mx-auto">
-            <Card>
+            <Card className={classes.Card}>
                 <Card.Header>
                     <Card.Title>
                         <Row>
                             <Col sm={9}>{props.jobDetail.title}</Col>
                             <Col sm={3}>
-                                <Button variant="primary" onClick={props.editJobHandler}>
+                                <Button1 onClick={props.editJobHandler}>
                                     Edit&nbsp;
                                 <i class="fas fa-edit"></i>
-                                </Button>
+                                </Button1>
                             </Col>
                         </Row>
 
@@ -33,7 +35,6 @@ const EmpJobCard = (props) => {
                 </Card.Header>
 
                 <Card.Body>
-
                     <Card.Subtitle>{props.jobDetail.companyName}</Card.Subtitle>
                     <br />
                     <Card.Text>
@@ -433,14 +434,14 @@ class EmpAppCard extends Component {
     render() {
         return (
             <div className="col-sm-8 mx-auto" style={{ paddingBottom: "10px" }}>
-                <Card >
+                <Card className={classes.Card}>
                     <Card.Header>
                         <Row>
                             <Col sm={9}>
                                 <Card.Title>{this.props.appName}</Card.Title>
                             </Col>
                             <Col sm={3}>
-                                <Button variant="primary"><i class="fas fa-file-download"></i></Button>
+                                <Button1 >Download <i class="fas fa-file-download"></i></Button1>
                             </Col>
                         </Row>
                     </Card.Header>
@@ -569,9 +570,9 @@ class EmpAppCard extends Component {
                             Applied {this.props.dateapplied} 
                         </small>
                     
-                    </Card.Text> */} */}
+                    </Card.Text> */}
     
-                        <Button variant="success" onClick={() => { this.shortlist(123, 456) }} >Shortlist</Button>
+                        <Button1 onClick={() => { this.shortlist(123, 456) }} >Shortlist</Button1>
                     </Card.Body>
                 </Card>
             </div >
