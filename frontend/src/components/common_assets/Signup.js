@@ -2,14 +2,39 @@ import React from 'react'
 import { Col, Row, Card, Container, Form } from 'react-bootstrap';
 import './SignUp.css'
 import classes from './Signup.module.css';
+import { fontWeight, bgcolor } from '@material-ui/system';
+import Button1 from '../common_assets/Button1/Button1';
 
 class Signup extends React.Component {
     constructor() {
         super()
         this.state = {
-            usertype: "employer"
+            usertype: "student"
         }
     }
+
+    // state = {
+    //     Usertype: "Student",
+    //     Student: {
+    //         FirstName: "",
+    //         LastName: "",
+    //         Username: "",
+    //         Email: "",
+    //         Address: "",
+    //         JobExperience: "",
+    //         Password: ""
+    //     },
+    //     Employer: {
+    //         Username: "",
+    //         Email: "",
+    //         CompanyName: "",
+    //         Phone: "",
+    //         Description: "",
+    //         Address: "",
+    //         Industry: "",
+    //         Password: ""
+    //     }
+    // }
 
     studentForm = (props) => {
         return (
@@ -92,10 +117,10 @@ class Signup extends React.Component {
 
     employerForm = () => {
         return (
-            <div style={{whiteSpace: 'nowrap'}}>
+            <div style={{ whiteSpace: 'nowrap' }}>
                 <Form.Group as={Row} controlId="Username">
                     <Form.Label column sm="2">Username <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
-                    <Col sm="10"><Form.Control type='text' placeholder="someone@email.com" required /></Col>
+                    <Col sm="10"><Form.Control type='text' placeholder="sid1998" required /></Col>
                 </Form.Group>
 
                 {/* <div className="form-group row">
@@ -285,19 +310,45 @@ class Signup extends React.Component {
     }
 
     render() {
+        document.body.style =
+            'background-image: url("BG.jpg");background-size: cover';
         return (
-            <div className="container create-account main">
-                <div className="py-3 text-center" id="header-div">
-                    <h2><a href="/" id="pegasus-tag">Pegasus</a></h2>
-                    <p className="font-weight-light ">Kick start your professional career</p>
-                </div>
-                <this.userTypeSelector />
+            <React.Fragment>
+                <Row >
+                    <Col md={{ span: 6, offset: 5 }}>
+                        <div className={classes.Title}>
+                            <h1 >Pegasus</h1>
+                            <p style={{ fontWeight: '400' }}>Kick start your professional career</p>
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={{ span: 6, offset: 5 }}>
+                        <Card className={classes.Card}>
+                            <Card.Body>
+                                <this.signUpForm />
+                                <div style={{ textAlign: 'center' }}>
+                                    <Button1>Register</Button1>
+                                </div>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+            </React.Fragment>
 
-                <div className="container">
-                    <this.signUpForm />
-                    <button className="btn btn-dark btn-lg btn-block create-account" onClick={this.createAccount}>Create Account</button>
-                </div>
-            </div>
+            // <div className="container create-account main">
+            //     <div className="py-3 text-center" id="header-div">
+            //         <h2><a href="/" id="pegasus-tag">Pegasus</a></h2>
+            //         <p className="font-weight-light ">Kick start your professional career</p>
+            //     </div>
+            //     <this.userTypeSelector />
+
+            //     <div className="container">
+            //         <this.signUpForm />
+            //         <button className="btn btn-dark btn-lg btn-block create-account" onClick={this.createAccount}>Create Account</button>
+            //     </div>
+            // </div>
+
             // <React.Fragment>
             //     <Row className={classes.Container}>
             //         <Col md={{span: 6, offset: 3}} className={classes.MainBody}>
@@ -324,28 +375,28 @@ export default Signup
 // import classes from './Signup.module.css';
 
 // class Signup extends React.Component {
-//     state = {
-//         Usertype: "Student",
-//         Student: {
-//             FirstName: "",
-//             LastName: "",
-//             Username: "",
-//             Email: "",
-//             Address: "",
-//             JobExperience: "",
-//             Password: ""
-//         },
-//         Employer: {
-//             Username: "",
-//             Email: "",
-//             CompanyName: "",
-//             Phone: "",
-//             Description: "",
-//             Address: "",
-//             Industry: "",
-//             Password: ""
-//         }
-//     }
+    // state = {
+    //     Usertype: "Student",
+    //     Student: {
+    //         FirstName: "",
+    //         LastName: "",
+    //         Username: "",
+    //         Email: "",
+    //         Address: "",
+    //         JobExperience: "",
+    //         Password: ""
+    //     },
+    //     Employer: {
+    //         Username: "",
+    //         Email: "",
+    //         CompanyName: "",
+    //         Phone: "",
+    //         Description: "",
+    //         Address: "",
+    //         Industry: "",
+    //         Password: ""
+    //     }
+    // }
 
 //     studentForm = () => {
 //         return (
