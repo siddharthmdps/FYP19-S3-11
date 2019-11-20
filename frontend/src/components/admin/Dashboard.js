@@ -46,7 +46,7 @@ export class AppliedJobs extends Component {
                     obj[j] = {
                         'key': data[i].id,
                         'username': data[i].username,
-                        'email': data[i].email,
+                        'email': data[i].fieldofstudy,
                     };
                     j++;
                 }
@@ -64,7 +64,7 @@ export class AppliedJobs extends Component {
                 for (var i = data.length - 1; i > data.length - 6; i--) {
                     obj[j] = {
                         'key': data[i].id,
-                        'empid': data[i].empid,
+                        'empid': data[i].username,
                         'title': data[i].title,
                         'description': data[i].description,
                         'dateposted': data[i].dateposted,
@@ -163,7 +163,7 @@ export class AppliedJobs extends Component {
                                 <tr>
                                     <th>Employer Username</th>
                                     <th>Title</th>
-                                    <th>Company</th>
+                                    <th>Job description</th>
                                     <th>Date posted</th>
                                 </tr>
                             </thead>

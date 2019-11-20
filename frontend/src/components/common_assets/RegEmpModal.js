@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Modal, Button, Row, Col, Form } from 'react-bootstrap'
+import { Modal, Button, Row, Col, Form , InputGroup} from 'react-bootstrap'
 import Snackbar from '@material-ui/core/SnackBar'
 import IconButton from '@material-ui/core/IconButton'
 
 export class RegEmpModal extends Component {
-    constructor(props,context) {
+    constructor(props, context) {
         super(props, context);
         this.state = { snackbaropen: false, snackbarmsg: '' };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,12 +36,12 @@ export class RegEmpModal extends Component {
             .then(res => res.json())
             .then((result) => {
                 //alert(result);
-                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully created new employer account!' });
-                this.timer = setTimeout(()=>{window.location.href = '/'}, 1000);
+                this.setState({ snackbaropen: true, snackbarmsg: 'You have successfully created your account!' });
+                this.timer = setTimeout(() => { window.location.href = '/' }, 1000);
             },
                 (error) => {
                     //alert('Failed')
-                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to create new employer account...' });
+                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to create your account...' });
                 }
             )
     }
@@ -80,7 +80,7 @@ export class RegEmpModal extends Component {
                     <Modal.Body>
 
                         <Row>
-                            <Col sm={6}>
+                            <Col sm={12}>
                                 <Form onSubmit={this.handleSubmit} >
 
                                     <Form.Group controlId="usertype">
@@ -94,24 +94,6 @@ export class RegEmpModal extends Component {
                                             placeholder=""></Form.Control>
                                     </Form.Group>
 
-                                    <Form.Group controlId="username">
-                                        <Form.Label>Username:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="Username"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
-
-                                    <Form.Group controlId="password">
-                                        <Form.Label>Password:</Form.Label>
-                                        <Form.Control
-                                            type="password"
-                                            name="password"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
-
                                     <Form.Group controlId="companyname">
                                         <Form.Label>Company Name:</Form.Label>
                                         <Form.Control
@@ -121,33 +103,35 @@ export class RegEmpModal extends Component {
                                             placeholder=""></Form.Control>
                                     </Form.Group>
 
-                                    <Form.Group controlId="companyphone">
-                                        <Form.Label>Company Phone:</Form.Label>
-                                        <Form.Control
-                                            type="number"
-                                            name="companyphone"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
-
-                                    <Form.Group controlId="companyemail">
-                                        <Form.Label>Company E-mail:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="companyemail"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
-
                                     <Form.Group controlId="companydescription">
                                         <Form.Label>Company Description:</Form.Label>
                                         <Form.Control
+                                            as="textarea"
+                                            rows="3"
                                             type="text"
                                             name="companydescription"
                                             required
                                             placeholder=""></Form.Control>
                                     </Form.Group>
+                                    <Form.Row>
+                                        <Form.Group as={Col} controlId="companyphone">
+                                            <Form.Label>Company Phone No.:</Form.Label>
+                                            <Form.Control
+                                                type="number"
+                                                name="companyphone"
+                                                required
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
 
+                                        <Form.Group as={Col} controlId="companyemail">
+                                            <Form.Label>Company E-mail:</Form.Label>
+                                            <Form.Control
+                                                type="email"
+                                                name="companyemail"
+                                                required
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
+                                    </Form.Row>
                                     <Form.Group controlId="companyaddress">
                                         <Form.Label>Company Address:</Form.Label>
                                         <Form.Control
@@ -158,13 +142,38 @@ export class RegEmpModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="industry">
-                                        <Form.Label>Industry:</Form.Label>
+                                        <Form.Label>Company Industry:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="industry"
                                             required
                                             placeholder=""></Form.Control>
                                     </Form.Group>
+
+                                    <Form.Row>
+                                        <Form.Group as={Col} sm='6' controlId="username">
+                                            <Form.Label>Username:</Form.Label>
+                                            <InputGroup>
+                                                <InputGroup.Prepend>
+                                                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                <Form.Control
+                                                    type="text"
+                                                    name="username"
+                                                    required
+                                                    placeholder=""></Form.Control>
+                                            </InputGroup>
+                                        </Form.Group>
+
+                                        <Form.Group as={Col} controlId="password">
+                                            <Form.Label>Password:</Form.Label>
+                                            <Form.Control
+                                                type="password"
+                                                name="password"
+                                                required
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
+                                    </Form.Row>
 
                                     <Form.Group>
                                         <Button variant="outline-success" type="submit">

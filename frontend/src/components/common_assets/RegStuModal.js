@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Modal, Button, Row, Col, Form } from 'react-bootstrap'
+import { Modal, Button, Row, Col, Form, InputGroup } from 'react-bootstrap'
 import Snackbar from '@material-ui/core/SnackBar'
 import IconButton from '@material-ui/core/IconButton'
 
 export class RegStuModal extends Component {
-    constructor(props,context) {
+    constructor(props, context) {
         super(props, context);
         this.state = { snackbaropen: false, snackbarmsg: '' };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,12 +40,12 @@ export class RegStuModal extends Component {
             .then(res => res.json())
             .then((result) => {
                 //alert(result);
-                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully created new candidate account!' });
-                this.timer = setTimeout(()=>{window.location.href = '/'}, 1000);
+                this.setState({ snackbaropen: true, snackbarmsg: 'You have successfully created your account!' });
+                this.timer = setTimeout(() => { window.location.href = '/' }, 1000);
             },
                 (error) => {
                     //alert('Failed')
-                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to create new candidate account...' });
+                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to create your account...' });
                 }
             )
     }
@@ -84,7 +84,7 @@ export class RegStuModal extends Component {
                     <Modal.Body>
 
                         <Row>
-                            <Col sm={6}>
+                            <Col sm={12}>
                                 <Form onSubmit={this.handleSubmit} >
 
                                     <Form.Group controlId="usertype">
@@ -98,68 +98,54 @@ export class RegStuModal extends Component {
                                             placeholder=""></Form.Control>
                                     </Form.Group>
 
-                                    <Form.Group controlId="firstname">
-                                        <Form.Label>First Name:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="firstname"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
+                                    <Form.Row>
+                                        <Form.Group as={Col} controlId="firstname">
+                                            <Form.Label>First Name:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="firstname"
+                                                required
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
 
-                                    <Form.Group controlId="middlename">
-                                        <Form.Label>Middle Name:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="middlename"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
+                                        <Form.Group as={Col} controlId="middlename">
+                                            <Form.Label>Middle Name:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="middlename"
+                                                required pattern="[A-Za-z]+"
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
 
-                                    <Form.Group controlId="lastname">
-                                        <Form.Label>Last Name:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="lastname"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
+                                        <Form.Group as={Col} controlId="lastname">
+                                            <Form.Label>Last Name:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="lastname"
+                                                required
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
+                                    </Form.Row>
 
-                                    <Form.Group controlId="email">
-                                        <Form.Label>E-mail:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="email"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
+                                    <Form.Row>
+                                        <Form.Group as={Col} controlId="email">
+                                            <Form.Label>E-mail:</Form.Label>
+                                            <Form.Control
+                                                type="email"
+                                                name="email"
+                                                required
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
 
-                                    <Form.Group controlId="phone">
-                                        <Form.Label>Phone:</Form.Label>
-                                        <Form.Control
-                                            type="number"
-                                            name="phone"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
-
-                                    <Form.Group controlId="country">
-                                        <Form.Label>Country:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="country"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
-
-                                    <Form.Group controlId="city">
-                                        <Form.Label>City:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="city"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
+                                        <Form.Group as={Col} controlId="phone">
+                                            <Form.Label>Phone No.:</Form.Label>
+                                            <Form.Control
+                                                type="number"
+                                                name="phone"
+                                                required
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
+                                    </Form.Row>
 
                                     <Form.Group controlId="currentaddress">
                                         <Form.Label>Current Address:</Form.Label>
@@ -169,16 +155,36 @@ export class RegStuModal extends Component {
                                             required
                                             placeholder=""></Form.Control>
                                     </Form.Group>
-                                    
-                                    <Form.Group controlId="postalcode">
-                                        <Form.Label>Postal code:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="postalcode"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
+                                    <Form.Row>
+                                        <Form.Group as={Col} controlId="country">
+                                            <Form.Label>Country:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="country"
+                                                required
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
 
+                                        <Form.Group as={Col} controlId="city">
+                                            <Form.Label>City:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="city"
+                                                required
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
+
+
+
+                                        <Form.Group as={Col} controlId="postalcode">
+                                            <Form.Label>Postal code:</Form.Label>
+                                            <Form.Control
+                                                type="number"
+                                                name="postalcode"
+                                                required
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
+                                    </Form.Row>
                                     <Form.Group controlId="nationality">
                                         <Form.Label>Nationality:</Form.Label>
                                         <Form.Control
@@ -187,25 +193,30 @@ export class RegStuModal extends Component {
                                             required
                                             placeholder=""></Form.Control>
                                     </Form.Group>
+                                    <Form.Row>
+                                        <Form.Group as={Col} sm='6' controlId="username">
+                                            <Form.Label>Username:</Form.Label>
+                                            <InputGroup>
+                                                <InputGroup.Prepend>
+                                                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                <Form.Control
+                                                    type="text"
+                                                    name="username"
+                                                    required
+                                                    placeholder=""></Form.Control>
+                                            </InputGroup>
+                                        </Form.Group>
 
-                                    <Form.Group controlId="username">
-                                        <Form.Label>Username:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="username"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
-
-                                    <Form.Group controlId="password">
-                                        <Form.Label>Password:</Form.Label>
-                                        <Form.Control
-                                            type="password"
-                                            name="password"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
-
+                                        <Form.Group as={Col} controlId="password">
+                                            <Form.Label>Password:</Form.Label>
+                                            <Form.Control
+                                                type="password"
+                                                name="password"
+                                                required
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
+                                    </Form.Row>
                                     <Form.Group>
                                         <Button variant="outline-success" type="submit">
                                             Register New Student Account
