@@ -10,7 +10,6 @@ import Axios from 'axios';
 // An employer can view all the applicants that have applied under a particular job posted.
 
 //EmpJobCard is ready to be deployed.
-//Pending: EmpAppCard Linkage.
 
 class EmpJobView extends Component {
     constructor(props) {
@@ -103,7 +102,7 @@ class EmpJobView extends Component {
                     console.log(applicant)
                     return (
                         <Row>
-                            <EmpAppCard appID={1} appName={applicant.firstname.concat(" ", applicant.lastname)} appSkills={applicant.skills} appPhone={applicant.phone} appEmail={applicant.email} />
+                            <EmpAppCard appID={applicant.id} appName={applicant.firstname.concat(" ", applicant.lastname)} appSkills={applicant.skills} appPhone={applicant.phone} appEmail={applicant.email} />
                         </Row>
 
                     )
@@ -115,12 +114,12 @@ class EmpJobView extends Component {
 
     render() {
         document.body.style =
-        'background: linear-gradient(to right, #0f2027, #203a43, #2c5364);';
+            'background: linear-gradient(to right, #0f2027, #203a43, #2c5364);';
         return (
             <div>
                 <Row>
                     <EmpJobCard
-                        jobDetail = {this.state.jobDetail}
+                        jobDetail={this.state.jobDetail}
                     >
                         {this.state.jobdescription}
                     </EmpJobCard>
