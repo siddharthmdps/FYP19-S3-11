@@ -60,7 +60,7 @@ class EmpJobView extends Component {
                     joblocation: response.data[0]['location'],
                     jobindustry: response.data[0]['industry'],
                     dateposted: response.data[0]['dateposted'],
-                    jobdescription: response.data[0]['jobdescription']
+                    jobdescription: response.data[0]['description']
                 };
                 console.log(temp);
                 this.setState({ jobDetail: temp });
@@ -123,7 +123,6 @@ class EmpJobView extends Component {
                     <EmpJobCard
                         jobDetail={this.state.jobDetail}
                     >
-                        {this.state.jobdescription}
                     </EmpJobCard>
                 </Row>
                 <br />

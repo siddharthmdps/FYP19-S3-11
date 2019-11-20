@@ -63,7 +63,7 @@ const EmpJobCard = (props) => {
                     <Card.Text>
                         <i className="fas fa-tasks"></i>
                         <em>&nbsp; Description<br /></em>
-                        {props.jobDetail.description}
+                        {props.jobDetail.jobdescription}
                     </Card.Text>
 
                     <Card.Text>

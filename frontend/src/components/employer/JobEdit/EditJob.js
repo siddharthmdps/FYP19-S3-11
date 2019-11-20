@@ -34,7 +34,7 @@ class EditJob extends Component {
                                     <Form.Label>Job Title</Form.Label>
                                 </Col>
                                 <Col md={1}>
-                                    <Button variant="dark" type="submit"><i class="far fa-trash-alt"></i> </Button>
+                                    <Button variant="dark" onClick={(event) => this.handleDelete(event)}><i class="far fa-trash-alt"></i> </Button>
                                 </Col>
                             </Row>
                             <Row>
@@ -170,7 +170,7 @@ class EditJob extends Component {
         const url = `${apiURL}employer/employerinfo/savejob/${this.props.jobID}`
         const localhost = `http://localhost:3001/employer/savejob/${this.props.jobID}`
 
-        fetch(localhost, {
+        fetch(url, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -196,32 +196,43 @@ class EditJob extends Component {
         this.props.history.push(target)
     }
 
-    handleDelete(jobId) {
-        //Get Job data
-        // Axios.put(`${apiURL}admin/deletejob${jobId}`)
-        //     .then(response => {
-        //         // console.log(jobid, response.data);
-        //         let temp = {
-        //             title: response.data[0]['title'],
-        //             companyName: response.data[0]['empid'],
-        //             reqSkills: response.data[0]['requiredskills'],
-        //             joblocation: response.data[0]['location'],
-        //             jobindustry: response.data[0]['industry'],
-        //             dateposted: response.data[0]['dateposted'],
-        //             jobdescription: response.data[0]['description']
-        //         };
-        //         // console.log(temp);
-        //         this.setState({
-        //             jobtitle: temp.title,
-        //             jobdescription: temp.jobdescription,
-        //             joblocation: temp.joblocation,
-        //             jobindustry: temp.jobindustry
-        //         });
-        //         // editJobHandler={this.props.editJobHandler}
-        //     })
-        //     .catch(error => {
-        //         console.log("error deleting job details");
-        //     })
+    handleDelete(event) {
+        event.preventDefault()
+        const { jobid } = this.props.match.params;
+        let url = `${apiURL}employer/getjobinfo/${jobid}`
+        console.log(url)
+
+        const job = {
+            title: this.state.jobtitle,
+            industry: this.state.jobindustry,
+            description: this.state.jobdescription,
+            requiredskills: this.state.requiredskills,
+            dateposted: this.state.dateposted,
+            location: this.state.joblocation,
+            yearsofexperience: this.state.yearsofexperience
+        }
+
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(job)
+        })
+            .then(res => res.json())
+            .then((result) => {
+                console.log("Deletion of job successful")
+            },
+                (error) => {
+                    console.log("Failure in deletion of job detected.")
+                }
+            )
+
+        let target = `/employer/viewjobs`
+        this.props.history.push(target)
+
+
     }
 
     render() {
