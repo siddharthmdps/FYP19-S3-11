@@ -733,7 +733,7 @@ class EditProfile extends Component {
             let temp = this.copy(this.state.Education);
             console.log(temp)
             for (let idk in temp) {
-                temp[idk]['StudentID'] = 1;
+                temp[idk]['StudentID'] = this.state.StudentID;
                 temp[idk]['StartDate'] = this.adjustDate(temp[idk]['StartDate'], "dd/mm/yyyy");
                 temp[idk]['EndDate'] = this.adjustDate(temp[idk]['EndDate'], "dd/mm/yyyy");
             }
@@ -754,7 +754,7 @@ class EditProfile extends Component {
             let temp = this.copy(this.state.WorkExp);
             console.log(temp)
             for (let idk in temp) {
-                temp[idk]['StudentID'] = 1;
+                temp[idk]['StudentID'] = this.state.StudentID;
                 temp[idk]['StartDate'] = this.adjustDate(temp[idk]['StartDate'], "dd/mm/yyyy");
                 temp[idk]['EndDate'] = this.adjustDate(temp[idk]['EndDate'], "dd/mm/yyyy");
             }
@@ -773,7 +773,7 @@ class EditProfile extends Component {
     submitJobPreference = () => {
         if(this.validateJobPreference()){
             const temp = {...this.state.JobPreference};
-            temp['StudentID'] = 1;
+            temp['StudentID'] = this.state.StudentID;
             console.log(temp);
             Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentjobpref', temp)
             .then(response => {
@@ -790,7 +790,7 @@ class EditProfile extends Component {
         if(this.validateAwards()){
             let temp = this.copy(this.state.Awards);
             for (let idk in temp) {
-                temp[idk]['StudentID'] = 1;
+                temp[idk]['StudentID'] = this.state.StudentID;
                 temp[idk]['Date'] = this.adjustDate(temp[idk]['Date'], "dd/mm/yyyy");
             }
             console.log(temp);
@@ -809,7 +809,7 @@ class EditProfile extends Component {
         if(this.validateCertification()){
             let temp = this.copy(this.state.Certification);
             for (let idk in temp) {
-                temp[idk]['StudentID'] = 1;
+                temp[idk]['StudentID'] = this.state.StudentID;
                 temp[idk]['IssueDate'] = this.adjustDate(temp[idk]['IssueDate'], "dd/mm/yyyy");
                 temp[idk]['ValidDate'] = this.adjustDate(temp[idk]['ValidDate'], "dd/mm/yyyy");
             }
@@ -829,7 +829,7 @@ class EditProfile extends Component {
         if(this.validateProjects()){
             let temp = this.copy(this.state.Projects);
             for (let idk in temp) {
-                temp[idk]['StudentID'] = 1;
+                temp[idk]['StudentID'] = this.state.StudentID;
             }
             console.log(temp);
             Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentproject', temp)
@@ -846,7 +846,7 @@ class EditProfile extends Component {
     submitSkills = () => {
         let temp = this.copy(this.state.Skills);
         for (let idk in temp) {
-            temp[idk]['StudentID'] = 1;
+            temp[idk]['StudentID'] = this.state.StudentID;
         }
         console.log(temp);
         Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentskills', temp)
@@ -877,6 +877,8 @@ class EditProfile extends Component {
     
 
     componentDidMount() {
+        this.setState({"StudentID": localStorage.getItem('id')});
+
 
         Axios.get(`${apiURL}student/studentinfo/${this.state.StudentID}`)
             .then(receivedData => {
