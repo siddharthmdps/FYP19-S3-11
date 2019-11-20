@@ -679,6 +679,24 @@ class EditProfile extends Component {
         return true;
     }
 
+    validateProjects = () => {
+        for(let idk in this.state.Projects){
+            if(this.state.Projects[idk]['Title']===""){
+                this.props.enqueueSnackbar(`Title of #${this.state.Projects[idk]['ProjectID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Projects[idk]['Status']===""){
+                this.props.enqueueSnackbar(`Status of #${this.state.Projects[idk]['ProjectID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Projects[idk]['Description']===""){
+                this.props.enqueueSnackbar(`Description of #${this.state.Projects[idk]['ProjectID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+        }
+        return true;
+    }
+
     //Validation of the Profile ends here
 
     // Submit elements to put in Backend starts here
@@ -808,11 +826,37 @@ class EditProfile extends Component {
     }
 
     submitProjects = () => {
-        this.togglePanel(7);
+        if(this.validateProjects()){
+            let temp = this.copy(this.state.Projects);
+            for (let idk in temp) {
+                temp[idk]['StudentID'] = 1;
+            }
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentproject', temp)
+                .then(response => {
+                    this.props.enqueueSnackbar('Project details uploaded!', { variant: 'success' });
+                    this.togglePanel(7);
+                })
+                .catch(error => {
+                    this.props.enqueueSnackbar('Error storing Project!', { variant: 'error' });
+                });
+        }
     }
 
     submitSkills = () => {
-        this.togglePanel(8);
+        let temp = this.copy(this.state.Skills);
+        for (let idk in temp) {
+            temp[idk]['StudentID'] = 1;
+        }
+        console.log(temp);
+        Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentskills', temp)
+            .then(response => {
+                this.props.enqueueSnackbar('Skills details uploaded!', { variant: 'success' });
+                this.togglePanel(8);
+            })
+            .catch(error => {
+                this.props.enqueueSnackbar('Error storing Skills!', { variant: 'error' });
+            });
     }
 
     submitDocuments = () => {
