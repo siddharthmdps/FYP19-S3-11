@@ -72,57 +72,66 @@ class JobsList extends Component {
 
     handleJD(jd) {
         if (jd.length > 70)
-            jd = jd.substr(0, 70) + "..."
+            jd = jd.substr(0, 69) + "..."
 
         return jd
     }
 
-    handleData() {
+    handleData(data) {
         //loop through job details array
         // format data
         // handleJD
-    }
+        let jobsPosted = this.handleUndefined(data)
 
-    jobsContent() {
-        let jobsPosted = this.handleUndefined(this.state.jobs)
-        if (this.state.isLoading) {
-            return (
-                <div class="d-flex justify-content-center">
-                    <div class="spinner-border" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                </div>
-            )
+        for (let i = 0; i < jobsPosted.length; i++) {
+            jobsPosted[i].description = this.handleJD(jobsPosted[i].description)
+            jobsPosted[i].dateposted = this.adjustDate(jobsPosted[i].dateposted, "dd-mm-yyyy")
         }
 
-        if (!jobsPosted.length) {
-            return <div>No Records found</div>
-        }
-
-        return (
-            jobsPosted.map(job => {
-                job.dateposted = job.dateposted.substr(0, 10)
-                console.log(job)
-                return (
-                    < tr >
-                        <td>{job.title}</td>
-                        <td>{job.industry}</td>
-                        <td>{job.description}</td>
-                        <td>{job.requiredskills}</td>
-                        <td>{job.yearsofexperience}</td>
-                        <td>{job.dateposted}</td>
-
-                    </tr >
-                )
-
-
-            })
-        )
-
+        return jobsPosted
     }
+
+    // jobsContent() {
+    //     let jobsPosted = this.handleData(this.state.jobs)
+    //     if (this.state.isLoading) {
+    //         return (
+    //             <div class="d-flex justify-content-center">
+    //                 <div class="spinner-border" role="status">
+    //                     <span class="sr-only">Loading...</span>
+    //                 </div>
+    //             </div>
+    //         )
+    //     }
+
+    //     if (!jobsPosted.length) {
+    //         return <div>No Records found</div>
+    //     }
+
+    //     return (
+    //         jobsPosted.map(job => {
+    //             job.dateposted = job.dateposted.substr(0, 10)
+    //             console.log(job)
+    //             return (
+    //                 < tr >
+    //                     <td>{job.title}</td>
+    //                     <td>{job.industry}</td>
+    //                     <td>{job.description}</td>
+    //                     <td>{job.requiredskills}</td>
+    //                     <td>{job.yearsofexperience}</td>
+    //                     <td>{job.dateposted}</td>
+
+    //                 </tr >
+    //             )
+
+
+    //         })
+    //     )
+
+    // }
 
     jobsTable2() {
         let jobsPosted = this.handleUndefined(this.state.jobs)
+        console.log(jobsPosted)
 
         return (
             <MaterialTable
@@ -131,6 +140,10 @@ class JobsList extends Component {
                 }}
                 title="Jobs Posted"
                 columns={[
+                    {
+                        title: "#",
+                        field: "id"
+                    },
                     {
                         title: "Job Title",
                         field: "title"
@@ -158,7 +171,14 @@ class JobsList extends Component {
                     }
                 ]}
                 data={jobsPosted}
-                onRowClick={(event, rowData) => this.handleRowClicked(rowData.jobId)}
+                onRowClick={(event, rowData) => {
+                    // console.log(rowData)
+                    // console.log(rowData.id)
+                    let target = `/employer/viewjob/${rowData.id}`
+                    // console.log(target)
+                    this.props.history.push(target)
+                }}
+            // this.handleRowClicked(rowData.jobId)
             />
         )
     }
@@ -174,7 +194,7 @@ class JobsList extends Component {
             <div>
                 <Row>
                     <Col md={2} />
-                    <Col style={{marginTop: '15px'}} md={8}>
+                    <Col style={{ marginTop: '15px' }} md={8}>
                         {this.jobsTable2()}
                     </Col>
                     <Col md={2} />

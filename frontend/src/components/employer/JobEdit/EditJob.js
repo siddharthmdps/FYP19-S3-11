@@ -4,6 +4,8 @@ import { Card, Form, Button, Col, Row } from 'react-bootstrap';
 import '../ProfileView/Card.css';
 import apiURL from '../../../config';
 
+import Axios from 'axios';
+
 class EditJob extends Component {
     constructor(props) {
         super()
@@ -12,11 +14,11 @@ class EditJob extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
         this.state = {
-            jobtitle: props.jobtitle,
-            jobdescription: props.jobdescrition,
-            joblocation: props.joblocation,
-            jobindustry: props.jobindutry,
-            jobskills: props.jobskills
+            jobtitle: "",
+            jobdescription: "",
+            joblocation: "",
+            jobindustry: "",
+            // jobskills: props.jobskills
         }
         this.employername = localStorage.getItem('username')
     }
@@ -59,7 +61,7 @@ class EditJob extends Component {
                                 <Form.Label>Job Location</Form.Label>
                                 <Row >
                                     <Col md={6}>
-                                        <Form.Control type="text" defaultValue={this.props.joblocation} onChange={this.handleChange} />
+                                        <Form.Control type="text" defaultValue={this.state.joblocation} onChange={this.handleChange} />
                                     </Col>
                                 </Row>
                             </Form.Group>
@@ -68,7 +70,7 @@ class EditJob extends Component {
                                 <Form.Label>Industry</Form.Label>
                                 <Row >
                                     <Col md={6}>
-                                        <Form.Control type="text" defaultValue={this.props.jobindustry} onChange={this.handleChange} />
+                                        <Form.Control type="text" defaultValue={this.state.jobindustry} onChange={this.handleChange} />
                                     </Col>
                                 </Row>
 
@@ -77,12 +79,12 @@ class EditJob extends Component {
                                 <Form.Label>Job Description</Form.Label>
                                 <Row>
                                     <Col md={8}>
-                                        <Form.Control as="textarea" rows="8" defaultValue={this.props.jobdescription} onChange={this.handleChange} />
+                                        <Form.Control as="textarea" rows="8" defaultValue={this.state.jobdescription} onChange={this.handleChange} />
                                     </Col>
                                 </Row>
 
                             </Form.Group>
-                            <Form.Group controlId="formSkillsRequired">
+                            {/* <Form.Group controlId="formSkillsRequired">
                                 <Form.Label>Skills Required</Form.Label>
                                 <Row>
                                     <Col md={8}>
@@ -90,14 +92,14 @@ class EditJob extends Component {
                                     </Col>
                                 </Row>
 
-                            </Form.Group>
+                            </Form.Group> */}
                             <Row>
                                 <Col md={1}>
-                                    <Button variant="danger" type="submit"> Cancel </Button>
+                                    <Button variant="danger" onClick={(event) => this.handleCancel(event)}> Cancel </Button>
                                 </Col>
                                 <Col md={10}></Col>
                                 <Col md={1}>
-                                    <Button variant="primary" type="submit" onClick={this.props.mainPageHandler}> Save </Button>
+                                    <Button variant="primary" type="submit" onClick={(event) => this.handleSave(event)}> Save </Button>
                                 </Col>
                             </Row>
 
@@ -111,6 +113,40 @@ class EditJob extends Component {
         )
     }
 
+    getJobDetails() {
+        const { jobid } = this.props.match.params;
+
+        //Get Job data
+        Axios.get(`${apiURL}employer/getjobinfo/${jobid}`)
+            .then(response => {
+                // console.log(jobid, response.data);
+                let temp = {
+                    title: response.data[0]['title'],
+                    companyName: response.data[0]['empid'],
+                    reqSkills: response.data[0]['requiredskills'],
+                    joblocation: response.data[0]['location'],
+                    jobindustry: response.data[0]['industry'],
+                    dateposted: response.data[0]['dateposted'],
+                    jobdescription: response.data[0]['description']
+                };
+                console.log(temp);
+                this.setState({
+                    jobtitle: temp.title,
+                    jobdescription: temp.jobdescription,
+                    joblocation: temp.joblocation,
+                    jobindustry: temp.jobindustry
+                });
+                // editJobHandler={this.props.editJobHandler}
+            })
+            .catch(error => {
+                console.log("error getting job details");
+            })
+    }
+
+    componentDidMount() {
+        this.getJobDetails()
+    }
+
     handleChange(event) {
         this.setState({ value: event.target.value });
     }
@@ -121,6 +157,8 @@ class EditJob extends Component {
     }
 
     handleSave(event) {
+        const { jobid } = this.props.match.params;
+
         const job = {
             empid: localStorage.getItem('id'),
             title: this.state.jobtitle,
@@ -148,6 +186,42 @@ class EditJob extends Component {
             })
             .catch(error => console.log(error))
 
+        let target = `/employer/viewjob/${jobid}`
+        this.props.history.push(target)
+    }
+
+    handleCancel(event) {
+        const { jobid } = this.props.match.params;
+        let target = `/employer/viewjob/${jobid}`
+        this.props.history.push(target)
+    }
+
+    handleDelete(jobId) {
+        //Get Job data
+        // Axios.put(`${apiURL}admin/deletejob${jobId}`)
+        //     .then(response => {
+        //         // console.log(jobid, response.data);
+        //         let temp = {
+        //             title: response.data[0]['title'],
+        //             companyName: response.data[0]['empid'],
+        //             reqSkills: response.data[0]['requiredskills'],
+        //             joblocation: response.data[0]['location'],
+        //             jobindustry: response.data[0]['industry'],
+        //             dateposted: response.data[0]['dateposted'],
+        //             jobdescription: response.data[0]['description']
+        //         };
+        //         // console.log(temp);
+        //         this.setState({
+        //             jobtitle: temp.title,
+        //             jobdescription: temp.jobdescription,
+        //             joblocation: temp.joblocation,
+        //             jobindustry: temp.jobindustry
+        //         });
+        //         // editJobHandler={this.props.editJobHandler}
+        //     })
+        //     .catch(error => {
+        //         console.log("error deleting job details");
+        //     })
     }
 
     render() {

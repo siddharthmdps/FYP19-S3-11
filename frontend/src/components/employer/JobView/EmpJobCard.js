@@ -9,8 +9,12 @@ import '../ProfileView/Card.css';
 import apiURL from '../../../config'
 import classes from './EmpJobCard.module.css';
 import Button1 from '../../common_assets/Button1/Button1';
+import { Link } from 'react-router-dom'
 
 const EmpJobCard = (props) => {
+    // const editHandler = () =>{
+
+    // }
     return (
         <div className="col-sm-8 mx-auto">
             <Card className={classes.Card}>
@@ -19,10 +23,12 @@ const EmpJobCard = (props) => {
                         <Row>
                             <Col sm={9}>{props.jobDetail.title}</Col>
                             <Col sm={3}>
-                                <Button1 onClick={props.editJobHandler}>
-                                    Edit&nbsp;
+                                <Link to={`/employer/editjob/${props.jobDetail.jobid}`}>
+                                    <Button1 >
+                                        Edit&nbsp;
                                 <i class="fas fa-edit"></i>
-                                </Button1>
+                                    </Button1>
+                                </Link>
                             </Col>
                         </Row>
 
@@ -30,6 +36,8 @@ const EmpJobCard = (props) => {
                 </Card.Header>
 
                 <Card.Body>
+                    {/* {props.jobDetail.companyName} */}
+                    {/* localStorage.getItem('username') */}
                     <Card.Subtitle>{props.jobDetail.companyName}</Card.Subtitle>
                     <br />
                     <Card.Text>
@@ -362,24 +370,27 @@ class EmpAppCard extends Component {
         this.setState({ showAlert: false });
     }
 
-    showAlert = (appName) => {
-        this.setState({ showAlert: true });
-        return (
-            <Alert show={this.state.showAlert} variant="success" onClose={() => { this.hideAlert() }} dismissible>
-                {appName} has been successfully shortlisted.
-          </Alert>
-        )
-    }
+    // showAlert = (appName) => {
+    //     this.setState({ showAlert: true });
+    //     return (
+    //         <Alert show={this.state.showAlert} variant="success" onClose={() => { this.hideAlert() }} dismissible>
+    //             {appName} has been successfully shortlisted.
+    //       </Alert>
+    //     )
+    // }
 
     shortlist = (appId, jobId) => {
+        console.log(appId, jobId)
         //to update shortlist link
         const application = {
             jobid: jobId,
             appid: appId
         }
 
-        const url = apiURL + `employer/shortlist/`
+        // const url = apiURL + `employer/shortlist/`
         const localhost = 'http://localhost:3001/employer/shortlist/'
+
+        const url = `${apiURL}employer/shortlist/${jobId}`
 
         fetch(url, {
             method: 'POST',
@@ -391,13 +402,18 @@ class EmpAppCard extends Component {
             .then(res => res.json())
             .then(data => {
                 if (data.message === 'success') {
+                    console.log('Applicant has been shortlisted!')
                     alert('Applicant has been shortlisted!')
-                    document.location.reload(true)
+                    // document.location.reload(true)
                 }
             })
             .catch(error => console.log(error))
         // alert('Applicant has been shortlisted!')
         // document.location.reload(true)
+    }
+
+    hire = (appId, jobId) => {
+
     }
 
 
@@ -455,7 +471,8 @@ class EmpAppCard extends Component {
 
                         </Card.Text> */}
 
-                        <Button1 onClick={() => { this.shortlist(123, 456) }} >Shortlist</Button1>
+                        <Button1 onClick={() => { this.shortlist(this.props.appID, this.props.jobId) }} >Shortlist</Button1>
+                        <Button1 onClick={() => { this.hire(this.props.appID, this.props.jobId) }} >Hire </Button1>
                     </Card.Body>
                 </Card>
             </div >

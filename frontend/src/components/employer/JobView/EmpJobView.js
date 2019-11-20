@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import EmpJobCard, { EmpAppCard } from './EmpJobCard';
 import apiURL from '../../../config';
-import { Row, Col, Card } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
 import Axios from 'axios';
 
@@ -54,6 +54,7 @@ class EmpJobView extends Component {
                 console.log(jobid, response.data);
                 let temp = {
                     title: response.data[0]['title'],
+                    jobid: response.data[0]['id'],
                     companyName: response.data[0]['empid'],
                     reqSkills: response.data[0]['requiredskills'],
                     joblocation: response.data[0]['location'],
@@ -102,7 +103,7 @@ class EmpJobView extends Component {
                     console.log(applicant)
                     return (
                         <Row>
-                            <EmpAppCard appID={applicant.id} appName={applicant.firstname.concat(" ", applicant.lastname)} appSkills={applicant.skills} appPhone={applicant.phone} appEmail={applicant.email} />
+                            <EmpAppCard appID={applicant.id} appName={applicant.firstname.concat(" ", applicant.lastname)} appSkills={applicant.skills} appPhone={applicant.phone} appEmail={applicant.email} jobid={this.state.companyName} />
                         </Row>
 
                     )
@@ -113,6 +114,7 @@ class EmpJobView extends Component {
     }
 
     render() {
+        // console.log(this.state.jobDetail)
         document.body.style =
             'background: linear-gradient(to right, #0f2027, #203a43, #2c5364);';
         return (

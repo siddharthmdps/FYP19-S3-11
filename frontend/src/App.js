@@ -15,6 +15,7 @@ import EmpViewProfile from './components/employer/ProfileView/EmpProfileView'
 import EmpEditProfile from './components/employer/ProfileEditor/EmpEditProfile'
 import PostJob from './components/employer/PostJob'
 import ViewJob from './components/employer/JobView/EmpJobView'
+import EditJob from './components/employer/JobEdit/EditJob'
 
 // importing Student Components
 import Student from './components/student/Student'
@@ -149,6 +150,7 @@ class App extends Component {
               <ProtectedRoute exact path="/employer/about" component={About}></ProtectedRoute>
               <ProtectedRoute exact path="/employer/postjob" component={PostJob}></ProtectedRoute>
               <ProtectedRoute exact path="/employer/viewjob/:jobid" component={ViewJob}></ProtectedRoute>
+              <ProtectedRoute exact path="/employer/editjob/:jobid" component={EditJob}></ProtectedRoute>
               <ProtectedRoute exact path="/employer/viewjobs" component={JobsList}></ProtectedRoute>
 
 
