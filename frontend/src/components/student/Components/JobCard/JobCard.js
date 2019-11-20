@@ -33,7 +33,7 @@ const jobCard = props => {
 
     return(
         <Card md={{ span: 12 }} className={classes.Card}>
-            <Card.Body className={classes.CardBody} onClick={() => window.open(props.jobDetail.JobURL, "_blank")}>
+            <Card.Body className={classes.CardBody} onClick={() => window.open(`/student/job/${props.jobDetail.JobID}`, "_blank")}>
                 <Card.Title>
                     <Row className={classes.Row} style={{ fontWeight: '600' }}>{props.jobDetail.JobTitle}</Row>
                     <Row className={classes.Row}>{props.jobDetail.Company}</Row>
