@@ -480,6 +480,11 @@ class EditProfile extends Component {
         if(tempDate<10)
             tempDate = '0' + tempDate;
         
+        if( isNaN(tempDate) || isNaN(tempMonth) || isNaN(tempYear)){
+            console.log("Not a Number " + date);
+            return "";
+        }
+
         format = format.replace("dd", tempDate);
         format = format.replace("mm", tempMonth);
         format = format.replace("yyyy", tempYear);
@@ -706,7 +711,7 @@ class EditProfile extends Component {
             const fd = new FormData();
             fd.append('file', this.state.NewProfile.Location, this.state.NewProfile.Location.name);
             console.log(fd);
-            Axios.post('http://localhost:8000/upload', fd)
+            Axios.post(`/uploadstudentpicture/${this.state.StudentID}`, fd)
             .then(response => {
                 console.log(response);
             });
