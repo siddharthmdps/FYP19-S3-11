@@ -20,6 +20,7 @@ import ViewJob from './components/employer/JobView/EmpJobView'
 import Student from './components/student/Student'
 import EditProfile from './components/student/Container/EditProfile/EditProfile'
 import ViewProfile from './components/student/Container/ViewProfile/ViewProfile'
+import RecommendedJobs from './components/student/Container/RecommendedJobs/RecommendedJobs'
 import AppliedJobs from './components/student/Container/AppliedJobs/AppliedJobs'
 import SavedJobs from './components/student/Container/SavedJobs/SavedJobs'
 import SearchJobs from './components/student/Container/SearchJobs/SearchJobs'
@@ -154,6 +155,7 @@ class App extends Component {
               <ProtectedRoute exact path="/student" component={EditProfile}></ProtectedRoute>
               <ProtectedRoute exact path="/student/editprofile" component={EditProfile}></ProtectedRoute>
               <ProtectedRoute exact path="/student/viewprofile" component={ViewProfile}></ProtectedRoute>
+              <ProtectedRoute exact path="/student/recommendedjobs" component={RecommendedJobs}></ProtectedRoute>
               <ProtectedRoute exact path="/student/appliedjobs" component={AppliedJobs}></ProtectedRoute>
               <ProtectedRoute exact path="/student/savedjobs" component={SavedJobs}></ProtectedRoute>
               <ProtectedRoute exact path="/student/searchjobs" component={SearchJobs}></ProtectedRoute>

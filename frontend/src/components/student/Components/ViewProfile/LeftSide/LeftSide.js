@@ -25,10 +25,17 @@ const leftSide = props => {
                         <ListGroupItem> <i className="fas fa-map-marker-alt"></i> {props.details.CurrentAddress} <br /> {props.details.City} {props.details.Country} {props.details.PostalCode}</ListGroupItem>
                     </ListGroup>
                 </Card>
-                <Card className={[classes.LeftSide, classes.CentralContent, classes.Clickable]}>
+                <Card className={[classes.LeftSide, classes.CentralContent]}>
                 <ListGroup className="list-group-flush" className={classes.CentralContent}>
-                        <ListGroupItem onClick={()=> window.open("https://google.com", "_blank")}><i className="fas fa-file"></i> View Resume</ListGroupItem>
-                    </ListGroup>
+                    {
+                        props.documents.map( (doc, id) =>{
+                        const file = new Blob(doc.Link.data, {
+                            type: "application/pdf"
+                          });
+                        return <ListGroupItem key={id} onClick={()=> {window.open(URL.createObjectURL(file))}} className={classes.Clickable}><i className="fas fa-file"></i> {doc.Title}</ListGroupItem>
+                        })
+                    }
+                </ListGroup>
                 
                 </Card>
             </Container>

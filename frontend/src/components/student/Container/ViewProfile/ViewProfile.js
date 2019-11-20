@@ -555,10 +555,10 @@ class Profile extends Component {
                 <br />
                 <Row >
                     <Col md={{ span: 3 }} className={classes.LeftSide}>
-                        <LeftSide imageLink={this.state.ProfileImage} details={this.state.PersonalParticulars} />
+                        <LeftSide imageLink={this.state.ProfileImage} details={this.state.PersonalParticulars} documents={this.state.Document}/>
 
                     </Col>
-                    <Col md={{ offset: 3, span: 9 }} >
+                    <Col md={{ span: 9 }} >
                         {/* <CardColumns className={classes.CardColumn}>
                             <Timeline title={"Education"}>
                                 {this.state.Education.map(educationDetail => {
