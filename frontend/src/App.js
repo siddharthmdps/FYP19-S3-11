@@ -154,7 +154,7 @@ class App extends Component {
               {/* Student Routes */}
               <ProtectedRoute exact path="/student" component={EditProfile}></ProtectedRoute>
               <ProtectedRoute exact path="/student/editprofile" component={EditProfile}></ProtectedRoute>
-              <ProtectedRoute exact path="/student/viewprofile" component={ViewProfile}></ProtectedRoute>
+              <ProtectedRoute exact path="/student/viewprofile/:SID" component={ViewProfile}></ProtectedRoute>
               <ProtectedRoute exact path="/student/recommendedjobs" component={RecommendedJobs}></ProtectedRoute>
               <ProtectedRoute exact path="/student/appliedjobs" component={AppliedJobs}></ProtectedRoute>
               <ProtectedRoute exact path="/student/savedjobs" component={SavedJobs}></ProtectedRoute>

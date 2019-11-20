@@ -364,6 +364,7 @@ class Profile extends Component {
         //         this.setState({ Projects: tempProjects });
         //     });            
 
+        console.log(this.props.match.params.SID);
 
         Axios.get(`${apiURL}student/studentinfo/${this.state.StudentID}`)
             .then(receivedData => {
