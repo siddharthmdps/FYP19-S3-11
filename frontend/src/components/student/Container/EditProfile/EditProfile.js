@@ -106,7 +106,7 @@ const DocumentShell = {
 class EditProfile extends Component {
 
     state = {
-        "StudentID": "1",
+        "StudentID": localStorage.getItem('id'),
         "ProfileImage": "default.png",
         "NewProfile": {"Modal": false, "Location": ""},
         "PersonalParticulars": {},
