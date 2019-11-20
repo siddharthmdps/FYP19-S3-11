@@ -126,6 +126,9 @@ class JobsList extends Component {
 
         return (
             <MaterialTable
+                style={{
+                    boxShadow: '0px 0px 17px 2px rgb(199, 194, 199)'
+                }}
                 title="Jobs Posted"
                 columns={[
                     {
@@ -165,11 +168,13 @@ class JobsList extends Component {
     }
 
     render() {
+        document.body.style =
+            'background: linear-gradient(to right, #0f2027, #203a43, #2c5364);';
         return (
             <div>
                 <Row>
                     <Col md={2} />
-                    <Col md={8}>
+                    <Col style={{marginTop: '15px'}} md={8}>
                         {this.jobsTable2()}
                     </Col>
                     <Col md={2} />
