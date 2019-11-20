@@ -27,7 +27,8 @@ export class AddJobModal extends Component {
                 industry: event.target.industry.value,
                 description: event.target.description.value,
                 requiredskills: event.target.requiredskills.value,
-                location: event.target.location.value
+                location: event.target.location.value,
+                yearsofexperience: event.target.yearsofexperience.value
             })
         })
             .then(res => res.json())
@@ -81,7 +82,7 @@ export class AddJobModal extends Component {
                                 <Form onSubmit={this.handleSubmit} >
 
                                     <Form.Group controlId="empid">
-                                        <Form.Label>empid:</Form.Label>
+                                        <Form.Label>Employer id:</Form.Label>
                                         <Form.Control
                                             type="number"
                                             name="empid"
@@ -90,7 +91,7 @@ export class AddJobModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="title">
-                                        <Form.Label>title:</Form.Label>
+                                        <Form.Label>Title:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="title"
@@ -99,7 +100,7 @@ export class AddJobModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="industry">
-                                        <Form.Label>industry:</Form.Label>
+                                        <Form.Label>Industry:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="industry"
@@ -108,7 +109,7 @@ export class AddJobModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="description">
-                                        <Form.Label>description:</Form.Label>
+                                        <Form.Label>Description:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="description"
@@ -117,7 +118,7 @@ export class AddJobModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="requiredskills">
-                                        <Form.Label>requiredskills:</Form.Label>
+                                        <Form.Label>Required skills:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="requiredskills"
@@ -126,7 +127,7 @@ export class AddJobModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="location">
-                                        <Form.Label>location:</Form.Label>
+                                        <Form.Label>Location:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="location"
@@ -134,7 +135,14 @@ export class AddJobModal extends Component {
                                             placeholder=""></Form.Control>
                                     </Form.Group>
 
-                       
+                                    <Form.Group controlId="yearsofexperience">
+                                        <Form.Label>Years of experience:</Form.Label>
+                                        <Form.Control
+                                            type="number"
+                                            name="yearsofexperience"
+                                            required
+                                            placeholder=""></Form.Control>
+                                    </Form.Group>
 
                                     <Form.Group>
                                         <Button variant="primary" type="submit">

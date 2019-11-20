@@ -173,7 +173,7 @@ export class CandidateTable extends Component {
                                     <th>First Name</th>
                                     <th>Middle Name</th>
                                     <th>Last Name</th>
-                                    <th>Email</th>
+                                    <th>E-mail</th>
                                     <th>Phone</th>
                                     <th>Country</th>
                                     <th>City</th>

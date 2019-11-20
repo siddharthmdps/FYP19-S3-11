@@ -21,7 +21,7 @@ const getsuccessfulapplications = (req,res) => {
             const getShortListed = `SELECT COUNT(*) as shortlisted FROM pegasus.jobapplication 
                                 WHERE status="shortlisted"`
             const getPending = `SELECT COUNT(*) as pending FROM pegasus.jobapplication 
-            WHERE status="pending"`
+                                WHERE status="pending"`
             // get total applications
             connection.query(getTotal, (err, rows, fields) => {
                 if(err) {

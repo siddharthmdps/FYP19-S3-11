@@ -97,7 +97,7 @@ export class EditJobModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="empid">
-                                        <Form.Label>empid:</Form.Label>
+                                        <Form.Label>Employer ID:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="empid"
@@ -107,7 +107,7 @@ export class EditJobModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="title">
-                                        <Form.Label>title:</Form.Label>
+                                        <Form.Label>Title:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="title"
@@ -117,7 +117,7 @@ export class EditJobModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="industry">
-                                        <Form.Label>industry:</Form.Label>
+                                        <Form.Label>Industry:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="industry"
@@ -127,7 +127,7 @@ export class EditJobModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="description">
-                                        <Form.Label>description:</Form.Label>
+                                        <Form.Label>Description:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="description"
@@ -137,7 +137,7 @@ export class EditJobModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="requiredskills">
-                                        <Form.Label>requiredskills:</Form.Label>
+                                        <Form.Label>Required Skills:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="requiredskills"
@@ -147,7 +147,7 @@ export class EditJobModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="dateposted">
-                                        <Form.Label>dateposted:</Form.Label>
+                                        <Form.Label>Date Posted:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="dateposted"
@@ -157,7 +157,7 @@ export class EditJobModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="location">
-                                        <Form.Label>location:</Form.Label>
+                                        <Form.Label>Location:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="location"
@@ -167,7 +167,7 @@ export class EditJobModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="yearsofexperience">
-                                        <Form.Label>yearsofexperience:</Form.Label>
+                                        <Form.Label>Years of experience:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="yearsofexperience"

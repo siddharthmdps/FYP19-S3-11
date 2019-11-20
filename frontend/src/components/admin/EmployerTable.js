@@ -162,10 +162,10 @@ export class EmployerTable extends Component {
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>UserName</th>
-                                    <th>CompanyName</th>
+                                    <th>Username</th>
+                                    <th>Company Name</th>
                                     <th>Company Phone</th>
-                                    <th>Compnay Email</th>
+                                    <th>Company E-mail</th>
                                     <th>Company Description</th>
                                     <th>Company Address</th>
                                     <th>Industry</th>
