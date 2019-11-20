@@ -1,11 +1,9 @@
 import React from 'react';
 import Button1 from '../../../../common_assets/Button1/Button1';
 import Modal from 'react-bootstrap/Modal'
-import { ResponsiveEmbed, Image } from 'react-bootstrap'
+import {Row, Col, ResponsiveEmbed, Image } from 'react-bootstrap'
 
 const ModalTemp = props => {
-    console.log(props);
-    // let file = URL.createObjectURL(props.NewProfile)
     return (
       <Modal
         show={props.show}
