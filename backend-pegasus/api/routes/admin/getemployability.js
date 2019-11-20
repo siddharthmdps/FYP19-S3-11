@@ -1,10 +1,8 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
-const searchjob = (req,res) => {
-    const keyword = req.params.keyword
-
-    //res.send(`this is search job feature of student page. keyword is ${keyword}`)
-
+// return field of study paired with employability
+const getalljobs = (req, res) => {
+    console.log(`[ADMIN] Requesting for employability`)
     mypool.getConnection((err, connection) => {
         if(err) {
             connection.release()
@@ -12,13 +10,12 @@ const searchjob = (req,res) => {
             throw err
         }
         else {
-            let queryString = `SELECT pegasus.job.*, pegasus.employer.companyname 
-                                FROM pegasus.job
-                                JOIN pegasus.employer ON job.empid=employer.id
-                                WHERE job.title LIKE '%${keyword}%'                              
-                                LIMIT 50`
-
-
+            let queryString = `SELECT 
+                                    studenteducation.fieldofstudy, COUNT(*) as succcesscount
+                                FROM pegasus.studenteducation
+                                    LEFT JOIN pegasus.jobapplication ON studenteducation.studentid = jobapplication.studentid
+                                WHERE jobapplication.status="successful"
+                                GROUP BY fieldofstudy`
             connection.query(queryString, (err, rows, fields) => {
                 if(err) {
                     res.status(500).json({ message: err })
@@ -28,7 +25,7 @@ const searchjob = (req,res) => {
                 }
                 else if ( !rows || rows.length == 0 ) {
                     res.status(200).json({
-                        message: 'NOT FOUND'
+                        message: 'Empty table'
                     })
                 }
             })
@@ -37,4 +34,4 @@ const searchjob = (req,res) => {
     })
 }
 
-module.exports = searchjob
+module.exports = getalljobs

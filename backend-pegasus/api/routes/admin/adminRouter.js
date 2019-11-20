@@ -15,6 +15,8 @@ router.get('/getallstudents', getallstudents)
 const getsuccessfulapplications = require('./getsuccessfulapplications')
 router.get('/getsuccessfulapplications', getsuccessfulapplications)
 
+const getemployability = require('./getemployability')
+router.get('/getemployability', getemployability)
 
 // PUT
 const editemployer = require('./editemployer')
