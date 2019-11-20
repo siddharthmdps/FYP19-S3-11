@@ -702,6 +702,20 @@ class EditProfile extends Component {
         return true;
     }
 
+    validateDocuments = () => {
+        for(let idk in this.state.Document){
+            if(this.state.Document[idk]['Title']===""){
+                this.props.enqueueSnackbar(`Title of #${this.state.Document[idk]['DocumentID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Document[idk]['Link']===""){
+                this.props.enqueueSnackbar(`Select a file for #${this.state.Document[idk]['DocumentID']}!`, { variant: 'error' });
+                return false;
+            }
+        }
+        return true;
+    }
+
     //Validation of the Profile ends here
 
     // Submit elements to put in Backend starts here
@@ -865,7 +879,21 @@ class EditProfile extends Component {
     }
 
     submitDocuments = () => {
-        this.togglePanel(9);
+        if(this.validateDocuments){
+            let temp = this.copy(this.state.Document);
+            for (let idk in temp) {
+                temp[idk]['StudentID'] = this.state.StudentID;
+            }
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentdocument', temp)
+                .then(response => {
+                    this.props.enqueueSnackbar('Documents uploaded!', { variant: 'success' });
+                    this.togglePanel(9);
+                })
+                .catch(error => {
+                    this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
+                });
+        }
     }
     // Submit elements to put in Backend ends here
 

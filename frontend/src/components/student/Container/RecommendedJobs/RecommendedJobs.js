@@ -68,8 +68,18 @@ class RecommendedJobs extends Component {
     changeStatus = (id, status) => {
         let temp = this.state.RecommendedJobs;
         temp.forEach(element => {
-            if(element.JobID === id)
-                element.Status = status;
+            if(element.JobID === id){
+                if(status==="Applied")
+                    element.Status = status;
+                else{
+                    if(element.Status === "Saved"){
+                        element.Status = "None"
+                    }
+                    else if(element.Status === "None"){
+                        element.Status = "Saved"
+                    }
+                }
+            }
         });
         console.log(temp, id, status);
         this.setState({ "RecommendedJobs": temp });
@@ -97,7 +107,7 @@ class RecommendedJobs extends Component {
                 {this.state.RecommendedJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
                     return(
                         <React.Fragment key={jobDetail.id}>
-                            <JobCard jobDetail={jobDetail} Recommended changeStatus={(id, status) => this.changeStatus(id, status)} />
+                            <JobCard jobDetail={jobDetail} changeStatus={(id, status) => this.changeStatus(id, status)} />
                             <br />
                         </React.Fragment>
                     );

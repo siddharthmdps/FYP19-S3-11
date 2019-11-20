@@ -4,37 +4,6 @@ import classes from './JobCard.module.css';
 
 import { Container, Row, Col, Card, Button, Alert, Spinner } from 'react-bootstrap';
 
-// const AppliedFooter = () => (
-//     <Alert variant="success">
-//         <i className="fas fa-check-circle"></i> You have applied for this job
-//     </Alert>
-// );
-
-// const SavedFooter = (id, status, changeStatus) => {
-
-//     const unfav = <i className="far fa-star" />
-//     const fav = <i className="fas fa-star" style={{ color: "#FFCA28" }} />
-//     const waiting = <Spinner animation="border" variant="warning" />
-//     return (
-//         <React.Fragment>
-//             <div className={classes.ButtonDiv}>
-//                 <Button className={classes.Apply}>Apply</Button>
-//             </div>
-//             <div className={classes.StarDiv}>
-//                 <span className={classes.Star} onClick={() => changeStatus(id, "notActive")}>
-//                     {status === "active" ? fav : status === "notActive" ? unfav : status === "waiting" ? waiting : null}
-//                 </span>
-//             </div>
-//         </React.Fragment>
-//     )
-// };
-
-// const OtherFooter = () => (
-//     <Alert variant="success">
-//         <i className="fas fa-check-circle"></i> You have applied for this job
-//     </Alert>
-// );
-
 const jobCard = props => {
 
     const AppliedFooter = () => (
@@ -54,7 +23,7 @@ const jobCard = props => {
                     <Button className={classes.Apply} onClick={() => props.changeStatus(props.jobDetail.JobID, "Applied")}>Apply</Button>
                 </div>
                 <div className={classes.StarDiv}>
-                    <span className={classes.Star} onClick={() => props.changeStatus(props.jobDetail.JobID, "Saved")}>
+                    <span className={classes.Star} onClick={() => props.changeStatus(props.jobDetail.JobID, "Save")}>
                         {props.jobDetail.Status === "Saved" ? fav : unfav}
                     </span>
                 </div>
