@@ -1,12 +1,14 @@
 const {env, mysql, mypool} = require('../../util')
 
-const submitpoll = (req,res) => {
-    const pollID = parseInt(req.params.pollID)
-    const choice = req.params.choice
+const updatepoll = (req,res) => {
+    const pollID = req.params.pollID
+    let {question, option1, option2, option3} = req.body 
 
-    let queryString = `UPDATE pegasus.poll SET option${choice}votes=(option${choice}votes+1) WHERE pollid=${pollID}`
+    let queryString = `UPDATE pegasus.poll
+                        SET question='${question}', option1='${option1}', option2='${option2}', option3="${option3}"
+                        WHERE pollid=${pollID}`
 
-    console.log(`New poll submitted, pollID: ${pollID}`)
+    console.log(`Request to update poll no: ${pollID}`)
 
     // UPDATE JSON inside DB
     mypool.getConnection((err, connection) => {
@@ -22,7 +24,7 @@ const submitpoll = (req,res) => {
                 }
                 else {
                     res.send({
-                        message: `success`
+                        message: `tip no.${pollID} updated`
                     })
                 }
             })
@@ -31,4 +33,4 @@ const submitpoll = (req,res) => {
     })
 }
 
-module.exports = submitpoll
+module.exports = updatepoll

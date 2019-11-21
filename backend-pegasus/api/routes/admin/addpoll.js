@@ -1,14 +1,17 @@
 const {env, mysql, mypool} = require('../../util')
 
-const submitpoll = (req,res) => {
-    const pollID = parseInt(req.params.pollID)
-    const choice = req.params.choice
+const addpoll = (req,res) => {
+    
+    let pollInfo = req.body
+    console.log(`Request to add a new poll`, pollInfo)
+    
+    let {question, option1, option2, option3} = req.body 
 
-    let queryString = `UPDATE pegasus.poll SET option${choice}votes=(option${choice}votes+1) WHERE pollid=${pollID}`
+    let queryString = ` INSERT INTO pegasus.poll 
+                        SET question='${question}', option1='${option1}', option2='${option2}', option3='${option3}'`
 
-    console.log(`New poll submitted, pollID: ${pollID}`)
 
-    // UPDATE JSON inside DB
+    // INSERT JSON INFO DB
     mypool.getConnection((err, connection) => {
         if(err) {
             connection.release()
@@ -22,7 +25,8 @@ const submitpoll = (req,res) => {
                 }
                 else {
                     res.send({
-                        message: `success`
+                        message: 'added',
+                        body: pollInfo
                     })
                 }
             })
@@ -31,4 +35,4 @@ const submitpoll = (req,res) => {
     })
 }
 
-module.exports = submitpoll
+module.exports = addpoll

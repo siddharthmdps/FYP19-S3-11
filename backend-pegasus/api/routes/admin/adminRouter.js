@@ -46,12 +46,18 @@ router.put('/deletejob/:id', deletejob)
 const updatecareertip = require('./updatecareertip')
 router.put('/updatecareertip/:tipID', updatecareertip)
 
+const updatepoll = require('./updatepoll')
+router.put('/updatepoll/:pollID', updatepoll)
+
 // POST
 const addjob = require('./addjob')
 router.post('/addjob', addjob)
 
 const addcareertip = require('./addcareertip')
 router.post('/addcareertip', addcareertip)
+
+const addpoll = require('./addpoll')
+router.post('/addpoll', addpoll)
 
 router.get('/', (res) => {
     res.send('hello from backend server, admin route')
@@ -60,5 +66,8 @@ router.get('/', (res) => {
 // DELETE
 const deletecareertip = require('./deletecareertip')
 router.delete('/deletecareertip/:tipID', deletecareertip)
+
+const deletepoll = require('./deletepoll')
+router.delete('/deletepoll/:id', deletepoll)
 
 module.exports = router
