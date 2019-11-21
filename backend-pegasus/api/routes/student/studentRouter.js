@@ -104,6 +104,10 @@ router.put('/putstudentskills', studentskills)
 const delstudentskills = require('./deletestudentskills')
 router.delete('/deletestudentskills', delstudentskills)
 
+//submit poll
+const submitpoll = require('./submitpoll')
+router.put('/submitpoll/:pollID&:choice', submitpoll)
+
 //gt all student details
 const getallstudentdetails = require('./getallstudentdetails')
 router.get('/getallstudentdetails/:studentid', getallstudentdetails)
