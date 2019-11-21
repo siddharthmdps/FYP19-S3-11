@@ -182,7 +182,7 @@ const DocumentShell = {
 
 class Profile extends Component {
     state = {
-        "StudentID": localStorage.getItem('id'),
+        "StudentID": this.props.match.params.SID,
         "ProfileImage": "default.png",
         "PersonalParticulars": {},
         "Education": [],
@@ -364,6 +364,7 @@ class Profile extends Component {
         //         this.setState({ Projects: tempProjects });
         //     });            
 
+        console.log(this.props.match.params.SID);
 
         Axios.get(`${apiURL}student/studentinfo/${this.state.StudentID}`)
             .then(receivedData => {
@@ -555,10 +556,10 @@ class Profile extends Component {
                 <br />
                 <Row >
                     <Col md={{ span: 3 }} className={classes.LeftSide}>
-                        <LeftSide imageLink={this.state.ProfileImage} details={this.state.PersonalParticulars} />
+                        <LeftSide imageLink={this.state.ProfileImage} details={this.state.PersonalParticulars} documents={this.state.Document}/>
 
                     </Col>
-                    <Col md={{ offset: 3, span: 9 }} >
+                    <Col md={{ span: 9 }} >
                         {/* <CardColumns className={classes.CardColumn}>
                             <Timeline title={"Education"}>
                                 {this.state.Education.map(educationDetail => {

@@ -69,9 +69,9 @@ class AppliedJobs extends Component {
     };
 
     componentDidMount() {
-        Axios.get("http://localhost:3000/AppliedJobs")
+        Axios.get(`http://192.168.43.251:3001/student/getappliedjoblist/${localStorage.getItem('id')}`)
             .then(receivedData => {
-                this.setState({ AppliedJobs: receivedData.data });
+                this.setState({ AppliedJobs: receivedData.data.AppliedJobs });
                 console.log(receivedData.data);
                 this.pagination();
             });
@@ -79,8 +79,6 @@ class AppliedJobs extends Component {
 
     render() {
         const active = this.state.active;
-        const unfav = <i class="far fa-star" />
-        const fav = <i class="fas fa-star" style={{ "color": "#FFCA28" }} />
         return (
             <Container >
                 <br />
@@ -92,7 +90,7 @@ class AppliedJobs extends Component {
                 {this.state.AppliedJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
                     return (
                         <React.Fragment>
-                            <JobCard jobDetail={jobDetail} Applied />
+                            <JobCard jobDetail={jobDetail} />
                             <br />
                         </React.Fragment>
                     );
