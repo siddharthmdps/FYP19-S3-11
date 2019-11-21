@@ -1,11 +1,13 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
-const deletestudentawards = (req, res) => {
+const deletestudentcertificate = (req, res) => {
     const studentid = req.body.StudentID;
-    const awardid = req.body.AwardID;
-    const awardname = req.body.Award;
-    var awarddate = req.body.Date;
-    
+    const certid = req.body.CertificateID;
+    const certname = req.body.Name;
+    const issuedby = req.body.IssuedBy;            
+    var issueddate = req.body.IssueDate;
+    var validuntil = req.body.ValidUntil;
+
     mypool.getConnection( (error, connection) => {
         if(error) {
             connection.release()
@@ -14,9 +16,9 @@ const deletestudentawards = (req, res) => {
         }
         else {
             if(studentid) {   
-                let queryString1 = `delete from pegasus.studentawards where id = "${jobprefid}" and studentid = "${studentid}"` ;   
+                let queryString1 = `delete from pegasus.studentcertificate where id = "${certid}" and studentid = "${studentid}"` ;   
                 if(!studentid) {
-                    queryString1 = `delete from pegasus.studentawards where studentid = "${studentid}"` ;   
+                    queryString1 = `delete from pegasus.studentcertificate where studentid = "${studentid}"` ;   
                 }       
                 connection.query(queryString1, (err, rows, fields) => {
                     if(err) {
@@ -33,9 +35,9 @@ const deletestudentawards = (req, res) => {
                     message: "Bad Request! Invalid POST request!"
                 });
             }
-            connection.release()    
-        }
-    } )    
+            connection.release()
+        }        
+    } )
 }
 
-module.exports = deletestudentawards
+module.exports = deletestudentcertificate
