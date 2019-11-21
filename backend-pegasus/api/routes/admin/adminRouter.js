@@ -21,6 +21,9 @@ router.get('/getemployability', getemployability)
 const getallcareertips = require('./getallcareertips')
 router.get('/getallcareertips', getallcareertips)
 
+const getallpolls = require('./getallpolls')
+router.get('/getallpolls', getallpolls)
+
 // PUT
 const editemployer = require('./editemployer')
 router.put('/editemployer/:id', editemployer)

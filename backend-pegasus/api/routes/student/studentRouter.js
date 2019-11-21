@@ -76,6 +76,9 @@ router.get('/studentskills/:studentid', getstudentskills)
 const studentskills = require('./studentskills')
 router.put('/putstudentskills', studentskills)
 
+const submitpoll = require('./submitpoll')
+router.put('/submitpoll/:pollID&:choice', submitpoll)
+
 //gt all student details
 const getallstudentdetails = require('./getallstudentdetails')
 router.get('/getallstudentdetails/:studentid', getallstudentdetails)
