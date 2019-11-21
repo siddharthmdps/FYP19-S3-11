@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Modal, Button, Row, Col, Form, InputGroup } from 'react-bootstrap'
+import { Modal, Button, Row, Col, Form } from 'react-bootstrap'
 import Snackbar from '@material-ui/core/SnackBar'
 import IconButton from '@material-ui/core/IconButton'
 
 export class AddEmpModal extends Component {
-    constructor(props, context) {
+    constructor(props,context) {
         super(props, context);
         this.state = { snackbaropen: false, snackbarmsg: '' };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,7 +37,7 @@ export class AddEmpModal extends Component {
             .then((result) => {
                 //alert(result);
                 this.setState({ snackbaropen: true, snackbarmsg: 'Successfully created new employer account!' });
-                this.timer = setTimeout(() => { window.location.href = '/admin/employer' }, 1000);
+                this.timer = setTimeout(()=>{window.location.href = '/admin/employer'}, 1000);
             },
                 (error) => {
                     //alert('Failed')
@@ -80,7 +80,7 @@ export class AddEmpModal extends Component {
                     <Modal.Body>
 
                         <Row>
-                            <Col sm={12}>
+                            <Col sm={6}>
                                 <Form onSubmit={this.handleSubmit} >
 
                                     <Form.Group controlId="usertype">
@@ -93,30 +93,24 @@ export class AddEmpModal extends Component {
                                             defaultValue="employer"
                                             placeholder=""></Form.Control>
                                     </Form.Group>
-                                    <Form.Row>
-                                        <Form.Group as={Col} controlId="username">
-                                            <Form.Label>Username:</Form.Label>
-                                            <InputGroup>
-                                                <InputGroup.Prepend>
-                                                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                <Form.Control
-                                                    type="text"
-                                                    name="Username"
-                                                    required
-                                                    placeholder=""></Form.Control>
-                                            </InputGroup>
-                                        </Form.Group>
 
-                                        <Form.Group as={Col} controlId="password">
-                                            <Form.Label>Password:</Form.Label>
-                                            <Form.Control
-                                                type="password"
-                                                name="password"
-                                                required
-                                                placeholder=""></Form.Control>
-                                        </Form.Group>
-                                    </Form.Row>
+                                    <Form.Group controlId="username">
+                                        <Form.Label>Username:</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="Username"
+                                            required
+                                            placeholder=""></Form.Control>
+                                    </Form.Group>
+
+                                    <Form.Group controlId="password">
+                                        <Form.Label>Password:</Form.Label>
+                                        <Form.Control
+                                            type="password"
+                                            name="password"
+                                            required
+                                            placeholder=""></Form.Control>
+                                    </Form.Group>
 
                                     <Form.Group controlId="companyname">
                                         <Form.Label>Company Name:</Form.Label>
@@ -127,35 +121,33 @@ export class AddEmpModal extends Component {
                                             placeholder=""></Form.Control>
                                     </Form.Group>
 
+                                    <Form.Group controlId="companyphone">
+                                        <Form.Label>Company Phone:</Form.Label>
+                                        <Form.Control
+                                            type="number"
+                                            name="companyphone"
+                                            required
+                                            placeholder=""></Form.Control>
+                                    </Form.Group>
+
+                                    <Form.Group controlId="companyemail">
+                                        <Form.Label>Company E-mail:</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="companyemail"
+                                            required
+                                            placeholder=""></Form.Control>
+                                    </Form.Group>
+
                                     <Form.Group controlId="companydescription">
                                         <Form.Label>Company Description:</Form.Label>
                                         <Form.Control
-                                            as="textarea"
-                                            rows="3"
                                             type="text"
                                             name="companydescription"
                                             required
                                             placeholder=""></Form.Control>
                                     </Form.Group>
-                                    <Form.Row>
-                                        <Form.Group as={Col} controlId="companyphone">
-                                            <Form.Label>Company Phone Number:</Form.Label>
-                                            <Form.Control
-                                                type="number"
-                                                name="companyphone"
-                                                required
-                                                placeholder=""></Form.Control>
-                                        </Form.Group>
 
-                                        <Form.Group as={Col} controlId="companyemail">
-                                            <Form.Label>Company E-mail:</Form.Label>
-                                            <Form.Control
-                                                type="email"
-                                                name="companyemail"
-                                                required
-                                                placeholder=""></Form.Control>
-                                        </Form.Group>
-                                    </Form.Row>
                                     <Form.Group controlId="companyaddress">
                                         <Form.Label>Company Address:</Form.Label>
                                         <Form.Control
@@ -166,7 +158,7 @@ export class AddEmpModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="industry">
-                                        <Form.Label>Company Industry:</Form.Label>
+                                        <Form.Label>Industry:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="industry"
@@ -175,7 +167,7 @@ export class AddEmpModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group>
-                                        <Button variant="outline-success" type="submit">
+                                        <Button variant="primary" type="submit">
                                             Create New Employer Account
                                         </Button>
                                     </Form.Group>
@@ -188,7 +180,7 @@ export class AddEmpModal extends Component {
 
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="outline-danger" onClick={this.props.onHide}>Close</Button>
+                        <Button variant="danger" onClick={this.props.onHide}>Close</Button>
                     </Modal.Footer>
                 </Modal>
             </div>

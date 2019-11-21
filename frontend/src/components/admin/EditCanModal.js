@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Button, Row, Col, Form, InputGroup} from 'react-bootstrap'
+import { Modal, Button, Row, Col, Form } from 'react-bootstrap'
 import Snackbar from '@material-ui/core/SnackBar'
 import IconButton from '@material-ui/core/IconButton'
 
@@ -44,11 +44,11 @@ export class EditCanModal extends Component {
             .then(res => res.json())
             .then((result) => {
                 //alert(result);
-                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully updated student account!'});
+                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully updated candidate account!'});
             },
                 (error) => {
                     //alert('Failed')
-                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to update student account...' });
+                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to update candidate account...' });
                 }
             )
     }
@@ -81,17 +81,17 @@ export class EditCanModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Edit Student Account
+                            Edit Candidate Account
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
 
                         <Row>
-                            <Col sm={12}>
+                            <Col sm={6}>
                                 <Form onSubmit={this.handleSubmit}>
 
                                     <Form.Group controlId="id">
-                                        <Form.Label>Student Account ID:</Form.Label>
+                                        <Form.Label>Candidate Account ID:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="id"
@@ -100,9 +100,9 @@ export class EditCanModal extends Component {
                                             defaultValue={this.props.id}
                                             placeholder="id"></Form.Control>
                                     </Form.Group>
-<Form.Row>
-                                    <Form.Group as={Col} controlId="firstname">
-                                        <Form.Label>First Name:</Form.Label>
+
+                                    <Form.Group controlId="firstname">
+                                        <Form.Label>firstname:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="firstname"
@@ -111,8 +111,8 @@ export class EditCanModal extends Component {
                                             placeholder=""></Form.Control>
                                     </Form.Group>
 
-                                    <Form.Group as={Col} controlId="middlename">
-                                        <Form.Label>Middle Name:</Form.Label>
+                                    <Form.Group controlId="middlename">
+                                        <Form.Label>middlename:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="middlename"
@@ -121,8 +121,8 @@ export class EditCanModal extends Component {
                                             placeholder=""></Form.Control>
                                     </Form.Group>
 
-                                    <Form.Group as={Col} controlId="lastname">
-                                        <Form.Label>Last Name:</Form.Label>
+                                    <Form.Group controlId="lastname">
+                                        <Form.Label>lastname Name:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="lastname"
@@ -130,20 +130,19 @@ export class EditCanModal extends Component {
                                             defaultValue={this.props.lastname}
                                             placeholder=""></Form.Control>
                                     </Form.Group>
-                                    </Form.Row>
-                                    <Form.Row>
-                                    <Form.Group as={Col} controlId="email">
-                                        <Form.Label>E-mail:</Form.Label>
+
+                                    <Form.Group controlId="email">
+                                        <Form.Label>email Phone:</Form.Label>
                                         <Form.Control
-                                            type="email"
+                                            type="text"
                                             name="email"
                                             required
                                             defaultValue={this.props.email}
                                             placeholder=""></Form.Control>
                                     </Form.Group>
 
-                                    <Form.Group as={Col} controlId="phone">
-                                        <Form.Label>Phone Number:</Form.Label>
+                                    <Form.Group controlId="phone">
+                                        <Form.Label>phone E-mail:</Form.Label>
                                         <Form.Control
                                             type="number"
                                             name="phone"
@@ -151,20 +150,9 @@ export class EditCanModal extends Component {
                                             defaultValue={this.props.phone}
                                             placeholder=""></Form.Control>
                                     </Form.Group>
-                                    </Form.Row>
 
-                                    <Form.Group controlId="currentaddress">
-                                        <Form.Label>Current Address:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="currentaddress"
-                                            required
-                                            defaultValue={this.props.currentaddress}
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
-<Form.Row>
-                                    <Form.Group as={Col} controlId="country">
-                                        <Form.Label>Country:</Form.Label>
+                                    <Form.Group controlId="country">
+                                        <Form.Label>country Description:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="country"
@@ -173,8 +161,8 @@ export class EditCanModal extends Component {
                                             placeholder=""></Form.Control>
                                     </Form.Group>
 
-                                    <Form.Group as={Col} controlId="city">
-                                        <Form.Label>City:</Form.Label>
+                                    <Form.Group controlId="city">
+                                        <Form.Label>city Address:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="city"
@@ -183,20 +171,28 @@ export class EditCanModal extends Component {
                                             placeholder=""></Form.Control>
                                     </Form.Group>
 
-                                    
-                                    
-                                    <Form.Group as={Col} controlId="postalcode">
-                                        <Form.Label>Postal Code:</Form.Label>
+                                    <Form.Group controlId="currentaddress">
+                                        <Form.Label>currentaddress:</Form.Label>
                                         <Form.Control
-                                            type="number"
+                                            type="text"
+                                            name="currentaddress"
+                                            required
+                                            defaultValue={this.props.currentaddress}
+                                            placeholder=""></Form.Control>
+                                    </Form.Group>
+                                    
+                                    <Form.Group controlId="postalcode">
+                                        <Form.Label>postalcode:</Form.Label>
+                                        <Form.Control
+                                            type="text"
                                             name="postalcode"
                                             required
                                             defaultValue={this.props.postalcode}
                                             placeholder=""></Form.Control>
                                     </Form.Group>
-                                    </Form.Row>
+
                                     <Form.Group controlId="nationality">
-                                        <Form.Label>Nationality:</Form.Label>
+                                        <Form.Label>nationality:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="nationality"
@@ -204,34 +200,29 @@ export class EditCanModal extends Component {
                                             defaultValue={this.props.nationality}
                                             placeholder=""></Form.Control>
                                     </Form.Group>
-<Form.Row>
-                                    <Form.Group as={Col} controlId="username">
-                                        <Form.Label>Username:</Form.Label>
-                                        <InputGroup>
-                                                <InputGroup.Prepend>
-                                                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                                                </InputGroup.Prepend>
+
+                                    <Form.Group controlId="username">
+                                        <Form.Label>username:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="username"
                                             required
                                             defaultValue={this.props.username}
                                             placeholder=""></Form.Control>
-                                            </InputGroup>
                                     </Form.Group>
 
-                                    <Form.Group as={Col} controlId="password">
-                                        <Form.Label>Password:</Form.Label>
+                                    <Form.Group controlId="password">
+                                        <Form.Label>password:</Form.Label>
                                         <Form.Control
                                             type="password"
                                             name="password"
                                             
                                             placeholder="Leave blank if unchanged"></Form.Control>
                                     </Form.Group>
-                                    </Form.Row>
+
                                     <Form.Group>
-                                        <Button variant="outline-success" type="submit">
-                                            Update Student Account
+                                        <Button variant="primary" type="submit">
+                                            Update Candidate Account
                                         </Button>
                                     </Form.Group>
 
@@ -243,7 +234,7 @@ export class EditCanModal extends Component {
 
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="outline-danger" onClick={this.props.onHide}>Close</Button>
+                        <Button variant="danger" onClick={this.props.onHide}>Close</Button>
                     </Modal.Footer>
                 </Modal>
             </div>

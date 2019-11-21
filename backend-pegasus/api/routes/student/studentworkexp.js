@@ -2,7 +2,7 @@ const {env, sha1, mysql, mypool} = require('../../util')
 
 var dateFormat = require('dateformat');
 
-const studentworkexp = (req, res) => {    
+/*const studentworkexp = (req, res) => {    
     for(var key in req.body) {
         if(req.body.hasOwnProperty(key)) {
             const studentid = parseInt(req.body[key].studentid);
@@ -73,6 +73,73 @@ const studentworkexp = (req, res) => {
             } )
         }
     }
+}*/
+
+const studentworkexp = (req, res) => { 
+    const studentid0 = req.body[0].StudentID;
+    var success = true;
+    let queryString1 = `delete from pegasus.studentworkexp where studentid = "${studentid0}"` ;  
+    mypool.getConnection(function (error, connection) {
+        if(error) {
+            success = false;
+            connection.release()
+            console.log(`Error getting mysql_pool connection: ${error}`)
+            return error
+        }
+        else {
+            connection.query(queryString1, (err, rows, fields) => {
+                if(err) {
+                    success = false;
+                    console.log(err);
+                    return res.status(500).json({ message: err })
+                }
+                else {
+                    for(var key in req.body) {
+                        if(req.body.hasOwnProperty(key)) {
+                            const studentid = parseInt(req.body[key].StudentID);
+                            const workexpid = req.body[key].WorkExpID;
+                            const position = req.body[key].Position;
+                            const company = req.body[key].Company;
+                            var startdate = req.body[key].StartDate;
+                            var enddate = req.body[key].EndDate;
+                            const mode = req.body[key].Mode;
+                            const industry = req.body[key].Industry;
+                            const annualsalary = req.body[key].AnnualSalary;
+                            const description = req.body[key].Description;
+
+                            let queryString2 = `INSERT INTO pegasus.studentworkexp (studentid, position, company, startdate, enddate, mode, industry, annualsalary, description) values ("${studentid}", "${position}", "${company}", "${startdate}", "${enddate}", "${mode}", "${industry}", "${annualsalary}", "${description}")`
+
+                            if(studentid && company) {  
+                                connection.query(queryString2, (err, rows, fields) => {
+                                    if(err) {
+                                        success = false;
+                                        res.status(500).json({ message: err });
+                                        return;
+                                    }
+                                });
+                            } else {
+                                success = false;
+                                res.status(400).json({
+                                    message: "Bad Request! Invalid POST request!"
+                                });
+                                return;
+                            }
+                        }
+                        else {
+                            success = false;
+                            return;
+                        }
+                    }
+                    if(success) {
+                        res.json({
+                            message: "success"
+                        })
+                    }
+                }        
+                connection.release()
+            });
+        }
+    });
 }
 
 module.exports = studentworkexp

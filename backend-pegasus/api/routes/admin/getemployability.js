@@ -2,11 +2,11 @@ const {env, sha1, mysql, mypool} = require('../../util')
 
 // return field of study paired with employability
 const getalljobs = (req, res) => {
-    console.log(`[ADMIN] Requesting for employability for students`)
+    console.log(`[ADMIN] Requesting for employability`)
     mypool.getConnection((err, connection) => {
         if(err) {
             connection.release()
-            console.log(`Error while getting mysql_pool connection: ${err}`)
+            console.log(`Error getting mysql_pool connection: ${err}`)
             throw err
         }
         else {

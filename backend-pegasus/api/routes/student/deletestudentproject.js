@@ -1,11 +1,13 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
-const deletestudentawards = (req, res) => {
+const deletestudentproject = (req, res) => {
     const studentid = req.body.StudentID;
-    const awardid = req.body.AwardID;
-    const awardname = req.body.Award;
-    var awarddate = req.body.Date;
-    
+    const projectid = req.body.ProjectID;
+    const title = req.body.Title;
+    const status = req.body.Status;
+    const description = req.body.Description;
+    const link = req.body.Link;
+
     mypool.getConnection( (error, connection) => {
         if(error) {
             connection.release()
@@ -14,9 +16,9 @@ const deletestudentawards = (req, res) => {
         }
         else {
             if(studentid) {   
-                let queryString1 = `delete from pegasus.studentawards where id = "${jobprefid}" and studentid = "${studentid}"` ;   
+                let queryString1 = `delete from pegasus.studentproject where id = "${projectid}" and studentid = "${studentid}"` ;   
                 if(!studentid) {
-                    queryString1 = `delete from pegasus.studentawards where studentid = "${studentid}"` ;   
+                    queryString1 = `delete from pegasus.studentproject where studentid = "${studentid}"` ;   
                 }       
                 connection.query(queryString1, (err, rows, fields) => {
                     if(err) {
@@ -35,7 +37,7 @@ const deletestudentawards = (req, res) => {
             }
             connection.release()    
         }
-    } )    
+    } )
 }
 
-module.exports = deletestudentawards
+module.exports = deletestudentproject

@@ -367,12 +367,13 @@ class EmpAppCard extends Component {
     }
 
     shortlist = (appId, jobId) => {
+        //to update shortlist link
         const application = {
             jobid: jobId,
             appid: appId
         }
 
-        const url = apiURL + "employer/shortlist"
+        const url = apiURL + `employer/shortlist/`
         const localhost = 'http://localhost:3001/employer/shortlist/'
 
         fetch(url, {
@@ -535,8 +536,6 @@ class EmpAppCard extends Component {
                         </small>
                     
                     </Card.Text> */}
-                        <Button variant="success" onClick={this.shortlist(123, 456)} >Shortlist</Button>
-
 
                         <Button variant="success" onClick={() => { this.shortlist(123, 456) }} >Shortlist</Button>
                     </Card.Body>

@@ -10,7 +10,7 @@ const getalljobs = (req, res) => {
             throw err
         }
         else {
-            let queryString = `SELECT job.*, employer.username, employer.companyname FROM pegasus.job 
+            let queryString = `SELECT job.*, employer.username FROM pegasus.job 
                             JOIN pegasus.employer ON pegasus.job.empid = pegasus.employer.id;`
             connection.query(queryString, (err, rows, fields) => {
                 if(err) {

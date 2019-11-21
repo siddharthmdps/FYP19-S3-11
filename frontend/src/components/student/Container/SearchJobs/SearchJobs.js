@@ -15,12 +15,7 @@ class SearchJobs extends Component {
         "SearchJobs": [],
         "jobsPerPage": 5,
         "pageNo": 1,
-        "pageItems": [],
-        "Filter": {
-            "Industry": "",
-            "WorkExp": "",
-            "Location": ""
-        }
+        "pageItems": []
     };
 
     pagination = () => {
@@ -81,25 +76,17 @@ class SearchJobs extends Component {
         this.setState({ "SearchJobs": temp });
     };
 
-    changeFilter(event){
-        console.log(event.target.id, event.target.value);
-        let temp = this.state.Filter;
-        temp[event.target.id] = event.target.value;
-        this.setState({ Filter: temp });
-    }
-
     getSearch = event => {
         this.setState({ Search: event.target.value });
     }
 
     getSearchedJobs() {
-        Axios.get(`https://pegasus-backend.herokuapp.com/student/searchjob/${this.state.Search}`)
+        Axios.get("http://localhost:3000/AppliedJobs")
             .then(receivedData => {
                 let temp = receivedData.data;
-                console.log(temp);
-                // temp.forEach(element => {
-                //     element.status = "active";
-                // });
+                temp.forEach(element => {
+                    element.status = "active";
+                });
                 this.setState({ SearchJobs: temp });
                 console.log(temp);
                 this.pagination();
@@ -130,7 +117,7 @@ class SearchJobs extends Component {
                                 className={classes.SearchBox}
                             />
                             <br />
-                            <Sidedrawer filter={this.state.Filter} changeFn={event => this.changeFilter(event)}/>
+                            <Sidedrawer />
                         </div>
 
                         {/* </InputGroup> */}
@@ -155,23 +142,14 @@ class SearchJobs extends Component {
 
 
                 <Col className={classes.Jobs} md={{ offset: 1, span: 10 }}>
-                    {this.state.SearchJobs.message!=="NOT FOUND"?
-                    this.state.SearchJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
-                        if((this.state.Filter.Industry==="" || this.state.Filter.Industry.toLowerCase()===jobDetail.industry.toLowerCase()) 
-                        && (this.state.Filter.WorkExp==="" || this.state.Filter.WorkExp.toLowerCase()===jobDetail.yearsofexperience.toLowerCase())
-                        && (this.state.Filter.Location==="" || this.state.Filter.Location.toLowerCase()===jobDetail.location.toLowerCase()))
+                    {this.state.SearchJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
                         return (
                             <React.Fragment key={jobDetail.id}>
                                 <JobCard jobDetail={jobDetail} changeStatus={(id, status) => this.changeStatus(id, status)} />
                                 <br />
                             </React.Fragment>
                         );
-                    }): 
-                    <div className={classes.NoRecord}>
-                        <div className={classes.NoRecordHighlight}>No results</div>
-                        <div className={classes.NoRecordMessage}>Sorry there are no results for this search, please try another phrase.</div>
-                    </div>
-                    }
+                    })}
                 </Col>
 
                 <Grid container  justify="center">

@@ -46,7 +46,7 @@ export class AppliedJobs extends Component {
                     obj[j] = {
                         'key': data[i].id,
                         'username': data[i].username,
-                        'email': data[i].fieldofstudy,
+                        'email': data[i].email,
                     };
                     j++;
                 }
@@ -64,7 +64,7 @@ export class AppliedJobs extends Component {
                 for (var i = data.length - 1; i > data.length - 6; i--) {
                     obj[j] = {
                         'key': data[i].id,
-                        'empid': data[i].username,
+                        'empid': data[i].empid,
                         'title': data[i].title,
                         'description': data[i].description,
                         'dateposted': data[i].dateposted,
@@ -85,9 +85,9 @@ export class AppliedJobs extends Component {
         return (
             <Container fluid style={{ width: '95%' }}>
                 <br />
-                
-                <h1 className="m-3 d-flex justify-content-center"><b>Dashboard</b></h1>
-                <hr/>
+                <Row>
+                    <h1 style={{ textAlign: 'center' }}>Dashboard <span ><sub></sub></span></h1>
+                </Row>
                 <br />
                 <Row>
                     <Col md={{ span: 3 }}>
@@ -98,7 +98,7 @@ export class AppliedJobs extends Component {
                                 <Card.Text>
                                     All Employers
                                 </Card.Text>
-                                <Link to="/admin/employer" className="text-success">More info <i className="fa fa-arrow-circle-right" /></Link>
+                                <Link to="/admin/employer" className="small-box-footer">More info <i className="fa fa-arrow-circle-right" /></Link>
                             </Card.Body>
                         </Card>
 
@@ -109,9 +109,9 @@ export class AppliedJobs extends Component {
                             <Card.Body>
                                 <Card.Title>{this.state.count_allcandidates}</Card.Title>
                                 <Card.Text>
-                                    All Students
+                                    All Candidates
                                 </Card.Text>
-                                <Link to="/admin/student" className="text-success">More info <i className="fa fa-arrow-circle-right" /></Link>
+                                <Link to="/admin/candidate" className="small-box-footer">More info <i className="fa fa-arrow-circle-right" /></Link>
 
                             </Card.Body>
                         </Card>
@@ -125,7 +125,7 @@ export class AppliedJobs extends Component {
                                 <Card.Text>
                                     All Jobs
                             </Card.Text>
-                                <Link to="/admin/jobs" className="text-success">More info <i className="fa fa-arrow-circle-right" /></Link>
+                                <Link to="/admin/jobs" className="small-box-footer">More info <i className="fa fa-arrow-circle-right" /></Link>
 
                             </Card.Body>
                         </Card>
@@ -139,7 +139,7 @@ export class AppliedJobs extends Component {
                                 <Card.Text>
                                     Reports
                             </Card.Text>
-                                <Link to="/admin/reports" className="text-success">More info <i className="fa fa-arrow-circle-right" /></Link>
+                                <Link to="/admin/reports" className="small-box-footer">More info <i className="fa fa-arrow-circle-right" /></Link>
 
                             </Card.Body>
                         </Card>
@@ -161,9 +161,9 @@ export class AppliedJobs extends Component {
                         <Table striped bordered hover>
                             <thead>
                                 <tr>
-                                    <th>Employer Username</th>
+                                    <th>Employeer ID</th>
                                     <th>Title</th>
-                                    <th>Job description</th>
+                                    <th>Description</th>
                                     <th>Date posted</th>
                                 </tr>
                             </thead>
@@ -173,7 +173,7 @@ export class AppliedJobs extends Component {
                                         <td>{job.empid}</td>
                                         <td>{job.title}</td>
                                         <td>{job.description}</td>
-                                        <td>{job.dateposted.slice(0,10)}</td>
+                                        <td>{job.dateposted}</td>
                                     </tr>
                                 )}
                             </tbody>
@@ -184,7 +184,7 @@ export class AppliedJobs extends Component {
                     <Col md={{ span: 6 }} >
                         <Card>
                             <Card.Body>
-                                <Card.Title>Latest Added Students</Card.Title>
+                                <Card.Title>Latest Added Candidates</Card.Title>
                                 <Card.Text>
                                 </Card.Text>
                             </Card.Body>
@@ -193,7 +193,7 @@ export class AppliedJobs extends Component {
                             <thead >
                                 <tr>
                                     <th>Username</th>
-                                    <th>Course</th>
+                                    <th>Email</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -221,7 +221,7 @@ export class AppliedJobs extends Component {
                             <thead>
                                 <tr>
                                     <th>Username</th>
-                                    <th>Company</th>
+                                    <th>Email</th>
                                 </tr>
                             </thead>
                             <tbody>
