@@ -1,12 +1,6 @@
-let student = {
-    name: 'tom',
-    age: 23
-}
+var date = "2019-11-12asdfsdfdsafdsafd"
 
-let changename = () => {
-    student.name = 'jim'
-}
-changename()
+date = date.slice(0,11)
 
-console.log(student)
+console.log(date)
 

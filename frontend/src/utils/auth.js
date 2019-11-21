@@ -43,6 +43,21 @@ class Auth {
         if(localStorage.getItem('isAuthenticated')) return true
         else return false
     }
+
+    isCorrectPath(path, usertype) {
+        switch(path) {
+            case 's' : 
+                if(usertype === 'student') return true
+                else return false
+            case 'e' :
+                if(usertype === 'employer') return true
+                else return false
+            case 'a' :
+                if(usertype === 'admin') return true 
+                else return false
+            default : return false
+        }
+    }
 }
 
 export default new Auth()

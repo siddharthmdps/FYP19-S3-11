@@ -58,7 +58,7 @@ class TopNavbar extends Component {
     if (this.state.Navbar !== "Blog") {
       let tempLeft = {
         "< Back to Site": "/",
-        "Product": "/blog",
+        "Product": "/blog/product",
         "Project Meeting Minutes": "/blog/projectmeetingminutes",
         "Personal Diary": "/blog/personaldiaries",
         "About Us": "/blog/aboutus",

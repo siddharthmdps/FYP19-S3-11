@@ -10,8 +10,12 @@ export const ProtectedRoute = ({component: Component,... rest}) => {
             (props) => {
                 // user needs to be authenticated
                 // && needs to be the same user type (e.g. employer cannot visit student page)
-                if(auth.isAuthenticated()) {
-                    console.log(auth.isAuthenticated())
+                let currentPath = props.location.pathname.slice(1,2)
+                let usertype = localStorage.getItem('usertype')
+                // console.log('usertype' , localStorage.getItem('usertype'))
+                
+                if(auth.isAuthenticated() && auth.isCorrectPath(currentPath, usertype)) {
+                    
                     return <Component {...props} />
                 }
                 else {

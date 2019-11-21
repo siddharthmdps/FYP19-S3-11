@@ -27,7 +27,7 @@ import SearchJobs from './components/student/Container/SearchJobs/SearchJobs'
 
 // importing Admin Components
 import Admin from './components/admin/Admin'
-import { Home } from './components/admin/Home'
+import Home from './components/admin/Home'
 import { AdminEmployer } from './components/admin/Employer'
 import { AdminCandidate } from './components/admin/Candidate'
 import Navigation from './components/admin/NavigationAdmin'
@@ -39,6 +39,7 @@ import Settings from './components/admin/Settings'
 
 // importing Blog Components
 import Blog from './components/blog/Container/Blog'
+import Product from './components/blog/Container/Product/Product'
 import ContactUs from './components/blog/Container/ContactUs/ContactUs'
 import AboutUs from './components/blog/Container/AboutUs/AboutUs'
 import ProjectMM from './components/blog/Container/ProjectMeetingMinutes/ProjectMeetingMinutes'
@@ -165,7 +166,7 @@ class App extends Component {
               {/* Admin Routes */}
               <ProtectedRoute exact path="/admin" component={Home}></ProtectedRoute>
               <ProtectedRoute exact path="/admin/dashboard" component={Dashboard}></ProtectedRoute>
-              <ProtectedRoute exact path="/admin/candidate" component={AdminCandidate}></ProtectedRoute>
+              <ProtectedRoute exact path="/admin/student" component={AdminCandidate}></ProtectedRoute>
               <ProtectedRoute exact path="/admin/employer" component={AdminEmployer}></ProtectedRoute>
               <ProtectedRoute exact path="/admin/jobs" component={AdminJobs}></ProtectedRoute>
               <ProtectedRoute exact path="/admin/reports" component={Reports}></ProtectedRoute>
@@ -174,6 +175,7 @@ class App extends Component {
 
               {/* Blog Routes */}
               <Route exact path="/blog" render={props => <Blog {...props} useBlog={(allow) => this.useBlogNavbar(allow)} />}></Route>
+              <Route exact path="/blog/product" render={props => <Product {...props} useBlog={(allow) => this.useBlogNavbar(allow)} />}></Route>
               <Route exact path="/blog/contactus" render={props => <ContactUs {...props} useBlog={(allow) => this.useBlogNavbar(allow)} />}></Route>
               <Route exact path="/blog/aboutus" render={props => <AboutUs {...props} useBlog={(allow) => this.useBlogNavbar(allow)} />}></Route>
               <Route exact path="/blog/projectmeetingminutes" render={props => <ProjectMM {...props} useBlog={(allow) => this.useBlogNavbar(allow)} />}></Route>

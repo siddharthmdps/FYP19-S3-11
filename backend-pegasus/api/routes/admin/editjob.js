@@ -2,10 +2,10 @@ const {env, mysql, mypool} = require('../../util')
 
 const editjob = (req,res) => {
     const jobID = parseInt(req.params.id)
-    let {title, industry, description, requiredskills, dateposted, location} = req.body
+    let {title, industry, description, requiredskills, dateposted, location, yearsofexperience} = req.body
 
     let queryString = `UPDATE pegasus.job
-                        SET title="${title}", industry="${industry}", description="${description}",
+                        SET title="${title}", industry="${industry}", description="${description}", yearsofexperience=${yearsofexperience},
                         requiredskills="${requiredskills}", dateposted="${dateposted}", location="${location}"
                         WHERE id=${jobID}`
 

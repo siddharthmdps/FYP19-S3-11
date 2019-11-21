@@ -45,10 +45,11 @@ const workExperience = props => {
                     <Form.Label>Mode <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                     {/* <Form.Control componentClass='select' type='text' placeholder="Part Time" value={props.details.Mode} onChange={props.changeFn} required/> */}
                     <Form.Control as='select' value={props.details.Mode} onChange={props.changeFn} className={classes.ptft} required>
-                        <option>Part-Time</option>
-                        <option>Full-Time</option>
-                        <option>Intern</option>
-                        <option>Contract</option>
+                        <option value="">Choose ...</option>
+                        <option value="Part-Time">Part-Time</option>
+                        <option value="Full-Time">Full-Time</option>
+                        <option value="Intern">Intern</option>
+                        <option value="Contract">Contract</option>
                     </Form.Control>
                 </Form.Group> 
                 <Form.Group as={Col} sm="4" controlId="Industry">

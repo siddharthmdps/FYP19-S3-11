@@ -11,7 +11,7 @@ const getstudentjobpref = (req, res) => {
         }
         else {
             if(studentid) {               
-                let queryString = `select id as 'JobPreferenceID', Industry, Position, JobType, ExpectedSalary, Location, Availability from pegasus.studentjobpref where studentid = "${studentid}"`
+                let queryString = `select id as 'JobPreferenceID', Industry, WorkExp, Location from pegasus.studentjobpref where studentid = "${studentid}"`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })

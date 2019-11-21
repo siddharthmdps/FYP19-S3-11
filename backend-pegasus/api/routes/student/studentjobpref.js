@@ -1,44 +1,54 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
 const studentjobpref = (req, res) => {
-    for(var key in req.body) {
-        if(req.body.hasOwnProperty(key)) {
-            const studentid = req.body[key].StudentID;
-            const industry = req.body[key].Industry;
-            const position = req.body[key].Position;
-            const jobtype = req.body[key].JobType;
-            const expectedsalary = req.body[key].ExpectedSalary;
-            const location = req.body[key].Location;
-            const availability = req.body[key].Availability;
+    const studentid = req.body.StudentID;
+    const jobprefid = req.body.JobPreferenceID;
+    const industry = req.body.Industry;
+    const workexp = req.body.WorkExp;
+    const location = req.body.Location;
 
-            mypool.getConnection( (error, connection) => {
-                if(error) {
-                    connection.release()
-                    console.log(`Error getting mysql_pool connection: ${error}`)
-                    throw error
-                }
-                else {
-                    if(studentid && industry && position && type) {               
-                        let queryString = `INSERT INTO pegasus.studentjobpref (studentid, industry, position, jobtype, expectedsalary, location, availability) values ("${studentid}", "${industry}", "${position}", "${jobtype}", "${expectedsalary}", "${location}", "${availability}")`
-                        connection.query(queryString, (err, rows, fields) => {
-                            if(err) {
-                                res.status(500).json({ message: err })
-                            }
-                        }) 
-                    } else {
-                        res.status(400).json({
-                            message: "Bad Request! Invalid POST request!"
-                        });
-                    }
-            
-                }
-                connection.release()
-            } )
+    var foundduplicate = false;
+
+    mypool.getConnection( (error, connection) => {
+        if(error) {
+            connection.release()
+            console.log(`Error getting mysql_pool connection: ${error}`)
+            throw error
         }
-    }
-    res.json({
-        message: "success"
-    })
+        else {
+            if(studentid && industry && position && type) {   
+                let queryString1 = `select * from pegasus.studentjobpref where id = "${jobprefid}" and studentid = "${studentid}"` ;             
+                let queryString2 = `INSERT INTO pegasus.studentjobpref (studentid, industry, workexp, location) values ("${studentid}", "${industry}", "${workexp}", "${location}")`
+                connection.query(queryString1, (err, rows, fields) => {
+                    if(err) {
+                        res.status(500).json({ message: err })
+                    }
+                }) 
+                if(rows.length > 0) {
+                    foundduplicate = true;
+                }
+                if(foundduplicate) {
+                    queryString2 = `UPDATE pegasus.studentjobpref set industry = "${industry}", workexp = "${workexp}" location = "${location}" where id = "${jobprefid}" and studentid = "${studentid}"`
+                }
+                connection.query(queryString2, (err, rows, fields) => {
+                    if(err) {
+                        res.status(500).json({ message: err });
+                    }
+                    else {
+                        res.json({
+                            message: "success"
+                        })
+                    }
+                }) 
+            } else {
+                res.status(400).json({
+                    message: "Bad Request! Invalid POST request!"
+                });
+            }
+    
+        }
+        connection.release()
+    } )
 }
 
 module.exports = studentjobpref

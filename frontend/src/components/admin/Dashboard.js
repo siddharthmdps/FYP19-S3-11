@@ -46,7 +46,7 @@ export class AppliedJobs extends Component {
                     obj[j] = {
                         'key': data[i].id,
                         'username': data[i].username,
-                        'email': data[i].email,
+                        'email': data[i].fieldofstudy,
                     };
                     j++;
                 }
@@ -64,7 +64,7 @@ export class AppliedJobs extends Component {
                 for (var i = data.length - 1; i > data.length - 6; i--) {
                     obj[j] = {
                         'key': data[i].id,
-                        'empid': data[i].empid,
+                        'empid': data[i].username,
                         'title': data[i].title,
                         'description': data[i].description,
                         'dateposted': data[i].dateposted,
@@ -85,9 +85,9 @@ export class AppliedJobs extends Component {
         return (
             <Container fluid style={{ width: '95%' }}>
                 <br />
-                <Row>
-                    <h1 style={{ textAlign: 'center' }}>Dashboard <span ><sub></sub></span></h1>
-                </Row>
+                
+                <h1 className="m-3 d-flex justify-content-center"><b>Dashboard</b></h1>
+                <hr/>
                 <br />
                 <Row>
                     <Col md={{ span: 3 }}>
@@ -98,7 +98,7 @@ export class AppliedJobs extends Component {
                                 <Card.Text>
                                     All Employers
                                 </Card.Text>
-                                <Link to="/admin/employer" className="small-box-footer">More info <i className="fa fa-arrow-circle-right" /></Link>
+                                <Link to="/admin/employer" className="text-success">More info <i className="fa fa-arrow-circle-right" /></Link>
                             </Card.Body>
                         </Card>
 
@@ -109,9 +109,9 @@ export class AppliedJobs extends Component {
                             <Card.Body>
                                 <Card.Title>{this.state.count_allcandidates}</Card.Title>
                                 <Card.Text>
-                                    All Candidates
+                                    All Students
                                 </Card.Text>
-                                <Link to="/admin/candidate" className="small-box-footer">More info <i className="fa fa-arrow-circle-right" /></Link>
+                                <Link to="/admin/student" className="text-success">More info <i className="fa fa-arrow-circle-right" /></Link>
 
                             </Card.Body>
                         </Card>
@@ -125,7 +125,7 @@ export class AppliedJobs extends Component {
                                 <Card.Text>
                                     All Jobs
                             </Card.Text>
-                                <Link to="/admin/jobs" className="small-box-footer">More info <i className="fa fa-arrow-circle-right" /></Link>
+                                <Link to="/admin/jobs" className="text-success">More info <i className="fa fa-arrow-circle-right" /></Link>
 
                             </Card.Body>
                         </Card>
@@ -139,7 +139,7 @@ export class AppliedJobs extends Component {
                                 <Card.Text>
                                     Reports
                             </Card.Text>
-                                <Link to="/admin/reports" className="small-box-footer">More info <i className="fa fa-arrow-circle-right" /></Link>
+                                <Link to="/admin/reports" className="text-success">More info <i className="fa fa-arrow-circle-right" /></Link>
 
                             </Card.Body>
                         </Card>
@@ -163,7 +163,7 @@ export class AppliedJobs extends Component {
                                 <tr>
                                     <th>Employer Username</th>
                                     <th>Title</th>
-                                    <th>Company</th>
+                                    <th>Job description</th>
                                     <th>Date posted</th>
                                 </tr>
                             </thead>
@@ -173,7 +173,7 @@ export class AppliedJobs extends Component {
                                         <td>{job.empid}</td>
                                         <td>{job.title}</td>
                                         <td>{job.description}</td>
-                                        <td>{job.dateposted}</td>
+                                        <td>{job.dateposted.slice(0,10)}</td>
                                     </tr>
                                 )}
                             </tbody>
@@ -184,7 +184,7 @@ export class AppliedJobs extends Component {
                     <Col md={{ span: 6 }} >
                         <Card>
                             <Card.Body>
-                                <Card.Title>Latest Added Candidates</Card.Title>
+                                <Card.Title>Latest Added Students</Card.Title>
                                 <Card.Text>
                                 </Card.Text>
                             </Card.Body>

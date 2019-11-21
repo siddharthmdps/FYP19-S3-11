@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function SwipeableTemporaryDrawer() {
+const SwipeableTemporaryDrawer = (props) => {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -40,7 +40,7 @@ export default function SwipeableTemporaryDrawer() {
     //   onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        <Select/>
+        <Select filter={props.filter} changeFn={event => props.changeFn(event)}/>
       </List>
     </div>
   );
@@ -58,3 +58,4 @@ export default function SwipeableTemporaryDrawer() {
     </div>
   );
 }
+export default SwipeableTemporaryDrawer;

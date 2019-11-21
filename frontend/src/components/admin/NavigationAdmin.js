@@ -20,7 +20,7 @@ class NavbarPage extends Component {
 
   render() {
     return (
-      <MDBNavbar color="blue" scrolling dark expand="md">
+      <MDBNavbar color="success-color" scrolling dark expand="md" >
         <MDBNavbarBrand>
           <MDBNavLink to="/admin"><strong className="white-text">Pegasus@SIM</strong></MDBNavLink>
         </MDBNavbarBrand>
@@ -37,7 +37,7 @@ class NavbarPage extends Component {
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
                   <NavDropdown.Item href="/admin/employer">Employer</NavDropdown.Item>
-                  <NavDropdown.Item href="/admin/candidate">Candidate</NavDropdown.Item>
+                  <NavDropdown.Item href="/admin/student">Student</NavDropdown.Item>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
