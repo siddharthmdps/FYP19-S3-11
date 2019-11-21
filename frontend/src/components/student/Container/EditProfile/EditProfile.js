@@ -704,11 +704,14 @@ class EditProfile extends Component {
 
     validateDocuments = () => {
         for(let idk in this.state.Document){
+            console.log("I am here");
             if(this.state.Document[idk]['Title']===""){
+                console.log("I am here2");
                 this.props.enqueueSnackbar(`Title of #${this.state.Document[idk]['DocumentID']} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.Document[idk]['Link']===""){
+                console.log("I am here3");
                 this.props.enqueueSnackbar(`Select a file for #${this.state.Document[idk]['DocumentID']}!`, { variant: 'error' });
                 return false;
             }
@@ -879,7 +882,7 @@ class EditProfile extends Component {
     }
 
     submitDocuments = () => {
-        if(this.validateDocuments){
+        if(this.validateDocuments()){
             let temp = this.copy(this.state.Document);
             for (let idk in temp) {
                 temp[idk]['StudentID'] = this.state.StudentID;
@@ -1368,7 +1371,7 @@ class EditProfile extends Component {
                                             );
                                         })}
                                         <div className={classes.ButtonSection}>
-                                            <Button1 click={this.addNewDocument}>+ Add More</Button1>
+                                            {this.state.Document.length===0?<Button1 click={this.addNewDocument}>+ Add More</Button1>:null}
                                             <Button1 click={this.submitDocuments}>Next ></Button1>
                                         </div>
                                     </Card.Body>

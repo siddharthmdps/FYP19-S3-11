@@ -21,6 +21,7 @@ class TopNavbar extends Component{
       let tempLeft = {
         "Job Search": "/student/searchjobs",
         "Career Tips": "/careertips",
+        "Polls": "/polls",
         "Blog": "/blog"
       };
 
@@ -42,6 +43,7 @@ class TopNavbar extends Component{
         "Employer": "/employer/viewprofile",
         "Edit Profile": "/employer/editprofile",
         "Post a new Job": "/employer/postjob",
+        "Polls": "/polls",
         "Blog": "/blog"
       };
 
