@@ -182,7 +182,7 @@ const DocumentShell = {
 
 class Profile extends Component {
     state = {
-        "StudentID": localStorage.getItem('id'),
+        "StudentID": this.props.match.params.SID,
         "ProfileImage": "default.png",
         "PersonalParticulars": {},
         "Education": [],

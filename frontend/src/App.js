@@ -7,6 +7,7 @@ import Navbar2 from './components/common_assets/Navbar/Navbar'
 import LoginForm from './components/common_assets/Login/Login'
 import SignUp from './components/common_assets/Signup'
 import About from './components/common_assets/About';
+import CareerTips from './components/common_assets/CareerTips/CareerTips';
 
 // importing Employer Components
 import Employer from './components/employer/Container/Employer'
@@ -141,6 +142,7 @@ class App extends Component {
               <Route exact path="/" component={this.ContentToRender}></Route>
               <Route exact path="/login" component={LoginForm}></Route>
               <Route exact path="/signup" component={SignUp}></Route>
+              <Route exact path="/careertips" component={CareerTips}></Route>
 
 
               {/* Employer Routes */}
@@ -154,7 +156,7 @@ class App extends Component {
               {/* Student Routes */}
               <ProtectedRoute exact path="/student" component={EditProfile}></ProtectedRoute>
               <ProtectedRoute exact path="/student/editprofile" component={EditProfile}></ProtectedRoute>
-              <ProtectedRoute exact path="/student/viewprofile/:SID" component={ViewProfile}></ProtectedRoute>
+              <Route exact path="/student/viewprofile/:SID" component={ViewProfile}></Route>
               <ProtectedRoute exact path="/student/recommendedjobs" component={RecommendedJobs}></ProtectedRoute>
               <ProtectedRoute exact path="/student/appliedjobs" component={AppliedJobs}></ProtectedRoute>
               <ProtectedRoute exact path="/student/savedjobs" component={SavedJobs}></ProtectedRoute>
