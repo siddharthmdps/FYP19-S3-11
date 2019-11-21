@@ -11,7 +11,8 @@ class Signup extends React.Component {
     constructor() {
         super()
         this.state = {
-            usertype: "student"
+            usertype : "student",
+            loading : false
         }
     }
 

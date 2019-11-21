@@ -9,64 +9,75 @@ router.get('/searchjob/:keyword', getJobSearchResults)
 const getstudentaward = require('./getstudentawards')
 router.get('/studentawards/:studentid', getstudentaward)
 
-//post
+//put
 const studentawards = require('./studentawards')
-router.post('/poststudentawards', studentawards)
+router.put('/putstudentawards', studentawards)
 
 //student cert
 //get
 const getstudentcertificate = require('./getstudentcertificate')
 router.get('/studentcertificate/:studentid', getstudentcertificate)
 
-//post
+//put
 const studentcertificate = require('./studentcertificate')
-router.post('/poststudentcertificate', studentcertificate)
+router.put('/putstudentcertificate', studentcertificate)
 
 //student education
 //get
 const getstudenteducation = require('./getstudenteducation')
 router.get('/studenteducation/:studentid', getstudenteducation)
 
-//post
+//put
 const studenteducation = require('./studenteducation')
-router.post('/poststudenteducation', studenteducation)
+router.put('/putstudenteducation', studenteducation)
 
 //student job preference
 //get
 const getstudentjobpref = require('./getstudentjobpref')
 router.get('/studentjobpref/:studentid', getstudentjobpref)
 
-//post
+//put
 const studentjobpref = require('./studentjobpref')
-router.post('/poststudentjobpref', studentjobpref)
+router.put('/putstudentjobpref', studentjobpref)
 
 //student project
 //get
 const getstudentproject = require('./getstudentproject')
 router.get('/studentproject/:studentid', getstudentproject)
 
-//post
+//put
 const studentproject = require('./studentproject')
-router.post('/poststudentproject', studentproject)
+router.put('/putstudentproject', studentproject)
 
 //student work exp
 //get
 const getstudentworkexp = require('./getstudentworkexp')
 router.get('/studentworkexp/:studentid', getstudentworkexp)
 
-//post
+//put
 const studentworkexp = require('./studentworkexp')
-router.post('/poststudentworkexp', studentworkexp)
+router.put('/putstudentworkexp', studentworkexp)
 
 //student document
 //get
 const getstudentdocument = require('./getstudentdocument')
 router.get('/studentdocument/:studentid', getstudentdocument)
 
-//post
+//put
 const studentdocument = require('./studentdocument')
-router.post('/poststudentdocument', studentdocument)
+router.put('/putstudentdocument', studentdocument)
 
+//student skills
+//get
+const getstudentskills = require('./getstudentskills')
+router.get('/studentskills/:studentid', getstudentskills)
+
+//put
+const studentskills = require('./studentskills')
+router.put('/putstudentskills', studentskills)
+
+const submitpoll = require('./submitpoll')
+router.put('/submitpoll/:pollID&:choice', submitpoll)
 
 //gt all student details
 const getallstudentdetails = require('./getallstudentdetails')
@@ -82,7 +93,7 @@ router.get('/studentinfo/:studentid',(req, res, next) => {
 	  		throw err;
 	  	}
         if (studentid) {
-            connection.query("SELECT ID as 'StudentID',FirstName,MiddleName,LastName,Email,Phone,Country,City,CurrentAddress,PostalCode,Nationality FROM student WHERE id = ?", [studentid], function(error, results, fields) {
+            connection.query("SELECT ID as 'StudentID',FirstName,MiddleName,LastName,Email,Phone,Country,City,CurrentAddress,PostalCode,Nationality,Availability, LinkedIn,ProfileImage FROM student WHERE id = ?", [studentid], function(error, results, fields) {
                 if (error) {
                     res.status(500).json({
                         message: error
@@ -115,6 +126,8 @@ router.post('/studentinfo/createStudent', (req, res, next) => {
     const currentaddress = req.body.currentaddress;
     const postalcode = req.body.postalcode;
     const nationality = req.body.nationality;
+    const availability = req.body.Availability;
+    const linkedin = req.body.LinkedIn;
     const username = req.body.username;
     const password = req.body.password;
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -125,22 +138,64 @@ router.post('/studentinfo/createStudent', (req, res, next) => {
 	  		throw err;
 	  	}
         if (username && fullname && email && password && usertype) {
-            connection.query('INSERT INTO pegasus.student (firstname, middlename, lastname, email, phone, country, city, currentaddress, postalcode, nationality, username, password) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [firstname, middlename, lastname, email, phone, country, city, currentaddress, postalcode, nationality, username, password], function(error, results, fields) {
+            connection.query('INSERT INTO pegasus.student (firstname, middlename, lastname, email, phone, country, city, currentaddress, postalcode, nationality, availability, linkedin, username, password) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [firstname, middlename, lastname, email, phone, country, city, currentaddress, postalcode, nationality, availability, linkedin, username, password], function(error, results, fields) {
                 if (error) {
                     res.status(500).json({
                         message: error
                     });
                 }
-                if (results && results.length > 0) {
+                if (results) {
                     res.status(200).json({
-                    message: "Success! User created for " + fullname + "!"
+                        message: "Success"
                     });    
                 }
-                else if (!results || results.length == 0) {
-                    res.status(200).json({
+                else if (!results) {
+                    res.status(500).json({
                         message: "Failed!"
                     });
                 }
+            });
+        } else {
+            res.status(400).json({
+                message: "Bad Request! Invalid POST request!"
+            });
+        }
+
+        connection.release();     
+    });
+});
+
+router.put('/studentinfo/updateStudent', (req, res, next) => {
+    const studentid = req.body.StudentID;
+    const firstname = req.body.FirstName;
+    const middlename = req.body.MiddleName;
+    const lastname = req.body.LastName;
+    const email = req.body.Email;
+    const phone = req.body.Phone;
+    const country = req.body.Country;
+    const city = req.body.City;
+    const currentaddress = req.body.CurrentAddress;
+    const postalcode = req.body.PostalCode;
+    const nationality = req.body.Nationality;
+    const availability = req.body.Availability;
+    const linkedin = req.body.LinkedIn;
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    mypool.getConnection(function(err,connection) {
+        if (err) {
+			connection.release();
+	  		console.log(' Error getting mysql_pool connection: ' + err);
+	  		throw err;
+	  	}
+        if (firstname && email && currentaddress) {
+            connection.query(`UPDATE pegasus.student SET firstname = "${firstname}", middlename = "${middlename}", lastname = "${lastname}", email = "${email}", phone = "${phone}", country = "${country}", city = "${city}", currentaddress = "${currentaddress}", postalcode = "${postalcode}", nationality = "${nationality}", availability = "${availability}", linkedin = "${linkedin}" WHERE id = "${studentid}"`, function(error, results, fields) {
+                if (error) {
+                    res.status(500).json({
+                        message: error
+                    });
+                }
+                res.status(200).json({
+                    message: "Success"
+                }); 
             });
         } else {
             res.status(400).json({

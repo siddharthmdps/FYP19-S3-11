@@ -61,3 +61,15 @@ Week 13
 Week 14
 - Setup mySQL database on Amazon Web services
 - Began to integrate frontend and backend
+
+Week 15
+- Setting up endpoints to communicate (GET,POST,PUT,DELETE) with frontend
+
+Week 16
+- Continued to work on frontend and backend integrations
+
+Week 17
+- Restructured the website so that all the pages protected (no accessible unlesss logged in)
+
+Week 18
+- Worked on adding file transfer support (image and pdf files) through fetch API
