@@ -125,8 +125,13 @@ class EditProfile extends Component {
     // Handling Form Inputs starts here
 
     changeNewProfile = event => {
-        console.log(event.target.value);
-        this.setState({NewProfile: {"Modal": true, "Location": event.target.files[0]}})
+        if(event.target.files[0]["type"]=== "image/png" || event.target.files[0]["type"]=== "image/jpg" || event.target.files[0]["type"]=== "image/jpeg"){
+            console.log(event.target.value);
+            this.setState({NewProfile: {"Modal": true, "Location": event.target.files[0]}});
+        }
+        else{
+            this.props.enqueueSnackbar('Only PNG/JPG/JPEG supported!', { variant: 'error' });
+        }
     }
 
     changePersonalParticulars = event => {
@@ -135,7 +140,7 @@ class EditProfile extends Component {
         let tempState = this.state.PersonalParticulars;
         tempState[event.target.id] = event.target.value;
         console.log(tempState);
-        this.setState({PersonalPaticulars: tempState});
+        this.setState({PersonalParticulars: tempState});
     }
 
     changeEducation = (event, elementID) => {
@@ -888,7 +893,12 @@ class EditProfile extends Component {
                 temp[idk]['StudentID'] = this.state.StudentID;
             }
             console.log(temp);
-            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentdocument', temp)
+            const fd = new FormData();
+            fd.append('file', this.state.Document[0].Link);
+            fd.append('Title', this.state.Document[0].Title);
+            fd.append('StudentID', this.state.StudentID);
+            console.log(fd);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentdocument', fd)
                 .then(response => {
                     this.props.enqueueSnackbar('Documents uploaded!', { variant: 'success' });
                     this.togglePanel(9);
@@ -929,7 +939,9 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Personal Particulars!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error getting Personal Particulars!', { variant: 'error' });
+                let tempPP = { ...PersonalParticularsShell }
+                this.setState({ PersonalParticulars: tempPP });
             });
 
         Axios.get(`${apiURL}student/studenteducation/${this.state.StudentID}`)
@@ -951,7 +963,7 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Education details!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error getting Education details!', { variant: 'error' });
             });
 
         Axios.get(`${apiURL}student/studentworkexp/${this.state.StudentID}`)
@@ -973,7 +985,7 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Work Experience details!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error getting Work Experience details!', { variant: 'error' });
             });
 
         Axios.get(`${apiURL}student/studentjobpref/${this.state.StudentID}`)
@@ -989,7 +1001,9 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Job Preference details!', { variant: 'error' });
+                let tempJP = { ...JobPreferenceShell};
+                this.setState({ JobPreference: tempJP });
+                // this.props.enqueueSnackbar('Error getting Job Preference details!', { variant: 'error' });
             });
 
         Axios.get(`${apiURL}student/studentawards/${this.state.StudentID}`)
@@ -1010,7 +1024,7 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Award details!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error getting Award details!', { variant: 'error' });
             });
 
         Axios.get(`${apiURL}student/studentcertificate/${this.state.StudentID}`)
@@ -1032,7 +1046,7 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Certification details!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error getting Certification details!', { variant: 'error' });
             });
 
         Axios.get(`${apiURL}student/studentproject/${this.state.StudentID}`)
@@ -1052,7 +1066,7 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Project details!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error getting Project details!', { variant: 'error' });
             });
 
         Axios.get(`${apiURL}student/studentskills/${this.state.StudentID}`)
@@ -1072,7 +1086,7 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Skills!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error getting Skills!', { variant: 'error' });
             });
 
         Axios.get(`${apiURL}student/studentdocument/${this.state.StudentID}`)
@@ -1092,7 +1106,7 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Document details!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error getting Document details!', { variant: 'error' });
             });
 
         this.togglePanel(0);

@@ -56,7 +56,21 @@ The admin of the system, has the access to all the portal. He handles all the lo
                                 User Manual
                             </span>
                     </Col>
-                    </Row>
+                </Row>
+                <br />
+                <br />
+                <Row>
+                    <Col sm={12} md={{span: 8, offset: 2}} className={classes.SubText}>
+                        Project Video
+                    </Col>
+                </Row>
+                <br />
+                <br />
+                <Row>
+                    <Col sm={12} md={{span: 3, offset: 2}} className={classes.DescriptionText}>
+                    <iframe src="https://www.youtube.com/embed/TcMBFSGVi1c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </Col>
+                </Row>
                     
             </Container>
         );
