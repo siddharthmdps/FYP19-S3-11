@@ -202,6 +202,7 @@ class EmpAppCard extends Component {
         return item
     }
 
+
     componentDidMount() {
         // console.log(this.props);
         this.getEducation(this.props.appID)
@@ -401,10 +402,11 @@ class EmpAppCard extends Component {
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data.message)
                 if (data.message === 'success') {
                     console.log('Applicant has been shortlisted!')
                     alert('Applicant has been shortlisted!')
-                    // document.location.reload(true)
+                    document.location.reload(true)
                 }
             })
             .catch(error => console.log(error))
@@ -416,8 +418,18 @@ class EmpAppCard extends Component {
 
     }
 
+    handleStudentClicked = (event) => {
+        console.log(event)
+        // if (studentId === undefined)
+        //     studentId = 0
+
+        // let studentUrl = `/student/viewprofile/${studentId}`
+        // this.props.history.push(studentUrl)
+    }
+
 
     render() {
+        console.log(this.props)
         return (
             <div className="col-sm-8 mx-auto" style={{ paddingBottom: "10px" }}>
                 <Card className={classes.Card}>
@@ -427,7 +439,11 @@ class EmpAppCard extends Component {
                                 <Card.Title>{this.props.appName}</Card.Title>
                             </Col>
                             <Col sm={3}>
-                                <Button1 >Download <i class="fas fa-file-download"></i></Button1>
+                                {/* /student/viewprofile/${studentId} */}
+
+                                <Link to={`/student/viewprofile/${this.props.appID}`}>
+                                    <Button1 >View Profile<i class="fas fa-file-download"></i></Button1>
+                                </Link>
                             </Col>
                         </Row>
                     </Card.Header>

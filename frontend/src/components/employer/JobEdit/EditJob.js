@@ -6,6 +6,10 @@ import apiURL from '../../../config';
 
 import Axios from 'axios';
 
+import industries from '../../common_assets/CommonLists/Industries'
+import locations from '../../common_assets/CommonLists/Locations'
+import workExpReqList from '../../common_assets/CommonLists/WorkExpReqList'
+
 class EditJob extends Component {
     constructor(props) {
         super()
@@ -57,16 +61,37 @@ class EditJob extends Component {
                                     <Form.Control plaintext readOnly defaultValue={this.employername} />
                                 </Col>
                             </Form.Group>
-                            <Form.Group controlId="formJobLocation">
-                                <Form.Label>Job Location</Form.Label>
-                                <Row >
-                                    <Col md={6}>
-                                        <Form.Control type="text" defaultValue={this.state.joblocation} onChange={this.handleChange} />
-                                    </Col>
-                                </Row>
+                            {/* <Form.Group as={Row} controlId="Location" style={{ textAlign: 'center' }}>
+                                <Form.Label column sm='3'>Location</Form.Label>
+                                <Col sm='8'>
+                                    <Form.Control as="select" value={this.state.location} onChange={this.changeLocationHandler} >
+                                        {locations()}
+                                    </Form.Control>
+                                </Col>
+                            </Form.Group> */}
+
+                            <Form.Group as={Row} controlId="formJobLocation">
+                                <Form.Label column sm='12'>Job Location</Form.Label>
+                                <Col md={6}>
+                                    <Form.Control as="select" defaultValue={this.state.joblocation} onChange={this.handleChange} >
+                                        {locations()}
+                                    </Form.Control>
+                                </Col>
                             </Form.Group>
 
-                            <Form.Group controlId="formJobIndustry">
+                            <Form.Group as={Row} controlId="Industry">
+                                <Form.Label column sm='12'>Industry</Form.Label>
+
+                                <Col md='6'>
+                                    <Form.Control as="select" value={this.state.jobindustry} onChange={this.handleChange} >
+                                        {industries()}
+                                    </Form.Control>
+                                </Col>
+
+
+                            </Form.Group>
+
+                            {/* <Form.Group controlId="formJobIndustry">
                                 <Form.Label>Industry</Form.Label>
                                 <Row >
                                     <Col md={6}>
@@ -74,7 +99,7 @@ class EditJob extends Component {
                                     </Col>
                                 </Row>
 
-                            </Form.Group>
+                            </Form.Group> */}
                             <Form.Group controlId="formJobDescription">
                                 <Form.Label>Job Description</Form.Label>
                                 <Row>
@@ -157,32 +182,33 @@ class EditJob extends Component {
     }
 
     handleSave(event) {
+        event.preventDefault()
         const { jobid } = this.props.match.params;
 
         const job = {
-            empid: localStorage.getItem('id'),
             title: this.state.jobtitle,
-            description: this.state.jobdescription,
             industry: this.state.jobindustry,
-            requiredskills: this.state.jobskills
+            description: this.state.jobdescription,
+            requiredskills: this.state.requiredskills,
+            dateposted: this.state.dateposted,
+            location: this.state.joblocation,
+            yearsofexperience: this.state.yearsofexperience
         }
 
-        const url = `${apiURL}employer/employerinfo/savejob/${this.props.jobID}`
-        const localhost = `http://localhost:3001/employer/savejob/${this.props.jobID}`
+        const url = `${apiURL}admin/editjob/${jobid}`
+        const localhost = `http://localhost:3001/admin/editjob/${jobid}`
 
         fetch(url, {
             method: 'PUT',
             headers: {
+                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(job)
         })
             .then(res => res.json())
             .then(data => {
-                if (data.message === 'success') {
-                    alert('Job updated!')
-                    document.location.reload(true)
-                }
+                alert('Job updated!')
             })
             .catch(error => console.log(error))
 
@@ -199,7 +225,7 @@ class EditJob extends Component {
     handleDelete(event) {
         event.preventDefault()
         const { jobid } = this.props.match.params;
-        let url = `${apiURL}employer/getjobinfo/${jobid}`
+        let url = `${apiURL}admin/deletejob/${jobid}`
         console.log(url)
 
         const job = {
@@ -223,6 +249,7 @@ class EditJob extends Component {
             .then(res => res.json())
             .then((result) => {
                 console.log("Deletion of job successful")
+                alert('job deleted')
             },
                 (error) => {
                     console.log("Failure in deletion of job detected.")
@@ -231,6 +258,7 @@ class EditJob extends Component {
 
         let target = `/employer/viewjobs`
         this.props.history.push(target)
+        document.location.reload(true)
 
 
     }
