@@ -128,6 +128,22 @@ router.get('/getsavedjoblist/:studentid', getsavedjoblist)
 const getjobapplicationstatus = require('./getjobapplicationstatus')
 router.get('/getjobapplicationstatus/:studentid/:jobid', getjobapplicationstatus)
 
+//get recommendedlist
+const getrecommendedjoblistempty = require('./getrecommendedjoblist')
+router.get('/getrecommendedjoblist/', getrecommendedjoblistempty)
+
+//get appliedjobs
+const getappliedjoblistempty = require('./getappliedjoblist')
+router.get('/getappliedjoblist/', getappliedjoblistempty)
+
+//get savedjobs
+const getsavedjoblistempty = require('./getsavedjoblist')
+router.get('/getsavedjoblist/', getsavedjoblistempty)
+
+//get jobapplicationstatus
+const getjobapplicationstatusempty = require('./getjobapplicationstatus')
+router.get('/getjobapplicationstatus/', getjobapplicationstatusempty)
+
 //post applysavejob
 const applysavejob = require('./applysavejob')
 router.post('/applysavejob', applysavejob)
