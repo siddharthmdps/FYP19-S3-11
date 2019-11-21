@@ -104,7 +104,7 @@ class EmpJobView extends Component {
                     console.log(applicant)
                     return (
                         <Row>
-                            <EmpAppCard appID={applicant.id} appName={applicant.firstname.concat(" ", applicant.lastname)} appSkills={applicant.skills} appPhone={applicant.phone} appEmail={applicant.email} jobid={this.state.companyName} />
+                            <EmpAppCard appID={applicant.id} appName={applicant.firstname.concat(" ", applicant.lastname)} appSkills={applicant.skills} appPhone={applicant.phone} appEmail={applicant.email} jobid={this.props.match.params.jobid} />
                         </Row>
 
                     )

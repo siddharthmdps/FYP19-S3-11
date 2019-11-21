@@ -389,9 +389,9 @@ class EmpAppCard extends Component {
         }
 
         // const url = apiURL + `employer/shortlist/`
-        const localhost = 'http://localhost:3001/employer/shortlist/'
+        // const localhost = `${apiURL}employer/shortlist/${appId}`'http://localhost:3001/employer/shortlist/'
 
-        const url = `${apiURL}employer/shortlist/${jobId}`
+        const url = `${apiURL}employer/shortlist/${appId}`
 
         fetch(url, {
             method: 'POST',
@@ -403,10 +403,10 @@ class EmpAppCard extends Component {
             .then(res => res.json())
             .then(data => {
                 console.log(data.message)
-                if (data.message === 'success') {
+                if (data.message === 'shortlisted') {
                     console.log('Applicant has been shortlisted!')
                     alert('Applicant has been shortlisted!')
-                    document.location.reload(true)
+                    // document.location.reload(true)
                 }
             })
             .catch(error => console.log(error))
@@ -415,7 +415,35 @@ class EmpAppCard extends Component {
     }
 
     hire = (appId, jobId) => {
+        console.log(appId, jobId)
+        //to update shortlist link
+        const application = {
+            jobid: jobId,
+            appid: appId
+        }
 
+        // const url = apiURL + `employer/shortlist/`
+        // const localhost = `${apiURL}employer/shortlist/${appId}`'http://localhost:3001/employer/shortlist/'
+
+        const url = `${apiURL}employer/hire/${appId}`
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(application)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.message)
+                if (data.message === 'status updated') {
+                    console.log('Applicant has been hired!')
+                    alert('Applicant has been hired!')
+                    // document.location.reload(true)
+                }
+            })
+            .catch(error => console.log(error))
     }
 
     handleStudentClicked = (event) => {
@@ -487,8 +515,8 @@ class EmpAppCard extends Component {
 
                         </Card.Text> */}
 
-                        <Button1 onClick={() => { this.shortlist(this.props.appID, this.props.jobId) }} >Shortlist</Button1>
-                        <Button1 onClick={() => { this.hire(this.props.appID, this.props.jobId) }} >Hire </Button1>
+                        <Button1 click={() => { this.shortlist(this.props.appID, this.props.jobid) }} >Shortlist</Button1>
+                        <Button1 click={() => { this.hire(this.props.appID, this.props.jobId) }} >Hire </Button1>
                     </Card.Body>
                 </Card>
             </div >
