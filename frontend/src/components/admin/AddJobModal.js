@@ -78,7 +78,7 @@ export class AddJobModal extends Component {
                     <Modal.Body>
 
                         <Row>
-                            <Col sm={6}>
+                            <Col sm={12}>
                                 <Form onSubmit={this.handleSubmit} >
 
                                     <Form.Group controlId="empid">
@@ -89,63 +89,67 @@ export class AddJobModal extends Component {
                                             required
                                             placeholder=""></Form.Control>
                                     </Form.Group>
+                                    <Form.Row>
+                                        <Form.Group as={Col} controlId="title">
+                                            <Form.Label>Title:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="title"
+                                                required
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
 
-                                    <Form.Group controlId="title">
-                                        <Form.Label>Title:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="title"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
+                                        <Form.Group as={Col} controlId="location">
+                                            <Form.Label>Location:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="location"
+                                                required
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
 
-                                    <Form.Group controlId="industry">
-                                        <Form.Label>Industry:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="industry"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
+                                        <Form.Group as={Col} controlId="industry">
+                                            <Form.Label>Industry:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="industry"
+                                                required
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
+                                    </Form.Row>
+
+                                    <Form.Row>
+                                        <Form.Group as={Col} controlId="requiredskills">
+                                            <Form.Label>Required skills:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="requiredskills"
+                                                required
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
+                                        <Form.Group as={Col} controlId="yearsofexperience">
+                                            <Form.Label>Years of experience:</Form.Label>
+                                            <Form.Control
+                                                type="number"
+                                                name="yearsofexperience"
+                                                required
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
+                                    </Form.Row>
 
                                     <Form.Group controlId="description">
                                         <Form.Label>Description:</Form.Label>
                                         <Form.Control
+                                            as="textarea"
+                                            rows="5"
                                             type="text"
                                             name="description"
                                             required
                                             placeholder=""></Form.Control>
                                     </Form.Group>
 
-                                    <Form.Group controlId="requiredskills">
-                                        <Form.Label>Required skills:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="requiredskills"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
-
-                                    <Form.Group controlId="location">
-                                        <Form.Label>Location:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="location"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
-
-                                    <Form.Group controlId="yearsofexperience">
-                                        <Form.Label>Years of experience:</Form.Label>
-                                        <Form.Control
-                                            type="number"
-                                            name="yearsofexperience"
-                                            required
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
-
                                     <Form.Group>
-                                        <Button variant="primary" type="submit">
+                                        <Button variant="outline-success" type="submit">
                                             Create New Job Listing
                                         </Button>
                                     </Form.Group>
@@ -158,7 +162,7 @@ export class AddJobModal extends Component {
 
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="danger" onClick={this.props.onHide}>Close</Button>
+                        <Button variant="outline-danger" onClick={this.props.onHide}>Close</Button>
                     </Modal.Footer>
                 </Modal>
             </div>

@@ -1,15 +1,51 @@
-import React, { Component } from 'react';
-import classes from './Home.module.css';
+import React from "react";
+import {
+  MDBMask,
+  MDBRow,
+  MDBView,
+  MDBContainer,
+  MDBAnimation
+} from "mdbreact";
+import "./index.css";
 
-export class Home extends Component {
-    render() {
-        return ( 
-            <div className={classes.Home}>
-                <div className={classes.HomeContent}>
-                    <h1>Welcome to Pegusus@SIM</h1>
-                    <h2>Admin Management Portal</h2>
-                </div>
-            </div>
-        )
-    }
+class ClassicFormPage extends React.Component {
+
+
+
+
+  render() {
+    return (
+      <div id="classicformpage">
+
+        <MDBView>
+          <MDBMask className="d-flex justify-content-center align-items-center gradient">
+            <MDBContainer>
+              <MDBRow>
+                <MDBAnimation
+                  type="fadeInLeft"
+                  delay=".3s"
+                  className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5"
+                >
+                  <h1 className="h1-responsive font-weight-bold">
+                    Welcome to Pegasus@SIM
+                  </h1>
+                  <hr className="hr-light" />
+                  <h2 className="mb-4">
+                  Admin Management Portal
+                  </h2>
+                  {/* <MDBBtn outline color="white">
+                    Click here to move to Dashboard
+                  </MDBBtn> */}
+                </MDBAnimation>
+
+            
+              </MDBRow>
+            </MDBContainer>
+          </MDBMask>
+        </MDBView>
+      </div>
+    );
+  }
 }
+
+export default ClassicFormPage;

@@ -26,7 +26,7 @@ import SearchJobs from './components/student/Container/SearchJobs/SearchJobs'
 
 // importing Admin Components
 import Admin from './components/admin/Admin'
-import { Home } from './components/admin/Home'
+import  Home  from './components/admin/Home'
 import {AdminEmployer} from './components/admin/Employer'
 import {AdminCandidate} from './components/admin/Candidate'
 import Navigation from './components/admin/NavigationAdmin'
@@ -161,7 +161,7 @@ class App extends Component {
               {/* Admin Routes */}
               <ProtectedRoute exact path="/admin" component={Home}></ProtectedRoute>
               <ProtectedRoute exact path="/admin/dashboard" component={Dashboard}></ProtectedRoute>
-              <ProtectedRoute exact path="/admin/candidate" component={AdminCandidate}></ProtectedRoute>
+              <ProtectedRoute exact path="/admin/student" component={AdminCandidate}></ProtectedRoute>
               <ProtectedRoute exact path="/admin/employer" component={AdminEmployer}></ProtectedRoute>
               <ProtectedRoute exact path="/admin/jobs" component={AdminJobs}></ProtectedRoute>
               <ProtectedRoute exact path="/admin/reports" component={Reports}></ProtectedRoute>

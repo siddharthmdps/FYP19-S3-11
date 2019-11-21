@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Button, Row, Col, Form } from 'react-bootstrap'
+import { Modal, Button, Row, Col, Form, InputGroup } from 'react-bootstrap'
 import Snackbar from '@material-ui/core/SnackBar'
 import IconButton from '@material-ui/core/IconButton'
 
@@ -14,7 +14,7 @@ export class EditEmpModal extends Component {
     snackbarClose = (event) => {
         this.setState({ snackbaropen: false });
     };
-    refresh(){
+    refresh() {
         console.log("asdf");
     }
     handleSubmit(event) {
@@ -40,7 +40,7 @@ export class EditEmpModal extends Component {
             .then(res => res.json())
             .then((result) => {
                 //alert(result);
-                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully updated employer account!'});
+                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully updated employer account!' });
             },
                 (error) => {
                     //alert('Failed')
@@ -83,7 +83,7 @@ export class EditEmpModal extends Component {
                     <Modal.Body>
 
                         <Row>
-                            <Col sm={6}>
+                            <Col sm={12}>
                                 <Form onSubmit={this.handleSubmit}>
 
                                     <Form.Group controlId="id">
@@ -96,25 +96,30 @@ export class EditEmpModal extends Component {
                                             defaultValue={this.props.id}
                                             placeholder="id"></Form.Control>
                                     </Form.Group>
+                                    <Form.Row>
+                                        <Form.Group as={Col} controlId="username">
+                                            <Form.Label>Username:</Form.Label>
+                                            <InputGroup>
+                                                <InputGroup.Prepend>
+                                                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                <Form.Control
+                                                    type="text"
+                                                    name="Username"
+                                                    required
+                                                    defaultValue={this.props.username}
+                                                    placeholder="Username"></Form.Control>
+                                            </InputGroup>
+                                        </Form.Group>
 
-                                    <Form.Group controlId="username">
-                                        <Form.Label>Username:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="Username"
-                                            required
-                                            defaultValue={this.props.username}
-                                            placeholder="Username"></Form.Control>
-                                    </Form.Group>
-
-                                    <Form.Group controlId="password">
-                                        <Form.Label>Password:</Form.Label>
-                                        <Form.Control
-                                            type="password"
-                                            name="password"
-                                            placeholder="Leave blank if unchanged"></Form.Control>
-                                    </Form.Group>
-
+                                        <Form.Group as={Col} controlId="password">
+                                            <Form.Label>Password:</Form.Label>
+                                            <Form.Control
+                                                type="password"
+                                                name="password"
+                                                placeholder="Leave blank if unchanged"></Form.Control>
+                                        </Form.Group>
+                                    </Form.Row>
                                     <Form.Group controlId="companyname">
                                         <Form.Label>Company Name:</Form.Label>
                                         <Form.Control
@@ -125,8 +130,20 @@ export class EditEmpModal extends Component {
                                             placeholder="companyname"></Form.Control>
                                     </Form.Group>
 
-                                    <Form.Group controlId="companyphone">
-                                        <Form.Label>Company Phone:</Form.Label>
+                                    <Form.Group controlId="companydescription">
+                                        <Form.Label>Company Description:</Form.Label>
+                                        <Form.Control
+                                            as="textarea"
+                                            rows="3"
+                                            type="text"
+                                            name="companydescription"
+                                            required
+                                            defaultValue={this.props.companydescription}
+                                            placeholder="companydescription"></Form.Control>
+                                    </Form.Group>
+<Form.Row>
+                                    <Form.Group as={Col} controlId="companyphone">
+                                        <Form.Label>Company Phone Number:</Form.Label>
                                         <Form.Control
                                             type="number"
                                             name="companyphone"
@@ -135,25 +152,17 @@ export class EditEmpModal extends Component {
                                             placeholder="companyphone"></Form.Control>
                                     </Form.Group>
 
-                                    <Form.Group controlId="companyemail">
+                                    <Form.Group as={Col} controlId="companyemail">
                                         <Form.Label>Company E-mail:</Form.Label>
                                         <Form.Control
-                                            type="text"
+                                            type="email"
                                             name="companyemail"
                                             required
                                             defaultValue={this.props.companyemail}
                                             placeholder="companyemail"></Form.Control>
                                     </Form.Group>
+                                    </Form.Row>
 
-                                    <Form.Group controlId="companydescription">
-                                        <Form.Label>Company Description:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="companydescription"
-                                            required
-                                            defaultValue={this.props.companydescription}
-                                            placeholder="companydescription"></Form.Control>
-                                    </Form.Group>
 
                                     <Form.Group controlId="companyaddress">
                                         <Form.Label>Company Address:</Form.Label>
@@ -166,7 +175,7 @@ export class EditEmpModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="industry">
-                                        <Form.Label>Industry:</Form.Label>
+                                        <Form.Label>Company Industry:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="industry"
@@ -176,7 +185,7 @@ export class EditEmpModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group>
-                                        <Button variant="primary" type="submit">
+                                        <Button variant="outline-success" type="submit">
                                             Update Employer Account
                                         </Button>
                                     </Form.Group>
@@ -189,7 +198,7 @@ export class EditEmpModal extends Component {
 
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="danger" onClick={this.props.onHide}>Close</Button>
+                        <Button variant="outline-danger" onClick={this.props.onHide}>Close</Button>
                     </Modal.Footer>
                 </Modal>
             </div>
