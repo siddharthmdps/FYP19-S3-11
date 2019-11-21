@@ -72,6 +72,7 @@ const studentjobpref = (req, res) => {
                         res.status(500).json({ message: err })
                     }
                     else {
+                        let queryString2 = `INSERT INTO pegasus.studentjobpref (studentid, industry, workexp, location) values ("${studentid}", "${industry}", "${workexp}", "${location}")`
                         connection.query(queryString2, (err, rows, fields) => {
                             if(err) {
                                 res.status(500).json({ message: err });

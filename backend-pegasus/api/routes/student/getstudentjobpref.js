@@ -28,7 +28,7 @@ const getstudentjobpref = (req, res) => {
                     }
                     else if(rows.length > 1) {
                         res.json({
-                            JobPreference: rows[1]
+                            JobPreference: rows[1][0]
                         })
                     }
                     // else {

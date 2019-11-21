@@ -91,6 +91,10 @@ router.get('/studentdocument/:studentid', getstudentdocument)
 const studentdocument = require('./studentdocument')
 router.put('/putstudentdocument', studentdocument)
 
+//delete
+const delstudentdocument = require('./deletestudentdocument')
+router.delete('/deletestudentdocument', delstudentdocument)
+
 //student skills
 //get
 const getstudentskills = require('./getstudentskills')
