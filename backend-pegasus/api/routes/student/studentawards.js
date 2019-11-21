@@ -14,11 +14,13 @@ const studentawards = (req, res) => {
         }
         else {
             connection.query(queryString1, (err, rows, fields) => {
+                console.log(queryString1);
                 for(var key in req.body) {
                     if(req.body.hasOwnProperty(key)) {
                         const studentid = req.body[key].StudentID;
                         const awardid = req.body[key].AwardID;
                         const awardname = req.body[key].Award;
+                        var awarddesc = req.body[key].Description;
                         var awarddate = req.body[key].Date;
 
                         //var foundduplicate = false;

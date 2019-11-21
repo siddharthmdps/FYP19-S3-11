@@ -26,7 +26,7 @@ const studentawards = (req, res) => {
                         if(studentid && certname && issuedby && issueddate) {    
                             //let queryString1 = `select * from pegasus.studentcertificate where id = "${certid}" and studentid = "${studentid}"` ;           
                             let queryString2 = `INSERT INTO pegasus.studentcertificate (studentid, certificatename, issuedby, issueddate, validuntil) values ("${studentid}", "${certname}", "${issuedby}", "${issueddate}", "${validuntil}")`
-                            connection.query(queryString1, (err, rows, fields) => {
+                            connection.query(queryString2, (err, rows, fields) => {
                                 if(err) {
                                     success = false;
                                     res.status(500).json({ message: err });
