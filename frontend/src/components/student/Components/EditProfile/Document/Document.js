@@ -22,7 +22,8 @@ const document = props => {
             </Form.Group>
 
             <Form.Group as={Row} controlId="Link">
-                <Form.Label column sm="2">Upload</Form.Label>
+                {props.details.Link===""?<Form.Label column sm="2">Upload</Form.Label>:<Form.Label column sm="2">Replace File</Form.Label>}
+                {/* <Form.Label column sm="2">Upload</Form.Label> */}
                 <Col sm="10"><Form.Control type='file' onChange={props.changeFn} required/></Col>
             </Form.Group>
         </React.Fragment>
