@@ -11,9 +11,11 @@ import Skills from '../../Components/EditProfile/Skills/Skills';
 import Projects from '../../Components/EditProfile/Projects/Projects';
 import Document from '../../Components/EditProfile/Document/Document';
 import Button1 from '../../../common_assets/Button1/Button1';
-import { Accordion, Card, Container, Col, Row, Form } from 'react-bootstrap';
+import { Accordion, Card, Container, Col, Row, Form, Image } from 'react-bootstrap';
 import ppClasses from '../../../common_assets/Validate.module.css';
 import apiURL from '../../../../config';
+
+import Modal from '../../Components/EditProfile/LeftSide/Modal'
 
 import { withSnackbar } from 'notistack';
 
@@ -104,8 +106,9 @@ const DocumentShell = {
 class EditProfile extends Component {
 
     state = {
-        "StudentID": "1",
+        "StudentID": localStorage.getItem('id'),
         "ProfileImage": "default.png",
+        "NewProfile": {"Modal": false, "Location": ""},
         "PersonalParticulars": {},
         "Education": [],
         "WorkExp": [],
@@ -120,6 +123,11 @@ class EditProfile extends Component {
     }
 
     // Handling Form Inputs starts here
+
+    changeNewProfile = event => {
+        console.log(event.target.value);
+        this.setState({NewProfile: {"Modal": true, "Location": event.target.files[0]}})
+    }
 
     changePersonalParticulars = event => {
         console.log(event.target.id);
@@ -472,6 +480,11 @@ class EditProfile extends Component {
         if(tempDate<10)
             tempDate = '0' + tempDate;
         
+        if( isNaN(tempDate) || isNaN(tempMonth) || isNaN(tempYear)){
+            console.log("Not a Number " + date);
+            return "";
+        }
+
         format = format.replace("dd", tempDate);
         format = format.replace("mm", tempMonth);
         format = format.replace("yyyy", tempYear);
@@ -480,59 +493,375 @@ class EditProfile extends Component {
         return format;
     }
 
+    copy = o => {
+        var output, v, key;
+        output = Array.isArray(o) ? [] : {};
+        for (key in o) {
+            v = o[key];
+            output[key] = (typeof v === "object") ? this.copy(v) : v;
+        }
+        return output;
+     }
+
     // Removing elements in the Profile ends here
 
+    //Validation of the Profile starts here
+
+    validatePersonalParticulars = () => {
+        if(this.state.PersonalParticulars.FirstName === ""){
+            this.props.enqueueSnackbar('First Name cannot be empty!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.LastName === ""){
+            this.props.enqueueSnackbar('Last Name cannot be empty!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.Email === ""){
+            this.props.enqueueSnackbar('Email is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.Phone === ""){
+            this.props.enqueueSnackbar('Phone is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.CurrentAddress === ""){
+            this.props.enqueueSnackbar('Current Address is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.City === ""){
+            this.props.enqueueSnackbar('City is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.Country === ""){
+            this.props.enqueueSnackbar('Country is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.PostalCode === ""){
+            this.props.enqueueSnackbar('Postal Code is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.Nationality === ""){
+            this.props.enqueueSnackbar('Nationality is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.Availability === ""){
+            this.props.enqueueSnackbar('Availability is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.LinkedIn === ""){
+            this.props.enqueueSnackbar('LinkedIn is not valid!', { variant: 'error' });
+            return false;
+        }
+        return true;
+
+    }
+
+    validateEducation = () => {
+        for (let idk in this.state.Education) {
+            if(this.state.Education[idk]['University'] === ""){
+                this.props.enqueueSnackbar(`University of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['Degree'] === ""){
+                this.props.enqueueSnackbar(`Degree of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['FieldOfStudy'] === ""){
+                this.props.enqueueSnackbar(`FieldOfStudy of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['Major'] === ""){
+                this.props.enqueueSnackbar(`Major of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['StartDate'] === ""){
+                this.props.enqueueSnackbar(`StartDate of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['EndDate'] === ""){
+                this.props.enqueueSnackbar(`EndDate of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['Mode'] === ""){
+                this.props.enqueueSnackbar(`Mode of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['GPA'] === ""){
+                this.props.enqueueSnackbar(`GPA of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+        }
+        return true;
+    }
+
+    validateWorkExp = () => {
+        for(let idk in this.state.WorkExp){
+            if(this.state.WorkExp[idk]['Position']===""){
+                this.props.enqueueSnackbar(`Position of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['Company']===""){
+                this.props.enqueueSnackbar(`Company of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['StartDate']===""){
+                this.props.enqueueSnackbar(`StartDate of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['EndDate']===""){
+                this.props.enqueueSnackbar(`EndDate of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['Mode']===""){
+                this.props.enqueueSnackbar(`Mode of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['Industry']===""){
+                this.props.enqueueSnackbar(`Industry of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['AnnualSalary']===""){
+                this.props.enqueueSnackbar(`AnnualSalary of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+        }
+        return true;
+    }
+
+    validateJobPreference = () => {
+        if(this.state.JobPreference.Industry===""){
+            this.props.enqueueSnackbar('Industry cannot be empty!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.JobPreference.WorkExp===""){
+            this.props.enqueueSnackbar('WorkExp cannot be empty!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.JobPreference.Location===""){
+            this.props.enqueueSnackbar('Location cannot be empty!', { variant: 'error' });
+            return false;
+        }
+        return true;
+    }
+
+    validateAwards = () => {
+        for(let idk in this.state.Awards){
+            if(this.state.Awards[idk]['Award']===""){
+                this.props.enqueueSnackbar(`Award of #${this.state.Awards[idk]['AwardID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Awards[idk]['Date']===""){
+                this.props.enqueueSnackbar(`Date of #${this.state.Awards[idk]['AwardID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Awards[idk]['Description']===""){
+                this.props.enqueueSnackbar(`Description of #${this.state.Awards[idk]['AwardID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+        }
+        return true;
+    }
+
+    validateCertification = () => {
+        for(let idk in this.state.Certification){
+            if(this.state.Certification[idk]['Name']===""){
+                this.props.enqueueSnackbar(`Name of #${this.state.Certification[idk]['CertificateID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Certification[idk]['IssuedBy']===""){
+                this.props.enqueueSnackbar(`IssuedBy of #${this.state.Certification[idk]['CertificateID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Certification[idk]['IssueDate']===""){
+                this.props.enqueueSnackbar(`IssueDate of #${this.state.Certification[idk]['CertificateID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Certification[idk]['ValidUntil']===""){
+                this.props.enqueueSnackbar(`ValidUntil of #${this.state.Certification[idk]['CertificateID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+        }
+        return true;
+    }
+
+    validateProjects = () => {
+        for(let idk in this.state.Projects){
+            if(this.state.Projects[idk]['Title']===""){
+                this.props.enqueueSnackbar(`Title of #${this.state.Projects[idk]['ProjectID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Projects[idk]['Status']===""){
+                this.props.enqueueSnackbar(`Status of #${this.state.Projects[idk]['ProjectID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Projects[idk]['Description']===""){
+                this.props.enqueueSnackbar(`Description of #${this.state.Projects[idk]['ProjectID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //Validation of the Profile ends here
+
     // Submit elements to put in Backend starts here
-    submitPersonalParticulars = () => {
-        const temp = {...this.state.PersonalParticulars};
-        console.log(temp);
-        Axios.put('https://pegasus-backend.herokuapp.com/student/studentinfo/updateStudent', temp)
+    submitNewProfile = () => {
+        if(this.state.NewProfile.NewUpload){
+
+            const fd = new FormData();
+            fd.append('file', this.state.NewProfile.Location, this.state.NewProfile.Location.name);
+            console.log(fd);
+            Axios.post(`/uploadstudentpicture/${this.state.StudentID}`, fd)
             .then(response => {
+                console.log(response);
+            });
+        }
+    }
+
+    submitPersonalParticulars = () => {
+        if(this.validatePersonalParticulars()){
+            const temp = {...this.state.PersonalParticulars};
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/studentinfo/updateStudent', temp)
+            .then(response => {
+                this.props.enqueueSnackbar('Personal Particulars uploaded!', { variant: 'success' });
                 this.togglePanel(1);
             })
             .catch(error => {
                 this.props.enqueueSnackbar('Error storing Personal Particulars!', { variant: 'error' });
             });
-    }
-    submitEducation = () => {
-        let temp = [...this.state.Education];
-        for (let idk in temp) {
-            temp[idk]['StudentID'] = 1;
-            temp[idk]['StartDate'] = this.adjustDate(temp[idk]['StartDate'], "dd/mm/yyyy");
-            temp[idk]['EndDate'] = this.adjustDate(temp[idk]['EndDate'], "dd/mm/yyyy");
         }
-        console.log(temp);
-        Axios.put('https://pegasus-backend.herokuapp.com/student/putstudenteducation', temp)
-            .then(response => {
-                this.togglePanel(2);
-            })
-            .catch(error => {
-                this.props.enqueueSnackbar('Error storing Education!', { variant: 'error' });
-            });
+    }
+
+    submitEducation = () => {
+        if(this.validateEducation()){
+            let temp = this.copy(this.state.Education);
+            console.log(temp)
+            for (let idk in temp) {
+                temp[idk]['StudentID'] = this.state.StudentID;
+                temp[idk]['StartDate'] = this.adjustDate(temp[idk]['StartDate'], "dd/mm/yyyy");
+                temp[idk]['EndDate'] = this.adjustDate(temp[idk]['EndDate'], "dd/mm/yyyy");
+            }
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudenteducation', temp)
+                .then(response => {
+                    this.props.enqueueSnackbar('Education details uploaded!', { variant: 'success' });
+                    this.togglePanel(2);
+                })
+                .catch(error => {
+                    this.props.enqueueSnackbar('Error storing Education!', { variant: 'error' });
+                });
+        }
     }
 
     submitWorkExp = () => {
-        this.togglePanel(3);
+        if(this.validateWorkExp()){
+            let temp = this.copy(this.state.WorkExp);
+            console.log(temp)
+            for (let idk in temp) {
+                temp[idk]['StudentID'] = this.state.StudentID;
+                temp[idk]['StartDate'] = this.adjustDate(temp[idk]['StartDate'], "dd/mm/yyyy");
+                temp[idk]['EndDate'] = this.adjustDate(temp[idk]['EndDate'], "dd/mm/yyyy");
+            }
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentworkexp', temp)
+                .then(response => {
+                    this.props.enqueueSnackbar('Work Exp. details uploaded!', { variant: 'success' });
+                    this.togglePanel(3);
+                })
+                .catch(error => {
+                    this.props.enqueueSnackbar('Error storing Work Exp.!', { variant: 'error' });
+                });
+        }
     }
 
     submitJobPreference = () => {
-        this.togglePanel(4);
+        if(this.validateJobPreference()){
+            const temp = {...this.state.JobPreference};
+            temp['StudentID'] = this.state.StudentID;
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentjobpref', temp)
+            .then(response => {
+                this.props.enqueueSnackbar('Job Preference uploaded!', { variant: 'success' });
+                this.togglePanel(4);
+            })
+            .catch(error => {
+                this.props.enqueueSnackbar('Error storing Job Preference!', { variant: 'error' });
+            });
+        }
     }
 
     submitAwards = () => {
-        this.togglePanel(5);
+        if(this.validateAwards()){
+            let temp = this.copy(this.state.Awards);
+            for (let idk in temp) {
+                temp[idk]['StudentID'] = this.state.StudentID;
+                temp[idk]['Date'] = this.adjustDate(temp[idk]['Date'], "dd/mm/yyyy");
+            }
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/puttstudentawards', temp)
+                .then(response => {
+                    this.props.enqueueSnackbar('Award details uploaded!', { variant: 'success' });
+                    this.togglePanel(5);
+                })
+                .catch(error => {
+                    this.props.enqueueSnackbar('Error storing Award!', { variant: 'error' });
+                });
+        }
     }
 
     submitCertification = () => {
-        this.togglePanel(6);
+        if(this.validateCertification()){
+            let temp = this.copy(this.state.Certification);
+            for (let idk in temp) {
+                temp[idk]['StudentID'] = this.state.StudentID;
+                temp[idk]['IssueDate'] = this.adjustDate(temp[idk]['IssueDate'], "dd/mm/yyyy");
+                temp[idk]['ValidDate'] = this.adjustDate(temp[idk]['ValidDate'], "dd/mm/yyyy");
+            }
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentcertificate', temp)
+                .then(response => {
+                    this.props.enqueueSnackbar('Certificate details uploaded!', { variant: 'success' });
+                    this.togglePanel(6);
+                })
+                .catch(error => {
+                    this.props.enqueueSnackbar('Error storing Certificate!', { variant: 'error' });
+                });
+        }
     }
 
     submitProjects = () => {
-        this.togglePanel(7);
+        if(this.validateProjects()){
+            let temp = this.copy(this.state.Projects);
+            for (let idk in temp) {
+                temp[idk]['StudentID'] = this.state.StudentID;
+            }
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentproject', temp)
+                .then(response => {
+                    this.props.enqueueSnackbar('Project details uploaded!', { variant: 'success' });
+                    this.togglePanel(7);
+                })
+                .catch(error => {
+                    this.props.enqueueSnackbar('Error storing Project!', { variant: 'error' });
+                });
+        }
     }
 
     submitSkills = () => {
-        this.togglePanel(8);
+        let temp = this.copy(this.state.Skills);
+        for (let idk in temp) {
+            temp[idk]['StudentID'] = this.state.StudentID;
+        }
+        console.log(temp);
+        Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentskills', temp)
+            .then(response => {
+                this.props.enqueueSnackbar('Skills details uploaded!', { variant: 'success' });
+                this.togglePanel(8);
+            })
+            .catch(error => {
+                this.props.enqueueSnackbar('Error storing Skills!', { variant: 'error' });
+            });
     }
 
     submitDocuments = () => {
@@ -553,6 +882,8 @@ class EditProfile extends Component {
     
 
     componentDidMount() {
+        this.setState({"StudentID": localStorage.getItem('id')});
+
 
         Axios.get(`${apiURL}student/studentinfo/${this.state.StudentID}`)
             .then(receivedData => {
@@ -742,8 +1073,13 @@ class EditProfile extends Component {
                 <br />
                 <Row >
                     <Col md={{ span: 3 }} className={classes.LeftSide}>
-                        <LeftSide imageLink={this.state.ProfileImage} />
-
+                        <LeftSide imageLink={this.state.ProfileImage} changeFn={event => this.changeNewProfile(event)} />
+                        {this.state.NewProfile.Modal?<Modal
+                            show={this.state.NewProfile.Modal}
+                            onHide={() => this.setState({NewProfile: {"Modal": false, "Location": ""}})}
+                            NewProfile={this.state.NewProfile.Location} 
+                            click={this.submitNewProfile}
+                        />: null}
                     </Col>
                     <Col md={{ offset: 3, span: 9 }} >
                         <Accordion className={classes.Accordian} activeKey={this.state.activatedToggle}>

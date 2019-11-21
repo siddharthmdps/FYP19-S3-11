@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Blog.module.css';
-
+import Product from './Product/Product'
 class Blog extends Component {
 
     componentDidMount(){
@@ -9,9 +9,7 @@ class Blog extends Component {
 
     render(){
         return(
-            <React.Fragment>
-                
-            </React.Fragment>
+            <Product {...this.props} useBlog={this.props.useBlog}/>
         );
     }
 }

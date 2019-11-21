@@ -1,12 +1,12 @@
 .ProjectMM{
     display: flex;
-
 }
+
 .LeftSide {
     min-height: 100vh;
     display: flex;
     flex-flow: column;
-    background-color:red;
+    background-color:#000;
     align-items: center;
     justify-content: center;
 }
@@ -24,4 +24,17 @@
 .Image{
     border-radius: 50%;
     object-fit: cover;
+}
+
+.NavLink {
+    color: lightgreen;
+}
+
+.NavLink:hover {
+    color: greenyellow;
+}
+
+.NavLink:active,
+.NavLink:focus {
+    background-color: lightgreen!important;
 }
