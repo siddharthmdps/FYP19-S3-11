@@ -22,6 +22,7 @@ class EditJob extends Component {
             jobdescription: "",
             joblocation: "",
             jobindustry: "",
+            yearsofexperience: ""
             // jobskills: props.jobskills
         }
         this.employername = localStorage.getItem('username')
@@ -43,7 +44,7 @@ class EditJob extends Component {
                             </Row>
                             <Row>
                                 <Col md={6}>
-                                    <Form.Control type='text' defaultValue={this.state.jobtitle} onChange={this.handleChange} />
+                                    <Form.Control type='text' defaultValue={this.state.jobtitle} onChange={this.changeTitleHandler} />
                                 </Col>
 
                             </Row>
@@ -71,22 +72,24 @@ class EditJob extends Component {
                             </Form.Group> */}
 
                             <Form.Group as={Row} controlId="formJobLocation">
-                                <Form.Label column sm='12'>Job Location</Form.Label>
-                                <Col md={6}>
-                                    <Form.Control as="select" defaultValue={this.state.joblocation} onChange={this.handleChange} >
+                                <Form.Label column sm='2'>Job Location</Form.Label>
+                                <Col sm={8}>
+                                    <Form.Control as="select" defaultValue={this.state.joblocation} onChange={this.changeLocationHandler} >
                                         {locations()}
                                     </Form.Control>
                                 </Col>
+                                <Col sm={2} />
                             </Form.Group>
 
                             <Form.Group as={Row} controlId="Industry">
-                                <Form.Label column sm='12'>Industry</Form.Label>
+                                <Form.Label column sm='2'>Industry</Form.Label>
 
-                                <Col md='6'>
-                                    <Form.Control as="select" value={this.state.jobindustry} onChange={this.handleChange} >
+                                <Col sm={8}>
+                                    <Form.Control as="select" value={this.state.jobindustry} onChange={this.changeIndustryHandler} >
                                         {industries()}
                                     </Form.Control>
                                 </Col>
+                                <Col sm={2} />
 
 
                             </Form.Group>
@@ -100,11 +103,23 @@ class EditJob extends Component {
                                 </Row>
 
                             </Form.Group> */}
+                            <Form.Group as={Row} controlId="YearsOfExperience">
+                                <Form.Label column sm='2'>Work Experience</Form.Label>
+                                <Col sm='2'>
+                                    <Form.Control type="number" value={this.state.yearsofexperience} onChange={this.changeYearsOfExperienceHandler} />
+                                </Col>
+                                <Col sm={8} />
+                                {/* <Form.Group as={Row} controlId="JobTitle" style={{ textAlign: 'center' }}>
+                                <Form.Label column sm='3'>Job Title</Form.Label>
+                                <Col sm='8'> <Form.Control type='text' placeholder="Software Engineer" value={this.state.title} onChange={this.changeTitleHandler} /> </Col>
+                            </Form.Group> */}
+                            </Form.Group>
+
                             <Form.Group controlId="formJobDescription">
                                 <Form.Label>Job Description</Form.Label>
                                 <Row>
                                     <Col md={8}>
-                                        <Form.Control as="textarea" rows="8" defaultValue={this.state.jobdescription} onChange={this.handleChange} />
+                                        <Form.Control as="textarea" rows="8" value={this.state.jobdescription} onChange={this.changeDescriptionHandler} />
                                     </Col>
                                 </Row>
 
@@ -152,14 +167,17 @@ class EditJob extends Component {
                     joblocation: response.data[0]['location'],
                     jobindustry: response.data[0]['industry'],
                     dateposted: response.data[0]['dateposted'],
-                    jobdescription: response.data[0]['description']
+                    jobdescription: response.data[0]['description'],
+                    yearsofexperience: response.data[0]['yearsofexperience']
                 };
                 console.log(temp);
                 this.setState({
                     jobtitle: temp.title,
                     jobdescription: temp.jobdescription,
                     joblocation: temp.joblocation,
-                    jobindustry: temp.jobindustry
+                    jobindustry: temp.jobindustry,
+                    yearsofexperience: temp.yearsofexperience
+
                 });
                 // editJobHandler={this.props.editJobHandler}
             })
@@ -175,6 +193,35 @@ class EditJob extends Component {
     handleChange(event) {
         this.setState({ value: event.target.value });
     }
+    changeTitleHandler = event => {
+        // console.log(event.target.value);
+        this.setState({ jobtitle: event.target.value });
+    }
+
+    changeIndustryHandler = event => {
+        // console.log(event.target.value);
+        this.setState({ jobindustry: event.target.value });
+    }
+
+    // changeRequiredSkillsHandler = event => {
+    //     // console.log(event.target.value);
+    //     this.setState({ requiredskills: event.target.value });
+    // }
+
+    changeYearsOfExperienceHandler = event => {
+        // console.log(event.target.value);
+        this.setState({ yearsofexperience: event.target.value });
+    }
+
+    changeDescriptionHandler = event => {
+        // console.log(event.target.value);
+        this.setState({ jobdescription: event.target.value });
+    }
+
+    changeLocationHandler = event => {
+        // console.log(event.target.value);
+        this.setState({ joblocation: event.target.value });
+    }
 
     handleSubmit(event) {
         alert('A name was submitted: ' + this.state.value);
@@ -184,6 +231,8 @@ class EditJob extends Component {
     handleSave(event) {
         event.preventDefault()
         const { jobid } = this.props.match.params;
+
+        console.log(this.state.joblocation)
 
         const job = {
             title: this.state.jobtitle,
@@ -209,11 +258,12 @@ class EditJob extends Component {
             .then(res => res.json())
             .then(data => {
                 alert('Job updated!')
+                let target = `/employer/viewjob/${jobid}`
+                this.timer = setTimeout(() => { window.location.href = target }, 1000);
             })
             .catch(error => console.log(error))
 
-        let target = `/employer/viewjob/${jobid}`
-        this.props.history.push(target)
+
     }
 
     handleCancel(event) {
@@ -226,41 +276,24 @@ class EditJob extends Component {
         event.preventDefault()
         const { jobid } = this.props.match.params;
         let url = `${apiURL}admin/deletejob/${jobid}`
-        console.log(url)
-
-        const job = {
-            title: this.state.jobtitle,
-            industry: this.state.jobindustry,
-            description: this.state.jobdescription,
-            requiredskills: this.state.requiredskills,
-            dateposted: this.state.dateposted,
-            location: this.state.joblocation,
-            yearsofexperience: this.state.yearsofexperience
-        }
 
         fetch(url, {
             method: 'PUT',
             headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(job)
+            }
         })
-            .then(res => res.json())
             .then((result) => {
                 console.log("Deletion of job successful")
                 alert('job deleted')
+                let target = `/employer/viewjobs`
+                this.props.history.push(target)
+                this.timer = setTimeout(() => { window.location.href = target }, 1000);
             },
                 (error) => {
                     console.log("Failure in deletion of job detected.")
                 }
             )
-
-        let target = `/employer/viewjobs`
-        this.props.history.push(target)
-        document.location.reload(true)
-
-
     }
 
     render() {

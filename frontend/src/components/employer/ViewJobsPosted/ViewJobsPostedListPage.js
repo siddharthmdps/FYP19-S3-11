@@ -153,10 +153,6 @@ class JobsList extends Component {
                         field: "industry"
                     },
                     {
-                        title: "Job Description",
-                        field: "description"
-                    },
-                    {
                         title: "Work Experience",
                         field: "yearsofexperience"
                     },
@@ -168,6 +164,10 @@ class JobsList extends Component {
                     {
                         title: "Location",
                         field: "location"
+                    },
+                    {
+                        title: "Job Description",
+                        field: "description"
                     }
                 ]}
                 data={jobsPosted}

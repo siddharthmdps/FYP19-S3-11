@@ -16,39 +16,33 @@ class PostJob extends Component {
     state = {
         title: "",
         industry: "",
+        description: "",
         requiredskills: "",
         yearsofexperience: "",
-        description: "",
+        dateposted: "",
         location: "",
         workExperience: "",
         loading: false
     }
 
-    postJob = () => {
+    postJob = (event) => {
         this.setState({ loading: true })
         const job = {
-            empid: this.empid,
             title: this.state.title,
-            description: this.state.description,
             industry: this.state.industry,
+            description: this.state.description,
             requiredskills: this.state.requiredskills,
-            yearsofexperience: this.state.yearsofexperience
+            yearsofexperience: this.state.yearsofexperience,
+            dateposted: this.state.dateposted,
+            location: this.state.location,
+            empid: this.empid
         }
-        // new posting (can't post yet backend need to handle the extra/change in fields.)
-        // const job = {
-        //     empid: this.empid,
-        //     title: this.state.title,
-        //     description: this.state.description,
-        //     industry: this.state.industry,
-        //     requiredskills: this.state.requiredskills,
-        //     workExperience: this.state.workExperience,
-        //     location = this.state.location
-        // }
 
-        if (job.title === "" || job.desc === "" || job.industry === "" || job.skills === "") alert('Please fill in all the required fields')
+        if (job.title === "" || job.description === "" || job.industry === "" || job.yearsofexperience === "" || job.location === "")
+            alert('Please fill in all the required fields')
         else {
-            const url = apiURL + "employer/postjob"
-            const localhost = 'http://localhost:3001/employer/postjob/'
+            const url = apiURL + "admin/addjob"
+            const localhost = 'http://localhost:3001/admin/addjob'
 
             fetch(url, {
                 method: 'POST',
@@ -60,7 +54,7 @@ class PostJob extends Component {
                 .then(res => res.json())
                 .then(data => {
                     this.setState({ loading: false })
-                    if (data.message === 'success') {
+                    if (data.message === 'added') {
                         alert('Job posted!')
                         document.location.reload(true)
                     }
@@ -84,32 +78,32 @@ class PostJob extends Component {
     }
 
     changeTitleHandler = event => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         this.setState({ title: event.target.value });
     }
 
     changeIndustryHandler = event => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         this.setState({ industry: event.target.value });
     }
 
     changeRequiredSkillsHandler = event => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         this.setState({ requiredskills: event.target.value });
     }
 
     changeYearsOfExperienceHandler = event => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         this.setState({ yearsofexperience: event.target.value });
     }
 
     changeDescriptionHandler = event => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         this.setState({ description: event.target.value });
     }
 
     changeLocationHandler = event => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         this.setState({ location: event.target.value });
     }
 
@@ -149,10 +143,15 @@ class PostJob extends Component {
                             <Form.Group as={Row} controlId="YearsOfExperience" style={{ textAlign: 'center' }}>
                                 <Form.Label column sm='3'>Work Experience</Form.Label>
                                 <Col sm='8'>
-                                    <Form.Control as="select" value={this.state.yearsofexperience} onChange={this.changeYearsOfExperienceHandler} >
-                                        {workExpReqList()}
-                                    </Form.Control>
+                                    <Form.Control type="number" value={this.state.yearsofexperience} onChange={this.changeYearsOfExperienceHandler} />
+                                    {/* {workExpReqList()} */}
+
                                 </Col>
+
+                                {/* <Form.Group as={Row} controlId="JobTitle" style={{ textAlign: 'center' }}>
+                                <Form.Label column sm='3'>Job Title</Form.Label>
+                                <Col sm='8'> <Form.Control type='text' placeholder="Software Engineer" value={this.state.title} onChange={this.changeTitleHandler} /> </Col>
+                            </Form.Group> */}
                             </Form.Group>
 
                             <Form.Group as={Row} controlId="Description" style={{ textAlign: 'center' }}>
