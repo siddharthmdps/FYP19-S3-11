@@ -69,9 +69,9 @@ class AppliedJobs extends Component {
     };
 
     componentDidMount() {
-        Axios.get("http://localhost:3000/AppliedJobs")
+        Axios.get(`http://192.168.43.251:3001/student/getappliedjoblist/${localStorage.getItem('id')}`)
             .then(receivedData => {
-                this.setState({ AppliedJobs: receivedData.data });
+                this.setState({ AppliedJobs: receivedData.data.AppliedJobs });
                 console.log(receivedData.data);
                 this.pagination();
             });

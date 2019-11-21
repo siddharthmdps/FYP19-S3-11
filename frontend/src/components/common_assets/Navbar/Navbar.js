@@ -20,6 +20,7 @@ class TopNavbar extends Component{
     if(this.state.Navbar!== "Student"){
       let tempLeft = {
         "Job Search": "/student/searchjobs",
+        "Career Tips": "/careertips",
         "Blog": "/blog"
       };
 

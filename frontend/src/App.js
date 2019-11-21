@@ -8,6 +8,7 @@ import LoginForm from './components/common_assets/Login/Login'
 import SignUp from './components/common_assets/Signup'
 import About from './components/common_assets/About';
 import CareerTips from './components/common_assets/CareerTips/CareerTips';
+import Polls from './components/common_assets/Polls/Polls';
 
 // importing Employer Components
 import Employer from './components/employer/Container/Employer'
@@ -143,6 +144,7 @@ class App extends Component {
               <Route exact path="/login" component={LoginForm}></Route>
               <Route exact path="/signup" component={SignUp}></Route>
               <Route exact path="/careertips" component={CareerTips}></Route>
+              <Route exact path="/polls" component={Polls}></Route>
 
 
               {/* Employer Routes */}

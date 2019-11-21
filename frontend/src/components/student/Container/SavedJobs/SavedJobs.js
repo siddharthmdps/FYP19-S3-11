@@ -96,9 +96,9 @@ class SavedJobs extends Component {
     };
 
     componentDidMount(){
-        Axios.get("http://localhost:3000/AppliedJobs")
+        Axios.get(`http://192.168.43.251:3001/student/getsavedjoblist/${localStorage.getItem('id')}`)
             .then(receivedData =>{
-                let temp = receivedData.data;
+                let temp = receivedData.data.SavedJobs;
                 this.setState({ SavedJobs: temp });
                 console.log(temp);
                 this.pagination();
