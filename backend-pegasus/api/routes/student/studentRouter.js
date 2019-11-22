@@ -1,4 +1,4 @@
-const {router, mypool} = require('../../util')
+const {containsNull, router, mypool} = require('../../util')
 
 // get
 const getJobSearchResults = require('./searchjob')
@@ -257,8 +257,8 @@ router.put('/studentinfo/updateStudent', (req, res, next) => {
     const availability = req.body.Availability;
     const linkedin = req.body.LinkedIn;
 
-    if( containsNull(req.body) ) res.send('Error: request contains null')
-    else {
+    if( containsNull(req.body) ){ res.send('Error: request contains null') 
+    }else {
         res.setHeader('Access-Control-Allow-Origin', '*');
         mypool.getConnection(function(err,connection) {
             if (err) {
