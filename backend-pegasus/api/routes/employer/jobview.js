@@ -22,13 +22,15 @@ const getJobView = (req, res) => {
                     if(err) {
                         res.status(500).json({ message: err })
                     }
-                    if( rows &&  ( rows.length > 0 ) ) {
-                        res.send(rows)
-                    }
-                    else if ( !rows || rows.length == 0 ) {
-                        res.status(200).json({
-                            message: 'Empty table'
-                        })
+                    else {
+                        if( rows &&  ( rows.length > 0 ) ) {
+                            res.send(rows)
+                        }
+                        else if ( !rows || rows.length == 0 ) {
+                            res.status(200).json({
+                                message: 'Empty table'
+                            })
+                        }
                     }
                 })
             }

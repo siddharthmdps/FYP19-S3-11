@@ -1,0 +1,31 @@
+.AboutUs{
+    background-color: #181818;
+    padding-bottom: 50px;
+}
+
+.Title{
+    color: #fff;
+    text-align: center;
+    font-size: 2em;
+    font-family: 'Concert One', cursive;
+}
+
+.Logo{
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    font-family: 'Concert One', cursive;
+    margin-top: 50px;
+}
+
+.DescriptionText{
+    color: #fff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+.SubText{
+    color: #fff;
+    font-size: 2em;
+    text-align: center;
+}
