@@ -4,9 +4,9 @@ import classes from './EmpEditProfile.module.css'
 import apiURL from '../../../config'
 import Button from '../../common_assets/Button1/Button1'
 import Axios from 'axios';
-import { Card, Form, Row, Col, Container } from 'react-bootstrap';
-
-
+import { Card, Form, Row, Col, Container, ResponsiveEmbed, Image } from 'react-bootstrap';
+import industries from '../../common_assets/CommonLists/Industries'
+// import Modal from './Modal'
 class EmpEditProfile extends React.Component {
 
     empID = localStorage.getItem('id')
@@ -17,6 +17,8 @@ class EmpEditProfile extends React.Component {
         companydescription: "",
         companyaddress: "",
         industry: "",
+        // newProfileImage: { modal: false, location: "" },
+        // profileModalVisibile: false,
         loading: false
     }
 
@@ -24,10 +26,10 @@ class EmpEditProfile extends React.Component {
         this.setState({ loading: true })
         //console.log(`Updating profile of ${props.empID}`)
         const newEmpInfo = {
-            companyname         : this.state.companyname,
-            companyphone        : this.state.companyphone,
-            industry            : this.state.industry,
-            companydescription  : this.state.companydescription
+            companyname: this.state.companyname,
+            companyphone: this.state.companyphone,
+            industry: this.state.industry,
+            companydescription: this.state.companydescription
         }
 
         const url = `${apiURL}employer/${this.empID}`
@@ -96,19 +98,60 @@ class EmpEditProfile extends React.Component {
         } else return null
     }
 
+    // changeProfilePic = event => {
+    //     console.log(event.target.value);
+    //     this.setState({ newProfileImage: { modal: true, location: event.target.files[0] } })
+    // }
+
+    // changeProfilePic = event => {
+    //     this.setState({ profileModalVisibile: true })
+    // }
+
+    //  // Submit elements to put in Backend starts here
+    //  submitNewProfile = () => {
+    //     if(this.state.newProfileImage.NewUpload){
+
+    //         const fd = new FormData();
+    //         fd.append('file', this.state.newProfileImage.location, this.state.newProfileImage.location.name);
+    //         console.log(fd);
+    //         Axios.post(`/uploadstudentpicture/${this.state.StudentID}`, fd)
+    //         .then(response => {
+    //             console.log(response);
+    //         });
+    //     }
+    // }
+
     EditForm = () => {
         document.body.style =
             'background: linear-gradient(to right, #0f2027, #203a43, #2c5364);';
         return (
             <Container fluid >
+                {/* <Row>
+                    {this.state.newProfileImage.modal ? <Modal
+                        show={this.state.NewProfile.Modal}
+                        onHide={() => this.setState({ newProfileImage: { modal: false, location: "" } })}
+                        NewProfile={this.state.newProfileImage.location}
+                        click={this.submitNewProfile}
+                    /> : null}
+                </Row> */}
                 <Row>
-                    <Col sm={12} md={{span:2, offset: 1}}>
-                        <Card style={{borderRadius: '50px', background: 'transparent'}}>
+                    <Col sm={12} md={{ span: 2, offset: 1 }}>
+                        <Card style={{ borderRadius: '50px', background: 'transparent' }}>
                             <Card.Body>
                                 <ProfileContainer buttonText="Find out more" />
-                                <div style={{textAlign: 'center'}}>
-                                    <Button>Upload</Button>
-                                </div>
+                                {/* no link found for employer to update */}
+                                {/* <div style={{ textAlign: 'center' }}>
+                                    <Button onClick={() => this.changeProfilePic()}>Upload</Button>
+                                </div> */}
+                                {/* <ResponsiveEmbed aspectRatio="1by1" style={{ position: 'absolute' }}>
+                                    <div style={{ textAlign: 'center' }}>
+                                        <Button onClick={() => this.fileInput.click()}>Upload</Button>
+                                    </div>
+                                </ResponsiveEmbed>
+                                <input type='file' style={{ display: 'none' }} onChange={this.changeNewProfile} ref={fileInput => this.fileInput = fileInput} />
+                                <ResponsiveEmbed aspectRatio="1by1" >
+                                    <Image src={this.props.imageLink} className={classes.Image} bsPrefix />
+                                </ResponsiveEmbed> */}
                             </Card.Body>
                         </Card>
                     </Col>
@@ -129,18 +172,14 @@ class EmpEditProfile extends React.Component {
                                     <Form.Label column sm="3">Industry</Form.Label>
                                     <Col sm="9">
                                         <Form.Control as="select" placeholder="IT" value={this.state.industry} onChange={event => this.companyIndustryChangeHandler(event)}>
-                                            <option value="">Choose...</option>
-                                            <option value="Engineering">Engineering</option>
-                                            <option value="Business">Business</option>
-                                            <option value="Accountancy">Accountancy</option>
-                                            <option value="IT">IT</option>
+                                            {industries()}
                                         </Form.Control>
                                     </Col>
                                 </Form.Group>
 
                                 <Form.Group controlId="CompanyDescription" as={Row} >
                                     <Form.Label column sm="3">Company Description</Form.Label>
-                                    <Col sm="9"><Form.Control style={{ height: '50vh' }} as="textarea" rows="15" placeholder="Description..." value={this.state.companydescription} onChange={event => this.companyDescriptionChangeHandler(event)} /></Col>
+                                    <Col sm="9"><Form.Control style={{ height: '25vh' }} as="textarea" rows="15" placeholder="Description..." value={this.state.companydescription} onChange={event => this.companyDescriptionChangeHandler(event)} /></Col>
                                 </Form.Group>
 
                                 <Button click={this.updateProfile}>Submit</Button>
