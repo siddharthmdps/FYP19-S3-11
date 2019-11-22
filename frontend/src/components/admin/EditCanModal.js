@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Button, Row, Col, Form, InputGroup} from 'react-bootstrap'
+import { Modal, Button, Row, Col, Form, InputGroup } from 'react-bootstrap'
 import Snackbar from '@material-ui/core/SnackBar'
 import IconButton from '@material-ui/core/IconButton'
 
@@ -14,7 +14,7 @@ export class EditCanModal extends Component {
     snackbarClose = (event) => {
         this.setState({ snackbaropen: false });
     };
-    refresh(){
+    refresh() {
         console.log("asdf");
     }
     handleSubmit(event) {
@@ -44,7 +44,7 @@ export class EditCanModal extends Component {
             .then(res => res.json())
             .then((result) => {
                 //alert(result);
-                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully updated student account!'});
+                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully updated student account!' });
             },
                 (error) => {
                     //alert('Failed')
@@ -100,57 +100,57 @@ export class EditCanModal extends Component {
                                             defaultValue={this.props.id}
                                             placeholder="id"></Form.Control>
                                     </Form.Group>
-<Form.Row>
-                                    <Form.Group as={Col} controlId="firstname">
-                                        <Form.Label>First Name:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="firstname"
-                                            required
-                                            defaultValue={this.props.firstname}
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
+                                    <Form.Row>
+                                        <Form.Group as={Col} controlId="firstname">
+                                            <Form.Label>First Name:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="firstname"
+                                                required
+                                                defaultValue={this.props.firstname}
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
 
-                                    <Form.Group as={Col} controlId="middlename">
-                                        <Form.Label>Middle Name:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="middlename"
-                                            required
-                                            defaultValue={this.props.middlename}
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
+                                        <Form.Group as={Col} controlId="middlename">
+                                            <Form.Label>Middle Name:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="middlename"
+                                                required
+                                                defaultValue={this.props.middlename}
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
 
-                                    <Form.Group as={Col} controlId="lastname">
-                                        <Form.Label>Last Name:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="lastname"
-                                            required
-                                            defaultValue={this.props.lastname}
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
+                                        <Form.Group as={Col} controlId="lastname">
+                                            <Form.Label>Last Name:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="lastname"
+                                                required
+                                                defaultValue={this.props.lastname}
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
                                     </Form.Row>
                                     <Form.Row>
-                                    <Form.Group as={Col} controlId="email">
-                                        <Form.Label>E-mail:</Form.Label>
-                                        <Form.Control
-                                            type="email"
-                                            name="email"
-                                            required
-                                            defaultValue={this.props.email}
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
+                                        <Form.Group as={Col} controlId="email">
+                                            <Form.Label>E-mail:</Form.Label>
+                                            <Form.Control
+                                                type="email"
+                                                name="email"
+                                                required
+                                                defaultValue={this.props.email}
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
 
-                                    <Form.Group as={Col} controlId="phone">
-                                        <Form.Label>Phone Number:</Form.Label>
-                                        <Form.Control
-                                            type="number"
-                                            name="phone"
-                                            required
-                                            defaultValue={this.props.phone}
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
+                                        <Form.Group as={Col} controlId="phone">
+                                            <Form.Label>Phone Number:</Form.Label>
+                                            <Form.Control
+                                                type="number"
+                                                name="phone"
+                                                required
+                                                defaultValue={this.props.phone}
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
                                     </Form.Row>
 
                                     <Form.Group controlId="currentaddress">
@@ -162,38 +162,38 @@ export class EditCanModal extends Component {
                                             defaultValue={this.props.currentaddress}
                                             placeholder=""></Form.Control>
                                     </Form.Group>
-<Form.Row>
-                                    <Form.Group as={Col} controlId="country">
-                                        <Form.Label>Country:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="country"
-                                            required
-                                            defaultValue={this.props.country}
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
+                                    <Form.Row>
+                                        <Form.Group as={Col} controlId="country">
+                                            <Form.Label>Country:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="country"
+                                                required
+                                                defaultValue={this.props.country}
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
 
-                                    <Form.Group as={Col} controlId="city">
-                                        <Form.Label>City:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="city"
-                                            required
-                                            defaultValue={this.props.city}
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
+                                        <Form.Group as={Col} controlId="city">
+                                            <Form.Label>City:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="city"
+                                                required
+                                                defaultValue={this.props.city}
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
 
-                                    
-                                    
-                                    <Form.Group as={Col} controlId="postalcode">
-                                        <Form.Label>Postal Code:</Form.Label>
-                                        <Form.Control
-                                            type="number"
-                                            name="postalcode"
-                                            required
-                                            defaultValue={this.props.postalcode}
-                                            placeholder=""></Form.Control>
-                                    </Form.Group>
+
+
+                                        <Form.Group as={Col} controlId="postalcode">
+                                            <Form.Label>Postal Code:</Form.Label>
+                                            <Form.Control
+                                                type="number"
+                                                name="postalcode"
+                                                required
+                                                defaultValue={this.props.postalcode}
+                                                placeholder=""></Form.Control>
+                                        </Form.Group>
                                     </Form.Row>
                                     <Form.Group controlId="nationality">
                                         <Form.Label>Nationality:</Form.Label>
@@ -204,30 +204,30 @@ export class EditCanModal extends Component {
                                             defaultValue={this.props.nationality}
                                             placeholder=""></Form.Control>
                                     </Form.Group>
-<Form.Row>
-                                    <Form.Group as={Col} controlId="username">
-                                        <Form.Label>Username:</Form.Label>
-                                        <InputGroup>
+                                    <Form.Row>
+                                        <Form.Group as={Col} controlId="username">
+                                            <Form.Label>Username:</Form.Label>
+                                            <InputGroup>
                                                 <InputGroup.Prepend>
                                                     <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                        <Form.Control
-                                            type="text"
-                                            name="username"
-                                            required
-                                            defaultValue={this.props.username}
-                                            placeholder=""></Form.Control>
+                                                <Form.Control
+                                                    type="text"
+                                                    name="username"
+                                                    required
+                                                    defaultValue={this.props.username}
+                                                    placeholder=""></Form.Control>
                                             </InputGroup>
-                                    </Form.Group>
+                                        </Form.Group>
 
-                                    <Form.Group as={Col} controlId="password">
-                                        <Form.Label>Password:</Form.Label>
-                                        <Form.Control
-                                            type="password"
-                                            name="password"
-                                            
-                                            placeholder="Leave blank if unchanged"></Form.Control>
-                                    </Form.Group>
+                                        <Form.Group as={Col} controlId="password">
+                                            <Form.Label>Password:</Form.Label>
+                                            <Form.Control
+                                                type="password"
+                                                name="password"
+
+                                                placeholder="Leave blank if unchanged"></Form.Control>
+                                        </Form.Group>
                                     </Form.Row>
                                     <Form.Group>
                                         <Button variant="outline-success" type="submit">

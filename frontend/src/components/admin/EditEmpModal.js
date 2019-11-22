@@ -141,26 +141,26 @@ export class EditEmpModal extends Component {
                                             defaultValue={this.props.companydescription}
                                             placeholder="companydescription"></Form.Control>
                                     </Form.Group>
-<Form.Row>
-                                    <Form.Group as={Col} controlId="companyphone">
-                                        <Form.Label>Company Phone Number:</Form.Label>
-                                        <Form.Control
-                                            type="number"
-                                            name="companyphone"
-                                            required
-                                            defaultValue={this.props.companyphone}
-                                            placeholder="companyphone"></Form.Control>
-                                    </Form.Group>
+                                    <Form.Row>
+                                        <Form.Group as={Col} controlId="companyphone">
+                                            <Form.Label>Company Phone Number:</Form.Label>
+                                            <Form.Control
+                                                type="number"
+                                                name="companyphone"
+                                                required
+                                                defaultValue={this.props.companyphone}
+                                                placeholder="companyphone"></Form.Control>
+                                        </Form.Group>
 
-                                    <Form.Group as={Col} controlId="companyemail">
-                                        <Form.Label>Company E-mail:</Form.Label>
-                                        <Form.Control
-                                            type="email"
-                                            name="companyemail"
-                                            required
-                                            defaultValue={this.props.companyemail}
-                                            placeholder="companyemail"></Form.Control>
-                                    </Form.Group>
+                                        <Form.Group as={Col} controlId="companyemail">
+                                            <Form.Label>Company E-mail:</Form.Label>
+                                            <Form.Control
+                                                type="email"
+                                                name="companyemail"
+                                                required
+                                                defaultValue={this.props.companyemail}
+                                                placeholder="companyemail"></Form.Control>
+                                        </Form.Group>
                                     </Form.Row>
 
 

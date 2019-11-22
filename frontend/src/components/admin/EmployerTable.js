@@ -105,7 +105,7 @@ export class EmployerTable extends Component {
                 this._isMounted && this.setState({ TRs: obj, isLoading: false });
                 $("#tableSample").DataTable(
                     //{'scrollX': true}
-                    );
+                );
             });
     }
     componentDidUpdate() {
@@ -131,7 +131,7 @@ export class EmployerTable extends Component {
         return (
             <div>
                 <h1 className="m-3 d-flex justify-content-center"><b>Employer Login Credentials</b></h1>
-                <hr/>
+                <hr />
                 <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                     open={this.state.snackbaropen}
                     autoHideDuration={5000}

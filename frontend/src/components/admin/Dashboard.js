@@ -64,7 +64,7 @@ export class AppliedJobs extends Component {
                 for (var i = data.length - 1; i > data.length - 6; i--) {
                     obj[j] = {
                         'key': data[i].id,
-                        'empid': data[i].username,
+                        'empid': data[i].companyname,
                         'title': data[i].title,
                         'description': data[i].description,
                         'dateposted': data[i].dateposted,
@@ -85,9 +85,9 @@ export class AppliedJobs extends Component {
         return (
             <Container fluid style={{ width: '95%' }}>
                 <br />
-                
+
                 <h1 className="m-3 d-flex justify-content-center"><b>Dashboard</b></h1>
-                <hr/>
+                <hr />
                 <br />
                 <Row>
                     <Col md={{ span: 3 }}>
@@ -161,7 +161,7 @@ export class AppliedJobs extends Component {
                         <Table striped bordered hover>
                             <thead>
                                 <tr>
-                                    <th>Employer Username</th>
+                                    <th>Company</th>
                                     <th>Title</th>
                                     <th>Job description</th>
                                     <th>Date posted</th>
@@ -173,7 +173,7 @@ export class AppliedJobs extends Component {
                                         <td>{job.empid}</td>
                                         <td>{job.title}</td>
                                         <td>{job.description}</td>
-                                        <td>{job.dateposted.slice(0,10)}</td>
+                                        <td>{job.dateposted.slice(0, 10)}</td>
                                     </tr>
                                 )}
                             </tbody>
