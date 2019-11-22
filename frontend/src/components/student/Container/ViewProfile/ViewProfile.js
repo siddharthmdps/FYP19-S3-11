@@ -366,6 +366,19 @@ class Profile extends Component {
 
         console.log(this.props.match.params.SID);
 
+        Axios.get(`${apiURL}getstudentprofilepicture/${this.state.StudentID}`)
+            .then(res => {
+                console.log("Image: ", res.data.ProfileImage.ProfileImage, res.data.ProfileImage.FileType);
+                if(res.data.ProfileImage.ProfileImage===null){}
+                else{
+                    this.setState({"ProfileImage": `data:${res.data.ProfileImage.FileType};base64, ${res.data.ProfileImage.ProfileImage}`})
+                }
+                console.log(this.state.ProfileImage)
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
         Axios.get(`${apiURL}student/studentinfo/${this.state.StudentID}`)
             .then(receivedData => {
                 console.log(receivedData.data.PersonalParticulars);

@@ -2,32 +2,84 @@ import React, {Component} from 'react';
 import classes from './Job.module.css';
 
 
-import { Row, Col, Card, Button, Alert, Spinner } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Alert, Spinner } from 'react-bootstrap';
+
+import { withSnackbar } from 'notistack';
+
+import Axios from 'axios';
 
 class JobCard extends Component {
 
     state={
-
+        ID: "", 
+        JobTitle: "", 
+        Company: "", 
+        Industry: "",  
+        Location: "", 
+        WorkExpReq: "", 
+        Status: 'none', 
+        Description: ""
     }
 
-    changeStatus = (id, status) => {
-        let temp = this.state.SearchJobs;
-        temp.forEach(element => {
-            if(element.JobID === id){
-                if(status==="Applied")
-                    element.Status = status;
-                else{
-                    if(element.Status === "Saved"){
-                        element.Status = "None"
-                    }
-                    else if(element.Status === "None"){
-                        element.Status = "Saved"
-                    }
-                }
+    changeStatus = (status) => {
+
+        if(status==="pending"){
+            Axios.post("https://pegasus-backend.herokuapp.com/student/applysavejob", {
+                "StudentID":localStorage.getItem('id'),
+                "JobID": `${this.props.match.params.JID}`,
+                "Status":"pending"})
+                .then(res => {
+                    this.setState({Status: 'pending'});
+                    this.props.enqueueSnackbar(`Applied!`, { variant: 'success' });
+                    console.log(res);
+                })
+                .catch(err =>{
+                    console.log(err);
+                })
+        }
+        else if(status==="save"){
+            if(this.state.Status==="none"){
+                Axios.post("https://pegasus-backend.herokuapp.com/student/applysavejob", {
+                "StudentID": localStorage.getItem('id'),
+                "JobID": `${this.props.match.params.JID}`,
+                "Status":"saved"})
+                .then(res => {
+                    this.setState({Status: 'saved'});
+                    this.props.enqueueSnackbar(`Saved!`, { variant: 'success' });
+                    console.log(res);
+                })
+                .catch(err =>{
+                    console.log(err);
+                })
             }
-        });
-        console.log(temp, id, status);
-        this.setState({ "SavedJobs": temp });
+            else if(this.state.Status==="saved"){
+                Axios.post(`https://pegasus-backend.herokuapp.com/student/unsavejob/${localStorage.getItem('id')}/${this.props.match.params.JID}`)
+                .then(res => {
+                    this.setState({Status: 'none'});
+                    this.props.enqueueSnackbar(`Unsaved!`, { variant: 'success' });
+                    console.log(res);
+                })
+                .catch(err =>{
+                    console.log(err);
+                })
+            }
+        }
+
+        // {
+        //     if(element.JobID === id){
+        //         if(status==="Applied")
+        //             element.Status = status;
+        //         else{
+        //             if(element.Status === "Saved"){
+        //                 element.Status = "None"
+        //             }
+        //             else if(element.Status === "None"){
+        //                 element.Status = "Saved"
+        //             }
+        //         }
+        //     }
+        // });
+        console.log(status);
     };
 
     AppliedFooter = () => (
@@ -44,42 +96,80 @@ class JobCard extends Component {
         return (
             <React.Fragment>
                 <div className={classes.ButtonDiv}>
-                    <Button className={classes.Apply} onClick={() => this.changeStatus(this.state.JobID, "Applied")}>Apply</Button>
+                    <Button className={classes.Apply} onClick={() => this.changeStatus("pending")}>Apply</Button>
                 </div>
                 <div className={classes.StarDiv}>
-                    <span className={classes.Star} onClick={() => this.changeStatus(this.state.JobID, "Save")}>
-                        {this.state.Status === "Saved" ? fav : unfav}
+                    <span className={classes.Star} onClick={() => this.changeStatus("save")}>
+                        {this.state.Status === "saved" ? fav : unfav}
                     </span>
                 </div>
             </React.Fragment>
         )
-    }; 
+    };
+    
+    componentDidMount(){
+        Axios.get(`https://pegasus-backend.herokuapp.com/employer/getjobinfo/${this.props.match.params.JID}`)
+            .then(res => {
+                let temp = res.data[0];
+                this.setState({ID: temp.id, JobTitle: temp.title, Company: temp.companyname, Industry: temp.industry,  Location: temp.location, WorkExpReq: `${temp.yearsofexperience} years`, Description: temp.description})
+                console.log(temp);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        Axios.get(`https://pegasus-backend.herokuapp.com/student/getjobapplicationstatus/${localStorage.getItem('id')}/${this.props.match.params.JID}`)
+        .then(res => {
+            if(res.data.Status===null){
+                this.setState({Status: "none"});    
+            }
+            else{
+                this.setState({Status: res.data.Status});
+            }
+            console.log(res.data.Status);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
     
     render(){
         return(
-            <Card md={{ span: 12 }} className={classes.Card}>
-                <Card.Body className={classes.CardBody}>
-                    <Card.Title>
-                        <Row className={classes.Row} style={{ fontWeight: '600' }}>{this.state.JobTitle}</Row>
-                        <Row className={classes.Row}>{this.state.Company}</Row>
-                        <Row>
-                            <Col md={{ span: 3 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-map-marker-alt"></i> {this.state.Location}</Col>
-                            <Col md={{ span: 6 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-building"></i> {this.state.Industry}</Col>
-                            <Col md={{ span: 3 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-briefcase"></i> {this.state.WorkExpReq}</Col>
-                        </Row>
-                    </Card.Title>
-                    <Card.Text className={classes.Description}>
-                        <div className={classes.Desc}>
-                            {this.state.Description}
-                        </div>
-                    </Card.Text>
-                </Card.Body>
-                <Card.Footer className={classes.Footer}>
-                    {this.state.Status==="Applied" ? this.AppliedFooter() : this.OtherFooter()}
-                </Card.Footer>
-            </Card>
+            <Container fluid>
+                <br />
+                <Row className={classes.Title}>
+                    <Col md={{ offset: 1, span: 10 }}>
+                    Job
+                    </Col>
+                </Row>
+                <br />
+                <Row>
+                    <Col md={{ offset: 1, span: 10 }}>
+                        <Card md={{ span: 12 }} className={classes.Card}>
+                            <Card.Body className={classes.CardBody}>
+                                <Card.Title>
+                                    <Row className={classes.Row} style={{ fontWeight: '600' }}>{this.state.JobTitle}</Row>
+                                    <Row className={classes.Row}>{this.state.Company}</Row>
+                                    <Row>
+                                        <Col md={{ span: 3 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-map-marker-alt"></i> {this.state.Location}</Col>
+                                        <Col md={{ span: 6 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-building"></i> {this.state.Industry}</Col>
+                                        <Col md={{ span: 3 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-briefcase"></i> {this.state.WorkExpReq}</Col>
+                                    </Row>
+                                </Card.Title>
+                                <Card.Text className={classes.Description}>
+                                    <div className={classes.Desc}>
+                                        {this.state.Description}
+                                    </div>
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Footer className={classes.Footer}>
+                                {(this.state.Status==="none" || this.state.Status==="saved") ? this.OtherFooter() : this.AppliedFooter()}
+                            </Card.Footer>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 };
 
-export default jobCard;
+export default withSnackbar(JobCard);
