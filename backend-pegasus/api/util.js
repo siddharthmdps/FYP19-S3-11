@@ -22,7 +22,6 @@ const containsNull = (json_obj, res) => {
     return false
 }
 
-
 module.exports = {express, router, env, sha1, mysql, mypool, containsNull}
 
 // copy this when importing
