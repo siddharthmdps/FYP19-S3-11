@@ -11,7 +11,7 @@ const getstudentdocument = (req, res) => {
         }
         else {
             if(studentid) {               
-                let queryString = `select Status from pegasus.jobapplication where studentid = "${studentid}" and jobid = "${jobid}"`
+                let queryString = `select Status from pegasus.jobapplication where studentid = "${studentid}" and jobid = "${jobid}" union select status from pegasus.savedstudentjob  where studentid = "${studentid}" and jobid = "${jobid}"`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })

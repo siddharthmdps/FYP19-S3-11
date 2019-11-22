@@ -7,8 +7,6 @@ import { FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
 
 import Axios from 'axios';
 
-import { withSnackbar } from 'notistack';
-
 class Polls extends Component {
 
     state={
@@ -24,24 +22,19 @@ class Polls extends Component {
                 value = element.Selection;
             }
         });
-        if(value == "0"){
-            this.props.enqueueSnackbar('Please select an option first!', { variant: 'error' });
-        }
-        else{
-            Axios.put(`https://pegasus-backend.herokuapp.com/student/submitpoll/${id}&${value}`)
-                .then(res => {
-                    console.log(res.data);
-                    temp.forEach(element => {
-                        if(element.ID === id){
-                            element.Submitted = true;
-                        }
-                    });
-                    this.setState({ "Polls": temp });
-                })
-                .catch(err => {
-                    console.log(err)
+        Axios.put(`https://pegasus-backend.herokuapp.com/student/submitpoll/${id}&${value}`)
+            .then(res => {
+                console.log(res.data);
+                temp.forEach(element => {
+                    if(element.ID === id){
+                        element.Submitted = true;
+                    }
                 });
-        }
+                this.setState({ "Polls": temp });
+            })
+            .catch(err => {
+                console.log(err)
+            });
         console.log(temp, id);
     };
 
@@ -127,25 +120,21 @@ class Polls extends Component {
                                         value="1"
                                         control={<Radio color="primary" />}
                                         label={poll['1']}
-                                        labelPlacement="end"
+                                        labelPlacement="start"
                                     />
-
-                                    <br />
 
                                     <FormControlLabel
                                         value="2"
                                         control={<Radio color="primary" />}
                                         label={poll['2']}
-                                        labelPlacement="end"
+                                        labelPlacement="start"
                                     />
-
-                                    <br />
 
                                     <FormControlLabel
                                         value="3"
                                         control={<Radio color="primary"/>}
                                         label={poll['3']}
-                                        labelPlacement="end"
+                                        labelPlacement="start"
                                     />
 
                                 </RadioGroup>
@@ -164,4 +153,4 @@ class Polls extends Component {
     }
 };
 
-export default withSnackbar(Polls);
+export default Polls;

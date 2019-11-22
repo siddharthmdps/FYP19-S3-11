@@ -1,0 +1,13 @@
+div#feed-container {
+    max-width: 800px;
+    margin: auto;
+}
+
+/* #job-title-tag {
+    color: red;    
+} */
+
+strong a{
+    font-size: 16px;
+    color: #40494f ;
+}

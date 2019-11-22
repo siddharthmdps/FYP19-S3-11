@@ -1,0 +1,31 @@
+.Validate input:invalid,
+.Validate .ptft:invalid,
+.Validate input[type='text']:focus,
+.Validate input[type='email']:focus,
+.Validate input[type='number']:focus,
+.Validate input[type='date']:focus,
+.Validate .ptft:focus {
+    border-color: #E74C3C; 
+    background-color: #F9EBEA;
+    box-shadow: none;
+}
+
+.Validate input[type='text']:valid,
+.Validate input[type='email']:valid,
+.Validate input[type='number']:valid,
+.Validate input[type='date']:valid,
+.Validate .ptft:valid {
+    border-color: #A9DFBF; 
+    background-color: #EAFAF1;
+    box-shadow: none;
+}
+
+.Validate input[type=number]::-webkit-inner-spin-button, 
+.Validate input[type=number]::-webkit-outer-spin-button,
+.Validate input[type=date]::-webkit-inner-spin-button, 
+.Validate input[type=date]::-webkit-outer-spin-button{ 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}

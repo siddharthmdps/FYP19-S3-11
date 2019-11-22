@@ -1,0 +1,124 @@
+.Nav {
+    /* background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%); */
+    /* background-image: linear-gradient( 179.4deg,  rgba(12,20,69,1) -16.9%, rgba(71,30,84,1) 119.9% ); */
+    /* background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);  */
+    /* background-image: linear-gradient(to right, #434343 0%, black 100%); */
+    background-color: #181818;
+    height: 65px;
+    /* -webkit-box-shadow: 10px 10px 0px -2px rgba(230,230,230,0.4);
+    -moz-box-shadow: 10px 10px 0px -2px rgba(230,230,230,0.4); */
+    /* box-shadow: 10px 10px 0px -2px rgba(230,230,230,0.4); */
+}
+
+.Navli {
+    /* position: relative; */
+    margin: 0% 3%;
+    text-transform: uppercase;
+    /* line-height: 54px; */
+    text-decoration: none;
+    /* position: relative; */
+    font-family: 'Roboto', sans-serif!important;
+    font-weight: 520;
+}
+
+.NavItem {
+    color: #fff!important;
+    border-bottom: 2px solid transparent;
+    -webkit-transition: border-bottom 0.25s;
+    transition: font-weight 0.15s, border-bottom 0.25s;
+    margin-right: 20px;
+}
+
+.NavItem:hover {
+    /* color: #2874A6!important; */
+    font-weight: bold;
+    color: #43CD86!important;
+    border-bottom: 2px solid #43CD86;
+    /* background-color: white; */
+    /* border-bottom: 2px;
+    border-bottom-color: white; */
+}
+
+.DropdownMenu{
+    background: rgb(2,0,36);
+    /* background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%); */
+    background-color: #181818;
+    /* background-color: #17202A; */
+    margin-left: -100px;
+    margin-top: 6px;
+    color: white;
+    transition: 0.2s;
+    transition-timing-function: ease-in;
+    /* Also the same as */
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+
+.DropDownItem {
+    color: #fff!important;
+    border-left: 2px solid transparent;
+    -webkit-transition: border-bottom 0.25s;
+    transition: font-weight 0.15s, border-bottom 0.25s;
+    margin-right: 20px;
+}
+
+.DropDownItem:hover {
+    color: #43CD86!important;
+    background-color: transparent;
+    font-weight: bold;
+    border-left: 5px solid #43CD86;
+}
+
+.NavProfile{
+    background-color: transparent;
+    margin-right: 9px;
+    height: 50px;
+    width: 50px;
+    padding: 0px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    opacity: 0.75;
+    border: 2px solid transparent;
+}
+
+.NavProfile:focus{
+    opacity: 0.8;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    box-shadow: 0 0 0 0.2rem #252525!important;
+}
+
+.NavProfile:hover {
+    opacity: 1.0;
+    border-color: #43CD86;
+}
+
+.NavProfile img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.NavProfile::after {
+    border: none;
+    content: none;
+}
+.MobileMenu{
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .Nav{
+        height: auto;
+    }
+    .NavProfile{
+        display: none;
+    }
+    .MobileMenu{
+        display: block;
+    }
+  }
+
+ 

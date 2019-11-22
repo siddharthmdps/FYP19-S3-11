@@ -18,8 +18,7 @@ class LeftSide  extends Component {
                                 </ResponsiveEmbed>
                                         <input type='file' style={{display: 'none'}} onChange={this.props.changeFn} ref={fileInput => this.fileInput = fileInput} />
                                 <ResponsiveEmbed aspectRatio="1by1" >
-                                    {/* <Image src={this.props.imageLink} className={classes.Image} bsPrefix /> */}
-                                    <img src={this.props.imageLink} className={classes.Image}/>
+                                    <Image src={this.props.imageLink} className={classes.Image} bsPrefix />
                                 </ResponsiveEmbed>
                             </div>
                         </Card.Body>

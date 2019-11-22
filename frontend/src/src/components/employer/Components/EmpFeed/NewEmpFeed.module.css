@@ -1,0 +1,82 @@
+.JobContainer {
+    /* background-color: lightgreen; */
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+    padding: 2px;
+    
+}
+
+.JobContainer:hover {
+    transform: translate(-22px);
+    box-shadow: 0px 1px 13px 3px rgba(0,0,0,0.77);
+    transition: 0.2s;
+    transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+}
+
+.JobContainer:hover,
+.JobContainer:hover div,
+.JobContainer:hover a i,
+.JobContainer:hover p {
+    border-radius: 5px;
+    color: #fff;
+    /* background-color: rgb(79, 80, 79); */
+    /* background-color: rgb(29, 32, 29); */
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    /* transition: 0.22s; */
+    font-weight: 700;
+    cursor: pointer;
+    border-bottom: none;
+}
+
+/* .JobTitleBox {
+    margin-top: 5px;
+    background-color: salmon;
+} */
+
+/* .JobTitleBox:hover div,
+.JobTitleBox:hover,
+.JobTitleBox:hover a i{
+    font-weight: 700;
+    cursor: pointer;
+    color: rgb(29, 37, 33);
+    color: #515752;
+    transition: 0.2s;
+} */
+
+.JobTitle {
+    color: rgb(95, 97, 96);
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 1px;
+    display: inline-block;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif;
+}
+
+.ViewJobTag {
+    float: right;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgb(95, 97, 96)!important;
+}
+
+.JobDesc {
+    color: rgb(131, 131, 131);
+    padding-bottom: 10px;
+}
+
+.Date {
+    padding-bottom: 5px;
+}
+
+.Advert {
+    /* font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif; */
+    font-size: 28px;
+    line-height: 30px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding-bottom: 5px!important;
+    /* color : rgb(109, 109, 109); */
+    color: rgb(29, 37, 33);
+    /* color: #3EB650; */
+    border-bottom: 1px solid darkgray;
+}

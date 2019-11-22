@@ -1,0 +1,40 @@
+.ProjectMM{
+    display: flex;
+}
+
+.LeftSide {
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column;
+    background-color:#000;
+    align-items: center;
+    justify-content: center;
+}
+.RightSide {
+    background-color: black;
+    color: #fff;
+    padding: 0;
+}
+.RightSideContent {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.Image{
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.NavLink {
+    color: lightgreen;
+}
+
+.NavLink:hover {
+    color: greenyellow;
+}
+
+.NavLink:active,
+.NavLink:focus {
+    background-color: lightgreen!important;
+}
