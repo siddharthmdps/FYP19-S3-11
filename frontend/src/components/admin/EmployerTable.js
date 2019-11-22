@@ -28,6 +28,7 @@ class TableBody extends Component {
         return (
             <tr id={'tr-' + this.props.TRs.no} >
                 <td>{this.props.TRs.no}</td>
+                <td>{this.props.TRs.key}</td>
                 <td>{this.props.TRs.username}</td>
                 <td>{this.props.TRs.companyname}</td>
                 <td>{this.props.TRs.companyphone}</td>
@@ -130,6 +131,7 @@ export class EmployerTable extends Component {
         return (
             <div>
                 <h1 className="m-3 d-flex justify-content-center"><b>Employer Login Credentials</b></h1>
+                <hr/>
                 <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                     open={this.state.snackbaropen}
                     autoHideDuration={5000}
@@ -149,7 +151,7 @@ export class EmployerTable extends Component {
                 />
                 <div className='row margin-top'>
                     <ButtonToolbar>
-                        <Button variant='primary'
+                        <Button variant='outline-success'
                             onClick={() => this.setState({ addModalShow: true })}
                         >Create New Employer Account</Button>
                         <AddEmpModal show={this.state.addModalShow}
@@ -162,13 +164,14 @@ export class EmployerTable extends Component {
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>UserName</th>
-                                    <th>CompanyName</th>
-                                    <th>Company Phone</th>
-                                    <th>Compnay Email</th>
+                                    <th>Employer ID</th>
+                                    <th>Username</th>
+                                    <th>Company Name</th>
+                                    <th>Company Phone Number</th>
+                                    <th>Company E-mail</th>
                                     <th>Company Description</th>
                                     <th>Company Address</th>
-                                    <th>Industry</th>
+                                    <th>Company Industry</th>
                                     <th>Options</th>
                                 </tr>
                             </thead>

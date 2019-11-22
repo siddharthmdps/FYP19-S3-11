@@ -1,0 +1,35 @@
+.Home {
+    height: 100vh;
+    top: 0;
+    text-align: center;
+    background: url('./Images/SIMHQ.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* color: #fff; */
+}
+
+.HomeContent {
+    position: relative;
+    top: 10%;
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    line-height: 34px;
+    letter-spacing: 1px;
+}
+
+.typewriter {
+    display: inline-block;
+  	overflow: hidden;
+  	letter-spacing: 2px;
+ 	animation: typing 5s steps(30, end), blink .75s step-end infinite;
+    white-space: nowrap;
+    font-size: 30px;
+    font-weight: 700;
+    border-right: 4px solid orange;
+    box-sizing: border-box;
+    animation: animated-text 4s linear 1s 1 normal both,
+             animated-cursor 600ms linear infinite;
+}

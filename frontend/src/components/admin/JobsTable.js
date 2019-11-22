@@ -97,7 +97,7 @@ export class JobsTable extends Component {
                         'industry': data[i].industry,
                         'description': data[i].description,
                         'requiredskills': data[i].requiredskills,
-                        'dateposted': data[i].dateposted,
+                        'dateposted': data[i].dateposted.slice(0,10),
                         'location': data[i].location,
                         'yearsofexperience': data[i].yearsofexperience,
                     };
@@ -130,6 +130,7 @@ export class JobsTable extends Component {
         return (
             <div>
                 <h1 className="m-3 d-flex justify-content-center"><b>Job Listing</b></h1>
+                <hr/>
                 <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                     open={this.state.snackbaropen}
                     autoHideDuration={5000}
@@ -149,7 +150,7 @@ export class JobsTable extends Component {
                 />
                 <div className='row margin-top'>
                     <ButtonToolbar>
-                        <Button variant='primary'
+                        <Button variant='outline-success'
                             onClick={() => this.setState({ addModalShow: true })}
                         >Create New Job Listing</Button>
                         <AddJobModal show={this.state.addModalShow}
@@ -162,14 +163,14 @@ export class JobsTable extends Component {
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>empid</th>
-                                    <th>title</th>
-                                    <th>industry</th>
-                                    <th>description</th>
-                                    <th>requiredskills</th>
-                                    <th>dateposted</th>
-                                    <th>location</th>
-                                    <th>yearsofexperience</th>
+                                    <th>Employer ID</th>
+                                    <th>Title</th>
+                                    <th>Industry</th>
+                                    <th>Description</th>
+                                    <th>Required Skills</th>
+                                    <th>Date Posted</th>
+                                    <th>Location</th>
+                                    <th>Years of experience</th>
                                     <th>Options</th>
                                 </tr>
                             </thead>

@@ -2,10 +2,14 @@ const {env, sha1, mysql, mypool} = require('../../util')
 
 const deletestudentawards = (req, res) => {
     const studentid = req.body.StudentID;
-    const awardid = req.body.AwardID;
-    const awardname = req.body.Award;
-    var awarddate = req.body.Date;
-    
+    const jobprefid = req.body.JobPreferenceID;
+    const industry = req.body.Industry;
+    const position = req.body.Position;
+    const jobtype = req.body.JobType;
+    const expectedsalary = req.body.ExpectedSalary;
+    const location = req.body.Location;
+    const availability = req.body.Availability;
+
     mypool.getConnection( (error, connection) => {
         if(error) {
             connection.release()
@@ -13,19 +17,14 @@ const deletestudentawards = (req, res) => {
             throw error
         }
         else {
-            if(studentid) {   
-                let queryString1 = `delete from pegasus.studentawards where id = "${jobprefid}" and studentid = "${studentid}"` ;   
+            if(studentid && jobprefid) {   
+                let queryString1 = `delete from pegasus.studentjobpref where id = "${jobprefid}" and studentid = "${studentid}"` ;   
                 if(!studentid) {
-                    queryString1 = `delete from pegasus.studentawards where studentid = "${studentid}"` ;   
+                    queryString1 = `delete from pegasus.studentjobpref where studentid = "${studentid}"` ;   
                 }       
                 connection.query(queryString1, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })
-                    }
-                    else {
-                        res.json({
-                            message: "success"
-                        })
                     }
                 }) 
             } else {
@@ -33,9 +32,13 @@ const deletestudentawards = (req, res) => {
                     message: "Bad Request! Invalid POST request!"
                 });
             }
-            connection.release()    
+    
         }
-    } )    
+        connection.release()
+    } )
+    res.json({
+        message: "success"
+    })
 }
 
 module.exports = deletestudentawards

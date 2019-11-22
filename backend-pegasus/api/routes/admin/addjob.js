@@ -10,8 +10,6 @@ const addjob = (req,res) => {
     currentDate = `${currentDate.getFullYear()}-${currentDate.getMonth()+1}-${currentDate.getDate()}`
 
 
-
-
     let queryString = ` INSERT INTO pegasus.job 
                         SET title='${title}', industry='${industry}', description='${description}',
                         requiredskills='${requiredskills}', dateposted='${currentDate}', location='${location}', yearsofexperience=${yearsofexperience},
@@ -20,7 +18,6 @@ const addjob = (req,res) => {
                             WHERE employer.id = '${empid}'
                         )`
 
-    
 
     // INSERT JSON INFO DB
     mypool.getConnection((err, connection) => {

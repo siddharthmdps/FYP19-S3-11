@@ -10,7 +10,7 @@ const getallstudents = (req,res) => {
         else {
             let queryString = `SELECT student.*, studenteducation.fieldofstudy 
                                 FROM pegasus.student
-                                JOIN pegasus.studenteducation
+                                LEFT JOIN pegasus.studenteducation
                                     ON studenteducation.studentid = student.id`
             connection.query(queryString, (err, rows, fields) => {
                 if(err) {

@@ -1,4 +1,6 @@
-var image = require('')
+var date = "2019-11-12asdfsdfdsafdsafd"
 
-console.log(image)
+date = date.slice(0,11)
+
+console.log(date)
 
