@@ -9,10 +9,6 @@ import {
 import "./index.css";
 
 class ClassicFormPage extends React.Component {
-
-
-
-
   render() {
     return (
       <div id="classicformpage">
@@ -31,14 +27,9 @@ class ClassicFormPage extends React.Component {
                   </h1>
                   <hr className="hr-light" />
                   <h2 className="mb-4">
-                  Admin Management Portal
+                    Admin Management Portal
                   </h2>
-                  {/* <MDBBtn outline color="white">
-                    Click here to move to Dashboard
-                  </MDBBtn> */}
                 </MDBAnimation>
-
-            
               </MDBRow>
             </MDBContainer>
           </MDBMask>

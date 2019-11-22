@@ -113,7 +113,7 @@ export class RegStuModal extends Component {
                                             <Form.Control
                                                 type="text"
                                                 name="middlename"
-                                                required pattern="[A-Za-z]+"
+                                                required
                                                 placeholder=""></Form.Control>
                                         </Form.Group>
 

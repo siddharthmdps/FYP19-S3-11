@@ -44,8 +44,9 @@ app.post('/uploadstudentpicture/:sid',function(req, res) {
     console.log(req.file);
     //console.log(req.body);
     var obj = req.file.buffer;
+    var filetype = req.file.mimetype;
     var buffer = new Buffer.from(obj).toString('base64');
-      var queryString1 = `UPDATE pegasus.student SET profileimage = "${buffer}" where id = "${studentid}"`;
+      var queryString1 = `UPDATE pegasus.student SET profileimage = "${buffer}",filetype = "${filetype}" where id = "${studentid}"`;
       var insert = {
           profileimage: buffer
       };
@@ -75,7 +76,7 @@ app.get('/getstudentprofilepicture/:sid', function(req, res) {
 	  		throw err;
 	  	}
         if (studentid) {
-            connection.query("SELECT ProfileImage FROM student WHERE id = ?", [studentid], function(error, results, fields) {
+            connection.query("SELECT ProfileImage,FileType FROM student WHERE id = ?", [studentid], function(error, results, fields) {
                 if (error) {
                     res.status(500).json({
                         message: error
@@ -83,7 +84,7 @@ app.get('/getstudentprofilepicture/:sid', function(req, res) {
                 }
                 if (results && results.length > 0) {
                     res.status(200).json({
-                        PersonalParticulars: results[0]
+                        ProfileImage: results[0]
                     });
                 }
                 else if (!results || results.length == 0) {

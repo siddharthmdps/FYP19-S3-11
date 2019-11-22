@@ -47,27 +47,26 @@ class NavbarPage extends Component {
             <MDBNavItem>
               <MDBNavLink to="/admin/reports">Reports</MDBNavLink>
             </MDBNavItem>
+            <MDBNavItem>
+              <MDBNavLink to="/admin/careertips">Career Tips</MDBNavLink>
+            </MDBNavItem>
+            <MDBNavItem>
+              <MDBNavLink to="/admin/polls">Polls</MDBNavLink>
+            </MDBNavItem>
 
           </MDBNavbarNav>
           <MDBNavbarNav right>
-            {/* <MDBNavItem>
-              <MDBFormInline waves>
-                <div className="md-form my-0">
-                  <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-                </div>
-              </MDBFormInline>
-            </MDBNavItem> */}
             <MDBNavItem>
               <MDBDropdown>
                 <MDBDropdownToggle nav caret>
                   <MDBIcon icon="user" />
                 </MDBDropdownToggle>
                 <MDBDropdownMenu right className="dropdown-default">
-                  <NavDropdown.Item onClick={ () => {
-                        localStorage.clear()
-                        document.location.reload(true)
-                    }
-                }>Sign Out</NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => {
+                    localStorage.clear()
+                    document.location.reload(true)
+                  }
+                  }>Sign Out</NavDropdown.Item>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
