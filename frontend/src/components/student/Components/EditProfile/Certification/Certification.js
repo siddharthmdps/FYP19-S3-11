@@ -9,7 +9,7 @@ const certification = props => {
         <React.Fragment>
             <Row>
                 <Col className={classes.Title}>
-                    Certificate #{props.seq}
+                    Certificate #{props.details.CertificateID}
                 </Col>
                 <Col md={{ offset: 9, span: 1 }} className={classes.Delete}>
                     <Button1 click={props.remove} delete><i className="fas fa-trash-alt"></i></Button1>
