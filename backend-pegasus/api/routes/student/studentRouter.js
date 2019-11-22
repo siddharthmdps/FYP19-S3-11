@@ -93,7 +93,7 @@ router.put('/putstudentdocument', studentdocument)
 
 //delete
 const delstudentdocument = require('./deletestudentdocument')
-router.delete('/deletestudentdocument', delstudentdocument)
+router.delete('/deletestudentdocument/:StudentID', delstudentdocument)
 
 //student skills
 //get
