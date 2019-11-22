@@ -894,12 +894,15 @@ class EditProfile extends Component {
             // }
             // console.log(temp);
             if(this.state.Document.length===0){
-                Axios.delete(`https://pegasus-backend.herokuapp.com/student/deletestudentdocument`, { "StudentID" : localStorage.getItem('id')})
+                Axios.delete(`https://pegasus-backend.herokuapp.com/student/deletestudentdocument/${localStorage.getItem('id')}`)
                     .then(res => {
                         console.log(res);
+                        this.props.enqueueSnackbar('Response saved!', { variant: 'success' });
+                        this.togglePanel(9);
                     })
                     .catch(err => {
                         console.log(err);
+                        this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
                     });
             }
             else{
