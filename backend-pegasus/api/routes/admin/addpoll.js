@@ -8,7 +8,7 @@ const addpoll = (req,res) => {
     let {question, option1, option2, option3} = req.body 
 
     let queryString = ` INSERT INTO pegasus.poll 
-                        SET question='${question}', option1='${option1}', option2='${option2}', option3='${option3}'`
+                        SET question="${question}", option1="${option1}", option2="${option2}", option3="${option3}"`
 
 
     // INSERT JSON INFO DB

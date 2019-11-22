@@ -12,7 +12,9 @@ const getjobinfo = (req, res) => {
             throw err
         }
         else {
-            let queryString = `SELECT * FROM pegasus.job WHERE id=${jobID}`
+            let queryString = `SELECT job.*, employer.companyname FROM pegasus.job 
+                                JOIN employer ON employer.id = job.empid
+                                WHERE job.id=${jobID}`
             connection.query(queryString, (err, rows, fields) => {
                 if(err) {
                     res.status(500).json({ message: err })

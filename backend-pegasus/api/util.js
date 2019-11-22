@@ -15,7 +15,13 @@ const mypool = mysql.createPool({
     port:       process.env.Db_Port
 });
 
-module.exports = {express, router, env, sha1, mysql, mypool}
+const containsNull = (json_obj, res) => {
+    for(el in json_obj){
+        if(json_obj[el] === null) return true
+    }
+    return false
+}
+module.exports = {express, router, env, sha1, mysql, mypool, containsNull}
 
 // copy this when importing
 // const { router, env, sha1, mysql, mypool} = require('../../util')

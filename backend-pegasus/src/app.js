@@ -33,7 +33,7 @@ const mypool = mysql.createPool({
 });
 
 app.post('/uploadstudentpicture/:sid',function(req, res) {
-
+  res.setHeader('Access-Control-Allow-Origin', '*');
   var studentid = req.params.sid
   upload(req, res, function (err) {
     if (err instanceof multer.MulterError) {
