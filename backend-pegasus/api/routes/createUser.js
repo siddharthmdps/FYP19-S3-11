@@ -32,29 +32,33 @@ const createUser = (req, res) => {
                         VALUES  ('${username}', '${password}', '${companyname}', '${companyphone}', 
                         '${companyemail}', '${industry}', '${companydescription}', '${companyaddress}' );`
             break;
-        default : res.send(`Unknown usertype`)
+        default : res.send({
+            message: 'Unknown user type'
+        })
     }
 
-    mypool.getConnection( (err, connection) => {
-        if(err) {
+    if(usertype === 'student' || usertype === 'employer'){
+        mypool.getConnection( (err, connection) => {
+            if(err) {
+                connection.release()
+                console.log(`Error getting mysql_pool connection: ${err}`)
+                throw err
+            }
+            else {
+                connection.query(queryString, (err) => {
+                    if(err) {
+                        res.status(500).json({ message: err })
+                    }
+                    else {
+                        res.send({
+                            message: 'successfully created new user'
+                        })
+                    }
+                })
+            }
             connection.release()
-            console.log(`Error getting mysql_pool connection: ${err}`)
-            throw err
-        }
-        else {
-            connection.query(queryString, (err) => {
-                if(err) {
-                    res.status(500).json({ message: err })
-                }
-                else {
-                    res.send({
-                        message: 'successfully created new user'
-                    })
-                }
-            })
-        }
-        connection.release()
-    } )
+        } )
+    } else res.send({ message: 'Unknown user type' })
 }
 
 
