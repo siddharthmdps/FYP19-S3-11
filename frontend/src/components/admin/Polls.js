@@ -4,7 +4,7 @@ import { PollsTable } from './PollsTable.js'
 // import 'bootstrap-css-only/css/bootstrap.min.css';
 // import 'mdbreact/dist/css/mdb.css';
 
-export class Polls extends Component {
+export class AdminPolls extends Component {
     constructor(props) {
         super(props);
 

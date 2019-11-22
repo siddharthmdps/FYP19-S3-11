@@ -39,7 +39,7 @@ import Dashboard from './components/admin/Dashboard'
 import { AdminJobs } from './components/admin/Jobs'
 import Reports from './components/admin/Reports'
 import {Tips} from './components/admin/Tips'
-import {Polls} from './components/admin/Polls'
+import {AdminPolls} from './components/admin/Polls'
 
 // importing Blog Components
 import Blog from './components/blog/Container/Blog'
@@ -178,7 +178,7 @@ class App extends Component {
               <ProtectedRoute exact path="/admin/jobs" component={AdminJobs}></ProtectedRoute>
               <ProtectedRoute exact path="/admin/reports" component={Reports}></ProtectedRoute>
               <ProtectedRoute exact path="/admin/careertips" component={Tips}></ProtectedRoute>
-              <ProtectedRoute exact path="/admin/polls" component={Polls}></ProtectedRoute>
+              <ProtectedRoute exact path="/admin/polls" component={AdminPolls}></ProtectedRoute>
 
               {/* Blog Routes */}
               <Route exact path="/blog" render={props => <Blog {...props} useBlog={(allow) => this.useBlogNavbar(allow)} />}></Route>
