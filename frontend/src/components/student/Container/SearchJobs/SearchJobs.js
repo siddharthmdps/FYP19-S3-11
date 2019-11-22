@@ -127,7 +127,7 @@ class SearchJobs extends Component {
                     tempJ['WorkExpReq'] = receivedData.data[i].yearsofexperience;
                     tempJ['Description'] = receivedData.data[i].description;
                     tempJ['Industry'] = receivedData.data[i].industry;
-                    tempJ['JobID'] = receivedData.data[i].id;
+                    tempJ['JobID'] = receivedData.data[i].jobid;
                     tempJ['Status'] = "None";
                     tempJobs.push(tempJ);
                 }

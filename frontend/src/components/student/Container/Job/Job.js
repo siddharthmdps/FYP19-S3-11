@@ -61,7 +61,7 @@ class JobCard extends Component {
         Axios.get(`https://pegasus-backend.herokuapp.com/employer/getjobinfo/${this.props.match.params.JID}`)
             .then(res => {
                 let temp = res.data[0];
-                this.setState({ID: temp.id, JobTitle: temp.title, Company: temp.empid, Industry: temp.industry,  Location: temp.location, WorkExpReq: `${temp.yearsofexperience} years`, Status: 'None', Description: temp.description})
+                this.setState({ID: temp.id, JobTitle: temp.title, Company: temp.companyname, Industry: temp.industry,  Location: temp.location, WorkExpReq: `${temp.yearsofexperience} years`, Status: 'None', Description: temp.description})
                 console.log(temp);
             })
             .catch(err => {

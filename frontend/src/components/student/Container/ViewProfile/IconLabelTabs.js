@@ -117,7 +117,6 @@ let IconLabelTabs = props => {
                                 <h3 className="vertical-timeline-element-title">{educationDetail.Degree + " in " +
                                     educationDetail.FieldOfStudy + " (" +
                                     educationDetail.Major + ")"}</h3>
-                                <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
                                 <p>
                                     {educationDetail.University}
                                     <br />
