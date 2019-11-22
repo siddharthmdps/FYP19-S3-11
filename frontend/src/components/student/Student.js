@@ -7,16 +7,13 @@ import AppliedJobs from './Container/AppliedJobs/AppliedJobs';
 import Tab from './Container/ViewProfile/IconLabelTabs';
 
 class Student extends Component {
-    componentDidMount(){
-        window.open(`/student/viewprofile/${localStorage.getItem('id')}`,"_self");
-    }
     render() {
         return (
             <div>
                 {/* <Profile /> */}
                 {/* <AppliedJobs /> */}
                 {/* <SavedJobs /> */}
-                {/* <ViewProfile /> */}
+                <ViewProfile />
             </div>
         )
     }

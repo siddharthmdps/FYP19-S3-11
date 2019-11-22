@@ -9,7 +9,7 @@ const education = props => {
         <React.Fragment>
             <Row>
                 <Col className={classes.Title}>
-                    Education #{props.seq}
+                    Education #{props.details.EducationID}
                 </Col>
                 <Col md={{ offset: 9, span: 1 }} className={classes.Delete}>
                     <Button1 click={props.remove} delete><i className="fas fa-trash-alt"></i></Button1>

@@ -1,0 +1,53 @@
+.ProjectMM{
+    display: flex;
+    height: 100%;
+    max-height:100%;
+    overflow: auto;
+}
+.LeftSide {
+    min-height: 100vh;
+    display: flex;
+    background-color:black;
+    align-items: center;
+    justify-content: center;
+}
+.RightSide {
+    background-color: black;
+    /* height: 100vh; */
+    color: #fff;
+    padding: 0;
+}
+
+.RightSideContent {
+    height: 100%!important;
+    width: 100%;
+    min-height: 100%;;
+}
+
+.NavLink {
+    color: #43CD86;
+    transition-timing-function: ease-in;
+}
+
+.NavLink:hover {
+    color: rgb(77, 255, 163);
+    font-weight: 700;
+    transition: 0.25s;
+}
+
+.NavLink .nav-pills .nav-link:active, .nav-pills .show {
+    background-color: lightgreen!important;
+}
+
+.NavLink:focus,
+.NavLink:active {
+    background-color: lightgreen!important;
+    color: #fff;
+    font-weight: 700;
+    transition: 0.2s;
+    transition-timing-function: ease-out;
+}
+
+.NavItem {
+    background-color: lightgreen!important;
+}

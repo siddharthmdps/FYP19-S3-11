@@ -1,0 +1,28 @@
+.Container {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    background-color: lightgreen;
+}
+
+.MainBody {
+    background-color: salmon;
+}
+
+.Card {
+    /* opacity: 0.8!important; */
+    border-radius: 25px;
+}
+
+.Title {
+    margin-top: 10px;
+    width:100%;
+    display: block;
+    font-weight: 700;
+    text-align: center;
+    font-family:  Helvetica, Arial, sans-serif;
+    letter-spacing: 1px;
+    line-height: 28px;
+    color: #fff;
+}
