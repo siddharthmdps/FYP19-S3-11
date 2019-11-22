@@ -153,7 +153,7 @@ export class PollsTable extends Component {
                     <ButtonToolbar>
                         <Button variant='outline-success'
                             onClick={() => this.setState({ addModalShow: true })}
-                        >Create New Poll</Button>
+                        >Post New Poll</Button>
                         <AddPollModal show={this.state.addModalShow}
                             onHide={addModalClose}
                         />
