@@ -128,7 +128,7 @@ class EditProfile extends Component {
         if(event.target.files[0]["type"]=== "image/png" || event.target.files[0]["type"]=== "image/jpg" || event.target.files[0]["type"]=== "image/jpeg"){
             console.log(event.target.files[0]);
             this.setState({NewProfile: {"Modal": true, "Location": event.target.files[0]}});
-            console.log(this.state.NewProfile.Location);
+            console.log(this.state.NewProfile.Location.name);
         }
         else{
             this.props.enqueueSnackbar('Only PNG/JPG/JPEG supported!', { variant: 'error' });
@@ -728,10 +728,11 @@ class EditProfile extends Component {
     submitNewProfile = () => {
         const fd = new FormData();
         fd.append('file', this.state.NewProfile.Location);
-        console.log(fd);
-        Axios.post(`${apiURL}/uploadstudentpicture/${this.state.StudentID}`, fd)
+        console.log(...fd);
+        Axios.post(`${apiURL}uploadstudentpicture/${this.state.StudentID}`, fd)
         .then(response => {
             console.log(response);
+            window.location.reload();
         })
         .catch(err => {
             console.log(err);
