@@ -4,11 +4,6 @@ const  testobj = {
     height: "6 something"
 }
 
-const containsNull = (json_obj) => {
-    for(el in json_obj){
-        if(json_obj[el] === null) return true 
-    }
-    return false
-}
+testobj.new = "new new"
 
-console.log( containsNull(testobj) )
+console.log( testobj )
