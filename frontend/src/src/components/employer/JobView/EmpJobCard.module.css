@@ -1,0 +1,9 @@
+.Card {
+    margin-top: 13px;
+    box-shadow: 0px 0px 17px 2px rgb(199, 194, 199);
+}
+
+.detail{
+    padding-left: 30px;
+    font-size: 1.15rem;
+}

@@ -21,14 +21,12 @@ class TopNavbar extends Component {
       let tempLeft = {
         "Job Search": "/student/searchjobs",
         "Career Tips": "/careertips",
-        "Polls": "/polls",
         "Blog": "/blog"
       };
 
       let tempRight = {
         "View Profile": `/student/viewprofile/${localStorage.getItem('id')}`,
         "Edit Profile": "/student/editprofile",
-        "Recommended Jobs": "/student/recommendedjobs",
         "Saved Jobs": "/student/savedjobs",
         "Applied Jobs": "/student/appliedjobs",
         "Logout": "/",
@@ -44,7 +42,7 @@ class TopNavbar extends Component {
         "Employer": "/employer/viewprofile",
         "Edit Profile": "/employer/editprofile",
         "Post a new Job": "/employer/postjob",
-        "Polls": "/polls",
+        "View Jobs": "/employer/viewjobs",
         "Blog": "/blog"
       };
 

@@ -1,0 +1,61 @@
+.Button1,
+.Delete {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    text-align: center;
+    margin-right: 2%;
+    margin-top: 1%;
+}
+
+.Button1:hover {
+    background-color: #46CE88;
+    box-shadow: 0px 15px 20px rgba(35, 221, 134, 0.651);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+.Button1:active,
+.Button1:focus {
+    content: "";
+    background: #46CE88;
+    position: relative;
+    /* opacity: 0; */
+    transition: all 0.8s;
+    background-color: #46CE88;
+}
+
+.Button1:active:after,
+.Delete:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+
+.Delete:hover {
+    background-color: #F44336;
+    box-shadow: 0px 15px 20px rgba(229, 46, 46, 0.4);
+    color: #fff;
+}
+
+.Delete:active {
+    content: "";
+    background: #F44336;
+    position: relative;
+    opacity: 0;
+    transition: all 0.8s
+}

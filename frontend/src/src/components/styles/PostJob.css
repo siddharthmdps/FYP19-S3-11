@@ -1,0 +1,32 @@
+
+div#postjob-container{
+    margin-top: 8%;
+    max-width: 700px;
+    padding: 35px;
+}
+
+div#postjob-container div {
+    margin-bottom: 7px;
+}
+
+#job-desc{
+    height: 150px;
+}
+
+div.col-sm-3 {
+    text-align: right;
+}
+
+button.post-job-btn{
+    max-width: 150px;
+    margin: auto;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+div.input-group {
+    max-width: 500px;
+    margin: auto;
+}
+
+

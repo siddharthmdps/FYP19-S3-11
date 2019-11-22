@@ -1,0 +1,53 @@
+.Image{
+    position: absolute;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.CentralContent {
+    color: #43CD86;
+    justify-content: center;    
+    text-align: center;
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-wrap: break-word;
+}
+
+.CentralContent:hover{
+    /* color: #3949AB; */
+    color: rgb(46, 172, 107);;
+    font-weight: bolder;
+}
+
+.Parent {
+    position: relative;
+    text-align: center!important;
+}
+.Overlay {
+    /* position: absolute; */
+    background-color: rgba(31, 32, 32, 0.521);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity .5s;
+    z-index: 99;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.Overlay:hover {
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity .5s;
+}
+
+.Text {
+    position: relative;
+    top: 49%;
+    color: #fff;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 30px;
+    letter-spacing: 1px;
+    font-weight: bolder;
+}
+

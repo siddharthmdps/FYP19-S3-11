@@ -1,0 +1,26 @@
+div.login-container {
+    margin-top : 10%;
+    max-width: 500px;
+    text-align: center;
+}
+
+div.login-container input {
+    margin: auto;
+    margin-bottom: 13px;
+    max-width: 300px;
+}
+
+div.login-container button {
+    max-width: 100px;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+div.login-container select {
+    max-width: 150px;
+    margin: auto;
+    background: #e8e2e1;
+    cursor: pointer;
+}
