@@ -12,6 +12,7 @@ const login = (req,res) => {
     // Search in corresponding table based on usertype
     // Respond with user ID
     mypool.getConnection( (error, connection) => {
+        console.log('Login request')
         if(error) {
             connection.release()
             console.log(`Error getting mysql_pool connection: ${error}`)

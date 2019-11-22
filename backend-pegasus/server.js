@@ -9,5 +9,5 @@ const port = process.env.PORT
 const server = http.createServer(app)
 
 server.listen(port, () => {
-    console.log ('Server is up on port ' + port)
+    console.log ('Server is listening on port ' + port)
 })
