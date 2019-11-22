@@ -23,10 +23,11 @@ class EditJob extends Component {
             joblocation: "",
             jobindustry: "",
             yearsofexperience: "",
-            dateposted: ""
+            dateposted: "",
+            companyName: ""
             // jobskills: props.jobskills
         }
-        this.employername = localStorage.getItem('username')
+        // this.employername = localStorage.getItem('username')
     }
 
     MyForm = () => {
@@ -60,7 +61,7 @@ class EditJob extends Component {
                             <Form.Group as={Row} controlId="formPlaintextCompanyName">
                                 <Form.Label column sm="2"> Company Name </Form.Label>
                                 <Col sm="10">
-                                    <Form.Control plaintext readOnly defaultValue={this.employername} />
+                                    <Form.Control plaintext readOnly defaultValue={this.state.companyName} />
                                 </Col>
                             </Form.Group>
                             {/* <Form.Group as={Row} controlId="Location" style={{ textAlign: 'center' }}>
@@ -163,13 +164,14 @@ class EditJob extends Component {
                 // console.log(jobid, response.data);
                 let temp = {
                     title: response.data[0]['title'],
-                    companyName: response.data[0]['empid'],
+                    companyName: response.data[0]['companyname'],
                     reqSkills: response.data[0]['requiredskills'],
                     joblocation: response.data[0]['location'],
                     jobindustry: response.data[0]['industry'],
                     dateposted: response.data[0]['dateposted'],
                     jobdescription: response.data[0]['description'],
-                    yearsofexperience: response.data[0]['yearsofexperience']
+                    yearsofexperience: response.data[0]['yearsofexperience'],
+                    empid: response.data[0]['empid'],
                 };
                 console.log(temp);
                 this.setState({
@@ -178,7 +180,8 @@ class EditJob extends Component {
                     joblocation: temp.joblocation,
                     jobindustry: temp.jobindustry,
                     yearsofexperience: temp.yearsofexperience,
-                    dateposted: temp.dateposted
+                    dateposted: temp.dateposted,
+                    companyName: temp.companyName
 
                 });
                 // editJobHandler={this.props.editJobHandler}
