@@ -75,7 +75,7 @@ app.get('/getstudentprofilepicture/:sid', function(req, res) {
 	  		throw err;
 	  	}
         if (studentid) {
-            connection.query("SELECT TO_BASE64(ProfileImage) FROM student WHERE id = ?", [studentid], function(error, results, fields) {
+            connection.query("SELECT ProfileImage FROM student WHERE id = ?", [studentid], function(error, results, fields) {
                 if (error) {
                     res.status(500).json({
                         message: error
