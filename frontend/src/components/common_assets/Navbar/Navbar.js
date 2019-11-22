@@ -20,12 +20,12 @@ class TopNavbar extends Component{
     if(this.state.Navbar!== "Student"){
       let tempLeft = {
         "Job Search": "/student/searchjobs",
-        "Companies": "/",
+        "Career Tips": "/careertips",
         "Blog": "/blog"
       };
 
       let tempRight = {
-        "View Profile": "/student/viewprofile",
+        "View Profile": `/student/viewprofile/${localStorage.getItem('id')}`,
         "Edit Profile": "/student/editprofile",
         "Saved Jobs": "/student/savedjobs",
         "Applied Jobs": "/student/appliedjobs",

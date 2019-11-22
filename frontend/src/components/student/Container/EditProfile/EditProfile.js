@@ -488,6 +488,219 @@ class EditProfile extends Component {
     }
     // Removing elements in the Profile ends here
 
+    //Validation of the Profile starts here
+
+    validatePersonalParticulars = () => {
+        if(this.state.PersonalParticulars.FirstName === ""){
+            this.props.enqueueSnackbar('First Name cannot be empty!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.LastName === ""){
+            this.props.enqueueSnackbar('Last Name cannot be empty!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.Email === ""){
+            this.props.enqueueSnackbar('Email is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.Phone === ""){
+            this.props.enqueueSnackbar('Phone is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.CurrentAddress === ""){
+            this.props.enqueueSnackbar('Current Address is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.City === ""){
+            this.props.enqueueSnackbar('City is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.Country === ""){
+            this.props.enqueueSnackbar('Country is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.PostalCode === ""){
+            this.props.enqueueSnackbar('Postal Code is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.Nationality === ""){
+            this.props.enqueueSnackbar('Nationality is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.Availability === ""){
+            this.props.enqueueSnackbar('Availability is not valid!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.PersonalParticulars.LinkedIn === ""){
+            this.props.enqueueSnackbar('LinkedIn is not valid!', { variant: 'error' });
+            return false;
+        }
+        return true;
+
+    }
+
+    validateEducation = () => {
+        for (let idk in this.state.Education) {
+            if(this.state.Education[idk]['University'] === ""){
+                this.props.enqueueSnackbar(`University of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['Degree'] === ""){
+                this.props.enqueueSnackbar(`Degree of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['FieldOfStudy'] === ""){
+                this.props.enqueueSnackbar(`FieldOfStudy of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['Major'] === ""){
+                this.props.enqueueSnackbar(`Major of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['StartDate'] === ""){
+                this.props.enqueueSnackbar(`StartDate of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['EndDate'] === ""){
+                this.props.enqueueSnackbar(`EndDate of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['Mode'] === ""){
+                this.props.enqueueSnackbar(`Mode of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Education[idk]['GPA'] === ""){
+                this.props.enqueueSnackbar(`GPA of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+        }
+        return true;
+    }
+
+    validateWorkExp = () => {
+        for(let idk in this.state.WorkExp){
+            if(this.state.WorkExp[idk]['Position']===""){
+                this.props.enqueueSnackbar(`Position of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['Company']===""){
+                this.props.enqueueSnackbar(`Company of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['StartDate']===""){
+                this.props.enqueueSnackbar(`StartDate of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['EndDate']===""){
+                this.props.enqueueSnackbar(`EndDate of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['Mode']===""){
+                this.props.enqueueSnackbar(`Mode of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['Industry']===""){
+                this.props.enqueueSnackbar(`Industry of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.WorkExp[idk]['AnnualSalary']===""){
+                this.props.enqueueSnackbar(`AnnualSalary of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+        }
+        return true;
+    }
+
+    validateJobPreference = () => {
+        if(this.state.JobPreference.Industry===""){
+            this.props.enqueueSnackbar('Industry cannot be empty!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.JobPreference.WorkExp===""){
+            this.props.enqueueSnackbar('WorkExp cannot be empty!', { variant: 'error' });
+            return false;
+        }
+        if(this.state.JobPreference.Location===""){
+            this.props.enqueueSnackbar('Location cannot be empty!', { variant: 'error' });
+            return false;
+        }
+        return true;
+    }
+
+    validateAwards = () => {
+        for(let idk in this.state.Awards){
+            if(this.state.Awards[idk]['Award']===""){
+                this.props.enqueueSnackbar(`Award of #${this.state.Awards[idk]['AwardID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Awards[idk]['Date']===""){
+                this.props.enqueueSnackbar(`Date of #${this.state.Awards[idk]['AwardID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Awards[idk]['Description']===""){
+                this.props.enqueueSnackbar(`Description of #${this.state.Awards[idk]['AwardID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+        }
+        return true;
+    }
+
+    validateCertification = () => {
+        for(let idk in this.state.Certification){
+            if(this.state.Certification[idk]['Name']===""){
+                this.props.enqueueSnackbar(`Name of #${this.state.Certification[idk]['CertificateID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Certification[idk]['IssuedBy']===""){
+                this.props.enqueueSnackbar(`IssuedBy of #${this.state.Certification[idk]['CertificateID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Certification[idk]['IssueDate']===""){
+                this.props.enqueueSnackbar(`IssueDate of #${this.state.Certification[idk]['CertificateID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Certification[idk]['ValidUntil']===""){
+                this.props.enqueueSnackbar(`ValidUntil of #${this.state.Certification[idk]['CertificateID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+        }
+        return true;
+    }
+
+    validateProjects = () => {
+        for(let idk in this.state.Projects){
+            if(this.state.Projects[idk]['Title']===""){
+                this.props.enqueueSnackbar(`Title of #${this.state.Projects[idk]['ProjectID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Projects[idk]['Status']===""){
+                this.props.enqueueSnackbar(`Status of #${this.state.Projects[idk]['ProjectID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Projects[idk]['Description']===""){
+                this.props.enqueueSnackbar(`Description of #${this.state.Projects[idk]['ProjectID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+        }
+        return true;
+    }
+
+    validateDocuments = () => {
+        for(let idk in this.state.Document){
+            if(this.state.Document[idk]['Title']===""){
+                this.props.enqueueSnackbar(`Title of #${this.state.Document[idk]['DocumentID']} is not valid!`, { variant: 'error' });
+                return false;
+            }
+            if(this.state.Document[idk]['Link']===""){
+                this.props.enqueueSnackbar(`Select a file for #${this.state.Document[idk]['DocumentID']}!`, { variant: 'error' });
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //Validation of the Profile ends here
+
     // Submit elements to put in Backend starts here
     submitPersonalParticulars = () => {
         this.togglePanel(1);
@@ -514,7 +727,21 @@ class EditProfile extends Component {
         this.togglePanel(8);
     }
     submitDocuments = () => {
-        this.togglePanel(9);
+        if(this.validateDocuments){
+            let temp = this.copy(this.state.Document);
+            for (let idk in temp) {
+                temp[idk]['StudentID'] = this.state.StudentID;
+            }
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentdocument', temp)
+                .then(response => {
+                    this.props.enqueueSnackbar('Documents uploaded!', { variant: 'success' });
+                    this.togglePanel(9);
+                })
+                .catch(error => {
+                    this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
+                });
+        }
     }
     // Submit elements to put in Backend ends here
 

@@ -21,9 +21,10 @@ const document = props => {
                 <Col sm="10"><Form.Control type='text' placeholder="Resume" value={props.details.Title} onChange={props.changeFn} required/></Col>
             </Form.Group>
 
-            <Form.Group as={Row} controlId="document">
-                <Form.Label column sm="2">Upload</Form.Label>
-                <Col sm="10"><Form.Control type='file'/></Col>
+            <Form.Group as={Row} controlId="Link">
+                {props.details.Link===""?<Form.Label column sm="2">Upload</Form.Label>:<Form.Label column sm="2">Replace File</Form.Label>}
+                {/* <Form.Label column sm="2">Upload</Form.Label> */}
+                <Col sm="10"><Form.Control type='file' onChange={props.changeFn} required/></Col>
             </Form.Group>
         </React.Fragment>
     );

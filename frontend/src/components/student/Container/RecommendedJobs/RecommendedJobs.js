@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Row} from 'react-bootstrap';
-import classes from './SavedJobs.module.css';
+import { Container, Row } from 'react-bootstrap';
+import classes from './RecommendedJobs.module.css';
 
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -9,9 +9,9 @@ import Axios from 'axios';
 
 import JobCard from '../../Components/JobCard/JobCard';
 
-class SavedJobs extends Component {
+class RecommendedJobs extends Component {
     state = {
-        "SavedJobs": [],
+        "RecommendedJobs": [],
         "jobsPerPage": 5,
         "pageNo": 1,
         "pageItems": []
@@ -19,8 +19,8 @@ class SavedJobs extends Component {
 
     pagination = () => {
         let temp = [];
-        let number = this.state.SavedJobs.length / this.state.jobsPerPage;
-        if (this.state.SavedJobs.length % this.state.jobsPerPage !== 0)
+        let number = this.state.RecommendedJobs.length / this.state.jobsPerPage;
+        if (this.state.RecommendedJobs.length % this.state.jobsPerPage !== 0)
             number++;
 
         for (let index = 1; index <= number; index++) {
@@ -65,18 +65,8 @@ class SavedJobs extends Component {
         window.scrollTo(0, 0);
     };
 
-    // changeStatus = (id, status) => {
-    //     let temp = this.state.SavedJobs;
-    //     temp.forEach(element => {
-    //         if(element.id === id)
-    //             element.status = status;
-    //     });
-    //     console.log(temp, id);
-    //     this.setState({ "SavedJobs": temp });
-    // };
-
     changeStatus = (id, status) => {
-        let temp = this.state.SavedJobs;
+        let temp = this.state.RecommendedJobs;
         temp.forEach(element => {
             if(element.JobID === id){
                 if(status==="Applied")
@@ -92,14 +82,14 @@ class SavedJobs extends Component {
             }
         });
         console.log(temp, id, status);
-        this.setState({ "SavedJobs": temp });
+        this.setState({ "RecommendedJobs": temp });
     };
 
     componentDidMount(){
-        Axios.get(`http://192.168.43.251:3001/student/getsavedjoblist/${localStorage.getItem('id')}`)
+        Axios.get("http://192.168.43.251:3001/student/getrecommendedjoblist/14")
             .then(receivedData =>{
-                let temp = receivedData.data.SavedJobs;
-                this.setState({ SavedJobs: temp });
+                let temp = receivedData.data.JobRecommendation;
+                this.setState({ RecommendedJobs: temp });
                 console.log(temp);
                 this.pagination();
             });
@@ -110,11 +100,11 @@ class SavedJobs extends Component {
             <Container >
                 <br />
                 <Row className={classes.Title}>
-                    Saved Jobs
+                    Recommended Jobs
                 </Row>
                 <br />
 
-                {this.state.SavedJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
+                {this.state.RecommendedJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
                     return(
                         <React.Fragment key={jobDetail.id}>
                             <JobCard jobDetail={jobDetail} changeStatus={(id, status) => this.changeStatus(id, status)} />
@@ -135,4 +125,4 @@ class SavedJobs extends Component {
     }
 }
 
-export default SavedJobs;
+export default RecommendedJobs;
