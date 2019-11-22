@@ -11,26 +11,30 @@ const getstudentdocument = (req, res) => {
         }
         else {
             if(studentid) {               
-                let queryString = `select job.title as 'JobTitle',employer.companyname as 'Company',job.Location,job.Industry, 
+                let queryString = `select * from 
+                (select job.title as 'JobTitle',employer.companyname as 'Company',job.Location,job.Industry, 
                 job.yearsofexperience as 'WorkExpReq',job.Description,job.id as 'JobID','None' as Status
                 from pegasus.job join pegasus.employer on employer.id = job.empid left join pegasus.jobapplication on 
                 jobapplication.jobid = job.id where job.id not in (select id from pegasus.jobapplication where jobapplication.studentid = "${studentid}") and (studentid != "${studentid}" or studentid is null)
+                and job.id not in (select id from pegasus.savedstudentjob where savedstudentjob.studentid = "${studentid}") 
                 and job.industry = (select industry from pegasus.studentjobpref where studentid = "${studentid}") 
                 and job.location = (select location from pegasus.studentjobpref where studentid = "${studentid}") 
-                and job.workexperience = (select workexp from pegasus.studentjobpref where studentid = "${studentid}") group by job.id
+                and job.workexperience = (select workexp from pegasus.studentjobpref where studentid = "${studentid}") 
                 UNION
                 select job.title as 'JobTitle',employer.companyname as 'Company',job.Location,job.Industry, 
                 job.yearsofexperience as 'WorkExpReq',job.Description,job.id as 'JobID','None' as Status
                 from pegasus.job join pegasus.employer on employer.id = job.empid  left join pegasus.jobapplication on 
                 jobapplication.jobid = job.id where job.id not in (select id from pegasus.jobapplication where jobapplication.studentid = "${studentid}") and (studentid != "${studentid}" or studentid is null)
+                and job.id not in (select id from pegasus.savedstudentjob where savedstudentjob.studentid = "${studentid}") 
                 and job.industry = (select industry from pegasus.studentjobpref where studentid = "${studentid}")  
-                and job.location = (select location from pegasus.studentjobpref where studentid = "${studentid}") group by job.id
+                and job.location = (select location from pegasus.studentjobpref where studentid = "${studentid}") 
                 UNION
                 select job.title as 'JobTitle',employer.companyname as 'Company',job.Location,job.Industry, 
                 job.yearsofexperience as 'WorkExpReq',job.Description,job.id as 'JobID','None' as Status
                 from pegasus.job join pegasus.employer on employer.id = job.empid  left join pegasus.jobapplication on 
                 jobapplication.jobid = job.id where job.id not in (select id from pegasus.jobapplication where jobapplication.studentid = "${studentid}") and (studentid != "${studentid}" or studentid is null)
-                and job.industry = (select industry from pegasus.studentjobpref where studentid = "${studentid}") group by job.id ;`
+                and job.id not in (select id from pegasus.savedstudentjob where savedstudentjob.studentid = "${studentid}") 
+                and job.industry = (select industry from pegasus.studentjobpref where studentid = "${studentid}")) output group by output.jobid;`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })
