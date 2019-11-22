@@ -50,6 +50,7 @@ class TopNavbar extends Component {
             })
             .catch(err => {
                 console.log(err);
+                this.setState({"ProfileImage": "default.png"});
             });
 
     }
@@ -70,7 +71,7 @@ class TopNavbar extends Component {
         "Logout": "/"
       };
 
-      this.setState({ NavLeftSide: tempLeft, NavRightSide: tempRight, Navbar: "Employer" });
+      this.setState({ NavLeftSide: tempLeft, NavRightSide: tempRight, Navbar: "Employer", ProfileImage: "default3.png" });
     }
   }
 
