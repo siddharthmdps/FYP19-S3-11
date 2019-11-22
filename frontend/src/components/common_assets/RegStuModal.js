@@ -45,7 +45,7 @@ export class RegStuModal extends Component {
             },
                 (error) => {
                     //alert('Failed')
-                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to create your account...' });
+                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to create your account. Username might have been taken.' });
                 }
             )
     }
