@@ -1,0 +1,29 @@
+.statCircle{
+    font-size: 28px;
+    border-radius:100%;
+    /* background-color:rgb(98, 255, 111); */
+    width: 75px;
+    height: 75px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    border: 1px solid rgb(163, 163, 163);
+    color: rgb(129, 131, 129);
+}
+
+.statCircle:hover {
+    width: 78px;
+    height: 78px;
+    font-size: 30px;
+    font-weight: 700;
+    /* color: rgb(29, 37, 33); */
+    border: 2px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.statText{
+    font-size: 19px;
+    color: rgb(31, 32, 31);
+}

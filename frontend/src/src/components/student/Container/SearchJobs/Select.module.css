@@ -1,0 +1,19 @@
+.Container {
+    position: relative;
+    text-align: center!important;
+    /* justify-content: center!important; */
+    /* background-color: lightgreen!important; */
+}
+
+.Label {
+    float: left;
+    margin-top: 10px;
+    font-family: Helvetica, Arial, sans-serif;
+    letter-spacing: 1px;
+    line-height: 28px;
+}
+
+.Divider {
+    display: block;
+    height: 15px;
+}

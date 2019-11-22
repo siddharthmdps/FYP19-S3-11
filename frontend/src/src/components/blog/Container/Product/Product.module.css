@@ -1,0 +1,41 @@
+.Product{
+    background-color: #181818;
+    padding-bottom: 50px;
+    min-height: 100vh;
+}
+
+.Title{
+    color: #fff;
+    text-align: center;
+    font-size: 2em;
+    font-family: 'Concert One', cursive;
+}
+
+.Logo{
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    font-family: 'Concert One', cursive;
+    margin-top: 50px;
+}
+
+.DescriptionText{
+    color: #fff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+.SubText{
+    color: #fff;
+    font-size: 2em;
+}
+
+.Clickable {
+    color: #43CD86;
+}
+
+.Clickable:hover{
+    cursor: pointer;
+    color: #3EB650;
+    font-weight: 700;
+}

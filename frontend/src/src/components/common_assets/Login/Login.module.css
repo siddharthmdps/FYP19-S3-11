@@ -1,0 +1,25 @@
+.Login{
+    height: 100vh;
+    background: url('BG.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* color: #fff; */
+}
+
+.Title{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.TagLine{
+    text-align: center;
+}
+
+.Card {
+    margin-top: 20%;
+    background: rgba(246, 254, 245, 0.6);
+    text-align: center;
+}
