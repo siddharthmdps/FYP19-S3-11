@@ -709,14 +709,10 @@ class EditProfile extends Component {
 
     validateDocuments = () => {
         for(let idk in this.state.Document){
-            console.log("I am here");
             if(this.state.Document[idk]['Title']===""){
-                console.log("I am here2");
                 this.props.enqueueSnackbar(`Title of #${this.state.Document[idk]['DocumentID']} is not valid!`, { variant: 'error' });
-                return false;
             }
             if(this.state.Document[idk]['Link']===""){
-                console.log("I am here3");
                 this.props.enqueueSnackbar(`Select a file for #${this.state.Document[idk]['DocumentID']}!`, { variant: 'error' });
                 return false;
             }
@@ -888,24 +884,36 @@ class EditProfile extends Component {
 
     submitDocuments = () => {
         if(this.validateDocuments()){
-            let temp = this.copy(this.state.Document);
-            for (let idk in temp) {
-                temp[idk]['StudentID'] = this.state.StudentID;
+            // let temp = this.copy(this.state.Document);
+
+            // for (let idk in temp) {
+            //     temp[idk]['StudentID'] = this.state.StudentID;
+            // }
+            // console.log(temp);
+            if(this.state.Document.length===0){
+                Axios.delete(`https://pegasus-backend.herokuapp.com/student/deletestudentdocument/${localStorage.getItem('id')}`)
+                    .then(res => {
+                        console.log(res);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
             }
-            console.log(temp);
-            const fd = new FormData();
-            fd.append('file', this.state.Document[0].Link);
-            fd.append('Title', this.state.Document[0].Title);
-            fd.append('StudentID', this.state.StudentID);
-            console.log(fd);
-            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentdocument', fd)
-                .then(response => {
-                    this.props.enqueueSnackbar('Documents uploaded!', { variant: 'success' });
-                    this.togglePanel(9);
-                })
-                .catch(error => {
-                    this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
-                });
+            else{
+                const fd = new FormData();
+                fd.append('file', this.state.Document[0].Link);
+                fd.append('Title', this.state.Document[0].Title);
+                fd.append('StudentID', this.state.StudentID);
+                console.log(fd);
+                Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentdocument', fd)
+                    .then(response => {
+                        this.props.enqueueSnackbar('Documents uploaded!', { variant: 'success' });
+                        this.togglePanel(9);
+                    })
+                    .catch(error => {
+                        this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
+                    });
+            }
         }
     }
     // Submit elements to put in Backend ends here
