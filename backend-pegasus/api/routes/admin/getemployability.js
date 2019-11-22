@@ -1,7 +1,7 @@
-const {env, sha1, mysql, mypool} = require('../../util')
+const {mypool} = require('../../util')
 
 // return field of study paired with employability
-const getalljobs = (req, res) => {
+const getemployability = (req, res) => {
     console.log(`[ADMIN] Requesting for employability for students`)
     mypool.getConnection((err, connection) => {
         if(err) {
@@ -20,18 +20,21 @@ const getalljobs = (req, res) => {
                 if(err) {
                     res.status(500).json({ message: err })
                 }
-                if( rows &&  ( rows.length > 0 ) ) {
-                    res.send(rows)
+                else {
+                    if( rows &&  ( rows.length > 0 ) ) {
+                        res.send(rows)
+                    }
+                    else if ( !rows || rows.length == 0 ) {
+                        res.status(200).json({
+                            message: 'Empty table'
+                        })
+                    }
                 }
-                else if ( !rows || rows.length == 0 ) {
-                    res.status(200).json({
-                        message: 'Empty table'
-                    })
-                }
+
             })
         }
         connection.release()
     })
 }
 
-module.exports = getalljobs
+module.exports = getemployability
