@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import EmpJobCard, { EmpAppCard } from './EmpJobCard';
 import apiURL from '../../../config';
-import { Row, Col, Card } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
+
+import Axios from 'axios';
 
 
 //This component is the employer' posted job view (individual)
 // An employer can view all the applicants that have applied under a particular job posted.
 
 //EmpJobCard is ready to be deployed.
-//Pending: EmpAppCard Linkage.
 
 class EmpJobView extends Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class EmpJobView extends Component {
 
         this.state = {
             appList: [],
+            jobDetail: {},
             error: false
         }
         this.employername = localStorage.getItem('username')
@@ -24,28 +26,62 @@ class EmpJobView extends Component {
 
     //link will return an array of applicants (JSON Notation)
 
-    getApplicants = (jobID) => {
-        console.log("JOB ID :" + jobID)
-        const localhost = `http://localhost:3001/employer/jobview/${jobID}`
-        const url = apiURL + 'employer/jobview/' + { jobID }
+    // getApplicants = (jobID) => {
+    //     console.log("JOB ID :" + jobID)
+    //     const localhost = `http://192.168.43.1:3001/employer/jobview/${jobID}`
+    //     const url = apiURL + 'employer/jobview/' + { jobID }
 
-        fetch(localhost)
-            .then(response => response.json())
-            .then(data => {
-                this.setState({ appList: data })
-                console.log(`total applicants : ${this.state.appList.length}`)
+    //     fetch(localhost)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             this.setState({ appList: data })
+    //             console.log(`total applicants : ${this.state.appList.length}`)
+    //         })
+
+    //         .catch(error => {
+    //             console.log(`Error at getApplicants : ${error}`)
+    //             this.setState({ error: true })
+    //         })
+    // }
+
+    // fetch  applicants
+    componentDidMount() {
+        const { jobid } = this.props.match.params;
+
+        //Get Job data
+        Axios.get(`${apiURL}employer/getjobinfo/${jobid}`)
+            .then(response => {
+                console.log(jobid, response.data);
+                let temp = {
+                    title: response.data[0]['title'],
+                    jobid: response.data[0]['id'],
+                    companyName: response.data[0]['empid'],
+                    reqSkills: response.data[0]['requiredskills'],
+                    joblocation: response.data[0]['location'],
+                    jobindustry: response.data[0]['industry'],
+                    dateposted: response.data[0]['dateposted'],
+                    jobdescription: response.data[0]['description'],
+                    yearsofexperience: response.data[0]['yearsofexperience']
+                };
+                console.log(temp);
+                this.setState({ jobDetail: temp });
+                // editJobHandler={this.props.editJobHandler}
+            })
+            .catch(error => {
+                console.log("error getting job details");
             })
 
+        //Get Applicant data
+        Axios.get(`${apiURL}employer/jobview/${jobid}`)
+            .then(response => {
+                console.log(response.data);
+                this.setState({ appList: response.data })
+            })
             .catch(error => {
                 console.log(`Error at getApplicants : ${error}`)
                 this.setState({ error: true })
             })
-    }
-
-    // fetch  applicants
-    componentDidMount() {
-        this.getApplicants(this.props.jobID)
-        console.log(this.props.jobID)
+        //this.getApplicants(jobID)
     }
 
     applicantContent = () => {
@@ -68,7 +104,7 @@ class EmpJobView extends Component {
                     console.log(applicant)
                     return (
                         <Row>
-                            <EmpAppCard appID={1} appName={applicant.firstname.concat(" ", applicant.lastname)} appSkills={applicant.skills} appPhone={applicant.phone} appEmail={applicant.email} />
+                            <EmpAppCard appID={applicant.id} appName={applicant.firstname.concat(" ", applicant.lastname)} appSkills={applicant.skills} appPhone={applicant.phone} appEmail={applicant.email} jobid={this.props.match.params.jobid} />
                         </Row>
 
                     )
@@ -79,19 +115,15 @@ class EmpJobView extends Component {
     }
 
     render() {
+        // console.log(this.state.jobDetail)
+        document.body.style =
+            'background: linear-gradient(to right, #0f2027, #203a43, #2c5364);';
         return (
             <div>
                 <Row>
                     <EmpJobCard
-                        title={this.props.jobtitle}
-                        companyName={this.employername}
-                        reqSkills={this.props.jobskills}
-                        joblocation={this.props.joblocation}
-                        jobindustry={this.props.jobindustry}
-                        dateposted={this.props.dateposted}
-                        editJobHandler={this.props.editJobHandler}
+                        jobDetail={this.state.jobDetail}
                     >
-                        {this.props.jobdescription}
                     </EmpJobCard>
                 </Row>
                 <br />
