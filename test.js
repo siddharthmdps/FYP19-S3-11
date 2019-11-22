@@ -1,6 +1,11 @@
-var date = "2019-11-12asdfsdfdsafdsafd"
+const  testobj = {
+    name: "jon jon",
+    age: null,
+    height: "6 something"
+}
 
-date = date.slice(0,11)
+const checker = (json_obj) => {
+    json_obj.forEach()
+}
 
-console.log(date)
-
+console.log()
