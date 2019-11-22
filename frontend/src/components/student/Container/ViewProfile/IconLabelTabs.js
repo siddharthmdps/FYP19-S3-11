@@ -117,7 +117,6 @@ let IconLabelTabs = props => {
                                 <h3 className="vertical-timeline-element-title">{educationDetail.Degree + " in " +
                                     educationDetail.FieldOfStudy + " (" +
                                     educationDetail.Major + ")"}</h3>
-                                <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
                                 <p>
                                     {educationDetail.University}
                                     <br />
@@ -149,7 +148,6 @@ let IconLabelTabs = props => {
                             >
                                 <h3 className="vertical-timeline-element-title">{workDetail.Position + " at " +
                                     workDetail.Company + " (" + workDetail.Mode + ")"} </h3>
-                                <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
                                 <p>
                                     {workDetail.Industry + ", " + workDetail.AnnualSalary}
                                     <br />

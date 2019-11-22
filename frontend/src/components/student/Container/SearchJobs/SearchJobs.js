@@ -127,7 +127,7 @@ class SearchJobs extends Component {
                     tempJ['WorkExpReq'] = receivedData.data[i].yearsofexperience;
                     tempJ['Description'] = receivedData.data[i].description;
                     tempJ['Industry'] = receivedData.data[i].industry;
-                    tempJ['JobID'] = receivedData.data[i].id;
+                    tempJ['JobID'] = receivedData.data[i].jobid;
                     tempJ['Status'] = "None";
                     tempJobs.push(tempJ);
                 }
@@ -166,12 +166,12 @@ class SearchJobs extends Component {
                         </div>
 
                         {/* </InputGroup> */}
-                        <div className={classes.CardNum}>
+                        {/* <div className={classes.CardNum}>
                             <span className={classes.CardSpan}>5</span>
                             <span className={classes.CardSpan}>10</span>
                             <span className={classes.CardSpan}>15</span>
                             <span className={classes.CardSpan}>20</span>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <br />

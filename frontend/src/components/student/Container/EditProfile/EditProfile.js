@@ -125,8 +125,14 @@ class EditProfile extends Component {
     // Handling Form Inputs starts here
 
     changeNewProfile = event => {
-        console.log(event.target.value);
-        this.setState({NewProfile: {"Modal": true, "Location": event.target.files[0]}})
+        if(event.target.files[0]["type"]=== "image/png" || event.target.files[0]["type"]=== "image/jpg" || event.target.files[0]["type"]=== "image/jpeg"){
+            console.log(event.target.files[0]);
+            this.setState({NewProfile: {"Modal": true, "Location": event.target.files[0]}});
+            console.log(this.state.NewProfile.Location.name);
+        }
+        else{
+            this.props.enqueueSnackbar('Only PNG/JPG/JPEG supported!', { variant: 'error' });
+        }
     }
 
     changePersonalParticulars = event => {
@@ -135,7 +141,7 @@ class EditProfile extends Component {
         let tempState = this.state.PersonalParticulars;
         tempState[event.target.id] = event.target.value;
         console.log(tempState);
-        this.setState({PersonalPaticulars: tempState});
+        this.setState({PersonalParticulars: tempState});
     }
 
     changeEducation = (event, elementID) => {
@@ -559,35 +565,35 @@ class EditProfile extends Component {
     validateEducation = () => {
         for (let idk in this.state.Education) {
             if(this.state.Education[idk]['University'] === ""){
-                this.props.enqueueSnackbar(`University of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`University of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.Education[idk]['Degree'] === ""){
-                this.props.enqueueSnackbar(`Degree of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`Degree of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.Education[idk]['FieldOfStudy'] === ""){
-                this.props.enqueueSnackbar(`FieldOfStudy of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`FieldOfStudy of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.Education[idk]['Major'] === ""){
-                this.props.enqueueSnackbar(`Major of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`Major of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.Education[idk]['StartDate'] === ""){
-                this.props.enqueueSnackbar(`StartDate of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`StartDate of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.Education[idk]['EndDate'] === ""){
-                this.props.enqueueSnackbar(`EndDate of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`EndDate of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.Education[idk]['Mode'] === ""){
-                this.props.enqueueSnackbar(`Mode of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`Mode of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.Education[idk]['GPA'] === ""){
-                this.props.enqueueSnackbar(`GPA of #${this.state.Education[idk]['EducationID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`GPA of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
         }
@@ -597,31 +603,31 @@ class EditProfile extends Component {
     validateWorkExp = () => {
         for(let idk in this.state.WorkExp){
             if(this.state.WorkExp[idk]['Position']===""){
-                this.props.enqueueSnackbar(`Position of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`Position of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.WorkExp[idk]['Company']===""){
-                this.props.enqueueSnackbar(`Company of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`Company of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.WorkExp[idk]['StartDate']===""){
-                this.props.enqueueSnackbar(`StartDate of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`StartDate of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.WorkExp[idk]['EndDate']===""){
-                this.props.enqueueSnackbar(`EndDate of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`EndDate of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.WorkExp[idk]['Mode']===""){
-                this.props.enqueueSnackbar(`Mode of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`Mode of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.WorkExp[idk]['Industry']===""){
-                this.props.enqueueSnackbar(`Industry of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`Industry of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.WorkExp[idk]['AnnualSalary']===""){
-                this.props.enqueueSnackbar(`AnnualSalary of #${this.state.WorkExp[idk]['WorkExpID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`AnnualSalary of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
         }
@@ -647,15 +653,15 @@ class EditProfile extends Component {
     validateAwards = () => {
         for(let idk in this.state.Awards){
             if(this.state.Awards[idk]['Award']===""){
-                this.props.enqueueSnackbar(`Award of #${this.state.Awards[idk]['AwardID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`Award of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.Awards[idk]['Date']===""){
-                this.props.enqueueSnackbar(`Date of #${this.state.Awards[idk]['AwardID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`Date of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.Awards[idk]['Description']===""){
-                this.props.enqueueSnackbar(`Description of #${this.state.Awards[idk]['AwardID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`Description of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
         }
@@ -665,19 +671,19 @@ class EditProfile extends Component {
     validateCertification = () => {
         for(let idk in this.state.Certification){
             if(this.state.Certification[idk]['Name']===""){
-                this.props.enqueueSnackbar(`Name of #${this.state.Certification[idk]['CertificateID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`Name of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.Certification[idk]['IssuedBy']===""){
-                this.props.enqueueSnackbar(`IssuedBy of #${this.state.Certification[idk]['CertificateID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`IssuedBy of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.Certification[idk]['IssueDate']===""){
-                this.props.enqueueSnackbar(`IssueDate of #${this.state.Certification[idk]['CertificateID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`IssueDate of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.Certification[idk]['ValidUntil']===""){
-                this.props.enqueueSnackbar(`ValidUntil of #${this.state.Certification[idk]['CertificateID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`ValidUntil of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
         }
@@ -687,15 +693,15 @@ class EditProfile extends Component {
     validateProjects = () => {
         for(let idk in this.state.Projects){
             if(this.state.Projects[idk]['Title']===""){
-                this.props.enqueueSnackbar(`Title of #${this.state.Projects[idk]['ProjectID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`Title of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.Projects[idk]['Status']===""){
-                this.props.enqueueSnackbar(`Status of #${this.state.Projects[idk]['ProjectID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`Status of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
             if(this.state.Projects[idk]['Description']===""){
-                this.props.enqueueSnackbar(`Description of #${this.state.Projects[idk]['ProjectID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`Description of #${(+idk+1)} is not valid!`, { variant: 'error' });
                 return false;
             }
         }
@@ -705,11 +711,11 @@ class EditProfile extends Component {
     validateDocuments = () => {
         for(let idk in this.state.Document){
             if(this.state.Document[idk]['Title']===""){
-                this.props.enqueueSnackbar(`Title of #${this.state.Document[idk]['DocumentID']} is not valid!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`Title is missing!`, { variant: 'error' });
                 return false;
             }
             if(this.state.Document[idk]['Link']===""){
-                this.props.enqueueSnackbar(`Select a file for #${this.state.Document[idk]['DocumentID']}!`, { variant: 'error' });
+                this.props.enqueueSnackbar(`File not selected`, { variant: 'error' });
                 return false;
             }
         }
@@ -720,16 +726,17 @@ class EditProfile extends Component {
 
     // Submit elements to put in Backend starts here
     submitNewProfile = () => {
-        if(this.state.NewProfile.NewUpload){
-
-            const fd = new FormData();
-            fd.append('file', this.state.NewProfile.Location, this.state.NewProfile.Location.name);
-            console.log(fd);
-            Axios.post(`/uploadstudentpicture/${this.state.StudentID}`, fd)
-            .then(response => {
-                console.log(response);
-            });
-        }
+        const fd = new FormData();
+        fd.append('file', this.state.NewProfile.Location);
+        console.log(...fd);
+        Axios.post(`${apiURL}uploadstudentpicture/${this.state.StudentID}`, fd)
+        .then(response => {
+            console.log(response);
+            window.location.reload();
+        })
+        .catch(err => {
+            console.log(err);
+        });
     }
 
     submitPersonalParticulars = () => {
@@ -813,7 +820,7 @@ class EditProfile extends Component {
                 temp[idk]['Date'] = this.adjustDate(temp[idk]['Date'], "dd/mm/yyyy");
             }
             console.log(temp);
-            Axios.put('https://pegasus-backend.herokuapp.com/student/puttstudentawards', temp)
+            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentawards', temp)
                 .then(response => {
                     this.props.enqueueSnackbar('Award details uploaded!', { variant: 'success' });
                     this.togglePanel(5);
@@ -879,20 +886,40 @@ class EditProfile extends Component {
     }
 
     submitDocuments = () => {
-        if(this.validateDocuments){
-            let temp = this.copy(this.state.Document);
-            for (let idk in temp) {
-                temp[idk]['StudentID'] = this.state.StudentID;
+        if(this.validateDocuments()){
+            // let temp = this.copy(this.state.Document);
+
+            // for (let idk in temp) {
+            //     temp[idk]['StudentID'] = this.state.StudentID;
+            // }
+            // console.log(temp);
+            if(this.state.Document.length===0){
+                Axios.delete(`https://pegasus-backend.herokuapp.com/student/deletestudentdocument/${localStorage.getItem('id')}`)
+                    .then(res => {
+                        console.log(res);
+                        this.props.enqueueSnackbar('Response saved!', { variant: 'success' });
+                        this.togglePanel(9);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
+                    });
             }
-            console.log(temp);
-            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentdocument', temp)
-                .then(response => {
-                    this.props.enqueueSnackbar('Documents uploaded!', { variant: 'success' });
-                    this.togglePanel(9);
-                })
-                .catch(error => {
-                    this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
-                });
+            else{
+                const fd = new FormData();
+                fd.append('file', this.state.Document[0].Link);
+                fd.append('Title', this.state.Document[0].Title);
+                fd.append('StudentID', this.state.StudentID);
+                console.log(fd);
+                Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentdocument', fd)
+                    .then(response => {
+                        this.props.enqueueSnackbar('Documents uploaded!', { variant: 'success' });
+                        this.togglePanel(9);
+                    })
+                    .catch(error => {
+                        this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
+                    });
+            }
         }
     }
     // Submit elements to put in Backend ends here
@@ -912,6 +939,19 @@ class EditProfile extends Component {
     componentDidMount() {
         this.setState({"StudentID": localStorage.getItem('id')});
 
+        Axios.get(`${apiURL}getstudentprofilepicture/${this.state.StudentID}`)
+            .then(res => {
+                console.log("Image: ", res.data.ProfileImage.ProfileImage, res.data.ProfileImage.FileType);
+                if(res.data.ProfileImage.ProfileImage===null){}
+                else{
+                    this.setState({"ProfileImage": `data:${res.data.ProfileImage.FileType};base64, ${res.data.ProfileImage.ProfileImage}`})
+                }
+                console.log(this.state.ProfileImage)
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
 
         Axios.get(`${apiURL}student/studentinfo/${this.state.StudentID}`)
             .then(receivedData => {
@@ -926,7 +966,9 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Personal Particulars!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error getting Personal Particulars!', { variant: 'error' });
+                let tempPP = { ...PersonalParticularsShell }
+                this.setState({ PersonalParticulars: tempPP });
             });
 
         Axios.get(`${apiURL}student/studenteducation/${this.state.StudentID}`)
@@ -948,7 +990,7 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Education details!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error getting Education details!', { variant: 'error' });
             });
 
         Axios.get(`${apiURL}student/studentworkexp/${this.state.StudentID}`)
@@ -970,7 +1012,7 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Work Experience details!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error getting Work Experience details!', { variant: 'error' });
             });
 
         Axios.get(`${apiURL}student/studentjobpref/${this.state.StudentID}`)
@@ -986,7 +1028,9 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Job Preference details!', { variant: 'error' });
+                let tempJP = { ...JobPreferenceShell};
+                this.setState({ JobPreference: tempJP });
+                // this.props.enqueueSnackbar('Error getting Job Preference details!', { variant: 'error' });
             });
 
         Axios.get(`${apiURL}student/studentawards/${this.state.StudentID}`)
@@ -1007,7 +1051,7 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Award details!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error getting Award details!', { variant: 'error' });
             });
 
         Axios.get(`${apiURL}student/studentcertificate/${this.state.StudentID}`)
@@ -1029,7 +1073,7 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Certification details!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error getting Certification details!', { variant: 'error' });
             });
 
         Axios.get(`${apiURL}student/studentproject/${this.state.StudentID}`)
@@ -1049,7 +1093,7 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Project details!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error getting Project details!', { variant: 'error' });
             });
 
         Axios.get(`${apiURL}student/studentskills/${this.state.StudentID}`)
@@ -1069,7 +1113,7 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Skills!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error getting Skills!', { variant: 'error' });
             });
 
         Axios.get(`${apiURL}student/studentdocument/${this.state.StudentID}`)
@@ -1089,7 +1133,7 @@ class EditProfile extends Component {
             })
             .catch(error => {
                 console.log(error);
-                this.props.enqueueSnackbar('Error getting Document details!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error getting Document details!', { variant: 'error' });
             });
 
         this.togglePanel(0);
@@ -1144,11 +1188,12 @@ class EditProfile extends Component {
                                 </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="1" className={classes.Cards}>
                                     <Card.Body>
-                                        {this.state.Education.map(educationDetail => {
+                                        {this.state.Education.map((educationDetail, seq) => {
                                             return (
                                                 <React.Fragment key={educationDetail.EducationID}>
                                                     <Form className={ppClasses.Validate}>
                                                         <Education
+                                                            seq={seq+1}
                                                             details={educationDetail}
                                                             changeFn={event => this.changeEducation(event, educationDetail.EducationID)}
                                                             remove={this.removeEducation.bind(this, educationDetail["EducationID"])}
@@ -1175,11 +1220,12 @@ class EditProfile extends Component {
                     </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="2" className={classes.Cards}>
                                     <Card.Body>
-                                        {this.state.WorkExp.map(workExpDetail => {
+                                        {this.state.WorkExp.map((workExpDetail, seq) => {
                                             return (
                                                 <React.Fragment key={workExpDetail.WorkExpID}>
                                                     <Form className={ppClasses.Validate}>
                                                         <WorkExperience
+                                                            seq={seq+1}
                                                             details={workExpDetail}
                                                             changeFn={event => this.changeWorkExp(event, workExpDetail.WorkExpID)}
                                                             remove={this.removeWorkExp.bind(this, workExpDetail["WorkExpID"])}
@@ -1230,11 +1276,12 @@ class EditProfile extends Component {
                     </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="4" className={classes.Cards}>
                                     <Card.Body>
-                                        {this.state.Awards.map(awardDetail => {
+                                        {this.state.Awards.map((awardDetail, seq) => {
                                             return (
                                                 <React.Fragment key={awardDetail.AwardID}>
                                                     <Form className={ppClasses.Validate}>
                                                         <Awards
+                                                            seq={seq+1}
                                                             details={awardDetail}
                                                             changeFn={event => this.changeAwards(event, awardDetail.AwardID)}
                                                             remove={this.removeAwards.bind(this, awardDetail["AwardID"])}
@@ -1261,11 +1308,12 @@ class EditProfile extends Component {
                     </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="5" className={classes.Cards}>
                                     <Card.Body>
-                                        {this.state.Certification.map(certificateDetail => {
+                                        {this.state.Certification.map((certificateDetail, seq) => {
                                             return (
                                                 <React.Fragment key={certificateDetail.CertificateID}>
                                                     <Form className={ppClasses.Validate}>
                                                         <Certification
+                                                            seq={seq+1}
                                                             details={certificateDetail}
                                                             changeFn={event => this.changeCertification(event, certificateDetail.CertificateID)}
                                                             remove={this.removeCertification.bind(this, certificateDetail["CertificateID"])}
@@ -1292,11 +1340,12 @@ class EditProfile extends Component {
                     </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="6" className={classes.Cards}>
                                     <Card.Body>
-                                        {this.state.Projects.map(projectDetail => {
+                                        {this.state.Projects.map((projectDetail, seq) => {
                                             return (
                                                 <React.Fragment key={projectDetail.ProjectID}>
                                                     <Form className={ppClasses.Validate}>
                                                         <Projects
+                                                            seq={seq+1}
                                                             details={projectDetail}
                                                             changeFn={event => this.changeProjects(event, projectDetail.ProjectID)}
                                                             remove={this.removeProjects.bind(this, projectDetail["ProjectID"])}
@@ -1355,11 +1404,12 @@ class EditProfile extends Component {
                     </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="8" className={classes.Cards}>
                                     <Card.Body>
-                                        {this.state.Document.map(documentDetail => {
+                                        {this.state.Document.map((documentDetail, seq) => {
                                             return (
                                                 <React.Fragment key={documentDetail.DocumentID}>
                                                     <Form className={ppClasses.Validate}>
                                                         <Document
+                                                            seq={seq+1}
                                                             details={documentDetail}
                                                             changeFn={event => this.changeDocument(event, documentDetail.DocumentID)}
                                                             remove={this.removeDocument.bind(this, documentDetail["DocumentID"])} />
@@ -1368,7 +1418,7 @@ class EditProfile extends Component {
                                             );
                                         })}
                                         <div className={classes.ButtonSection}>
-                                            <Button1 click={this.addNewDocument}>+ Add More</Button1>
+                                            {this.state.Document.length===0?<Button1 click={this.addNewDocument}>+ Add More</Button1>:null}
                                             <Button1 click={this.submitDocuments}>Next ></Button1>
                                         </div>
                                     </Card.Body>
