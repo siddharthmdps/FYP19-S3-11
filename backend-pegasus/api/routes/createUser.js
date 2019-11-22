@@ -32,9 +32,7 @@ const createUser = (req, res) => {
                         VALUES  ('${username}', '${password}', '${companyname}', '${companyphone}', 
                         '${companyemail}', '${industry}', '${companydescription}', '${companyaddress}' );`
             break;
-        default : res.send({
-            message: 'Unknown user type'
-        })
+        default : res.send('Unknown user type')
     }
 
     if(usertype === 'student' || usertype === 'employer'){
@@ -47,21 +45,16 @@ const createUser = (req, res) => {
             else {
                 connection.query(queryString, (err) => {
                     if(err) {
-                        res.status(500).json({ message: err })
+                        res.status(500).json({ err })
                     }
                     else {
-                        res.send({
-                            message: 'successfully created new user'
-                        })
+                        res.send('successfully created new user')
                     }
                 })
             }
             connection.release()
         } )
-    } else res.send({ message: 'Unknown user type' })
+    } else res.send('Unknown user type')
 }
-
-
-
 
 module.exports = createUser;
