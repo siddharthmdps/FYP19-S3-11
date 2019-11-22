@@ -13,8 +13,8 @@ const getstudentdocument = (req, res) => {
             if(studentid) {               
                 let queryString = `select job.title as 'JobTitle',employer.companyname as 'Company',job.Location,job.Industry, 
                 job.yearsofexperience as 'WorkExpReq',job.Description,job.id as 'JobID', 'Saved' as Status
-                from pegasus.job join pegasus.employer on employer.id = job.empid join pegasus.jobapplication on 
-                jobapplication.jobid = job.id where jobapplication.studentid = "${studentid}" and jobapplication.status = 'Saved'`
+                from pegasus.job join pegasus.employer on employer.id = job.empid join pegasus.savedstudentjob on 
+                savedstudentjob.jobid = job.id where savedstudentjob.studentid = "${studentid}" and savedstudentjob.status = 'Saved'`
                 //and job.location = (select location from pegasus.studentjobpref where studentid = "${studentid}") and job.industry = (select industry from pegasus.studentjobpref where studentid = "${studentid}") and job.yearsofexperience = (select workexp from pegasus.studentjobpref where studentid = "${studentid}")`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
