@@ -1,7 +1,7 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
 const deletestudentskills = (req, res) => {
-    const studentid = req.body.StudentID;
+    const studentid = req.params.StudentID;
 
     mypool.getConnection( (error, connection) => {
         if(error) {
