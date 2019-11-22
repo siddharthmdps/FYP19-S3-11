@@ -44,6 +44,7 @@ class TopNavbar extends Component {
         "Employer": "/employer/viewprofile",
         "Edit Profile": "/employer/editprofile",
         "Post a new Job": "/employer/postjob",
+        "View Jobs": "/employer/viewjobs",
         "Polls": "/polls",
         "Blog": "/blog"
       };
