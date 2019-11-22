@@ -9,7 +9,7 @@ const projects = props => {
         <React.Fragment>
             <Row>
                 <Col className={classes.Title}>
-                    Project #{props.details.ProjectID}
+                    Project #{props.seq}
                 </Col>
                 <Col md={{ offset: 9, span: 1 }} className={classes.Delete}>
                     <Button1 click={props.remove} delete><i className="fas fa-trash-alt"></i></Button1>
@@ -24,6 +24,7 @@ const projects = props => {
                 <Form.Group as={Col} sm="6" controlId="Status">
                     <Form.Label>Status <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                     <Form.Control as='select' placeholder="Oracle" value={props.details.Status} onChange={props.changeFn}>
+                        <option value="">Choose</option>
                         <option value="ongoing">Ongoing</option>
                         <option value="completed">Completed</option>
                     </Form.Control>
