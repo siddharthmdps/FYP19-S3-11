@@ -1,10 +1,7 @@
 const {containsNull, mypool} = require('../../util')
 
 const deletestudentawards = (req, res) => {
-    const studentid = req.body.StudentID;
-    const awardid = req.body.AwardID;
-    const awardname = req.body.Award;
-    var awarddate = req.body.Date;
+    const studentid = req.params.StudentID;
     
     if( containsNull(req.body) ) res.send('Error: request contains null')
     else {
@@ -16,10 +13,7 @@ const deletestudentawards = (req, res) => {
             }
             else {
                 if(studentid) {   
-                    let queryString1 = `delete from pegasus.studentawards where id = "${jobprefid}" and studentid = "${studentid}"` ;   
-                    if(!studentid) {
-                        queryString1 = `delete from pegasus.studentawards where studentid = "${studentid}"` ;   
-                    }       
+                    let queryString1 = `delete from pegasus.studentawards where studentid = "${studentid}"` ;  
                     connection.query(queryString1, (err, rows, fields) => {
                         if(err) {
                             res.status(500).json({ message: err })

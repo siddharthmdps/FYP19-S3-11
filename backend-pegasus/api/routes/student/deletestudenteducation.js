@@ -1,16 +1,7 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
 const deletestudenteducation = (req, res) => {
-    const studentid = req.body.StudentID;
-    const educationid = req.body.EducationID;
-    const university = req.body.University;
-    const degree = req.body.Degree;
-    const fieldofstudy = req.body.FieldOfStudy;
-    const major = req.body.Major;
-    var startdate = req.body.StartDate;
-    var enddate = req.body.EndDate;
-    const mode = req.body.Mode;
-    const gpa = req.body.GPA;
+    const studentid = req.params.StudentID;
 
     mypool.getConnection( (error, connection) => {
         if(error) {
@@ -20,10 +11,7 @@ const deletestudenteducation = (req, res) => {
         }
         else {
             if(studentid) {   
-                let queryString1 = `delete from pegasus.studenteducation where id = "${educationid}" and studentid = "${studentid}"` ;   
-                if(!studentid) {
-                    queryString1 = `delete from pegasus.studenteducation where studentid = "${studentid}"` ;   
-                }       
+                let queryString1 = `delete from pegasus.studenteducation where studentid = "${studentid}"` ;   
                 connection.query(queryString1, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })
