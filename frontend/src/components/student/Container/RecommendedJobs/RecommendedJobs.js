@@ -65,28 +65,28 @@ class RecommendedJobs extends Component {
         window.scrollTo(0, 0);
     };
 
-    changeStatus = (id, status) => {
-        let temp = this.state.RecommendedJobs;
-        temp.forEach(element => {
-            if(element.JobID === id){
-                if(status==="Applied")
-                    element.Status = status;
-                else{
-                    if(element.Status === "Saved"){
-                        element.Status = "None"
-                    }
-                    else if(element.Status === "None"){
-                        element.Status = "Saved"
-                    }
-                }
-            }
-        });
-        console.log(temp, id, status);
-        this.setState({ "RecommendedJobs": temp });
-    };
+    // changeStatus = (id, status) => {
+    //     let temp = this.state.RecommendedJobs;
+    //     temp.forEach(element => {
+    //         if(element.JobID === id){
+    //             if(status==="Applied")
+    //                 element.Status = status;
+    //             else{
+    //                 if(element.Status === "Saved"){
+    //                     element.Status = "None"
+    //                 }
+    //                 else if(element.Status === "None"){
+    //                     element.Status = "Saved"
+    //                 }
+    //             }
+    //         }
+    //     });
+    //     console.log(temp, id, status);
+    //     this.setState({ "RecommendedJobs": temp });
+    // };
 
     componentDidMount(){
-        Axios.get("http://192.168.43.251:3001/student/getrecommendedjoblist/14")
+        Axios.get(`https://pegasus-backend.herokuapp.com/student/getrecommendedjoblist/${localStorage.getItem('id')}`)
             .then(receivedData =>{
                 let temp = receivedData.data.JobRecommendation;
                 this.setState({ RecommendedJobs: temp });
@@ -104,14 +104,23 @@ class RecommendedJobs extends Component {
                 </Row>
                 <br />
 
-                {this.state.RecommendedJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
-                    return(
-                        <React.Fragment key={jobDetail.id}>
-                            <JobCard jobDetail={jobDetail} changeStatus={(id, status) => this.changeStatus(id, status)} />
-                            <br />
-                        </React.Fragment>
-                    );
-                })}  
+                {
+                    this.state.RecommendedJobs.length===0?(
+                        <div className={classes.NoRecord}>
+                            <div className={classes.NoRecordHighlight}>No results</div>
+                            <div className={classes.NoRecordMessage}>All Recommended jobs will be visible here. Try setting job preferences.</div>
+                        </div>
+                    ):
+                    (this.state.RecommendedJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
+                        return(
+                            <React.Fragment key={jobDetail.id}>
+                                <JobCard jobDetail={jobDetail} />
+                                <br />
+                            </React.Fragment>
+                        );
+                    
+                }))} 
+ 
                 <br />
                 <br />
                 

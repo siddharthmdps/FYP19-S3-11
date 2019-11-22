@@ -4,32 +4,82 @@ import classes from './Job.module.css';
 
 import { Container, Row, Col, Card, Button, Alert, Spinner } from 'react-bootstrap';
 
+import { withSnackbar } from 'notistack';
+
 import Axios from 'axios';
 
 class JobCard extends Component {
 
     state={
-
+        ID: "", 
+        JobTitle: "", 
+        Company: "", 
+        Industry: "",  
+        Location: "", 
+        WorkExpReq: "", 
+        Status: 'none', 
+        Description: ""
     }
 
-    changeStatus = (id, status) => {
-        let temp = this.state.SearchJobs;
-        temp.forEach(element => {
-            if(element.JobID === id){
-                if(status==="Applied")
-                    element.Status = status;
-                else{
-                    if(element.Status === "Saved"){
-                        element.Status = "None"
-                    }
-                    else if(element.Status === "None"){
-                        element.Status = "Saved"
-                    }
-                }
+    changeStatus = (status) => {
+
+        if(status==="pending"){
+            Axios.post("https://pegasus-backend.herokuapp.com/student/applysavejob", {
+                "StudentID":localStorage.getItem('id'),
+                "JobID": `${this.props.match.params.JID}`,
+                "Status":"pending"})
+                .then(res => {
+                    this.setState({Status: 'pending'});
+                    this.props.enqueueSnackbar(`Applied!`, { variant: 'success' });
+                    console.log(res);
+                })
+                .catch(err =>{
+                    console.log(err);
+                })
+        }
+        else if(status==="save"){
+            if(this.state.Status==="none"){
+                Axios.post("https://pegasus-backend.herokuapp.com/student/applysavejob", {
+                "StudentID": localStorage.getItem('id'),
+                "JobID": `${this.props.match.params.JID}`,
+                "Status":"saved"})
+                .then(res => {
+                    this.setState({Status: 'saved'});
+                    this.props.enqueueSnackbar(`Saved!`, { variant: 'success' });
+                    console.log(res);
+                })
+                .catch(err =>{
+                    console.log(err);
+                })
             }
-        });
-        console.log(temp, id, status);
-        this.setState({ "SavedJobs": temp });
+            else if(this.state.Status==="saved"){
+                Axios.post(`https://pegasus-backend.herokuapp.com/student/unsavejob/${localStorage.getItem('id')}/${this.props.match.params.JID}`)
+                .then(res => {
+                    this.setState({Status: 'none'});
+                    this.props.enqueueSnackbar(`Unsaved!`, { variant: 'success' });
+                    console.log(res);
+                })
+                .catch(err =>{
+                    console.log(err);
+                })
+            }
+        }
+
+        // {
+        //     if(element.JobID === id){
+        //         if(status==="Applied")
+        //             element.Status = status;
+        //         else{
+        //             if(element.Status === "Saved"){
+        //                 element.Status = "None"
+        //             }
+        //             else if(element.Status === "None"){
+        //                 element.Status = "Saved"
+        //             }
+        //         }
+        //     }
+        // });
+        console.log(status);
     };
 
     AppliedFooter = () => (
@@ -46,11 +96,11 @@ class JobCard extends Component {
         return (
             <React.Fragment>
                 <div className={classes.ButtonDiv}>
-                    <Button className={classes.Apply} onClick={() => this.changeStatus(this.state.JobID, "Applied")}>Apply</Button>
+                    <Button className={classes.Apply} onClick={() => this.changeStatus("pending")}>Apply</Button>
                 </div>
                 <div className={classes.StarDiv}>
-                    <span className={classes.Star} onClick={() => this.changeStatus(this.state.JobID, "Save")}>
-                        {this.state.Status === "Saved" ? fav : unfav}
+                    <span className={classes.Star} onClick={() => this.changeStatus("save")}>
+                        {this.state.Status === "saved" ? fav : unfav}
                     </span>
                 </div>
             </React.Fragment>
@@ -61,15 +111,20 @@ class JobCard extends Component {
         Axios.get(`https://pegasus-backend.herokuapp.com/employer/getjobinfo/${this.props.match.params.JID}`)
             .then(res => {
                 let temp = res.data[0];
-                this.setState({ID: temp.id, JobTitle: temp.title, Company: temp.companyname, Industry: temp.industry,  Location: temp.location, WorkExpReq: `${temp.yearsofexperience} years`, Status: 'None', Description: temp.description})
+                this.setState({ID: temp.id, JobTitle: temp.title, Company: temp.companyname, Industry: temp.industry,  Location: temp.location, WorkExpReq: `${temp.yearsofexperience} years`, Description: temp.description})
                 console.log(temp);
             })
             .catch(err => {
                 console.log(err);
             })
-        Axios.get(`http://192.168.43.251:3001/student/getjobapplicationstatus/${localStorage.getItem('id')}/${this.props.match.params.JID}`)
+        Axios.get(`https://pegasus-backend.herokuapp.com/student/getjobapplicationstatus/${localStorage.getItem('id')}/${this.props.match.params.JID}`)
         .then(res => {
-            this.setState({Status: res.data.Status});
+            if(res.data.Status===null){
+                this.setState({Status: "none"});    
+            }
+            else{
+                this.setState({Status: res.data.Status});
+            }
             console.log(res.data.Status);
         })
         .catch(err => {
@@ -107,7 +162,7 @@ class JobCard extends Component {
                                 </Card.Text>
                             </Card.Body>
                             <Card.Footer className={classes.Footer}>
-                                {this.state.Status==="applied" ? this.AppliedFooter() : this.OtherFooter()}
+                                {(this.state.Status==="none" || this.state.Status==="saved") ? this.OtherFooter() : this.AppliedFooter()}
                             </Card.Footer>
                         </Card>
                     </Col>
@@ -117,4 +172,4 @@ class JobCard extends Component {
     }
 };
 
-export default JobCard;
+export default withSnackbar(JobCard);

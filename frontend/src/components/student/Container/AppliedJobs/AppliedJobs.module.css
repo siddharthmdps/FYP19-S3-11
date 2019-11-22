@@ -83,3 +83,21 @@
     right: 4%;
     top: 11%;
 }
+
+.NoRecord{
+    text-align: center;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.NoRecordHighlight {
+    font-weight: bold;
+    font-size: 1.286em;
+    line-height: 38px;
+    color: rgba(26, 209, 124, 0.925);
+}
+
+.NoRecordMessage {
+    font-weight: 400;
+    line-height: 34px;
+    letter-spacing: 1px;
+}
