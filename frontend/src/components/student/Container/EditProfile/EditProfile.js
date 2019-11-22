@@ -749,50 +749,79 @@ class EditProfile extends Component {
                 this.togglePanel(1);
             })
             .catch(error => {
-                this.props.enqueueSnackbar('Error storing Personal Particulars!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error storing Personal Particulars!', { variant: 'error' });
+                console.log(error);
             });
         }
     }
 
     submitEducation = () => {
         if(this.validateEducation()){
-            let temp = this.copy(this.state.Education);
-            console.log(temp)
-            for (let idk in temp) {
-                temp[idk]['StudentID'] = this.state.StudentID;
-                temp[idk]['StartDate'] = this.adjustDate(temp[idk]['StartDate'], "dd/mm/yyyy");
-                temp[idk]['EndDate'] = this.adjustDate(temp[idk]['EndDate'], "dd/mm/yyyy");
+            if(this.state.Education.length ===0){
+                Axios.delete(`https://pegasus-backend.herokuapp.com/student/deletestudenteducation/${this.state.StudentID}`)
+                    .then(response => {
+                        this.props.enqueueSnackbar('Education details uploaded!', { variant: 'success' });
+                        this.togglePanel(2);
+                    })
+                    .catch(error => {
+                        // this.props.enqueueSnackbar('Error storing Education!', { variant: 'error' });
+                        console.log(error);
+                    });
             }
-            console.log(temp);
-            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudenteducation', temp)
-                .then(response => {
-                    this.props.enqueueSnackbar('Education details uploaded!', { variant: 'success' });
-                    this.togglePanel(2);
-                })
-                .catch(error => {
-                    this.props.enqueueSnackbar('Error storing Education!', { variant: 'error' });
-                });
+            else{
+                let temp = this.copy(this.state.Education);
+                console.log(temp)
+                for (let idk in temp) {
+                    temp[idk]['StudentID'] = this.state.StudentID;
+                    temp[idk]['StartDate'] = this.adjustDate(temp[idk]['StartDate'], "dd/mm/yyyy");
+                    temp[idk]['EndDate'] = this.adjustDate(temp[idk]['EndDate'], "dd/mm/yyyy");
+                }
+                console.log(temp);
+                Axios.put('https://pegasus-backend.herokuapp.com/student/putstudenteducation', temp)
+                    .then(response => {
+                        this.props.enqueueSnackbar('Education details uploaded!', { variant: 'success' });
+                        this.togglePanel(2);
+                    })
+                    .catch(error => {
+                        // this.props.enqueueSnackbar('Error storing Education!', { variant: 'error' });
+                        console.log(error);
+                    });
+            }
         }
     }
 
     submitWorkExp = () => {
         if(this.validateWorkExp()){
-            let temp = this.copy(this.state.WorkExp);
-            console.log(temp)
-            for (let idk in temp) {
-                temp[idk]['StudentID'] = this.state.StudentID;
-                temp[idk]['StartDate'] = this.adjustDate(temp[idk]['StartDate'], "dd/mm/yyyy");
-                temp[idk]['EndDate'] = this.adjustDate(temp[idk]['EndDate'], "dd/mm/yyyy");
+            if(this.state.WorkExp.length===0){
+                Axios.delete(`https://pegasus-backend.herokuapp.com/student/deletestudentworkexp/${this.state.StudentID}`)
+                    .then(response => {
+                        this.props.enqueueSnackbar('Work Exp. details uploaded!', { variant: 'success' });
+                        this.togglePanel(3);
+                    })
+                    .catch(error => {
+                        // this.props.enqueueSnackbar('Error storing Education!', { variant: 'error' });
+                        console.log(error);
+                    });
             }
-            console.log(temp);
-            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentworkexp', temp)
-                .then(response => {
-                    this.props.enqueueSnackbar('Work Exp. details uploaded!', { variant: 'success' });
-                    this.togglePanel(3);
-                })
-                .catch(error => {
-                    this.props.enqueueSnackbar('Error storing Work Exp.!', { variant: 'error' });
-                });
+            else{
+                let temp = this.copy(this.state.WorkExp);
+                console.log(temp)
+                for (let idk in temp) {
+                    temp[idk]['StudentID'] = this.state.StudentID;
+                    temp[idk]['StartDate'] = this.adjustDate(temp[idk]['StartDate'], "dd/mm/yyyy");
+                    temp[idk]['EndDate'] = this.adjustDate(temp[idk]['EndDate'], "dd/mm/yyyy");
+                }
+                console.log(temp);
+                Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentworkexp', temp)
+                    .then(response => {
+                        this.props.enqueueSnackbar('Work Exp. details uploaded!', { variant: 'success' });
+                        this.togglePanel(3);
+                    })
+                    .catch(error => {
+                        // this.props.enqueueSnackbar('Error storing Work Exp.!', { variant: 'error' });
+                        console.log(error);
+                    });
+            }
         }
     }
 
@@ -807,82 +836,139 @@ class EditProfile extends Component {
                 this.togglePanel(4);
             })
             .catch(error => {
-                this.props.enqueueSnackbar('Error storing Job Preference!', { variant: 'error' });
+                // this.props.enqueueSnackbar('Error storing Job Preference!', { variant: 'error' });
+                console.log(error);
             });
         }
     }
 
     submitAwards = () => {
         if(this.validateAwards()){
-            let temp = this.copy(this.state.Awards);
-            for (let idk in temp) {
-                temp[idk]['StudentID'] = this.state.StudentID;
-                temp[idk]['Date'] = this.adjustDate(temp[idk]['Date'], "dd/mm/yyyy");
+            if(this.state.Awards.length===0){
+                Axios.delete(`https://pegasus-backend.herokuapp.com/student/deletestudentawards/${this.state.StudentID}`)
+                    .then(response => {
+                        this.props.enqueueSnackbar('Award details uploaded!', { variant: 'success' });
+                        this.togglePanel(5);
+                    })
+                    .catch(error => {
+                        // this.props.enqueueSnackbar('Error storing Education!', { variant: 'error' });
+                        console.log(error);
+                    });
             }
-            console.log(temp);
-            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentawards', temp)
-                .then(response => {
-                    this.props.enqueueSnackbar('Award details uploaded!', { variant: 'success' });
-                    this.togglePanel(5);
-                })
-                .catch(error => {
-                    this.props.enqueueSnackbar('Error storing Award!', { variant: 'error' });
-                });
+            else{
+                let temp = this.copy(this.state.Awards);
+                for (let idk in temp) {
+                    temp[idk]['StudentID'] = this.state.StudentID;
+                    temp[idk]['Date'] = this.adjustDate(temp[idk]['Date'], "dd/mm/yyyy");
+                }
+                console.log(temp);
+                Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentawards', temp)
+                    .then(response => {
+                        this.props.enqueueSnackbar('Award details uploaded!', { variant: 'success' });
+                        this.togglePanel(5);
+                    })
+                    .catch(error => {
+                        // this.props.enqueueSnackbar('Error storing Award!', { variant: 'error' });
+                        console.log(error);
+                    });
+            }
         }
     }
 
     submitCertification = () => {
         if(this.validateCertification()){
-            let temp = this.copy(this.state.Certification);
-            for (let idk in temp) {
-                temp[idk]['StudentID'] = this.state.StudentID;
-                temp[idk]['IssueDate'] = this.adjustDate(temp[idk]['IssueDate'], "dd/mm/yyyy");
-                temp[idk]['ValidDate'] = this.adjustDate(temp[idk]['ValidDate'], "dd/mm/yyyy");
+            if(this.state.Certification.length===0){
+                Axios.delete(`https://pegasus-backend.herokuapp.com/student/deletestudentcertificate/${this.state.StudentID}`)
+                    .then(response => {
+                        this.props.enqueueSnackbar('Certificate details uploaded!', { variant: 'success' });
+                        this.togglePanel(6);
+                    })
+                    .catch(error => {
+                        // this.props.enqueueSnackbar('Error storing Education!', { variant: 'error' });
+                        console.log(error);
+                    });
             }
-            console.log(temp);
-            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentcertificate', temp)
-                .then(response => {
-                    this.props.enqueueSnackbar('Certificate details uploaded!', { variant: 'success' });
-                    this.togglePanel(6);
-                })
-                .catch(error => {
-                    this.props.enqueueSnackbar('Error storing Certificate!', { variant: 'error' });
-                });
+            else{
+                let temp = this.copy(this.state.Certification);
+                for (let idk in temp) {
+                    temp[idk]['StudentID'] = this.state.StudentID;
+                    temp[idk]['IssueDate'] = this.adjustDate(temp[idk]['IssueDate'], "dd/mm/yyyy");
+                    temp[idk]['ValidDate'] = this.adjustDate(temp[idk]['ValidDate'], "dd/mm/yyyy");
+                }
+                console.log(temp);
+                Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentcertificate', temp)
+                    .then(response => {
+                        this.props.enqueueSnackbar('Certificate details uploaded!', { variant: 'success' });
+                        this.togglePanel(6);
+                    })
+                    .catch(error => {
+                        // this.props.enqueueSnackbar('Error storing Certificate!', { variant: 'error' });
+                        console.log(error);
+                    });
+            }
         }
     }
 
     submitProjects = () => {
         if(this.validateProjects()){
-            let temp = this.copy(this.state.Projects);
-            for (let idk in temp) {
-                temp[idk]['StudentID'] = this.state.StudentID;
+            if(this.state.Projects.length===0){
+                Axios.delete(`https://pegasus-backend.herokuapp.com/student/deletestudentproject/${this.state.StudentID}`)
+                    .then(response => {
+                        this.props.enqueueSnackbar('Project details uploaded!', { variant: 'success' });
+                        this.togglePanel(7);
+                    })
+                    .catch(error => {
+                        // this.props.enqueueSnackbar('Error storing Education!', { variant: 'error' });
+                        console.log(error);
+                    });
             }
-            console.log(temp);
-            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentproject', temp)
-                .then(response => {
-                    this.props.enqueueSnackbar('Project details uploaded!', { variant: 'success' });
-                    this.togglePanel(7);
-                })
-                .catch(error => {
-                    this.props.enqueueSnackbar('Error storing Project!', { variant: 'error' });
-                });
+            else{
+                let temp = this.copy(this.state.Projects);
+                for (let idk in temp) {
+                    temp[idk]['StudentID'] = this.state.StudentID;
+                }
+                console.log(temp);
+                Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentproject', temp)
+                    .then(response => {
+                        this.props.enqueueSnackbar('Project details uploaded!', { variant: 'success' });
+                        this.togglePanel(7);
+                    })
+                    .catch(error => {
+                        // this.props.enqueueSnackbar('Error storing Project!', { variant: 'error' });
+                        console.log(error);
+                    });
+            }
         }
     }
 
     submitSkills = () => {
-        let temp = this.copy(this.state.Skills);
-        for (let idk in temp) {
-            temp[idk]['StudentID'] = this.state.StudentID;
+        if(this.state.Skills.length===0){
+            Axios.delete(`https://pegasus-backend.herokuapp.com/student/deletestudentskills/${this.state.StudentID}`)
+                    .then(response => {
+                        this.props.enqueueSnackbar('Skills details uploaded!', { variant: 'success' });
+                        this.togglePanel(8);
+                    })
+                    .catch(error => {
+                        // this.props.enqueueSnackbar('Error storing Education!', { variant: 'error' });
+                        console.log(error);
+                    });
         }
-        console.log(temp);
-        Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentskills', temp)
-            .then(response => {
-                this.props.enqueueSnackbar('Skills details uploaded!', { variant: 'success' });
-                this.togglePanel(8);
-            })
-            .catch(error => {
-                this.props.enqueueSnackbar('Error storing Skills!', { variant: 'error' });
-            });
+        else{
+            let temp = this.copy(this.state.Skills);
+            for (let idk in temp) {
+                temp[idk]['StudentID'] = this.state.StudentID;
+            }
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentskills', temp)
+                .then(response => {
+                    this.props.enqueueSnackbar('Skills details uploaded!', { variant: 'success' });
+                    this.togglePanel(8);
+                })
+                .catch(error => {
+                    // this.props.enqueueSnackbar('Error storing Skills!', { variant: 'error' });
+                    console.log(error);
+                });
+        }
     }
 
     submitDocuments = () => {
@@ -902,7 +988,7 @@ class EditProfile extends Component {
                     })
                     .catch(err => {
                         console.log(err);
-                        this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
+                        // this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
                     });
             }
             else{
@@ -917,7 +1003,8 @@ class EditProfile extends Component {
                         this.togglePanel(9);
                     })
                     .catch(error => {
-                        this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
+                        // this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
+                        console.log(error);
                     });
             }
         }
