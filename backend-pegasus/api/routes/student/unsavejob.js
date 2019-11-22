@@ -1,11 +1,9 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
-const deletestudentawards = (req, res) => {
+const getstudentdocument = (req, res) => {
     const studentid = req.body.StudentID;
-    const awardid = req.body.AwardID;
-    const awardname = req.body.Award;
-    var awarddate = req.body.Date;
-    
+    const jobid = req.body.JobID;
+
     mypool.getConnection( (error, connection) => {
         if(error) {
             connection.release()
@@ -13,12 +11,9 @@ const deletestudentawards = (req, res) => {
             throw error
         }
         else {
-            if(studentid) {   
-                let queryString1 = `delete from pegasus.studentawards where id = "${jobprefid}" and studentid = "${studentid}"` ;   
-                if(!studentid) {
-                    queryString1 = `delete from pegasus.studentawards where studentid = "${studentid}"` ;   
-                }       
-                connection.query(queryString1, (err, rows, fields) => {
+            if(studentid) {               
+                let queryString = `delete from jobapplication where jobapplication.studentid = "${studentid}" and jobapplication.jobid = "${jobid}"`
+                connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })
                     }
@@ -33,9 +28,10 @@ const deletestudentawards = (req, res) => {
                     message: "Bad Request! Invalid POST request!"
                 });
             }
-            connection.release()    
+    
         }
-    } )    
+        connection.release()
+    } )
 }
 
-module.exports = deletestudentawards
+module.exports = getstudentdocument

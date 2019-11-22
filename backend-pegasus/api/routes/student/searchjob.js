@@ -12,8 +12,9 @@ const searchjob = (req,res) => {
             throw err
         }
         else {
-            let queryString = `SELECT pegasus.job.*, pegasus.employer.companyname 
+            let queryString = `SELECT pegasus.job.*, pegasus.jobapplication.*, pegasus.employer.companyname 
                                 FROM pegasus.job
+                                JOIN pegasus.jobapplication on job.id = jobapplication.jobid
                                 JOIN pegasus.employer ON job.empid=employer.id
                                 WHERE job.title LIKE '%${keyword}%'                              
                                 LIMIT 50`
