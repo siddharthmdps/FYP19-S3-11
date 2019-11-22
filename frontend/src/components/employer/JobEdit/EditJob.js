@@ -22,7 +22,8 @@ class EditJob extends Component {
             jobdescription: "",
             joblocation: "",
             jobindustry: "",
-            yearsofexperience: ""
+            yearsofexperience: "",
+            dateposted: ""
             // jobskills: props.jobskills
         }
         this.employername = localStorage.getItem('username')
@@ -176,7 +177,8 @@ class EditJob extends Component {
                     jobdescription: temp.jobdescription,
                     joblocation: temp.joblocation,
                     jobindustry: temp.jobindustry,
-                    yearsofexperience: temp.yearsofexperience
+                    yearsofexperience: temp.yearsofexperience,
+                    dateposted: temp.dateposted
 
                 });
                 // editJobHandler={this.props.editJobHandler}
