@@ -65,6 +65,38 @@ app.post('/uploadstudentpicture/:sid',function(req, res) {
     })
 });
 
+app.get('/getstudentprofilepicture/:sid', function(req, res) {
+  const studentid = req.params.sid;
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    mypool.getConnection(function(err,connection) {
+        if (err) {
+			connection.release();
+	  		console.log(' Error getting mysql_pool connection: ' + err);
+	  		throw err;
+	  	}
+        if (studentid) {
+            connection.query("SELECT ProfileImage FROM student WHERE id = ?", [studentid], function(error, results, fields) {
+                if (error) {
+                    res.status(500).json({
+                        message: error
+                    });
+                }
+                if (results && results.length > 0) {
+                    res.status(200).json({
+                        PersonalParticulars: results[0]
+                    });
+                }
+                else if (!results || results.length == 0) {
+                    res.status(200).json({
+                        message: "Failed!"
+                    });
+                }
+            });
+            connection.release();
+        }
+    });
+});
+
 // Settings
 const settings = {
   'allowedHeaders': ['Content-Type'], // headers that React is sending to the API

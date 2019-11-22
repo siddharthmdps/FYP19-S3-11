@@ -1,37 +1,34 @@
 //These are 2 components used by EmpJobView.js -> EmpJobCard and EmpAppCard
 
 // EmpJobCard is the card that displays details about the job posted.
-// It accepts parameters in the form of props such as title, companyName, joblocation, jobindustry and reqSkills.
-// Job description is to be passed in as children.
 
-//EmpAppCard is card that briefly summarises details about each applicant.
-//It accepts parameters in the form of props such as 
-/*appName,appSkills,appContact,degree,university, gpa, position,company,
-awardname, awarddate, certname, certbody, projecttitle and dateapplied
-*/
 
 import React, { Component } from 'react';
-import { Card, Button, Col, Row, Alert, Table } from 'react-bootstrap';
+import { Card, Col, Row, Alert } from 'react-bootstrap';
 import '../ProfileView/Card.css';
 import apiURL from '../../../config'
-//import './EmpCard.css'
+import classes from './EmpJobCard.module.css';
+import Button1 from '../../common_assets/Button1/Button1';
+import { Link } from 'react-router-dom'
 
-// need to handle if empty.s
-
-//links to be disccused with backend--> can be changed.
 const EmpJobCard = (props) => {
+    // const editHandler = () =>{
+
+    // }
     return (
         <div className="col-sm-8 mx-auto">
-            <Card>
+            <Card className={classes.Card}>
                 <Card.Header>
                     <Card.Title>
                         <Row>
-                            <Col sm={9}>{props.title}</Col>
+                            <Col sm={9}>{props.jobDetail.title}</Col>
                             <Col sm={3}>
-                                <Button variant="primary" onClick={props.editJobHandler}>
-                                    Edit&nbsp;
+                                <Link to={`/employer/editjob/${props.jobDetail.jobid}`}>
+                                    <Button1 >
+                                        Edit&nbsp;
                                 <i class="fas fa-edit"></i>
-                                </Button>
+                                    </Button1>
+                                </Link>
                             </Col>
                         </Row>
 
@@ -39,34 +36,39 @@ const EmpJobCard = (props) => {
                 </Card.Header>
 
                 <Card.Body>
-
-                    <Card.Subtitle>{props.companyName}</Card.Subtitle>
+                    {/* {props.jobDetail.companyName} */}
+                    {/* localStorage.getItem('username') */}
+                    <Card.Subtitle>{props.jobDetail.companyName}</Card.Subtitle>
                     <br />
                     <Card.Text>
                         <Row>
-                            <Col sm={6}>
-                                <i class="fas fa-globe-asia"> </i>
+                            <Col sm={4}>
+                                <i className="fas fa-globe-asia"> </i>
                                 &nbsp;
-                            {props.joblocation}
+                            {props.jobDetail.joblocation}
                             </Col>
-                            <Col sm={6}>
-                                <i class="fas fa-industry"></i>
+                            <Col sm={4}>
+                                <i className="fas fa-industry"></i>
                                 &nbsp;
-                        {props.jobindustry}
+                        {props.jobDetail.jobindustry}
+                            </Col>
+                            <Col sm={4}>
+                                <i className="fas fa-briefcase" />
+                                &nbsp;
+                        {props.jobDetail.yearsofexperience}
                             </Col>
                         </Row>
                     </Card.Text>
 
-                    <Card.Text> {props.children}</Card.Text>
                     <Card.Text>
-                        <i class="fas fa-tasks"></i>
-                        <em>&nbsp; Skills Required <br /></em>
-                        {props.reqSkills}
+                        <i className="fas fa-tasks"></i>
+                        <em>&nbsp; Description<br /></em>
+                        {props.jobDetail.jobdescription}
                     </Card.Text>
 
                     <Card.Text>
                         <small className="text-muted">
-                            Last updated  {props.dateposted}
+                            Last updated  {props.jobDetail.dateposted}
                         </small>
 
                     </Card.Text>
@@ -82,8 +84,10 @@ class EmpAppCard extends Component {
     constructor(props) {
         super()
         this.props = props;
+        // console.log(props.appID)
 
         this.state = {
+            appId: props.appId,
             educationList: [],
             jobExpList: [],
             awardsList: [],
@@ -91,64 +95,60 @@ class EmpAppCard extends Component {
             projectsList: [],
             showAlert: false,
             error: false,
-            noEducation: false,
-            noJobExp: false,
-            noAwards: false,
-            noCerts: false,
-            noProjects: false
+            isLoading: true
         }
     }
 
     //gets all the education of the applicant
     getEducation = (appID) => {
         const localhost = `http://localhost:3001/student/studenteducation/${appID}`
-        const url = apiURL + 'student/studenteducation/' + { appID }
+        const url = `${apiURL}student/studenteducation/${appID}`
+        // const url = apiURL + 'student/studenteducation/' + { appID }
 
-        fetch(localhost)
+        fetch(url)
             .then(response => response.json())
             .then(data => {
                 this.setState({ educationList: data.Education })
-                console.log(`Number of education : ${this.state.educationList.length}`)
+                // console.log(`Number of education : ${this.state.educationList.length}`)
             })
 
             .catch(error => {
-                console.log(`Error at getEducation : ${error}`)
                 this.setState({ error: true })
             })
-
-        if (`${this.state.educationList.length}<1`) {
-            this.setState({ noEducation: true })
-        }
     }
+
 
     //gets all the job experience of the applicant
     getJobExp = (appID) => {
         const localhost = `http://localhost:3001/student/studentworkexp/${appID}`
-        const url = apiURL + 'student/studentworkexp/' + { appID }
+        const url = `${apiURL}student/studentworkexp/${appID}`
+        // const url = apiURL + 'student/studentworkexp/' + { appID }
 
-        fetch(localhost)
+        fetch(url)
             .then(response => response.json())
             .then(data => {
                 this.setState({ jobExpList: data.WorkExp })
-                console.log(`Number of job experiences : ${this.state.jobExpList.length}`)
+                // console.log(`Number of job experiences : ${this.state.jobExpList.length}`)
             })
 
             .catch(error => {
                 console.log(`Error at getJobExp : ${error}`)
                 this.setState({ error: true })
             })
+
     }
 
     //gets all the awards of the applicant
     getAwards = (appID) => {
         const localhost = `http://localhost:3001/student/studentawards/${appID}`
-        const url = apiURL + 'student/studentawards/' + { appID }
+        const url = `${apiURL}student/studentawards/${appID}`
+        // const url = apiURL + 'student/studentawards/' + { appID }
 
-        fetch(localhost)
+        fetch(url)
             .then(response => response.json())
             .then(data => {
                 this.setState({ awardsList: data.Awards })
-                console.log(`Number of awards : ${this.state.awardsList.length}`)
+                // console.log(`Number of awards : ${this.state.awardsList.length}`)
             })
 
             .catch(error => {
@@ -160,10 +160,11 @@ class EmpAppCard extends Component {
     //gets all the awards of the applicant
     getCerts = (appID) => {
         const localhost = `http://localhost:3001/student/studentcertificate/${appID}`
-        const url = apiURL + 'student/studentcertificate/' + { appID }
+        const url = `${apiURL}student/studentcertificate/${appID}`
+        // const url = apiURL + 'student/studentcertificate/' + { appID }
 
 
-        fetch(localhost)
+        fetch(url)
             .then(response => response.json())
             .then(data => {
                 this.setState({ certsList: data.Certification })
@@ -178,15 +179,15 @@ class EmpAppCard extends Component {
 
     //gets all the awards of the applicant
     getProjects = (appID) => {
-        //unconfirmed link
         const localhost = `http://localhost:3001/student/studentproject/${appID}`
-        const url = apiURL + 'student/studentproject/' + { appID }
+        const url = `${apiURL}student/studentproject/${appID}`
+        // const url = apiURL + 'student/studentproject/' + { appID }
 
-        fetch(localhost)
+        fetch(url)
             .then(response => response.json())
             .then(data => {
                 this.setState({ projectsList: data.Projects })
-                console.log(`Number of projects : ${this.state.projectsList.length}`)
+                // console.log(`Number of projects : ${this.state.projectsList.length}`)
             })
 
             .catch(error => {
@@ -195,19 +196,28 @@ class EmpAppCard extends Component {
             })
     }
 
+    handleUndefined(item) {
+        if (item === undefined)
+            return []
+        return item
+    }
+
+
     componentDidMount() {
-        console.log(this.props.appID)
+        // console.log(this.props);
         this.getEducation(this.props.appID)
         this.getJobExp(this.props.appID)
         this.getAwards(this.props.appID)
         this.getCerts(this.props.appID)
         this.getProjects(this.props.appID)
+        this.setState({ isLoading: false })
+        // }
     }
 
+
     educationContent = () => {
-        console.log(this.state.educationList)
-        // Loading
-        if (this.state.educationList.length === 0 && !this.state.error) {
+        let eduList = this.handleUndefined(this.state.educationList)
+        if (this.state.isLoading) {
             return (
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border" role="status">
@@ -216,26 +226,23 @@ class EmpAppCard extends Component {
                 </div>
             )
         }
-        else if (this.state.educationList.length > 0 && !this.state.error) {
-            return (
-                this.state.educationList.map(education => (
-                    <tr>
-                        <td>{education.FieldOfStudy}</td>
-                        <td>{education.Major}</td>
-                        <td>{education.University}</td>
-                        <td>{education.GPA}</td>
-                        <td>{education.Mode}</td>
-                    </tr>
-                )))
+
+        if (!eduList.length) {
+            return <div>No Records found</div>
         }
 
-        else return <div>No Education Records found</div>
+        return (
+            eduList.map(education => (
+                <p className={classes.detail}>{education.Degree} in {education.FieldOfStudy} ({education.Major}) - {education.GPA}</p>
+            ))
+        );
+
     }
 
     jobExpContent = () => {
-        console.log(this.state.jobExpList)
-        // Loading
-        if (this.state.jobExpList.length === 0 && !this.state.error) {
+        let jobList = this.handleUndefined(this.state.jobExpList)
+
+        if (this.state.isLoading) {
             return (
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border" role="status">
@@ -244,33 +251,31 @@ class EmpAppCard extends Component {
                 </div>
             )
         }
-        else if (this.state.jobExpList.length > 0 && !this.state.error) {
+
+        if (!jobList.length) {
             return (
-                this.state.jobExpList.map((jobExp) => {
-                    return (
-                        <tr>
-                            <td>{jobExp.Position}</td>
-                            <td>{jobExp.Mode}</td>
-                            <td>{jobExp.Company}</td>
-                            <td>{jobExp.Industry}</td>
-                            <td>{jobExp.Description}</td>
-                            <td>{jobExp.StartDate}</td>
-                            <td>{jobExp.EndDate}</td>
-                            <td>{jobExp.AnnualSalary}</td>
+                <div>No records found</div>
 
-                        </tr>
-
-                    )
-                })
             )
         }
-        else return <div></div>
+        return (
+            jobList.map((jobExp) => {
+                return (
+                    <p className={classes.detail}>{jobExp.Position} at {jobExp.Company} ({jobExp.StartDate} - {jobExp.EndDate}) </p>
+                )
+            })
+        )
+
+
+
     }
 
     awardsContent = () => {
-        console.log(this.state.awardsList)
+        let awardsList = this.handleUndefined(this.state.awardsList)
+        // console.log(awardsList)
+
         // Loading
-        if (this.state.awardsList.length === 0 && !this.state.error) {
+        if (this.state.isLoading) {
             return (
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border" role="status">
@@ -279,26 +284,30 @@ class EmpAppCard extends Component {
                 </div>
             )
         }
-        else if (this.state.awardsList.length > 0 && !this.state.error) {
+
+        if (!awardsList.length) {
             return (
-                this.state.awardsList.map((award) => {
-                    return (
-                        <tr>
-                            <td>{award.Award}</td>
-                            <td>{award.Description}</td>
-                            <td>{award.Date}</td>
-                        </tr>
-                    )
-                })
+                <div>No records found</div>
+
             )
         }
-        else return <div>Error</div>
+
+        return (
+            this.state.awardsList.map((award) => {
+                return (
+                    <p className={classes.detail}>{award.Award} - {award.Date}</p>
+                )
+            })
+        )
+
+
     }
 
     certsContent = () => {
-        console.log(this.state.certsList)
+        let certsList = this.handleUndefined(this.state.certsList)
+
         // Loading
-        if (this.state.certsList.length === 0 && !this.state.error) {
+        if (this.state.isLoading) {
             return (
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border" role="status">
@@ -307,27 +316,30 @@ class EmpAppCard extends Component {
                 </div>
             )
         }
-        else if (this.state.certsList.length > 0 && !this.state.error) {
+
+        if (!certsList.length) {
             return (
-                this.state.certsList.map((cert) => {
-                    return (
-                        <tr>
-                            <td>{cert.Name}</td>
-                            <td>{cert.IssuedBy}</td>
-                            <td>{cert.IssuedDate}</td>
-                            <td>{cert.ValidUntil}</td>
-                        </tr>
-                    )
-                })
+                <div>No records found</div>
+
             )
         }
-        else return <div>Error</div>
+
+
+        return (
+            this.state.certsList.map((cert) => {
+                return (
+                    <p className={classes.detail}>{cert.Name} - {cert.IssuedBy}</p>
+                )
+            })
+        )
     }
 
+
+
     projectsContent = () => {
-        console.log(this.state.projectsList)
+        let projectsList = this.handleUndefined(this.state.projectsList)
         // Loading
-        if (this.state.projectsList.length === 0 && !this.state.error) {
+        if (this.state.isLoading) {
             return (
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border" role="status">
@@ -336,44 +348,50 @@ class EmpAppCard extends Component {
                 </div>
             )
         }
-        else if (this.state.projectsList.length > 0 && !this.state.error) {
+
+        if (!projectsList.length) {
             return (
-                this.state.projectsList.map((project) => {
-                    return (
-                        <tr>
-                            <td>{project.Title}</td>
-                            <td>{project.Status}</td>
-                            <td>{project.Description}</td>
-                            <td><a href={project.Link} /></td>
-                        </tr>
-                    )
-                })
+                <div>No records found</div>
+
             )
         }
-        else return <div>Error</div>
+
+
+        return (
+            projectsList.map((project) => {
+                return (
+                    <p className={classes.detail}>{project.Title} ({project.Status})</p>
+                )
+            })
+        )
+
     }
 
     hideAlert = () => {
         this.setState({ showAlert: false });
     }
 
-    showAlert = (appName) => {
-        this.setState({ showAlert: true });
-        return (
-            <Alert show={this.state.showAlert} variant="success" onClose={() => { this.hideAlert() }} dismissible>
-                {appName} has been successfully shortlisted.
-          </Alert>
-        )
-    }
+    // showAlert = (appName) => {
+    //     this.setState({ showAlert: true });
+    //     return (
+    //         <Alert show={this.state.showAlert} variant="success" onClose={() => { this.hideAlert() }} dismissible>
+    //             {appName} has been successfully shortlisted.
+    //       </Alert>
+    //     )
+    // }
 
     shortlist = (appId, jobId) => {
+        console.log(appId, jobId)
+        //to update shortlist link
         const application = {
             jobid: jobId,
             appid: appId
         }
 
-        const url = apiURL + "employer/shortlist"
-        const localhost = 'http://localhost:3001/employer/shortlist/'
+        // const url = apiURL + `employer/shortlist/`
+        // const localhost = `${apiURL}employer/shortlist/${appId}`'http://localhost:3001/employer/shortlist/'
+
+        const url = `${apiURL}employer/shortlist/${appId}`
 
         fetch(url, {
             method: 'POST',
@@ -384,9 +402,11 @@ class EmpAppCard extends Component {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.message === 'success') {
+                console.log(data.message)
+                if (data.message === 'shortlisted') {
+                    console.log('Applicant has been shortlisted!')
                     alert('Applicant has been shortlisted!')
-                    document.location.reload(true)
+                    // document.location.reload(true)
                 }
             })
             .catch(error => console.log(error))
@@ -394,18 +414,64 @@ class EmpAppCard extends Component {
         // document.location.reload(true)
     }
 
+    hire = (appId, jobId) => {
+        console.log(appId, jobId)
+        //to update shortlist link
+        const application = {
+            jobid: jobId,
+            appid: appId
+        }
+
+        // const url = apiURL + `employer/shortlist/`
+        // const localhost = `${apiURL}employer/shortlist/${appId}`'http://localhost:3001/employer/shortlist/'
+
+        const url = `${apiURL}employer/hire/${appId}`
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(application)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.message)
+                if (data.message === 'status updated') {
+                    console.log('Applicant has been hired!')
+                    alert('Applicant has been hired!')
+                    // document.location.reload(true)
+                }
+            })
+            .catch(error => console.log(error))
+    }
+
+    handleStudentClicked = (event) => {
+        console.log(event)
+        // if (studentId === undefined)
+        //     studentId = 0
+
+        // let studentUrl = `/student/viewprofile/${studentId}`
+        // this.props.history.push(studentUrl)
+    }
+
 
     render() {
+        console.log(this.props)
         return (
             <div className="col-sm-8 mx-auto" style={{ paddingBottom: "10px" }}>
-                <Card >
+                <Card className={classes.Card}>
                     <Card.Header>
                         <Row>
                             <Col sm={9}>
                                 <Card.Title>{this.props.appName}</Card.Title>
                             </Col>
                             <Col sm={3}>
-                                <Button variant="primary"><i class="fas fa-file-download"></i></Button>
+                                {/* /student/viewprofile/${studentId} */}
+
+                                <Link to={`/student/viewprofile/${this.props.appID}`}>
+                                    <Button1 >View Profile<i class="fas fa-file-download"></i></Button1>
+                                </Link>
                             </Col>
                         </Row>
                     </Card.Header>
@@ -415,130 +481,42 @@ class EmpAppCard extends Component {
                             <i class="fas fa-book"></i>
                             &nbsp; <em> Education</em>
                             <br />
-                            <Row>
-                                <Col sm={12}>
-                                    <Table striped bordered hover variant="light">
-                                        <thead>
-                                            <tr>
-                                                <th>Degree</th>
-                                                <th>Major</th>
-                                                <th>University</th>
-                                                <th>GPA</th>
-                                                <th>Mode</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <this.educationContent />
-                                        </tbody>
-                                    </Table>
-                                </Col>
-
-                            </Row>
+                            {this.educationContent()}
                         </Card.Text>
 
                         <Card.Text>
                             <i class="fas fa-briefcase"></i>
                             &nbsp; <em>Job Experience</em>
-                            <Row>
-                                <Col sm={12}>
-                                    <Table striped bordered hover variant="light">
-                                        <thead>
-                                            <tr>
-                                                <th>Mode</th>
-                                                <th>Company</th>
-                                                <th>Industry</th>
-                                                <th>Job Description</th>
-                                                <th>Start Date</th>
-                                                <th>End Date</th>
-                                                <th>Annual Salary</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <this.jobExpContent />
-                                        </tbody>
-                                    </Table>
-                                </Col>
-                            </Row>
+                            {this.jobExpContent()}
                         </Card.Text>
 
                         <Card.Text>
                             <i class="fas fa-medal"></i>
                             &nbsp; <em>Awards Obtained</em>
-                            <Row>
-                                <Col sm={12}>
-                                    <Table striped bordered hover variant="light">
-                                        <thead>
-                                            <tr>
-                                                <th>Title of Award</th>
-                                                <th>Description</th>
-                                                <th>Date Awarded</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <this.awardsContent />
-                                        </tbody>
-                                    </Table>
-                                </Col>
-                            </Row>
+                            {this.awardsContent()}
                         </Card.Text>
 
                         <Card.Text>
                             <i class="fas fa-stamp"></i>
                             &nbsp; <em>Professional Certifications Obtained</em>
-                            <Row>
-                                <Col sm={12}>
-                                    <Table striped bordered hover variant="light">
-                                        <thead>
-                                            <tr>
-                                                <th>Name of Certification</th>
-                                                <th>Issued By</th>
-                                                <th>Issued on</th>
-                                                <th>Valid Until</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <this.certsContent />
-                                        </tbody>
-                                    </Table>
-                                </Col>
-                            </Row>
+                            <this.certsContent />
                         </Card.Text>
 
                         <Card.Text>
                             <i class="fas fa-folder-open"></i>
                             &nbsp; <em>Featured Projects</em>
-                            <Row>
-                                <Col sm={12}>
-                                    <Table striped bordered hover variant="light">
-                                        <thead>
-                                            <tr>
-                                                <th>Project Title</th>
-                                                <th>Project Status</th>
-                                                <th>Description</th>
-                                                <th>Project Link</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <this.projectsContent />
-                                        </tbody>
-                                    </Table>
-                                </Col>
-                            </Row>
+                            {this.projectsContent()}
                         </Card.Text>
 
-                        <Card.Text><i class="fas fa-phone"></i> &nbsp;{this.props.appPhone}</Card.Text>
-                        <Card.Text><i class="far fa-envelope"></i> &nbsp;{this.props.appEmail}</Card.Text>
                         {/* <Card.Text>
-                        <small className="text-muted">
-                            Applied {this.props.dateapplied} 
-                        </small>
-                    
-                    </Card.Text> */}
-                        <Button variant="success" onClick={this.shortlist(123, 456)} >Shortlist</Button>
+                            <small className="text-muted">
+                                Applied {this.props.dateapplied}
+                            </small>
 
+                        </Card.Text> */}
 
-                        <Button variant="success" onClick={() => { this.shortlist(123, 456) }} >Shortlist</Button>
+                        <Button1 click={() => { this.shortlist(this.props.appID, this.props.jobid) }} >Shortlist</Button1>
+                        <Button1 click={() => { this.hire(this.props.appID, this.props.jobId) }} >Hire </Button1>
                     </Card.Body>
                 </Card>
             </div >

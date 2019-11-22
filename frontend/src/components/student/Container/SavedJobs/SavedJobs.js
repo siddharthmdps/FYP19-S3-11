@@ -65,23 +65,40 @@ class SavedJobs extends Component {
         window.scrollTo(0, 0);
     };
 
+    // changeStatus = (id, status) => {
+    //     let temp = this.state.SavedJobs;
+    //     temp.forEach(element => {
+    //         if(element.id === id)
+    //             element.status = status;
+    //     });
+    //     console.log(temp, id);
+    //     this.setState({ "SavedJobs": temp });
+    // };
+
     changeStatus = (id, status) => {
         let temp = this.state.SavedJobs;
         temp.forEach(element => {
-            if(element.id === id)
-                element.status = status;
+            if(element.JobID === id){
+                if(status==="Applied")
+                    element.Status = status;
+                else{
+                    if(element.Status === "Saved"){
+                        element.Status = "None"
+                    }
+                    else if(element.Status === "None"){
+                        element.Status = "Saved"
+                    }
+                }
+            }
         });
-        console.log(temp, id);
+        console.log(temp, id, status);
         this.setState({ "SavedJobs": temp });
     };
 
     componentDidMount(){
-        Axios.get("http://localhost:3000/AppliedJobs")
+        Axios.get(`http://192.168.43.251:3001/student/getsavedjoblist/${localStorage.getItem('id')}`)
             .then(receivedData =>{
-                let temp = receivedData.data;
-                temp.forEach(element => {
-                    element.status = "active";
-                });
+                let temp = receivedData.data.SavedJobs;
                 this.setState({ SavedJobs: temp });
                 console.log(temp);
                 this.pagination();
@@ -100,7 +117,7 @@ class SavedJobs extends Component {
                 {this.state.SavedJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
                     return(
                         <React.Fragment key={jobDetail.id}>
-                            <JobCard jobDetail={jobDetail} Saved changeStatus={(id, status) => this.changeStatus(id, status)} />
+                            <JobCard jobDetail={jobDetail} changeStatus={(id, status) => this.changeStatus(id, status)} />
                             <br />
                         </React.Fragment>
                     );

@@ -4,6 +4,12 @@ import { Card, Form, Button, Col, Row } from 'react-bootstrap';
 import '../ProfileView/Card.css';
 import apiURL from '../../../config';
 
+import Axios from 'axios';
+
+import industries from '../../common_assets/CommonLists/Industries'
+import locations from '../../common_assets/CommonLists/Locations'
+import workExpReqList from '../../common_assets/CommonLists/WorkExpReqList'
+
 class EditJob extends Component {
     constructor(props) {
         super()
@@ -12,11 +18,13 @@ class EditJob extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
         this.state = {
-            jobtitle: props.jobtitle,
-            jobdescription: props.jobdescrition,
-            joblocation: props.joblocation,
-            jobindustry: props.jobindutry,
-            jobskills: props.jobskills
+            jobtitle: "",
+            jobdescription: "",
+            joblocation: "",
+            jobindustry: "",
+            yearsofexperience: "",
+            dateposted: ""
+            // jobskills: props.jobskills
         }
         this.employername = localStorage.getItem('username')
     }
@@ -32,12 +40,12 @@ class EditJob extends Component {
                                     <Form.Label>Job Title</Form.Label>
                                 </Col>
                                 <Col md={1}>
-                                    <Button variant="dark" type="submit"><i class="far fa-trash-alt"></i> </Button>
+                                    <Button variant="dark" onClick={(event) => this.handleDelete(event)}><i class="far fa-trash-alt"></i> </Button>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col md={6}>
-                                    <Form.Control type='text' defaultValue={this.state.jobtitle} onChange={this.handleChange} />
+                                    <Form.Control type='text' defaultValue={this.state.jobtitle} onChange={this.changeTitleHandler} />
                                 </Col>
 
                             </Row>
@@ -55,34 +63,69 @@ class EditJob extends Component {
                                     <Form.Control plaintext readOnly defaultValue={this.employername} />
                                 </Col>
                             </Form.Group>
-                            <Form.Group controlId="formJobLocation">
-                                <Form.Label>Job Location</Form.Label>
-                                <Row >
-                                    <Col md={6}>
-                                        <Form.Control type="text" defaultValue={this.props.joblocation} onChange={this.handleChange} />
-                                    </Col>
-                                </Row>
+                            {/* <Form.Group as={Row} controlId="Location" style={{ textAlign: 'center' }}>
+                                <Form.Label column sm='3'>Location</Form.Label>
+                                <Col sm='8'>
+                                    <Form.Control as="select" value={this.state.location} onChange={this.changeLocationHandler} >
+                                        {locations()}
+                                    </Form.Control>
+                                </Col>
+                            </Form.Group> */}
+
+                            <Form.Group as={Row} controlId="formJobLocation">
+                                <Form.Label column sm='2'>Job Location</Form.Label>
+                                <Col sm={8}>
+                                    <Form.Control as="select" defaultValue={this.state.joblocation} onChange={this.changeLocationHandler} >
+                                        {locations()}
+                                    </Form.Control>
+                                </Col>
+                                <Col sm={2} />
                             </Form.Group>
 
-                            <Form.Group controlId="formJobIndustry">
+                            <Form.Group as={Row} controlId="Industry">
+                                <Form.Label column sm='2'>Industry</Form.Label>
+
+                                <Col sm={8}>
+                                    <Form.Control as="select" value={this.state.jobindustry} onChange={this.changeIndustryHandler} >
+                                        {industries()}
+                                    </Form.Control>
+                                </Col>
+                                <Col sm={2} />
+
+
+                            </Form.Group>
+
+                            {/* <Form.Group controlId="formJobIndustry">
                                 <Form.Label>Industry</Form.Label>
                                 <Row >
                                     <Col md={6}>
-                                        <Form.Control type="text" defaultValue={this.props.jobindustry} onChange={this.handleChange} />
+                                        <Form.Control type="text" defaultValue={this.state.jobindustry} onChange={this.handleChange} />
                                     </Col>
                                 </Row>
 
+                            </Form.Group> */}
+                            <Form.Group as={Row} controlId="YearsOfExperience">
+                                <Form.Label column sm='2'>Work Experience</Form.Label>
+                                <Col sm='2'>
+                                    <Form.Control type="number" value={this.state.yearsofexperience} onChange={this.changeYearsOfExperienceHandler} />
+                                </Col>
+                                <Col sm={8} />
+                                {/* <Form.Group as={Row} controlId="JobTitle" style={{ textAlign: 'center' }}>
+                                <Form.Label column sm='3'>Job Title</Form.Label>
+                                <Col sm='8'> <Form.Control type='text' placeholder="Software Engineer" value={this.state.title} onChange={this.changeTitleHandler} /> </Col>
+                            </Form.Group> */}
                             </Form.Group>
+
                             <Form.Group controlId="formJobDescription">
                                 <Form.Label>Job Description</Form.Label>
                                 <Row>
                                     <Col md={8}>
-                                        <Form.Control as="textarea" rows="8" defaultValue={this.props.jobdescription} onChange={this.handleChange} />
+                                        <Form.Control as="textarea" rows="8" value={this.state.jobdescription} onChange={this.changeDescriptionHandler} />
                                     </Col>
                                 </Row>
 
                             </Form.Group>
-                            <Form.Group controlId="formSkillsRequired">
+                            {/* <Form.Group controlId="formSkillsRequired">
                                 <Form.Label>Skills Required</Form.Label>
                                 <Row>
                                     <Col md={8}>
@@ -90,14 +133,14 @@ class EditJob extends Component {
                                     </Col>
                                 </Row>
 
-                            </Form.Group>
+                            </Form.Group> */}
                             <Row>
                                 <Col md={1}>
-                                    <Button variant="danger" type="submit"> Cancel </Button>
+                                    <Button variant="danger" onClick={(event) => this.handleCancel(event)}> Cancel </Button>
                                 </Col>
                                 <Col md={10}></Col>
                                 <Col md={1}>
-                                    <Button variant="primary" type="submit" onClick={this.props.mainPageHandler}> Save </Button>
+                                    <Button variant="primary" type="submit" onClick={(event) => this.handleSave(event)}> Save </Button>
                                 </Col>
                             </Row>
 
@@ -111,8 +154,75 @@ class EditJob extends Component {
         )
     }
 
+    getJobDetails() {
+        const { jobid } = this.props.match.params;
+
+        //Get Job data
+        Axios.get(`${apiURL}employer/getjobinfo/${jobid}`)
+            .then(response => {
+                // console.log(jobid, response.data);
+                let temp = {
+                    title: response.data[0]['title'],
+                    companyName: response.data[0]['empid'],
+                    reqSkills: response.data[0]['requiredskills'],
+                    joblocation: response.data[0]['location'],
+                    jobindustry: response.data[0]['industry'],
+                    dateposted: response.data[0]['dateposted'],
+                    jobdescription: response.data[0]['description'],
+                    yearsofexperience: response.data[0]['yearsofexperience']
+                };
+                console.log(temp);
+                this.setState({
+                    jobtitle: temp.title,
+                    jobdescription: temp.jobdescription,
+                    joblocation: temp.joblocation,
+                    jobindustry: temp.jobindustry,
+                    yearsofexperience: temp.yearsofexperience,
+                    dateposted: temp.dateposted
+
+                });
+                // editJobHandler={this.props.editJobHandler}
+            })
+            .catch(error => {
+                console.log("error getting job details");
+            })
+    }
+
+    componentDidMount() {
+        this.getJobDetails()
+    }
+
     handleChange(event) {
         this.setState({ value: event.target.value });
+    }
+    changeTitleHandler = event => {
+        // console.log(event.target.value);
+        this.setState({ jobtitle: event.target.value });
+    }
+
+    changeIndustryHandler = event => {
+        // console.log(event.target.value);
+        this.setState({ jobindustry: event.target.value });
+    }
+
+    // changeRequiredSkillsHandler = event => {
+    //     // console.log(event.target.value);
+    //     this.setState({ requiredskills: event.target.value });
+    // }
+
+    changeYearsOfExperienceHandler = event => {
+        // console.log(event.target.value);
+        this.setState({ yearsofexperience: event.target.value });
+    }
+
+    changeDescriptionHandler = event => {
+        // console.log(event.target.value);
+        this.setState({ jobdescription: event.target.value });
+    }
+
+    changeLocationHandler = event => {
+        // console.log(event.target.value);
+        this.setState({ joblocation: event.target.value });
     }
 
     handleSubmit(event) {
@@ -121,33 +231,71 @@ class EditJob extends Component {
     }
 
     handleSave(event) {
+        event.preventDefault()
+        const { jobid } = this.props.match.params;
+
+        console.log(this.state.joblocation)
+
         const job = {
-            empid: localStorage.getItem('id'),
             title: this.state.jobtitle,
-            description: this.state.jobdescription,
             industry: this.state.jobindustry,
-            requiredskills: this.state.jobskills
+            description: this.state.jobdescription,
+            requiredskills: this.state.requiredskills,
+            dateposted: this.state.dateposted,
+            location: this.state.joblocation,
+            yearsofexperience: this.state.yearsofexperience
         }
 
-        const url = `${apiURL}employer/employerinfo/savejob/${this.props.jobID}`
-        const localhost = `http://localhost:3001/employer/savejob/${this.props.jobID}`
+        const url = `${apiURL}admin/editjob/${jobid}`
+        const localhost = `http://localhost:3001/admin/editjob/${jobid}`
 
-        fetch(localhost, {
+        fetch(url, {
             method: 'PUT',
             headers: {
+                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(job)
         })
             .then(res => res.json())
             .then(data => {
-                if (data.message === 'success') {
-                    alert('Job updated!')
-                    document.location.reload(true)
-                }
+                alert('Job updated!')
+                let target = `/employer/viewjob/${jobid}`
+                this.timer = setTimeout(() => { window.location.href = target }, 1000);
             })
             .catch(error => console.log(error))
 
+
+    }
+
+    handleCancel(event) {
+        const { jobid } = this.props.match.params;
+        let target = `/employer/viewjob/${jobid}`
+        this.props.history.push(target)
+    }
+
+    handleDelete(event) {
+        event.preventDefault()
+        const { jobid } = this.props.match.params;
+        let url = `${apiURL}admin/deletejob/${jobid}`
+
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then((result) => {
+                console.log("Deletion of job successful")
+                alert('job deleted')
+                let target = `/employer/viewjobs`
+                this.props.history.push(target)
+                this.timer = setTimeout(() => { window.location.href = target }, 1000);
+            },
+                (error) => {
+                    console.log("Failure in deletion of job detected.")
+                }
+            )
     }
 
     render() {
