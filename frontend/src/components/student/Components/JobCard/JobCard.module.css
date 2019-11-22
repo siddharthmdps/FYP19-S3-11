@@ -25,6 +25,7 @@
     bottom: 1%;
     position: relative;
     height: 15rem;
+    overflow: hidden;
     /* width: '100vh' */
 }
 

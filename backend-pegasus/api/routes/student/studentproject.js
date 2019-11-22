@@ -1,4 +1,4 @@
-const {env, sha1, mysql, mypool} = require('../../util')
+const {mypool} = require('../../util')
 
 const studentproject = (req, res) => {
     const studentid = req.body[0].StudentID;

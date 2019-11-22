@@ -1,6 +1,14 @@
-var date = "2019-11-12asdfsdfdsafdsafd"
+const  testobj = {
+    name: "jon jon",
+    age: null,
+    height: "6 something"
+}
 
-date = date.slice(0,11)
+const containsNull = (json_obj) => {
+    for(el in json_obj){
+        if(json_obj[el] === null) return true 
+    }
+    return false
+}
 
-console.log(date)
-
+console.log( containsNull(testobj) )
