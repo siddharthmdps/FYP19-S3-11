@@ -15,7 +15,7 @@ router.put('/putstudentawards', studentawards)
 
 //delete
 const delstudentawards = require('./deletestudentawards')
-router.delete('/deletestudentawards', delstudentawards)
+router.delete('/deletestudentawards/:StudentID', delstudentawards)
 
 //student cert
 //get
@@ -28,7 +28,7 @@ router.put('/putstudentcertificate', studentcertificate)
 
 //delete
 const delstudentcertificate = require('./deletestudentcertificate')
-router.delete('/deletestudentcertificate', delstudentcertificate)
+router.delete('/deletestudentcertificate/:StudentID', delstudentcertificate)
 
 //student education
 //get
@@ -41,7 +41,7 @@ router.put('/putstudenteducation', studenteducation)
 
 //delete
 const delstudenteducation = require('./deletestudenteducation')
-router.delete('/deletestudenteducation', delstudenteducation)
+router.delete('/deletestudenteducation/:StudentID', delstudenteducation)
 
 //student job preference
 //get
@@ -54,7 +54,7 @@ router.put('/putstudentjobpref', studentjobpref)
 
 //delete
 const delstudentjobpref = require('./deletestudentjobpref')
-router.delete('/deletestudentjobpref', delstudentjobpref)
+router.delete('/deletestudentjobpref/:StudentID', delstudentjobpref)
 
 //student project
 //get
@@ -67,7 +67,7 @@ router.put('/putstudentproject', studentproject)
 
 //delete
 const delstudentproject = require('./deletestudentproject')
-router.delete('/deletestudentproject', delstudentproject)
+router.delete('/deletestudentproject/:StudentID', delstudentproject)
 
 //student work exp
 //get
@@ -80,7 +80,7 @@ router.put('/putstudentworkexp', studentworkexp)
 
 //delete
 const delstudentworkexp = require('./deletestudentworkexp')
-router.delete('/deletestudentworkexp', delstudentworkexp)
+router.delete('/deletestudentworkexp/:StudentID', delstudentworkexp)
 
 //student document
 //get
@@ -109,7 +109,7 @@ router.put('/submitpoll/:pollID&:choice', submitpoll)
 
 //delete
 const delstudentskills = require('./deletestudentskills')
-router.delete('/deletestudentskills', delstudentskills)
+router.delete('/deletestudentskills/:StudentID', delstudentskills)
 
 //submit poll
 // const submitpoll = require('./submitpoll')
