@@ -45,7 +45,7 @@ const createUser = (req, res) => {
             else {
                 connection.query(queryString, (err) => {
                     if(err) {
-                        if(err.sqlMessage === "Duplicate entry 'adam' for key 'username_UNIQUE'") res.send('Duplicate user')
+                        if(err.sqlMessage.slice(0,9) === "Duplicate") res.send('Duplicate user')
                         res.status(500).json({ err })
                     }
                     else {
