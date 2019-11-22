@@ -11,7 +11,6 @@ const login = (req,res) => {
 
     // Search in corresponding table based on usertype
     // Respond with user ID
-
     if( containsNull(req.body) ) res.send('Error: request contains null')
     else {
         mypool.getConnection( (error, connection) => {
