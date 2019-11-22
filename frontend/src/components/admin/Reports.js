@@ -95,12 +95,12 @@ export class Reports extends Component {
 				<hr />
 				<br />
 				<Tabs>
-    <TabList>
-      <Tab>Total Job Application Results</Tab>
-      <Tab>Successful Applications by Field of Study</Tab>
-    </TabList>
+					<TabList>
+						<Tab>Total Job Application Results</Tab>
+						<Tab>Successful Applications by Field of Study</Tab>
+					</TabList>
 
-    <TabPanel><br></br>
+					<TabPanel><br></br>
 						<h3 style={{ textAlign: 'center' }}><u>Total Job Application Results</u></h3>
 						<br></br>
 						<h3 style={{ textAlign: 'center' }}>
@@ -121,8 +121,8 @@ export class Reports extends Component {
 							}}
 						/>
 
-</TabPanel>
-    <TabPanel><br></br>
+					</TabPanel>
+					<TabPanel><br></br>
 						<h3 style={{ textAlign: 'center' }}><u>Successful Applications by Field of Study</u></h3>
 						<br></br>
 						<Bar
@@ -146,7 +146,7 @@ export class Reports extends Component {
 
 							}}></Bar>
 					</TabPanel>
-  </Tabs>
+				</Tabs>
 			</div>
 		)
 	}
