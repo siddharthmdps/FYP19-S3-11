@@ -1,4 +1,4 @@
-const {router, env, sha1, mysql, mypool} = require('../../util')
+const {router, mypool} = require('../../util')
 
 // get
 const getJobSearchResults = require('./searchjob')
@@ -256,33 +256,37 @@ router.put('/studentinfo/updateStudent', (req, res, next) => {
     const nationality = req.body.Nationality;
     const availability = req.body.Availability;
     const linkedin = req.body.LinkedIn;
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    mypool.getConnection(function(err,connection) {
-        if (err) {
-			connection.release();
-	  		console.log(' Error getting mysql_pool connection: ' + err);
-	  		throw err;
-        }
-        else {
-            if (firstname && email && currentaddress) {
-                connection.query(`UPDATE pegasus.student SET firstname = "${firstname}", middlename = "${middlename}", lastname = "${lastname}", email = "${email}", phone = "${phone}", country = "${country}", city = "${city}", currentaddress = "${currentaddress}", postalcode = "${postalcode}", nationality = "${nationality}", availability = "${availability}", linkedin = "${linkedin}" WHERE id = "${studentid}"`, function(error, results, fields) {
-                    if (error) {
-                        res.status(500).json({
-                            message: error
-                        });
-                    }
-                    res.status(200).json({
-                        message: "Success"
-                    }); 
-                });
-            } else {
-                res.status(400).json({
-                    message: "Bad Request! Invalid POST request!"
-                });
+
+    if( containsNull(req.body) ) res.send('Error: request contains null')
+    else {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        mypool.getConnection(function(err,connection) {
+            if (err) {
+                connection.release();
+                  console.log(' Error getting mysql_pool connection: ' + err);
+                  throw err;
             }
-            connection.release(); 
-        }    
-    });
+            else {
+                if (firstname && email && currentaddress) {
+                    connection.query(`UPDATE pegasus.student SET firstname = "${firstname}", middlename = "${middlename}", lastname = "${lastname}", email = "${email}", phone = "${phone}", country = "${country}", city = "${city}", currentaddress = "${currentaddress}", postalcode = "${postalcode}", nationality = "${nationality}", availability = "${availability}", linkedin = "${linkedin}" WHERE id = "${studentid}"`, function(error, results, fields) {
+                        if (error) {
+                            res.status(500).json({
+                                message: error
+                            });
+                        }
+                        res.status(200).json({
+                            message: "Success"
+                        }); 
+                    });
+                } else {
+                    res.status(400).json({
+                        message: "Bad Request! Invalid POST request!"
+                    });
+                }
+                connection.release(); 
+            }    
+        });
+    }
 });
 
 
