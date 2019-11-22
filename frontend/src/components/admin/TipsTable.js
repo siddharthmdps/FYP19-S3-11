@@ -4,8 +4,8 @@ import $ from 'jquery'
 import { Datatable } from 'datatables.net-dt'
 
 import { Button, ButtonToolbar } from 'react-bootstrap'
-import { AddJobModal } from './AddJobModal'
-import { EditJobModal } from './EditJobModal'
+import { AddTipModal } from './AddTipModal'
+import { EditTipModal } from './EditTipModal'
 import Snackbar from '@material-ui/core/SnackBar'
 import IconButton from '@material-ui/core/IconButton'
 
@@ -28,14 +28,10 @@ class TableBody extends Component {
         return (
             <tr id={'tr-' + this.props.TRs.no} >
                 <td>{this.props.TRs.no}</td>
-                <td>{this.props.TRs.empid}</td>
+                <td>{this.props.TRs.key}</td>
                 <td>{this.props.TRs.title}</td>
-                <td>{this.props.TRs.industry}</td>
-                <td>{this.props.TRs.description}</td>
-                <td>{this.props.TRs.requiredskills}</td>
+                <td>{this.props.TRs.url}</td>
                 <td>{this.props.TRs.dateposted}</td>
-                <td>{this.props.TRs.location}</td>
-                <td>{this.props.TRs.yearsofexperience}</td>
                 <td style={{ width: '90px' }}>
                     <a onClick={this.updateBtn} data-item={this.props.TRs.no} style={{ color: 'green' }}>Edit</a> /
                             <a onClick={this.deleteBtn} data-item={this.props.TRs.key} style={{ color: 'red' }}>Delete</a>
@@ -45,46 +41,46 @@ class TableBody extends Component {
     }
 }
 
-export class JobsTable extends Component {
+export class TipsTable extends Component {
     constructor(props, Context) {
         super(props, Context);
 
         this.state = {
             TRs: [],
-            isLoading: true, id: '', empid: '', title: '', industry: '', description: '', requiredskills: '', dateposted: '', location: '', yearsofexperience: '', editModalShow: false, addModalShow: false,
+            isLoading: true, id: '', title: '', url: '', dateposted: '', editModalShow: false, addModalShow: false,
         };
         this._isMounted = true;
         this.editRow = this.editRow.bind(this);
         this.deleteRow = this.deleteRow.bind(this);
         this.refreshList = this.refreshList.bind(this);
     }
-    deleteRow(jobid) {
-        if (window.confirm('Are you sure you want to delete this job listing?')) {
-            fetch('https://pegasus-backend.herokuapp.com/admin/deletejob/' + jobid, {
-                method: 'PUT',
+    deleteRow(tipid) {
+        if (window.confirm('Are you sure you want to delete this career tip?')) {
+            fetch('https://pegasus-backend.herokuapp.com/admin/deletecareertip/' + tipid, {
+                method: 'DELETE',
                 header: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
             }).then((result) => {
                 //alert(result);
-                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully deleted job listing!' });
-                this.timer = setTimeout(() => { window.location.href = '/admin/jobs' }, 1000);
+                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully deleted career tip!' });
+                this.timer = setTimeout(() => { window.location.href = '/admin/careertips' }, 1000);
             },
                 (error) => {
                     //alert('Failed')
-                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to delete job listing...' });
+                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to delete career tip...' });
                 }
             )
         }
     }
 
     editRow(x) {
-        this.setState(prevState => ({ editModalShow: true, id: prevState.TRs[x - 1].key, empid: prevState.TRs[x - 1].empid, title: prevState.TRs[x - 1].title, industry: prevState.TRs[x - 1].industry, description: prevState.TRs[x - 1].description, requiredskills: prevState.TRs[x - 1].requiredskills, dateposted: prevState.TRs[x - 1].dateposted, location: prevState.TRs[x - 1].location, yearsofexperience: prevState.TRs[x - 1].yearsofexperience }));
+        this.setState(prevState => ({ editModalShow: true, id: prevState.TRs[x - 1].key, title: prevState.TRs[x - 1].title, url: prevState.TRs[x - 1].url, dateposted: prevState.TRs[x - 1].dateposted }));
     }
 
     refreshList() {
-        fetch('https://pegasus-backend.herokuapp.com/admin/getalljobs')
+        fetch('https://pegasus-backend.herokuapp.com/admin/getallcareertips')
             .then(response => response.json())
             .then(data => {
                 var obj = [];
@@ -92,19 +88,16 @@ export class JobsTable extends Component {
                     obj[i] = {
                         'no': i + 1,
                         'key': data[i].id,
-                        'empid': data[i].empid,
                         'title': data[i].title,
-                        'industry': data[i].industry,
-                        'description': data[i].description,
-                        'requiredskills': data[i].requiredskills,
+                        'url': data[i].url,
                         'dateposted': data[i].dateposted.slice(0, 10),
-                        'location': data[i].location,
-                        'yearsofexperience': data[i].yearsofexperience,
                     };
                 }
 
                 this._isMounted && this.setState({ TRs: obj, isLoading: false });
-                $("#tableSample").DataTable();
+                $("#tableSample").DataTable(
+                    //{'scrollX': true}
+                );
             });
     }
     componentDidUpdate() {
@@ -129,7 +122,7 @@ export class JobsTable extends Component {
             return <div><h3 className="m-3 d-flex justify-content-center">Please wait while we load the data...</h3></div>
         return (
             <div>
-                <h1 className="m-3 d-flex justify-content-center"><b>Job Listing</b></h1>
+                <h1 className="m-3 d-flex justify-content-center"><b>Career Tips</b></h1>
                 <hr />
                 <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                     open={this.state.snackbaropen}
@@ -152,8 +145,8 @@ export class JobsTable extends Component {
                     <ButtonToolbar>
                         <Button variant='outline-success'
                             onClick={() => this.setState({ addModalShow: true })}
-                        >Create New Job Listing</Button>
-                        <AddJobModal show={this.state.addModalShow}
+                        >Create New Career Tip</Button>
+                        <AddTipModal show={this.state.addModalShow}
                             onHide={addModalClose}
                         />
                     </ButtonToolbar>
@@ -163,31 +156,22 @@ export class JobsTable extends Component {
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Employer ID</th>
+                                    <th>ID</th>
                                     <th>Title</th>
-                                    <th>Industry</th>
-                                    <th>Description</th>
-                                    <th>Required Skills</th>
+                                    <th>URL</th>
                                     <th>Date Posted</th>
-                                    <th>Location</th>
-                                    <th>Years of experience</th>
                                     <th>Options</th>
                                 </tr>
                             </thead>
                             <tbody>{tRow}</tbody>
                         </table>
                     </div>
-                    <EditJobModal show={this.state.editModalShow}
+                    <EditTipModal show={this.state.editModalShow}
                         onHide={editModalClose}
                         id={this.state.id}
-                        empid={this.state.empid}
                         title={this.state.title}
-                        industry={this.state.industry}
-                        description={this.state.description}
-                        requiredskills={this.state.requiredskills}
+                        url={this.state.url}
                         dateposted={this.state.dateposted}
-                        location={this.state.location}
-                        yearsofexperience={this.state.yearsofexperience}
                     />
                 </div>
             </div>

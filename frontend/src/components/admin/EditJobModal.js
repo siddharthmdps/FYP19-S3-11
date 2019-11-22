@@ -14,7 +14,7 @@ export class EditJobModal extends Component {
     snackbarClose = (event) => {
         this.setState({ snackbaropen: false });
     };
-    refresh(){
+    refresh() {
         console.log("asdf");
     }
     handleSubmit(event) {
@@ -39,7 +39,7 @@ export class EditJobModal extends Component {
             .then(res => res.json())
             .then((result) => {
                 //alert(result);
-                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully updated job listing!'});
+                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully updated job listing!' });
             },
                 (error) => {
                     //alert('Failed')
@@ -111,70 +111,70 @@ export class EditJobModal extends Component {
                                         <Form.Control
                                             type="text"
                                             name="dateposted"
-                                            
+
                                             defaultValue={this.props.dateposted}
                                             placeholder="dateposted"></Form.Control>
                                     </Form.Group>
-<Form.Row>
-                                    <Form.Group as={Col} sm={4} controlId="title">
-                                        <Form.Label>Title:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="title"
-                                            required
-                                            defaultValue={this.props.title}
-                                            placeholder="title"></Form.Control>
-                                    </Form.Group>
+                                    <Form.Row>
+                                        <Form.Group as={Col} sm={4} controlId="title">
+                                            <Form.Label>Title:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="title"
+                                                required
+                                                defaultValue={this.props.title}
+                                                placeholder="title"></Form.Control>
+                                        </Form.Group>
 
-                                    <Form.Group as={Col} sm={4} controlId="location">
-                                        <Form.Label>Location:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="location"
-                                            
-                                            defaultValue={this.props.location}
-                                            placeholder="location"></Form.Control>
-                                    </Form.Group>
+                                        <Form.Group as={Col} sm={4} controlId="location">
+                                            <Form.Label>Location:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="location"
 
-                                    <Form.Group as={Col} sm={4} controlId="industry">
-                                        <Form.Label>Industry:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="industry"
-                                            
-                                            defaultValue={this.props.industry}
-                                            placeholder="industry"></Form.Control>
-                                    </Form.Group>
+                                                defaultValue={this.props.location}
+                                                placeholder="location"></Form.Control>
+                                        </Form.Group>
+
+                                        <Form.Group as={Col} sm={4} controlId="industry">
+                                            <Form.Label>Industry:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="industry"
+
+                                                defaultValue={this.props.industry}
+                                                placeholder="industry"></Form.Control>
+                                        </Form.Group>
                                     </Form.Row>
                                     <Form.Row>
-                                    <Form.Group as={Col} controlId="requiredskills">
-                                        <Form.Label>Required Skills:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="requiredskills"
-                                            
-                                            defaultValue={this.props.requiredskills}
-                                            placeholder="requiredskills"></Form.Control>
-                                    </Form.Group>                        
+                                        <Form.Group as={Col} controlId="requiredskills">
+                                            <Form.Label>Required Skills:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="requiredskills"
 
-                                    <Form.Group as={Col} controlId="yearsofexperience">
-                                        <Form.Label>Years of experience:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="yearsofexperience"
-                                            
-                                            defaultValue={this.props.yearsofexperience}
-                                            placeholder="yearsofexperience"></Form.Control>
-                                    </Form.Group>
+                                                defaultValue={this.props.requiredskills}
+                                                placeholder="requiredskills"></Form.Control>
+                                        </Form.Group>
+
+                                        <Form.Group as={Col} controlId="yearsofexperience">
+                                            <Form.Label>Years of experience:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="yearsofexperience"
+
+                                                defaultValue={this.props.yearsofexperience}
+                                                placeholder="yearsofexperience"></Form.Control>
+                                        </Form.Group>
                                     </Form.Row>
                                     <Form.Group controlId="description">
                                         <Form.Label>Description:</Form.Label>
                                         <Form.Control
-                                        as="textarea"
-                                        rows="5"
+                                            as="textarea"
+                                            rows="5"
                                             type="text"
                                             name="description"
-                                            
+
                                             defaultValue={this.props.description}
                                             placeholder="description"></Form.Control>
                                     </Form.Group>

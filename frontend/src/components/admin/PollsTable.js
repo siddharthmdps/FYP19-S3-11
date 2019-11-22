@@ -4,8 +4,8 @@ import $ from 'jquery'
 import { Datatable } from 'datatables.net-dt'
 
 import { Button, ButtonToolbar } from 'react-bootstrap'
-import { AddJobModal } from './AddJobModal'
-import { EditJobModal } from './EditJobModal'
+import { AddPollModal } from './AddPollModal'
+import { EditPollModal } from './EditPollModal'
 import Snackbar from '@material-ui/core/SnackBar'
 import IconButton from '@material-ui/core/IconButton'
 
@@ -28,83 +28,84 @@ class TableBody extends Component {
         return (
             <tr id={'tr-' + this.props.TRs.no} >
                 <td>{this.props.TRs.no}</td>
-                <td>{this.props.TRs.empid}</td>
-                <td>{this.props.TRs.title}</td>
-                <td>{this.props.TRs.industry}</td>
-                <td>{this.props.TRs.description}</td>
-                <td>{this.props.TRs.requiredskills}</td>
-                <td>{this.props.TRs.dateposted}</td>
-                <td>{this.props.TRs.location}</td>
-                <td>{this.props.TRs.yearsofexperience}</td>
+                <td>{this.props.TRs.pollid}</td>
+                <td>{this.props.TRs.question}</td>
+                <td>{this.props.TRs.option1}</td>
+                <td>{this.props.TRs.option1votes}</td>
+                <td>{this.props.TRs.option2}</td>
+                <td>{this.props.TRs.option2votes}</td>
+                <td>{this.props.TRs.option3}</td>
+                <td>{this.props.TRs.option3votes}</td>
                 <td style={{ width: '90px' }}>
                     <a onClick={this.updateBtn} data-item={this.props.TRs.no} style={{ color: 'green' }}>Edit</a> /
-                            <a onClick={this.deleteBtn} data-item={this.props.TRs.key} style={{ color: 'red' }}>Delete</a>
+                            <a onClick={this.deleteBtn} data-item={this.props.TRs.pollid} style={{ color: 'red' }}>Delete</a>
                 </td>
             </tr>
         );
     }
 }
 
-export class JobsTable extends Component {
+export class PollsTable extends Component {
     constructor(props, Context) {
         super(props, Context);
 
         this.state = {
             TRs: [],
-            isLoading: true, id: '', empid: '', title: '', industry: '', description: '', requiredskills: '', dateposted: '', location: '', yearsofexperience: '', editModalShow: false, addModalShow: false,
+            isLoading: true, pollid: '', question: '', option1: '', option1votes: '', option2: '', option2votes: '', option3: '', option3votes: '', editModalShow: false, addModalShow: false,
         };
         this._isMounted = true;
         this.editRow = this.editRow.bind(this);
         this.deleteRow = this.deleteRow.bind(this);
         this.refreshList = this.refreshList.bind(this);
     }
-    deleteRow(jobid) {
-        if (window.confirm('Are you sure you want to delete this job listing?')) {
-            fetch('https://pegasus-backend.herokuapp.com/admin/deletejob/' + jobid, {
-                method: 'PUT',
+    deleteRow(pollid) {
+        if (window.confirm('Are you sure you want to delete this poll?')) {
+            fetch('https://pegasus-backend.herokuapp.com/admin/deletepoll/' + pollid, {
+                method: 'DELETE',
                 header: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
             }).then((result) => {
                 //alert(result);
-                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully deleted job listing!' });
-                this.timer = setTimeout(() => { window.location.href = '/admin/jobs' }, 1000);
+                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully deleted poll!' });
+                this.timer = setTimeout(() => { window.location.href = '/admin/polls' }, 1000);
             },
                 (error) => {
                     //alert('Failed')
-                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to delete job listing...' });
+                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to delete poll...' });
                 }
             )
         }
     }
 
     editRow(x) {
-        this.setState(prevState => ({ editModalShow: true, id: prevState.TRs[x - 1].key, empid: prevState.TRs[x - 1].empid, title: prevState.TRs[x - 1].title, industry: prevState.TRs[x - 1].industry, description: prevState.TRs[x - 1].description, requiredskills: prevState.TRs[x - 1].requiredskills, dateposted: prevState.TRs[x - 1].dateposted, location: prevState.TRs[x - 1].location, yearsofexperience: prevState.TRs[x - 1].yearsofexperience }));
+        this.setState(prevState => ({ editModalShow: true, pollid: prevState.TRs[x - 1].pollid, question: prevState.TRs[x - 1].question, option1: prevState.TRs[x - 1].option1, option1votes: prevState.TRs[x - 1].option1votes, option2: prevState.TRs[x - 1].option2, option2votes: prevState.TRs[x - 1].option2votes, option3: prevState.TRs[x - 1].option3, option3votes: prevState.TRs[x - 1].option3votes }));
     }
 
     refreshList() {
-        fetch('https://pegasus-backend.herokuapp.com/admin/getalljobs')
+        fetch('https://pegasus-backend.herokuapp.com/admin/getallpolls')
             .then(response => response.json())
             .then(data => {
                 var obj = [];
                 for (var i = 0; i < data.length; i++) {
                     obj[i] = {
                         'no': i + 1,
-                        'key': data[i].id,
-                        'empid': data[i].empid,
-                        'title': data[i].title,
-                        'industry': data[i].industry,
-                        'description': data[i].description,
-                        'requiredskills': data[i].requiredskills,
-                        'dateposted': data[i].dateposted.slice(0, 10),
-                        'location': data[i].location,
-                        'yearsofexperience': data[i].yearsofexperience,
+                        'pollid': data[i].pollid,
+                        'question': data[i].question,
+                        'option1': data[i].option1,
+                        'option1votes': data[i].option1votes,
+                        'option2': data[i].option2,
+                        'option2votes': data[i].option2votes,
+                        'option3': data[i].option3,
+                        'option3votes': data[i].option3votes,
                     };
                 }
 
                 this._isMounted && this.setState({ TRs: obj, isLoading: false });
-                $("#tableSample").DataTable();
+                $("#tableSample").DataTable(
+                    //{'scrollX': true}
+                );
             });
     }
     componentDidUpdate() {
@@ -123,13 +124,13 @@ export class JobsTable extends Component {
         let editModalClose = () => this.setState({ editModalShow: false })
         let refresh = () => { this.refreshList() }
         const tRow = this.state.TRs.map(tr => (
-            <TableBody onEdit={this.editRow} onDelete={this.deleteRow} TRs={tr} key={tr.key} />
+            <TableBody onEdit={this.editRow} onDelete={this.deleteRow} TRs={tr} pollid={tr.pollid} />
         ))
         if (isLoading)
             return <div><h3 className="m-3 d-flex justify-content-center">Please wait while we load the data...</h3></div>
         return (
             <div>
-                <h1 className="m-3 d-flex justify-content-center"><b>Job Listing</b></h1>
+                <h1 className="m-3 d-flex justify-content-center"><b>Polls</b></h1>
                 <hr />
                 <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                     open={this.state.snackbaropen}
@@ -152,8 +153,8 @@ export class JobsTable extends Component {
                     <ButtonToolbar>
                         <Button variant='outline-success'
                             onClick={() => this.setState({ addModalShow: true })}
-                        >Create New Job Listing</Button>
-                        <AddJobModal show={this.state.addModalShow}
+                        >Create New Poll</Button>
+                        <AddPollModal show={this.state.addModalShow}
                             onHide={addModalClose}
                         />
                     </ButtonToolbar>
@@ -163,31 +164,30 @@ export class JobsTable extends Component {
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Employer ID</th>
-                                    <th>Title</th>
-                                    <th>Industry</th>
-                                    <th>Description</th>
-                                    <th>Required Skills</th>
-                                    <th>Date Posted</th>
-                                    <th>Location</th>
-                                    <th>Years of experience</th>
+                                    <th>Poll ID</th>
+                                    <th>Question</th>
+                                    <th>Option 1</th>
+                                    <th>Option 1 Votes</th>
+                                    <th>Option 2</th>
+                                    <th>Option 2 Votes</th>
+                                    <th>Option 3</th>
+                                    <th>Option 3 Votes</th>
                                     <th>Options</th>
                                 </tr>
                             </thead>
                             <tbody>{tRow}</tbody>
                         </table>
                     </div>
-                    <EditJobModal show={this.state.editModalShow}
+                    <EditPollModal show={this.state.editModalShow}
                         onHide={editModalClose}
-                        id={this.state.id}
-                        empid={this.state.empid}
-                        title={this.state.title}
-                        industry={this.state.industry}
-                        description={this.state.description}
-                        requiredskills={this.state.requiredskills}
-                        dateposted={this.state.dateposted}
-                        location={this.state.location}
-                        yearsofexperience={this.state.yearsofexperience}
+                        pollid={this.state.pollid}
+                        question={this.state.question}
+                        option1={this.state.option1}
+                        option1votes={this.state.option1votes}
+                        option2={this.state.option2}
+                        option2votes={this.state.option2votes}
+                        option3={this.state.option3}
+                        option3votes={this.state.option3votes}
                     />
                 </div>
             </div>
