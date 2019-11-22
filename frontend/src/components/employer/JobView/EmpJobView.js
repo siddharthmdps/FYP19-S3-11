@@ -47,7 +47,7 @@ class EmpJobView extends Component {
     // fetch  applicants
     componentDidMount() {
         const { jobid } = this.props.match.params;
-
+        console.log("JOB DETAILS")
         //Get Job data
         Axios.get(`${apiURL}employer/getjobinfo/${jobid}`)
             .then(response => {
@@ -61,7 +61,8 @@ class EmpJobView extends Component {
                     jobindustry: response.data[0]['industry'],
                     dateposted: response.data[0]['dateposted'],
                     jobdescription: response.data[0]['description'],
-                    yearsofexperience: response.data[0]['yearsofexperience']
+                    yearsofexperience: response.data[0]['yearsofexperience'],
+                    companyName: response.data[0]['companyname']
                 };
                 console.log(temp);
                 this.setState({ jobDetail: temp });

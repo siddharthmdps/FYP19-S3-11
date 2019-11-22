@@ -73,7 +73,7 @@ class JobsList extends Component {
     handleJD(jd) {
         if (jd.length > 70)
             jd = jd.substr(0, 69) + "..."
-
+        // console.log(jd)
         return jd
     }
 
@@ -130,7 +130,8 @@ class JobsList extends Component {
     // }
 
     jobsTable2() {
-        let jobsPosted = this.handleUndefined(this.state.jobs)
+        // let jobsPosted = this.handleUndefined(this.state.jobs)
+        let jobsPosted = this.handleData(this.state.jobs)
         console.log(jobsPosted)
 
         return (
