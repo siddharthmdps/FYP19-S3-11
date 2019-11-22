@@ -29,12 +29,12 @@ export class AddTipModal extends Component {
             .then(res => res.json())
             .then((result) => {
                 //alert(result);
-                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully created new career tip!' });
+                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully posted new career tip!' });
                 this.timer = setTimeout(() => { window.location.href = '/admin/careertips' }, 1000);
             },
                 (error) => {
                     //alert('Failed')
-                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to create new career tip...' });
+                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to post new career tip...' });
                 }
             )
     }
@@ -67,7 +67,7 @@ export class AddTipModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Create New Career Tip
+                            Post New Career Tip
         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -96,7 +96,7 @@ export class AddTipModal extends Component {
 
                                     <Form.Group>
                                         <Button variant="outline-success" type="submit">
-                                            Create New Career Tip
+                                            Post New Career Tip
                                         </Button>
                                     </Form.Group>
 

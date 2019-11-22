@@ -92,7 +92,7 @@ export class EditTipModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="title">
-                                        <Form.Label>Username:</Form.Label>
+                                        <Form.Label>Title:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="title"
@@ -102,7 +102,7 @@ export class EditTipModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="url">
-                                        <Form.Label>Password:</Form.Label>
+                                        <Form.Label>Url:</Form.Label>
                                         <Form.Control
                                             type="url"
                                             name="url"

@@ -130,7 +130,7 @@ export class EmployerTable extends Component {
             return <div><h3 className="m-3 d-flex justify-content-center">Please wait while we load the data...</h3></div>
         return (
             <div>
-                <h1 className="m-3 d-flex justify-content-center"><b>Employer Login Credentials</b></h1>
+                <h1 className="m-3 d-flex justify-content-center"><b>Employer Account Credentials</b></h1>
                 <hr />
                 <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                     open={this.state.snackbaropen}
