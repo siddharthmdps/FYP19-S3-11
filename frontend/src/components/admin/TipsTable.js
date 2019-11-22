@@ -145,7 +145,7 @@ export class TipsTable extends Component {
                     <ButtonToolbar>
                         <Button variant='outline-success'
                             onClick={() => this.setState({ addModalShow: true })}
-                        >Create New Career Tip</Button>
+                        >Post New Career Tip</Button>
                         <AddTipModal show={this.state.addModalShow}
                             onHide={addModalClose}
                         />
