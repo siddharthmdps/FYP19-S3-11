@@ -12,7 +12,7 @@ const getstudentdocument = (req, res) => {
         }
         else {
             if(studentid) {               
-                let queryString = `delete from jobapplication where jobapplication.studentid = "${studentid}" and jobapplication.jobid = "${jobid}"`
+                let queryString = `delete from savedstudentjob where savedstudentjob.studentid = "${studentid}" and savedstudentjob.jobid = "${jobid}"`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })

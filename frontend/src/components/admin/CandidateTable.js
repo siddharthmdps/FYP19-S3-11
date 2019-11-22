@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import $ from 'jquery'
-import {Datatable} from 'datatables.net-dt'
+import { Datatable } from 'datatables.net-dt'
 
 import { Button, ButtonToolbar } from 'react-bootstrap'
 import { AddCanModal } from './AddCanModal'
@@ -17,33 +17,33 @@ class TableBody extends Component {
     }
 
     updateBtn(e) {
-        this.props.onEdit( e.target.dataset.item );
+        this.props.onEdit(e.target.dataset.item);
     }
 
     deleteBtn(e) {
-        this.props.onDelete( e.target.dataset.item );
+        this.props.onDelete(e.target.dataset.item);
     }
 
-    render() {      
+    render() {
         return (
-                <tr id={'tr-'+ this.props.TRs.no} >
-                    <td>{ this.props.TRs.no }</td>
-                    <td>{ this.props.TRs.username }</td>
-                    <td>{ this.props.TRs.firstname }</td>
-                    <td>{ this.props.TRs.middlename }</td>
-                    <td>{ this.props.TRs.lastname}</td>
-                    <td>{ this.props.TRs.email }</td>
-                    <td>{ this.props.TRs.phone }</td>
-                    <td>{ this.props.TRs.country }</td>
-                    <td>{ this.props.TRs.city }</td>
-                    <td>{ this.props.TRs.currentaddress }</td>
-                    <td>{ this.props.TRs.postalcode }</td>
-                    <td>{ this.props.TRs.nationality }</td>                    
-                    <td style={{width:'90px'}}>
-                            <a onClick={ this.updateBtn } data-item={ this.props.TRs.no } style={{color:'green'}}>Edit</a> /
-                            <a onClick={ this.deleteBtn } data-item={ this.props.TRs.key } style={{color:'red'}}>Delete</a>
-                    </td>
-                </tr>
+            <tr id={'tr-' + this.props.TRs.no} >
+                <td>{this.props.TRs.no}</td>
+                <td>{this.props.TRs.username}</td>
+                <td>{this.props.TRs.firstname}</td>
+                <td>{this.props.TRs.middlename}</td>
+                <td>{this.props.TRs.lastname}</td>
+                <td>{this.props.TRs.email}</td>
+                <td>{this.props.TRs.phone}</td>
+                <td>{this.props.TRs.country}</td>
+                <td>{this.props.TRs.city}</td>
+                <td>{this.props.TRs.currentaddress}</td>
+                <td>{this.props.TRs.postalcode}</td>
+                <td>{this.props.TRs.nationality}</td>
+                <td style={{ width: '90px' }}>
+                    <a onClick={this.updateBtn} data-item={this.props.TRs.no} style={{ color: 'green' }}>Edit</a> /
+                            <a onClick={this.deleteBtn} data-item={this.props.TRs.key} style={{ color: 'red' }}>Delete</a>
+                </td>
+            </tr>
         );
     }
 }
@@ -51,10 +51,10 @@ class TableBody extends Component {
 export class CandidateTable extends Component {
     constructor(props, Context) {
         super(props, Context);
-        
+
         this.state = {
             TRs: [],
-            isLoading:true, id:'', firstname:'', middlename:'', lastname:'', email:'', phone:'', country:'', city:'', currentaddress:'', postalcode:'', nationality:'', username:'',  editModalShow : false, addModalShow : false,
+            isLoading: true, id: '', firstname: '', middlename: '', lastname: '', email: '', phone: '', country: '', city: '', currentaddress: '', postalcode: '', nationality: '', username: '', editModalShow: false, addModalShow: false,
         };
         this._isMounted = true;
         this.editRow = this.editRow.bind(this);
@@ -71,8 +71,8 @@ export class CandidateTable extends Component {
                 }
             }).then((result) => {
                 //alert(result);
-                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully deleted student account!' });                
-                this.timer = setTimeout(()=>{window.location.href = '/admin/student'}, 1000);
+                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully deleted student account!' });
+                this.timer = setTimeout(() => { window.location.href = '/admin/student' }, 1000);
             },
                 (error) => {
                     //alert('Failed')
@@ -83,7 +83,7 @@ export class CandidateTable extends Component {
     }
 
     editRow(x) {
-        this.setState( prevState=>({ editModalShow: true, id: prevState.TRs[x-1].key, firstname: prevState.TRs[x-1].firstname, middlename: prevState.TRs[x-1].middlename, lastname: prevState.TRs[x-1].lastname, email: prevState.TRs[x-1].email, phone: prevState.TRs[x-1].phone, country: prevState.TRs[x-1].country, city: prevState.TRs[x-1].city, currentaddress: prevState.TRs[x-1].currentaddress, postalcode: prevState.TRs[x-1].postalcode, nationality: prevState.TRs[x-1].nationality, username: prevState.TRs[x-1].username }));
+        this.setState(prevState => ({ editModalShow: true, id: prevState.TRs[x - 1].key, firstname: prevState.TRs[x - 1].firstname, middlename: prevState.TRs[x - 1].middlename, lastname: prevState.TRs[x - 1].lastname, email: prevState.TRs[x - 1].email, phone: prevState.TRs[x - 1].phone, country: prevState.TRs[x - 1].country, city: prevState.TRs[x - 1].city, currentaddress: prevState.TRs[x - 1].currentaddress, postalcode: prevState.TRs[x - 1].postalcode, nationality: prevState.TRs[x - 1].nationality, username: prevState.TRs[x - 1].username }));
     }
 
     refreshList() {
@@ -93,51 +93,51 @@ export class CandidateTable extends Component {
                 var obj = [];
                 for (var i = 0; i < data.length; i++) {
                     obj[i] = {
-                    'no': i+1,
-                    'key' : data[i].id,
-                    'firstname': data[i].firstname,
-                    'middlename': data[i].middlename,
-                    'lastname': data[i].lastname,
-                    'email' : data[i].email,
-                    'phone' :data[i].phone,
-                    'country' : data[i].country,
-                    'city' : data[i].city,
-                    'currentaddress' : data[i].currentaddress,
-                    'postalcode' :data[i].postalcode,
-                    'nationality' : data[i].nationality,
-                    'username' : data[i].username,
+                        'no': i + 1,
+                        'key': data[i].id,
+                        'firstname': data[i].firstname,
+                        'middlename': data[i].middlename,
+                        'lastname': data[i].lastname,
+                        'email': data[i].email,
+                        'phone': data[i].phone,
+                        'country': data[i].country,
+                        'city': data[i].city,
+                        'currentaddress': data[i].currentaddress,
+                        'postalcode': data[i].postalcode,
+                        'nationality': data[i].nationality,
+                        'username': data[i].username,
                     };
-                } 
+                }
 
-                this._isMounted && this.setState({TRs: obj, isLoading: false});
+                this._isMounted && this.setState({ TRs: obj, isLoading: false });
                 console.log(this.state);
                 $("#table_candidate").DataTable();
             });
     }
-    componentDidUpdate(){
+    componentDidUpdate() {
         this._isMounted = true;
         this._isMounted && this.refreshList();
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         this._isMounted = false;
     }
-    componentDidMount(){
+    componentDidMount() {
         this.refreshList();
     }
     render() {
         const { isLoading } = this.state;
         let addModalClose = () => this.setState({ addModalShow: false })
         let editModalClose = () => this.setState({ editModalShow: false })
-        let refresh = ()=>{this.refreshList()}
+        let refresh = () => { this.refreshList() }
         const tRow = this.state.TRs.map(tr => (
-            <TableBody onEdit={this.editRow} onDelete={this.deleteRow} TRs={ tr } key={tr.key}  />
-        ))  
-        if(isLoading)
-        return <div><h3 className="m-3 d-flex justify-content-center">Please wait while we load the data...</h3></div>
+            <TableBody onEdit={this.editRow} onDelete={this.deleteRow} TRs={tr} key={tr.key} />
+        ))
+        if (isLoading)
+            return <div><h3 className="m-3 d-flex justify-content-center">Please wait while we load the data...</h3></div>
         return (
             <div>
                 <h1 className="m-3 d-flex justify-content-center"><b>Student Login Credentials</b></h1>
-                <hr/>
+                <hr />
                 <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                     open={this.state.snackbaropen}
                     autoHideDuration={5000}
@@ -165,7 +165,7 @@ export class CandidateTable extends Component {
                         />
                     </ButtonToolbar>
                     <div className='col-md-12'>
-                        
+
                         <table className="table table-hover table-striped table-bordered" id='table_candidate' >
                             <thead>
                                 <tr>
@@ -180,11 +180,11 @@ export class CandidateTable extends Component {
                                     <th>City</th>
                                     <th>Address</th>
                                     <th>Postal Code</th>
-                                    <th>Nationality</th>                                    
+                                    <th>Nationality</th>
                                     <th>Options</th>
                                 </tr>
                             </thead>
-                            <tbody>{ tRow }</tbody>
+                            <tbody>{tRow}</tbody>
                         </table>
                     </div>
                     <EditCanModal show={this.state.editModalShow}
@@ -201,9 +201,9 @@ export class CandidateTable extends Component {
                         postalcode={this.state.postalcode}
                         nationality={this.state.nationality}
                         username={this.state.username}
-                    />    
+                    />
                 </div>
             </div>
-            );
+        );
     }
 }
