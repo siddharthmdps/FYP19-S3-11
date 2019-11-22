@@ -157,7 +157,7 @@ router.post('/applysavejob', applysavejob)
 
 //delete unsavejob
 const unsavejob = require('./unsavejob')
-router.delete('/unsavejob', unsavejob)
+router.delete('/unsavejob/:StudentID/:JobID', unsavejob)
 
 router.get('/studentinfo/:studentid',(req, res, next) => {
     const studentid = req.params.studentid;
