@@ -16,9 +16,14 @@ const getstudentdocument = (req, res) => {
                     if(err) {
                         res.status(500).json({ message: err })
                     }
-                    else {
+                    else if (rows.length > 0){
                         res.json({
                             Status: rows[0].Status
+                        })
+                    }
+                    else {
+                        res.json({
+                            Status: null
                         })
                     }
                 }) 
