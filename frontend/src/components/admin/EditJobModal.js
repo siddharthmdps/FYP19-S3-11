@@ -82,7 +82,7 @@ export class EditJobModal extends Component {
                     <Modal.Body>
 
                         <Row>
-                            <Col sm={12}>
+                            <Col sm={6}>
                                 <Form onSubmit={this.handleSubmit}>
 
                                     <Form.Group controlId="id">
@@ -97,7 +97,7 @@ export class EditJobModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group controlId="empid">
-                                        <Form.Label>Employer ID:</Form.Label>
+                                        <Form.Label>empid:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="empid"
@@ -106,18 +106,8 @@ export class EditJobModal extends Component {
                                             placeholder="empid"></Form.Control>
                                     </Form.Group>
 
-                                    <Form.Group controlId="dateposted">
-                                        <Form.Label>Date Posted:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="dateposted"
-                                            
-                                            defaultValue={this.props.dateposted}
-                                            placeholder="dateposted"></Form.Control>
-                                    </Form.Group>
-<Form.Row>
-                                    <Form.Group as={Col} sm={4} controlId="title">
-                                        <Form.Label>Title:</Form.Label>
+                                    <Form.Group controlId="title">
+                                        <Form.Label>title:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="title"
@@ -126,8 +116,48 @@ export class EditJobModal extends Component {
                                             placeholder="title"></Form.Control>
                                     </Form.Group>
 
-                                    <Form.Group as={Col} sm={4} controlId="location">
-                                        <Form.Label>Location:</Form.Label>
+                                    <Form.Group controlId="industry">
+                                        <Form.Label>industry:</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="industry"
+                                            
+                                            defaultValue={this.props.industry}
+                                            placeholder="industry"></Form.Control>
+                                    </Form.Group>
+
+                                    <Form.Group controlId="description">
+                                        <Form.Label>description:</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="description"
+                                            
+                                            defaultValue={this.props.description}
+                                            placeholder="description"></Form.Control>
+                                    </Form.Group>
+
+                                    <Form.Group controlId="requiredskills">
+                                        <Form.Label>requiredskills:</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="requiredskills"
+                                            
+                                            defaultValue={this.props.requiredskills}
+                                            placeholder="requiredskills"></Form.Control>
+                                    </Form.Group>
+
+                                    <Form.Group controlId="dateposted">
+                                        <Form.Label>dateposted:</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="dateposted"
+                                            
+                                            defaultValue={this.props.dateposted}
+                                            placeholder="dateposted"></Form.Control>
+                                    </Form.Group>
+
+                                    <Form.Group controlId="location">
+                                        <Form.Label>location:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="location"
@@ -136,29 +166,8 @@ export class EditJobModal extends Component {
                                             placeholder="location"></Form.Control>
                                     </Form.Group>
 
-                                    <Form.Group as={Col} sm={4} controlId="industry">
-                                        <Form.Label>Industry:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="industry"
-                                            
-                                            defaultValue={this.props.industry}
-                                            placeholder="industry"></Form.Control>
-                                    </Form.Group>
-                                    </Form.Row>
-                                    <Form.Row>
-                                    <Form.Group as={Col} controlId="requiredskills">
-                                        <Form.Label>Required Skills:</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="requiredskills"
-                                            
-                                            defaultValue={this.props.requiredskills}
-                                            placeholder="requiredskills"></Form.Control>
-                                    </Form.Group>                        
-
-                                    <Form.Group as={Col} controlId="yearsofexperience">
-                                        <Form.Label>Years of experience:</Form.Label>
+                                    <Form.Group controlId="yearsofexperience">
+                                        <Form.Label>yearsofexperience:</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="yearsofexperience"
@@ -166,21 +175,9 @@ export class EditJobModal extends Component {
                                             defaultValue={this.props.yearsofexperience}
                                             placeholder="yearsofexperience"></Form.Control>
                                     </Form.Group>
-                                    </Form.Row>
-                                    <Form.Group controlId="description">
-                                        <Form.Label>Description:</Form.Label>
-                                        <Form.Control
-                                        as="textarea"
-                                        rows="5"
-                                            type="text"
-                                            name="description"
-                                            
-                                            defaultValue={this.props.description}
-                                            placeholder="description"></Form.Control>
-                                    </Form.Group>
 
                                     <Form.Group>
-                                        <Button variant="outline-success" type="submit">
+                                        <Button variant="primary" type="submit">
                                             Update Job Listing
                                         </Button>
                                     </Form.Group>
@@ -193,7 +190,7 @@ export class EditJobModal extends Component {
 
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="outline-danger" onClick={this.props.onHide}>Close</Button>
+                        <Button variant="danger" onClick={this.props.onHide}>Close</Button>
                     </Modal.Footer>
                 </Modal>
             </div>

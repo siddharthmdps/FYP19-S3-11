@@ -8,11 +8,6 @@ import Select from '@material-ui/core/Select';
 import classes2 from './Select.module.css';
 import { Col, Row } from 'react-bootstrap';
 import Divider from '@material-ui/core/Divider';
-import Industries from '../../../common_assets/CommonLists/Industries';
-import WorkExpReqList from '../../../common_assets/CommonLists/WorkExpReqList';
-import Location from '../../../common_assets/CommonLists/Locations';
-
-import { Form } from 'react-bootstrap';
 
 const useStyles = makeStyles(theme => ({
     formControl: {
@@ -26,56 +21,129 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function SimpleSelect(props) {
+export default function SimpleSelect() {
     const classes = useStyles();
-    // const [age, setAge] = React.useState('');
+    const [age, setAge] = React.useState('');
 
     //   React.useEffect(() => {
     //     setLabelWidth(inputLabel.current.offsetWidth);
     //   }, []);
 
-    // const handleChange = event => {
-    //     setAge(event.target.value);
-    // };
+    const handleChange = event => {
+        setAge(event.target.value);
+    };
 
     return (
-        <Col md={{ span: 12 }} >
+        <Col md={{ span: 1 }} >
             <div className={classes2.Container}>
-                <Form.Row>
-                    <Form.Group as={Col} sm='12' controlId="Industry">
-                        <Form.Label className={classes2.Label}>Industry</Form.Label>
-                        <Form.Control as='select' value={props.filter.Industry} onChange={props.changeFn} required>
-                            <Industries />
-                        </Form.Control>
-                    </Form.Group>
-                </Form.Row>
+                <label className={classes2.Title}>Work Experience</label>
+                <div className={classes2.Select}>
+                    <FormControl className={classes2.formControl} style={{ minWidth: '120px' }}>
+                        <InputLabel shrink id="Years" className={classes2.InputLabel}>
+                            Years
+                            </InputLabel>
+                        <Select
+                            labelId="Years"
+                            id="YearsSelect"
+                            value={age}
+                            onChange={handleChange}
+                            displayEmpty
+                            className={classes.selectEmpty}
+                        >
+                            <MenuItem value="">None</MenuItem>
+                            <MenuItem value={0}>0</MenuItem>
+                            <MenuItem value={1}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
+                {/* <p style={{ display: 'inline-block', width: '120px' }}></p> */}
 
-                <div className={classes2.Divider} />
+                <br />
+                <br />
+                <Divider/>
+
+
+                <div className={classes2.Select}>
+                    <FormControl className={classes2.formControl} style={{ minWidth: '120px' }}>
+                        <InputLabel shrink id="Months" className={classes2.InputLabel}>
+                            Months
+                            </InputLabel>
+                        <Select
+                            labelId="Months"
+                            id="MonthsSelect"
+                            value={age}
+                            onChange={handleChange}
+                            displayEmpty
+                            className={classes.selectEmpty}
+                        >
+                            <MenuItem value="">None</MenuItem>
+                            <MenuItem value={0}>0</MenuItem>
+                            <MenuItem value={1}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                            <MenuItem value={3}>3</MenuItem>
+                            <MenuItem value={4}>4</MenuItem>
+                            <MenuItem value={5}>5</MenuItem>
+                            <MenuItem value={6}>6</MenuItem>
+                            <MenuItem value={7}>7</MenuItem>
+                            <MenuItem value={8}>8</MenuItem>
+                            <MenuItem value={9}>9</MenuItem>
+                            <MenuItem value={10}>10</MenuItem>
+                            <MenuItem value={11}>11</MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
             </div>
+            <br />
+            <Divider />
 
             <div className={classes2.Container}>
-                <Form.Row>
-                    <Form.Group as={Col} sm='12' controlId="WorkExp">
-                        <Form.Label className={classes2.Label}>Work Experience</Form.Label>
-                        <Form.Control as='select' value={props.filter.WorkExp} onChange={props.changeFn} required>
-                            <WorkExpReqList />
-                        </Form.Control>
-                    </Form.Group>
-                </Form.Row>
+                <label className={classes2.Title}>Industry</label>
+                <div className={classes2.Select}>
+                    <FormControl className={classes2.formControl} style={{ minWidth: '150px' }}>
+                        <InputLabel shrink id="Years" className={classes2.InputLabel}>
+                            Industry
+                            </InputLabel>
+                        <Select
+                            labelId="Years"
+                            id="YearsSelect"
+                            value={age}
+                            onChange={handleChange}
+                            displayEmpty
+                            className={classes.selectEmpty}
+                        >
+                            <MenuItem value="">Any</MenuItem>
+                            <MenuItem value={0}>Business</MenuItem>
+                            <MenuItem value={1}>Banking</MenuItem>
+                            <MenuItem value={2}>E-commerce</MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
             </div>
-
-            <div className={classes2.Divider} />
-
+            <br />
+            <br />
             <div className={classes2.Container}>
-
-                <Form.Row>
-                    <Form.Group as={Col} sm='12' controlId="Location">
-                        <Form.Label className={classes2.Label}>Location</Form.Label>
-                        <Form.Control as='select' value={props.filter.Location} placeholder="Singapore"  onChange={props.changeFn} required>
-                            <Location />
-                        </Form.Control>
-                    </Form.Group>
-                </Form.Row>
+                <label className={classes2.Title}>Location</label>
+                <div className={classes2.Select}>
+                    <FormControl className={classes2.formControl} style={{ minWidth: '150px' }}>
+                        <InputLabel shrink id="Years" className={classes2.InputLabel}>
+                            Location
+                            </InputLabel>
+                        <Select
+                            labelId="Years"
+                            id="YearsSelect"
+                            value={age}
+                            onChange={handleChange}
+                            displayEmpty
+                            className={classes.selectEmpty}
+                        >
+                            <MenuItem value="">Any</MenuItem>
+                            <MenuItem value={0}>Woodlands</MenuItem>
+                            <MenuItem value={1}>RedHill</MenuItem>
+                            <MenuItem value={2}>Orchard</MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
             </div>
         </Col>
     );

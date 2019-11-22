@@ -52,11 +52,7 @@ const education = props => {
             <Form.Row>
                 <Form.Group as={Col} sm="6" controlId="Mode">
                     <Form.Label>Mode <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
-                    <Form.Control as='select' value={props.details.Mode} onChange={props.changeFn} required>
-                        <option value=''>Choose an option</option>
-                        <option value='Part-Time'>Part-Time</option>
-                        <option value='Full-Time'>Full-Time</option>
-                    </Form.Control>
+                    <Form.Control type='text' placeholder="Part Time" value={props.details.Mode} onChange={props.changeFn} required />
                 </Form.Group>
                 <Form.Group as={Col} sm="6" controlId="GPA">
                     <Form.Label>GPA <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>

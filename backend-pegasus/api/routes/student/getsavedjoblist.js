@@ -1,7 +1,7 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
 const getstudentdocument = (req, res) => {
-    const studentid = parseInt(req.params.studentid);
+    const studentid = req.params.studentid;
 
     mypool.getConnection( (error, connection) => {
         if(error) {
@@ -11,14 +11,18 @@ const getstudentdocument = (req, res) => {
         }
         else {
             if(studentid) {               
-                let queryString = `select id as 'DocumentID', Title, Link as Link, ImageType from pegasus.studentdocument where studentid = "${studentid}"`
+                let queryString = `select job.title as 'JobTitle',employer.companyname as 'Company',job.Location,job.Industry, 
+                job.yearsofexperience as 'WorkExpReq',job.Description,job.id as 'JobID', 'Saved' as Status
+                from pegasus.job join pegasus.employer on employer.id = job.empid join pegasus.jobapplication on 
+                jobapplication.jobid = job.id where jobapplication.studentid = "${studentid}" and jobapplication.status = 'Saved'`
+                //and job.location = (select location from pegasus.studentjobpref where studentid = "${studentid}") and job.industry = (select industry from pegasus.studentjobpref where studentid = "${studentid}") and job.yearsofexperience = (select workexp from pegasus.studentjobpref where studentid = "${studentid}")`
                 connection.query(queryString, (err, rows, fields) => {
                     if(err) {
                         res.status(500).json({ message: err })
                     }
                     else {
                         res.json({
-                            Document: rows
+                            SavedJobs: rows
                         })
                     }
                 }) 

@@ -7,7 +7,7 @@ const login = (req,res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     var usertypeid = req.body.usertype + "id";
 
-    console.log('login request!',req.body)
+    console.log('login request received!',req.body)
 
     // Search in corresponding table based on usertype
     // Respond with user ID

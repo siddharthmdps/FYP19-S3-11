@@ -15,12 +15,7 @@ class SearchJobs extends Component {
         "SearchJobs": [],
         "jobsPerPage": 5,
         "pageNo": 1,
-        "pageItems": [],
-        "Filter": {
-            "Industry": "",
-            "WorkExp": "",
-            "Location": ""
-        }
+        "pageItems": []
     };
 
     pagination = () => {
@@ -81,13 +76,6 @@ class SearchJobs extends Component {
         this.setState({ "SearchJobs": temp });
     };
 
-    changeFilter(event){
-        console.log(event.target.id, event.target.value);
-        let temp = this.state.Filter;
-        temp[event.target.id] = event.target.value;
-        this.setState({ Filter: temp });
-    }
-
     getSearch = event => {
         this.setState({ Search: event.target.value });
     }
@@ -113,7 +101,7 @@ class SearchJobs extends Component {
     };
 
     getSearchedJobs() {
-        Axios.get(`https://pegasus-backend.herokuapp.com/student/searchjob/${this.state.Search}`)
+        Axios.get("http://localhost:3000/AppliedJobs")
             .then(receivedData => {
                 let temp = receivedData.data;
                 console.log(temp);
@@ -162,7 +150,7 @@ class SearchJobs extends Component {
                                 className={classes.SearchBox}
                             />
                             <br />
-                            <Sidedrawer filter={this.state.Filter} changeFn={event => this.changeFilter(event)}/>
+                            <Sidedrawer />
                         </div>
 
                         {/* </InputGroup> */}
@@ -198,12 +186,7 @@ class SearchJobs extends Component {
                                 <br />
                             </React.Fragment>
                         );
-                    }): 
-                    <div className={classes.NoRecord}>
-                        <div className={classes.NoRecordHighlight}>No results</div>
-                        <div className={classes.NoRecordMessage}>Sorry there are no results for this search, please try another phrase.</div>
-                    </div>
-                    }
+                    })}
                 </Col>
 
                 <Grid container  justify="center">

@@ -20,7 +20,7 @@ class NavbarPage extends Component {
 
   render() {
     return (
-      <MDBNavbar color="success-color" scrolling dark expand="md" >
+      <MDBNavbar color="blue" scrolling dark expand="md">
         <MDBNavbarBrand>
           <MDBNavLink to="/admin"><strong className="white-text">Pegasus@SIM</strong></MDBNavLink>
         </MDBNavbarBrand>
@@ -37,7 +37,7 @@ class NavbarPage extends Component {
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
                   <NavDropdown.Item href="/admin/employer">Employer</NavDropdown.Item>
-                  <NavDropdown.Item href="/admin/student">Student</NavDropdown.Item>
+                  <NavDropdown.Item href="/admin/candidate">Candidate</NavDropdown.Item>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
@@ -50,19 +50,20 @@ class NavbarPage extends Component {
 
           </MDBNavbarNav>
           <MDBNavbarNav right>
-            {/* <MDBNavItem>
+            <MDBNavItem>
               <MDBFormInline waves>
                 <div className="md-form my-0">
                   <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
                 </div>
               </MDBFormInline>
-            </MDBNavItem> */}
+            </MDBNavItem>
             <MDBNavItem>
               <MDBDropdown>
                 <MDBDropdownToggle nav caret>
                   <MDBIcon icon="user" />
                 </MDBDropdownToggle>
                 <MDBDropdownMenu right className="dropdown-default">
+                  <NavDropdown.Item href="/admin/Settings">Settings</NavDropdown.Item>
                   <NavDropdown.Item onClick={ () => {
                         localStorage.clear()
                         document.location.reload(true)

@@ -23,16 +23,13 @@ const projects = props => {
                 </Form.Group> 
                 <Form.Group as={Col} sm="6" controlId="Status">
                     <Form.Label>Status <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
-                    <Form.Control as='select' placeholder="Oracle" value={props.details.Status} onChange={props.changeFn}>
-                        <option value="ongoing">Ongoing</option>
-                        <option value="completed">Completed</option>
-                    </Form.Control>
+                    <Form.Control type='text' placeholder="Oracle" value={props.details.Status} onChange={props.changeFn}/>
                 </Form.Group> 
             </Form.Row>
 
             <Form.Group as={Row} controlId="Description">
                 <Form.Label column sm="2">Project Description <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
-                <Col sm="10"><Form.Control as='textarea' rows="5" placeholder="Description..." value={props.details.Description} onChange={props.changeFn}></Form.Control></Col>
+                <Col sm="10"><Form.Control as='textarea' rows="5" placeholder="Description..." value={props.details.Description} onChange={props.changeFn}/></Col>
             </Form.Group>
              
             <Form.Group as={Row} controlId="Link">

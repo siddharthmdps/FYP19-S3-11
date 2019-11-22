@@ -3,7 +3,6 @@ import {Form, Row, Col} from 'react-bootstrap';
 import Button1 from '../../../../common_assets/Button1/Button1';
 import classes from '../../../../common_assets/Validate.module.css';
 import classes2 from '../../../../common_assets/Miscellaneous.module.css';
-import Industries from '../../../../common_assets/CommonLists/Industries';
 
 const workExperience = props => {
     
@@ -45,17 +44,17 @@ const workExperience = props => {
                     <Form.Label>Mode <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                     {/* <Form.Control componentClass='select' type='text' placeholder="Part Time" value={props.details.Mode} onChange={props.changeFn} required/> */}
                     <Form.Control as='select' value={props.details.Mode} onChange={props.changeFn} className={classes.ptft} required>
-                        <option value="">Choose ...</option>
-                        <option value="Part-Time">Part-Time</option>
-                        <option value="Full-Time">Full-Time</option>
-                        <option value="Intern">Intern</option>
-                        <option value="Contract">Contract</option>
+                        <option>Part-Time</option>
+                        <option>Full-Time</option>
+                        <option>Intern</option>
+                        <option>Contract</option>
                     </Form.Control>
                 </Form.Group> 
                 <Form.Group as={Col} sm="4" controlId="Industry">
                     <Form.Label>Industry <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
-                    <Form.Control as='select' value={props.details.Industry} className={classes.ptft} onChange={props.changeFn} required>
-                        <Industries />
+                    <Form.Control as='select' placeholder="IT" value={props.details.Industry} className={classes.ptft} onChange={props.changeFn} required>
+                        <option>IT</option>
+                        <option>Business</option>
                     </Form.Control>
                 </Form.Group> 
                 <Form.Group as={Col} sm="4" controlId="AnnualSalary">

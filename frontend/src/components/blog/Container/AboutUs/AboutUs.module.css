@@ -15,8 +15,14 @@
     flex-flow: column;
     text-align: center;
     font-family: 'Concert One', cursive;
+    /* background-color: red; */
     margin-top: 50px;
 }
+
+/* .Description{ */
+    /* margin-top: 20px; */
+    /* background-color: brown; */
+/* } */
 
 .DescriptionText{
     color: #fff;
@@ -27,5 +33,4 @@
 .SubText{
     color: #fff;
     font-size: 2em;
-    text-align: center;
 }

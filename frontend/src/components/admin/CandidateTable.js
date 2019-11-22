@@ -62,7 +62,7 @@ export class CandidateTable extends Component {
         this.refreshList = this.refreshList.bind(this);
     }
     deleteRow(canid) {
-        if (window.confirm('Are you sure you want to delete this student account?')) {
+        if (window.confirm('Are you sure you want to delete this candidate account?')) {
             fetch('https://pegasus-backend.herokuapp.com/admin/deletestudent/' + canid, {
                 method: 'PUT',
                 header: {
@@ -71,12 +71,12 @@ export class CandidateTable extends Component {
                 }
             }).then((result) => {
                 //alert(result);
-                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully deleted student account!' });                
-                this.timer = setTimeout(()=>{window.location.href = '/admin/student'}, 1000);
+                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully deleted candidate account!' });                
+                this.timer = setTimeout(()=>{window.location.href = '/admin/candidate'}, 1000);
             },
                 (error) => {
                     //alert('Failed')
-                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to delete student account...' });
+                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to delete candidate account...' });
                 }
             )
         }
@@ -136,8 +136,7 @@ export class CandidateTable extends Component {
         return <div><h3 className="m-3 d-flex justify-content-center">Please wait while we load the data...</h3></div>
         return (
             <div>
-                <h1 className="m-3 d-flex justify-content-center"><b>Student Login Credentials</b></h1>
-                <hr/>
+                <h1 className="m-3 d-flex justify-content-center"><b>Candidate Login Credentials</b></h1>
                 <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                     open={this.state.snackbaropen}
                     autoHideDuration={5000}
@@ -157,9 +156,9 @@ export class CandidateTable extends Component {
                 />
                 <div className='row margin-top'>
                     <ButtonToolbar>
-                        <Button variant='outline-success'
+                        <Button variant='primary'
                             onClick={() => this.setState({ addModalShow: true })}
-                        >Create New Student Account</Button>
+                        >Create New Candidate Account</Button>
                         <AddCanModal show={this.state.addModalShow}
                             onHide={addModalClose}
                         />
@@ -174,7 +173,7 @@ export class CandidateTable extends Component {
                                     <th>First Name</th>
                                     <th>Middle Name</th>
                                     <th>Last Name</th>
-                                    <th>E-mail</th>
+                                    <th>Email</th>
                                     <th>Phone</th>
                                     <th>Country</th>
                                     <th>City</th>
