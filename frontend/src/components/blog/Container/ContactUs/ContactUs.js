@@ -40,7 +40,7 @@ Min Marn OO: `}{<a className={classes.Clickable} href={"mailto:mmoo001@mymail.si
 
 Min San: `}{<a className={classes.Clickable} href={"mailto:san002@mymail.sim.edu.sg"} >san002@mymail.sim.edu.sg</a>}{` 
 
-Zhiting: `}{<a className={classes.Clickable} href={"mailto:singh041@mymail.sim.edu.sg"} >singh041@mymail.sim.edu.sg</a>}{` 
+Zhiting: `}{<a className={classes.Clickable} href={"mailto:ztchia002@mymail.sim.edu.sg"} >ztchia002@mymail.sim.edu.sg</a>}{` 
 `}
 </pre>
                     </Col>
