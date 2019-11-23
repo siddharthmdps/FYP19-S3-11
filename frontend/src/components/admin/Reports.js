@@ -96,12 +96,12 @@ export class Reports extends Component {
 				<br />
 				<Tabs>
 					<TabList>
-						<Tab>Overall Job Application Status</Tab>
+						<Tab>Total Job Application Results</Tab>
 						<Tab>Successful Applications by Field of Study</Tab>
 					</TabList>
 
 					<TabPanel><br></br>
-						<h3 style={{ textAlign: 'center' }}><u>Overall Job Application Status</u></h3>
+						<h3 style={{ textAlign: 'center' }}><u>Total Job Application Results</u></h3>
 						<br></br>
 						<h3 style={{ textAlign: 'center' }}>
 							<abbr style={{ color: 'red' }}>Total: {this.state.total},</abbr>
