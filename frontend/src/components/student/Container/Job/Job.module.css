@@ -9,7 +9,6 @@
     border-radius: 25px;
     border-color: #82E3B1!important;
     font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif;
-    height: 16rem;
 }
 
 .Card:hover {
@@ -24,8 +23,6 @@
     left: 1%;
     bottom: 1%;
     position: relative;
-    height: 15rem;
-    /* width: '100vh' */
 }
 
 .Desc {
@@ -38,7 +35,6 @@
 }
 
 .CardCol {
-    /* padding-left: 1.3%; */
     font-weight: 400;
     height: 3rem;
     text-overflow: ellipsis!important;
@@ -51,15 +47,12 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;  
     overflow: hidden;
-    /* word-wrap: break-word; */
 }
 
 .Star {
     display: inline-block;
     justify-content: space-between;
     position: relative;
-    /* vertical-align: sub; */
-    /* position: relative; */
 }
 
 .Star:hover,
@@ -69,7 +62,6 @@
 }
 
 .Applied {
-    /* vertical-align: middle; */
     text-transform: uppercase;
     font-family: 'Roboto',sans-serif;
     border-color: transparent!important;

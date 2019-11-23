@@ -11,7 +11,7 @@ const jobPreference = props => {
         <React.Fragment>
             <Row>
                 <Col className={classes2.Title}>
-                    Job Preference #{props.details.JobPreferenceID}
+                    Job Preference #1
                 </Col>
                 {/* <Col md={{ offset: 9, span: 1 }} className={classes2.Delete}>
                     <Button1 click={props.remove} delete><i className="fas fa-trash-alt"></i></Button1>
@@ -20,7 +20,7 @@ const jobPreference = props => {
             <br/>
             <Form.Row>
                 <Form.Group as={Col} sm='12' controlId="Industry">
-                    <Form.Label>Industry</Form.Label>
+                    <Form.Label>Industry <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                         <Form.Control as='select' value={props.details.Industry} onChange={props.changeFn} required>
                             <Industries/>
                         </Form.Control>
@@ -34,7 +34,7 @@ const jobPreference = props => {
 
             <Form.Row>
                 <Form.Group as={Col} sm='12' controlId="WorkExp">
-                    <Form.Label>Work Experience</Form.Label>
+                    <Form.Label>Work Experience <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                         <Form.Control as='select' value={props.details.WorkExp} onChange={props.changeFn} required>
                             <WorkExpReqList />
                         </Form.Control>
@@ -48,7 +48,7 @@ const jobPreference = props => {
 
             <Form.Row>
                 <Form.Group as={Col} sm='12' controlId="Location">
-                    <Form.Label>Location</Form.Label>
+                    <Form.Label>Location <p style={{ color: 'red', display: 'inline' }}>*</p></Form.Label>
                         <Form.Control as='select' placeholder="Singapore" value={props.details.Location} onChange={props.changeFn} required>
                             <Location />
                         </Form.Control>

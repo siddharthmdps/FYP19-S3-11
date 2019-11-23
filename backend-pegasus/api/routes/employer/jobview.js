@@ -1,12 +1,12 @@
-const {containsNull, mypool} = require('../../util')
+const {env, sha1, mysql, mypool} = require('../../util')
 
 // return joblist matched by employer id
 const getJobView = (req, res) => {
     const jobID = parseInt(req.params.jobID)
     console.log(`Requesting for a detailed job view, jobID: ${jobID}`)
 
-    if( jobID === null || jobID === "" ) res.send('jobid cannot be null')
-    else{
+
+    if(jobID) {
         mypool.getConnection((err, connection) => {
             if(err) {
                 connection.release()
@@ -22,21 +22,20 @@ const getJobView = (req, res) => {
                     if(err) {
                         res.status(500).json({ message: err })
                     }
-                    else {
-                        if( rows &&  ( rows.length > 0 ) ) {
-                            res.send(rows)
-                        }
-                        else if ( !rows || rows.length == 0 ) {
-                            res.status(200).json({
-                                message: 'Empty table'
-                            })
-                        }
+                    if( rows &&  ( rows.length > 0 ) ) {
+                        res.send(rows)
+                    }
+                    else if ( !rows || rows.length == 0 ) {
+                        res.status(200).json({
+                            message: 'Empty table'
+                        })
                     }
                 })
             }
             connection.release()
         })
     }
+    else res.send('please provide job id')
 
     //res.send(`Requesting for a detailed job view, jobID: ${jobID}`)
 }

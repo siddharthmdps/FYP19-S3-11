@@ -39,7 +39,7 @@ The admin of the system, has the access to all the portal. He handles all the lo
                 <br />
                 <Row>
                     <Col sm={12} md={{span: 3, offset: 2}} className={classes.DescriptionText}>
-                        <span onClick={()=> window.open("https://google.com", "_blank")}>
+                        <span onClick={()=> window.open("https://docs.google.com/document/d/1ITUU5dVkCR7E7hKfK4yXn0WWPvVuZuUjlxCE1WdfbgM/edit?usp=sharing", "_blank")}>
                             <Image src='./technicalManual.png' style={{width: '100%'}} />
                         </span>
                             <br />
@@ -48,7 +48,7 @@ The admin of the system, has the access to all the portal. He handles all the lo
                             </span>
                     </Col>
                     <Col sm={12} md={{span: 3, offset: 2}} className={classes.DescriptionText}>
-                        <span onClick={()=> window.open("https://google.com", "_blank")}>
+                        <span onClick={()=> window.open("https://docs.google.com/document/d/1Jpi5TeSTKgb84dl6vKbrCDdVgyBqk6g54uAvogQXLZE/edit?usp=sharing", "_blank")}>
                             <Image src='./userManual.jpg' style={{width: '100%'}} />
                         </span>
                         <br />
@@ -56,7 +56,21 @@ The admin of the system, has the access to all the portal. He handles all the lo
                                 User Manual
                             </span>
                     </Col>
-                    </Row>
+                </Row>
+                <br />
+                <br />
+                <Row>
+                    <Col sm={12} md={{span: 8, offset: 2}} className={classes.SubText}>
+                        Project Video
+                    </Col>
+                </Row>
+                <br />
+                <br />
+                <Row>
+                    <Col sm={12} md={{span: 3, offset: 2}} className={classes.DescriptionText}>
+                    <iframe src="https://www.youtube.com/embed/TcMBFSGVi1c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </Col>
+                </Row>
                     
             </Container>
         );
