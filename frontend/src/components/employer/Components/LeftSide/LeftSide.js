@@ -19,8 +19,8 @@ const leftSide = (props) => {
 
                 <Card.Body>
                     <Form.Row >
-                        <Form.Group as={Col} lg={4} sm={12}>
-                            <StatBox number="" desc="" />
+                        <Form.Group as={Col} lg={4} sm={12} >
+                            {/* <StatBox number="" desc="" style={{ display: "hidden" }} /> */}
                         </Form.Group>
                         <Form.Group as={Col} lg={4} sm={12}>
                             <Link to={`/employer/viewjobs`} style={{ textDecoration: 'none' }}>
@@ -28,7 +28,7 @@ const leftSide = (props) => {
                             </Link>
                         </Form.Group>
                         <Form.Group as={Col} lg={4} sm={12}>
-                            <StatBox number="" desc="" />
+                            {/* <StatBox number="" desc="" /> */}
                         </Form.Group>
 
                     </Form.Row>
