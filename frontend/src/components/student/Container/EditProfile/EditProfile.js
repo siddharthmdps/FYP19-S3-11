@@ -1003,7 +1003,7 @@ class EditProfile extends Component {
                         this.togglePanel(9);
                     })
                     .catch(error => {
-                        // this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
+                        this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
                         console.log(error);
                     });
             }

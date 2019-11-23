@@ -24,11 +24,11 @@ class AboutUs extends Component {
 {`
 Project Assessor: Tan Kheng Teck
 
-Email : 
+Email : `}{<a className={classes.Clickable} href={"mailto:khengtecktan@yahoo.com.sg"} >khengtecktan@yahoo.com.sg</a>}{` 
 
 Project Supervisor: Dr Loo Poh Kok
 
-Email : 
+Email : `}{<a className={classes.Clickable} href={"mailto:pkloo@singnet.com.sg"} >pkloo@singnet.com.sg</a>}{` 
 
 Siddharth Singh: `}{<a className={classes.Clickable} href={"mailto:singh041@mymail.sim.edu.sg"} >singh041@mymail.sim.edu.sg</a>}{` 
 
@@ -36,11 +36,11 @@ Joshua Cheng: `}{<a className={classes.Clickable} href={"mailto:jcycheng001@myma
 
 Lum Soon Keong: `}{<a className={classes.Clickable} href={"mailto:sklum001@mymail.sim.edu.sg"} >sklum001@mymail.sim.edu.sg</a>}{` 
 
-Siddharth Singh: `}{<a className={classes.Clickable} href={"mailto:singh041@mymail.sim.edu.sg"} >singh041@mymail.sim.edu.sg</a>}{` 
+Min Marn OO: `}{<a className={classes.Clickable} href={"mailto:mmoo001@mymail.sim.edu.sg"} >mmoo001@mymail.sim.edu.sg</a>}{` 
 
-Siddharth Singh: `}{<a className={classes.Clickable} href={"mailto:singh041@mymail.sim.edu.sg"} >singh041@mymail.sim.edu.sg</a>}{` 
+Min San: `}{<a className={classes.Clickable} href={"mailto:san002@mymail.sim.edu.sg"} >san002@mymail.sim.edu.sg</a>}{` 
 
-Siddharth Singh: `}{<a className={classes.Clickable} href={"mailto:singh041@mymail.sim.edu.sg"} >singh041@mymail.sim.edu.sg</a>}{` 
+Zhiting: `}{<a className={classes.Clickable} href={"mailto:singh041@mymail.sim.edu.sg"} >singh041@mymail.sim.edu.sg</a>}{` 
 `}
 </pre>
                     </Col>

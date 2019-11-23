@@ -22,6 +22,10 @@ class VerticalTabs extends Component {
             this.setState({ dp: "MinMarn.jpeg" });
         else if (name === 'Soon')
             this.setState({ dp: "Soon.jpeg" });
+        else if (name === 'Zhiting')
+            this.setState({ dp: "Zhiting.jpeg" });
+        else if (name === 'MinSan')
+            this.setState({ dp: "MinSan.jpeg" });
 
     }
 

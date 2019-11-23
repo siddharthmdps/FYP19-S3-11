@@ -53,7 +53,7 @@ class JobCard extends Component {
                 })
             }
             else if(this.state.Status==="saved"){
-                Axios.post(`https://pegasus-backend.herokuapp.com/student/unsavejob/${localStorage.getItem('id')}/${this.props.match.params.JID}`)
+                Axios.delete(`https://pegasus-backend.herokuapp.com/student/unsavejob/${localStorage.getItem('id')}/${this.props.match.params.JID}`)
                 .then(res => {
                     this.setState({Status: 'none'});
                     this.props.enqueueSnackbar(`Unsaved!`, { variant: 'success' });
