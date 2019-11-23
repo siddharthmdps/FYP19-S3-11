@@ -31,7 +31,7 @@ class TopNavbar extends Component {
       let tempRight = {
         "View Profile": `/student/viewprofile/${localStorage.getItem('id')}`,
         "Edit Profile": "/student/editprofile",
-        "Recommended Jobs": "/student/recommendedjobs",
+        "Recommended": "/student/recommendedjobs",
         "Saved Jobs": "/student/savedjobs",
         "Applied Jobs": "/student/appliedjobs",
         "Logout": "/",
