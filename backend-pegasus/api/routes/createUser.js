@@ -49,7 +49,7 @@ const createUser = (req, res) => {
                         if(err.sqlMessage.slice(0,9) === "Duplicate") res.send("Duplicate user")
                         else res.status(500).json({ err })
                     }
-                    else res.send('successfully created new user')
+                    else res.send({ message: "successfully created new user"})
                 })
             }
             connection.release()
