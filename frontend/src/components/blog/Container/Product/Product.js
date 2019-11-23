@@ -61,43 +61,7 @@ The admin of the system, has the access to all the portal. He handles all the lo
                 <br />
                 <Row>
                     <Col sm={12} md={{span: 8, offset: 2}} className={classes.SubText}>
-                        Project Video
-                    </Col>
-                </Row>
-                <br />
-                <Row>
-                    <Col sm={12} md={{span: 8, offset: 2}} className={classes.SubText}>
-                        Student
-                    </Col>
-                </Row>
-                <br />
-                <Row>
-                    <Col sm={12} md={{span: 3, offset: 2}} className={classes.DescriptionText}>
-                    <iframe src="https://www.youtube.com/embed/TcMBFSGVi1c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </Col>
-                </Row>
-                <br />
-                <Row>
-                    <Col sm={12} md={{span: 8, offset: 2}} className={classes.SubText}>
-                        Employer
-                    </Col>
-                </Row>
-                <br />
-                <Row>
-                    <Col sm={12} md={{span: 3, offset: 2}} className={classes.DescriptionText}>
-                    <iframe src="https://www.youtube.com/embed/TcMBFSGVi1c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </Col>
-                </Row>
-                <br />
-                <Row>
-                    <Col sm={12} md={{span: 8, offset: 2}} className={classes.SubText}>
-                        Admin
-                    </Col>
-                </Row>
-                <br />
-                <Row>
-                    <Col sm={12} md={{span: 3, offset: 2}} className={classes.DescriptionText}>
-                    <iframe src="https://www.youtube.com/embed/TcMBFSGVi1c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <a href="https://www.youtube.com/channel/UCRSzPP-yaGw5Z8II1K17FHg?view_as=subscriber"> Project Video</a>
                     </Col>
                 </Row>
                     
