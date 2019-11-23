@@ -75,28 +75,28 @@ class SavedJobs extends Component {
     //     this.setState({ "SavedJobs": temp });
     // };
 
-    changeStatus = (id, status) => {
-        let temp = this.state.SavedJobs;
-        temp.forEach(element => {
-            if(element.JobID === id){
-                if(status==="Applied")
-                    element.Status = status;
-                else{
-                    if(element.Status === "Saved"){
-                        element.Status = "None"
-                    }
-                    else if(element.Status === "None"){
-                        element.Status = "Saved"
-                    }
-                }
-            }
-        });
-        console.log(temp, id, status);
-        this.setState({ "SavedJobs": temp });
-    };
+    // changeStatus = (id, status) => {
+    //     let temp = this.state.SavedJobs;
+    //     temp.forEach(element => {
+    //         if(element.JobID === id){
+    //             if(status==="Applied")
+    //                 element.Status = status;
+    //             else{
+    //                 if(element.Status === "Saved"){
+    //                     element.Status = "None"
+    //                 }
+    //                 else if(element.Status === "None"){
+    //                     element.Status = "Saved"
+    //                 }
+    //             }
+    //         }
+    //     });
+    //     console.log(status);
+    //     this.setState({ "SavedJobs": temp });
+    // };
 
     componentDidMount(){
-        Axios.get(`http://192.168.43.251:3001/student/getsavedjoblist/${localStorage.getItem('id')}`)
+        Axios.get(`https://pegasus-backend.herokuapp.com/student/getsavedjoblist/${localStorage.getItem('id')}`)
             .then(receivedData =>{
                 let temp = receivedData.data.SavedJobs;
                 this.setState({ SavedJobs: temp });
@@ -114,14 +114,22 @@ class SavedJobs extends Component {
                 </Row>
                 <br />
 
-                {this.state.SavedJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
-                    return(
-                        <React.Fragment key={jobDetail.id}>
-                            <JobCard jobDetail={jobDetail} changeStatus={(id, status) => this.changeStatus(id, status)} />
-                            <br />
-                        </React.Fragment>
-                    );
-                })}  
+                {
+                    this.state.SavedJobs.length===0?(
+                        <div className={classes.NoRecord}>
+                            <div className={classes.NoRecordHighlight}>No results</div>
+                            <div className={classes.NoRecordMessage}>All Saved jobs will be visible here</div>
+                        </div>
+                    ):
+                    (this.state.SavedJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
+                        return(
+                            <React.Fragment key={jobDetail.id}>
+                                <JobCard jobDetail={jobDetail} />
+                                <br />
+                            </React.Fragment>
+                        );
+                    
+                }))}  
                 <br />
                 <br />
                 

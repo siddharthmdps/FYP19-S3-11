@@ -71,15 +71,15 @@ class SearchJobs extends Component {
         window.scrollTo(0, 0);
     };
 
-    changeStatus = (id, status) => {
-        let temp = this.state.SavedJobs;
-        temp.forEach(element => {
-            if (element.id === id)
-                element.status = status;
-        });
-        console.log(temp, id);
-        this.setState({ "SearchJobs": temp });
-    };
+    // changeStatus = (id, status) => {
+    //     let temp = this.state.SavedJobs;
+    //     temp.forEach(element => {
+    //         if (element.id === id)
+    //             element.status = status;
+    //     });
+    //     console.log(temp, id);
+    //     this.setState({ "SearchJobs": temp });
+    // };
 
     changeFilter(event){
         console.log(event.target.id, event.target.value);
@@ -92,25 +92,25 @@ class SearchJobs extends Component {
         this.setState({ Search: event.target.value });
     }
 
-    changeStatus = (id, status) => {
-        let temp = this.state.SearchJobs;
-        temp.forEach(element => {
-            if(element.JobID === id){
-                if(status==="Applied")
-                    element.Status = status;
-                else{
-                    if(element.Status === "Saved"){
-                        element.Status = "None"
-                    }
-                    else if(element.Status === "None"){
-                        element.Status = "Saved"
-                    }
-                }
-            }
-        });
-        console.log(temp, id, status);
-        this.setState({ "SavedJobs": temp });
-    };
+    // changeStatus = (id, status) => {
+    //     let temp = this.state.SearchJobs;
+    //     temp.forEach(element => {
+    //         if(element.JobID === id){
+    //             if(status==="Applied")
+    //                 element.Status = status;
+    //             else{
+    //                 if(element.Status === "Saved"){
+    //                     element.Status = "None"
+    //                 }
+    //                 else if(element.Status === "None"){
+    //                     element.Status = "Saved"
+    //                 }
+    //             }
+    //         }
+    //     });
+    //     console.log(temp, id, status);
+    //     this.setState({ "SavedJobs": temp });
+    // };
 
     getSearchedJobs() {
         Axios.get(`https://pegasus-backend.herokuapp.com/student/searchjob/${this.state.Search}`)
@@ -119,17 +119,20 @@ class SearchJobs extends Component {
                 console.log(temp);
 
                 let tempJobs = [];
-                for (let i in receivedData.data) {
-                    let tempJ = {};
-                    tempJ['JobTitle'] = receivedData.data[i].title;
-                    tempJ['Company'] = receivedData.data[i].companyname;
-                    tempJ['Location'] = receivedData.data[i].location;
-                    tempJ['WorkExpReq'] = receivedData.data[i].yearsofexperience;
-                    tempJ['Description'] = receivedData.data[i].description;
-                    tempJ['Industry'] = receivedData.data[i].industry;
-                    tempJ['JobID'] = receivedData.data[i].id;
-                    tempJ['Status'] = "None";
-                    tempJobs.push(tempJ);
+                if(receivedData.data.message==="NOT FOUND"){}
+                else{
+                    for (let i in receivedData.data) {
+                        let tempJ = {};
+                        tempJ['JobTitle'] = receivedData.data[i].title;
+                        tempJ['Company'] = receivedData.data[i].companyname;
+                        tempJ['Location'] = receivedData.data[i].location;
+                        tempJ['WorkExpReq'] = receivedData.data[i].yearsofexperience;
+                        tempJ['Description'] = receivedData.data[i].description;
+                        tempJ['Industry'] = receivedData.data[i].industry;
+                        tempJ['JobID'] = receivedData.data[i].jobid;
+                        // tempJ['Status'] = "None";
+                        tempJobs.push(tempJ);
+                    }
                 }
                 this.setState({ SearchJobs: tempJobs });
                 console.log(tempJobs);
@@ -187,21 +190,28 @@ class SearchJobs extends Component {
 
 
                 <Col className={classes.Jobs} md={{ offset: 1, span: 10 }}>
-                    {this.state.SearchJobs.message!=="NOT FOUND"?
-                    this.state.SearchJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
+                    {this.state.SearchJobs.length!==0?
+                    this.state.SearchJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map((jobDetail, idk) => {
                         if((this.state.Filter.Industry==="" || this.state.Filter.Industry.toLowerCase()===jobDetail.Industry.toLowerCase()) 
-                        && (this.state.Filter.WorkExp==="" || this.state.Filter.WorkExp.toLowerCase()===jobDetail.WorkExpReq.toLowerCase())
+                        && (this.state.Filter.WorkExp==="" || (
+                            (this.state.Filter.WorkExp==="No prior experience" && jobDetail.WorkExpReq ===0) ||
+                            (this.state.Filter.WorkExp==="Less than 1 year" && jobDetail.WorkExpReq ===0) ||
+                            (this.state.Filter.WorkExp==="1-3 years" && jobDetail.WorkExpReq >=1 && jobDetail.WorkExpReq <=3) ||
+                            (this.state.Filter.WorkExp==="More than 3 years" && jobDetail.WorkExpReq >3)
+                            ))
                         && (this.state.Filter.Location==="" || this.state.Filter.Location.toLowerCase()===jobDetail.Location.toLowerCase()))
                         return (
-                            <React.Fragment key={jobDetail.id}>
-                                <JobCard jobDetail={jobDetail} changeStatus={(id, status) => this.changeStatus(id, status)} />
+                            <React.Fragment key={idk}>
+                                <JobCard jobDetail={jobDetail} 
+                                // changeStatus={(id, status) => this.changeStatus(id, status)} 
+                                />
                                 <br />
                             </React.Fragment>
                         );
                     }): 
                     <div className={classes.NoRecord}>
                         <div className={classes.NoRecordHighlight}>No results</div>
-                        <div className={classes.NoRecordMessage}>Sorry there are no results for this search, please try another phrase.</div>
+                        <div className={classes.NoRecordMessage}>Try entering some keyword or adjusting filters</div>
                     </div>
                     }
                 </Col>

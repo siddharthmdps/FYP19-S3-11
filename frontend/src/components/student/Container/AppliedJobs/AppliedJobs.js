@@ -69,11 +69,14 @@ class AppliedJobs extends Component {
     };
 
     componentDidMount() {
-        Axios.get(`http://192.168.43.251:3001/student/getappliedjoblist/${localStorage.getItem('id')}`)
+        Axios.get(`https://pegasus-backend.herokuapp.com/student/getappliedjoblist/${localStorage.getItem('id')}`)
             .then(receivedData => {
                 this.setState({ AppliedJobs: receivedData.data.AppliedJobs });
                 console.log(receivedData.data);
                 this.pagination();
+            })
+            .catch(err => {
+                console.log(err);
             });
     }
 
@@ -87,14 +90,23 @@ class AppliedJobs extends Component {
                 </Row>
                 <br />
 
-                {this.state.AppliedJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
-                    return (
-                        <React.Fragment>
-                            <JobCard jobDetail={jobDetail} />
-                            <br />
-                        </React.Fragment>
-                    );
-                })}
+                {this.state.AppliedJobs.length===0?(
+                    <div className={classes.NoRecord}>
+                        <div className={classes.NoRecordHighlight}>No results</div>
+                        <div className={classes.NoRecordMessage}>Applied jobs will be visible here</div>
+                    </div>
+                ):
+                    (
+                        this.state.AppliedJobs.slice(((this.state.pageNo - 1) * this.state.jobsPerPage), ((this.state.pageNo - 1) * this.state.jobsPerPage) + this.state.jobsPerPage).map(jobDetail => {
+                        return (
+                            <React.Fragment>
+                                <JobCard jobDetail={jobDetail} />
+                                <br />
+                            </React.Fragment>
+                        );
+                        })
+                    )
+                }
                 <br />
                 <br />
                 

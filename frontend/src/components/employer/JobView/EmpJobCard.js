@@ -394,7 +394,7 @@ class EmpAppCard extends Component {
         const url = `${apiURL}employer/shortlist/${appId}`
 
         fetch(url, {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -428,7 +428,7 @@ class EmpAppCard extends Component {
         const url = `${apiURL}employer/hire/${appId}`
 
         fetch(url, {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
