@@ -1,12 +1,12 @@
-const {env, sha1, mysql, mypool} = require('../../util')
+const {containsNull, mypool} = require('../../util')
 
 // return joblist matched by employer id
 const getJobView = (req, res) => {
     const jobID = parseInt(req.params.jobID)
     console.log(`Requesting for a detailed job view, jobID: ${jobID}`)
 
-
-    if(jobID) {
+    if( jobID === null || jobID === "" ) res.send('jobid cannot be null')
+    else{
         mypool.getConnection((err, connection) => {
             if(err) {
                 connection.release()
@@ -37,7 +37,6 @@ const getJobView = (req, res) => {
             connection.release()
         })
     }
-    else res.send('please provide job id')
 
     //res.send(`Requesting for a detailed job view, jobID: ${jobID}`)
 }
