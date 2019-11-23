@@ -2,7 +2,7 @@
 
 
 while [ true ]; do
-    sleep 30s
+    sleep 10m
     echo "Restarting heroku"
     heroku restart
 done
