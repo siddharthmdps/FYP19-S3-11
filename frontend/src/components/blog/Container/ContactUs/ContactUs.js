@@ -34,7 +34,7 @@ Siddharth Singh: `}{<a className={classes.Clickable} href={"mailto:singh041@myma
 
 Joshua Cheng: `}{<a className={classes.Clickable} href={"mailto:jcycheng001@mymail.sim.edu.sg"} >jcycheng001@mymail.sim.edu.sg</a>}{` 
 
-Siddharth Singh: `}{<a className={classes.Clickable} href={"mailto:singh041@mymail.sim.edu.sg"} >singh041@mymail.sim.edu.sg</a>}{` 
+Lum Soon Keong: `}{<a className={classes.Clickable} href={"mailto:sklum001@mymail.sim.edu.sg"} >sklum001@mymail.sim.edu.sg</a>}{` 
 
 Siddharth Singh: `}{<a className={classes.Clickable} href={"mailto:singh041@mymail.sim.edu.sg"} >singh041@mymail.sim.edu.sg</a>}{` 
 
