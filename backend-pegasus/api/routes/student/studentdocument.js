@@ -88,8 +88,8 @@ const studentdocument = (req, res) => {
         const documentid = req.body.DocumentID;
         const title = req.body.Title;
         var success = true;
-        var stringlink = req.body.Link;
-        console.log(req.body);
+        var stringlink = req.body.Link ? req.body.Link : req.body.file;
+        console.log(stringlink);
         if(stringlink && typeof stringlink == "string") {
             let queryString3 = `update pegasus.studentdocument set title = "${title}" where studentid = "${studentid}"` ;  
             mypool.getConnection( (error, connection) => {
@@ -113,35 +113,40 @@ const studentdocument = (req, res) => {
             mypool.getConnection( (error, connection) => {
                 connection.query(queryString1, (err, rows, fields) => { 
                     if(err) {
-                        return res.status(500).json({ err });
+                        res.status(500).json({ err });
                     }
                 });
 
                 var buffer = new Buffer.from(link).toString('base64');
                 mypool.getConnection( (error, connection) => {
                     if(error) {
+                        console.log(error);
                         connection.release()
                         console.log(`Error getting mysql_pool connection: ${error}`)
                         throw error
                     }
                     else {
                         if(studentid && title) {  
-                            console.log(studentid); 
-                            console.log(title);     
-                            var queryString2 = "INSERT INTO pegasus.studentdocument SET ?";
-                            var insert = {
-                                studentid: studentid,
-                                title: title,
-                                link: buffer,
-                                imagetype: imagetype
-                            };
-                            connection.query(queryString2, insert, (err, rows, fields) => {
-                                if(err) {
-                                    console.log(3);
-                                    res.status(500).json({ message: err });
-                                    success = false;
-                                }
-                            })   
+                            if(obj.size > 3145728) {
+                                res.status(500).json({ message: "Error! File too large!" });
+                                return;
+                            }
+                            else {
+                                var queryString2 = "INSERT INTO pegasus.studentdocument SET ?";
+                                var insert = {
+                                    studentid: studentid,
+                                    title: title,
+                                    link: buffer,
+                                    imagetype: imagetype
+                                };
+                                connection.query(queryString2, insert, (err, rows, fields) => {
+                                    if(err) {
+                                        console.log(err);
+                                        res.status(500).json({ message: err });
+                                        success = false;
+                                    }
+                                })   
+                            }
                         } else {
                             console.log(4);
                             success = false;
@@ -150,10 +155,10 @@ const studentdocument = (req, res) => {
                             });
                         }   
                     }
-                } )
-                if(success) {
-                    res.json({message: "success"});
-                } 
+                    if(success) {
+                        res.json({message: "success"});
+                    } 
+                })
                 connection.release()        
             });
         }
