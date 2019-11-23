@@ -872,18 +872,6 @@ class EditProfile extends Component {
                         console.log(error);
                     });
             }
-<<<<<<< HEAD
-=======
-            console.log(temp);
-            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentawards', temp)
-                .then(response => {
-                    this.props.enqueueSnackbar('Award details uploaded!', { variant: 'success' });
-                    this.togglePanel(5);
-                })
-                .catch(error => {
-                    this.props.enqueueSnackbar('Error storing Award!', { variant: 'error' });
-                });
->>>>>>> parent of 547dde06... Merge branch 'master' into soonkeong
         }
     }
 
@@ -965,7 +953,6 @@ class EditProfile extends Component {
                         console.log(error);
                     });
         }
-<<<<<<< HEAD
         else{
             let temp = this.copy(this.state.Skills);
             for (let idk in temp) {
@@ -981,54 +968,6 @@ class EditProfile extends Component {
                     // this.props.enqueueSnackbar('Error storing Skills!', { variant: 'error' });
                     console.log(error);
                 });
-=======
-        console.log(temp);
-        Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentskills', temp)
-            .then(response => {
-                this.props.enqueueSnackbar('Skills details uploaded!', { variant: 'success' });
-                this.togglePanel(8);
-            })
-            .catch(error => {
-                this.props.enqueueSnackbar('Error storing Skills!', { variant: 'error' });
-            });
-    }
-
-    submitDocuments = () => {
-        if(this.validateDocuments()){
-            // let temp = this.copy(this.state.Document);
-
-            // for (let idk in temp) {
-            //     temp[idk]['StudentID'] = this.state.StudentID;
-            // }
-            // console.log(temp);
-            if(this.state.Document.length===0){
-                Axios.delete(`https://pegasus-backend.herokuapp.com/student/deletestudentdocument/${localStorage.getItem('id')}`)
-                    .then(res => {
-                        console.log(res);
-                        this.props.enqueueSnackbar('Response saved!', { variant: 'success' });
-                        this.togglePanel(9);
-                    })
-                    .catch(err => {
-                        console.log(err);
-                        this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
-                    });
-            }
-            else{
-                const fd = new FormData();
-                fd.append('file', this.state.Document[0].Link);
-                fd.append('Title', this.state.Document[0].Title);
-                fd.append('StudentID', this.state.StudentID);
-                console.log(fd);
-                Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentdocument', fd)
-                    .then(response => {
-                        this.props.enqueueSnackbar('Documents uploaded!', { variant: 'success' });
-                        this.togglePanel(9);
-                    })
-                    .catch(error => {
-                        this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
-                    });
-            }
->>>>>>> parent of 547dde06... Merge branch 'master' into soonkeong
         }
     }
 
@@ -1108,10 +1047,6 @@ class EditProfile extends Component {
             .catch(err => {
                 console.log(err);
             });
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of 547dde06... Merge branch 'master' into soonkeong
 
         Axios.get(`${apiURL}student/studentinfo/${this.state.StudentID}`)
             .then(receivedData => {
