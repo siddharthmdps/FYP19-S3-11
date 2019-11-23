@@ -73,3 +73,8 @@ Week 17
 
 Week 18
 - Worked on adding file transfer support (image and pdf files) through fetch API
+- Testing, debugging and polishing the existing features
+
+Week 19
+- Worked on final report by recounting every step in the previous 5 months of development process.
+- Continued testing, debugging and polishing the application.
