@@ -14,7 +14,7 @@ const searchjob = (req,res) => {
                 throw err
             }
             else {
-                let queryString = `SELECT pegasus.job.*, pegasus.employer.companyname 
+                let queryString = `SELECT job.id as jobid, job.*, pegasus.employer.companyname 
                                     FROM pegasus.job
                                     JOIN pegasus.employer ON job.empid=employer.id
                                     WHERE job.title LIKE '%${keyword}%'                              
@@ -39,7 +39,6 @@ const searchjob = (req,res) => {
             connection.release()
         })
     }
-
 
 }
 
