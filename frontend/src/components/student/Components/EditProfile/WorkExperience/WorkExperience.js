@@ -11,7 +11,7 @@ const workExperience = props => {
         <React.Fragment>
             <Row>
                 <Col className={classes2.Title} >
-                    Work #{props.details.WorkExpID }
+                    Work #{props.seq }
                 </Col>
                 <Col md={{ offset: 9, span: 1 }} className={classes2.Delete}>
                     <Button1 click={props.remove} delete><i className="fas fa-trash-alt"></i></Button1>

@@ -1,4 +1,4 @@
-const {containsNull, router, mypool} = require('../../util')
+const {router, mypool} = require('../../util')
 
 // get
 const getJobSearchResults = require('./searchjob')
@@ -15,7 +15,7 @@ router.put('/putstudentawards', studentawards)
 
 //delete
 const delstudentawards = require('./deletestudentawards')
-router.delete('/deletestudentawards/:StudentID', delstudentawards)
+router.delete('/deletestudentawards', delstudentawards)
 
 //student cert
 //get
@@ -28,7 +28,7 @@ router.put('/putstudentcertificate', studentcertificate)
 
 //delete
 const delstudentcertificate = require('./deletestudentcertificate')
-router.delete('/deletestudentcertificate/:StudentID', delstudentcertificate)
+router.delete('/deletestudentcertificate', delstudentcertificate)
 
 //student education
 //get
@@ -41,7 +41,7 @@ router.put('/putstudenteducation', studenteducation)
 
 //delete
 const delstudenteducation = require('./deletestudenteducation')
-router.delete('/deletestudenteducation/:StudentID', delstudenteducation)
+router.delete('/deletestudenteducation', delstudenteducation)
 
 //student job preference
 //get
@@ -54,7 +54,7 @@ router.put('/putstudentjobpref', studentjobpref)
 
 //delete
 const delstudentjobpref = require('./deletestudentjobpref')
-router.delete('/deletestudentjobpref/:StudentID', delstudentjobpref)
+router.delete('/deletestudentjobpref', delstudentjobpref)
 
 //student project
 //get
@@ -67,7 +67,7 @@ router.put('/putstudentproject', studentproject)
 
 //delete
 const delstudentproject = require('./deletestudentproject')
-router.delete('/deletestudentproject/:StudentID', delstudentproject)
+router.delete('/deletestudentproject', delstudentproject)
 
 //student work exp
 //get
@@ -80,7 +80,7 @@ router.put('/putstudentworkexp', studentworkexp)
 
 //delete
 const delstudentworkexp = require('./deletestudentworkexp')
-router.delete('/deletestudentworkexp/:StudentID', delstudentworkexp)
+router.delete('/deletestudentworkexp', delstudentworkexp)
 
 //student document
 //get
@@ -109,7 +109,7 @@ router.put('/submitpoll/:pollID&:choice', submitpoll)
 
 //delete
 const delstudentskills = require('./deletestudentskills')
-router.delete('/deletestudentskills/:StudentID', delstudentskills)
+router.delete('/deletestudentskills', delstudentskills)
 
 //submit poll
 // const submitpoll = require('./submitpoll')
@@ -257,8 +257,8 @@ router.put('/studentinfo/updateStudent', (req, res, next) => {
     const availability = req.body.Availability;
     const linkedin = req.body.LinkedIn;
 
-    if( containsNull(req.body) ){ res.send('Error: request contains null') 
-    }else {
+    if( containsNull(req.body) ) res.send('Error: request contains null')
+    else {
         res.setHeader('Access-Control-Allow-Origin', '*');
         mypool.getConnection(function(err,connection) {
             if (err) {

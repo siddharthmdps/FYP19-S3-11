@@ -31,12 +31,12 @@ export class AddPollModal extends Component {
             .then(res => res.json())
             .then((result) => {
                 //alert(result);
-                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully created new poll!' });
+                this.setState({ snackbaropen: true, snackbarmsg: 'Successfully posted new poll!' });
                 this.timer = setTimeout(() => { window.location.href = '/admin/polls' }, 1000);
             },
                 (error) => {
                     //alert('Failed')
-                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to create new poll...' });
+                    this.setState({ snackbaropen: true, snackbarmsg: 'Failed to post new poll...' });
                 }
             )
     }
@@ -69,7 +69,7 @@ export class AddPollModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Create New Poll
+                            Post New Poll
         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -118,7 +118,7 @@ export class AddPollModal extends Component {
 
                                     <Form.Group>
                                         <Button variant="outline-success" type="submit">
-                                            Create New Poll
+                                            Post New Poll
                                         </Button>
                                     </Form.Group>
 

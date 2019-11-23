@@ -169,12 +169,12 @@ class SearchJobs extends Component {
                         </div>
 
                         {/* </InputGroup> */}
-                        <div className={classes.CardNum}>
+                        {/* <div className={classes.CardNum}>
                             <span className={classes.CardSpan}>5</span>
                             <span className={classes.CardSpan}>10</span>
                             <span className={classes.CardSpan}>15</span>
                             <span className={classes.CardSpan}>20</span>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <br />

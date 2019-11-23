@@ -6,30 +6,30 @@ import { Container, Row, Col, Card, Button, Alert, Spinner } from 'react-bootstr
 
 const jobCard = props => {
 
-    const AppliedFooter = () => (
-        <Alert variant="success">
-            <i className="fas fa-check-circle"></i> You have applied for this job
-        </Alert>
-    );
+    // const AppliedFooter = () => (
+    //     <Alert variant="success">
+    //         <i className="fas fa-check-circle"></i> You have applied for this job
+    //     </Alert>
+    // );
     
-    const OtherFooter = () => {
+    // const OtherFooter = () => {
     
-        const unfav = <i className="far fa-star" />
-        const fav = <i className="fas fa-star" style={{ color: "#FFCA28" }} />
-        const waiting = <Spinner animation="border" variant="warning" />
-        return (
-            <React.Fragment>
-                <div className={classes.ButtonDiv}>
-                    <Button className={classes.Apply} onClick={() => props.changeStatus(props.jobDetail.JobID, "Applied")}>Apply</Button>
-                </div>
-                <div className={classes.StarDiv}>
-                    <span className={classes.Star} onClick={() => props.changeStatus(props.jobDetail.JobID, "Save")}>
-                        {props.jobDetail.Status === "Saved" ? fav : unfav}
-                    </span>
-                </div>
-            </React.Fragment>
-        )
-    };    
+    //     const unfav = <i className="far fa-star" />
+    //     const fav = <i className="fas fa-star" style={{ color: "#FFCA28" }} />
+    //     const waiting = <Spinner animation="border" variant="warning" />
+    //     return (
+    //         <React.Fragment>
+    //             <div className={classes.ButtonDiv}>
+    //                 <Button className={classes.Apply} onClick={() => props.changeStatus(props.jobDetail.JobID, "Applied")}>Apply</Button>
+    //             </div>
+    //             <div className={classes.StarDiv}>
+    //                 <span className={classes.Star} onClick={() => props.changeStatus(props.jobDetail.JobID, "Save")}>
+    //                     {props.jobDetail.Status === "Saved" ? fav : unfav}
+    //                 </span>
+    //             </div>
+    //         </React.Fragment>
+    //     )
+    // };    
 
     return(
         <Card md={{ span: 12 }} className={classes.Card}>
@@ -49,19 +49,19 @@ const jobCard = props => {
                     </div>
                 </Card.Text>
             </Card.Body>
-            <Card.Footer className={classes.Footer}>
+            {/* <Card.Footer className={classes.Footer}> */}
 
-                {props.jobDetail.Status==="Applied" ? AppliedFooter() : OtherFooter()}
-                <div className={classes.ButtonDiv}>
+                {/* {props.jobDetail.Status==="Applied" ? AppliedFooter() : OtherFooter()} */}
+                {/* <div className={classes.ButtonDiv}> */}
 
                     {/* <Button className={classes.Applied} disabled >Applied</Button> */}
-                </div>
+                {/* </div> */}
                 {/* <div className={classes.StarDiv}>
                     <span className={classes.Star} onClick={this.toggle}>
                         {active ? fav : unfav}
                     </span>
                 </div> */}
-            </Card.Footer>
+            {/* </Card.Footer> */}
         </Card>
     )
 };

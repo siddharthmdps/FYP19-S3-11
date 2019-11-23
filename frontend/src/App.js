@@ -27,6 +27,7 @@ import RecommendedJobs from './components/student/Container/RecommendedJobs/Reco
 import AppliedJobs from './components/student/Container/AppliedJobs/AppliedJobs'
 import SavedJobs from './components/student/Container/SavedJobs/SavedJobs'
 import SearchJobs from './components/student/Container/SearchJobs/SearchJobs'
+import Job from './components/student/Container/Job/Job'
 
 // importing Admin Components
 import Admin from './components/admin/Admin'
@@ -169,6 +170,7 @@ class App extends Component {
               <ProtectedRoute exact path="/student/appliedjobs" component={AppliedJobs}></ProtectedRoute>
               <ProtectedRoute exact path="/student/savedjobs" component={SavedJobs}></ProtectedRoute>
               <ProtectedRoute exact path="/student/searchjobs" component={SearchJobs}></ProtectedRoute>
+              <ProtectedRoute exact path="/student/job/:JID" component={Job}></ProtectedRoute>
 
               {/* Admin Routes */}
               <ProtectedRoute exact path="/admin" component={Home}></ProtectedRoute>

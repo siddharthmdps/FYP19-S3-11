@@ -3,6 +3,26 @@ import { Image, Container, Card, ResponsiveEmbed, ListGroup, ListGroupItem } fro
 import Button1 from '../../../../common_assets/Button1/Button1'
 import classes from './LeftSide.module.css';
 
+const b64toBlob = (b64Data, contentType='', sliceSize=512) => {
+    const byteCharacters = atob(b64Data);
+    const byteArrays = [];
+  
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      const slice = byteCharacters.slice(offset, offset + sliceSize);
+  
+      const byteNumbers = new Array(slice.length);
+      for (let i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+  
+      const byteArray = new Uint8Array(byteNumbers);
+      byteArrays.push(byteArray);
+    }
+  
+    const blob = new Blob(byteArrays, {type: contentType});
+    return blob;
+}
+
 const leftSide = props => {
 
     return (
@@ -29,10 +49,15 @@ const leftSide = props => {
                 <ListGroup className="list-group-flush" className={classes.CentralContent}>
                     {
                         props.documents.map( (doc, id) =>{
-                        const file = new Blob(doc.Link.data, {
-                            type: "application/pdf"
-                          });
-                        return <ListGroupItem key={id} onClick={()=> {window.open(URL.createObjectURL(file))}} className={classes.Clickable}><i className="fas fa-file"></i> {doc.Title}</ListGroupItem>
+
+                            const blob = b64toBlob(doc.Link, "application/pdf");
+                            const bloburl = URL.createObjectURL(blob);
+                            return <ListGroupItem key={id} onClick={()=> {window.open(bloburl)}} className={classes.Clickable}><i className="fas fa-file"></i> {doc.Title}</ListGroupItem>
+
+                        // const file = new Blob(doc.Link.data, {
+                        //     type: "application/pdf"
+                        //   });
+                        // return <ListGroupItem key={id} onClick={()=> {window.open(URL.createObjectURL(file))}} className={classes.Clickable}><i className="fas fa-file"></i> {doc.Title}</ListGroupItem>
                         })
                     }
                 </ListGroup>
