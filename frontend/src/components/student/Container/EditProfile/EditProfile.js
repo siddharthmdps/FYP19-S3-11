@@ -865,6 +865,18 @@ class EditProfile extends Component {
                         console.log(error);
                     });
             }
+<<<<<<< HEAD
+=======
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/puttstudentawards', temp)
+                .then(response => {
+                    this.props.enqueueSnackbar('Award details uploaded!', { variant: 'success' });
+                    this.togglePanel(5);
+                })
+                .catch(error => {
+                    this.props.enqueueSnackbar('Error storing Award!', { variant: 'error' });
+                });
+>>>>>>> parent of 8fdd79f2... Merge branch 'master' into soonkeong
         }
     }
 
@@ -965,6 +977,7 @@ class EditProfile extends Component {
     }
 
     submitDocuments = () => {
+<<<<<<< HEAD
         if(this.validateDocuments()){
             // let temp = this.copy(this.state.Document);
 
@@ -1009,6 +1022,22 @@ class EditProfile extends Component {
             //     .catch(error => {
             //         this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
             //     });
+=======
+        if(this.validateDocuments){
+            let temp = this.copy(this.state.Document);
+            for (let idk in temp) {
+                temp[idk]['StudentID'] = this.state.StudentID;
+            }
+            console.log(temp);
+            Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentdocument', temp)
+                .then(response => {
+                    this.props.enqueueSnackbar('Documents uploaded!', { variant: 'success' });
+                    this.togglePanel(9);
+                })
+                .catch(error => {
+                    this.props.enqueueSnackbar('Error storing Documents!', { variant: 'error' });
+                });
+>>>>>>> parent of 8fdd79f2... Merge branch 'master' into soonkeong
         }
     }
     // Submit elements to put in Backend ends here
@@ -1028,6 +1057,7 @@ class EditProfile extends Component {
     componentDidMount() {
         this.setState({"StudentID": localStorage.getItem('id')});
 
+<<<<<<< HEAD
         Axios.get(`${apiURL}getstudentprofilepicture/${this.state.StudentID}`)
             .then(res => {
                 console.log("Image: ", res.data.ProfileImage.ProfileImage, res.data.ProfileImage.FileType);
@@ -1040,6 +1070,8 @@ class EditProfile extends Component {
             .catch(err => {
                 console.log(err);
             });
+=======
+>>>>>>> parent of 8fdd79f2... Merge branch 'master' into soonkeong
 
         Axios.get(`${apiURL}student/studentinfo/${this.state.StudentID}`)
             .then(receivedData => {

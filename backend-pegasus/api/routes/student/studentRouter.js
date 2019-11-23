@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const {containsNull, router, mypool} = require('../../util')
+=======
+const {router, env, sha1, mysql, mypool} = require('../../util')
+>>>>>>> parent of 8fdd79f2... Merge branch 'master' into soonkeong
 
 // get
 const getJobSearchResults = require('./searchjob')
@@ -256,6 +260,7 @@ router.put('/studentinfo/updateStudent', (req, res, next) => {
     const nationality = req.body.Nationality;
     const availability = req.body.Availability;
     const linkedin = req.body.LinkedIn;
+<<<<<<< HEAD
 
     if( containsNull(req.body) ){ res.send('Error: request contains null') 
     }else {
@@ -265,28 +270,35 @@ router.put('/studentinfo/updateStudent', (req, res, next) => {
                 connection.release();
                   console.log(' Error getting mysql_pool connection: ' + err);
                   throw err;
+=======
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    mypool.getConnection(function(err,connection) {
+        if (err) {
+			connection.release();
+	  		console.log(' Error getting mysql_pool connection: ' + err);
+	  		throw err;
+        }
+        else {
+            if (firstname && email && currentaddress) {
+                connection.query(`UPDATE pegasus.student SET firstname = "${firstname}", middlename = "${middlename}", lastname = "${lastname}", email = "${email}", phone = "${phone}", country = "${country}", city = "${city}", currentaddress = "${currentaddress}", postalcode = "${postalcode}", nationality = "${nationality}", availability = "${availability}", linkedin = "${linkedin}" WHERE id = "${studentid}"`, function(error, results, fields) {
+                    if (error) {
+                        res.status(500).json({
+                            message: error
+                        });
+                    }
+                    res.status(200).json({
+                        message: "Success"
+                    }); 
+                });
+            } else {
+                res.status(400).json({
+                    message: "Bad Request! Invalid POST request!"
+                });
+>>>>>>> parent of 8fdd79f2... Merge branch 'master' into soonkeong
             }
-            else {
-                if (firstname && email && currentaddress) {
-                    connection.query(`UPDATE pegasus.student SET firstname = "${firstname}", middlename = "${middlename}", lastname = "${lastname}", email = "${email}", phone = "${phone}", country = "${country}", city = "${city}", currentaddress = "${currentaddress}", postalcode = "${postalcode}", nationality = "${nationality}", availability = "${availability}", linkedin = "${linkedin}" WHERE id = "${studentid}"`, function(error, results, fields) {
-                        if (error) {
-                            res.status(500).json({
-                                message: error
-                            });
-                        }
-                        res.status(200).json({
-                            message: "Success"
-                        }); 
-                    });
-                } else {
-                    res.status(400).json({
-                        message: "Bad Request! Invalid POST request!"
-                    });
-                }
-                connection.release(); 
-            }    
-        });
-    }
+            connection.release(); 
+        }    
+    });
 });
 
 

@@ -2,11 +2,15 @@ import React, {Component} from 'react';
 import classes from './Job.module.css';
 
 
+<<<<<<< HEAD
 import { Container, Row, Col, Card, Button, Alert, Spinner } from 'react-bootstrap';
 
 import { withSnackbar } from 'notistack';
 
 import Axios from 'axios';
+=======
+import { Row, Col, Card, Button, Alert, Spinner } from 'react-bootstrap';
+>>>>>>> parent of 8fdd79f2... Merge branch 'master' into soonkeong
 
 class JobCard extends Component {
 
@@ -105,6 +109,7 @@ class JobCard extends Component {
                 </div>
             </React.Fragment>
         )
+<<<<<<< HEAD
     };
     
     componentDidMount(){
@@ -168,8 +173,39 @@ class JobCard extends Component {
                     </Col>
                 </Row>
             </Container>
+=======
+    }; 
+    
+    render(){
+        return(
+            <Card md={{ span: 12 }} className={classes.Card}>
+                <Card.Body className={classes.CardBody}>
+                    <Card.Title>
+                        <Row className={classes.Row} style={{ fontWeight: '600' }}>{this.state.JobTitle}</Row>
+                        <Row className={classes.Row}>{this.state.Company}</Row>
+                        <Row>
+                            <Col md={{ span: 3 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-map-marker-alt"></i> {this.state.Location}</Col>
+                            <Col md={{ span: 6 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-building"></i> {this.state.Industry}</Col>
+                            <Col md={{ span: 3 }} sm={{ span: 12 }} className={classes.CardCol}> <i className="fas fa-briefcase"></i> {this.state.WorkExpReq}</Col>
+                        </Row>
+                    </Card.Title>
+                    <Card.Text className={classes.Description}>
+                        <div className={classes.Desc}>
+                            {this.state.Description}
+                        </div>
+                    </Card.Text>
+                </Card.Body>
+                <Card.Footer className={classes.Footer}>
+                    {this.state.Status==="Applied" ? this.AppliedFooter() : this.OtherFooter()}
+                </Card.Footer>
+            </Card>
+>>>>>>> parent of 8fdd79f2... Merge branch 'master' into soonkeong
         )
     }
 };
 
+<<<<<<< HEAD
 export default withSnackbar(JobCard);
+=======
+export default jobCard;
+>>>>>>> parent of 8fdd79f2... Merge branch 'master' into soonkeong
