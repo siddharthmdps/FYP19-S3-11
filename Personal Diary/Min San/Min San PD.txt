@@ -44,3 +44,33 @@ Discussion on requirements and work to be done in preparation for submission and
 Week 11
 Project Phase: Development of prototype
 Continue work on coding node.js end point for creating new users. Preparing slides for presentation. 
+
+Week 11
+
+Continue work on coding node.js endpoint for creating new users. Preparing slides for presentation.
+
+Week 12
+I started to shift my focus on creating endpoints for students because there is much work to be done there. I wrote the basic endpoints that I thought would need such as GET and POST to get, create and update student particulars.
+
+Week 13
+Restructuring project files for backend and writing sql connection pool script to be used by other backend files. Shifted my focus to work more on database side. 
+
+Week 14
+Continued code restructure from week 13 and database work for students. Began to integrate frontend and backend. Did some research and testing on MySQL equivalent of ROW_NUMBER() (Microsoft SQL Server) because ROW_NUMBER() does not exist in MySQL.
+
+Week 15
+Updated server config file to point to the newly setup AWS RDS. I saw some sample dummy data that front end guys are using for student so I decided to make changes and add more endpoints to cater to that.
+
+Week 16
+Continued more work on student backend endpoints. I found that the work I did on week 15 for students is not what the frontend requires so I had to change the way I send back get calls and the way I retrieve values from body in POST to be used to create or update entries.
+
+Week 17
+I did research on how to do file uploading in Node.js and MySQL. I continued more work on other student details and changed some of the POST endpoints to PUT and added new DELETE endpoints. 
+
+Week 18
+Worked on uploading and retrieving files (image and pdf files) through Node.js. Continued code work from week 17. Testing, debugging and polishing the existing endpoints as some of them would cause some crashes. Communicating and working together with team members (mainly Siddarth and Min Marn Oo) to close up the gaps and issues between frontend and backend connections.
+
+Week 19
+Fixed crashes that is caused by student endpoints.Continued testing, debugging and polishing the application. Continued to communicate and work together with frontend guys (mainly Siddarth) to close up the gaps and issues between frontend and backend connections.
+
+
