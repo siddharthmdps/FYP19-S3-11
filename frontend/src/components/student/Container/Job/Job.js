@@ -4,11 +4,8 @@ import classes from './Job.module.css';
 
 import { Container, Row, Col, Card, Button, Alert, Spinner } from 'react-bootstrap';
 
-<<<<<<< HEAD
 import { withSnackbar } from 'notistack';
 
-=======
->>>>>>> parent of 547dde06... Merge branch 'master' into soonkeong
 import Axios from 'axios';
 
 class JobCard extends Component {
@@ -114,17 +111,12 @@ class JobCard extends Component {
         Axios.get(`https://pegasus-backend.herokuapp.com/employer/getjobinfo/${this.props.match.params.JID}`)
             .then(res => {
                 let temp = res.data[0];
-<<<<<<< HEAD
                 this.setState({ID: temp.id, JobTitle: temp.title, Company: temp.companyname, Industry: temp.industry,  Location: temp.location, WorkExpReq: `${temp.yearsofexperience} years`, Description: temp.description})
-=======
-                this.setState({ID: temp.id, JobTitle: temp.title, Company: temp.empid, Industry: temp.industry,  Location: temp.location, WorkExpReq: `${temp.yearsofexperience} years`, Status: 'None', Description: temp.description})
->>>>>>> parent of 547dde06... Merge branch 'master' into soonkeong
                 console.log(temp);
             })
             .catch(err => {
                 console.log(err);
             })
-<<<<<<< HEAD
         Axios.get(`https://pegasus-backend.herokuapp.com/student/getjobapplicationstatus/${localStorage.getItem('id')}/${this.props.match.params.JID}`)
         .then(res => {
             if(res.data.Status===null){
@@ -133,11 +125,6 @@ class JobCard extends Component {
             else{
                 this.setState({Status: res.data.Status});
             }
-=======
-        Axios.get(`http://192.168.43.251:3001/student/getjobapplicationstatus/${localStorage.getItem('id')}/${this.props.match.params.JID}`)
-        .then(res => {
-            this.setState({Status: res.data.Status});
->>>>>>> parent of 547dde06... Merge branch 'master' into soonkeong
             console.log(res.data.Status);
         })
         .catch(err => {
@@ -175,11 +162,7 @@ class JobCard extends Component {
                                 </Card.Text>
                             </Card.Body>
                             <Card.Footer className={classes.Footer}>
-<<<<<<< HEAD
                                 {(this.state.Status==="none" || this.state.Status==="saved") ? this.OtherFooter() : this.AppliedFooter()}
-=======
-                                {this.state.Status==="applied" ? this.AppliedFooter() : this.OtherFooter()}
->>>>>>> parent of 547dde06... Merge branch 'master' into soonkeong
                             </Card.Footer>
                         </Card>
                     </Col>
@@ -189,8 +172,4 @@ class JobCard extends Component {
     }
 };
 
-<<<<<<< HEAD
 export default withSnackbar(JobCard);
-=======
-export default JobCard;
->>>>>>> parent of 547dde06... Merge branch 'master' into soonkeong
