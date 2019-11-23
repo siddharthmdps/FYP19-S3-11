@@ -23,87 +23,87 @@ class VerticalTabs extends Component {
                         <Col sm={3} className={classes.LeftSide}>
                         <Nav variant="pills" className="flex-column">
                             <Nav.Item>
-                                <Nav.Link className={classes.NavLink} eventKey="21">Project Meeting 21 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link className={classes.NavLink} eventKey="21">Project Meeting 21 - 22th Nov 2019 <br /> (1830 hrs - 1900 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link className={classes.NavLink} eventKey="20">Project Meeting 20 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link className={classes.NavLink} eventKey="20">Project Meeting 20 - 17th Nov 2019 <br /> (1830 hrs - 1900 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="19">Project Meeting 19 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="19">Project Meeting 19 - 10th Nov 2019 <br /> (1830 hrs - 2000 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="18">Project Meeting 18 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="18">Project Meeting 18 - 3rd Nov 2019 <br /> (1830 hrs - 2000 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="17">Project Meeting 17 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="17">Project Meeting 17 - 27th Oct 2019 <br /> (1830 hrs - 1900 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="16">Project Meeting 16 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="16">Project Meeting 16 - 20th Oct 2019 <br /> (1830 hrs - 1900 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="15">Project Meeting 15 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="15">Project Meeting 15 - 13th Oct 2019 <br /> (1830 hrs - 1900 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="14">Project Meeting 14 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="14">Project Meeting 14 - 6th Oct 2019 <br /> (1830 hrs - 1900 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="13">Project Meeting 13 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="13">Project Meeting 13 - 29th Sept 2019 <br /> (1830 hrs - 1900 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="12">Project Meeting 12 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="12">Project Meeting 12 - 27th Sept 2019 <br /> (1830 hrs - 1900 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="11">Project Meeting 11 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="11">Project Meeting 11 - 21th Sept 2019 <br /> (1830 hrs - 1900 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link className={classes.NavLink} eventKey="10">Project Meeting 10 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link className={classes.NavLink} eventKey="10">Project Meeting 10 - 14th Sept 2019 <br /> (1830 hrs - 1900 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="9">Project Meeting 9 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="9">Project Meeting 9 - 6th Sept 2019 <br /> (1830 hrs - 1900 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="8">Project Meeting 8 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="8">Project Meeting 8 - 31th Aug 2019 <br /> (1830 hrs - 1900 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="7">Project Meeting 7 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="7">Project Meeting 7 - 20th Aug 2019 <br /> (1830 hrs - 2000 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="6">Project Meeting 6 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="6">Project Meeting 6 - 17th Aug 2019 <br /> (1830 hrs - 1900 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="5">Project Meeting 5 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="5">Project Meeting 5 - 8th Aug 2019 <br /> (1830 hrs - 1930 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="4">Project Meeting 4 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="4">Project Meeting 4 - 2nd Aug 2019 <br /> (1830 hrs - 1900 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="3">Project Meeting 3 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="3">Project Meeting 3 - 27th July 2019 <br /> (1830 hrs - 2000 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="2">Project Meeting 2 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="2">Project Meeting 2 - 18th July 2019 <br /> (1830 hrs - 1900 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
                             <Nav.Item>
-                                <Nav.Link  className={classes.NavLink} eventKey="1">Project Meeting 1 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                                <Nav.Link  className={classes.NavLink} eventKey="1">Project Meeting 1 - 13th July 2019 <br /> (1830 hrs - 1900 hrs)</Nav.Link>
                             </Nav.Item>
                         </Nav>
                         </Col>
