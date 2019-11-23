@@ -23,6 +23,50 @@ class VerticalTabs extends Component {
                         <Col sm={3} className={classes.LeftSide}>
                         <Nav variant="pills" className="flex-column">
                             <Nav.Item>
+                                <Nav.Link className={classes.NavLink} eventKey="21">Project Meeting 21 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                            </Nav.Item>
+                            <br />
+                            <Nav.Item>
+                                <Nav.Link className={classes.NavLink} eventKey="20">Project Meeting 20 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                            </Nav.Item>
+                            <br />
+                            <Nav.Item>
+                                <Nav.Link  className={classes.NavLink} eventKey="19">Project Meeting 19 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                            </Nav.Item>
+                            <br />
+                            <Nav.Item>
+                                <Nav.Link  className={classes.NavLink} eventKey="18">Project Meeting 18 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                            </Nav.Item>
+                            <br />
+                            <Nav.Item>
+                                <Nav.Link  className={classes.NavLink} eventKey="17">Project Meeting 17 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                            </Nav.Item>
+                            <br />
+                            <Nav.Item>
+                                <Nav.Link  className={classes.NavLink} eventKey="16">Project Meeting 16 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                            </Nav.Item>
+                            <br />
+                            <Nav.Item>
+                                <Nav.Link  className={classes.NavLink} eventKey="15">Project Meeting 15 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                            </Nav.Item>
+                            <br />
+                            <Nav.Item>
+                                <Nav.Link  className={classes.NavLink} eventKey="14">Project Meeting 14 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                            </Nav.Item>
+                            <br />
+                            <Nav.Item>
+                                <Nav.Link  className={classes.NavLink} eventKey="13">Project Meeting 13 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                            </Nav.Item>
+                            <br />
+                            <Nav.Item>
+                                <Nav.Link  className={classes.NavLink} eventKey="12">Project Meeting 12 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                            </Nav.Item>
+                            <br />
+                            <Nav.Item>
+                                <Nav.Link  className={classes.NavLink} eventKey="11">Project Meeting 11 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
+                            </Nav.Item>
+                            <br />
+                            <Nav.Item>
                                 <Nav.Link className={classes.NavLink} eventKey="10">Project Meeting 10 - 18th Nov 2019 <br /> (1430 hrs - 1530 hrs)</Nav.Link>
                             </Nav.Item>
                             <br />
@@ -65,6 +109,39 @@ class VerticalTabs extends Component {
                         </Col>
                         <Col sm={9} className={classes.RightSide}>
                             <Tab.Content style={{height: '100%'}}>
+                                <Tab.Pane eventKey="21" style={{height: '100%'}}>
+                                    <iframe className={classes.RightSideContent} src="https://docs.google.com/document/d/e/2PACX-1vQUdGO8swoy6GRMgtcukTbwB-CqEsDGQD3ss03vPAsBW_mrrXiBqto5ajjILlYCUpZGgq3uA4AYfwCq/pub?embedded=true"></iframe>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey="20" style={{height: '100%'}}>
+                                    <iframe className={classes.RightSideContent} src="https://docs.google.com/document/d/e/2PACX-1vR5ZvhOXsQ54RVKDEWXK-IgOc1KWVpS5dl5MtWO0v2EfSWU9hmWJfyLe5FHSuc-5LmFOAimCkQu2Bul/pub?embedded=true"></iframe>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey="19" style={{height: '100%'}}>
+                                    <iframe className={classes.RightSideContent} src="https://docs.google.com/document/d/e/2PACX-1vQPlxOUsFFyZTzzrvDxANJnopsEpnvVGsSQCYo6TjhIAv0GLLktYvTtAQYJU5Uh0H-JQCe0uxSKOgjB/pub?embedded=true"></iframe>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey="18" style={{height: '100%'}}>
+                                    <iframe className={classes.RightSideContent} src="https://docs.google.com/document/d/e/2PACX-1vQdpCrXCOQUAI1sPJKkufhPtVUGaOIQ87hOSvOAJflKOJ90Ru9t2R9JtL1Stz3-FThCXisSek9j0KJ2/pub?embedded=true"></iframe>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey="17" style={{height: '100%'}}>
+                                    <iframe className={classes.RightSideContent} src="https://docs.google.com/document/d/e/2PACX-1vReL9bjVLdE5CEcS_tfu-R-p3Sw42HHSlLOVFSvcVZJpQbHgmuXR5cBL1lbR_IyVZJ-XPAVdpTLFtVV/pub?embedded=true"></iframe>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey="16" style={{height: '100%'}}>
+                                    <iframe className={classes.RightSideContent} src="https://docs.google.com/document/d/e/2PACX-1vRy9_pWzNCi_DHYZMMBI4Elus82Zc43h7O1DjbBofZnF3q25Bbda1gueKidRh6KSgRXS1KTnDQ4Cseo/pub?embedded=true"></iframe>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey="15" style={{height: '100%'}}>
+                                    <iframe className={classes.RightSideContent} src="https://docs.google.com/document/d/e/2PACX-1vTkd6zCsyl26kuE8ohgXpL4LVoT5pII_N6EuB9RN1oSK4hGrfvFa11blDJvLuVXGKDEuYgTtO6s_exp/pub?embedded=true"></iframe>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey="14" style={{height: '100%'}}>
+                                    <iframe className={classes.RightSideContent} src="https://docs.google.com/document/d/e/2PACX-1vSWGMwLPj-HtCUT9Uk30xinQZj237ZctupOwrIKnZOjMGwjL6KeShkRR-xcJg_YMvkU3G_soI6DNNh1/pub?embedded=true"></iframe>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey="13" style={{height: '100%'}}>
+                                    <iframe className={classes.RightSideContent} src="https://docs.google.com/document/d/e/2PACX-1vTdTrm8FBqDquYKjWiZCXci5C0Le9BoJN_NV_ft4i-SYVCwKDgKwU08rxfYYeBbslqK-wGmBOaIXBwt/pub?embedded=true"></iframe>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey="12" style={{height: '100%'}}>
+                                    <iframe className={classes.RightSideContent} src="https://docs.google.com/document/d/e/2PACX-1vR2Dqob7v4k4-Pz3R1282rmXqhP25bTXnvGHLcqr0cNzKDQQRLFNCb_tnj4tI4Zh0qshwe_gzZnIUzt/pub?embedded=true"></iframe>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey="11" style={{height: '100%'}}>
+                                    <iframe className={classes.RightSideContent} src="https://docs.google.com/document/d/e/2PACX-1vQgrZ9aG4ODPVO4emQX-BSwvH4UUyHqhH3Rh4dO0RH7HF9iJqkLBF7DC6hadZPIrrzhmjPNhnWEFquZ/pub?embedded=true"></iframe>
+                                </Tab.Pane>
                                 <Tab.Pane eventKey="10" style={{height: '100%'}}>
                                     <iframe className={classes.RightSideContent} src="https://docs.google.com/document/d/e/2PACX-1vQxUiRxiCuC_2hHQ7megViUcZkltuk2o4kYb0MFzCYl1lGi1c_XDEK1gv5BtVA-tAJ-MqZma9C5xsxU/pub?embedded=true"></iframe>
                                 </Tab.Pane>
