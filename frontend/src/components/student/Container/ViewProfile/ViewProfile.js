@@ -156,7 +156,7 @@ const CertificationShell = {
     "CertificateID": 0,
     "Name": "",
     "IssuedBy": "",
-    "IssueDate": "",
+    "IssuedDate": "",
     "ValidUntil": ""
 }
 
@@ -406,8 +406,8 @@ class Profile extends Component {
                         if(receivedData.data.Education[i][key] != null)
                             tempE[key] = receivedData.data.Education[i][key];
                     }
-                    tempE.StartDate = this.adjustDate(tempE.StartDate, "yyyy-mm-dd");
-                    tempE.EndDate = this.adjustDate(tempE.EndDate, "yyyy-mm-dd");
+                    // tempE.StartDate = this.adjustDate(tempE.StartDate, "yyyy-mm-dd");
+                    // tempE.EndDate = this.adjustDate(tempE.EndDate, "yyyy-mm-dd");
                     tempEducation.push(tempE);
                 }
                 this.setState({ Education: tempEducation });
@@ -428,8 +428,8 @@ class Profile extends Component {
                         if(receivedData.data.WorkExp[i][key] != null)
                             tempW[key] = receivedData.data.WorkExp[i][key];
                     }
-                    tempW.StartDate = this.adjustDate(tempW.StartDate, "yyyy-mm-dd");
-                    tempW.EndDate = this.adjustDate(tempW.EndDate, "yyyy-mm-dd");
+                    // tempW.StartDate = this.adjustDate(tempW.StartDate, "yyyy-mm-dd");
+                    // tempW.EndDate = this.adjustDate(tempW.EndDate, "yyyy-mm-dd");
                     tempWorkExp.push(tempW);
                 }
                 this.setState({ WorkExp: tempWorkExp });
@@ -466,7 +466,7 @@ class Profile extends Component {
                         if(receivedData.data.Awards[i][key]!=null)
                             tempA[key] = receivedData.data.Awards[i][key];
                     }
-                    tempA.Date = this.adjustDate(tempA.Date, "yyyy-mm-dd");
+                    // tempA.Date = this.adjustDate(tempA.Date, "yyyy-mm-dd");
                     tempAwards.push(tempA);
                 }
                 this.setState({ Awards: tempAwards });
@@ -487,8 +487,8 @@ class Profile extends Component {
                         if(receivedData.data.Certification[i][key]!=null)
                             tempC[key] = receivedData.data.Certification[i][key];
                     }
-                    tempC.IssueDate = this.adjustDate(tempC.IssueDate, "yyyy-mm-dd");
-                    tempC.ValidUntil = this.adjustDate(tempC.ValidUntil, "yyyy-mm-dd");
+                    //tempC.IssuedDate = this.adjustDate(tempC.IssuedDate, "yyyy-mm-dd");
+                    //tempC.ValidUntil = this.adjustDate(tempC.ValidUntil, "yyyy-mm-dd");
                     tempCertification.push(tempC);
                 }
                 this.setState({ Certification: tempCertification });

@@ -173,7 +173,7 @@ let IconLabelTabs = props => {
                                     boxShadow: '0px 2px 14px 2px rgba(148,140,148,1)'
                                 }}
                                 contentArrowStyle={{ borderRight: '7px solid  red' }}
-                                date={certificateDetail.IssueDate + " - " + certificateDetail.ValidUntil}
+                                date={certificateDetail.IssuedDate + " - " + certificateDetail.ValidUntil}
                                 iconStyle={{ background: 'red', color: '#fff' }}
                                 icon={<ImportContactsIcon />}
                                 key={certificateDetail.CertificateID}

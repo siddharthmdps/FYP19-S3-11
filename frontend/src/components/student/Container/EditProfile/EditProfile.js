@@ -893,7 +893,7 @@ class EditProfile extends Component {
                 for (let idk in temp) {
                     temp[idk]['StudentID'] = this.state.StudentID;
                     temp[idk]['IssueDate'] = this.adjustDate(temp[idk]['IssueDate'], "dd/mm/yyyy");
-                    temp[idk]['ValidDate'] = this.adjustDate(temp[idk]['ValidDate'], "dd/mm/yyyy");
+                    temp[idk]['ValidUntil'] = this.adjustDate(temp[idk]['ValidUntil'], "dd/mm/yyyy");
                 }
                 console.log(temp);
                 Axios.put('https://pegasus-backend.herokuapp.com/student/putstudentcertificate', temp)
