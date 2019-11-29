@@ -76,7 +76,7 @@ class EditJob extends Component {
                             <Form.Group as={Row} controlId="formJobLocation">
                                 <Form.Label column sm='2'>Job Location</Form.Label>
                                 <Col sm={8}>
-                                    <Form.Control as="select" defaultValue={this.state.joblocation} onChange={this.changeLocationHandler} >
+                                    <Form.Control as="select" value={this.state.joblocation} onChange={this.changeLocationHandler} >
                                         {locations()}
                                     </Form.Control>
                                 </Col>
