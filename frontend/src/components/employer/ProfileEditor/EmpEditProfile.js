@@ -32,7 +32,7 @@ class EmpEditProfile extends React.Component {
             companydescription: this.state.companydescription
         }
 
-        const url = `${apiURL}employer/${this.empID}`
+        const url = `${apiURL}employer/updateprofile/${this.empID}`
         //const localhost = `http://localhost:3001/employer/${props.empID}`
         fetch(url, {
             method: 'PUT',
@@ -43,7 +43,7 @@ class EmpEditProfile extends React.Component {
             .then(data => {
                 this.setState({ loading: false })
                 console.log(data.message)
-                alert('Profile Editted')
+                alert('Profile Edited')
                 document.location.reload(true)
             })
             .catch(error => { console.log(error) })
